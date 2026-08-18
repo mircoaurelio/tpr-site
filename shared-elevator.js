@@ -60,15 +60,15 @@
   const ctas = [...host.querySelectorAll('.tpr-elevator__cta, .tpr-elevator__mobile-cta')];
   const buttons = [...host.querySelectorAll('[data-elevator-room]')];
   const status = host.querySelector('#elevatorStatus');
-  const preloadedImages = [];
+  const preloadedImages = new Map();
   rooms.forEach((room) => {
     [room.art, room.character, room.title].forEach((file) => {
       const image = new Image();
       image.decoding = 'async';
       image.loading = 'eager';
-      image.fetchPriority = file === room.art ? 'high' : 'auto';
+      image.fetchPriority = room.key === rooms[active].key ? 'high' : 'low';
       image.src = asset(file);
-      preloadedImages.push(image);
+      preloadedImages.set(file, image);
       if (image.decode) image.decode().catch(() => {});
     });
   });
@@ -118,6 +118,10 @@
       host.classList.remove('is-lifting');
     }
     const room = rooms[index];
+    [room.art, room.character, room.title].forEach((file) => {
+      const image = preloadedImages.get(file);
+      if (image) image.fetchPriority = 'high';
+    });
     incomingArt.src = asset(room.art);
     setCharacter(incomingCharacter, room);
     updateMeta(index, direction);

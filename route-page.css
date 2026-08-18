@@ -159,6 +159,7 @@ a { font: inherit; }
   height: min(100svh, 62.963vw);
   min-height: 34rem;
   overflow: hidden;
+  overflow: clip;
   background: var(--sky);
 }
 .room-fixed,

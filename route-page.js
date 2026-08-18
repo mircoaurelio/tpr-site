@@ -80,6 +80,7 @@ function scrollRoomTo(progress, behavior = 'auto') {
 function setRoomProgress(progress) {
   const bounded = Math.max(0, Math.min(1, progress));
   if (!roomCanvas || !roomScene || !roomSticky) return;
+  if (roomSticky.scrollLeft) roomSticky.scrollLeft = 0;
   const canvasRect = getRoomGeometry();
   const travelMax = canvasRect.travelMax;
   const travel = bounded * travelMax;
@@ -163,6 +164,7 @@ if (roomProgressControl && roomScene) {
 }
 
 exploreRoomButtons.forEach((button) => button.addEventListener('click', () => {
+    if (roomSticky?.scrollLeft) roomSticky.scrollLeft = 0;
     const behavior = reduceMotionQuery.matches ? 'auto' : 'smooth';
     scrollRoomTo(.78, behavior);
     if (behavior === 'smooth') setTimeout(() => scrollRoomTo(.78, 'auto'), 520);
