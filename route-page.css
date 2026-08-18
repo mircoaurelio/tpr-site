@@ -487,8 +487,9 @@ a { font: inherit; }
   .room-action--explore,
   .room-action--book { min-width: 44px; min-height: 44px; }
   .room-progress { bottom: .8rem; }
-  .room-fixed-info { left: 1rem; width: calc(100vw - 2rem); }
-  .room-fixed-info h1 { font-size: clamp(2.15rem, 10.5vw, 4.5rem); }
+  .room-fixed-info { right: 1rem; left: 1rem; width: auto; max-width: none; padding-inline: 1.1rem; overflow: visible; }
+  .room-fixed-info h1 { max-width: 100%; flex-wrap: wrap; white-space: normal; font-size: clamp(2rem, 9.2vw, 3.5rem); }
+  .room-fixed-info > p:not(.room-fixed-info__kicker) { max-width: 100%; overflow-wrap: anywhere; }
 }
 
 @media (prefers-reduced-motion: reduce) {

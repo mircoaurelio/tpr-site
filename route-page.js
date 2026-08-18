@@ -57,21 +57,32 @@ const trackExploreButton = document.querySelector('[data-track-explore]');
 const bookRoomButton = document.querySelector('.room-action--book');
 const roomProgressControl = document.querySelector('.room-progress');
 
+function getRoomGeometry() {
+  if (!roomCanvas || !roomScene) return { width: innerWidth, height: innerHeight, travelMax: 0 };
+  const rect = roomCanvas.getBoundingClientRect();
+  const intrinsicRatio = (roomCanvas.width && roomCanvas.height) ? roomCanvas.width / roomCanvas.height : 3432 / 952;
+  const fallbackWidth = matchMedia('(max-width: 720px)').matches ? innerHeight * intrinsicRatio : innerWidth * 2.26984;
+  const width = rect.width > 0 ? rect.width : fallbackWidth;
+  const height = rect.height > 0 ? rect.height : width / intrinsicRatio;
+  const travelMax = Math.max(0, width - innerWidth);
+  roomScene.style.height = `${innerHeight + travelMax}px`;
+  return { width, height, travelMax };
+}
+
 function scrollRoomTo(progress, behavior = 'auto') {
   if (!roomScene) return;
   const bounded = Math.max(0, Math.min(1, progress));
   const sceneTop = roomScene.getBoundingClientRect().top + scrollY;
-  const distance = Math.max(0, roomScene.offsetHeight - innerHeight);
+  const distance = getRoomGeometry().travelMax;
   scrollTo({ top: sceneTop + (distance * bounded), behavior });
 }
 
 function setRoomProgress(progress) {
   const bounded = Math.max(0, Math.min(1, progress));
   if (!roomCanvas || !roomScene || !roomSticky) return;
-  const canvasRect = roomCanvas.getBoundingClientRect();
-  const travelMax = Math.max(0, canvasRect.width - innerWidth);
+  const canvasRect = getRoomGeometry();
+  const travelMax = canvasRect.travelMax;
   const travel = bounded * travelMax;
-  roomScene.style.height = `${innerHeight + travelMax}px`;
   roomSticky.style.setProperty('--room-travel', `${travel}px`);
   roomSticky?.style.setProperty('--room-progress', String(bounded));
   roomSticky.classList.toggle('is-exploring', bounded > .34);
@@ -152,7 +163,9 @@ if (roomProgressControl && roomScene) {
 }
 
 exploreRoomButtons.forEach((button) => button.addEventListener('click', () => {
-    scrollRoomTo(.78, reduceMotionQuery.matches ? 'auto' : 'smooth');
+    const behavior = reduceMotionQuery.matches ? 'auto' : 'smooth';
+    scrollRoomTo(.78, behavior);
+    if (behavior === 'smooth') setTimeout(() => scrollRoomTo(.78, 'auto'), 520);
 }));
 
 document.querySelectorAll('[data-card-title]').forEach((button) => {

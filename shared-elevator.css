@@ -39,7 +39,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: max(100vw, calc(100svh * 1512 / 952));
+  width: max(100vw, calc(100vh * 1512 / 952));
   height: auto;
   aspect-ratio: 1512 / 952;
   object-fit: contain;
@@ -63,7 +63,7 @@
   z-index: 4;
   top: 50%;
   left: 50%;
-  width: max(100vw, calc(100svh * 1512 / 952));
+  width: max(100vw, calc(100vh * 1512 / 952));
   height: auto;
   aspect-ratio: 1512 / 952;
   transform: translate(-50%, -50%);
