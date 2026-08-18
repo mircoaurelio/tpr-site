@@ -1,0 +1,28 @@
+{
+  "canonical_home": "/homepage-tpr/",
+  "variants": [
+    { "path": "/homepage-tpr/", "figma_node": "260:1717", "name": "Homepage_TPR" },
+    { "path": "/homepage/", "figma_node": "260:1540", "name": "Homepage" }
+  ],
+  "pages": [
+    { "path": "/about/", "figma_node": "268:2154", "name": "About_TPR" },
+    { "path": "/eventi/", "figma_node": "268:2824", "name": "Eventi_TPR" },
+    { "path": "/contatti/", "figma_node": "269:3179", "name": "Contatti_TPR" },
+    { "path": "/rooms/coworking/", "figma_node": "260:3549", "name": "Coworking" },
+    { "path": "/rooms/reformer/", "figma_node": "260:3661", "name": "Reformer" },
+    { "path": "/rooms/bar/", "figma_node": "260:3773", "name": "Bar" },
+    { "path": "/rooms/wellness/", "figma_node": "260:3951", "name": "Wellness" },
+    { "path": "/rooms/media/", "figma_node": "260:4060", "name": "Media" },
+    { "path": "/gallery/", "figma_node": null, "name": "Gallery", "status": "redirect: nessun frame autonomo in Figma" },
+    { "path": "/app/", "figma_node": null, "name": "App", "status": "redirect: nessun frame autonomo in Figma" },
+    { "path": "/membership/aziende-startup/", "figma_node": null, "name": "Aziende e startup", "status": "placeholder: nessun frame definitivo in Figma" },
+    { "path": "/membership/privati-freelancer/", "figma_node": null, "name": "Privati e freelancer", "status": "placeholder: nessun frame definitivo in Figma" }
+  ],
+  "aliases": [
+    "/coworking/", "/reformer/", "/bar/", "/wellness/", "/media/"
+  ],
+  "overlays": [
+    { "name": "Menu", "figma_node": "265:7799" },
+    { "name": "Hover Room 1-5", "figma_nodes": ["260:2217", "260:2189", "260:2203", "260:2161", "260:2175"] }
+  ]
+}

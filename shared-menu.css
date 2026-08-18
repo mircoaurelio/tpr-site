@@ -1,0 +1,162 @@
+:root {
+  --tpr-royal: #2c64e8;
+  --tpr-pink: #ff7bff;
+  --tpr-white: #fff;
+  --tpr-display: "PP Rader", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+}
+
+body.menu-open { overflow: hidden; }
+
+.site-menu {
+  position: fixed;
+  z-index: 900;
+  inset: 0;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden auto;
+  display: block;
+  grid-template-columns: none;
+  gap: 0;
+  align-items: initial;
+  padding: 0;
+  color: var(--tpr-white);
+  background: var(--tpr-pink) url("./assets/menu-background-exact.png") center / cover no-repeat;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-1.5rem);
+  transition: opacity 500ms ease-out, transform 500ms ease-out, visibility 0s linear 500ms;
+}
+
+.site-menu.is-open {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  transition-delay: 0s;
+}
+
+.site-menu::before,
+.site-menu::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  background: var(--tpr-pink);
+}
+
+.site-menu::before { display: none; }
+.site-menu::after {
+  display: block;
+  z-index: 1;
+  inset: 0;
+  width: auto;
+  height: auto;
+  background: transparent url("./assets/menu-foreground-exact.png") center / cover no-repeat;
+  border: 0;
+  border-radius: 0;
+  transform: none;
+}
+
+.site-menu__brand,
+.site-menu__close,
+.site-menu__nav { position: relative; z-index: 2; }
+.site-menu__brand,
+.site-menu__close { z-index: 4; }
+
+.site-menu a.site-menu__brand {
+  position: absolute;
+  top: clamp(1rem, 3vw, 2.75rem);
+  left: clamp(1rem, 4vw, 4rem);
+  width: clamp(6.6rem, 9vw, 8.5rem);
+  font-size: initial;
+  color: var(--tpr-royal);
+}
+
+.site-menu__brand img { display: block; width: 100%; height: auto; filter: none !important; }
+
+.site-menu__close {
+  position: absolute;
+  top: clamp(1rem, 2.6vw, 2.35rem);
+  right: clamp(1rem, 4vw, 4rem);
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  color: var(--tpr-white);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  font: 300 2.15rem/1 Arial, sans-serif;
+  cursor: pointer;
+}
+
+.site-menu .site-menu__nav {
+  width: min(46rem, calc(100% - 2rem));
+  min-height: 100svh;
+  display: grid;
+  place-content: center;
+  gap: clamp(2rem, 4.2vh, 2.5rem);
+  margin: auto;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.site-menu .site-menu__primary,
+.site-menu .site-menu__heading {
+  width: fit-content;
+  margin: 0 auto;
+  color: inherit;
+  font: 600 clamp(2.6rem, 5vw, 4.85rem)/.82 var(--tpr-display);
+  letter-spacing: -.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.site-menu .site-menu__heading a { color: inherit; font: inherit; text-decoration: none; }
+
+.site-menu__sub {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .25rem 1rem;
+}
+
+.site-menu__sub a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  font: 600 clamp(.82rem, 1.35vw, 1.05rem)/1 var(--tpr-display);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.site-menu__rooms { display: flex; justify-content: center; gap: .55rem; }
+.site-menu a.site-menu__room {
+  width: 48px;
+  height: 48px;
+  font-size: 0;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  text-decoration: none;
+}
+.site-menu__room img { width: 100%; height: 100%; }
+.site-menu a:hover,
+.site-menu a:focus-visible { color: #ffc100; }
+.site-menu__close:focus:not(:focus-visible) { outline: 0; }
+.site-menu__close:focus-visible,
+.site-menu a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.site-menu[data-focus-origin="pointer"] .site-menu__close:focus-visible { outline: 0; }
+
+@media (max-width: 720px) {
+  .site-menu { background-position: 10% center; }
+  .site-menu::after { background-position: 10% center; }
+  .site-menu a.site-menu__brand { width: 6.2rem; }
+  .site-menu .site-menu__nav { gap: .6rem; padding: 5.5rem 1rem 2rem; }
+  .site-menu__primary,
+  .site-menu__heading { font-size: clamp(2.25rem, 11vw, 3.55rem); }
+  .site-menu__sub { gap: 0 .75rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-menu { transition-duration: .01ms; }
+}

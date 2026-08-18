@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#2c64e8" />
+    <meta name="description" content="The People's Room: uno spazio ibrido per lavorare, muoversi, stare bene e incontrarsi." />
+    <title>The People's Room</title>
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="stylesheet" href="styles.css?v=20260818mobilemotion" />
+  </head>
+<body>
+  <a class="skip-link" href="#main">Vai al contenuto</a>
+  <div class="tpr-cursor" id="tprCursor" aria-hidden="true">
+    <span class="tpr-cursor__spark"></span>
+    <span class="tpr-cursor__eye"></span>
+  </div>
+
+    <header class="site-header" id="siteHeader">
+      <a class="brand" href="./" aria-label="The People's Room — ricarica la home">
+        <img src="../assets/tpr-logo.svg" alt="The People's Room" />
+      </a>
+      <button class="menu-button" id="openMenu" type="button" aria-controls="siteMenu" aria-expanded="false">
+        <span></span><span></span><span></span>
+        <span class="sr-only">Apri il menu</span>
+      </button>
+    </header>
+
+    <aside class="site-menu" id="siteMenu" role="dialog" aria-modal="true" aria-label="Menu principale" aria-hidden="true">
+      <a class="site-menu__brand" href="./" aria-label="The People's Room, ricarica la home"><img src="../assets/tpr-logo-menu.svg" alt="" /></a>
+      <button class="site-menu__close" id="closeMenu" data-close-menu type="button" aria-label="Chiudi il menu">×</button>
+      <nav class="site-menu__nav" aria-label="Navigazione principale">
+        <a class="site-menu__primary" href="../about/">About</a>
+        <h2 class="site-menu__heading"><a href="#rooms">TPR Rooms</a></h2>
+        <div class="site-menu__rooms" aria-label="Le stanze">
+          <a class="site-menu__room" href="#coworking" data-room-link="coworking" aria-label="Coworking Room"><img src="../assets/elevator-icon-coworking-off.svg" alt="" /></a>
+          <a class="site-menu__room" href="#bar" data-room-link="bar" aria-label="Bar Room"><img src="../assets/elevator-icon-bar-off.svg" alt="" /></a>
+          <a class="site-menu__room" href="#media" data-room-link="media" aria-label="Media Room"><img src="../assets/elevator-icon-media-off.svg" alt="" /></a>
+          <a class="site-menu__room" href="#reformer" data-room-link="reformer" aria-label="Reformer Room"><img src="../assets/elevator-icon-reformer-off.svg" alt="" /></a>
+          <a class="site-menu__room" href="#wellness" data-room-link="wellness" aria-label="Wellness Room"><img src="../assets/elevator-icon-wellness-off.svg" alt="" /></a>
+        </div>
+        <h2 class="site-menu__heading"><a href="#membership">Membership</a></h2>
+        <div class="site-menu__sub"><a href="../membership/aziende-startup/">Aziende &amp; Startup</a><a href="../membership/privati-freelancer/">Privati &amp; Freelancer</a></div>
+        <h2 class="site-menu__heading"><a href="#world">TPR World</a></h2>
+        <div class="site-menu__sub"><a href="../eventi/">Eventi</a><a href="../gallery/">Gallery</a><a href="../app/">App</a><a href="../contatti/">Contatti</a></div>
+      </nav>
+    </aside>
+
+    <main id="main">
+      <section class="hero" id="home" aria-labelledby="hero-title">
+        <button class="hero-video-hit" type="button" data-video-trigger><span class="sr-only">Riproduci il video di presentazione TPR</span></button>
+        <img class="hero-photo" src="../assets/tpr-hero.png" alt="Lo spazio coworking di The People's Room" width="1080" height="1440" fetchpriority="high" />
+        <img class="hero-shapes" src="../assets/tpr-hero-art.png" alt="" width="3024" height="1940" aria-hidden="true" />
+        <img class="hero-mobile-composite" src="../assets/homepage-tpr-hero-2x.png" alt="" width="3024" height="1880" aria-hidden="true" fetchpriority="high" />
+        <img class="hero-mobile-shape hero-mobile-shape--left" src="../assets/tpr-hero-top-left.png" alt="" width="963" height="755" aria-hidden="true" />
+        <img class="hero-mobile-shape hero-mobile-shape--right" src="../assets/tpr-hero-top-right.png" alt="" width="988" height="708" aria-hidden="true" />
+        <img class="hero-title-art" src="../assets/tpr-hero-title.png" alt="" width="1390" height="660" aria-hidden="true" />
+        <div class="hero-curve hero-curve--left" aria-hidden="true"></div>
+        <div class="hero-curve hero-curve--right" aria-hidden="true"></div>
+        <div class="hero-curve hero-curve--bottom" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <p class="hero-kicker">Work · Move · Feel · Connect</p>
+          <h1 id="hero-title"><span class="sr-only">Respira, ispira.</span></h1>
+        </div>
+      </section>
+
+      <section class="about section-blue" id="about" aria-labelledby="about-title">
+        <div class="section-shell about-grid reveal">
+          <h2 class="display-title" id="about-title">
+            <img class="display-type display-type--about" src="../assets/type-about.png" alt="" width="703" height="408" aria-hidden="true" />
+            <span class="sr-only">The People's Room</span>
+          </h2>
+          <div class="body-copy about-copy">
+            <p>The People's Room è uno spazio ibrido e autentico che nutre corpo, mente e spirito, offrendo un rifugio reale in un mondo sempre più digitale.</p>
+            <p>Attraverso design non convenzionale, pratiche di benessere fisico, esperienze culturali e connessioni autentiche, stimoliamo la creatività, il pensiero critico e il senso di appartenenza.</p>
+            <p>Il nostro obiettivo quotidiano è ispirare le persone a esprimere se stesse, riscoprire il valore dell'umanità e vivere in modo più presente, creativo e vitale.</p>
+            <div class="button-row">
+              <a class="pill pill--pink" href="../about/">Scopri di più</a>
+              <button class="pill pill--ghost" id="videoButton" type="button" data-video-trigger>Guarda il video <span aria-hidden="true">▶</span></button>
+            </div>
+          </div>
+        </div>
+
+        <nav class="people-nav" aria-label="Scegli una room">
+          <div class="people-canvas">
+            <img src="../assets/tpr-people.png" alt="" width="2440" height="550" aria-hidden="true" />
+            <div class="people-hotspots">
+              <a href="#coworking" data-room-link="coworking" data-hover-state="hover1" data-hover-label="COWORKING ROOM"><span class="sr-only">Coworking</span></a>
+              <a href="#bar" data-room-link="bar" data-hover-state="hover4" data-hover-label="PLACEHOLDER"><span class="sr-only">Bar</span></a>
+              <a href="#media" data-room-link="media" data-hover-state="hover5" data-hover-label="MEDIA ROOM"><span class="sr-only">Media</span></a>
+              <a href="#reformer" data-room-link="reformer" data-hover-state="hover2" data-hover-label="REFORMER ROOM"><span class="sr-only">Reformer</span></a>
+              <a href="#wellness" data-room-link="wellness" data-hover-state="hover3" data-hover-label="WELLNESS ROOM"><span class="sr-only">Wellness</span></a>
+            </div>
+            <output class="people-tooltip" id="peopleTooltip" aria-hidden="true">
+              <img id="peopleTooltipImage" src="../assets/hover-label-1.svg" alt="" width="275" height="80" aria-hidden="true" />
+            </output>
+          </div>
+        </nav>
+      </section>
+
+      <section id="rooms" aria-label="Ascensore delle stanze"></section>
+
+      <section class="events" id="events" aria-labelledby="events-title">
+        <div class="section-shell events-copy reveal">
+          <h2 id="events-title">
+            <img class="display-type display-type--events" src="../assets/type-events.png" alt="" width="472" height="114" aria-hidden="true" />
+            <span class="sr-only">Eventi</span>
+          </h2>
+          <div class="body-copy">
+            <p>Talk, performance, workshop e incontri inattesi: una programmazione che unisce persone, linguaggi e idee per vivere la città in modo più creativo e vitale.</p>
+            <div class="button-row">
+              <a class="pill pill--blue" href="../eventi/">Eventi &amp; Gallery</a>
+              <a class="pill pill--dark-ghost" href="../contatti/">Organizza un evento</a>
+            </div>
+          </div>
+        </div>
+        <figure class="events-visual reveal" id="gallery">
+          <img src="../assets/tpr-events.png" alt="DJ set durante un evento TPR" width="1200" height="1600" loading="lazy" />
+          <img class="events-mask" src="../assets/event-mask-exact.png" alt="" width="3024" height="1428" aria-hidden="true" loading="lazy" />
+        </figure>
+      </section>
+
+      <section class="membership" id="membership" aria-labelledby="membership-title">
+        <div class="membership-orbit" aria-hidden="true"></div>
+        <div class="section-shell reveal">
+          <h2 id="membership-title">
+            <img class="display-type display-type--membership" src="../assets/type-membership.png" alt="" width="1172" height="118" aria-hidden="true" />
+            <span class="sr-only">Diventa membro</span>
+          </h2>
+          <div class="membership-grid">
+            <article class="membership-card">
+              <div class="torn-photo"><img src="../assets/tpr-startup.png" alt="Team al lavoro nello spazio TPR" width="1024" height="1534" loading="lazy" /></div>
+              <p class="card-eyebrow">Membership per team</p>
+              <h3>
+                <img class="membership-title-graphic" src="../assets/type-startup.png" alt="" width="1026" height="88" aria-hidden="true" />
+                <span class="sr-only">Aziende e startup</span>
+              </h3>
+              <p>Spazi, servizi e programmi dedicati a organizzazioni che vogliono lavorare e crescere in un ambiente stimolante.</p>
+              <a href="../membership/aziende-startup/">Scopri la membership <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="membership-card membership-card--yellow">
+              <div class="torn-photo"><img src="../assets/tpr-freelancer.png" alt="Professionista al lavoro in TPR" width="736" height="1104" loading="lazy" /></div>
+              <p class="card-eyebrow">Membership individuale</p>
+              <h3>
+                <img class="membership-title-graphic" src="../assets/type-freelancer.png" alt="" width="993" height="88" aria-hidden="true" />
+                <span class="sr-only">Privati e freelancer</span>
+              </h3>
+              <p>Accesso flessibile alle room, alla community e alle esperienze TPR, seguendo i tuoi ritmi e le tue necessità.</p>
+              <a href="../membership/privati-freelancer/">Scopri la membership <span aria-hidden="true">↗</span></a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="partners" aria-labelledby="partners-title">
+        <h2 id="partners-title">I nostri partner</h2>
+        <div class="partner-track" aria-label="Partner TPR">
+          <span>Partner 01</span><span>Partner 02</span><span>Partner 03</span><span>Partner 04</span><span>Partner 05</span>
+          <span aria-hidden="true">Partner 01</span><span aria-hidden="true">Partner 02</span><span aria-hidden="true">Partner 03</span><span aria-hidden="true">Partner 04</span><span aria-hidden="true">Partner 05</span>
+        </div>
+      </section>
+
+      <section class="world section-blue" id="world" aria-labelledby="world-title">
+        <div class="section-shell world-copy reveal">
+          <h2 id="world-title">
+            <img class="display-type display-type--world" src="../assets/type-world.png" alt="" width="921" height="118" aria-hidden="true" />
+            <span class="sr-only">Il mondo TPR</span>
+          </h2>
+          <div class="body-copy">
+            <p>Scarica l'app per rimanere sempre aggiornato sugli eventi e prenotare room, classi ed esperienze riservate ai membri.</p>
+            <div class="button-row">
+              <a class="pill pill--pink" href="../app/">Scarica l'app</a>
+              <a class="pill pill--ghost" href="../contatti/">Contattaci</a>
+            </div>
+          </div>
+        </div>
+        <div class="phones reveal" aria-label="Anteprima dell'app TPR">
+          <div class="phone-mockup phone-mockup--brand">
+            <img class="phone-hardware" src="../assets/tpr-phone-left.png" alt="" width="1298" height="3086" loading="lazy" />
+            <img class="phone-screen" src="../assets/tpr-app-brand.png" alt="Schermata di apertura dell'app TPR" width="1151" height="3011" loading="lazy" />
+          </div>
+          <div class="phone-mockup phone-mockup--booking">
+            <img class="phone-hardware" src="../assets/tpr-phone-right.png" alt="" width="1299" height="3086" loading="lazy" />
+            <img class="phone-screen" src="../assets/tpr-app-booking.png" alt="Schermata di prenotazione dell'app TPR" width="1152" height="3014" loading="lazy" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="footer">
+      <div class="footer-logo"><img src="../assets/type-footer.png" alt="TPR" width="968" height="314" /></div>
+      <div class="footer-columns">
+        <div><h2>TPR</h2><a href="../about/">About</a><a href="#membership">Membership</a><a href="../eventi/">Eventi &amp; gallery</a><a href="../contatti/">Contatti</a></div>
+        <div><h2>Rooms</h2><a href="#coworking" data-room-link="coworking">Coworking</a><a href="#reformer" data-room-link="reformer">Reformer</a><a href="#wellness" data-room-link="wellness">Wellness</a><a href="#bar" data-room-link="bar">Bar</a><a href="#media" data-room-link="media">Media</a></div>
+      </div>
+      <div class="footer-bottom"><span>© The People's Room</span><span>Via della Maggiolina 2, Milano</span><span>P. IVA 0123456789</span><span>Privacy policy · Cookie policy</span></div>
+    </footer>
+
+    <dialog class="video-dialog" id="videoDialog">
+      <button class="dialog-close" id="closeVideo" type="button" aria-label="Chiudi video">×</button>
+      <div class="video-placeholder"><span aria-hidden="true">▶</span><p>Video di presentazione TPR</p></div>
+    </dialog>
+
+    <script src="../shared-menu.js"></script>
+    <script src="../shared-elevator.js?v=20260818mobilemotion"></script>
+    <script src="script.js?v=20260818hoverlabels"></script>
+  </body>
+</html>
