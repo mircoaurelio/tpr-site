@@ -61,7 +61,7 @@
 
 .tpr-elevator__character-plane {
   position: absolute;
-  z-index: 4;
+  z-index: 3;
   top: 50%;
   left: 50%;
   width: max(100vw, calc(100vh * 1512 / 952));
@@ -99,68 +99,74 @@
 .tpr-elevator__mobile-copy { display: none; }
 .tpr-elevator__desktop-copy {
   position: absolute;
-  z-index: 3;
-  top: 27.5%;
-  left: 52.55%;
-  width: 40.5%;
+  z-index: 6;
+  top: 27.73%;
+  left: 52.65%;
+  width: 42.06%;
   color: var(--room-ink);
   pointer-events: none;
 }
 .tpr-elevator__desktop-copy h2 {
   display: flex;
   align-items: baseline;
-  gap: .35em;
-  margin: 0 0 4.2%;
-  font: 700 clamp(2.8rem, 5.5vw, 6.75rem)/.82 var(--tpr-display, "Alte Haas Grotesk", Arial, sans-serif);
-  letter-spacing: -.065em;
+  gap: .2em;
+  margin: 0 0 .5em;
+  font: 700 clamp(2.6rem, 5.29vw, 5rem)/1 var(--tpr-display, "PP Rader", "Alte Haas Grotesk", Arial, sans-serif);
+  letter-spacing: -.04em;
   text-transform: uppercase;
 }
-.tpr-elevator__desktop-copy h2 span { font-size: .43em; letter-spacing: -.035em; }
+.tpr-elevator__desktop-copy h2 span { font-size: .645em; font-weight: 400; letter-spacing: -.02em; }
 .tpr-elevator__desktop-copy p {
-  max-width: 96%;
-  margin: 0 0 .45em;
-  font: 400 clamp(.9rem, 1.48vw, 1.8rem)/1.07 var(--tpr-body, "Alte Haas Grotesk", Arial, sans-serif);
-  letter-spacing: -.025em;
+  max-width: 100%;
+  margin: 0 0 8px;
+  font: 400 clamp(.95rem, 1.59vw, 1.5rem)/1 var(--tpr-body, "Alte Haas Grotesk", Arial, sans-serif);
+  letter-spacing: 0;
 }
+.tpr-elevator__desktop-copy p:last-of-type { margin-bottom: 0; }
 .tpr-elevator__desktop-actions {
   display: flex;
-  align-items: stretch;
-  gap: 2.4%;
-  width: 82%;
-  margin-top: 3.2%;
+  align-items: center;
+  gap: 32px;
+  width: auto;
+  margin-top: 32px;
   pointer-events: auto;
 }
 
 .tpr-elevator__cta {
   position: relative;
-  width: 56%;
-  min-height: clamp(2.5rem, 4.35vh, 3.4rem);
+  z-index: 7;
+  width: auto;
+  min-height: 32px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8%;
+  gap: 16px;
+  padding: 8px 64px;
   color: var(--room-bg);
   background: var(--room-accent);
-  border: 0;
-  padding: 0;
-  font: 800 clamp(.78rem, 1.15vw, 1.35rem)/1 var(--tpr-body, "Alte Haas Grotesk", Arial, sans-serif);
-  clip-path: polygon(0 10%,3% 3%,7% 8%,11% 0,16% 7%,21% 2%,27% 8%,32% 0,38% 7%,44% 2%,50% 8%,56% 0,62% 7%,68% 2%,74% 8%,80% 0,86% 7%,92% 2%,100% 8%,98% 25%,100% 43%,98% 61%,100% 79%,98% 100%,92% 94%,86% 100%,80% 94%,74% 100%,68% 94%,62% 100%,56% 94%,50% 100%,44% 94%,38% 100%,32% 94%,26% 100%,20% 94%,14% 100%,8% 94%,0 100%,2% 79%,0 60%,2% 41%,0 22%);
+  border: 3px solid var(--room-accent);
+  border-radius: 10px;
+  font: 700 1rem/1 var(--tpr-body, "Alte Haas Grotesk", Arial, sans-serif);
+  clip-path: none;
   cursor: pointer;
   transition: background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 .tpr-elevator__book {
   position: relative;
-  width: 41.6%;
-  min-height: clamp(2.5rem, 4.35vh, 3.4rem);
+  z-index: 7;
+  width: auto;
+  min-height: 32px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 8px 64px;
   color: var(--room-accent);
   background: var(--room-bg);
-  border: clamp(2px, .22vw, 4px) solid var(--room-accent);
-  font: 800 clamp(.78rem, 1.15vw, 1.35rem)/1 var(--tpr-body, "Alte Haas Grotesk", Arial, sans-serif);
+  border: 3px solid var(--room-accent);
+  border-radius: 10px;
+  font: 700 1rem/1 var(--tpr-body, "Alte Haas Grotesk", Arial, sans-serif);
   text-decoration: none;
-  clip-path: polygon(0 10%,3% 3%,7% 8%,11% 0,16% 7%,21% 2%,27% 8%,32% 0,38% 7%,44% 2%,50% 8%,56% 0,62% 7%,68% 2%,74% 8%,80% 0,86% 7%,92% 2%,100% 8%,98% 25%,100% 43%,98% 61%,100% 79%,98% 100%,92% 94%,86% 100%,80% 94%,74% 100%,68% 94%,62% 100%,56% 94%,50% 100%,44% 94%,38% 100%,32% 94%,26% 100%,20% 94%,14% 100%,8% 94%,0 100%,2% 79%,0 60%,2% 41%,0 22%);
+  clip-path: none;
 }
 .tpr-elevator__book[hidden],
 .tpr-elevator__mobile-book[hidden] { display: none !important; }

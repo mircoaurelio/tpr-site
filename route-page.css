@@ -66,6 +66,7 @@ a { font: inherit; }
 .mobile-route-content { display: none; }
 .contact-copy-replacement { display: none; }
 .about-copy-replacement { display: none; }
+.event-copy-replacement { display: none; }
 
 @media (min-width: 721px) {
   .contact-copy-replacement {
@@ -125,6 +126,51 @@ a { font: inherit; }
     background: #fff;
     font: 400 clamp(.8rem, 1.4vw, 2.6rem)/1.12 "Alte Haas Grotesk", Arial, sans-serif;
     letter-spacing: -.025em;
+  }
+  .about-copy-replacement--pair {
+    top: 28%;
+    left: 8%;
+    width: 84%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2%;
+    color: #fff;
+    background: #2c64e8;
+    padding: 1.2% 1%;
+    font: 400 clamp(.8rem, 1.3vw, 2.2rem)/1.12 "Alte Haas Grotesk", Arial, sans-serif;
+  }
+  .about-copy-replacement--pair h2 {
+    margin: 0 0 .35em;
+    font: 700 clamp(1.6rem, 3.2vw, 3.2rem)/.9 "PP Rader", "Alte Haas Grotesk", Arial, sans-serif;
+    letter-spacing: -.05em;
+    text-transform: uppercase;
+  }
+  .event-copy-replacement {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    margin: 0;
+    pointer-events: none;
+  }
+  .event-copy-replacement--title {
+    top: 8%;
+    left: 5.3%;
+    width: 42%;
+    color: #2c64e8;
+    background: #ff7bff;
+    font: 700 clamp(2.4rem, 5.29vw, 5rem)/1 "PP Rader", "Alte Haas Grotesk", Arial, sans-serif;
+    letter-spacing: -.05em;
+    text-transform: uppercase;
+    padding: .4% .3%;
+  }
+  .event-copy-replacement--lead {
+    top: 8%;
+    left: 52.6%;
+    width: 42%;
+    color: #fff;
+    background: #ff7bff;
+    font: 400 clamp(.95rem, 2.2vw, 2.5rem)/1.05 "Alte Haas Grotesk", Arial, sans-serif;
+    padding: .4% .3%;
   }
   .route-home > img { display: none; }
 }
