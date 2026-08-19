@@ -9,8 +9,8 @@
   --white: #fff;
   --room-bg: var(--ice);
   --room-accent: var(--royal);
-  --display: "PP Rader", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
-  --body: "Alte Haas Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --display: "PP Rader", "Alte Haas Grotesk", Arial, sans-serif;
+  --body: "Alte Haas Grotesk", Arial, sans-serif;
 }
 
 .mobile-alt { display: none; }

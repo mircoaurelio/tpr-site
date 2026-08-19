@@ -1,5 +1,5 @@
-@import url("../shared-menu.css?v=20260820-room-flow-10");
-@import url("../shared-elevator.css?v=20260820-room-flow-10");
+@import url("../shared-menu.css?v=20260820-fonts-11");
+@import url("../shared-elevator.css?v=20260820-fonts-11");
 
 :root {
   --royal: #2c64e8;
@@ -13,8 +13,8 @@
   --white: #ffffff;
   --header-h: 7.5rem;
   --page-x: clamp(1.35rem, 5vw, 5rem);
-  --display: "Arial Narrow", Arial, sans-serif;
-  --body: Arial, sans-serif;
+  --display: "PP Rader", "Alte Haas Grotesk", Arial, sans-serif;
+  --body: "Alte Haas Grotesk", Arial, sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; }

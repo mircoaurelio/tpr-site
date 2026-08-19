@@ -1,9 +1,73 @@
+@font-face {
+  font-family: "Alte Haas Grotesk";
+  src: url("assets/fonts/alte-haas-grotesk/AlteHaasGroteskRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alte Haas Grotesk";
+  src: url("assets/fonts/alte-haas-grotesk/AlteHaasGroteskBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Rader";
+  src: url("assets/fonts/pp-rader/PPRader-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Rader";
+  src: url("assets/fonts/pp-rader/PPRader-Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 600 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Rader";
+  src: url("assets/fonts/pp-rader/PPRader-Thin.otf") format("opentype");
+  font-style: normal;
+  font-weight: 100 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Rader";
+  src: url("assets/fonts/pp-rader/PPRader-Italic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Rader";
+  src: url("assets/fonts/pp-rader/PPRader-BoldItalic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 600 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Rader";
+  src: url("assets/fonts/pp-rader/PPRader-ThinItalic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 100 300;
+  font-display: swap;
+}
+
 :root {
   --tpr-royal: #2c64e8;
   --tpr-pink: #ff7bff;
   --tpr-white: #fff;
-  --tpr-display: "Arial Narrow", Arial, sans-serif;
-  --tpr-body: Arial, sans-serif;
+  --tpr-display: "PP Rader", "Alte Haas Grotesk", Arial, sans-serif;
+  --tpr-body: "Alte Haas Grotesk", Arial, sans-serif;
 }
 
 body.menu-open { overflow: hidden; }
@@ -114,7 +178,7 @@ body.menu-open .site-header { visibility: hidden; }
   background: transparent;
   border: 0;
   border-radius: 0;
-  font: 300 2.15rem/1 Arial, sans-serif;
+  font: 400 2.15rem/1 var(--tpr-body);
   cursor: pointer;
 }
 

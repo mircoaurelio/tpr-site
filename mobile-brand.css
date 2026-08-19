@@ -7,8 +7,8 @@
     --route-accent: #ff7bff;
     --route-card: #98caff;
     --route-card-ink: #2c64e8;
-    --route-display: "Arial Narrow", Arial, sans-serif;
-    --route-body: Arial, sans-serif;
+    --route-display: "PP Rader", "Alte Haas Grotesk", Arial, sans-serif;
+    --route-body: "Alte Haas Grotesk", Arial, sans-serif;
     color: var(--route-ink);
     background: var(--route-surface);
     font-family: var(--route-body);

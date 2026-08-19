@@ -67,15 +67,17 @@
           <p class="tpr-elevator__description">${copyParagraphs.join(' ')}</p>
           <div class="tpr-elevator__mobile-actions">
             <button class="tpr-elevator__mobile-cta" type="button" data-elevator-explore>Esplora Stanza <span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
-            <a class="tpr-elevator__mobile-book" data-elevator-book href="${bookingUrl(rooms[active].key)}">Prenota</a>
+            <a class="tpr-elevator__mobile-book" data-elevator-book href="${bookingUrl(rooms[active].key)}" ${rooms[active].bookable ? '' : 'hidden'}>Prenota</a>
           </div>
         </div>
         <div class="tpr-elevator__desktop-copy">
           <h2>${roomTitle(rooms[active])}</h2>
           ${copyParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join('')}
+          <div class="tpr-elevator__desktop-actions">
+            <button class="tpr-elevator__cta" type="button" data-elevator-explore aria-label="Esplora ${rooms[active].label} Room"><span>Esplora Stanza</span><span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
+            <a class="tpr-elevator__book" data-elevator-book href="${bookingUrl(rooms[active].key)}" ${rooms[active].bookable ? '' : 'hidden'}>Prenota<span class="sr-only"> ${rooms[active].label} Room</span></a>
+          </div>
         </div>
-        <button class="tpr-elevator__cta" type="button" data-elevator-explore aria-label="Esplora ${rooms[active].label} Room"><span>Esplora Stanza</span><span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
-        <a class="tpr-elevator__book" data-elevator-book href="${bookingUrl(rooms[active].key)}">Prenota<span class="sr-only"> ${rooms[active].label} Room</span></a>
         <nav class="tpr-elevator__nav" aria-label="Ascensore delle stanze">
           ${rooms.map((room, index) => `<button class="tpr-elevator__button" type="button" data-elevator-room="${room.key}" aria-label="Vai a ${room.label} Room" aria-pressed="${index === active}"><img class="icon-off" src="${asset(room.off)}" alt=""><img class="icon-on" src="${asset(room.icon)}" alt=""></button>`).join('')}
         </nav>
@@ -144,6 +146,7 @@
     });
     bookLinks.forEach((link) => {
       link.href = bookingUrl(room.key);
+      link.hidden = !room.bookable;
       const sr = link.querySelector('.sr-only');
       if (sr) sr.textContent = ` ${room.label} Room`;
     });
