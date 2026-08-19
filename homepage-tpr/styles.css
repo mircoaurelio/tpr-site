@@ -295,6 +295,7 @@ body.elevator-active .site-header::after { content: none; display: none; }
   position: absolute;
   z-index: 0;
   inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -320,34 +321,21 @@ body.elevator-active .site-header::after { content: none; display: none; }
 .membership-card__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin: 1.05rem 0 .7rem; }
 .membership-card h3 { margin: 0; font: 600 clamp(1.7rem, 2.55vw, 2.45rem)/.9 var(--display); letter-spacing: -.055em; text-transform: uppercase; }
 .membership-card__arrow {
-  position: relative;
+  display: grid;
+  place-items: center;
   width: 2.55rem;
   height: 2.55rem;
   flex: 0 0 auto;
   border: 2px solid currentColor;
   border-radius: 50%;
 }
-.membership-card__arrow::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 26%;
-  width: 46%;
-  height: 2px;
-  background: currentColor;
-  transform: translateY(-50%);
+.membership-card__arrow svg {
+  display: block;
+  width: 1.2rem;
+  height: 1.2rem;
 }
-.membership-card__arrow::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 26%;
-  width: .42rem;
-  height: .42rem;
-  border-top: 2px solid currentColor;
-  border-right: 2px solid currentColor;
-  transform: translateY(-52%) rotate(45deg);
-}
+.membership-card__arrow::before,
+.membership-card__arrow::after { content: none; }
 .membership-card p { max-width: 36rem; margin: 0; font-size: .98rem; line-height: 1.08; }
 
 .partners { overflow: hidden; padding: 0; color: var(--royal); background: var(--royal); text-align: center; }

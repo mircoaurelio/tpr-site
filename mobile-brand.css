@@ -25,6 +25,15 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
 .branded-route input,
 .branded-route textarea { font-family: inherit; }
 
+.branded-route--about {
+  --route-surface: #2c64e8;
+  --route-ink: #fff;
+  --route-accent: #ff7bff;
+  --route-blob: #ff7bff;
+  --route-card: #fff;
+  --route-card-ink: #2c64e8;
+}
+
 .branded-route--eventi {
   --route-surface: #ff7bff;
   --route-ink: #fff;
@@ -85,6 +94,12 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   max-width: none;
   object-fit: contain;
   object-position: left top;
+}
+
+.branded-route--about .route-blob {
+  top: -16%;
+  left: -34%;
+  width: min(118vw, 56rem);
 }
 
 .branded-route--eventi .route-blob {
@@ -171,7 +186,8 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
 }
 
 .wavy-quote,
-.wavy-card {
+.wavy-card,
+.route-torn-card {
   position: relative;
 }
 
@@ -204,7 +220,8 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   text-transform: uppercase;
 }
 
-.wavy-card {
+.wavy-card,
+.route-torn-card {
   overflow: hidden;
   color: var(--route-card-ink);
   background: var(--route-card);
@@ -218,6 +235,13 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   min-height: 18rem;
   color: var(--route-card-ink);
   text-decoration: none;
+}
+
+.mobile-event-card {
+  display: flex;
+  flex-direction: column;
+  color: var(--route-card-ink);
+  background: var(--route-card);
 }
 
 .route-photo-card img,
@@ -292,12 +316,22 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
 }
 
 .mobile-contact-form.wavy-card,
-.mobile-contact-details.wavy-card {
+.mobile-contact-form.route-torn-card {
   display: grid;
   justify-items: center;
   gap: 1rem;
   padding: 1.6rem 1.25rem 1.5rem;
   text-align: center;
+}
+
+.mobile-contact-details.wavy-card,
+.mobile-contact-details.route-torn-card {
+  display: grid;
+  align-content: start;
+  justify-items: stretch;
+  gap: 0;
+  padding: 0 0 1.15rem;
+  text-align: left;
 }
 
 .route-form-head {
@@ -317,6 +351,20 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   display: block;
   width: 4.6rem;
   height: auto;
+}
+
+.route-form-icon {
+  display: block;
+  width: 5.1rem;
+  height: 5.4rem;
+  overflow: hidden;
+}
+
+.route-form-icon img {
+  width: 430%;
+  max-width: none;
+  height: auto;
+  margin: -10% 0 0 -8%;
 }
 
 .mobile-event-form-copy {
@@ -375,6 +423,7 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
 .mobile-form-status { min-height: 1.25em; margin: 0; }
 
 .route-map {
+  display: block;
   overflow: hidden;
   width: 100%;
   min-height: 11rem;
@@ -457,8 +506,24 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   font-family: var(--route-body);
 }
 
-.mobile-brand-footer__logo { width: min(76vw, 30.25rem); }
+.mobile-brand-footer__logo,
+.mobile-brand-footer__mark { width: min(76vw, 30.25rem); }
 .mobile-brand-footer__logo img { display: block; width: 100%; height: auto; }
+.mobile-brand-footer__mark {
+  margin: 0;
+  font: 700 clamp(4.4rem, 22vw, 7.25rem)/.7 var(--route-display);
+  letter-spacing: -.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.mobile-brand-footer__mark sup {
+  font-size: .26em;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  vertical-align: super;
+  margin-left: -.08em;
+}
 .mobile-brand-footer__columns { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 .mobile-brand-footer__columns h2 {
   margin: 0 0 1rem;
@@ -482,7 +547,7 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   justify-content: space-between;
   gap: .75rem 1rem;
   padding-top: 1.25rem;
-  border-top: 1px solid currentColor;
+  border-top: 0;
   font-size: .65rem;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -501,6 +566,12 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
     top: -8%;
     left: -28%;
     width: min(92vw, 78rem);
+  }
+
+  .branded-route--about .route-blob {
+    top: -10%;
+    left: -18%;
+    width: min(68vw, 62rem);
   }
 
   .branded-route--eventi .route-blob {
@@ -525,10 +596,15 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
 
   .branded-route .route-lockup,
   .branded-route--about .route-lockup,
+  .branded-route--eventi .route-lockup,
   .branded-route--contatti .route-lockup {
     max-width: none;
     font: 700 clamp(3.2rem, 5.29vw, 5rem)/.9 var(--route-display);
     letter-spacing: -.04em;
+  }
+
+  .branded-route--eventi .route-intro .route-copy {
+    text-align: right;
   }
 
   .branded-route .route-lead,
@@ -585,15 +661,20 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
 
   .branded-route .route-contact-title { color: #ff7bff; }
 
-  .mobile-contact-form.wavy-card,
-  .mobile-contact-details.wavy-card {
+  .mobile-contact-form.wavy-card {
     min-height: 30.75rem;
     padding: 2.15rem 2rem 1.75rem;
   }
 
+  .mobile-contact-details.wavy-card {
+    min-height: 30.75rem;
+    padding: 0 0 1.4rem;
+  }
+
   .route-form-head h2 { font-size: clamp(1.6rem, 2.2vw, 2.1rem); }
+  .route-form-icon { width: 6.4rem; height: 6.8rem; }
   .route-map img,
-  .route-map iframe { height: 14.5rem; }
+  .route-map iframe { height: 16.5rem; }
 
   .route-contact-meta {
     padding: 1rem 1.1rem 0;
@@ -625,7 +706,11 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
     align-items: start;
   }
 
-  .mobile-brand-footer__logo { width: min(32.01vw, 30.25rem); }
+  .mobile-brand-footer__logo,
+  .mobile-brand-footer__mark { width: min(32.01vw, 30.25rem); }
+  .mobile-brand-footer__mark {
+    font-size: clamp(6.25rem, 12.4vw, 11.5rem);
+  }
   .mobile-brand-footer__columns {
     justify-content: end;
     gap: 4rem;
@@ -633,4 +718,45 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
     margin-left: auto;
   }
   .mobile-brand-footer__bottom { grid-column: 1 / -1; }
+}
+
+@media (max-width: 720px) {
+  .branded-route .route-lockup {
+    max-width: 11ch;
+    font-size: clamp(2.7rem, 12vw, 4.2rem);
+  }
+
+  .branded-route--eventi .route-lockup,
+  .branded-route--contatti .route-lockup {
+    max-width: none;
+  }
+
+  .branded-route .route-intro,
+  .branded-route .route-energy,
+  .branded-route .route-quote-row,
+  .branded-route .route-card-row,
+  .branded-route .route-photo-row,
+  .branded-route .mobile-event-list {
+    grid-template-columns: 1fr;
+  }
+
+  .wavy-quote { min-height: 18rem; }
+
+  .mobile-event-list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: min(78vw, 18.5rem);
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-right: -1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .mobile-event-card,
+  .route-photo-card { scroll-snap-align: start; }
+
+  .branded-route .mobile-brand-footer {
+    grid-template-columns: 1fr;
+  }
 }

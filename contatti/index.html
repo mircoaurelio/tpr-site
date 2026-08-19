@@ -27,37 +27,39 @@
     <script type="application/ld+json">
       {"@context":"https://schema.org","@graph":[{"@type":"ContactPage","@id":"https://mircoaurelio.github.io/tpr-site/contatti/#webpage","url":"https://mircoaurelio.github.io/tpr-site/contatti/","name":"Contatti e sede a Milano | The People's Room","description":"Contatta The People's Room in Via della Maggiolina 2 a Milano.","inLanguage":"it-IT","isPartOf":{"@id":"https://mircoaurelio.github.io/tpr-site/#website"},"about":{"@id":"https://mircoaurelio.github.io/tpr-site/#organization"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mircoaurelio.github.io/tpr-site/homepage-tpr/"},{"@type":"ListItem","position":2,"name":"Contatti","item":"https://mircoaurelio.github.io/tpr-site/contatti/"}]}]}
     </script>
-    <link rel="stylesheet" href="../route-page.css?v=20260820-fonts-15" />
-    <link rel="stylesheet" href="../shared-menu.css?v=20260820-fonts-15" />
-    <link rel="stylesheet" href="../mobile-brand.css?v=20260820-fonts-15" />
+    <link rel="stylesheet" href="../route-page.css?v=20260819-pages-1" />
+    <link rel="stylesheet" href="../shared-menu.css?v=20260819-pages-1" />
+    <link rel="stylesheet" href="../mobile-brand.css?v=20260819-pages-1" />
   </head>
   <body class="branded-route branded-route--contatti">
     <a class="skip-link" href="#content">Vai al contenuto</a>
     <main class="static-route" id="content">
       <article class="mobile-route-content">
         <svg class="route-blob" viewBox="0 0 760 620" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 0c210 8 470-18 645 8 48 18 78 58 70 164-8 98-42 188-92 312-28 68-62 128-122 136H118c52-42 118-96 176-168 48-60 78-118 86-176C368 196 240 188 0 210V0Z"/></svg>
-        <p class="mobile-route-kicker">THE PEOPLE'S ROOM</p>
-        <div class="route-hero-copy">
-          <h1>Contatti</h1>
-          <p class="mobile-route-lead">Il nostro obiettivo quotidiano è ispirare le persone a esprimere sé stesse, riscoprire il valore dell'umanità e vivere in modo più presente, creativo e vitale.</p>
+        <div class="route-intro">
+          <h1 class="route-lockup">Contatti</h1>
+          <p class="route-lead">[PLACEHOLDER] Il nostro obiettivo quotidiano è ispirare le persone a esprimere sé stesse, riscoprire il valore dell'umanità e vivere in modo più presente, creativo e vitale.</p>
         </div>
         <div class="route-card-row">
-          <form class="mobile-contact-form route-torn-card" data-contact-form>
-            <div class="route-form-head"><h2>Form di contatto</h2></div>
+          <form class="mobile-contact-form wavy-card" data-contact-form>
+            <div class="route-form-head">
+              <h2>Form di contatto</h2>
+              <span class="route-form-icon" aria-hidden="true"><img src="../assets/tpr-logo.svg" alt="" width="1090" height="534" /></span>
+            </div>
+            <p class="mobile-event-form-copy">Il nostro obiettivo quotidiano è ispirare le persone a esprimere sé stesse, riscoprire il valore dell'umanità e vivere in modo più presente, creativo e vitale.</p>
             <label>Nome<input name="name" autocomplete="name" required /></label>
             <label>Email<input type="email" name="email" autocomplete="email" required /></label>
-            <label>Messaggio<textarea name="message" rows="5" required></textarea></label>
-            <button type="submit">Invia</button>
+            <label>Messaggio<textarea name="message" rows="4" required></textarea></label>
+            <button type="submit">Invia &gt;</button>
             <p class="mobile-form-status" role="status" aria-live="polite"></p>
           </form>
-          <section class="mobile-contact-details route-torn-card">
-            <div class="route-map">
-              <iframe title="Mappa di The People's Room a Milano" src="https://maps.google.com/maps?q=Via+della+Maggiolina+2+Milano&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+          <section class="mobile-contact-details wavy-card">
+            <a class="route-map" href="https://www.google.com/maps/search/?api=1&amp;query=Via+della+Maggiolina+2+Milano" target="_blank" rel="noopener noreferrer">
+              <img src="../assets/tpr-map.png" alt="Mappa di The People's Room a Milano, vicino a Porta Garibaldi" width="1200" height="900" loading="lazy" decoding="async" />
+            </a>
             <div class="route-contact-meta">
-              <h2>Milano</h2>
-              <p>Via della Maggiolina 2. Scrivici dal form per informazioni su room, membership ed eventi.</p>
-              <p>Tutti gli indirizzi / le ore / i contatti vari / insomma, tutto</p>
+              <p>Tutti gli indirizzi<br />le ore<br />i contatti vari<br />insomma, tutto</p>
+              <p>Tutti gli indirizzi<br />le ore<br />i contatti vari<br />insomma, tutto</p>
             </div>
           </section>
         </div>
@@ -67,12 +69,29 @@
     </main>
 
     <footer class="mobile-brand-footer">
-      <div class="mobile-brand-footer__logo"><img src="../assets/type-footer.png" alt="TPR" width="968" height="314" /></div>
+      <p class="mobile-brand-footer__mark">TPR<sup>®</sup></p>
       <div class="mobile-brand-footer__columns">
-        <div><h2>TPR</h2><a href="../about/">About</a><a href="../homepage-tpr/#membership">Membership</a><a href="../eventi/">Eventi &amp; gallery</a><a href="../contatti/">Contatti</a></div>
-        <div><h2>Rooms</h2><a href="../homepage-tpr/#coworking">Coworking</a><a href="../homepage-tpr/#reformer">Reformer</a><a href="../homepage-tpr/#wellness">Wellness</a><a href="../homepage-tpr/#bar">Bar</a><a href="../homepage-tpr/#media">Media</a></div>
+        <nav aria-label="TPR">
+          <h2>TPR</h2>
+          <a href="../about/">About</a>
+          <a href="../homepage-tpr/#membership">Membership</a>
+          <a href="../app/">TPR App</a>
+          <a href="../eventi/">Eventi &amp; Gallery</a>
+          <a href="../contatti/">Contatti</a>
+        </nav>
+        <nav aria-label="Rooms">
+          <h2>Rooms</h2>
+          <a href="../homepage-tpr/#coworking">Coworking</a>
+          <a href="../homepage-tpr/#reformer">TPR Move</a>
+          <a href="../homepage-tpr/#wellness">Wellness</a>
+          <a href="../homepage-tpr/#bar">Bar</a>
+          <a href="../homepage-tpr/#media">Media</a>
+        </nav>
       </div>
-      <div class="mobile-brand-footer__bottom"><span>© The People's Room</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Via+della+Maggiolina+2+Milano" target="_blank" rel="noopener noreferrer">Via della Maggiolina 2, Milano</a><span>Privacy policy · Cookie policy</span><a href="https://www.marmellatalab.com/" target="_blank" rel="noopener noreferrer">Design by Marmellata Lab</a></div>
+      <div class="mobile-brand-footer__bottom">
+        <span>© THE PEOPLE'S ROOM SRL / Via sede legale / P. IVA 0123456789 / Capitale sociale €10.000</span>
+        <span>Privacy Policy / Cookie policy / <a href="https://www.marmellatalab.com/" target="_blank" rel="noopener noreferrer">Designed by <strong>Marmellata Lab</strong></a></span>
+      </div>
     </footer>
 
     <aside class="site-menu" id="siteMenu" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Menu principale">
@@ -94,7 +113,7 @@
         <div class="site-menu__sub"><a href="../eventi/">Eventi</a><a href="../eventi/#gallery">Gallery</a><a href="../app/">App</a><a href="../contatti/">Contatti</a></div>
       </nav>
     </aside>
-    <script src="../shared-menu.js?v=20260820-fonts-15"></script>
-    <script src="../route-page.js?v=20260820-fonts-15"></script>
+    <script src="../shared-menu.js?v=20260819-pages-1"></script>
+    <script src="../route-page.js?v=20260819-pages-1"></script>
   </body>
 </html>
