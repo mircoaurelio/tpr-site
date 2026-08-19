@@ -30,7 +30,7 @@
       {"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://mircoaurelio.github.io/tpr-site/#website","url":"https://mircoaurelio.github.io/tpr-site/homepage-tpr/","name":"The People's Room","alternateName":"TPR Milano","inLanguage":"it-IT","publisher":{"@id":"https://mircoaurelio.github.io/tpr-site/#organization"}},{"@type":"Organization","@id":"https://mircoaurelio.github.io/tpr-site/#organization","name":"The People's Room","alternateName":"TPR","url":"https://mircoaurelio.github.io/tpr-site/homepage-tpr/","logo":{"@type":"ImageObject","url":"https://mircoaurelio.github.io/tpr-site/assets/tpr-logo.svg"},"image":"https://mircoaurelio.github.io/tpr-site/assets/homepage-tpr-hero-2x.png","address":{"@type":"PostalAddress","streetAddress":"Via della Maggiolina 2","addressLocality":"Milano","addressCountry":"IT"}}]}
     </script>
     <script>document.documentElement.classList.add('js');</script>
-    <link rel="stylesheet" href="styles.css?v=20260819-rev-25" />
+    <link rel="stylesheet" href="styles.css?v=20260819-rev-27" />
   </head>
 <body>
   <a class="skip-link" href="#main">Vai al contenuto</a>
@@ -144,9 +144,7 @@
       </section>
 
       <section class="membership" id="membership" aria-labelledby="membership-title">
-        <svg class="membership-orbit" viewBox="0 0 1512 1320" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false">
-          <path fill="currentColor" d="M614 0h898v1320H330c-60-100-139-207-130-318 12-165 88-437 168-618C439 223 529 85 614 0Z"/>
-        </svg>
+        <img class="membership-orbit" src="../assets/membership-blob.svg" alt="" width="1512" height="1320" aria-hidden="true" />
         <div class="section-shell reveal">
           <h2 id="membership-title">Diventa membro</h2>
           <div class="membership-grid">
@@ -207,28 +205,28 @@
     </main>
 
     <footer class="site-footer" id="footer">
-      <div class="footer-logo"><img src="../assets/type-footer.png" alt="TPR" width="968" height="314" /></div>
+      <p class="footer-logo">TPR<sup class="footer-logo__mark">&reg;</sup></p>
       <div class="footer-columns">
-        <div>
+        <nav class="footer-col" aria-label="TPR">
           <h2>TPR</h2>
           <a href="../about/">About</a>
           <a href="#membership">Membership</a>
           <a href="../app/">TPR App</a>
           <a href="../eventi/">Eventi &amp; Gallery</a>
           <a href="../contatti/">Contatti</a>
-        </div>
-        <div>
+        </nav>
+        <nav class="footer-col" aria-label="Rooms">
           <h2>Rooms</h2>
           <a href="#coworking" data-room-link="coworking">Coworking</a>
           <a href="#reformer" data-room-link="reformer">TPR Move</a>
           <a href="#wellness" data-room-link="wellness">Wellness</a>
           <a href="#bar" data-room-link="bar">Bar</a>
           <a href="#media" data-room-link="media">Media</a>
-        </div>
+        </nav>
       </div>
       <div class="footer-bottom">
         <span>© the people’s room SRL / Via sede legale / P. IVA 0123456789 / Capitale sociale €10.000</span>
-        <span>Privacy Policy / Cookie policy / <a href="https://www.marmellatalab.com/" target="_blank" rel="noopener noreferrer"><strong>Designed by Marmellata Lab</strong></a></span>
+        <span>Privacy Policy / Cookie policy / <a href="https://www.marmellatalab.com/" target="_blank" rel="noopener noreferrer">Designed by <strong>Marmellata Lab</strong></a></span>
       </div>
     </footer>
 

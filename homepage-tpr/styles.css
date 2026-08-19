@@ -294,13 +294,12 @@ body.elevator-active .site-header::after { content: none; display: none; }
 .membership-orbit {
   position: absolute;
   z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
   pointer-events: none;
-  inset: -8% -12% -18% 18%;
-  width: auto;
-  height: auto;
-  overflow: visible;
-  color: var(--yellow);
-  transform: none;
 }
 .membership .section-shell { position: relative; z-index: 1; }
 .membership-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 4rem); padding-inline: clamp(0rem, 4vw, 5rem); }
@@ -328,13 +327,26 @@ body.elevator-active .site-header::after { content: none; display: none; }
   border: 2px solid currentColor;
   border-radius: 50%;
 }
+.membership-card__arrow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 26%;
+  width: 46%;
+  height: 2px;
+  background: currentColor;
+  transform: translateY(-50%);
+}
 .membership-card__arrow::after {
   content: "";
   position: absolute;
-  inset: 32%;
+  top: 50%;
+  right: 26%;
+  width: .42rem;
+  height: .42rem;
+  border-top: 2px solid currentColor;
   border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: rotate(-45deg);
+  transform: translateY(-52%) rotate(45deg);
 }
 .membership-card p { max-width: 36rem; margin: 0; font-size: .98rem; line-height: 1.08; }
 
@@ -397,13 +409,98 @@ body.elevator-active .site-header::after { content: none; display: none; }
   pointer-events: none;
 }
 
-.site-footer { position: relative; z-index: 4; isolation: isolate; overflow: hidden; display: grid; grid-template-columns: minmax(14rem, .95fr) 1.05fr; gap: 5rem; align-items: start; padding: clamp(4rem, 7vw, 7rem) var(--page-x) 2rem; color: var(--royal); background: var(--white); border: 0; box-shadow: none; }
-.footer-logo { position: relative; z-index: 1; align-self: start; width: min(32.01vw, 30.25rem); }
-.footer-logo img { display: block; width: 100%; height: auto; object-fit: contain; object-position: left top; mix-blend-mode: multiply; }
-.footer-columns { position: relative; z-index: 5; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-.footer-columns h2 { margin: 0 0 1rem; font: 600 1.2rem/1 var(--display); text-transform: uppercase; }
-.footer-columns a { display: block; margin-bottom: .45rem; font-size: .9rem; }
-.footer-bottom { position: relative; z-index: 5; grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding-top: 2rem; border-top: 0; font-size: .68rem; text-transform: uppercase; color: color-mix(in srgb, var(--royal) 70%, var(--white)); }
+.site-footer {
+  position: relative;
+  z-index: 4;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "brand nav"
+    "legal legal";
+  column-gap: clamp(1.5rem, 3vw, 3rem);
+  row-gap: clamp(3.25rem, 5.5vw, 5.75rem);
+  align-items: start;
+  padding: clamp(3.5rem, 6.2vw, 6.25rem) var(--page-x) 1.65rem;
+  color: var(--royal);
+  background: var(--white);
+  border: 0;
+  box-shadow: none;
+}
+.footer-logo {
+  grid-area: brand;
+  position: relative;
+  z-index: 1;
+  align-self: start;
+  width: max-content;
+  max-width: 100%;
+  margin: 0;
+  overflow: visible;
+  font: 700 clamp(6.25rem, 12.4vw, 11.5rem)/.7 var(--display);
+  font-stretch: extra-condensed;
+  font-kerning: normal;
+  letter-spacing: -.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.footer-logo__mark {
+  font-size: .26em;
+  font-stretch: normal;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  vertical-align: super;
+  margin-left: -.08em;
+}
+.footer-columns {
+  grid-area: nav;
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: max-content max-content;
+  column-gap: 4.5rem;
+  align-items: start;
+  justify-self: end;
+  width: max-content;
+}
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .38rem;
+}
+.footer-columns h2 {
+  margin: 0 0 .45rem;
+  font: 700 1.05rem/1 var(--display);
+  letter-spacing: -.04em;
+  text-transform: uppercase;
+}
+.footer-columns a {
+  display: block;
+  margin: 0;
+  font-family: var(--body);
+  font-size: .9375rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+.footer-bottom {
+  grid-area: legal;
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: .75rem 1.5rem;
+  padding-top: 0;
+  border-top: 0;
+  font-size: .625rem;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  color: var(--royal);
+}
 .footer-bottom a { color: inherit; text-decoration: none; }
 .footer-bottom strong { font-weight: 700; color: var(--royal); }
 
@@ -479,15 +576,22 @@ body.elevator-active .site-header::after { content: none; display: none; }
   .room-panel { padding-block: 4rem 6rem; }
   .events-copy { padding-block: 7rem; }
   .events-visual { min-height: 0; }
-  .membership-orbit { inset: -6% -18% -12% 8%; }
   .membership-grid { grid-template-columns: 1fr; max-width: 47rem; margin-inline: auto; }
   .membership-card { min-height: 0; }
   .torn-photo { height: min(48vw, 18rem); }
   .world { height: auto; min-height: 0; overflow: visible; padding-bottom: 0; }
   .phones { height: auto; margin-bottom: -14rem; }
   .phone-mockup { width: min(38vw, 18rem); }
-  .site-footer { grid-template-columns: 1fr; }
-  .footer-logo { width: min(62vw, 30.25rem); }
+  .site-footer {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "brand"
+      "nav"
+      "legal";
+    row-gap: 2.25rem;
+  }
+  .footer-logo { font-size: clamp(4.8rem, 18vw, 8.5rem); }
+  .footer-columns { justify-self: start; column-gap: 3.25rem; }
   .footer-columns a { min-height: 2.1rem; display: flex; align-items: center; line-height: 1.1; }
 }
 
@@ -534,7 +638,6 @@ body.elevator-active .site-header::after { content: none; display: none; }
   .room-features li { grid-template-columns: 1fr; gap: .35rem; }
   .events-copy { min-height: 32rem; }
   .events-visual { height: 47.22vw; min-height: 11rem; }
-  .membership-orbit { inset: -4% -22% -8% 0; }
   .membership { padding-block: 6rem; }
   .membership-grid { padding-inline: 0; }
   .membership-card { min-height: 0; }
@@ -546,9 +649,9 @@ body.elevator-active .site-header::after { content: none; display: none; }
   .phones { height: auto; margin: 2.5rem auto -10rem; padding-inline: .65rem; gap: .7rem; }
   .phone-mockup { width: 44vw; }
   .phone-mockup--booking { margin-top: 4rem; }
-  .site-footer { gap: 2rem; padding-top: 3rem; }
-  .footer-logo { width: min(76vw, 30.25rem); }
-  .footer-columns { gap: 1.5rem; }
+  .site-footer { row-gap: 1.75rem; padding-top: 3rem; }
+  .footer-logo { font-size: clamp(4.4rem, 22vw, 7.25rem); }
+  .footer-columns { column-gap: 2.25rem; }
   .footer-columns a { min-height: 2.1rem; display: flex; align-items: center; margin-bottom: 0; line-height: 1.1; }
 }
 
