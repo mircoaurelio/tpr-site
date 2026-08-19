@@ -1,347 +1,554 @@
 .mobile-brand-footer { display: none; }
 
-@media (max-width: 720px) {
-  .branded-route {
-    --route-surface: #2c64e8;
-    --route-ink: #fff;
-    --route-accent: #ff7bff;
-    --route-card: #98caff;
-    --route-card-ink: #2c64e8;
-    --route-display: "PP Rader", "Alte Haas Grotesk", Arial, sans-serif;
-    --route-body: "Alte Haas Grotesk", Arial, sans-serif;
-    color: var(--route-ink);
-    background: var(--route-surface);
-    font-family: var(--route-body);
-    font-synthesis: none;
-    text-rendering: geometricPrecision;
-  }
+.branded-route {
+  --route-surface: #2c64e8;
+  --route-ink: #fff;
+  --route-accent: #ff7bff;
+  --route-card: #98caff;
+  --route-card-ink: #2c64e8;
+  --route-display: "PP Rader", "Alte Haas Grotesk", Arial, sans-serif;
+  --route-body: "Alte Haas Grotesk", Arial, sans-serif;
+  color: var(--route-ink);
+  background: var(--route-surface);
+  font-family: var(--route-body);
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
+}
 
-  .branded-route button,
-  .branded-route input,
-  .branded-route textarea { font-family: inherit; }
+.branded-route button,
+.branded-route input,
+.branded-route textarea { font-family: inherit; }
 
-  .branded-route--eventi {
-    --route-surface: #ff7bff;
-    --route-ink: #2c64e8;
-    --route-accent: #2c64e8;
-    --route-card: #fff;
-    --route-card-ink: #2c64e8;
-  }
+.branded-route--eventi {
+  --route-surface: #ff7bff;
+  --route-ink: #2c64e8;
+  --route-accent: #2c64e8;
+  --route-card: #fff;
+  --route-card-ink: #2c64e8;
+}
 
-  .branded-route--contatti {
-    --route-surface: #2c64e8;
-    --route-ink: #fff;
-    --route-accent: #98caff;
-    --route-card: #fff;
-    --route-card-ink: #2c64e8;
-  }
+.branded-route--contatti {
+  --route-surface: #2c64e8;
+  --route-ink: #fff;
+  --route-accent: #98caff;
+  --route-card: #fff;
+  --route-card-ink: #2c64e8;
+}
 
-  .branded-route .static-route {
-    min-height: 100svh;
-    color: var(--route-ink);
-    background: var(--route-surface);
-  }
+.branded-route .static-art,
+.branded-route .contact-copy-replacement,
+.branded-route .about-copy-replacement,
+.branded-route .event-copy-replacement,
+.branded-route .desktop-route-copy { display: none !important; }
 
+.branded-route .static-route {
+  min-height: 100svh;
+  color: var(--route-ink);
+  background: var(--route-surface);
+}
+
+.branded-route .mobile-route-content {
+  position: relative;
+  isolation: isolate;
+  display: block;
+  overflow: hidden;
+  padding: 8rem 1.25rem 5.5rem;
+  color: var(--route-ink);
+  background: var(--route-surface);
+}
+
+.branded-route .route-blob,
+.branded-route .mobile-route-content::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  top: -6%;
+  left: -32%;
+  width: min(118vw, 46rem);
+  aspect-ratio: 760 / 620;
+  background-color: var(--route-accent);
+  -webkit-mask: url("assets/tpr-blob.svg") no-repeat left top / 100% 100%;
+          mask: url("assets/tpr-blob.svg") no-repeat left top / 100% 100%;
+}
+
+.branded-route--eventi .route-blob,
+.branded-route--eventi .mobile-route-content::before {
+  top: -10%;
+  left: -38%;
+  width: min(130vw, 52rem);
+  opacity: .95;
+}
+
+.branded-route .mobile-route-kicker,
+.branded-route .route-hero-copy,
+.branded-route .route-card-row,
+.branded-route .mobile-route-content > h1,
+.branded-route .mobile-route-content > h2,
+.branded-route .mobile-route-lead,
+.branded-route .mobile-event-copy,
+.branded-route .mobile-event-list,
+.branded-route .mobile-event-form-copy,
+.branded-route .mobile-route-grid,
+.branded-route .mobile-route-content figure,
+.branded-route .mobile-route-cta,
+.branded-route .mobile-contact-form,
+.branded-route .mobile-contact-details {
+  position: relative;
+  z-index: 1;
+}
+
+.branded-route .mobile-route-kicker {
+  margin: 0 0 1.5rem;
+  font: 700 .75rem/1 var(--route-body);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.branded-route .mobile-route-content h1 {
+  max-width: 10ch;
+  margin: 0 0 1.5rem;
+  font: 700 clamp(3.25rem, 14vw, 5rem)/1 var(--route-display);
+  letter-spacing: -.04em;
+  text-transform: uppercase;
+}
+
+.branded-route--about .mobile-route-content h1 { max-width: 8ch; }
+
+.branded-route .mobile-route-lead {
+  max-width: 36rem;
+  margin: 0 0 3rem;
+  font: 400 clamp(1.05rem, 4.4vw, 1.5rem)/1.05 var(--route-body);
+  letter-spacing: 0;
+}
+
+.branded-route .mobile-route-content h2,
+.branded-route .mobile-contact-details h2,
+.branded-route .route-form-head h2 {
+  margin: 3.5rem 0 1.25rem;
+  font: 700 clamp(2.4rem, 11vw, 4rem)/1 var(--route-display);
+  letter-spacing: -.04em;
+  text-transform: uppercase;
+}
+
+.branded-route .mobile-route-content figure {
+  margin: 2.5rem -1.25rem 3.5rem;
+  overflow: hidden;
+  clip-path: polygon(0 2%, 5% 0, 10% 2%, 15% 0, 20% 2%, 25% 0, 30% 2%, 35% 0, 40% 2%, 45% 0, 50% 2%, 55% 0, 60% 2%, 65% 0, 70% 2%, 75% 0, 80% 2%, 85% 0, 90% 2%, 95% 0, 100% 2%, 99% 98%, 94% 100%, 89% 98%, 84% 100%, 79% 98%, 74% 100%, 69% 98%, 64% 100%, 59% 98%, 54% 100%, 49% 98%, 44% 100%, 39% 98%, 34% 100%, 29% 98%, 24% 100%, 19% 98%, 14% 100%, 9% 98%, 4% 100%, 0 98%);
+}
+
+.branded-route .mobile-route-content figure img {
+  display: block;
+  width: 100%;
+  height: min(118vw, 34rem);
+  object-fit: cover;
+}
+
+.branded-route--eventi .mobile-route-content figure img { object-position: center 42%; }
+
+.branded-route--eventi .mobile-route-content h1 {
+  max-width: 12ch;
+  margin-bottom: 1.5rem;
+  font-size: clamp(2.8rem, 12vw, 5rem);
+}
+
+.mobile-event-copy {
+  display: grid;
+  gap: 1rem;
+  margin: 0 0 3.5rem;
+}
+
+.mobile-event-copy p,
+.mobile-event-form-copy {
+  margin: 0;
+  font: 400 1rem/1.05 var(--route-body);
+  letter-spacing: 0;
+}
+
+.mobile-event-list {
+  display: grid;
+  gap: 1.5rem;
+  margin: 0 0 4rem;
+}
+
+.mobile-event-card,
+.route-torn-card {
+  overflow: hidden;
+  color: var(--route-card-ink);
+  background: var(--route-card);
+  clip-path: polygon(0 .35rem,7% 0,14% .3rem,21% .05rem,28% .35rem,35% 0,42% .3rem,49% .05rem,56% .35rem,63% 0,70% .3rem,77% .05rem,84% .35rem,91% 0,100% .3rem,calc(100% - .2rem) 97%,92% 100%,84% 97%,76% 100%,68% 97%,60% 100%,52% 97%,44% 100%,36% 97%,28% 100%,20% 97%,12% 100%,0 97%);
+}
+
+.mobile-event-card img {
+  display: block;
+  width: 100%;
+  height: min(82vw, 25rem);
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.mobile-event-card h3 {
+  margin: 1rem 1.1rem .25rem;
+  font: 700 clamp(1.8rem, 9vw, 2.8rem)/.95 var(--route-display);
+  letter-spacing: -.04em;
+  text-transform: uppercase;
+}
+
+.mobile-event-card p { margin: 0 1.1rem 1.35rem; font-size: .9rem; letter-spacing: 0; }
+.mobile-event-form-copy { margin: -1rem 0 2rem; }
+.route-torn-card .mobile-event-form-copy { margin: 0; }
+
+.branded-route .mobile-route-grid {
+  display: grid;
+  gap: 1rem;
+  margin: 2.5rem 0 4rem;
+}
+
+.branded-route .mobile-route-grid section {
+  padding: 1.5rem;
+  color: var(--route-card-ink);
+  background: var(--route-card);
+  clip-path: polygon(0 .35rem, 7% 0, 14% .3rem, 21% .05rem, 28% .35rem, 35% 0, 42% .3rem, 49% .05rem, 56% .35rem, 63% 0, 70% .3rem, 77% .05rem, 84% .35rem, 91% 0, 100% .3rem, calc(100% - .2rem) 97%, 92% 100%, 84% 97%, 76% 100%, 68% 97%, 60% 100%, 52% 97%, 44% 100%, 36% 97%, 28% 100%, 20% 97%, 12% 100%, 0 97%);
+}
+
+.branded-route .mobile-route-grid section:nth-child(even) { --route-card: #ffc100; }
+
+.branded-route .mobile-route-grid h2 {
+  margin: 0 0 .8rem;
+  font: 700 clamp(2.1rem, 10vw, 3rem)/.95 var(--route-display);
+  letter-spacing: -.04em;
+  text-transform: uppercase;
+}
+
+.branded-route .mobile-route-grid p,
+.branded-route .mobile-contact-details p,
+.branded-route .route-contact-meta p {
+  margin: 0;
+  font: 400 1rem/1.05 var(--route-body);
+  letter-spacing: 0;
+}
+
+.branded-route .mobile-route-cta,
+.branded-route .mobile-contact-form button {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  padding: .5rem 2.5rem;
+  color: var(--route-surface);
+  background: var(--route-accent);
+  border: 0;
+  border-radius: 10px;
+  font: 700 1rem/1 var(--route-display);
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.branded-route--contatti .mobile-contact-form button,
+.branded-route--eventi .mobile-contact-form button {
+  color: #fff;
+  background: #2c64e8;
+}
+
+.branded-route .mobile-route-cta::after,
+.branded-route .mobile-contact-form button::after {
+  content: "";
+  width: .5rem;
+  height: .5rem;
+  flex: 0 0 auto;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg) translateY(-1px);
+}
+
+.branded-route .mobile-contact-form,
+.branded-route .route-torn-card.mobile-contact-form {
+  display: grid;
+  gap: 1.1rem;
+  padding: 1.5rem 1.25rem 1.75rem;
+}
+
+.branded-route .route-form-head {
+  display: grid;
+  justify-items: start;
+  gap: .75rem;
+  margin-bottom: .25rem;
+}
+
+.branded-route .route-form-head h2 {
+  margin: 0;
+  font-size: clamp(1.6rem, 7vw, 2.4rem);
+}
+
+.branded-route .route-form-head img {
+  display: block;
+  width: 3.25rem;
+  height: auto;
+  filter: none;
+}
+
+.branded-route .mobile-contact-form label {
+  display: grid;
+  gap: .45rem;
+  font: 700 .78rem/1 var(--route-body);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.branded-route .mobile-contact-form input,
+.branded-route .mobile-contact-form textarea {
+  width: 100%;
+  min-height: 52px;
+  padding: .9rem 1rem;
+  color: #2c64e8;
+  background: #fff;
+  border: 2px solid #2c64e8;
+  border-radius: 10px;
+  font: 400 1rem/1.2 var(--route-body);
+  letter-spacing: 0;
+}
+
+.branded-route .mobile-contact-form input:focus,
+.branded-route .mobile-contact-form textarea:focus {
+  border-color: #98caff;
+  outline: 0;
+}
+
+.branded-route .mobile-contact-details {
+  margin-top: 2rem;
+  padding: 0;
+  border: 0;
+}
+
+.branded-route .route-torn-card.mobile-contact-details {
+  margin-top: 1.5rem;
+}
+
+.branded-route .route-map {
+  overflow: hidden;
+  min-height: 14rem;
+  background: #e8eef8;
+}
+
+.branded-route .route-map iframe {
+  display: block;
+  width: 100%;
+  height: 16rem;
+  border: 0;
+}
+
+.branded-route .route-contact-meta {
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem 1.35rem 1.6rem;
+}
+
+.branded-route .route-contact-meta h2 { margin: 0; }
+
+.branded-route .route-home,
+.branded-route .route-menu {
+  position: fixed;
+  z-index: 20;
+  color: #fff;
+  background: transparent;
+  box-shadow: none;
+}
+
+.branded-route .route-home::after,
+.branded-route .route-menu::after { content: none; }
+
+.branded-route .route-home {
+  top: .8rem;
+  left: 1.15rem;
+  width: 7.25rem;
+  min-width: 0;
+  height: 2.9rem;
+  padding: 0;
+}
+
+.branded-route .route-home img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.branded-route .route-menu {
+  top: .8rem;
+  right: 1.15rem;
+  width: 2.9rem;
+  height: 2.9rem;
+}
+
+.branded-route .route-menu::before {
+  content: "";
+  display: block;
+  width: 1.45rem;
+  height: 2px;
+  margin: 0 auto;
+  background: currentColor;
+  box-shadow: 0 -.42rem currentColor, 0 .42rem currentColor;
+}
+
+.branded-route .mobile-brand-footer {
+  display: grid;
+  gap: 2rem;
+  padding: 3rem 1.25rem 1.5rem;
+  color: #2c64e8;
+  background: #fff;
+  font-family: var(--route-body);
+}
+
+.mobile-brand-footer__logo { width: min(76vw, 30.25rem); }
+.mobile-brand-footer__logo img { display: block; width: 100%; height: auto; }
+.mobile-brand-footer__columns { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.mobile-brand-footer__columns h2 {
+  margin: 0 0 1rem;
+  font: 700 1.15rem/1 var(--route-display, "PP Rader", Arial, sans-serif);
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+}
+.mobile-brand-footer__columns a {
+  min-height: 2.25rem;
+  display: flex;
+  align-items: center;
+  color: inherit;
+  font-size: .9rem;
+  line-height: 1.1;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+.mobile-brand-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .75rem 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid currentColor;
+  font-size: .65rem;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+.mobile-brand-footer__bottom a { color: inherit; text-decoration: none; }
+
+@media (min-width: 721px) {
   .branded-route .mobile-route-content {
-    position: relative;
-    isolation: isolate;
-    display: block;
-    padding: 8rem 1.25rem 5.5rem;
-    overflow: hidden;
-    color: var(--route-ink);
-    background: var(--route-surface);
+    width: min(100%, 1512px);
+    margin: 0 auto;
+    padding: 10.5rem 5.29vw 5.5rem;
   }
 
+  .branded-route .route-blob,
   .branded-route .mobile-route-content::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: -11rem;
-    right: -14rem;
-    width: 28rem;
-    height: 28rem;
-    border: 5.5rem solid var(--route-accent);
-    border-radius: 50%;
-    opacity: .9;
+    top: -8%;
+    left: -18%;
+    width: min(72vw, 58rem);
   }
 
-  .branded-route--eventi .mobile-route-content::before {
-    top: 15rem;
-    right: -18rem;
-    width: 33rem;
-    height: 33rem;
-    border-width: 7rem;
-    opacity: .18;
-  }
-
-  .branded-route .mobile-route-kicker {
-    position: relative;
-    z-index: 1;
-    margin: 0 0 1.5rem;
-    font-size: .75rem !important;
-    font-weight: 900;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-  }
-
-  .branded-route .mobile-route-content > h1 {
-    position: relative;
-    z-index: 1;
-    max-width: 8.5ch;
-    margin: 0 0 2rem;
-    font: 600 clamp(3.7rem, 17vw, 5.5rem)/.8 var(--route-display);
-    letter-spacing: -.075em;
-    text-transform: uppercase;
-  }
-
-  .branded-route--about .mobile-route-content > h1 { max-width: 7ch; }
-
-  .branded-route .mobile-route-lead {
-    position: relative;
-    z-index: 1;
-    max-width: 31rem;
-    margin: 0 0 3.5rem;
-    font-size: clamp(1.2rem, 5.8vw, 1.65rem) !important;
-    line-height: 1.05;
-    letter-spacing: -.035em;
-  }
-
-  .branded-route .mobile-route-content > h2,
-  .branded-route .mobile-contact-details h2 {
-    margin: 4rem 0 1.5rem;
-    font: 600 clamp(2.8rem, 13vw, 4.5rem)/.82 var(--route-display);
-    letter-spacing: -.065em;
-    text-transform: uppercase;
-  }
-
-  .branded-route .mobile-route-content figure {
-    position: relative;
-    z-index: 1;
-    margin: 2.5rem -1.25rem 3.5rem;
-    overflow: hidden;
-    clip-path: polygon(0 2%, 5% 0, 10% 2%, 15% 0, 20% 2%, 25% 0, 30% 2%, 35% 0, 40% 2%, 45% 0, 50% 2%, 55% 0, 60% 2%, 65% 0, 70% 2%, 75% 0, 80% 2%, 85% 0, 90% 2%, 95% 0, 100% 2%, 99% 98%, 94% 100%, 89% 98%, 84% 100%, 79% 98%, 74% 100%, 69% 98%, 64% 100%, 59% 98%, 54% 100%, 49% 98%, 44% 100%, 39% 98%, 34% 100%, 29% 98%, 24% 100%, 19% 98%, 14% 100%, 9% 98%, 4% 100%, 0 98%);
-  }
-
-  .branded-route .mobile-route-content figure img {
-    display: block;
-    width: 100%;
-    height: min(118vw, 34rem);
-    object-fit: cover;
-  }
-
-  .branded-route--eventi .mobile-route-content figure img { object-position: center 42%; }
-
-  .branded-route--eventi .mobile-route-content > h1 {
-    max-width: 8ch;
-    margin-bottom: 2.75rem;
-    font-size: clamp(3.25rem, 15.5vw, 5.2rem);
-  }
-
-  .mobile-event-copy {
-    position: relative;
-    z-index: 1;
+  .branded-route .route-hero-copy {
     display: grid;
-    gap: 1rem;
-    margin: 0 0 4.5rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 5.29vw;
+    align-items: start;
+    margin-bottom: 4.75rem;
   }
 
-  .mobile-event-copy p,
-  .mobile-event-form-copy {
+  .branded-route .route-hero-copy h1,
+  .branded-route .mobile-route-content h1,
+  .branded-route--about .mobile-route-content h1 {
+    max-width: none;
     margin: 0;
-    font: 1rem/1.35 var(--route-body);
+    font: 700 clamp(2.8rem, 5.29vw, 5rem)/1 var(--route-display);
+    letter-spacing: -.04em;
   }
 
-  .mobile-event-list {
-    position: relative;
-    z-index: 1;
+  .branded-route .mobile-route-lead,
+  .branded-route .route-hero-copy .mobile-event-copy,
+  .branded-route .route-hero-copy .mobile-event-copy p {
+    margin: 0;
+    font: 400 clamp(1rem, 1.59vw, 1.5rem)/1 var(--route-body);
+    letter-spacing: 0;
+  }
+
+  .branded-route .route-hero-copy .mobile-event-copy { gap: 1em; }
+
+  .branded-route .mobile-route-content > h2 {
+    margin: 0 0 2rem;
+    font: 700 clamp(2.4rem, 4.2vw, 4rem)/1 var(--route-display);
+    letter-spacing: -.04em;
+    text-align: center;
+  }
+
+  .branded-route .route-hero-copy h2 {
+    margin: 0;
+    text-align: left;
+    font: 700 clamp(2.4rem, 4.4vw, 4.4rem)/1 var(--route-display);
+    letter-spacing: -.04em;
+  }
+
+  .branded-route .route-form-head h2,
+  .branded-route .mobile-route-grid h2,
+  .branded-route .route-contact-meta h2 {
+    text-align: left;
+  }
+
+  .branded-route .route-card-row,
+  .branded-route .mobile-event-list,
+  .branded-route .mobile-route-grid {
     display: grid;
-    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 5.29vw;
     margin: 0 0 5rem;
   }
 
-  .mobile-event-card {
-    overflow: hidden;
-    color: var(--route-card-ink);
-    background: var(--route-card);
-    clip-path: polygon(0 .35rem,7% 0,14% .3rem,21% .05rem,28% .35rem,35% 0,42% .3rem,49% .05rem,56% .35rem,63% 0,70% .3rem,77% .05rem,84% .35rem,91% 0,100% .3rem,calc(100% - .2rem) 97%,92% 100%,84% 97%,76% 100%,68% 97%,60% 100%,52% 97%,44% 100%,36% 97%,28% 100%,20% 97%,12% 100%,0 97%);
-  }
+  .branded-route .mobile-event-list { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 
-  .mobile-event-card img {
-    display: block;
-    width: 100%;
-    height: min(82vw, 25rem);
-    object-fit: cover;
-    object-position: center 42%;
-  }
-
-  .mobile-event-card h3 {
-    margin: 1rem 1.1rem .25rem;
-    font: 600 clamp(1.8rem, 9vw, 2.8rem)/.9 var(--route-display);
-    letter-spacing: -.055em;
-    text-transform: uppercase;
-  }
-
-  .mobile-event-card p { margin: 0 1.1rem 1.35rem; font-size: .9rem; }
-  .mobile-event-form-copy { position: relative; z-index: 1; margin: -1rem 0 2rem; }
-
-  .branded-route .mobile-route-grid {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    gap: 1rem;
-    margin: 2.5rem 0 4rem;
-  }
-
-  .branded-route .mobile-route-grid section {
-    padding: 1.5rem;
-    color: var(--route-card-ink);
-    background: var(--route-card);
-    border-radius: 0;
-    clip-path: polygon(0 .35rem, 7% 0, 14% .3rem, 21% .05rem, 28% .35rem, 35% 0, 42% .3rem, 49% .05rem, 56% .35rem, 63% 0, 70% .3rem, 77% .05rem, 84% .35rem, 91% 0, 100% .3rem, calc(100% - .2rem) 97%, 92% 100%, 84% 97%, 76% 100%, 68% 97%, 60% 100%, 52% 97%, 44% 100%, 36% 97%, 28% 100%, 20% 97%, 12% 100%, 0 97%);
-  }
-
-  .branded-route .mobile-route-grid section:nth-child(even) {
-    --route-card: #ffc100;
-  }
-
-  .branded-route .mobile-route-grid h2 {
-    margin: 0 0 .8rem;
-    font: 600 clamp(2.1rem, 10vw, 3rem)/.85 var(--route-display);
-    letter-spacing: -.055em;
-    text-transform: uppercase;
-  }
-
-  .branded-route .mobile-route-grid p,
-  .branded-route .mobile-contact-details p {
+  .branded-route .mobile-contact-form,
+  .branded-route .route-torn-card.mobile-contact-form {
     margin: 0;
-    font-size: 1rem;
-    line-height: 1.35;
+    padding: 2.5rem 2rem 2rem;
   }
 
-  .branded-route .mobile-route-cta,
-  .branded-route .mobile-contact-form button {
-    min-height: 48px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: .75rem;
-    padding: .75rem 1.5rem;
-    color: #2c64e8;
-    background: var(--route-accent);
-    border: 0;
-    border-radius: 0;
-    font-weight: 850;
-    text-decoration: none;
-    clip-path: polygon(0 10%,3% 3%,7% 8%,11% 0,16% 7%,21% 2%,27% 8%,32% 0,38% 7%,44% 2%,50% 8%,56% 0,62% 7%,68% 2%,74% 8%,80% 0,86% 7%,92% 2%,100% 8%,98% 25%,100% 43%,98% 61%,100% 79%,98% 100%,92% 94%,86% 100%,80% 94%,74% 100%,68% 94%,62% 100%,56% 94%,50% 100%,44% 94%,38% 100%,32% 94%,26% 100%,20% 94%,14% 100%,8% 94%,0 100%,2% 79%,0 60%,2% 41%,0 22%);
+  .branded-route .route-torn-card.mobile-contact-details { margin: 0; }
+
+  .branded-route .route-map iframe { height: 18rem; }
+
+  .branded-route .route-contact-meta {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem 1.5rem;
+    padding: 1.5rem 1.75rem 1.8rem;
   }
 
-  .branded-route .mobile-route-cta::after,
-  .branded-route .mobile-contact-form button::after {
-    content: "";
-    width: .55rem;
-    height: .55rem;
-    flex: 0 0 auto;
-    border-right: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    transform: rotate(-45deg);
+  .branded-route .route-contact-meta h2 { grid-column: 1 / -1; }
+
+  .branded-route .mobile-route-content figure {
+    margin: 0 0 4rem;
   }
 
-  .branded-route--eventi .mobile-route-cta { color: #ff7bff; }
-
-  .branded-route .mobile-contact-form {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    gap: 1.1rem;
-  }
-
-  .branded-route .mobile-contact-form label {
-    display: grid;
-    gap: .45rem;
-    font-size: .78rem;
-    font-weight: 900;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-  }
-
-  .branded-route .mobile-contact-form input,
-  .branded-route .mobile-contact-form textarea {
-    width: 100%;
-    min-height: 52px;
-    padding: .9rem 1rem;
-    color: #2c64e8;
-    background: #fff;
-    border: 2px solid transparent;
-    border-radius: 0;
-    font: 1rem/1.35 var(--route-body);
-  }
-
-  .branded-route .mobile-contact-form input:focus,
-  .branded-route .mobile-contact-form textarea:focus { border-color: #2c64e8; outline: 0; }
-
-  .branded-route .mobile-contact-details {
-    margin-top: 4.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid currentColor;
-  }
-
-  .branded-route .mobile-contact-details h2 { margin-top: 1rem; }
-
-  .branded-route .route-home,
-  .branded-route .route-menu {
-    color: #fff;
-    background: transparent;
-    box-shadow: none;
-  }
-
-  .branded-route .route-home::after,
-  .branded-route .route-menu::after { content: none; }
+  .branded-route .mobile-route-content figure img { height: min(42vw, 32rem); }
 
   .branded-route .route-home {
-    top: .8rem;
-    left: 1.15rem;
-    width: 7.25rem;
-    min-width: 0;
-    height: 2.9rem;
-    padding: 0;
-  }
-
-  .branded-route .route-home img {
-    display: block;
-    width: 100%;
+    top: 2.1rem;
+    left: 5.29vw;
+    width: clamp(7.5rem, 9vw, 8.5rem);
     height: auto;
-    filter: brightness(0) invert(1);
   }
 
   .branded-route .route-menu {
-    top: .8rem;
-    right: 1.15rem;
-    width: 2.9rem;
-    height: 2.9rem;
+    top: 2.35rem;
+    right: 5.29vw;
   }
 
-  .branded-route .route-menu::before {
-    content: "";
-    width: 1.45rem;
-    height: 2px;
-    background: currentColor;
-    box-shadow: 0 -.42rem currentColor, 0 .42rem currentColor;
+  .branded-route .mobile-brand-footer {
+    padding: 5rem 5.29vw 2rem;
+    grid-template-columns: minmax(16rem, .8fr) 1fr;
+    align-items: start;
   }
 
-  .mobile-brand-footer {
-    display: grid;
-    gap: 2rem;
-    padding: 3rem 1.25rem 1.5rem;
-    color: #2c64e8;
-    background: #fff;
-    font-family: var(--route-body, Arial, sans-serif);
-  }
-
-  .mobile-brand-footer__logo { width: min(76vw, 30.25rem); }
-  .mobile-brand-footer__logo img { display: block; width: 100%; height: auto; }
-  .mobile-brand-footer__columns { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .mobile-brand-footer__columns h2 { margin: 0 0 1rem; font: 600 1.15rem/1 var(--route-display, Arial, sans-serif); text-transform: uppercase; }
-  .mobile-brand-footer__columns a { min-height: 2.25rem; display: flex; align-items: center; color: inherit; font-size: .9rem; line-height: 1.1; text-decoration: none; }
-  .mobile-brand-footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem 1rem; padding-top: 1.25rem; border-top: 1px solid currentColor; font-size: .65rem; text-transform: uppercase; }
-  .mobile-brand-footer__bottom a { color: inherit; text-decoration: none; }
+  .mobile-brand-footer__logo { width: min(32vw, 30rem); }
+  .mobile-brand-footer__columns { justify-content: end; gap: 4rem; max-width: 28rem; margin-left: auto; }
+  .mobile-brand-footer__bottom { grid-column: 1 / -1; }
 }

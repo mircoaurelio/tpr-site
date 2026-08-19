@@ -64,115 +64,15 @@ a { font: inherit; }
 
 .static-route { position: relative; }
 .mobile-route-content { display: none; }
-.contact-copy-replacement { display: none; }
-.about-copy-replacement { display: none; }
+.branded-route .mobile-route-content { display: block; }
+.branded-route .static-art,
+.contact-copy-replacement,
+.about-copy-replacement,
 .event-copy-replacement { display: none; }
 
 @media (min-width: 721px) {
-  .contact-copy-replacement {
-    position: absolute;
-    z-index: 2;
-    display: block;
-    margin: 0;
-    pointer-events: none;
-  }
-  .contact-copy-replacement--hero {
-    top: 13.75%;
-    left: 52.1%;
-    width: 42.5%;
-    min-height: 15%;
-    padding: .6% .2%;
-    color: #fff;
-    background: #2c64e8;
-    font: 400 clamp(1rem, 2.45vw, 4.7rem)/1.08 "Alte Haas Grotesk", Arial, sans-serif;
-    letter-spacing: -.035em;
-  }
-  .contact-copy-replacement--card {
-    top: 50.8%;
-    left: 8.1%;
-    width: 38.5%;
-    min-height: 8.5%;
-    padding: .5% .2%;
-    color: #2c64e8;
-    background: #fff;
-    font: 400 clamp(.8rem, 1.45vw, 2.8rem)/1.12 "Alte Haas Grotesk", Arial, sans-serif;
-    letter-spacing: -.025em;
-  }
-  .about-copy-replacement {
-    position: absolute;
-    z-index: 2;
-    display: block;
-    margin: 0;
-    pointer-events: none;
-  }
-  .about-copy-replacement p { margin: 0 0 .6em; }
-  .about-copy-replacement p:last-child { margin-bottom: 0; }
-  .about-copy-replacement--lead {
-    top: 14.5%;
-    left: 52%;
-    width: 42%;
-    padding: .6% .3%;
-    color: #fff;
-    background: #2c64e8;
-    font: 400 clamp(1rem, 2.4vw, 4.6rem)/1.08 "Alte Haas Grotesk", Arial, sans-serif;
-    letter-spacing: -.035em;
-  }
-  .about-copy-replacement--body {
-    top: 51%;
-    left: 8%;
-    width: 38%;
-    padding: .5% .3%;
-    color: #2c64e8;
-    background: #fff;
-    font: 400 clamp(.8rem, 1.4vw, 2.6rem)/1.12 "Alte Haas Grotesk", Arial, sans-serif;
-    letter-spacing: -.025em;
-  }
-  .about-copy-replacement--pair {
-    top: 28%;
-    left: 8%;
-    width: 84%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2%;
-    color: #fff;
-    background: #2c64e8;
-    padding: 1.2% 1%;
-    font: 400 clamp(.8rem, 1.3vw, 2.2rem)/1.12 "Alte Haas Grotesk", Arial, sans-serif;
-  }
-  .about-copy-replacement--pair h2 {
-    margin: 0 0 .35em;
-    font: 700 clamp(1.6rem, 3.2vw, 3.2rem)/.9 "PP Rader", "Alte Haas Grotesk", Arial, sans-serif;
-    letter-spacing: -.05em;
-    text-transform: uppercase;
-  }
-  .event-copy-replacement {
-    position: absolute;
-    z-index: 2;
-    display: block;
-    margin: 0;
-    pointer-events: none;
-  }
-  .event-copy-replacement--title {
-    top: 8%;
-    left: 5.3%;
-    width: 42%;
-    color: #2c64e8;
-    background: #ff7bff;
-    font: 700 clamp(2.4rem, 5.29vw, 5rem)/1 "PP Rader", "Alte Haas Grotesk", Arial, sans-serif;
-    letter-spacing: -.05em;
-    text-transform: uppercase;
-    padding: .4% .3%;
-  }
-  .event-copy-replacement--lead {
-    top: 8%;
-    left: 52.6%;
-    width: 42%;
-    color: #fff;
-    background: #ff7bff;
-    font: 400 clamp(.95rem, 2.2vw, 2.5rem)/1.05 "Alte Haas Grotesk", Arial, sans-serif;
-    padding: .4% .3%;
-  }
   .route-home > img { display: none; }
+  .branded-route .route-home > img { display: block; }
 }
 
 .route-home,
@@ -551,7 +451,13 @@ a { font: inherit; }
   background: var(--pink);
 }
 .placeholder-card { width: min(52rem, 100%); padding: clamp(2rem, 7vw, 6rem); background: var(--white); border-radius: 2rem; }
-.placeholder-card h1 { margin: 0 0 1rem; font-size: clamp(2.5rem, 8vw, 6rem); line-height: .88; }
+.placeholder-card h1 {
+  margin: 0 0 1rem;
+  font: 700 clamp(2.5rem, 8vw, 6rem)/.88 "PP Rader", "Alte Haas Grotesk", Arial, sans-serif;
+  letter-spacing: -.04em;
+  text-transform: uppercase;
+}
+.placeholder-card p { letter-spacing: 0; }
 .placeholder-card a { color: var(--royal); font-weight: 800; }
 
 @media (max-width: 720px) {
@@ -559,10 +465,10 @@ a { font: inherit; }
   .static-route .desktop-route-copy { display: none !important; }
   .static-route { min-height: 100svh; background: var(--royal); }
   .mobile-route-content { display: block; padding: 7rem 1.25rem 5rem; }
-  .mobile-route-content h1 { max-width: 9ch; margin: 0 0 2rem; font-size: clamp(3.6rem, 18vw, 6rem); line-height: .82; letter-spacing: -.07em; text-transform: uppercase; }
-  .mobile-route-content h2 { margin: 0 0 1rem; font-size: clamp(2rem, 10vw, 3.5rem); line-height: .9; letter-spacing: -.05em; text-transform: uppercase; }
-  .mobile-route-content p { font-size: 1rem; line-height: 1.45; }
-  .mobile-route-kicker { margin: 0 0 1.25rem; font-size: .78rem !important; font-weight: 900; letter-spacing: .12em; }
+  .mobile-route-content h1 { max-width: 9ch; margin: 0 0 2rem; font-size: clamp(3.6rem, 18vw, 6rem); line-height: 1; letter-spacing: -.04em; text-transform: uppercase; }
+  .mobile-route-content h2 { margin: 0 0 1rem; font-size: clamp(2rem, 10vw, 3.5rem); line-height: 1; letter-spacing: -.04em; text-transform: uppercase; }
+  .mobile-route-content p { font-size: 1rem; line-height: 1.05; letter-spacing: 0; }
+  .mobile-route-kicker { margin: 0 0 1.25rem; font-size: .78rem !important; font-weight: 700; letter-spacing: .08em; }
   .mobile-route-lead { max-width: 34rem; margin-bottom: 3.5rem; font-size: 1.25rem !important; }
   .mobile-route-grid { display: grid; gap: 1rem; margin: 2rem 0 4rem; }
   .mobile-route-grid section { padding: 1.35rem; color: var(--royal); background: var(--white); border-radius: 1.25rem; }
