@@ -333,8 +333,9 @@ body.elevator-active .site-header::after { opacity: 0; }
   .torn-photo { height: 20rem; }
   .membership-card h3 { font-size: 2.75rem; }
   .partner-track { grid-template-columns: repeat(5, 10rem); gap: 1rem; overflow-x: auto; }
-  .world { height: 100svh; min-height: 0; padding-top: 4.25rem; }
-  .phones { top: 17.5rem; bottom: auto; height: 42rem; gap: .7rem; }
+  .world { height: auto; min-height: 0; padding: 5.5rem 0 0; }
+  .world-copy { position: relative; z-index: 3; }
+  .phones { position: relative; inset: auto; height: 40rem; margin-top: 3.5rem; padding-inline: .65rem; gap: .7rem; }
   .phone-mockup { width: 44vw; }
   .phone-mockup--booking { margin-top: 4rem; }
   .site-footer { gap: 2rem; padding-top: 3rem; }

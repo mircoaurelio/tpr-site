@@ -6,10 +6,11 @@
     <meta name="theme-color" content="#2c64e8" />
     <title>Eventi — The People's Room</title>
     <link rel="preload" href="../assets/routes/eventi-2x.png" as="image" />
-    <link rel="stylesheet" href="../route-page.css?v=20260818-2" />
+    <link rel="stylesheet" href="../route-page.css?v=20260819-mobile-brand" />
     <link rel="stylesheet" href="../shared-menu.css" />
+    <link rel="stylesheet" href="../mobile-brand.css?v=20260819-mobile-brand" />
   </head>
-  <body>
+  <body class="branded-route branded-route--eventi">
     <a class="skip-link" href="#content">Vai al contenuto</a>
     <main class="static-route" id="content">
       <img class="static-art" src="../assets/routes/eventi-2x.png" width="3024" height="5304" alt="" aria-hidden="true" />
@@ -30,6 +31,15 @@
       <button class="route-menu" type="button" data-open-menu aria-controls="siteMenu" aria-expanded="false"><span class="sr-only">Apri menu</span></button>
     </main>
 
+    <footer class="mobile-brand-footer">
+      <div class="mobile-brand-footer__logo"><img src="../assets/type-footer.png" alt="TPR" width="968" height="314" /></div>
+      <div class="mobile-brand-footer__columns">
+        <div><h2>TPR</h2><a href="../about/">About</a><a href="../homepage-tpr/#membership">Membership</a><a href="../eventi/">Eventi &amp; gallery</a><a href="../contatti/">Contatti</a></div>
+        <div><h2>Rooms</h2><a href="../rooms/coworking/">Coworking</a><a href="../rooms/reformer/">Reformer</a><a href="../rooms/wellness/">Wellness</a><a href="../rooms/bar/">Bar</a><a href="../rooms/media/">Media</a></div>
+      </div>
+      <div class="mobile-brand-footer__bottom"><span>© The People's Room</span><span>Via della Maggiolina 2, Milano</span><span>Privacy policy · Cookie policy</span></div>
+    </footer>
+
     <aside class="site-menu" id="siteMenu" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Menu principale">
       <button class="site-menu__close" type="button" data-close-menu aria-label="Chiudi menu">×</button>
       <div class="site-menu__brand" aria-hidden="true">TPR®</div>
@@ -43,15 +53,15 @@
           <a href="../contatti/">Contatti</a>
         </nav>
         <nav aria-label="Stanze">
-          <a href="../coworking/">Coworking</a>
-          <a href="../reformer/">Reformer</a>
-          <a href="../wellness/">Wellness</a>
-          <a href="../bar/">Bar</a>
-          <a href="../media/">Media</a>
+          <a href="../rooms/coworking/">Coworking</a>
+          <a href="../rooms/reformer/">Reformer</a>
+          <a href="../rooms/wellness/">Wellness</a>
+          <a href="../rooms/bar/">Bar</a>
+          <a href="../rooms/media/">Media</a>
         </nav>
       </div>
     </aside>
     <script src="../shared-menu.js"></script>
-    <script src="../route-page.js?v=20260818-2"></script>
+    <script src="../route-page.js?v=20260819-mobile-brand"></script>
   </body>
 </html>

@@ -7,7 +7,7 @@
     <meta name="description" content="The People's Room: uno spazio ibrido per lavorare, muoversi, stare bene e incontrarsi." />
     <title>The People's Room</title>
     <link rel="preload" href="../assets/homepage-hero-about-2x.png" as="image" />
-    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../styles.css?v=20260819-mobile-brand" />
     <link rel="stylesheet" href="../shared-menu.css" />
     <link rel="stylesheet" href="../shared-elevator.css?v=20260819-room-slide" />
   </head>
@@ -81,7 +81,7 @@
         </div>
       </section>
 
-      <section id="rooms" aria-label="Ascensore delle stanze"></section>
+      <section id="rooms" aria-label="Coworking, Reformer, Wellness, Bar e Media Room"></section>
 
       <section class="art-section events" id="events" aria-labelledby="events-heading">
         <div class="mobile-alt mobile-alt-section mobile-alt-events">
@@ -99,31 +99,49 @@
       </section>
 
       <section class="art-section membership" id="membership" aria-labelledby="membership-heading">
-        <div class="mobile-alt mobile-alt-section mobile-alt-membership">
-          <p class="mobile-alt-kicker">MEMBERSHIP</p>
-          <h2>Diventa membro</h2>
-          <div class="mobile-alt-packages">
-            <article><h3>Pacchetto 1</h3><p>Scopri spazi, servizi ed esperienze TPR.</p><a href="../membership/aziende-startup/">Scopri →</a></article>
-            <article><h3>Pacchetto 2</h3><p>Una formula flessibile per vivere la community.</p><a href="../membership/privati-freelancer/">Scopri →</a></article>
-            <article><h3>Pacchetto 3</h3><p>Contattaci per costruire il tuo percorso.</p><a href="../contatti/">Contattaci →</a></article>
+        <div class="mobile-alt mobile-brand-membership">
+          <div class="mobile-brand-membership__orbit" aria-hidden="true"></div>
+          <h2><img src="../assets/type-membership.png" alt="Diventa membro" width="1172" height="118" /></h2>
+          <div class="mobile-brand-membership__grid">
+            <article class="mobile-brand-membership__card">
+              <div class="mobile-brand-membership__photo"><img src="../assets/tpr-startup.png" alt="Team al lavoro nello spazio TPR" width="1024" height="1534" loading="lazy" /></div>
+              <p class="mobile-brand-membership__eyebrow">Membership per team</p>
+              <h3><img src="../assets/type-startup.png" alt="Aziende e startup" width="1026" height="88" /></h3>
+              <p>Spazi, servizi e programmi dedicati a organizzazioni che vogliono lavorare e crescere in un ambiente stimolante.</p>
+              <a href="../membership/aziende-startup/">Scopri la membership <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="mobile-brand-membership__card mobile-brand-membership__card--yellow">
+              <div class="mobile-brand-membership__photo"><img src="../assets/tpr-freelancer.png" alt="Professionista al lavoro in TPR" width="736" height="1104" loading="lazy" /></div>
+              <p class="mobile-brand-membership__eyebrow">Membership individuale</p>
+              <h3><img src="../assets/type-freelancer.png" alt="Privati e freelancer" width="993" height="88" /></h3>
+              <p>Accesso flessibile alle room, alla community e alle esperienze TPR, seguendo i tuoi ritmi.</p>
+              <a href="../membership/privati-freelancer/">Scopri la membership <span aria-hidden="true">↗</span></a>
+            </article>
           </div>
         </div>
         <img class="section-art" src="../assets/homepage-membership-partners-2x.png" width="3024" height="2892" alt="" aria-hidden="true" />
         <div class="sr-only">
           <h2 id="membership-heading">Diventa membro</h2>
-          <p>Scegli tra Pacchetto 1, Pacchetto 2 e Pacchetto 3.</p>
+          <p>Scegli tra membership Aziende e Startup, Privati e Freelancer e un percorso su misura.</p>
           <h3 id="partners-heading">I nostri partner</h3>
         </div>
         <div class="package-actions" aria-label="Pacchetti membership">
-          <a class="hotspot" href="#footer"><span class="sr-only">Scopri di più sul Pacchetto 1</span></a>
-          <a class="hotspot" href="#footer"><span class="sr-only">Scopri di più sul Pacchetto 2</span></a>
-          <a class="hotspot" href="#footer"><span class="sr-only">Scopri di più sul Pacchetto 3</span></a>
+          <a class="hotspot" href="../membership/aziende-startup/"><span class="sr-only">Scopri la membership Aziende e Startup</span></a>
+          <a class="hotspot" href="../membership/privati-freelancer/"><span class="sr-only">Scopri la membership Privati e Freelancer</span></a>
+          <a class="hotspot" href="../contatti/"><span class="sr-only">Richiedi un percorso membership su misura</span></a>
         </div>
       </section>
     </main>
 
     <footer class="art-section footer" id="footer" aria-label="Footer The People's Room">
-      <div class="mobile-alt mobile-alt-footer"><strong>TPR®</strong><nav><a href="../about/">About</a><a href="../eventi/">Eventi</a><a href="../contatti/">Contatti</a></nav><small>© The People's Room SRL</small></div>
+      <div class="mobile-alt mobile-brand-home-footer">
+        <div class="mobile-brand-home-footer__logo"><img src="../assets/type-footer.png" alt="TPR" width="968" height="314" /></div>
+        <div class="mobile-brand-home-footer__columns">
+          <div><h2>TPR</h2><a href="../about/">About</a><a href="#membership">Membership</a><a href="../eventi/">Eventi &amp; gallery</a><a href="../contatti/">Contatti</a></div>
+          <div><h2>Rooms</h2><a href="#coworking" data-room-link="coworking">Coworking</a><a href="#reformer" data-room-link="reformer">Reformer</a><a href="#wellness" data-room-link="wellness">Wellness</a><a href="#bar" data-room-link="bar">Bar</a><a href="#media" data-room-link="media">Media</a></div>
+        </div>
+        <div class="mobile-brand-home-footer__bottom"><span>© The People's Room</span><span>Via della Maggiolina 2, Milano</span><span>Privacy policy · Cookie policy</span></div>
+      </div>
       <img class="section-art" src="../assets/homepage-footer-2x.png" width="3024" height="776" alt="" aria-hidden="true" />
       <nav class="footer-room-links" aria-label="Le stanze">
         <button class="hotspot" type="button" data-room-link="coworking"><span class="sr-only">Coworking</span></button>
