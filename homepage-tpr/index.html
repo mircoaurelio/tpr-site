@@ -30,7 +30,7 @@
       {"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://mircoaurelio.github.io/tpr-site/#website","url":"https://mircoaurelio.github.io/tpr-site/homepage-tpr/","name":"The People's Room","alternateName":"TPR Milano","inLanguage":"it-IT","publisher":{"@id":"https://mircoaurelio.github.io/tpr-site/#organization"}},{"@type":"Organization","@id":"https://mircoaurelio.github.io/tpr-site/#organization","name":"The People's Room","alternateName":"TPR","url":"https://mircoaurelio.github.io/tpr-site/homepage-tpr/","logo":{"@type":"ImageObject","url":"https://mircoaurelio.github.io/tpr-site/assets/tpr-logo.svg"},"image":"https://mircoaurelio.github.io/tpr-site/assets/homepage-tpr-hero-2x.png","address":{"@type":"PostalAddress","streetAddress":"Via della Maggiolina 2","addressLocality":"Milano","addressCountry":"IT"}}]}
     </script>
     <script>document.documentElement.classList.add('js');</script>
-    <link rel="stylesheet" href="styles.css?v=20260820-inpage-explore-2" />
+    <link rel="stylesheet" href="styles.css?v=20260820-mobile-room-fix-3" />
   </head>
 <body>
   <a class="skip-link" href="#main">Vai al contenuto</a>
@@ -51,7 +51,7 @@
 
     <aside class="site-menu" id="siteMenu" role="dialog" aria-modal="true" aria-label="Menu principale" aria-hidden="true">
       <a class="site-menu__brand" href="./" aria-label="The People's Room, ricarica la home"><img src="../assets/tpr-logo-menu.svg" alt="" /></a>
-      <button class="site-menu__close" id="closeMenu" data-close-menu type="button" aria-label="Chiudi il menu">×</button>
+      <button class="site-menu__close" id="closeMenu" data-close-menu type="button" aria-label="Chiudi il menu"></button>
       <nav class="site-menu__nav" aria-label="Navigazione principale">
         <a class="site-menu__primary" href="../about/">About</a>
         <h2 class="site-menu__heading"><a href="#rooms">TPR Rooms</a></h2>
@@ -99,7 +99,7 @@
             <p>Il nostro obiettivo quotidiano è ispirare le persone a esprimere se stesse, riscoprire il valore dell'umanità e vivere in modo più presente, creativo e vitale.</p>
             <div class="button-row">
               <a class="pill pill--pink" href="../about/">Scopri di più</a>
-              <button class="pill pill--ghost" id="videoButton" type="button" data-video-trigger>Guarda il video <span aria-hidden="true">▶</span></button>
+              <button class="pill pill--ghost" id="videoButton" type="button" data-video-trigger>Guarda il video <span class="play-icon" aria-hidden="true"></span></button>
             </div>
           </div>
         </div>
@@ -159,7 +159,7 @@
                 <span class="sr-only">Aziende e startup</span>
               </h3>
               <p>Spazi, servizi e programmi dedicati a organizzazioni che vogliono lavorare e crescere in un ambiente stimolante.</p>
-              <a href="../membership/aziende-startup/">Scopri la membership <span aria-hidden="true">↗</span></a>
+              <a href="../membership/aziende-startup/">Scopri la membership</a>
             </article>
             <article class="membership-card membership-card--yellow">
               <div class="torn-photo"><img src="../assets/tpr-freelancer.webp" alt="Professionista al lavoro in TPR" width="736" height="1104" loading="lazy" decoding="async" /></div>
@@ -169,7 +169,7 @@
                 <span class="sr-only">Privati e freelancer</span>
               </h3>
               <p>Accesso flessibile alle room, alla community e alle esperienze TPR, seguendo i tuoi ritmi e le tue necessità.</p>
-              <a href="../membership/privati-freelancer/">Scopri la membership <span aria-hidden="true">↗</span></a>
+              <a href="../membership/privati-freelancer/">Scopri la membership</a>
             </article>
           </div>
         </div>
@@ -220,12 +220,12 @@
     </footer>
 
     <dialog class="video-dialog" id="videoDialog">
-      <button class="dialog-close" id="closeVideo" type="button" aria-label="Chiudi video">×</button>
-      <div class="video-placeholder"><span aria-hidden="true">▶</span><p>Video di presentazione TPR</p></div>
+      <button class="dialog-close" id="closeVideo" type="button" aria-label="Chiudi video"></button>
+      <div class="video-placeholder"><span class="play-icon" aria-hidden="true"></span><p>Video di presentazione TPR</p></div>
     </dialog>
 
     <script src="../shared-menu.js"></script>
-    <script src="../shared-elevator.js?v=20260820-inpage-explore-2"></script>
+    <script src="../shared-elevator.js?v=20260820-mobile-room-fix-3"></script>
     <script src="script.js?v=20260818hoverlabels"></script>
   </body>
 </html>

@@ -87,6 +87,19 @@ body.menu-open { overflow: hidden; }
   cursor: pointer;
 }
 
+.site-menu__close::before,
+.site-menu__close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 22%;
+  width: 56%;
+  height: 2px;
+  background: currentColor;
+  transform: translateY(-50%) rotate(45deg);
+}
+.site-menu__close::after { transform: translateY(-50%) rotate(-45deg); }
+
 .site-menu .site-menu__nav {
   width: min(46rem, calc(100% - 2rem));
   min-height: 100svh;

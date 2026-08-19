@@ -60,7 +60,7 @@
         <div class="tpr-elevator__mobile-copy">
           <h2 id="elevatorTitle"><img class="tpr-elevator__title" src="${asset(rooms[active].title)}" alt="${rooms[active].label} Room"></h2>
           <p class="tpr-elevator__description">${copy}</p>
-          <button class="tpr-elevator__mobile-cta" type="button" data-elevator-explore>Esplora Stanza <span aria-hidden="true">›</span></button>
+          <button class="tpr-elevator__mobile-cta" type="button" data-elevator-explore>Esplora Stanza <span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
         </div>
         <button class="tpr-elevator__cta" type="button" data-elevator-explore><span class="sr-only">Esplora ${rooms[active].label} Room</span></button>
         <span class="tpr-elevator__reformer-book-mask" aria-hidden="true"></span>
@@ -76,7 +76,6 @@
             <h2><span></span> <small>Room</small></h2>
             <p class="tpr-elevator__explore-description"></p>
             <div class="tpr-elevator__explore-actions">
-              <button type="button" data-elevator-close>← Tutte le Stanze</button>
               <a href="${contactUrl}" data-elevator-book>Prenota</a>
             </div>
           </aside>
@@ -100,6 +99,7 @@
   const exploreFixedImage = host.querySelector('.tpr-elevator__explore-fixed img');
   const exploreHeading = host.querySelector('.tpr-elevator__explore-info h2 span');
   const exploreDescription = host.querySelector('.tpr-elevator__explore-description');
+  const exploreActions = host.querySelector('.tpr-elevator__explore-actions');
   const exploreBook = host.querySelector('[data-elevator-book]');
   const exploreCards = host.querySelector('.tpr-elevator__explore-cards');
   const exploreProgressControl = host.querySelector('.tpr-elevator__explore-progress');
@@ -109,6 +109,7 @@
   let exploring = false;
   let exploreProgress = 0;
   let exploreStartTimer = 0;
+  let exploreHandoffLocked = false;
   const preloadedImages = new Map();
   rooms.forEach((room) => {
     [room.art, room.character, room.title].forEach((file) => {
@@ -213,6 +214,7 @@
     exploreHeading.textContent = room.label;
     exploreDescription.textContent = room.description;
     exploreBook.hidden = !room.bookable;
+    exploreActions.hidden = !room.bookable;
     renderExploreCards(room);
   }
 
@@ -225,8 +227,10 @@
     const width = rect.width > 0 ? rect.width : fallbackWidth;
     const height = rect.height > 0 ? rect.height : width / ratio;
     const travelMax = Math.max(0, width - innerWidth);
-    if (exploring) host.style.height = `${innerHeight + (travelMax * ROOM_SCROLL_FACTOR)}px`;
-    return { width, height, travelMax };
+    const scrollDistance = Math.max(1, travelMax * ROOM_SCROLL_FACTOR);
+    const handoffDistance = active < rooms.length - 1 ? Math.max(120, innerHeight * .32) : 0;
+    if (exploring) host.style.height = `${innerHeight + scrollDistance + handoffDistance}px`;
+    return { width, height, travelMax, scrollDistance, handoffDistance };
   }
 
   function setExploreProgress(progress) {
@@ -251,9 +255,8 @@
   function scrollExploreTo(progress, behavior = 'auto') {
     const bounded = Math.max(0, Math.min(1, progress));
     const top = host.getBoundingClientRect().top + scrollY;
-    getExploreGeometry();
-    const distance = Math.max(0, host.offsetHeight - innerHeight);
-    scrollTo({ top: top + (distance * bounded), behavior });
+    const geometry = getExploreGeometry();
+    scrollTo({ top: top + (geometry.scrollDistance * bounded), behavior });
   }
 
   function openExplore(opener) {
@@ -279,7 +282,7 @@
     }));
   }
 
-  function closeExplore({ restoreFocus = true, scrollBack = true } = {}) {
+  function closeExplore({ restoreFocus = true, scrollBack = true, updateHistory = true } = {}) {
     if (!exploring) return;
     clearTimeout(exploreStartTimer);
     const opener = host._exploreOpener;
@@ -292,15 +295,33 @@
     exploreLayer.style.removeProperty('--explore-progress');
     host.style.removeProperty('height');
     delete host.dataset.mode;
-    history.replaceState(null, '', `#${rooms[active].key}`);
+    if (updateHistory) history.replaceState(null, '', `#${rooms[active].key}`);
     requestAnimationFrame(() => {
       if (scrollBack) scrollToFloor(active, 'auto');
       if (restoreFocus && opener instanceof HTMLElement) opener.focus({ preventScroll: true });
     });
   }
 
+  function handoffExploreToNextRoom() {
+    if (!exploring || exploreHandoffLocked || active >= rooms.length - 1) return;
+    exploreHandoffLocked = true;
+    const next = active + 1;
+    hashJumpIndex = next;
+    closeExplore({ restoreFocus: false, scrollBack: false, updateHistory: false });
+    select(next, 1);
+    history.replaceState(null, '', `#${rooms[next].key}`);
+    requestAnimationFrame(() => {
+      scrollToFloor(next, 'auto');
+      status.textContent = `${rooms[next].label} Room selezionata.`;
+      setTimeout(() => {
+        exploreHandoffLocked = false;
+        hashJumpIndex = null;
+        updateFromScroll();
+      }, 360);
+    });
+  }
+
   ctas.forEach((cta) => cta.addEventListener('click', () => openExplore(cta)));
-  host.querySelector('[data-elevator-close]').addEventListener('click', () => closeExplore());
 
   exploreProgressControl.addEventListener('pointerdown', (event) => {
     const rect = exploreProgressControl.getBoundingClientRect();
@@ -355,8 +376,12 @@
     const rect = host.getBoundingClientRect();
     document.body.classList.toggle('elevator-active', rect.top <= 1 && rect.bottom >= innerHeight - 1);
     if (exploring) {
-      const distance = Math.max(1, host.offsetHeight - innerHeight);
-      setExploreProgress(-rect.top / distance);
+      const geometry = getExploreGeometry();
+      const offset = Math.max(0, -rect.top);
+      setExploreProgress(offset / geometry.scrollDistance);
+      if (geometry.handoffDistance > 0 && offset >= geometry.scrollDistance + (geometry.handoffDistance * .72)) {
+        handoffExploreToNextRoom();
+      }
       ticking = false;
       return;
     }

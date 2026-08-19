@@ -454,7 +454,7 @@ a { font: inherit; }
   .route-home { left: .75rem; padding: 0 .9rem; }
   .route-home::after { content: "TPR®"; font-weight: 900; }
   .route-menu { right: .75rem; }
-  .route-menu::after { content: "☰"; font-size: 1.35rem; }
+  .route-menu::after { content: none; }
   .mobile-contact-form { display: grid; gap: 1rem; }
   .mobile-contact-form label { display: grid; gap: .4rem; font-weight: 800; }
   .mobile-contact-form input,
