@@ -296,13 +296,22 @@ body.elevator-active .site-header::after { content: none; display: none; }
   position: absolute;
   z-index: 0;
   pointer-events: none;
-  top: -18%;
-  right: -32%;
-  width: min(108vw, 52rem);
   height: auto;
   overflow: visible;
   color: var(--yellow);
+}
+.membership-orbit--top {
+  top: -16%;
+  right: -21%;
+  width: min(100vw, 58rem);
   transform: scaleX(-1);
+}
+.membership-orbit--bottom {
+  top: auto;
+  bottom: -8%;
+  right: -14%;
+  width: min(88vw, 52rem);
+  transform: scaleX(-1) scaleY(-1);
 }
 .membership .section-shell { position: relative; z-index: 1; }
 .membership-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 4rem); padding-inline: clamp(0rem, 4vw, 5rem); }
@@ -558,7 +567,8 @@ body.elevator-active .site-header::after { content: none; display: none; }
   .room-panel { padding-block: 4rem 6rem; }
   .events-copy { padding-block: 7rem; }
   .events-visual { min-height: 0; }
-  .membership-orbit { top: -14%; right: -40%; width: min(124vw, 42rem); }
+  .membership-orbit--top { top: -10%; right: -16%; width: min(62vw, 26rem); }
+  .membership-orbit--bottom { bottom: -6%; right: -12%; width: min(56vw, 22rem); }
   .membership-grid { grid-template-columns: 1fr; max-width: 47rem; margin-inline: auto; }
   .membership-card { min-height: 0; }
   .torn-photo { height: min(48vw, 18rem); }
@@ -621,7 +631,8 @@ body.elevator-active .site-header::after { content: none; display: none; }
   .room-features li { grid-template-columns: 1fr; gap: .35rem; }
   .events-copy { min-height: 32rem; }
   .events-visual { height: 47.22vw; min-height: 11rem; }
-  .membership-orbit { top: -10%; right: -48%; width: min(148vw, 36rem); }
+  .membership-orbit--top { top: -8%; right: -20%; width: min(64vw, 18rem); }
+  .membership-orbit--bottom { bottom: -4%; right: -16%; width: min(58vw, 16rem); }
   .membership { padding-block: 6rem; }
   .membership-grid { padding-inline: 0; }
   .membership-card { min-height: 0; }

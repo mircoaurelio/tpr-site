@@ -97,21 +97,21 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
 }
 
 .branded-route--about .route-blob {
-  top: -16%;
-  left: -34%;
-  width: min(118vw, 56rem);
+  top: 0;
+  left: -8%;
+  width: min(72vw, 34rem);
 }
 
 .branded-route--eventi .route-blob {
-  top: -18%;
-  left: -36%;
-  width: min(118vw, 64rem);
+  top: 0;
+  left: -10%;
+  width: min(78vw, 38rem);
 }
 
 .branded-route--contatti .route-blob {
-  top: -22%;
-  left: -42%;
-  width: min(110vw, 52rem);
+  top: 0;
+  left: -12%;
+  width: min(70vw, 32rem);
 }
 
 .branded-route .mobile-route-content > *:not(.route-blob) {
@@ -141,6 +141,11 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   margin: 0;
   font: 400 1rem/1.08 var(--route-body);
   letter-spacing: 0;
+}
+
+.wavy-quote .quote-copy {
+  display: grid;
+  gap: .7em;
 }
 
 .branded-route .route-lead {
@@ -247,9 +252,9 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
 .route-photo-card img,
 .mobile-event-card img {
   display: block;
-  width: calc(100% - 1.4rem);
-  height: min(52vw, 15.25rem);
-  margin: .85rem auto 0;
+  width: calc(100% - 1.85rem);
+  height: min(48vw, 16.5rem);
+  margin: 1rem auto 0;
   object-fit: cover;
   object-position: center 42%;
 }
@@ -574,21 +579,21 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   }
 
   .branded-route--about .route-blob {
-    top: -10%;
-    left: -18%;
-    width: min(68vw, 62rem);
+    top: 0;
+    left: -6%;
+    width: min(38vw, 36rem);
   }
 
   .branded-route--eventi .route-blob {
-    top: -14%;
-    left: -22%;
-    width: min(78vw, 70rem);
+    top: 0;
+    left: -8%;
+    width: min(42vw, 40rem);
   }
 
   .branded-route--contatti .route-blob {
-    top: -16%;
-    left: -30%;
-    width: min(72vw, 58rem);
+    top: 0;
+    left: -10%;
+    width: min(40vw, 36rem);
   }
 
   .branded-route .route-intro,
@@ -621,6 +626,11 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
     letter-spacing: 0;
   }
 
+  .wavy-quote .quote-copy { gap: .85em; }
+  .branded-route .wavy-quote p {
+    font: 400 clamp(.92rem, 1.25vw, 1.2rem)/1.08 var(--route-body);
+  }
+
   .branded-route .route-energy { margin-bottom: 4.5rem; }
 
   .branded-route .route-energy h2 {
@@ -638,7 +648,7 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   }
 
   .wavy-quote {
-    min-height: 39rem;
+    min-height: 0;
     padding: 2rem 1.85rem 1.5rem;
   }
 
@@ -655,7 +665,7 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   }
 
   .route-photo-card img,
-  .mobile-event-card img { height: 17.5rem; }
+  .mobile-event-card img { height: 18.25rem; }
 
   .branded-route .route-section-title,
   .branded-route .route-contact-title {
