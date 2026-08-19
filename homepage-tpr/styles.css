@@ -421,25 +421,17 @@ body.elevator-active .site-header::after { content: none; display: none; }
   position: relative;
   z-index: 1;
   align-self: start;
-  width: max-content;
+  width: min(32.01vw, 30.25rem);
   max-width: 100%;
   margin: 0;
   overflow: visible;
-  font: 700 clamp(6.25rem, 12.4vw, 11.5rem)/.7 var(--display);
-  font-stretch: extra-condensed;
-  font-kerning: normal;
-  letter-spacing: -.1em;
-  text-transform: uppercase;
-  white-space: nowrap;
 }
-.footer-logo__mark {
-  font-size: .26em;
-  font-stretch: normal;
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 1;
-  vertical-align: super;
-  margin-left: -.08em;
+.footer-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: left top;
 }
 .footer-columns {
   grid-area: nav;
@@ -578,7 +570,7 @@ body.elevator-active .site-header::after { content: none; display: none; }
       "legal";
     row-gap: 2.25rem;
   }
-  .footer-logo { font-size: clamp(4.8rem, 18vw, 8.5rem); }
+  .footer-logo { width: min(62vw, 30.25rem); }
   .footer-columns { justify-self: start; column-gap: 3.25rem; }
   .footer-columns a { min-height: 2.1rem; display: flex; align-items: center; line-height: 1.1; }
 }
@@ -638,7 +630,7 @@ body.elevator-active .site-header::after { content: none; display: none; }
   .phone-mockup { width: 44vw; }
   .phone-mockup--booking { margin-top: 4rem; }
   .site-footer { row-gap: 1.75rem; padding-top: 3rem; }
-  .footer-logo { font-size: clamp(4.4rem, 22vw, 7.25rem); }
+  .footer-logo { width: min(76vw, 30.25rem); }
   .footer-columns { column-gap: 2.25rem; }
   .footer-columns a { min-height: 2.1rem; display: flex; align-items: center; margin-bottom: 0; line-height: 1.1; }
 }

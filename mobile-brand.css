@@ -206,7 +206,7 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: url("assets/wavy-stroke.svg") center / 100% 100% no-repeat;
+  background: url("assets/wavy-stroke.svg?v=20260819-edge-2") center / 100% 100% no-repeat;
 }
 
 .wavy-quote p,
@@ -225,8 +225,8 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   overflow: hidden;
   color: var(--route-card-ink);
   background: var(--route-card);
-  -webkit-mask: url("assets/wavy-frame.svg") center / 100% 100% no-repeat;
-  mask: url("assets/wavy-frame.svg") center / 100% 100% no-repeat;
+  -webkit-mask: url("assets/wavy-frame.svg?v=20260819-edge-2") center / 100% 100% no-repeat;
+  mask: url("assets/wavy-frame.svg?v=20260819-edge-2") center / 100% 100% no-repeat;
 }
 
 .route-photo-card {
