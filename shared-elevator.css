@@ -130,9 +130,9 @@
 
 .tpr-elevator__button {
   position: absolute;
-  top: 86.34%;
-  width: clamp(44px, 3.44vw, 52px);
-  aspect-ratio: 1;
+  top: 78%;
+  width: 5.4%;
+  height: 18%;
   min-width: 44px;
   min-height: 44px;
   padding: 0;
@@ -148,7 +148,7 @@
 .tpr-elevator__button:nth-child(3) { left: 50.13%; }
 .tpr-elevator__button:nth-child(4) { left: 55.42%; }
 .tpr-elevator__button:nth-child(5) { left: 60.71%; }
-.tpr-elevator__button img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; }
+.tpr-elevator__button img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; visibility: hidden; }
 .tpr-elevator__button .icon-on { opacity: 0; }
 .tpr-elevator__button[aria-pressed="true"] .icon-on { opacity: 1; }
 .tpr-elevator__button[aria-pressed="true"] .icon-off { opacity: 0; }
@@ -248,8 +248,11 @@
     inset: auto;
     width: 48px;
     height: 48px;
+    min-width: 48px;
+    min-height: 48px;
     transform: none;
   }
+  .tpr-elevator__button img { visibility: visible; }
   .tpr-elevator__progress { display: none; }
 }
 

@@ -56,6 +56,8 @@ const exploreRoomButtons = [...document.querySelectorAll('[data-explore-room], [
 const trackExploreButton = document.querySelector('[data-track-explore]');
 const bookRoomButton = document.querySelector('.room-action--book');
 const roomProgressControl = document.querySelector('.room-progress');
+const ROOM_SCROLL_FACTOR = 1.35;
+const ROOM_EXPLORE_PROGRESS = .4;
 
 function getRoomGeometry() {
   if (!roomCanvas || !roomScene) return { width: innerWidth, height: innerHeight, travelMax: 0 };
@@ -65,7 +67,7 @@ function getRoomGeometry() {
   const width = rect.width > 0 ? rect.width : fallbackWidth;
   const height = rect.height > 0 ? rect.height : width / intrinsicRatio;
   const travelMax = Math.max(0, width - innerWidth);
-  roomScene.style.height = `${innerHeight + travelMax}px`;
+  roomScene.style.height = `${innerHeight + (travelMax * ROOM_SCROLL_FACTOR)}px`;
   return { width, height, travelMax };
 }
 
@@ -73,7 +75,8 @@ function scrollRoomTo(progress, behavior = 'auto') {
   if (!roomScene) return;
   const bounded = Math.max(0, Math.min(1, progress));
   const sceneTop = roomScene.getBoundingClientRect().top + scrollY;
-  const distance = getRoomGeometry().travelMax;
+  getRoomGeometry();
+  const distance = Math.max(0, roomScene.offsetHeight - innerHeight);
   scrollTo({ top: sceneTop + (distance * bounded), behavior });
 }
 
@@ -86,7 +89,7 @@ function setRoomProgress(progress) {
   const travel = bounded * travelMax;
   roomSticky.style.setProperty('--room-travel', `${travel}px`);
   roomSticky?.style.setProperty('--room-progress', String(bounded));
-  roomSticky.classList.toggle('is-exploring', bounded > .34);
+  roomSticky.classList.toggle('is-exploring', bounded > .22);
   roomProgressControl?.setAttribute('aria-valuenow', String(Math.round(bounded * 100)));
 
   roomCards.forEach((button) => {
@@ -164,11 +167,22 @@ if (roomProgressControl && roomScene) {
 }
 
 exploreRoomButtons.forEach((button) => button.addEventListener('click', () => {
-    if (roomSticky?.scrollLeft) roomSticky.scrollLeft = 0;
-    const behavior = reduceMotionQuery.matches ? 'auto' : 'smooth';
-    scrollRoomTo(.78, behavior);
-    if (behavior === 'smooth') setTimeout(() => scrollRoomTo(.78, 'auto'), 520);
+  if (roomSticky?.scrollLeft) roomSticky.scrollLeft = 0;
+  const behavior = reduceMotionQuery.matches ? 'auto' : 'smooth';
+  scrollRoomTo(ROOM_EXPLORE_PROGRESS, behavior);
+  if (behavior === 'smooth') setTimeout(() => scrollRoomTo(ROOM_EXPLORE_PROGRESS, 'auto'), 620);
 }));
+
+if (roomScene && location.hash === '#explore') {
+  const startExploration = () => {
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      scrollRoomTo(ROOM_EXPLORE_PROGRESS, reduceMotionQuery.matches ? 'auto' : 'smooth');
+      setTimeout(() => scrollRoomTo(ROOM_EXPLORE_PROGRESS, 'auto'), 720);
+    }));
+  };
+  if (document.readyState === 'complete') startExploration();
+  else addEventListener('load', startExploration, { once: true });
+}
 
 document.querySelectorAll('[data-card-title]').forEach((button) => {
   const cardName = button.dataset.cardTitle || 'stanza';

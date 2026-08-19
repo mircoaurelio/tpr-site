@@ -4,7 +4,11 @@
 
   const base = new URL('.', document.currentScript.src);
   const asset = (file) => new URL(`assets/${file}`, base).href;
-  const route = (slug) => new URL(`rooms/${slug}/`, base).href;
+  const route = (slug, explore = false) => {
+    const url = new URL(`rooms/${slug}/`, base);
+    if (explore) url.hash = 'explore';
+    return url.href;
+  };
   const rooms = [
     { key: 'coworking', label: 'Coworking', art: 'homepage-room-coworking-clean-2x.png', character: 'character-coworking.png', box: [5.85, 30.83, 8.10, 15.97], title: 'type-coworking.png', icon: 'elevator-icon-coworking.svg', off: 'elevator-icon-coworking-off.svg' },
     { key: 'reformer', label: 'Reformer', art: 'homepage-room-reformer-clean-2x.png', character: 'character-reformer.png', box: [5.79, 30.72, 8.20, 16.07], title: 'type-reformer.png', icon: 'elevator-icon-reformer.svg', off: 'elevator-icon-reformer-off.svg' },
@@ -40,9 +44,9 @@
         <div class="tpr-elevator__mobile-copy">
           <h2 id="elevatorTitle"><img class="tpr-elevator__title" src="${asset(rooms[active].title)}" alt="${rooms[active].label} Room"></h2>
           <p class="tpr-elevator__description">${copy}</p>
-          <a class="tpr-elevator__mobile-cta" href="${route(rooms[active].key)}">Esplora Stanza <span aria-hidden="true">›</span></a>
+          <a class="tpr-elevator__mobile-cta" href="${route(rooms[active].key, true)}">Esplora Stanza <span aria-hidden="true">›</span></a>
         </div>
-        <a class="tpr-elevator__cta" href="${route(rooms[active].key)}"><span class="sr-only">Esplora ${rooms[active].label} Room</span></a>
+        <a class="tpr-elevator__cta" href="${route(rooms[active].key, true)}"><span class="sr-only">Esplora ${rooms[active].label} Room</span></a>
         <span class="tpr-elevator__reformer-book-mask" aria-hidden="true"></span>
         <nav class="tpr-elevator__nav" aria-label="Ascensore delle stanze">
           ${rooms.map((room, index) => `<button class="tpr-elevator__button" type="button" data-elevator-room="${room.key}" aria-label="Vai a ${room.label} Room" aria-pressed="${index === active}"><img class="icon-off" src="${asset(room.off)}" alt=""><img class="icon-on" src="${asset(room.icon)}" alt=""></button>`).join('')}
@@ -90,7 +94,7 @@
     title.alt = `${room.label} Room`;
     status.textContent = `${room.label} Room selezionata.`;
     ctas.forEach((cta) => {
-      cta.href = route(room.key);
+      cta.href = route(room.key, true);
       const sr = cta.querySelector('.sr-only');
       if (sr) sr.textContent = `Esplora ${room.label} Room`;
     });

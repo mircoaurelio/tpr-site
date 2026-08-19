@@ -169,7 +169,10 @@ a { font: inherit; }
   overflow: hidden;
 }
 .room-fixed {
-  display: none;
+  z-index: 2;
+  left: 0;
+  width: 26vw;
+  pointer-events: none;
 }
 .room-track {
   z-index: 1;
@@ -341,50 +344,30 @@ a { font: inherit; }
 .room-fixed-info {
   position: absolute;
   z-index: 6;
-  top: 50%;
-  left: clamp(1.25rem, 4vw, 4rem);
-  width: min(44vw, 36rem);
-  padding: clamp(1.25rem, 3vw, 2.5rem);
+  top: 0;
+  bottom: 0;
+  left: 26vw;
+  display: flex;
+  width: 26vw;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1rem, 2.25vw, 2.25rem);
   color: var(--room-page-ink);
   background: var(--room-page-bg);
-  border-radius: 1.5rem;
+  border-radius: 0;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(-46%) translateX(-1.5rem);
+  transform: translateX(-1.5rem);
   transition: opacity 220ms ease, transform 320ms ease;
-  isolation: isolate;
 }
-.room-sticky.is-exploring .room-fixed-info { opacity: 1; pointer-events: auto; transform: translateY(-50%) translateX(0); }
-.room-sticky.is-exploring .room-fixed-info::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: -2.5rem;
-  right: -.25rem;
-  bottom: -5rem;
-  left: -12vw;
-  background: var(--room-page-bg);
-  border-radius: 0 1.5rem 1.5rem 0;
-}
-.room-fixed-info__kicker { margin: 0 0 1rem; font-size: .75rem; font-weight: 900; letter-spacing: .1em; }
-.room-fixed-info h1 { margin: 0 0 1rem; display: flex; align-items: baseline; gap: .2em; font-size: clamp(2.2rem, 4.4vw, 4.45rem); line-height: .82; letter-spacing: -.06em; text-transform: uppercase; white-space: nowrap; }
+.room-sticky.is-exploring .room-fixed-info { opacity: 1; pointer-events: auto; transform: translateX(0); }
+.room-fixed-info__kicker { margin: 0 0 .8rem; font-size: clamp(.58rem, .72vw, .75rem); font-weight: 900; letter-spacing: .1em; }
+.room-fixed-info h1 { margin: 0 0 .85rem; display: flex; align-items: baseline; gap: .2em; font-size: clamp(1.65rem, 2.8vw, 3rem); line-height: .86; letter-spacing: -.06em; text-transform: uppercase; white-space: nowrap; }
 .room-fixed-info h1 small { font-size: .42em; letter-spacing: -.03em; }
-.room-fixed-info > p:not(.room-fixed-info__kicker) { margin: 0; font-size: clamp(.95rem, 1.35vw, 1.2rem); line-height: 1.3; }
-.room-fixed-info > div { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.5rem; }
+.room-fixed-info > p:not(.room-fixed-info__kicker) { margin: 0; font-size: clamp(.72rem, .95vw, 1rem); line-height: 1.22; }
+.room-fixed-info > div { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1rem; }
 .room-fixed-info button,
-.room-fixed-info a { min-height: 44px; display: inline-flex; align-items: center; padding: .65rem 1rem; color: var(--room-page-bg); background: var(--room-page-ink); border: 0; border-radius: 999px; font-weight: 800; text-decoration: none; cursor: pointer; }
-.room-back {
-  position: fixed;
-  z-index: 12;
-  top: 1rem;
-  left: 1rem;
-  min-height: 44px;
-  padding: .7rem 1rem;
-  color: var(--royal);
-  background: var(--white);
-  border-radius: 999px;
-  text-decoration: none;
-}
+.room-fixed-info a { min-height: 36px; display: inline-flex; align-items: center; padding: .5rem .85rem; color: var(--room-page-bg); background: var(--room-page-ink); border: 0; border-radius: 999px; font-size: clamp(.68rem, .8vw, .85rem); font-weight: 800; text-decoration: none; cursor: pointer; }
 
 .room-menu {
   position: fixed;
@@ -484,13 +467,12 @@ a { font: inherit; }
   .site-menu nav { gap: .3rem; }
   .site-menu a { min-height: 44px; display: flex; align-items: center; font-size: 1.4rem; }
   .room-sticky { min-height: 100svh; }
+  .room-fixed { display: none; }
+  .room-fixed-info { display: none; }
   .room-track img { width: auto; height: 100svh; max-width: none; }
   .room-action--explore,
   .room-action--book { min-width: 44px; min-height: 44px; }
   .room-progress { bottom: .8rem; }
-  .room-fixed-info { right: 1rem; left: 1rem; width: auto; max-width: none; padding-inline: 1.1rem; overflow: visible; }
-  .room-fixed-info h1 { max-width: 100%; flex-wrap: wrap; white-space: normal; font-size: clamp(2rem, 9.2vw, 3.5rem); }
-  .room-fixed-info > p:not(.room-fixed-info__kicker) { max-width: 100%; overflow-wrap: anywhere; }
 }
 
 @media (prefers-reduced-motion: reduce) {
