@@ -262,15 +262,29 @@ document.querySelectorAll('.reveal').forEach((element) => {
 });
 
 const eventsImage = document.querySelector('.events-visual > img:first-child');
-const parallaxPhotos = [...document.querySelectorAll('.membership-card .torn-photo img')];
+const elevatorHost = document.querySelector('#rooms, .tpr-elevator');
+const parallaxPhotos = [
+  ...document.querySelectorAll('.membership-card .torn-photo img, .phone-mockup img, .events-visual > img:first-child'),
+];
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 let ticking = false;
+
+if (elevatorHost && 'IntersectionObserver' in window) {
+  const elevatorWatcher = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      entry.target.classList.toggle('is-inview', entry.isIntersecting);
+    });
+  }, { threshold: 0.12 });
+  elevatorWatcher.observe(elevatorHost);
+} else if (elevatorHost) {
+  elevatorHost.classList.add('is-inview');
+}
 
 function shiftParallax(element, amount, extra = '') {
   const rect = element.getBoundingClientRect();
   if (rect.bottom < 0 || rect.top > innerHeight) return;
   const progress = (innerHeight - rect.top) / (innerHeight + rect.height);
-  element.style.transform = `translateY(${(progress - 0.5) * amount}%) ${extra}`.trim();
+  element.style.transform = `translate3d(0, ${(progress - 0.5) * amount}%, 0) ${extra}`.trim();
 }
 
 function onScroll() {
@@ -279,18 +293,25 @@ function onScroll() {
   if (reducedMotion.matches || ticking) return;
   ticking = true;
   requestAnimationFrame(() => {
-    if (eventsImage) shiftParallax(eventsImage, 8, 'scale(1.08)');
-    parallaxPhotos.forEach((photo) => shiftParallax(photo, 4));
+    parallaxPhotos.forEach((photo) => shiftParallax(photo, -7));
+    if (elevatorHost && !elevatorHost.classList.contains('is-exploring')) {
+      const shift = Math.round((elevatorHost.getBoundingClientRect().top / innerHeight) * -18);
+      elevatorHost.style.setProperty('--photo-shift', `${shift}px`);
+    }
     ticking = false;
   });
 }
 
 addEventListener('scroll', onScroll, { passive: true });
-addEventListener('resize', updateHeaderVisibility, { passive: true });
+addEventListener('resize', () => {
+  updateHeaderVisibility();
+  onScroll();
+}, { passive: true });
 mobileHeaderQuery.addEventListener('change', updateHeaderVisibility);
+onScroll();
 reducedMotion.addEventListener('change', (event) => {
   if (event.matches) {
-    if (eventsImage) eventsImage.style.transform = 'none';
     parallaxPhotos.forEach((photo) => { photo.style.transform = 'none'; });
+    elevatorHost?.style.removeProperty('--photo-shift');
   }
 });

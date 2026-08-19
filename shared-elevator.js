@@ -5,7 +5,7 @@
   const base = new URL('.', document.currentScript.src);
   const asset = (file) => {
     const url = new URL(`assets/${file}`, base);
-    if (file.includes('elevator-icon')) url.searchParams.set('v', '20260819-rev-2');
+    if (file.includes('elevator-icon')) url.searchParams.set('v', '20260819-rev-3');
     return url.href;
   };
   const bookingUrl = (roomKey) => `${new URL('contatti/', base).href}?room=${encodeURIComponent(roomKey)}`;
@@ -88,12 +88,18 @@
         </nav>
         <div class="tpr-elevator__progress" aria-hidden="true"><span></span></div>
         <div class="tpr-elevator__explore" aria-hidden="true">
-          <div class="tpr-elevator__explore-track" aria-hidden="true"><img alt="" width="6864" height="1904"></div>
-          <div class="tpr-elevator__explore-copy" aria-hidden="true">
-            <h2>${roomTitle(rooms[active])}</h2>
-            ${roomCopyHtml}
+          <div class="tpr-elevator__explore-track" aria-hidden="true">
+            <img alt="" width="6864" height="1904">
+            <div class="tpr-elevator__explore-copy">
+              <h2>${roomTitle(rooms[active])}</h2>
+              ${roomCopyHtml}
+              <div class="tpr-elevator__explore-actions">
+                <button class="tpr-elevator__explore-back" type="button" data-elevator-explore-close>&lt; Tutte le Stanze</button>
+                <a class="tpr-elevator__explore-book" data-elevator-book href="${bookingUrl(rooms[active].key)}" ${rooms[active].bookable ? '' : 'hidden'}>Prenota</a>
+              </div>
+            </div>
+            <div class="tpr-elevator__explore-cards"></div>
           </div>
-          <div class="tpr-elevator__explore-cards"></div>
           <div class="tpr-elevator__explore-progress" role="scrollbar" tabindex="0" aria-label="Scorri orizzontalmente la stanza" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
         </div>
         <p class="sr-only" aria-live="polite" id="elevatorStatus">${rooms[active].label} Room selezionata.</p>
@@ -117,7 +123,6 @@
   const exploreProgressControl = host.querySelector('.tpr-elevator__explore-progress');
   const ROOM_SCROLL_FACTOR = 1.35;
   const ROOM_EXPLORE_PROGRESS = .4;
-  const CARD_POSITIONS = [.439, .6265, .812];
   let exploring = false;
   let exploreProgress = 0;
   let exploreStartTimer = 0;
@@ -255,13 +260,6 @@
     exploreLayer.style.setProperty('--explore-travel', `${travel}px`);
     exploreLayer.style.setProperty('--explore-progress', String(bounded));
     exploreProgressControl.setAttribute('aria-valuenow', String(Math.round(bounded * 100)));
-
-    exploreCards.querySelectorAll('.tpr-elevator__explore-card').forEach((card, index) => {
-      card.style.left = `${(CARD_POSITIONS[index] * geometry.width) - travel}px`;
-      card.style.top = `${.264 * geometry.height}px`;
-      card.style.width = `${.166 * geometry.width}px`;
-      card.style.height = `${.47 * geometry.height}px`;
-    });
   }
 
   function scrollExploreTo(progress, behavior = 'auto') {
@@ -342,6 +340,9 @@
   }
 
   ctas.forEach((cta) => cta.addEventListener('click', () => openExplore(cta)));
+  host.querySelectorAll('[data-elevator-explore-close]').forEach((button) => {
+    button.addEventListener('click', () => closeExplore());
+  });
 
   exploreProgressControl.addEventListener('pointerdown', (event) => {
     const rect = exploreProgressControl.getBoundingClientRect();
