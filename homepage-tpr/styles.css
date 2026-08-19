@@ -1,5 +1,5 @@
 @import url("../shared-menu.css?v=20260819-rev-5");
-@import url("../shared-elevator.css?v=20260819-rev-6");
+@import url("../shared-elevator.css?v=20260819-rev-8");
 
 :root {
   --royal: #2c64e8;
@@ -147,9 +147,8 @@ body.elevator-active .site-header::after { content: none; display: none; }
 .world .pill--ghost { min-width: 13.1875rem; }
 
 .people-nav {
-  --people-overlap: 42%;
   width: min(100%, 1512px);
-  margin: clamp(2rem, 3.2vw, 3.4rem) auto calc(min(100%, 1512px) * .7042 * 550 / 2440 * -0.42);
+  margin: clamp(4.5rem, 7.94vw, 7.5rem) auto calc(min(100vw, 1512px) * -44 / 1512);
   overflow: visible;
   padding: 0;
   background: transparent;
@@ -168,16 +167,16 @@ body.elevator-active .site-header::after { content: none; display: none; }
   display: block;
   left: auto;
   top: auto;
-  width: 70.42%;
+  width: 80.62%;
   height: auto;
-  margin: 0 0 0 10.37%;
+  margin: 0 0 0 9.92%;
   max-width: none;
   object-fit: contain;
   object-position: top center;
   background: transparent;
   mix-blend-mode: normal;
 }
-.people-hotspots { position: absolute; left: 10.37%; top: 0; width: 70.42%; height: 100%; display: grid; grid-template-columns: repeat(5, 1fr); }
+.people-hotspots { position: absolute; left: 9.92%; top: 0; width: 80.62%; height: 100%; display: grid; grid-template-columns: repeat(5, 1fr); }
 .people-hotspots a { min-width: 0; min-height: 2.75rem; display: block; border-radius: 2rem; }
 .people-tooltip {
   position: absolute;
@@ -206,7 +205,7 @@ body.elevator-active .site-header::after { content: none; display: none; }
   color: var(--royal);
   background: var(--ice);
   margin-top: 0;
-  padding: calc(min(100vw, 1512px) * .7042 * 550 / 2440 * .42 + 4.75rem) 0 4.5rem;
+  padding: calc(min(100vw, 1512px) * 141 / 1512) 0 calc(min(100vw, 1512px) * 160 / 1512);
 }
 .rooms-intro-grid {
   display: grid;
@@ -222,11 +221,10 @@ body.elevator-active .site-header::after { content: none; display: none; }
   text-transform: uppercase;
 }
 .rooms-intro p {
-  max-width: 34rem;
+  max-width: 39.75rem;
   margin: 0 0 0 auto;
-  font-size: clamp(1.15rem, 1.7vw, 1.5rem);
-  line-height: 1.05;
-  letter-spacing: -.02em;
+  font: 400 clamp(1.35rem, 2.12vw, 2rem)/1.05 var(--body);
+  letter-spacing: -.025em;
 }
 .room-tabs { position: relative; z-index: 3; display: flex; gap: .35rem; overflow-x: auto; padding: 1rem var(--page-x) 1.25rem; scrollbar-width: none; }
 .room-tabs::-webkit-scrollbar { display: none; }
@@ -270,7 +268,18 @@ body.elevator-active .site-header::after { content: none; display: none; }
 
 .membership { position: relative; overflow: hidden; color: var(--white); background: var(--royal); padding: clamp(6rem, 7vw, 6.5rem) 0; }
 .membership h2 { margin-bottom: clamp(3.5rem, 6vw, 6rem); }
-.membership-orbit { position: absolute; z-index: 0; width: 38vw; height: 38vw; right: -14vw; top: -18vw; border: 7vw solid var(--yellow); border-radius: 50%; }
+.membership-orbit {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  top: -18%;
+  right: -32%;
+  width: min(108vw, 52rem);
+  height: auto;
+  overflow: visible;
+  color: var(--yellow);
+  transform: scaleX(-1);
+}
 .membership .section-shell { position: relative; z-index: 1; }
 .membership-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 4rem); padding-inline: clamp(0rem, 4vw, 5rem); }
 .membership-card {
@@ -316,15 +325,26 @@ body.elevator-active .site-header::after { content: none; display: none; }
 .partner-track:hover { animation-play-state: paused; }
 @keyframes partner-marquee { to { transform: translateX(calc(-50% - 1rem)); } }
 
-.world { position: relative; height: 100vh; height: 100svh; min-height: 0; overflow: hidden; padding-top: clamp(5rem, 8vw, 8rem); }
+.world { position: relative; min-height: 100svh; overflow: visible; padding-top: clamp(5rem, 8vw, 8rem); }
 .world-copy { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; position: relative; z-index: 2; }
 .world-copy .body-copy { max-width: 42rem; }
-.phones { position: absolute; inset: auto 6vw -32rem; height: 64rem; display: flex; justify-content: center; align-items: flex-start; gap: clamp(2rem, 8vw, 10rem); }
-.phone-mockup { position: relative; width: min(26vw, 25rem); aspect-ratio: 1151 / 3011; filter: drop-shadow(0 1.5rem 2rem rgb(0 0 0 / .25)); }
-.phone-mockup--booking { margin-top: 8rem; }
+.phones {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(1.25rem, 4vw, 4.5rem);
+  height: min(78vw, 52rem);
+  margin: clamp(1.5rem, 3vw, 3rem) auto -18rem;
+  overflow: visible;
+  pointer-events: none;
+}
+.phone-mockup { position: relative; width: min(28vw, 22.5rem); filter: drop-shadow(0 1.5rem 2rem rgb(0 0 0 / .25)); }
+.phone-mockup--booking { margin-top: 7rem; }
 .phone-mockup img { width: 100%; height: auto; max-width: none; }
 
-.site-footer { display: grid; grid-template-columns: minmax(14rem, .95fr) 1.05fr; gap: 5rem; align-items: start; padding: clamp(4rem, 7vw, 7rem) var(--page-x) 2rem; color: var(--royal); background: var(--white); }
+.site-footer { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(14rem, .95fr) 1.05fr; gap: 5rem; align-items: start; padding: clamp(4rem, 7vw, 7rem) var(--page-x) 2rem; color: var(--royal); background: var(--white); }
 .footer-logo { align-self: start; width: min(32.01vw, 30.25rem); }
 .footer-logo img { display: block; width: 100%; height: auto; object-fit: contain; object-position: left top; mix-blend-mode: multiply; }
 .footer-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
@@ -348,14 +368,7 @@ body.elevator-active .site-header::after { content: none; display: none; }
 .js .reveal { opacity: 0; transform: translateY(2rem); transition: opacity 700ms ease, transform 700ms cubic-bezier(.2,.78,.25,1); }
 .js .reveal.is-visible { opacity: 1; transform: none; }
 .js .phones.reveal { opacity: 1; transform: none; }
-.js .phones .phone-mockup {
-  opacity: 0;
-  transform: translateY(clamp(12rem, 34vh, 24rem));
-  transition: opacity 650ms ease, transform 1100ms cubic-bezier(.16,.82,.22,1);
-  will-change: transform, opacity;
-}
-.js .phones .phone-mockup--booking { transition-delay: 140ms; }
-.js .phones.is-visible .phone-mockup { opacity: 1; transform: translateY(0); }
+.js .phones .phone-mockup { opacity: 1; transform: none; }
 
 @media (max-width: 1024px), (orientation: portrait) {
   :root { --header-h: 5.25rem; }
@@ -406,12 +419,13 @@ body.elevator-active .site-header::after { content: none; display: none; }
   .room-panel { padding-block: 4rem 6rem; }
   .events-copy { padding-block: 7rem; }
   .events-visual { min-height: 0; }
+  .membership-orbit { top: -14%; right: -40%; width: min(124vw, 42rem); }
   .membership-grid { grid-template-columns: 1fr; max-width: 47rem; margin-inline: auto; }
   .membership-card { min-height: 0; }
   .torn-photo { height: min(48vw, 18rem); }
-  .world { height: 100svh; min-height: 0; }
-  .phones { inset-inline: 0; bottom: -27rem; height: 60rem; }
-  .phone-mockup { width: min(42vw, 22rem); }
+  .world { height: auto; min-height: 0; overflow: visible; }
+  .phones { height: min(92vw, 44rem); margin-bottom: -14rem; }
+  .phone-mockup { width: min(38vw, 18rem); }
   .site-footer { grid-template-columns: 1fr; }
   .footer-logo { width: min(62vw, 30.25rem); }
   .footer-columns a { min-height: 2.1rem; display: flex; align-items: center; line-height: 1.1; }
@@ -445,10 +459,10 @@ body.elevator-active .site-header::after { content: none; display: none; }
   .button-row .pill, .pill--room { min-width: 0; }
   .people-nav { width: 100%; margin-top: 4rem; overflow: visible; padding: 0; }
   .people-canvas { width: 100%; min-width: 0; }
-  .people-canvas > img { width: 92%; margin-left: 4%; height: auto; }
-  .people-hotspots { left: 4%; width: 92%; }
+  .people-canvas > img { width: 80.62%; margin-left: 9.92%; height: auto; }
+  .people-hotspots { left: 9.92%; width: 80.62%; }
   .rooms-intro { min-height: 0; }
-  .rooms-intro p { font-size: 1.15rem; }
+  .rooms-intro p { font-size: clamp(1.25rem, 4.4vw, 1.75rem); }
   .room-tabs { padding-inline: 1rem; }
   .room-tab { min-height: 2.75rem; }
   .room-visual { min-height: 30rem; }
@@ -460,15 +474,16 @@ body.elevator-active .site-header::after { content: none; display: none; }
   .room-features li { grid-template-columns: 1fr; gap: .35rem; }
   .events-copy { min-height: 32rem; }
   .events-visual { height: 47.22vw; min-height: 11rem; }
+  .membership-orbit { top: -10%; right: -48%; width: min(148vw, 36rem); }
   .membership { padding-block: 6rem; }
   .membership-grid { padding-inline: 0; }
   .membership-card { min-height: 0; }
   .torn-photo { height: 16rem; }
   .membership-card h3 { font-size: 2.1rem; }
   .partner-track { grid-template-columns: repeat(5, 10rem); gap: 1rem; overflow-x: auto; }
-  .world { height: auto; min-height: 0; padding: 5.5rem 0 0; }
+  .world { height: auto; min-height: 0; padding: 5.5rem 0 0; overflow: visible; }
   .world-copy { position: relative; z-index: 3; }
-  .phones { position: relative; inset: auto; height: 40rem; margin-top: 3.5rem; padding-inline: .65rem; gap: .7rem; }
+  .phones { height: min(118vw, 34rem); margin: 2.5rem auto -10rem; padding-inline: .65rem; gap: .7rem; }
   .phone-mockup { width: 44vw; }
   .phone-mockup--booking { margin-top: 4rem; }
   .site-footer { gap: 2rem; padding-top: 3rem; }
