@@ -261,13 +261,7 @@ document.querySelectorAll('.reveal').forEach((element) => {
   else element.classList.add('is-visible');
 });
 
-const eventsImage = document.querySelector('.events-visual > img:first-child');
 const elevatorHost = document.querySelector('#rooms, .tpr-elevator');
-const parallaxPhotos = [
-  ...document.querySelectorAll('.membership-card .torn-photo img, .phone-mockup, .events-visual > img:first-child'),
-];
-const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-let ticking = false;
 
 if (elevatorHost && 'IntersectionObserver' in window) {
   const elevatorWatcher = new IntersectionObserver((entries) => {
@@ -280,33 +274,15 @@ if (elevatorHost && 'IntersectionObserver' in window) {
   elevatorHost.classList.add('is-inview');
 }
 
-function shiftParallax(element, amount, extra = '') {
-  const rect = element.getBoundingClientRect();
-  if (rect.bottom < 0 || rect.top > innerHeight) return;
-  const progress = (innerHeight - rect.top) / (innerHeight + rect.height);
-  element.style.transform = `translate3d(0, ${(progress - 0.5) * amount}%, 0) ${extra}`.trim();
-}
-
-function onScroll() {
+function updatePageOnScroll() {
   siteHeader.classList.toggle('is-scrolled', scrollY > 80);
   updateHeaderVisibility();
-  if (reducedMotion.matches || ticking) return;
-  ticking = true;
-  requestAnimationFrame(() => {
-    parallaxPhotos.forEach((photo) => shiftParallax(photo, -7));
-    ticking = false;
-  });
 }
 
-addEventListener('scroll', onScroll, { passive: true });
+addEventListener('scroll', updatePageOnScroll, { passive: true });
 addEventListener('resize', () => {
   updateHeaderVisibility();
-  onScroll();
+  updatePageOnScroll();
 }, { passive: true });
 mobileHeaderQuery.addEventListener('change', updateHeaderVisibility);
-onScroll();
-reducedMotion.addEventListener('change', (event) => {
-  if (event.matches) {
-    parallaxPhotos.forEach((photo) => { photo.style.transform = 'none'; });
-  }
-});
+updatePageOnScroll();

@@ -1,6 +1,33 @@
 (() => {
   const siteRoot = new URL('.', document.currentScript.src);
   const url = (path) => new URL(path, siteRoot).href;
+  const root = document.documentElement;
+  const scrollLockClasses = ['menu-open', 'dialog-open', 'card-open'];
+
+  function scrollbarGap() {
+    return Math.max(0, innerWidth - root.clientWidth);
+  }
+
+  function isOverflowLocked() {
+    return scrollLockClasses.some((name) => document.body.classList.contains(name));
+  }
+
+  function rememberScrollbarGap() {
+    if (root.classList.contains('is-scroll-locked') || isOverflowLocked()) return;
+    root.style.setProperty('--tpr-scrollbar-gap', `${scrollbarGap()}px`);
+  }
+
+  function syncScrollLock() {
+    const locked = isOverflowLocked();
+    root.classList.toggle('is-scroll-locked', locked);
+    if (!locked) rememberScrollbarGap();
+  }
+
+  rememberScrollbarGap();
+  addEventListener('resize', rememberScrollbarGap);
+  addEventListener('load', rememberScrollbarGap);
+  document.fonts?.ready?.then(rememberScrollbarGap);
+  new MutationObserver(syncScrollLock).observe(document.body, { attributes: true, attributeFilter: ['class'] });
   let cursor = document.querySelector('#tprCursor');
   if (!cursor) {
     document.body.insertAdjacentHTML('beforeend', `
@@ -66,7 +93,10 @@
   }
 
   function setMenu(open, restore = true) {
-    if (open) opener = document.activeElement instanceof HTMLElement ? document.activeElement : openButton;
+    if (open) {
+      rememberScrollbarGap();
+      opener = document.activeElement instanceof HTMLElement ? document.activeElement : openButton;
+    }
     menu.classList.toggle('is-open', open);
     menu.setAttribute('aria-hidden', String(!open));
     openButton.setAttribute('aria-expanded', String(open));

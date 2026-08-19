@@ -141,8 +141,8 @@
   function setCharacter(element, room) {
     const [x, y, width, height] = room.box;
     element.src = asset(room.character);
-    element.style.setProperty('--character-x', `${x}%`);
-    element.style.setProperty('--character-y', `${y}%`);
+    element.style.setProperty('--character-x', `${Math.max(0, x - 1.4)}%`);
+    element.style.setProperty('--character-y', `${Math.max(0, y - 3)}%`);
     element.style.setProperty('--character-width', `${width}%`);
     element.style.setProperty('--character-height', `${height}%`);
   }

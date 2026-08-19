@@ -66,11 +66,55 @@
   --tpr-royal: #2c64e8;
   --tpr-pink: #ff7bff;
   --tpr-white: #fff;
+  --tpr-page-bg: var(--tpr-royal);
   --tpr-display: "PP Rader", "Alte Haas Grotesk", Arial, sans-serif;
   --tpr-body: "Alte Haas Grotesk", Arial, sans-serif;
 }
 
-body.menu-open { overflow: hidden; }
+html {
+  background-color: var(--tpr-page-bg);
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+html:has(body.branded-route--eventi) { --tpr-page-bg: #ff7bff; }
+html:has(body.room-route--coworking) { --tpr-page-bg: #98caff; }
+html:has(body.room-route--reformer) { --tpr-page-bg: #3f9941; }
+html:has(body.room-route--wellness) { --tpr-page-bg: #c2d569; }
+html:has(body.room-route--bar) { --tpr-page-bg: #eb642b; }
+html:has(body.room-route--media) { --tpr-page-bg: #ffc100; }
+
+body.menu-open,
+body.dialog-open,
+body.card-open { overflow: hidden; }
+
+html.is-scroll-locked,
+html.is-scroll-locked body { overflow: hidden; }
+
+html.is-scroll-locked body {
+  padding-right: var(--tpr-scrollbar-gap, 0px);
+}
+
+html.is-scroll-locked .site-header,
+html.is-scroll-locked .menu-overlay {
+  right: var(--tpr-scrollbar-gap, 0px);
+}
+
+html.is-scroll-locked .site-menu__close {
+  right: calc(clamp(1rem, 4vw, 4rem) + var(--tpr-scrollbar-gap, 0px));
+}
+
+html.is-scroll-locked .route-menu,
+html.is-scroll-locked .room-menu,
+html.is-scroll-locked .alt-menu-trigger {
+  margin-right: var(--tpr-scrollbar-gap, 0px);
+}
+
 body.menu-open .route-home,
 body.menu-open .route-menu,
 body.menu-open .room-menu,
@@ -123,6 +167,7 @@ body.menu-open .site-header { visibility: hidden; }
   padding: 0;
   color: var(--tpr-white);
   background-color: var(--tpr-royal);
+  scrollbar-width: none;
   isolation: isolate;
   visibility: hidden;
   opacity: 0;
@@ -133,6 +178,12 @@ body.menu-open .site-header { visibility: hidden; }
   visibility: visible;
   opacity: 1;
   transition-delay: 0s;
+}
+
+.site-menu::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 .site-menu::before {
