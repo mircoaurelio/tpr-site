@@ -84,7 +84,10 @@
         <div class="tpr-elevator__progress" aria-hidden="true"><span></span></div>
         <div class="tpr-elevator__explore" aria-hidden="true">
           <div class="tpr-elevator__explore-track" aria-hidden="true"><img alt="" width="6864" height="1904"></div>
-          <span class="tpr-elevator__explore-bar-title-fix" aria-hidden="true"><img src="${asset('type-bar.png')}" alt=""></span>
+          <div class="tpr-elevator__explore-copy" aria-hidden="true">
+            <h2>${roomTitle(rooms[active])}</h2>
+            ${copyParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join('')}
+          </div>
           <div class="tpr-elevator__explore-cards"></div>
           <div class="tpr-elevator__explore-progress" role="scrollbar" tabindex="0" aria-label="Scorri orizzontalmente la stanza" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
         </div>
@@ -103,7 +106,8 @@
   const status = host.querySelector('#elevatorStatus');
   const exploreLayer = host.querySelector('.tpr-elevator__explore');
   const exploreTrackImage = host.querySelector('.tpr-elevator__explore-track img');
-  const exploreBarTitleFix = host.querySelector('.tpr-elevator__explore-bar-title-fix');
+  const exploreCopy = host.querySelector('.tpr-elevator__explore-copy');
+  const exploreCopyTitle = exploreCopy.querySelector('h2');
   const exploreCards = host.querySelector('.tpr-elevator__explore-cards');
   const exploreProgressControl = host.querySelector('.tpr-elevator__explore-progress');
   const ROOM_SCROLL_FACTOR = 1.35;
@@ -194,6 +198,7 @@
   function renderExploreCards(room) {
     exploreCards.innerHTML = room.cards.map(([cardTitle, cardCopy], index) => `
       <button class="tpr-elevator__explore-card" type="button" data-card-index="${index}" aria-expanded="false" aria-label="Apri la card ${cardTitle}">
+        <span class="tpr-elevator__card-front" aria-hidden="true"><strong>${cardTitle}</strong><span class="tpr-elevator__card-arrow"></span></span>
         <span class="sr-only">Apri la card ${cardTitle}</span>
         <span class="tpr-elevator__card-back" aria-hidden="true">
           <strong>Cosa si fa?</strong>
@@ -217,7 +222,7 @@
   function setExploreRoom(room) {
     const source = asset(room.routeArt);
     exploreTrackImage.src = source;
-    exploreBarTitleFix.hidden = room.key !== 'bar';
+    if (exploreCopyTitle) exploreCopyTitle.innerHTML = roomTitle(room);
     renderExploreCards(room);
   }
 
@@ -252,10 +257,12 @@
       card.style.width = `${.166 * geometry.width}px`;
       card.style.height = `${.47 * geometry.height}px`;
     });
-    exploreBarTitleFix.style.left = `${(.232 * geometry.width) - travel}px`;
-    exploreBarTitleFix.style.top = `${.145 * geometry.height}px`;
-    exploreBarTitleFix.style.width = `${.18 * geometry.width}px`;
-    exploreBarTitleFix.style.height = `${.21 * geometry.height}px`;
+    if (exploreCopy) {
+      exploreCopy.style.left = `${(.232 * geometry.width) - travel}px`;
+      exploreCopy.style.top = `${.277 * geometry.height}px`;
+      exploreCopy.style.width = `${.185 * geometry.width}px`;
+      exploreCopy.style.height = `${.445 * geometry.height}px`;
+    }
   }
 
   function scrollExploreTo(progress, behavior = 'auto') {

@@ -435,16 +435,14 @@ a { color: inherit; }
     line-height: normal;
   }
   .mobile-brand-membership__orbit { position: absolute; top: -12rem; right: -19rem; width: 34rem; height: 34rem; border: 6rem solid var(--yellow); border-radius: 50%; }
-  .mobile-brand-membership > h2 { position: relative; z-index: 1; margin: 0 0 3.5rem; }
-  .mobile-brand-membership > h2 img { display: block; width: 100%; height: auto; }
+  .mobile-brand-membership > h2 { position: relative; z-index: 1; margin: 0 0 3.5rem; font: 700 clamp(2.8rem, 11vw, 4.4rem)/.9 "PP Rader", "Alte Haas Grotesk", Arial, sans-serif; letter-spacing: -.05em; text-transform: uppercase; }
+  .mobile-brand-membership__card h3 { margin: 0; font: 600 clamp(2rem, 8vw, 3.4rem)/.9 "PP Rader", "Alte Haas Grotesk", Arial, sans-serif; letter-spacing: -.05em; text-transform: uppercase; }
   .mobile-brand-membership__grid { position: relative; z-index: 1; display: grid; gap: 1.25rem; }
   .mobile-brand-membership__card { display: flex; min-height: 36rem; flex-direction: column; padding: 1rem 1rem 1.35rem; color: var(--royal); background: var(--white); }
   .mobile-brand-membership__card--yellow { background: var(--yellow); }
   .mobile-brand-membership__photo { height: 20rem; overflow: hidden; clip-path: polygon(0 2%, 5% 0, 10% 2%, 15% 0, 20% 2%, 25% 0, 30% 2%, 35% 0, 40% 2%, 45% 0, 50% 2%, 55% 0, 60% 2%, 65% 0, 70% 2%, 75% 0, 80% 2%, 85% 0, 90% 2%, 95% 0, 100% 2%, 99% 98%, 94% 100%, 89% 98%, 84% 100%, 79% 98%, 74% 100%, 69% 98%, 64% 100%, 59% 98%, 54% 100%, 49% 98%, 44% 100%, 39% 98%, 34% 100%, 29% 98%, 24% 100%, 19% 98%, 14% 100%, 9% 98%, 4% 100%, 0 98%); }
   .mobile-brand-membership__photo img { width: 100%; height: 100%; object-fit: cover; }
   .mobile-brand-membership__eyebrow { margin: 1.25rem 0 .55rem !important; font-size: .75rem !important; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-  .mobile-brand-membership__card h3 { margin: 0; }
-  .mobile-brand-membership__card h3 img { display: block; width: 100%; height: auto; }
   .mobile-brand-membership__card > p:not(.mobile-brand-membership__eyebrow) { margin: 1rem 0 2rem; font-size: 1rem; line-height: 1.12; }
   .mobile-brand-membership__card > a { min-height: 44px; display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: .8rem; color: inherit; border-top: 1px solid currentColor; font-size: .82rem; font-weight: 800; text-decoration: none; text-transform: uppercase; }
 

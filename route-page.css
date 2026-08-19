@@ -204,16 +204,66 @@ a { font: inherit; }
   transform: translateX(calc(-1 * var(--room-travel, 0vw)));
   will-change: transform;
 }
-.room-title-correction {
+.room-explore-copy {
   position: absolute;
   z-index: 5;
-  display: grid;
-  place-items: center;
-  padding: 1.5%;
-  background: #eb642b;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: var(--room-page-ink);
   pointer-events: none;
 }
-.room-title-correction img { display: block; width: 100%; height: auto; }
+.room-explore-copy h2 {
+  display: flex;
+  align-items: flex-start;
+  gap: .2em;
+  margin: 0 0 24px;
+  font: 700 clamp(2.6rem, 5.29vw, 5rem)/1 "PP Rader", "Alte Haas Grotesk", Arial, sans-serif;
+  letter-spacing: -.04em;
+  text-transform: uppercase;
+}
+.room-explore-copy h2 small {
+  font-size: .645em;
+  font-weight: 400;
+  line-height: 1;
+}
+.room-explore-copy p {
+  margin: 0;
+  font: 400 clamp(.95rem, 1.59vw, 1.5rem)/1 "Alte Haas Grotesk", Arial, sans-serif;
+}
+.room-card-front {
+  position: absolute;
+  z-index: 1;
+  right: 6%;
+  bottom: 5%;
+  left: 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  color: var(--room-card-accent);
+  font: 700 clamp(.85rem, 1.55vw, 1.85rem)/1 "PP Rader", "Alte Haas Grotesk", Arial, sans-serif;
+  letter-spacing: -.04em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.room-card-hit.is-flipped .room-card-front { opacity: 0; }
+.room-card-front__arrow {
+  position: relative;
+  width: clamp(1.6rem, 2.4vw, 2.8rem);
+  height: clamp(1.6rem, 2.4vw, 2.8rem);
+  flex: 0 0 auto;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+.room-card-front__arrow::after {
+  content: "";
+  position: absolute;
+  inset: 32%;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+}
 .room-action,
 .room-card-hit {
   position: absolute;
@@ -382,12 +432,38 @@ a { font: inherit; }
 }
 .room-sticky.is-exploring .room-fixed-info { opacity: 1; pointer-events: auto; transform: translateX(0); }
 .room-fixed-info__kicker { margin: 0 0 .8rem; font-size: clamp(.58rem, .72vw, .75rem); font-weight: 900; letter-spacing: .1em; }
-.room-fixed-info h1 { margin: 0 0 .85rem; display: flex; align-items: baseline; gap: .2em; font-size: clamp(1.65rem, 2.8vw, 3rem); line-height: .86; letter-spacing: -.06em; text-transform: uppercase; white-space: nowrap; }
-.room-fixed-info h1 small { font-size: .42em; letter-spacing: -.03em; }
-.room-fixed-info > p:not(.room-fixed-info__kicker) { margin: 0; font-size: clamp(.72rem, .95vw, 1rem); line-height: 1.22; }
-.room-fixed-info > div { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1rem; }
+.room-fixed-info h1 { margin: 0 0 1.15rem; display: flex; align-items: flex-start; gap: .2em; font: 700 clamp(2.6rem, 5.29vw, 5rem)/1 "PP Rader", "Alte Haas Grotesk", Arial, sans-serif; letter-spacing: -.04em; text-transform: uppercase; white-space: nowrap; }
+.room-fixed-info h1 small { font-size: .645em; font-weight: 400; line-height: 1; letter-spacing: -.02em; }
+.room-fixed-info > p:not(.room-fixed-info__kicker) { margin: 0; font-size: clamp(.95rem, 1.59vw, 1.5rem); line-height: 1; letter-spacing: 0; }
+.room-fixed-info > div { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 32px; }
 .room-fixed-info button,
-.room-fixed-info a { min-height: 36px; display: inline-flex; align-items: center; padding: .5rem .85rem; color: var(--room-page-bg); background: var(--room-page-ink); border: 0; border-radius: 999px; font-size: clamp(.68rem, .8vw, .85rem); font-weight: 800; text-decoration: none; cursor: pointer; }
+.room-fixed-info a {
+  --jagged: polygon(0 .28rem, 2% .08rem, 5% .2rem, 8% .04rem, 11% .17rem, 14% 0, 18% .16rem, 22% .04rem, 26% .18rem, 30% .02rem, 34% .16rem, 39% .03rem, 44% .17rem, 49% .04rem, 54% .18rem, 59% .02rem, 64% .17rem, 69% .04rem, 74% .18rem, 79% .03rem, 84% .16rem, 89% .04rem, 94% .17rem, 100% .06rem, calc(100% - .18rem) 18%, 100% 36%, calc(100% - .12rem) 55%, 100% 72%, calc(100% - .18rem) 100%, 94% calc(100% - .14rem), 89% 100%, 84% calc(100% - .16rem), 79% calc(100% - .03rem), 74% calc(100% - .17rem), 69% 100%, 64% calc(100% - .15rem), 59% calc(100% - .02rem), 54% calc(100% - .18rem), 49% 100%, 44% calc(100% - .16rem), 39% calc(100% - .03rem), 34% calc(100% - .17rem), 29% 100%, 24% calc(100% - .15rem), 19% calc(100% - .03rem), 14% calc(100% - .17rem), 9% 100%, 4% calc(100% - .14rem), 0 calc(100% - .05rem), .14rem 79%, 0 61%, .15rem 43%, 0 24%);
+  position: relative;
+  isolation: isolate;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 64px;
+  color: var(--room-page-bg);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+.room-fixed-info button::before,
+.room-fixed-info a::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: var(--room-page-ink);
+  clip-path: var(--jagged);
+}
 
 .room-menu {
   position: fixed;

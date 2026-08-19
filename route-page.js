@@ -103,9 +103,9 @@ function setRoomProgress(progress) {
 
   if (roomTitleFix) {
     roomTitleFix.style.left = `${(.232 * canvasRect.width) - travel}px`;
-    roomTitleFix.style.top = `${.145 * canvasRect.height}px`;
-    roomTitleFix.style.width = `${.18 * canvasRect.width}px`;
-    roomTitleFix.style.height = `${.21 * canvasRect.height}px`;
+    roomTitleFix.style.top = `${.277 * canvasRect.height}px`;
+    roomTitleFix.style.width = `${.185 * canvasRect.width}px`;
+    roomTitleFix.style.height = `${.445 * canvasRect.height}px`;
   }
 
   if (trackExploreButton) {
@@ -194,6 +194,10 @@ if (roomScene && location.hash === '#explore') {
 
 document.querySelectorAll('[data-card-title]').forEach((button) => {
   const cardName = button.dataset.cardTitle || 'stanza';
+  const front = document.createElement('span');
+  front.className = 'room-card-front';
+  front.setAttribute('aria-hidden', 'true');
+  front.innerHTML = `<strong>${cardName}</strong><span class="room-card-front__arrow"></span>`;
   const back = document.createElement('span');
   back.className = 'room-card-back';
   back.setAttribute('aria-hidden', 'true');
@@ -202,6 +206,7 @@ document.querySelectorAll('[data-card-title]').forEach((button) => {
     <span class="room-card-back__close" aria-hidden="true"></span>
     <span class="room-card-back__copy">Il nostro obiettivo quotidiano è ispirare le persone a esprimere sé stesse, riscoprire il valore dell'umanità e vivere in modo più presente, creativo e vitale.<br><br>Il nostro obiettivo quotidiano è ispirare le persone a esprimere sé stesse, riscoprire il valore dell'umanità e vivere in modo più presente, creativo e vitale.</span>
     <span class="room-card-back__cta">Diventa Membro</span>`;
+  button.prepend(front);
   button.append(back);
   button.setAttribute('aria-expanded', 'false');
   button.setAttribute('aria-label', `Apri la card ${cardName}`);

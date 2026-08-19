@@ -16,15 +16,8 @@ function updateHeaderVisibility() {
 siteHeader.classList.toggle('is-scrolled', scrollY > 80);
 updateHeaderVisibility();
 
-window.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && videoDialog.open) {
-    event.preventDefault();
-    closeVideoDialog();
-  }
-});
-
 function closeVideoDialog() {
-  if (!videoDialog.open) return;
+  if (!videoDialog?.open) return;
   videoDialog.close();
   videoOpener?.focus({ preventScroll: true });
 }
@@ -34,14 +27,10 @@ videoTriggers.forEach((trigger) => trigger.addEventListener('click', () => {
   body.classList.add('dialog-open');
   videoDialog.showModal();
 }));
-closeVideo.addEventListener('click', closeVideoDialog);
+closeVideo?.addEventListener('click', closeVideoDialog);
 videoDialog.addEventListener('close', () => body.classList.remove('dialog-open'));
-videoDialog.addEventListener('cancel', (event) => {
-  event.preventDefault();
-  closeVideoDialog();
-});
 videoDialog.addEventListener('click', (event) => {
-  if (event.target === videoDialog) closeVideoDialog();
+  if (event.target === videoDialog || event.target.closest('.video-placeholder')) closeVideoDialog();
 });
 
 // The shared elevator owns the room state, sticky scroll and icon navigation.
@@ -239,13 +228,9 @@ addEventListener('hashchange', () => {
 
 const peopleCanvas = document.querySelector('.people-canvas');
 const peopleTooltip = document.querySelector('#peopleTooltip');
-const peopleTooltipImage = document.querySelector('#peopleTooltipImage');
 document.querySelectorAll('.people-hotspots [data-room-link]').forEach((hotspot) => {
   hotspot.addEventListener('pointerenter', () => {
-    const state = hotspot.dataset.hoverState;
-    const stateNumber = state.replace('hover', '');
-    peopleTooltipImage.src = `../assets/hover-label-${stateNumber}.svg`;
-    peopleTooltip.dataset.hoverState = state;
+    peopleTooltip.textContent = hotspot.dataset.hoverLabel || hotspot.getAttribute('aria-label') || '';
     peopleTooltip.classList.add('is-visible');
   });
   hotspot.addEventListener('pointermove', (event) => {

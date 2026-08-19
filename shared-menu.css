@@ -80,23 +80,32 @@ body.menu-open .site-header { visibility: hidden; }
 @media (pointer: fine) {
   html.has-tpr-cursor,
   html.has-tpr-cursor * { cursor: none !important; }
+  html.has-tpr-cursor:has(dialog[open]),
+  html.has-tpr-cursor:has(dialog[open]) *,
+  html.has-tpr-cursor body.dialog-open,
+  html.has-tpr-cursor body.dialog-open * { cursor: auto !important; }
 }
 
 .tpr-cursor {
   position: fixed;
-  z-index: 10000;
+  z-index: 20;
   top: 0;
   left: 0;
   width: 4.5rem;
   height: 4.5rem;
   display: grid;
   place-items: center;
-  pointer-events: none;
+  pointer-events: none !important;
   opacity: 0;
   transform: translate3d(-10rem, -10rem, 0) translate(-50%, -50%);
   mix-blend-mode: difference;
   will-change: transform;
   transition: opacity 100ms linear;
+}
+html:has(dialog[open]) .tpr-cursor,
+body.dialog-open .tpr-cursor {
+  display: none !important;
+  mix-blend-mode: normal;
 }
 .tpr-cursor.is-visible { opacity: 1; }
 .tpr-cursor__spark { width: 2.8rem; height: 2.8rem; display: block; background: #fff; clip-path: polygon(50% 0, 61% 30%, 100% 21%, 72% 49%, 100% 79%, 61% 69%, 50% 100%, 40% 69%, 0 79%, 29% 49%, 0 21%, 40% 30%); }

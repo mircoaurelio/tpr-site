@@ -57,27 +57,26 @@
   background: var(--route-surface);
 }
 
-.branded-route .route-blob,
 .branded-route .mobile-route-content::before {
-  content: "";
+  content: none;
+}
+
+.branded-route .route-blob {
   position: absolute;
   z-index: 0;
   pointer-events: none;
-  top: -6%;
-  left: -32%;
-  width: min(118vw, 46rem);
-  aspect-ratio: 760 / 620;
-  background-color: var(--route-accent);
-  -webkit-mask: url("assets/tpr-blob.svg") no-repeat left top / 100% 100%;
-          mask: url("assets/tpr-blob.svg") no-repeat left top / 100% 100%;
+  top: -8%;
+  left: -34%;
+  width: min(128vw, 54rem);
+  height: auto;
+  color: var(--route-accent);
+  overflow: visible;
 }
 
-.branded-route--eventi .route-blob,
-.branded-route--eventi .mobile-route-content::before {
-  top: -10%;
-  left: -38%;
-  width: min(130vw, 52rem);
-  opacity: .95;
+.branded-route--eventi .route-blob {
+  top: -14%;
+  left: -42%;
+  width: min(148vw, 68rem);
 }
 
 .branded-route .mobile-route-kicker,
@@ -441,11 +440,16 @@
     padding: 10.5rem 5.29vw 5.5rem;
   }
 
-  .branded-route .route-blob,
-  .branded-route .mobile-route-content::before {
-    top: -8%;
-    left: -18%;
-    width: min(72vw, 58rem);
+  .branded-route .route-blob {
+    top: -10%;
+    left: -22%;
+    width: min(82vw, 64rem);
+  }
+
+  .branded-route--eventi .route-blob {
+    top: -16%;
+    left: -28%;
+    width: min(92vw, 72rem);
   }
 
   .branded-route .route-hero-copy {
