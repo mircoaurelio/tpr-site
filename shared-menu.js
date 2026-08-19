@@ -1,6 +1,29 @@
 (() => {
   const siteRoot = new URL('.', document.currentScript.src);
   const url = (path) => new URL(path, siteRoot).href;
+  let cursor = document.querySelector('#tprCursor');
+  if (!cursor) {
+    document.body.insertAdjacentHTML('beforeend', `
+      <div class="tpr-cursor" id="tprCursor" aria-hidden="true">
+        <span class="tpr-cursor__spark"></span>
+        <span class="tpr-cursor__eye"></span>
+      </div>`);
+    cursor = document.querySelector('#tprCursor');
+  }
+  const finePointer = matchMedia('(pointer: fine)');
+  if (finePointer.matches && cursor && !cursor.dataset.cursorReady) {
+    cursor.dataset.cursorReady = 'true';
+    document.documentElement.classList.add('has-tpr-cursor');
+    const actionSelector = 'a, button, input, select, textarea, summary, [role="button"], [data-room-link]';
+    addEventListener('pointermove', (event) => {
+      cursor.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
+      cursor.classList.add('is-visible');
+      const action = event.target instanceof Element && event.target.closest(actionSelector);
+      cursor.classList.toggle('is-action', Boolean(action));
+    }, { passive: true });
+    document.documentElement.addEventListener('pointerleave', () => cursor.classList.remove('is-visible'));
+    addEventListener('blur', () => cursor.classList.remove('is-visible'));
+  }
   let menu = document.querySelector('#siteMenu');
   const openButton = document.querySelector('[data-open-menu], #openMenu');
   if (!openButton) return;
@@ -9,12 +32,12 @@
     document.body.insertAdjacentHTML('beforeend', `
       <aside class="site-menu" id="siteMenu" role="dialog" aria-modal="true" aria-label="Menu principale" aria-hidden="true">
         <a class="site-menu__brand" href="${url('homepage-tpr/')}" aria-label="The People's Room, ricarica la home"><img src="${url('assets/tpr-logo-menu.svg')}" alt=""></a>
-        <button class="site-menu__close" data-close-menu type="button" aria-label="Chiudi il menu">×</button>
+        <button class="site-menu__close" data-close-menu type="button" aria-label="Chiudi il menu"></button>
         <nav class="site-menu__nav" aria-label="Navigazione principale">
           <a class="site-menu__primary" href="${url('about/')}">About</a>
           <h2 class="site-menu__heading"><a href="${url('homepage-tpr/#rooms')}">TPR Rooms</a></h2>
           <div class="site-menu__rooms" aria-label="Le stanze">
-            ${[['coworking','Coworking'],['bar','Bar'],['media','Media'],['reformer','Reformer'],['wellness','Wellness']].map(([key, label]) => `<a class="site-menu__room" href="${url(`homepage-tpr/#${key}`)}" aria-label="${label} Room"><img src="${url(`assets/elevator-icon-${key}-off.svg`)}" alt=""></a>`).join('')}
+            ${[['coworking','Coworking'],['bar','Bar'],['media','Media'],['reformer','Reformer'],['wellness','Wellness']].map(([key, label]) => `<a class="site-menu__room" href="${url(`homepage-tpr/#${key}`)}" data-room-link="${key}" aria-label="${label} Room"><img src="${url(`assets/elevator-icon-${key}-off.svg`)}" alt=""></a>`).join('')}
           </div>
           <h2 class="site-menu__heading"><a href="${url('homepage-tpr/#membership')}">Membership</a></h2>
           <div class="site-menu__sub"><a href="${url('membership/aziende-startup/')}">Aziende &amp; Startup</a><a href="${url('membership/privati-freelancer/')}">Privati &amp; Freelancer</a></div>

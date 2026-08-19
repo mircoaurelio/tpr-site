@@ -132,6 +132,24 @@
 }
 .tpr-elevator[data-active-room="reformer"] .tpr-elevator__reformer-book-mask { display: block; }
 
+.tpr-elevator__bar-title-fix {
+  position: absolute;
+  z-index: 3;
+  top: 17.6%;
+  left: 52.4%;
+  width: 42%;
+  height: 22%;
+  display: none;
+  align-items: flex-start;
+  box-sizing: border-box;
+  padding-top: 1.5%;
+  padding-right: 17%;
+  background: var(--room-bg);
+  pointer-events: none;
+}
+.tpr-elevator[data-active-room="bar"] .tpr-elevator__bar-title-fix { display: flex; }
+.tpr-elevator__bar-title-fix img { width: 100%; height: auto; }
+
 .tpr-elevator__nav {
   position: absolute;
   z-index: 5;
@@ -195,16 +213,13 @@
 .tpr-elevator.is-exploring .tpr-elevator__reformer-book-mask,
 .tpr-elevator.is-exploring .tpr-elevator__nav { opacity: 0; pointer-events: none; }
 
-.tpr-elevator__explore-track,
-.tpr-elevator__explore-fixed {
+.tpr-elevator__explore-track {
   position: absolute;
   inset-block: 0;
   overflow: hidden;
 }
 .tpr-elevator__explore-track { z-index: 1; left: 0; right: 0; }
-.tpr-elevator__explore-fixed { z-index: 2; left: 0; width: 26vw; pointer-events: none; }
-.tpr-elevator__explore-track img,
-.tpr-elevator__explore-fixed img {
+.tpr-elevator__explore-track img {
   position: absolute;
   top: 0;
   left: 0;
@@ -218,47 +233,17 @@
   transform: translateX(calc(-1 * var(--explore-travel, 0px)));
   will-change: transform;
 }
-.tpr-elevator__explore-info {
+.tpr-elevator__explore-bar-title-fix {
   position: absolute;
   z-index: 3;
-  top: 0;
-  bottom: 0;
-  left: 26vw;
-  display: flex;
-  width: 26vw;
-  flex-direction: column;
-  justify-content: center;
-  padding: clamp(1rem, 2.25vw, 2.25rem);
-  color: var(--explore-ink);
-  background: var(--room-bg);
-  opacity: 0;
+  display: grid;
+  place-items: center;
+  padding: 1.5%;
+  background: #eb642b;
   pointer-events: none;
-  transform: translateX(-1.5rem);
-  transition: opacity 220ms ease, transform 320ms ease;
 }
-.tpr-elevator.has-explore-details .tpr-elevator__explore-info { opacity: 1; pointer-events: auto; transform: translateX(0); }
-.tpr-elevator__explore-kicker { margin: 0 0 .8rem; font-size: clamp(.58rem, .72vw, .75rem); font-weight: 900; letter-spacing: .1em; }
-.tpr-elevator__explore-info h2 { margin: 0 0 .85rem; display: flex; align-items: baseline; gap: .2em; font-size: clamp(1.65rem, 2.8vw, 3rem); line-height: .86; letter-spacing: -.06em; text-transform: uppercase; white-space: nowrap; }
-.tpr-elevator__explore-info h2 small { font-size: .42em; letter-spacing: -.03em; }
-.tpr-elevator__explore-description { margin: 0; font-size: clamp(.72rem, .95vw, 1rem); line-height: 1.22; }
-.tpr-elevator__explore-actions { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1rem; }
-.tpr-elevator__explore-actions[hidden] { display: none; }
-.tpr-elevator__explore-actions button,
-.tpr-elevator__explore-actions a {
-  min-height: 36px;
-  display: inline-flex;
-  align-items: center;
-  padding: .5rem .85rem;
-  color: var(--room-bg);
-  background: var(--explore-ink);
-  border: 0;
-  border-radius: 999px;
-  font-size: clamp(.68rem, .8vw, .85rem);
-  font-weight: 800;
-  text-decoration: none;
-  cursor: pointer;
-}
-.tpr-elevator__explore-actions [hidden] { display: none; }
+.tpr-elevator__explore-bar-title-fix[hidden] { display: none; }
+.tpr-elevator__explore-bar-title-fix img { width: 100%; height: auto; }
 
 .tpr-elevator__explore-card {
   position: absolute;
@@ -409,6 +394,7 @@
     transform: rotate(-45deg);
   }
   .tpr-elevator__cta { display: none; }
+  .tpr-elevator__bar-title-fix { display: none !important; }
   .tpr-elevator__nav {
     inset: auto 0 .75rem;
     height: 3.25rem;
@@ -428,27 +414,7 @@
   }
   .tpr-elevator__button img { visibility: visible; }
   .tpr-elevator__progress { display: none; }
-  .tpr-elevator__explore-fixed { display: none; }
   .tpr-elevator__explore-track img { width: auto; height: 100svh; max-width: none; }
-  .tpr-elevator__explore-info {
-    top: 0;
-    right: auto;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    width: min(52vw, 13rem);
-    padding: 5.25rem .75rem 4.25rem;
-    background: var(--room-bg);
-    opacity: 1;
-    pointer-events: auto;
-    transform: none;
-  }
-  .tpr-elevator__explore-kicker { margin-bottom: .5rem; font-size: .52rem; }
-  .tpr-elevator__explore-info h2 { gap: .1em; margin-bottom: .65rem; font-size: clamp(.95rem, 5vw, 1.2rem); white-space: normal; }
-  .tpr-elevator__explore-description { font-size: clamp(.66rem, 2.8vw, .78rem); line-height: 1.18; }
-  .tpr-elevator__explore-actions { gap: .35rem; margin-top: .75rem; }
-  .tpr-elevator__explore-actions button,
-  .tpr-elevator__explore-actions a { min-height: 44px; padding: .45rem .65rem; color: var(--room-accent); background: #fff; font-size: .66rem; pointer-events: auto; }
   .tpr-elevator__explore-progress { bottom: .8rem; }
 }
 

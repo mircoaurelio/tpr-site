@@ -2,12 +2,6 @@ const body = document.body;
 const siteHeader = document.querySelector('#siteHeader');
 const hero = document.querySelector('.hero');
 const mobileHeaderQuery = matchMedia('(max-width: 1024px), (orientation: portrait)');
-const mainContent = document.querySelector('main');
-const siteFooter = document.querySelector('#footer');
-const menu = document.querySelector('#siteMenu');
-const openMenu = document.querySelector('#openMenu');
-const closeMenu = document.querySelector('#closeMenu');
-const menuLinks = [...menu.querySelectorAll('a')];
 const videoDialog = document.querySelector('#videoDialog');
 const videoButton = document.querySelector('#videoButton');
 const videoTriggers = [...document.querySelectorAll('[data-video-trigger]')];
@@ -19,61 +13,13 @@ function updateHeaderVisibility() {
   siteHeader.classList.toggle('is-past-hero', heroIsPast);
 }
 
-menuLinks.forEach((link) => { link.tabIndex = -1; });
 siteHeader.classList.toggle('is-scrolled', scrollY > 80);
 updateHeaderVisibility();
-
-function setMenu(open, restoreFocus = true) {
-  menu.classList.toggle('is-open', open);
-  menu.setAttribute('aria-hidden', String(!open));
-  openMenu.setAttribute('aria-expanded', String(open));
-  body.classList.toggle('menu-open', open);
-  mainContent.inert = open;
-  siteFooter.inert = open;
-  siteHeader.inert = open;
-  menuLinks.forEach((link) => { link.tabIndex = open ? 0 : -1; });
-  if (open) requestAnimationFrame(() => closeMenu.focus({ preventScroll: true }));
-  else if (restoreFocus) openMenu.focus({ preventScroll: true });
-}
-
-openMenu.addEventListener('click', () => setMenu(true));
-closeMenu.addEventListener('click', () => setMenu(false));
-
-menuLinks.forEach((link) => link.addEventListener('click', () => {
-  const target = link.dataset.roomLink
-    ? document.querySelector('#rooms')
-    : (link.hash ? document.querySelector(link.hash) : null);
-  setMenu(false, !target);
-  if (!target) return;
-  requestAnimationFrame(() => {
-    target.setAttribute('tabindex', '-1');
-    target.focus({ preventScroll: true });
-    target.addEventListener('blur', () => target.removeAttribute('tabindex'), { once: true });
-  });
-}));
 
 window.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && videoDialog.open) {
     event.preventDefault();
     closeVideoDialog();
-    return;
-  }
-  if (!menu.classList.contains('is-open')) return;
-  if (event.key === 'Escape') {
-    event.preventDefault();
-    setMenu(false);
-    return;
-  }
-  if (event.key !== 'Tab') return;
-  const focusable = [...menu.querySelectorAll('a[href], button:not([disabled])')].filter((element) => element.tabIndex !== -1);
-  const first = focusable[0];
-  const last = focusable.at(-1);
-  if (event.shiftKey && document.activeElement === first) {
-    event.preventDefault();
-    last.focus();
-  } else if (!event.shiftKey && document.activeElement === last) {
-    event.preventDefault();
-    first.focus();
   }
 });
 
@@ -311,22 +257,6 @@ document.querySelectorAll('.people-hotspots [data-room-link]').forEach((hotspot)
   });
   hotspot.addEventListener('pointerleave', () => peopleTooltip.classList.remove('is-visible'));
 });
-
-const tprCursor = document.querySelector('#tprCursor');
-const finePointer = matchMedia('(pointer: fine)');
-const actionSelector = 'a, button, input, select, textarea, summary, [role="button"], [data-room-link]';
-
-if (finePointer.matches) {
-  document.documentElement.classList.add('has-tpr-cursor');
-  addEventListener('pointermove', (event) => {
-    tprCursor.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
-    tprCursor.classList.add('is-visible');
-    const action = event.target instanceof Element && event.target.closest(actionSelector);
-    tprCursor.classList.toggle('is-action', Boolean(action));
-  }, { passive: true });
-  document.documentElement.addEventListener('pointerleave', () => tprCursor.classList.remove('is-visible'));
-  addEventListener('blur', () => tprCursor.classList.remove('is-visible'));
-}
 
 const revealObserver = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
   entries.forEach((entry) => {

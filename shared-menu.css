@@ -3,9 +3,44 @@
   --tpr-pink: #ff7bff;
   --tpr-white: #fff;
   --tpr-display: "PP Rader", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --tpr-body: "Alte Haas Grotesk", "Helvetica Neue", Arial, sans-serif;
 }
 
 body.menu-open { overflow: hidden; }
+body.menu-open .route-home,
+body.menu-open .route-menu,
+body.menu-open .room-menu,
+body.menu-open .alt-menu-trigger,
+body.menu-open .site-header { visibility: hidden; }
+
+@media (pointer: fine) {
+  html.has-tpr-cursor,
+  html.has-tpr-cursor * { cursor: none !important; }
+}
+
+.tpr-cursor {
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  width: 4.5rem;
+  height: 4.5rem;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(-10rem, -10rem, 0) translate(-50%, -50%);
+  mix-blend-mode: difference;
+  will-change: transform;
+  transition: opacity 100ms linear;
+}
+.tpr-cursor.is-visible { opacity: 1; }
+.tpr-cursor__spark { width: 2.8rem; height: 2.8rem; display: block; background: #fff; clip-path: polygon(50% 0, 61% 30%, 100% 21%, 72% 49%, 100% 79%, 61% 69%, 50% 100%, 40% 69%, 0 79%, 29% 49%, 0 21%, 40% 30%); }
+.tpr-cursor__eye { position: relative; width: 4rem; height: 2.35rem; display: none; background: #fff; border-radius: 52% 48% 52% 48% / 58% 58% 42% 42%; }
+.tpr-cursor__eye::before { content: ""; position: absolute; inset: .55rem 1rem; background: #000; border-radius: 50%; }
+.tpr-cursor__eye::after { content: ""; position: absolute; left: 50%; top: 50%; width: .8rem; height: 1.65rem; background: #fff; border-radius: 50%; transform: translate(-50%, -50%); }
+.tpr-cursor.is-action .tpr-cursor__spark { display: none; }
+.tpr-cursor.is-action .tpr-cursor__eye { display: block; }
 
 .site-menu {
   position: fixed;
@@ -20,7 +55,8 @@ body.menu-open { overflow: hidden; }
   align-items: initial;
   padding: 0;
   color: var(--tpr-white);
-  background: var(--tpr-pink) url("./assets/menu-background-exact.png") center / cover no-repeat;
+  background: var(--tpr-pink);
+  isolation: isolate;
   visibility: hidden;
   opacity: 0;
   transform: translateY(-1.5rem);
@@ -38,21 +74,28 @@ body.menu-open { overflow: hidden; }
 .site-menu::after {
   content: "";
   position: absolute;
+  z-index: 0;
   pointer-events: none;
-  background: var(--tpr-pink);
+  background: var(--tpr-royal);
 }
 
-.site-menu::before { display: none; }
+.site-menu::before {
+  display: block;
+  top: -42vh;
+  left: -76vw;
+  width: 143vw;
+  height: 154vh;
+  border-radius: 50%;
+  transform: rotate(16deg);
+}
 .site-menu::after {
   display: block;
-  z-index: 1;
-  inset: 0;
-  width: auto;
-  height: auto;
-  background: transparent url("./assets/menu-foreground-exact.png") center / cover no-repeat;
-  border: 0;
-  border-radius: 0;
-  transform: none;
+  top: -38vh;
+  right: -23vw;
+  width: 67vw;
+  height: 104vh;
+  border-radius: 52% 48% 62% 38% / 44% 55% 45% 56%;
+  transform: rotate(-17deg);
 }
 
 .site-menu__brand,
@@ -109,6 +152,7 @@ body.menu-open { overflow: hidden; }
   margin: auto;
   padding: 4rem 1rem;
   text-align: center;
+  font-family: var(--tpr-display);
 }
 
 .site-menu .site-menu__primary,
@@ -117,6 +161,7 @@ body.menu-open { overflow: hidden; }
   margin: 0 auto;
   color: inherit;
   font: 600 clamp(2.6rem, 5vw, 4.85rem)/.82 var(--tpr-display);
+  font-stretch: condensed;
   letter-spacing: -.06em;
   text-transform: uppercase;
   text-decoration: none;
@@ -161,8 +206,8 @@ body.menu-open { overflow: hidden; }
 .site-menu[data-focus-origin="pointer"] .site-menu__close:focus-visible { outline: 0; }
 
 @media (max-width: 720px) {
-  .site-menu { background-position: 10% center; }
-  .site-menu::after { background-position: 10% center; }
+  .site-menu::before { top: -30vh; left: -128vw; width: 210vw; height: 145vh; transform: rotate(10deg); }
+  .site-menu::after { top: -20vh; right: -72vw; width: 126vw; height: 92vh; transform: rotate(-12deg); }
   .site-menu a.site-menu__brand { width: 6.2rem; }
   .site-menu .site-menu__nav { gap: .6rem; padding: 5.5rem 1rem 2rem; }
   .site-menu__primary,

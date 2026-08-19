@@ -64,6 +64,13 @@ a { font: inherit; }
 
 .static-route { position: relative; }
 .mobile-route-content { display: none; }
+.contact-placeholder-cover { display: none; }
+
+@media (min-width: 721px) {
+  .contact-placeholder-cover { position: absolute; z-index: 2; display: block; pointer-events: none; }
+  .contact-placeholder-cover--hero { top: 14.05%; left: 52.15%; width: 21.1%; height: 2.9%; background: #2c64e8; }
+  .contact-placeholder-cover--card { top: 51.15%; left: 8.25%; width: 12.55%; height: 2.75%; background: #fff; }
+}
 
 .route-home,
 .route-menu {
@@ -194,6 +201,16 @@ a { font: inherit; }
   transform: translateX(calc(-1 * var(--room-travel, 0vw)));
   will-change: transform;
 }
+.room-title-correction {
+  position: absolute;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  padding: 1.5%;
+  background: #eb642b;
+  pointer-events: none;
+}
+.room-title-correction img { display: block; width: 100%; height: auto; }
 .room-action,
 .room-card-hit {
   position: absolute;

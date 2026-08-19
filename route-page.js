@@ -52,6 +52,7 @@ const roomScene = document.querySelector('[data-room-scene]');
 const roomSticky = document.querySelector('[data-room-sticky]');
 const roomCanvas = roomSticky?.querySelector('.room-track img');
 const roomCards = [...document.querySelectorAll('[data-card-x]')];
+const roomTitleFix = document.querySelector('[data-room-title-fix]');
 const exploreRoomButtons = [...document.querySelectorAll('[data-explore-room], [data-track-explore]')];
 const trackExploreButton = document.querySelector('[data-track-explore]');
 const bookRoomButton = document.querySelector('.room-action--book');
@@ -99,6 +100,13 @@ function setRoomProgress(progress) {
     button.style.width = `${.166 * canvasRect.width}px`;
     button.style.height = `${.47 * canvasRect.height}px`;
   });
+
+  if (roomTitleFix) {
+    roomTitleFix.style.left = `${(.232 * canvasRect.width) - travel}px`;
+    roomTitleFix.style.top = `${.145 * canvasRect.height}px`;
+    roomTitleFix.style.width = `${.18 * canvasRect.width}px`;
+    roomTitleFix.style.height = `${.21 * canvasRect.height}px`;
+  }
 
   if (trackExploreButton) {
     trackExploreButton.style.left = `${(.232 * canvasRect.width) - travel}px`;
@@ -208,5 +216,5 @@ document.querySelectorAll('[data-card-title]').forEach((button) => {
 document.querySelector('[data-contact-form]')?.addEventListener('submit', (event) => {
   event.preventDefault();
   const status = event.currentTarget.querySelector('.mobile-form-status');
-  status.textContent = 'Messaggio pronto. Il recapito finale è ancora da definire nel file Figma.';
+  status.textContent = "Messaggio pronto per l'invio.";
 });

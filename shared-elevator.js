@@ -4,7 +4,6 @@
 
   const base = new URL('.', document.currentScript.src);
   const asset = (file) => new URL(`assets/${file}`, base).href;
-  const contactUrl = new URL('contatti/', base).href;
   const rooms = [
     {
       key: 'coworking', label: 'Coworking', art: 'homepage-room-coworking-clean-2x.webp', routeArt: 'routes/coworking-2x.webp', character: 'character-coworking.png', box: [5.85, 30.83, 8.10, 15.97], title: 'type-coworking.png', icon: 'elevator-icon-coworking.svg', off: 'elevator-icon-coworking-off.svg',
@@ -64,21 +63,14 @@
         </div>
         <button class="tpr-elevator__cta" type="button" data-elevator-explore><span class="sr-only">Esplora ${rooms[active].label} Room</span></button>
         <span class="tpr-elevator__reformer-book-mask" aria-hidden="true"></span>
+        <span class="tpr-elevator__bar-title-fix" aria-hidden="true"><img src="${asset('type-bar.png')}" alt=""></span>
         <nav class="tpr-elevator__nav" aria-label="Ascensore delle stanze">
           ${rooms.map((room, index) => `<button class="tpr-elevator__button" type="button" data-elevator-room="${room.key}" aria-label="Vai a ${room.label} Room" aria-pressed="${index === active}"><img class="icon-off" src="${asset(room.off)}" alt=""><img class="icon-on" src="${asset(room.icon)}" alt=""></button>`).join('')}
         </nav>
         <div class="tpr-elevator__progress" aria-hidden="true"><span></span></div>
         <div class="tpr-elevator__explore" aria-hidden="true">
           <div class="tpr-elevator__explore-track" aria-hidden="true"><img alt="" width="6864" height="1904"></div>
-          <div class="tpr-elevator__explore-fixed" aria-hidden="true"><img alt="" width="6864" height="1904"></div>
-          <aside class="tpr-elevator__explore-info">
-            <p class="tpr-elevator__explore-kicker">THE PEOPLE'S ROOM</p>
-            <h2><span></span> <small>Room</small></h2>
-            <p class="tpr-elevator__explore-description"></p>
-            <div class="tpr-elevator__explore-actions">
-              <a href="${contactUrl}" data-elevator-book>Prenota</a>
-            </div>
-          </aside>
+          <span class="tpr-elevator__explore-bar-title-fix" aria-hidden="true"><img src="${asset('type-bar.png')}" alt=""></span>
           <div class="tpr-elevator__explore-cards"></div>
           <div class="tpr-elevator__explore-progress" role="scrollbar" tabindex="0" aria-label="Scorri orizzontalmente la stanza" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
         </div>
@@ -96,11 +88,7 @@
   const status = host.querySelector('#elevatorStatus');
   const exploreLayer = host.querySelector('.tpr-elevator__explore');
   const exploreTrackImage = host.querySelector('.tpr-elevator__explore-track img');
-  const exploreFixedImage = host.querySelector('.tpr-elevator__explore-fixed img');
-  const exploreHeading = host.querySelector('.tpr-elevator__explore-info h2 span');
-  const exploreDescription = host.querySelector('.tpr-elevator__explore-description');
-  const exploreActions = host.querySelector('.tpr-elevator__explore-actions');
-  const exploreBook = host.querySelector('[data-elevator-book]');
+  const exploreBarTitleFix = host.querySelector('.tpr-elevator__explore-bar-title-fix');
   const exploreCards = host.querySelector('.tpr-elevator__explore-cards');
   const exploreProgressControl = host.querySelector('.tpr-elevator__explore-progress');
   const ROOM_SCROLL_FACTOR = 1.35;
@@ -210,11 +198,7 @@
   function setExploreRoom(room) {
     const source = asset(room.routeArt);
     exploreTrackImage.src = source;
-    exploreFixedImage.src = source;
-    exploreHeading.textContent = room.label;
-    exploreDescription.textContent = room.description;
-    exploreBook.hidden = !room.bookable;
-    exploreActions.hidden = !room.bookable;
+    exploreBarTitleFix.hidden = room.key !== 'bar';
     renderExploreCards(room);
   }
 
@@ -241,7 +225,6 @@
     exploreProgress = bounded;
     exploreLayer.style.setProperty('--explore-travel', `${travel}px`);
     exploreLayer.style.setProperty('--explore-progress', String(bounded));
-    host.classList.toggle('has-explore-details', bounded > .22);
     exploreProgressControl.setAttribute('aria-valuenow', String(Math.round(bounded * 100)));
 
     exploreCards.querySelectorAll('.tpr-elevator__explore-card').forEach((card, index) => {
@@ -250,6 +233,10 @@
       card.style.width = `${.166 * geometry.width}px`;
       card.style.height = `${.47 * geometry.height}px`;
     });
+    exploreBarTitleFix.style.left = `${(.232 * geometry.width) - travel}px`;
+    exploreBarTitleFix.style.top = `${.145 * geometry.height}px`;
+    exploreBarTitleFix.style.width = `${.18 * geometry.width}px`;
+    exploreBarTitleFix.style.height = `${.21 * geometry.height}px`;
   }
 
   function scrollExploreTo(progress, behavior = 'auto') {
@@ -288,7 +275,7 @@
     const opener = host._exploreOpener;
     exploring = false;
     exploreProgress = 0;
-    host.classList.remove('is-exploring', 'is-explore-ready', 'has-explore-details');
+    host.classList.remove('is-exploring', 'is-explore-ready');
     document.body.classList.remove('elevator-exploring');
     exploreLayer.setAttribute('aria-hidden', 'true');
     exploreLayer.style.removeProperty('--explore-travel');
@@ -354,7 +341,8 @@
     const travel = Math.max(0, host.offsetHeight - innerHeight);
     const top = host.getBoundingClientRect().top + scrollY;
     const target = top + travel * (index / (rooms.length - 1));
-    scrollTo({ top: target, behavior: behavior || (matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth') });
+    const requestedBehavior = behavior || (matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
+    scrollTo({ top: target, behavior: requestedBehavior === 'auto' ? 'instant' : requestedBehavior });
   }
 
   buttons.forEach((button, index) => button.addEventListener('click', () => {
@@ -368,8 +356,15 @@
     if (index < 0 || control.closest('.tpr-elevator')) return;
     event.preventDefault();
     if (exploring) closeExplore({ restoreFocus: false, scrollBack: false });
+    clearTimeout(hashJumpTimer);
+    hashJumpIndex = index;
+    render(index, 0);
     history.pushState(null, '', `#${rooms[index].key}`);
-    scrollToFloor(index);
+    scrollToFloor(index, 'auto');
+    hashJumpTimer = setTimeout(() => {
+      hashJumpIndex = null;
+      updateFromScroll();
+    }, 120);
   }));
 
   function updateFromScroll() {
@@ -411,12 +406,12 @@
     if (index < 0) return;
     clearTimeout(hashJumpTimer);
     hashJumpIndex = index;
-    render(index, index > active ? 1 : -1);
-    scrollToFloor(index);
+    render(index, 0);
+    scrollToFloor(index, 'auto');
     hashJumpTimer = setTimeout(() => {
       hashJumpIndex = null;
       updateFromScroll();
-    }, 520);
+    }, 120);
   });
   render(active, 0);
   requestAnimationFrame(updateFromScroll);
@@ -430,9 +425,15 @@
       scrollToFloor(initialIndex, 'auto');
       setTimeout(() => scrollToFloor(initialIndex, 'auto'), 180);
       setTimeout(() => {
+        hashJumpIndex = initialIndex;
+        render(initialIndex, 0);
         scrollToFloor(initialIndex, 'auto');
-        initialJump = false;
-        updateFromScroll();
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          render(initialIndex, 0);
+          initialJump = false;
+          hashJumpIndex = null;
+          updateFromScroll();
+        }));
       }, 420);
       });
     };
