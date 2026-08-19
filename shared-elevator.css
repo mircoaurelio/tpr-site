@@ -161,10 +161,10 @@
   content: "";
   position: absolute;
   z-index: 0;
-  top: 76%;
+  top: 74%;
+  bottom: 0;
   left: 35%;
   width: 31%;
-  height: 19%;
   background: var(--room-bg);
   pointer-events: none;
 }
