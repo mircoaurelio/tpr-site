@@ -136,9 +136,9 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
 .branded-route--about .route-arrow::after,
 .branded-route--eventi .route-arrow::after { content: none; }
 
-.branded-route--eventi .mobile-event-card > img {
-  width: calc(100% - 1.55rem);
-  margin: .85rem auto .15rem;
+.branded-route--eventi .mobile-event-card__photo {
+  width: calc(100% - .5rem);
+  margin: .25rem auto .1rem;
 }
 
 .branded-route--eventi .mobile-event-card__meta {
@@ -270,8 +270,8 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   overflow: hidden;
   color: var(--route-card-ink);
   background: var(--route-card);
-  -webkit-mask: url("assets/wavy-frame.svg?v=20260819-edge-2") center / 100% 100% no-repeat;
-  mask: url("assets/wavy-frame.svg?v=20260819-edge-2") center / 100% 100% no-repeat;
+  -webkit-mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
+  mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
 }
 
 .route-photo-card {
@@ -289,8 +289,7 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   background: var(--route-card);
 }
 
-.route-photo-card > img,
-.mobile-event-card > img {
+.route-photo-card > img {
   display: block;
   width: calc(100% - 1.85rem);
   height: min(48vw, 16.5rem);
@@ -299,8 +298,66 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   object-position: center 42%;
 }
 
+.route-photo-card__photo {
+  width: calc(100% - .5rem);
+  height: min(48vw, 16.5rem);
+  flex: 0 0 auto;
+  margin: .25rem auto .1rem;
+  padding: .03rem;
+  overflow: hidden;
+  background: #fff;
+  -webkit-mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
+  mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
+}
+
+.route-photo-card__photo-window {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
+  mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
+}
+
+.route-photo-card__photo-window > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.mobile-event-card__photo {
+  width: calc(100% - 1.85rem);
+  height: min(48vw, 16.5rem);
+  flex: 0 0 auto;
+  margin: 1rem auto 0;
+  padding: .03rem;
+  overflow: hidden;
+  background: #fff;
+  -webkit-mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
+  mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
+}
+
+.mobile-event-card__photo-window {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
+  mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
+}
+
+.mobile-event-card__photo-window > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+}
+
 .route-photo-card__meta,
 .mobile-event-card__meta {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -308,6 +365,7 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   min-height: 3.4rem;
   padding: .7rem 1rem .95rem;
   color: var(--route-card-ink);
+  background: var(--route-card);
 }
 
 .route-photo-card__meta strong,
@@ -355,6 +413,7 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
 }
 
 .branded-route--eventi .route-section-title { color: var(--route-accent); }
+.branded-route--eventi #gallery { color: #fff; }
 
 .branded-route .route-contact-title {
   color: var(--pink, #ff7bff);
@@ -796,8 +855,8 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
     margin: 0 0 5.5rem calc(-5.29vw);
   }
 
-  .route-photo-card > img,
-  .mobile-event-card > img { height: 18.25rem; }
+  .route-photo-card__photo,
+  .mobile-event-card__photo { height: 18.25rem; }
 
   .branded-route .route-section-title,
   .branded-route .route-contact-title {
@@ -844,17 +903,33 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   }
 
   .branded-route--eventi .mobile-event-list {
+    display: grid;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: clamp(19rem, 28vw, 26rem);
     width: calc(100% + 14.5vw);
     margin: 0 0 4.5rem -8.5vw;
+    padding: 0 8.5vw 1rem;
     gap: clamp(1.1rem, 2.4vw, 2.2rem);
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: #fff transparent;
+    scrollbar-width: thin;
   }
 
-  .branded-route--eventi .mobile-event-card > img {
-    width: calc(100% - 1.65rem);
+  .branded-route--eventi .mobile-event-list::-webkit-scrollbar { height: .35rem; }
+  .branded-route--eventi .mobile-event-list::-webkit-scrollbar-thumb { background: #fff; border-radius: 999px; }
+
+  .branded-route--eventi .mobile-event-card { scroll-snap-align: start; }
+
+  .branded-route--eventi .mobile-event-card__photo {
+    width: calc(100% - .5rem);
     height: 17.6rem;
-    margin: .95rem auto .2rem;
-    object-position: center 28%;
+    margin: .25rem auto .1rem;
   }
+
+  .branded-route--eventi .mobile-event-card__photo-window > img { object-position: center 28%; }
 
   .branded-route--eventi .mobile-event-card__meta {
     align-items: center;
@@ -945,6 +1020,7 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
 
   .mobile-event-list {
     display: grid;
+    grid-template-columns: none;
     grid-auto-flow: column;
     grid-auto-columns: min(78vw, 18.5rem);
     gap: 1rem;

@@ -140,9 +140,10 @@
 
   function setCharacter(element, room) {
     const [x, y, width, height] = room.box;
+    const responsiveYOffset = (18 / 952) * 100;
     element.src = asset(room.character);
     element.style.setProperty('--character-x', `${Math.max(0, x - 1.4)}%`);
-    element.style.setProperty('--character-y', `${Math.max(0, y - 3)}%`);
+    element.style.setProperty('--character-y', `${Math.max(0, y - responsiveYOffset)}%`);
     element.style.setProperty('--character-width', `${width}%`);
     element.style.setProperty('--character-height', `${height}%`);
   }

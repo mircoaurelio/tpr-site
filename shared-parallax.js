@@ -5,9 +5,8 @@
     '.membership-card .torn-photo img',
     '.phone-mockup__screen',
     '.mobile-brand-membership__photo img',
-    '.route-photo-card > img',
-    '.mobile-event-card > img',
-    '.tpr-elevator__art',
+    '.route-photo-card__photo-window > img',
+    '.mobile-event-card__photo-window > img',
   ].join(', ');
 
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');

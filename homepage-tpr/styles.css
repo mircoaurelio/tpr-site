@@ -1,5 +1,5 @@
 @import url("../shared-menu.css?v=20260819-scroll-2");
-@import url("../shared-elevator.css?v=20260819-rev-20");
+@import url("../shared-elevator.css?v=20260819-responsive-art-1");
 
 :root {
   --royal: #2c64e8;
@@ -318,16 +318,23 @@ body.elevator-active .site-header::after { content: none; display: none; }
   display: flex;
   flex-direction: column;
   min-height: 0;
-  padding: 1.05rem 1.05rem 1.35rem;
+  padding: .25rem .25rem 1.35rem;
   overflow: hidden;
   color: var(--royal);
   background: var(--white);
-  clip-path: var(--jagged-card);
+  clip-path: none;
+  -webkit-mask: url("../assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
+  mask: url("../assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
   text-decoration: none;
 }
-.torn-photo { height: clamp(12.5rem, 18vw, 16.5rem); overflow: hidden; }
+.torn-photo {
+  height: clamp(12.5rem, 18vw, 16.5rem);
+  overflow: hidden;
+  -webkit-mask: url("../assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
+  mask: url("../assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
+}
 .torn-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; will-change: transform; }
-.membership-card__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin: 1.05rem 0 .7rem; }
+.membership-card__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin: 1.05rem .8rem .7rem; }
 .membership-card h3 { margin: 0; font: 600 clamp(1.7rem, 2.55vw, 2.45rem)/.9 var(--display); letter-spacing: -.055em; text-transform: uppercase; }
 .membership-card__arrow {
   display: grid;
@@ -347,7 +354,7 @@ body.elevator-active .site-header::after { content: none; display: none; }
 }
 .membership-card__arrow::before,
 .membership-card__arrow::after { content: none; }
-.membership-card p { max-width: 36rem; margin: 0; font-size: .98rem; line-height: 1.08; }
+.membership-card p { max-width: 36rem; margin: 0 .8rem; font-size: .98rem; line-height: 1.08; }
 
 .partners { overflow: hidden; padding: 0; color: var(--royal); background: var(--royal); text-align: center; }
 .partners h2 { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
