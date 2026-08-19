@@ -247,8 +247,9 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
 .route-photo-card img,
 .mobile-event-card img {
   display: block;
-  width: 100%;
-  height: min(58vw, 16rem);
+  width: calc(100% - 1.4rem);
+  height: min(52vw, 15.25rem);
+  margin: .85rem auto 0;
   object-fit: cover;
   object-position: center 42%;
 }
@@ -284,16 +285,17 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   width: 2.15rem;
   height: 2.15rem;
   margin-left: auto;
-  border: 2px solid currentColor;
-  border-radius: 46% 54% 48% 52% / 52% 46% 54% 48%;
+  background: currentColor;
+  border: 0;
+  border-radius: 50%;
 }
 
 .route-arrow::after {
   content: "";
   position: absolute;
-  inset: 32%;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
+  inset: 34%;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
   transform: rotate(-45deg);
 }
 
@@ -320,7 +322,7 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   display: grid;
   justify-items: center;
   gap: 1rem;
-  padding: 1.6rem 1.25rem 1.5rem;
+  padding: 2.35rem 1.25rem 2rem;
   text-align: center;
 }
 
@@ -354,17 +356,18 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
 }
 
 .route-form-icon {
-  display: block;
+  display: grid;
+  place-items: center;
   width: 5.1rem;
-  height: 5.4rem;
+  height: 5.6rem;
   overflow: hidden;
 }
 
 .route-form-icon img {
-  width: 430%;
-  max-width: none;
-  height: auto;
-  margin: -10% 0 0 -8%;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .mobile-event-form-copy {
@@ -395,6 +398,7 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   border-radius: 0;
   font: 400 1rem/1.2 var(--route-body);
   letter-spacing: 0;
+  resize: none;
 }
 
 .branded-route .mobile-contact-form input:focus,
@@ -425,8 +429,9 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
 .route-map {
   display: block;
   overflow: hidden;
-  width: 100%;
+  width: calc(100% - 1.4rem);
   min-height: 11rem;
+  margin: .85rem auto 0;
   background: #e8eef8;
 }
 
@@ -650,7 +655,7 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   }
 
   .route-photo-card img,
-  .mobile-event-card img { height: 18.5rem; }
+  .mobile-event-card img { height: 17.5rem; }
 
   .branded-route .route-section-title,
   .branded-route .route-contact-title {
@@ -663,7 +668,7 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
 
   .mobile-contact-form.wavy-card {
     min-height: 30.75rem;
-    padding: 2.15rem 2rem 1.75rem;
+    padding: 2.75rem 2rem 2.1rem;
   }
 
   .mobile-contact-details.wavy-card {
@@ -672,7 +677,7 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   }
 
   .route-form-head h2 { font-size: clamp(1.6rem, 2.2vw, 2.1rem); }
-  .route-form-icon { width: 6.4rem; height: 6.8rem; }
+  .route-form-icon { width: 6.5rem; height: 7.1rem; }
   .route-map img,
   .route-map iframe { height: 16.5rem; }
 
@@ -751,6 +756,18 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
     scroll-snap-type: x mandatory;
     margin-right: -1.25rem;
     padding-right: 1.25rem;
+    scrollbar-width: none;
+  }
+
+  .mobile-event-list::-webkit-scrollbar { display: none; }
+
+  .branded-route .route-photo-row {
+    grid-auto-flow: row;
+    overflow: visible;
+  }
+
+  .branded-route--eventi .mobile-contact-form.wavy-card {
+    padding-inline: 1.25rem;
   }
 
   .mobile-event-card,

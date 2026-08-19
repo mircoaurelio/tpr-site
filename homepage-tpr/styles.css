@@ -177,6 +177,7 @@ body.elevator-active .site-header::after { content: none; display: none; }
   min-width: 0;
   overflow: visible;
   background: transparent;
+  transform: translateY(-10px);
 }
 .people-canvas > img {
   position: relative;
@@ -294,13 +295,14 @@ body.elevator-active .site-header::after { content: none; display: none; }
 .membership-orbit {
   position: absolute;
   z-index: 0;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: right center;
   pointer-events: none;
+  top: -18%;
+  right: -32%;
+  width: min(108vw, 52rem);
+  height: auto;
+  overflow: visible;
+  color: var(--yellow);
+  transform: scaleX(-1);
 }
 .membership .section-shell { position: relative; z-index: 1; }
 .membership-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 4rem); padding-inline: clamp(0rem, 4vw, 5rem); }
@@ -556,6 +558,7 @@ body.elevator-active .site-header::after { content: none; display: none; }
   .room-panel { padding-block: 4rem 6rem; }
   .events-copy { padding-block: 7rem; }
   .events-visual { min-height: 0; }
+  .membership-orbit { top: -14%; right: -40%; width: min(124vw, 42rem); }
   .membership-grid { grid-template-columns: 1fr; max-width: 47rem; margin-inline: auto; }
   .membership-card { min-height: 0; }
   .torn-photo { height: min(48vw, 18rem); }
@@ -618,6 +621,7 @@ body.elevator-active .site-header::after { content: none; display: none; }
   .room-features li { grid-template-columns: 1fr; gap: .35rem; }
   .events-copy { min-height: 32rem; }
   .events-visual { height: 47.22vw; min-height: 11rem; }
+  .membership-orbit { top: -10%; right: -48%; width: min(148vw, 36rem); }
   .membership { padding-block: 6rem; }
   .membership-grid { padding-inline: 0; }
   .membership-card { min-height: 0; }
