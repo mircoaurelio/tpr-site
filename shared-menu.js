@@ -16,7 +16,9 @@
     document.documentElement.classList.add('has-tpr-cursor');
     const actionSelector = 'a, button, input, select, textarea, summary, [role="button"], [data-room-link]';
     addEventListener('pointermove', (event) => {
-      cursor.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
+      cursor.style.left = `${event.clientX}px`;
+      cursor.style.top = `${event.clientY}px`;
+      cursor.style.transform = 'translate(-50%, -50%)';
       cursor.classList.add('is-visible');
       const action = event.target instanceof Element && event.target.closest(actionSelector);
       cursor.classList.toggle('is-action', Boolean(action));

@@ -101,10 +101,10 @@
 .tpr-elevator__cta {
   position: absolute;
   z-index: 4;
-  top: 65.5%;
+  top: 70.05%;
   left: 52.55%;
   width: 17.75%;
-  height: 5%;
+  height: 4.35%;
   color: transparent;
   background: transparent;
   border: 0;
@@ -130,7 +130,7 @@
   background: var(--room-bg);
   pointer-events: none;
 }
-.tpr-elevator[data-active-room="reformer"] .tpr-elevator__reformer-book-mask { display: block; }
+.tpr-elevator[data-active-room="reformer"] .tpr-elevator__reformer-book-mask { display: none; }
 
 .tpr-elevator__bar-title-fix {
   position: absolute;
@@ -157,8 +157,21 @@
   pointer-events: none;
 }
 
+.tpr-elevator[data-active-room="coworking"] .tpr-elevator__nav::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 76%;
+  left: 35%;
+  width: 31%;
+  height: 19%;
+  background: var(--room-bg);
+  pointer-events: none;
+}
+
 .tpr-elevator__button {
   position: absolute;
+  z-index: 1;
   top: 78%;
   width: 5.4%;
   height: 18%;
@@ -178,7 +191,7 @@
 .tpr-elevator__button:nth-child(4) { left: 55.42%; }
 .tpr-elevator__button:nth-child(5) { left: 60.71%; }
 .tpr-elevator__button img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; visibility: hidden; }
-.tpr-elevator:not([data-active-room="coworking"]) .tpr-elevator__button img { visibility: visible; }
+.tpr-elevator__button img { visibility: visible; }
 .tpr-elevator__button .icon-on { opacity: 0; }
 .tpr-elevator__button[aria-pressed="true"] .icon-on { opacity: 1; }
 .tpr-elevator__button[aria-pressed="true"] .icon-off { opacity: 0; }
@@ -233,6 +246,9 @@
   transform: translateX(calc(-1 * var(--explore-travel, 0px)));
   will-change: transform;
 }
+.tpr-elevator.is-explore-opening .tpr-elevator__explore-track img {
+  transition: transform 720ms cubic-bezier(.16, .82, .22, 1);
+}
 .tpr-elevator__explore-bar-title-fix {
   position: absolute;
   z-index: 3;
@@ -254,6 +270,10 @@
   border: 0;
   cursor: pointer;
   perspective: 1200px;
+}
+.tpr-elevator.is-explore-opening .tpr-elevator__explore-card,
+.tpr-elevator.is-explore-opening .tpr-elevator__explore-bar-title-fix {
+  transition: left 720ms cubic-bezier(.16, .82, .22, 1);
 }
 .tpr-elevator__card-back {
   position: absolute;
@@ -421,4 +441,7 @@
 @media (prefers-reduced-motion: reduce) {
   .tpr-elevator__art--incoming { transition-duration: .01ms; }
   .tpr-elevator.is-lifting .tpr-elevator__character { animation-duration: .01ms; }
+  .tpr-elevator.is-explore-opening .tpr-elevator__explore-track img,
+  .tpr-elevator.is-explore-opening .tpr-elevator__explore-card,
+  .tpr-elevator.is-explore-opening .tpr-elevator__explore-bar-title-fix { transition-duration: .01ms; }
 }

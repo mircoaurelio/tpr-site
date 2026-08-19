@@ -243,7 +243,10 @@
     const bounded = Math.max(0, Math.min(1, progress));
     const top = host.getBoundingClientRect().top + scrollY;
     const geometry = getExploreGeometry();
-    scrollTo({ top: top + (geometry.scrollDistance * bounded), behavior });
+    scrollTo({
+      top: top + (geometry.scrollDistance * bounded),
+      behavior: behavior === 'auto' ? 'instant' : behavior,
+    });
   }
 
   function openExplore(opener) {
@@ -252,7 +255,7 @@
     exploring = true;
     setExploreRoom(rooms[active]);
     exploreLayer.setAttribute('aria-hidden', 'false');
-    host.classList.add('is-exploring');
+    host.classList.add('is-exploring', 'is-explore-opening');
     document.body.classList.add('elevator-exploring');
     status.textContent = `${rooms[active].label} Room: esplorazione aperta nella homepage.`;
     host.dataset.mode = 'explore';
@@ -264,7 +267,12 @@
       const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
       scrollExploreTo(ROOM_EXPLORE_PROGRESS, behavior);
       if (behavior === 'smooth') {
-        exploreStartTimer = setTimeout(() => scrollExploreTo(ROOM_EXPLORE_PROGRESS, 'auto'), 720);
+        exploreStartTimer = setTimeout(() => {
+          scrollExploreTo(ROOM_EXPLORE_PROGRESS, 'auto');
+          host.classList.remove('is-explore-opening');
+        }, 760);
+      } else {
+        host.classList.remove('is-explore-opening');
       }
     }));
   }
@@ -275,7 +283,7 @@
     const opener = host._exploreOpener;
     exploring = false;
     exploreProgress = 0;
-    host.classList.remove('is-exploring', 'is-explore-ready');
+    host.classList.remove('is-exploring', 'is-explore-ready', 'is-explore-opening');
     document.body.classList.remove('elevator-exploring');
     exploreLayer.setAttribute('aria-hidden', 'true');
     exploreLayer.style.removeProperty('--explore-travel');

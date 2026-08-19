@@ -64,12 +64,39 @@ a { font: inherit; }
 
 .static-route { position: relative; }
 .mobile-route-content { display: none; }
-.contact-placeholder-cover { display: none; }
+.contact-copy-replacement { display: none; }
 
 @media (min-width: 721px) {
-  .contact-placeholder-cover { position: absolute; z-index: 2; display: block; pointer-events: none; }
-  .contact-placeholder-cover--hero { top: 14.05%; left: 52.15%; width: 21.1%; height: 2.9%; background: #2c64e8; }
-  .contact-placeholder-cover--card { top: 51.15%; left: 8.25%; width: 12.55%; height: 2.75%; background: #fff; }
+  .contact-copy-replacement {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    margin: 0;
+    pointer-events: none;
+  }
+  .contact-copy-replacement--hero {
+    top: 13.75%;
+    left: 52.1%;
+    width: 42.5%;
+    min-height: 15%;
+    padding: .6% .2%;
+    color: #fff;
+    background: #2c64e8;
+    font: 400 clamp(1rem, 2.45vw, 4.7rem)/1.08 Arial, Helvetica, sans-serif;
+    letter-spacing: -.035em;
+  }
+  .contact-copy-replacement--card {
+    top: 50.8%;
+    left: 8.1%;
+    width: 38.5%;
+    min-height: 8.5%;
+    padding: .5% .2%;
+    color: #2c64e8;
+    background: #fff;
+    font: 400 clamp(.8rem, 1.45vw, 2.8rem)/1.12 Arial, Helvetica, sans-serif;
+    letter-spacing: -.025em;
+  }
+  .route-home > img { display: none; }
 }
 
 .route-home,
