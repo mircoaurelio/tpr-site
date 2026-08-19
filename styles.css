@@ -462,6 +462,7 @@ a { color: inherit; }
   .mobile-brand-home-footer__columns h2 { margin: 0 0 1rem; font: 600 1.15rem/1 var(--display); text-transform: uppercase; }
   .mobile-brand-home-footer__columns a { min-height: 2.25rem; display: flex; align-items: center; color: inherit; font-size: .9rem; line-height: 1.1; text-decoration: none; }
   .mobile-brand-home-footer__bottom { display: grid; gap: .5rem; padding-top: 1.25rem; border-top: 1px solid currentColor; font-size: .65rem; text-transform: uppercase; }
+  .mobile-brand-home-footer__bottom a { color: inherit; text-decoration: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -2,8 +2,8 @@
   --tpr-royal: #2c64e8;
   --tpr-pink: #ff7bff;
   --tpr-white: #fff;
-  --tpr-display: "PP Rader", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
-  --tpr-body: "Alte Haas Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --tpr-display: "Arial Narrow", Arial, sans-serif;
+  --tpr-body: Arial, sans-serif;
 }
 
 body.menu-open { overflow: hidden; }
@@ -151,8 +151,6 @@ body.menu-open .site-header { visibility: hidden; }
   font: 600 clamp(2.6rem, 5vw, 4.85rem)/.82 var(--tpr-display);
   font-stretch: condensed;
   letter-spacing: -.06em;
-  transform: scaleX(.82);
-  transform-origin: center;
   text-transform: uppercase;
   text-decoration: none;
 }

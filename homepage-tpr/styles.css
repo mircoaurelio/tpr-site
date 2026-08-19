@@ -1,5 +1,5 @@
-@import url("../shared-menu.css?v=20260820-room-flow-8");
-@import url("../shared-elevator.css?v=20260820-room-flow-9");
+@import url("../shared-menu.css?v=20260820-room-flow-10");
+@import url("../shared-elevator.css?v=20260820-room-flow-10");
 
 :root {
   --royal: #2c64e8;
@@ -13,8 +13,8 @@
   --white: #ffffff;
   --header-h: 7.5rem;
   --page-x: clamp(1.35rem, 5vw, 5rem);
-  --display: "PP Rader", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
-  --body: "Alte Haas Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --display: "Arial Narrow", Arial, sans-serif;
+  --body: Arial, sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -215,6 +215,7 @@ body.elevator-active .site-header::after { opacity: 0; }
 .footer-columns h2 { margin: 0 0 1rem; font: 600 1.2rem/1 var(--display); text-transform: uppercase; }
 .footer-columns a { display: block; margin-bottom: .45rem; font-size: .9rem; }
 .footer-bottom { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding-top: 2rem; border-top: 1px solid currentColor; font-size: .68rem; text-transform: uppercase; }
+.footer-bottom a { color: inherit; text-decoration: none; }
 
 .video-dialog { width: min(92vw, 70rem); padding: 0; color: var(--white); background: var(--ink); border: 0; }
 .video-dialog::backdrop { background: rgb(0 0 0 / .72); }

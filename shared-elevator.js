@@ -4,34 +4,40 @@
 
   const base = new URL('.', document.currentScript.src);
   const asset = (file) => new URL(`assets/${file}`, base).href;
+  const bookingUrl = (roomKey) => `${new URL('contatti/', base).href}?room=${encodeURIComponent(roomKey)}`;
   const rooms = [
     {
-      key: 'coworking', label: 'Coworking', art: 'homepage-room-coworking-clean-2x.webp', routeArt: 'routes/coworking-2x.webp', character: 'character-coworking.png', box: [5.85, 30.83, 8.10, 15.97], title: 'type-coworking.png', icon: 'elevator-icon-coworking.svg', off: 'elevator-icon-coworking-off.svg',
+      key: 'coworking', label: 'Coworking', art: 'homepage-room-coworking-no-text-2x.webp', routeArt: 'routes/coworking-2x.webp', character: 'character-coworking.png', box: [5.85, 30.83, 8.10, 15.97], icon: 'elevator-icon-coworking.svg', off: 'elevator-icon-coworking-off.svg',
       description: 'Postazioni flessibili, sale riunioni e spazi per eventi in cui lavorare, incontrarsi e dare forma a nuove idee.', bookable: true,
       cards: [['Postazioni', 'Approfondisci le postazioni nella Coworking Room.'], ['Sale riunioni', 'Approfondisci le sale riunioni nella Coworking Room.'], ['Eventi', 'Approfondisci gli eventi nella Coworking Room.']],
     },
     {
-      key: 'reformer', label: 'Reformer', art: 'homepage-room-reformer-clean-2x.webp', routeArt: 'routes/reformer-2x.webp', character: 'character-reformer.png', box: [5.79, 30.72, 8.20, 16.07], title: 'type-reformer.png', icon: 'elevator-icon-reformer.svg', off: 'elevator-icon-reformer-off.svg',
+      key: 'reformer', label: 'Reformer', art: 'homepage-room-reformer-no-text-2x.webp', routeArt: 'routes/reformer-2x.webp', character: 'character-reformer.png', box: [5.79, 30.72, 8.20, 16.07], icon: 'elevator-icon-reformer.svg', off: 'elevator-icon-reformer-off.svg',
       description: 'Uno studio dedicato al movimento consapevole, con classi guidate e attrezzature professionali.', bookable: true,
       cards: [['Spazi', 'Approfondisci gli spazi nella Reformer Room.'], ['Classi', 'Approfondisci le classi nella Reformer Room.'], ['Attrezzature', 'Approfondisci le attrezzature nella Reformer Room.']],
     },
     {
-      key: 'wellness', label: 'Wellness', art: 'homepage-room-wellness-clean-2x.webp', routeArt: 'routes/wellness-2x.webp', character: 'character-wellness.png', box: [5.99, 29.67, 7.80, 17.12], title: 'type-wellness.png', icon: 'elevator-icon-wellness.svg', off: 'elevator-icon-wellness-off.svg',
+      key: 'wellness', label: 'Wellness', art: 'homepage-room-wellness-no-text-2x.webp', routeArt: 'routes/wellness-2x.webp', character: 'character-wellness.png', box: [5.99, 29.67, 7.80, 17.12], icon: 'elevator-icon-wellness.svg', off: 'elevator-icon-wellness-off.svg',
       description: 'Rituali e tecnologie per ritrovare equilibrio, energia e presenza.', bookable: false,
       cards: [['Power', 'Approfondisci Power nella Wellness Room.'], ['Biohacking', 'Approfondisci il biohacking nella Wellness Room.'], ['Contrast Therapy', 'Approfondisci la contrast therapy nella Wellness Room.']],
     },
     {
-      key: 'bar', label: 'Bar', art: 'homepage-room-bar-clean-2x.webp', routeArt: 'routes/bar-2x.webp', character: 'character-bar.png', box: [6.98, 30.20, 5.82, 16.60], title: 'type-bar.png', icon: 'elevator-icon-bar.svg', off: 'elevator-icon-bar-off.svg',
+      key: 'bar', label: 'Bar', art: 'homepage-room-bar-no-text-2x.webp', routeArt: 'routes/bar-2x.webp', character: 'character-bar.png', box: [6.98, 30.20, 5.82, 16.60], icon: 'elevator-icon-bar.svg', off: 'elevator-icon-bar-off.svg',
       description: "Il punto di incontro quotidiano della community TPR, dalla colazione all'aperitivo.", bookable: false,
       cards: [['Servizi', 'Approfondisci i servizi nella Bar Room.'], ['Accessibilità', "Approfondisci l'accessibilità nella Bar Room."], ['Storage', 'Approfondisci lo storage nella Bar Room.']],
     },
     {
-      key: 'media', label: 'Media', art: 'homepage-room-media-clean-2x.webp', routeArt: 'routes/media-2x.webp', character: 'character-media.png', box: [6.55, 27.57, 6.75, 19.22], title: 'type-media.png', icon: 'elevator-icon-media.svg', off: 'elevator-icon-media-off.svg',
+      key: 'media', label: 'Media', art: 'homepage-room-media-no-text-2x.webp', routeArt: 'routes/media-2x.webp', character: 'character-media.png', box: [6.55, 27.57, 6.75, 19.22], icon: 'elevator-icon-media.svg', off: 'elevator-icon-media-off.svg',
       description: 'Uno studio pronto per podcast, shooting, streaming e nuovi linguaggi.', bookable: false,
       cards: [['Podcast', 'Approfondisci il podcast nella Media Room.'], ['Studio', 'Approfondisci lo studio nella Media Room.'], ['Set fotografico', 'Approfondisci il set fotografico nella Media Room.']],
     },
   ];
-  const copy = "The People's Room è uno spazio ibrido e autentico che nutre corpo, mente e spirito, offrendo un rifugio reale in un mondo sempre più digitale. Attraverso design non convenzionale, pratiche di benessere fisico, esperienze culturali e connessioni autentiche, stimoliamo la creatività, il pensiero critico e il senso di appartenenza.";
+  const copyParagraphs = [
+    "The People's Room è uno spazio ibrido e autentico che nutre corpo, mente e spirito, offrendo un rifugio reale in un mondo sempre più digitale.",
+    "Attraverso design non convenzionale, pratiche di benessere fisico, esperienze culturali e connessioni autentiche, stimoliamo la creatività, il pensiero critico e il senso di appartenenza.",
+    "Il nostro obiettivo quotidiano è ispirare le persone a esprimere sé stesse, riscoprire il valore dell'umanità e vivere in modo più presente, creativo e vitale.",
+  ];
+  const roomTitle = (room) => `${room.label}<span>Room</span>`;
   const hashRoom = location.hash.slice(1);
   const initialIndex = Math.max(0, rooms.findIndex((room) => room.key === hashRoom));
   let initialJump = Boolean(hashRoom && rooms.some((room) => room.key === hashRoom));
@@ -57,13 +63,19 @@
           <img class="tpr-elevator__character tpr-elevator__character--incoming" alt="">
         </div>
         <div class="tpr-elevator__mobile-copy">
-          <h2 id="elevatorTitle"><img class="tpr-elevator__title" src="${asset(rooms[active].title)}" alt="${rooms[active].label} Room"></h2>
-          <p class="tpr-elevator__description">${copy}</p>
-          <button class="tpr-elevator__mobile-cta" type="button" data-elevator-explore>Esplora Stanza <span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
+          <h2 class="tpr-elevator__title" id="elevatorTitle">${roomTitle(rooms[active])}</h2>
+          <p class="tpr-elevator__description">${copyParagraphs.join(' ')}</p>
+          <div class="tpr-elevator__mobile-actions">
+            <button class="tpr-elevator__mobile-cta" type="button" data-elevator-explore>Esplora Stanza <span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
+            <a class="tpr-elevator__mobile-book" data-elevator-book href="${bookingUrl(rooms[active].key)}">Prenota</a>
+          </div>
         </div>
-        <button class="tpr-elevator__cta" type="button" data-elevator-explore><span class="sr-only">Esplora ${rooms[active].label} Room</span></button>
-        <span class="tpr-elevator__reformer-book-mask" aria-hidden="true"></span>
-        <span class="tpr-elevator__bar-title-fix" aria-hidden="true"><img src="${asset('type-bar.png')}" alt=""></span>
+        <div class="tpr-elevator__desktop-copy">
+          <h2>${roomTitle(rooms[active])}</h2>
+          ${copyParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join('')}
+        </div>
+        <button class="tpr-elevator__cta" type="button" data-elevator-explore aria-label="Esplora ${rooms[active].label} Room"><span>Esplora Stanza</span><span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
+        <a class="tpr-elevator__book" data-elevator-book href="${bookingUrl(rooms[active].key)}">Prenota<span class="sr-only"> ${rooms[active].label} Room</span></a>
         <nav class="tpr-elevator__nav" aria-label="Ascensore delle stanze">
           ${rooms.map((room, index) => `<button class="tpr-elevator__button" type="button" data-elevator-room="${room.key}" aria-label="Vai a ${room.label} Room" aria-pressed="${index === active}"><img class="icon-off" src="${asset(room.off)}" alt=""><img class="icon-on" src="${asset(room.icon)}" alt=""></button>`).join('')}
         </nav>
@@ -82,8 +94,9 @@
   const incomingArt = host.querySelector('.tpr-elevator__art--incoming');
   const currentCharacter = host.querySelector('.tpr-elevator__character--current');
   const incomingCharacter = host.querySelector('.tpr-elevator__character--incoming');
-  const title = host.querySelector('.tpr-elevator__title');
+  const titles = [...host.querySelectorAll('.tpr-elevator__title, .tpr-elevator__desktop-copy h2')];
   const ctas = [...host.querySelectorAll('.tpr-elevator__cta, .tpr-elevator__mobile-cta')];
+  const bookLinks = [...host.querySelectorAll('[data-elevator-book]')];
   const buttons = [...host.querySelectorAll('[data-elevator-room]')];
   const status = host.querySelector('#elevatorStatus');
   const exploreLayer = host.querySelector('.tpr-elevator__explore');
@@ -100,7 +113,7 @@
   let exploreHandoffLocked = false;
   const preloadedImages = new Map();
   rooms.forEach((room) => {
-    [room.art, room.character, room.title].forEach((file) => {
+    [room.art, room.character].forEach((file) => {
       const image = new Image();
       image.decoding = 'async';
       image.loading = 'eager';
@@ -124,12 +137,15 @@
     const room = rooms[index];
     active = index;
     host.dataset.activeRoom = room.key;
-    title.src = asset(room.title);
-    title.alt = `${room.label} Room`;
+    titles.forEach((title) => { title.innerHTML = roomTitle(room); });
     status.textContent = `${room.label} Room selezionata.`;
     ctas.forEach((cta) => {
-      const sr = cta.querySelector('.sr-only');
-      if (sr) sr.textContent = `Esplora ${room.label} Room`;
+      cta.setAttribute('aria-label', `Esplora ${room.label} Room`);
+    });
+    bookLinks.forEach((link) => {
+      link.href = bookingUrl(room.key);
+      const sr = link.querySelector('.sr-only');
+      if (sr) sr.textContent = ` ${room.label} Room`;
     });
     buttons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.elevatorRoom === room.key)));
     host.classList.toggle('is-reversing', direction < 0);
@@ -155,7 +171,7 @@
       host.classList.remove('is-lifting');
     }
     const room = rooms[index];
-    [room.art, room.character, room.title].forEach((file) => {
+    [room.art, room.character].forEach((file) => {
       const image = preloadedImages.get(file);
       if (image) image.fetchPriority = 'high';
     });
