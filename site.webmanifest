@@ -1,0 +1,19 @@
+{
+  "name": "The People's Room",
+  "short_name": "TPR",
+  "description": "Coworking, wellness, creatività ed eventi a Milano.",
+  "lang": "it-IT",
+  "start_url": "/tpr-site/homepage-tpr/",
+  "scope": "/tpr-site/",
+  "display": "standalone",
+  "background_color": "#98caff",
+  "theme_color": "#2c64e8",
+  "icons": [
+    {
+      "src": "/tpr-site/assets/tpr-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

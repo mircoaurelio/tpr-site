@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://mircoaurelio.github.io/tpr-site/homepage-tpr/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <image:image>
+      <image:loc>https://mircoaurelio.github.io/tpr-site/assets/tpr-hero.webp</image:loc>
+      <image:title>The People's Room Milano</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mircoaurelio.github.io/tpr-site/about/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <image:image>
+      <image:loc>https://mircoaurelio.github.io/tpr-site/assets/tpr-startup.webp</image:loc>
+      <image:title>Persone negli spazi The People's Room</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mircoaurelio.github.io/tpr-site/eventi/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <image:image>
+      <image:loc>https://mircoaurelio.github.io/tpr-site/assets/tpr-events.webp</image:loc>
+      <image:title>Eventi The People's Room Milano</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mircoaurelio.github.io/tpr-site/contatti/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <image:image>
+      <image:loc>https://mircoaurelio.github.io/tpr-site/assets/routes/contatti-2x.webp</image:loc>
+      <image:title>Contatti The People's Room Milano</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mircoaurelio.github.io/tpr-site/rooms/coworking/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <image:image>
+      <image:loc>https://mircoaurelio.github.io/tpr-site/assets/routes/coworking-2x.webp</image:loc>
+      <image:title>Coworking e sale riunioni a Milano</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mircoaurelio.github.io/tpr-site/rooms/reformer/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <image:image>
+      <image:loc>https://mircoaurelio.github.io/tpr-site/assets/routes/reformer-2x.webp</image:loc>
+      <image:title>Pilates Reformer a Milano</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mircoaurelio.github.io/tpr-site/rooms/wellness/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <image:image>
+      <image:loc>https://mircoaurelio.github.io/tpr-site/assets/routes/wellness-2x.webp</image:loc>
+      <image:title>Wellness e biohacking a Milano</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mircoaurelio.github.io/tpr-site/rooms/bar/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <image:image>
+      <image:loc>https://mircoaurelio.github.io/tpr-site/assets/routes/bar-2x.webp</image:loc>
+      <image:title>Healthy Bar e integratori a Milano</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mircoaurelio.github.io/tpr-site/rooms/media/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <image:image>
+      <image:loc>https://mircoaurelio.github.io/tpr-site/assets/routes/media-2x.webp</image:loc>
+      <image:title>Podcast e studio media a Milano</image:title>
+    </image:image>
+  </url>
+</urlset>

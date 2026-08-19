@@ -10,11 +10,11 @@
     return url.href;
   };
   const rooms = [
-    { key: 'coworking', label: 'Coworking', art: 'homepage-room-coworking-clean-2x.png', character: 'character-coworking.png', box: [5.85, 30.83, 8.10, 15.97], title: 'type-coworking.png', icon: 'elevator-icon-coworking.svg', off: 'elevator-icon-coworking-off.svg' },
-    { key: 'reformer', label: 'Reformer', art: 'homepage-room-reformer-clean-2x.png', character: 'character-reformer.png', box: [5.79, 30.72, 8.20, 16.07], title: 'type-reformer.png', icon: 'elevator-icon-reformer.svg', off: 'elevator-icon-reformer-off.svg' },
-    { key: 'wellness', label: 'Wellness', art: 'homepage-room-wellness-clean-2x.png', character: 'character-wellness.png', box: [5.99, 29.67, 7.80, 17.12], title: 'type-wellness.png', icon: 'elevator-icon-wellness.svg', off: 'elevator-icon-wellness-off.svg' },
-    { key: 'bar', label: 'Bar', art: 'homepage-room-bar-clean-2x.png', character: 'character-bar.png', box: [6.98, 30.20, 5.82, 16.60], title: 'type-bar.png', icon: 'elevator-icon-bar.svg', off: 'elevator-icon-bar-off.svg' },
-    { key: 'media', label: 'Media', art: 'homepage-room-media-clean-2x.png', character: 'character-media.png', box: [6.55, 27.57, 6.75, 19.22], title: 'type-media.png', icon: 'elevator-icon-media.svg', off: 'elevator-icon-media-off.svg' },
+    { key: 'coworking', label: 'Coworking', art: 'homepage-room-coworking-clean-2x.webp', character: 'character-coworking.png', box: [5.85, 30.83, 8.10, 15.97], title: 'type-coworking.png', icon: 'elevator-icon-coworking.svg', off: 'elevator-icon-coworking-off.svg' },
+    { key: 'reformer', label: 'Reformer', art: 'homepage-room-reformer-clean-2x.webp', character: 'character-reformer.png', box: [5.79, 30.72, 8.20, 16.07], title: 'type-reformer.png', icon: 'elevator-icon-reformer.svg', off: 'elevator-icon-reformer-off.svg' },
+    { key: 'wellness', label: 'Wellness', art: 'homepage-room-wellness-clean-2x.webp', character: 'character-wellness.png', box: [5.99, 29.67, 7.80, 17.12], title: 'type-wellness.png', icon: 'elevator-icon-wellness.svg', off: 'elevator-icon-wellness-off.svg' },
+    { key: 'bar', label: 'Bar', art: 'homepage-room-bar-clean-2x.webp', character: 'character-bar.png', box: [6.98, 30.20, 5.82, 16.60], title: 'type-bar.png', icon: 'elevator-icon-bar.svg', off: 'elevator-icon-bar-off.svg' },
+    { key: 'media', label: 'Media', art: 'homepage-room-media-clean-2x.webp', character: 'character-media.png', box: [6.55, 27.57, 6.75, 19.22], title: 'type-media.png', icon: 'elevator-icon-media.svg', off: 'elevator-icon-media-off.svg' },
   ];
   const copy = "The People's Room è uno spazio ibrido e autentico che nutre corpo, mente e spirito, offrendo un rifugio reale in un mondo sempre più digitale. Attraverso design non convenzionale, pratiche di benessere fisico, esperienze culturali e connessioni autentiche, stimoliamo la creatività, il pensiero critico e il senso di appartenenza.";
   const hashRoom = location.hash.slice(1);
