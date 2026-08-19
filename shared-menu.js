@@ -5,10 +5,16 @@
   if (!cursor) {
     document.body.insertAdjacentHTML('beforeend', `
       <div class="tpr-cursor" id="tprCursor" aria-hidden="true">
-        <span class="tpr-cursor__spark"></span>
-        <span class="tpr-cursor__eye"></span>
+        <img class="tpr-cursor__spark" src="${url('assets/cursor-spark.png')}?v=20260819-rev-5" alt="" width="110" height="87">
+        <img class="tpr-cursor__eye" src="${url('assets/cursor-eye.png')}?v=20260819-rev-5" alt="" width="110" height="61">
       </div>`);
     cursor = document.querySelector('#tprCursor');
+  } else {
+    const spark = cursor.querySelector('.tpr-cursor__spark');
+    const eye = cursor.querySelector('.tpr-cursor__eye');
+    if (spark) spark.src = `${url('assets/cursor-spark.png')}?v=20260819-rev-5`;
+    if (eye) eye.src = `${url('assets/cursor-eye.png')}?v=20260819-rev-5`;
+    document.body.appendChild(cursor);
   }
   const finePointer = matchMedia('(pointer: fine)');
   if (finePointer.matches && cursor && !cursor.dataset.cursorReady) {
@@ -39,7 +45,7 @@
           <a class="site-menu__primary" href="${url('about/')}">About</a>
           <h2 class="site-menu__heading"><a href="${url('homepage-tpr/#rooms')}">TPR Rooms</a></h2>
           <div class="site-menu__rooms" aria-label="Le stanze">
-            ${[['coworking','Coworking'],['bar','Bar'],['media','Media'],['reformer','Reformer'],['wellness','Wellness']].map(([key, label]) => `<a class="site-menu__room" href="${url(`homepage-tpr/#${key}`)}" data-room-link="${key}" aria-label="${label} Room"><img src="${url(`assets/elevator-icon-${key}-off.svg`)}" alt=""></a>`).join('')}
+            ${[['coworking','Coworking'],['bar','Bar'],['media','Media'],['reformer','Reformer'],['wellness','Wellness']].map(([key, label]) => `<a class="site-menu__room" href="${url(`homepage-tpr/#${key}`)}" data-room-link="${key}" aria-label="${label} Room"><img src="${url(`assets/elevator-icon-${key}-off.svg`)}?v=20260819-icons-1" alt=""></a>`).join('')}
           </div>
           <h2 class="site-menu__heading"><a href="${url('homepage-tpr/#membership')}">Membership</a></h2>
           <div class="site-menu__sub"><a href="${url('membership/aziende-startup/')}">Aziende &amp; Startup</a><a href="${url('membership/privati-freelancer/')}">Privati &amp; Freelancer</a></div>

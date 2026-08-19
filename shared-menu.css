@@ -80,15 +80,11 @@ body.menu-open .site-header { visibility: hidden; }
 @media (pointer: fine) {
   html.has-tpr-cursor,
   html.has-tpr-cursor * { cursor: none !important; }
-  html.has-tpr-cursor:has(dialog[open]),
-  html.has-tpr-cursor:has(dialog[open]) *,
-  html.has-tpr-cursor body.dialog-open,
-  html.has-tpr-cursor body.dialog-open * { cursor: auto !important; }
 }
 
 .tpr-cursor {
   position: fixed;
-  z-index: 20;
+  z-index: 2147483646;
   top: 0;
   left: 0;
   width: 4.5rem;
@@ -102,16 +98,17 @@ body.menu-open .site-header { visibility: hidden; }
   will-change: transform;
   transition: opacity 100ms linear;
 }
-html:has(dialog[open]) .tpr-cursor,
-body.dialog-open .tpr-cursor {
-  display: none !important;
-  mix-blend-mode: normal;
-}
 .tpr-cursor.is-visible { opacity: 1; }
-.tpr-cursor__spark { width: 2.8rem; height: 2.8rem; display: block; background: #fff; clip-path: polygon(50% 0, 61% 30%, 100% 21%, 72% 49%, 100% 79%, 61% 69%, 50% 100%, 40% 69%, 0 79%, 29% 49%, 0 21%, 40% 30%); }
-.tpr-cursor__eye { position: relative; width: 4rem; height: 2.35rem; display: none; background: #fff; border-radius: 52% 48% 52% 48% / 58% 58% 42% 42%; }
-.tpr-cursor__eye::before { content: ""; position: absolute; inset: .55rem 1rem; background: #000; border-radius: 50%; }
-.tpr-cursor__eye::after { content: ""; position: absolute; left: 50%; top: 50%; width: .8rem; height: 1.65rem; background: #fff; border-radius: 50%; transform: translate(-50%, -50%); }
+.tpr-cursor__spark,
+.tpr-cursor__eye {
+  display: block;
+  width: 2.75rem;
+  height: auto;
+  max-width: none;
+  pointer-events: none;
+  image-rendering: auto;
+}
+.tpr-cursor__eye { display: none; width: 3.35rem; }
 .tpr-cursor.is-action .tpr-cursor__spark { display: none; }
 .tpr-cursor.is-action .tpr-cursor__eye { display: block; }
 
@@ -123,40 +120,42 @@ body.dialog-open .tpr-cursor {
   min-height: 100svh;
   overflow: hidden auto;
   display: block;
-  grid-template-columns: none;
-  gap: 0;
-  align-items: initial;
   padding: 0;
   color: var(--tpr-white);
   background-color: var(--tpr-royal);
-  background-image: url("assets/menu-background.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   isolation: isolate;
   visibility: hidden;
   opacity: 0;
-  transform: translateY(-1.5rem);
-  transition: opacity 500ms ease-out, transform 500ms ease-out, visibility 0s linear 500ms;
+  transition: opacity 280ms ease, visibility 0s linear 700ms;
 }
 
 .site-menu.is-open {
   visibility: visible;
   opacity: 1;
-  transform: none;
   transition-delay: 0s;
 }
 
-.site-menu::before,
-.site-menu::after {
-  content: none;
+.site-menu::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("assets/menu-background.svg");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: translateY(18%);
+  opacity: 0;
+  transition: transform 700ms cubic-bezier(.16,.82,.22,1), opacity 500ms ease;
 }
 
-.site-menu::before {
-  display: none;
+.site-menu.is-open::before {
+  transform: translateY(0);
+  opacity: 1;
 }
+
 .site-menu::after {
-  display: none;
+  content: none;
 }
 
 .site-menu__brand,
@@ -205,6 +204,8 @@ body.dialog-open .tpr-cursor {
 .site-menu__close::after { transform: translateY(-50%) rotate(-45deg); }
 
 .site-menu .site-menu__nav {
+  position: relative;
+  z-index: 2;
   width: min(46rem, calc(100% - 2rem));
   min-height: 100svh;
   display: grid;
@@ -214,6 +215,15 @@ body.dialog-open .tpr-cursor {
   padding: 4rem 1rem;
   text-align: center;
   font-family: var(--tpr-display);
+  letter-spacing: -.04em;
+  transform: translateY(-18%);
+  opacity: 0;
+  transition: transform 700ms cubic-bezier(.16,.82,.22,1), opacity 420ms ease;
+}
+
+.site-menu.is-open .site-menu__nav {
+  transform: none;
+  opacity: 1;
 }
 
 .site-menu .site-menu__primary,
@@ -276,5 +286,7 @@ body.dialog-open .tpr-cursor {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .site-menu { transition-duration: .01ms; }
+  .site-menu,
+  .site-menu::before,
+  .site-menu .site-menu__nav { transition-duration: .01ms; }
 }

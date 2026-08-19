@@ -51,26 +51,11 @@ def clear_box(image, box, fill):
 
 
 def strip_hero_art():
-    path = ROOT / "assets" / "tpr-hero-art.png"
-    image = Image.open(path).convert("RGBA")
-    clear_box(image, (1560, 1160, 3024, 1940), (0, 0, 0, 0))
-    image.save(path, "PNG")
-    print("hero art title box cleared")
+    print("hero art title strip skipped; use scripts/fix_hero.py")
 
 
 def strip_hero_composite():
-    for name in ("homepage-tpr-hero-2x.png", "homepage-tpr-hero-2x.webp"):
-        path = ROOT / "assets" / name
-        if not path.exists():
-            continue
-        image = Image.open(path).convert("RGB")
-        punch_white(image, (1480, 1040, 3024, 1880), 200)
-        clear_box(image, (1680, 1288, 3024, 1880), ROYAL)
-        if path.suffix.lower() == ".webp":
-            image.save(path, "WEBP", quality=92, method=6)
-        else:
-            image.save(path, "PNG")
-        print(f"{name} title covered")
+    print("hero composite title strip skipped")
 
 
 ROOMS = {
@@ -140,7 +125,5 @@ def make_organic_event_mask():
 
 if __name__ == "__main__":
     cover_coworking_nav()
-    strip_hero_art()
-    strip_hero_composite()
     strip_explore_panoramas()
     make_organic_event_mask()

@@ -73,6 +73,13 @@
   overflow: visible;
 }
 
+.branded-route img.route-blob {
+  display: block;
+  max-width: none;
+  object-fit: contain;
+  object-position: left top;
+}
+
 .branded-route--eventi .route-blob {
   top: -14%;
   left: -42%;

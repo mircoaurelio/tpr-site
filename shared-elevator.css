@@ -101,10 +101,10 @@
 .tpr-elevator__desktop-copy {
   position: absolute;
   z-index: 6;
-  top: 27.73%;
+  top: 24.5%;
   left: 52.65%;
   width: 42.06%;
-  height: 36%;
+  height: 52%;
   display: flex;
   flex-direction: column;
   color: var(--room-ink);
@@ -114,8 +114,8 @@
   display: flex;
   align-items: flex-start;
   gap: .2em;
-  margin: 0 0 40px;
-  font: 700 clamp(2.6rem, 5.29vw, 5rem)/1 var(--tpr-display, "PP Rader", "Alte Haas Grotesk", Arial, sans-serif);
+  margin: 0 0 1.6rem;
+  font: 700 clamp(2.4rem, 4.8vw, 4.6rem)/1 var(--tpr-display, "PP Rader", "Alte Haas Grotesk", Arial, sans-serif);
   letter-spacing: -.04em;
   text-transform: uppercase;
 }
@@ -128,17 +128,16 @@
 }
 .tpr-elevator__desktop-copy p {
   max-width: 100%;
-  margin: 0 0 16px;
-  font: 400 clamp(.95rem, 1.59vw, 1.5rem)/1 var(--tpr-body, "Alte Haas Grotesk", Arial, sans-serif);
+  margin: 0;
+  font: 400 clamp(.88rem, 1.28vw, 1.18rem)/1.08 var(--tpr-body, "Alte Haas Grotesk", Arial, sans-serif);
   letter-spacing: 0;
 }
-.tpr-elevator__desktop-copy p:last-of-type { margin-bottom: 0; }
 .tpr-elevator__desktop-actions {
   display: flex;
   align-items: center;
   gap: 32px;
   width: auto;
-  margin-top: auto;
+  margin-top: 2rem;
   padding-bottom: .35rem;
   pointer-events: auto;
 }
@@ -251,11 +250,18 @@
 .tpr-elevator__button:nth-child(3) { left: 50.13%; }
 .tpr-elevator__button:nth-child(4) { left: 55.42%; }
 .tpr-elevator__button:nth-child(5) { left: 60.71%; }
-.tpr-elevator__button img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; visibility: hidden; }
-.tpr-elevator__button img { visibility: visible; }
-.tpr-elevator__button .icon-on { opacity: 0; }
-.tpr-elevator__button[aria-pressed="true"] .icon-on { opacity: 1; }
-.tpr-elevator__button[aria-pressed="true"] .icon-off { opacity: 0; }
+.tpr-elevator__button img {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+.tpr-elevator__button .icon-on { display: none; }
+.tpr-elevator__button[aria-pressed="true"] .icon-on { display: block; }
+.tpr-elevator__button[aria-pressed="true"] .icon-off { display: none; }
 
 .tpr-elevator__progress {
   display: none;
@@ -268,7 +274,7 @@
   inset: 0;
   overflow: hidden;
   color: var(--explore-ink);
-  background: var(--room-bg);
+  background: transparent;
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
@@ -287,6 +293,8 @@
 .tpr-elevator.is-exploring .tpr-elevator__cta,
 .tpr-elevator.is-exploring .tpr-elevator__book,
 .tpr-elevator.is-exploring .tpr-elevator__nav { opacity: 0; pointer-events: none; }
+.tpr-elevator.is-exploring .tpr-elevator__frame::after,
+.tpr-elevator.is-exploring .tpr-elevator__frame::before { content: none; display: none; }
 
 .tpr-elevator__explore-track {
   position: absolute;
@@ -298,9 +306,11 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 226.984vw;
+  height: 100%;
+  width: auto;
   max-width: none;
-  height: auto;
+  object-fit: cover;
+  object-position: left top;
   user-select: none;
   pointer-events: none;
 }
@@ -314,6 +324,10 @@
 .tpr-elevator__explore-copy {
   position: absolute;
   z-index: 3;
+  left: clamp(1.25rem, 5.29vw, 5rem);
+  top: 22%;
+  width: min(22rem, 28vw);
+  height: auto;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -324,8 +338,8 @@
   display: flex;
   align-items: flex-start;
   gap: .2em;
-  margin: 0 0 24px;
-  font: 700 clamp(2.6rem, 5.29vw, 5rem)/1 var(--tpr-display, "PP Rader", "Alte Haas Grotesk", Arial, sans-serif);
+  margin: 0 0 1rem;
+  font: 700 clamp(2rem, 4.2vw, 3.6rem)/1 var(--tpr-display, "PP Rader", "Alte Haas Grotesk", Arial, sans-serif);
   letter-spacing: -.04em;
   text-transform: uppercase;
 }
@@ -336,7 +350,7 @@
 }
 .tpr-elevator__explore-copy p {
   margin: 0;
-  font: 400 clamp(.95rem, 1.59vw, 1.5rem)/1 var(--tpr-body, "Alte Haas Grotesk", Arial, sans-serif);
+  font: 400 clamp(.82rem, 1.12vw, 1.05rem)/1.08 var(--tpr-body, "Alte Haas Grotesk", Arial, sans-serif);
 }
 .tpr-elevator.is-explore-opening .tpr-elevator__explore-copy {
   transition: left 720ms cubic-bezier(.16, .82, .22, 1);
@@ -569,7 +583,7 @@
     min-height: 48px;
     transform: none;
   }
-  .tpr-elevator__button img { visibility: visible; }
+  .tpr-elevator__button img { position: absolute; }
   .tpr-elevator__progress { display: none; }
   .tpr-elevator__explore-track img { width: auto; height: 100svh; max-width: none; }
   .tpr-elevator__explore-progress { bottom: .8rem; }

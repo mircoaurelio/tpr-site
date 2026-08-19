@@ -228,9 +228,14 @@ addEventListener('hashchange', () => {
 
 const peopleCanvas = document.querySelector('.people-canvas');
 const peopleTooltip = document.querySelector('#peopleTooltip');
+const peopleTooltipImg = peopleTooltip?.querySelector('img');
 document.querySelectorAll('.people-hotspots [data-room-link]').forEach((hotspot) => {
   hotspot.addEventListener('pointerenter', () => {
-    peopleTooltip.textContent = hotspot.dataset.hoverLabel || hotspot.getAttribute('aria-label') || '';
+    const hoverId = (hotspot.dataset.hoverState || 'hover1').replace(/\D/g, '') || '1';
+    if (peopleTooltipImg) {
+      peopleTooltipImg.src = `../assets/hover-label-${hoverId}.svg`;
+      peopleTooltipImg.alt = hotspot.dataset.hoverLabel || '';
+    }
     peopleTooltip.classList.add('is-visible');
   });
   hotspot.addEventListener('pointermove', (event) => {
@@ -256,9 +261,17 @@ document.querySelectorAll('.reveal').forEach((element) => {
   else element.classList.add('is-visible');
 });
 
-const eventsImage = document.querySelector('.events-visual img');
+const eventsImage = document.querySelector('.events-visual > img:first-child');
+const parallaxPhotos = [...document.querySelectorAll('.membership-card .torn-photo img')];
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 let ticking = false;
+
+function shiftParallax(element, amount, extra = '') {
+  const rect = element.getBoundingClientRect();
+  if (rect.bottom < 0 || rect.top > innerHeight) return;
+  const progress = (innerHeight - rect.top) / (innerHeight + rect.height);
+  element.style.transform = `translateY(${(progress - 0.5) * amount}%) ${extra}`.trim();
+}
 
 function onScroll() {
   siteHeader.classList.toggle('is-scrolled', scrollY > 80);
@@ -266,11 +279,8 @@ function onScroll() {
   if (reducedMotion.matches || ticking) return;
   ticking = true;
   requestAnimationFrame(() => {
-    const rect = eventsImage.getBoundingClientRect();
-    if (rect.top < innerHeight && rect.bottom > 0) {
-      const progress = (innerHeight - rect.top) / (innerHeight + rect.height);
-      eventsImage.style.transform = `translateY(${(progress - 0.55) * 8}%) scale(1.08)`;
-    }
+    if (eventsImage) shiftParallax(eventsImage, 8, 'scale(1.08)');
+    parallaxPhotos.forEach((photo) => shiftParallax(photo, 4));
     ticking = false;
   });
 }
@@ -279,5 +289,8 @@ addEventListener('scroll', onScroll, { passive: true });
 addEventListener('resize', updateHeaderVisibility, { passive: true });
 mobileHeaderQuery.addEventListener('change', updateHeaderVisibility);
 reducedMotion.addEventListener('change', (event) => {
-  if (event.matches) eventsImage.style.transform = 'none';
+  if (event.matches) {
+    if (eventsImage) eventsImage.style.transform = 'none';
+    parallaxPhotos.forEach((photo) => { photo.style.transform = 'none'; });
+  }
 });

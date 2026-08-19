@@ -3,7 +3,11 @@
   if (!host || host.dataset.elevatorReady) return;
 
   const base = new URL('.', document.currentScript.src);
-  const asset = (file) => new URL(`assets/${file}`, base).href;
+  const asset = (file) => {
+    const url = new URL(`assets/${file}`, base);
+    if (file.includes('elevator-icon')) url.searchParams.set('v', '20260819-rev-2');
+    return url.href;
+  };
   const bookingUrl = (roomKey) => `${new URL('contatti/', base).href}?room=${encodeURIComponent(roomKey)}`;
   const rooms = [
     {
@@ -37,6 +41,7 @@
     "Attraverso design non convenzionale, pratiche di benessere fisico, esperienze culturali e connessioni autentiche, stimoliamo la creatività, il pensiero critico e il senso di appartenenza.",
     "Il nostro obiettivo quotidiano è ispirare le persone a esprimere sé stesse, riscoprire il valore dell'umanità e vivere in modo più presente, creativo e vitale.",
   ];
+  const roomCopyHtml = copyParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join('');
   const roomTitle = (room) => `${room.label}<span>Room</span>`;
   const hashRoom = location.hash.slice(1);
   const initialIndex = Math.max(0, rooms.findIndex((room) => room.key === hashRoom));
@@ -72,7 +77,7 @@
         </div>
         <div class="tpr-elevator__desktop-copy">
           <h2>${roomTitle(rooms[active])}</h2>
-          ${copyParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join('')}
+          ${roomCopyHtml}
           <div class="tpr-elevator__desktop-actions">
             <button class="tpr-elevator__cta" type="button" data-elevator-explore aria-label="Esplora ${rooms[active].label} Room"><span>Esplora Stanza</span><span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
             <a class="tpr-elevator__book" data-elevator-book href="${bookingUrl(rooms[active].key)}" ${rooms[active].bookable ? '' : 'hidden'}>Prenota<span class="sr-only"> ${rooms[active].label} Room</span></a>
@@ -86,7 +91,7 @@
           <div class="tpr-elevator__explore-track" aria-hidden="true"><img alt="" width="6864" height="1904"></div>
           <div class="tpr-elevator__explore-copy" aria-hidden="true">
             <h2>${roomTitle(rooms[active])}</h2>
-            ${copyParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join('')}
+            ${roomCopyHtml}
           </div>
           <div class="tpr-elevator__explore-cards"></div>
           <div class="tpr-elevator__explore-progress" role="scrollbar" tabindex="0" aria-label="Scorri orizzontalmente la stanza" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
@@ -257,12 +262,6 @@
       card.style.width = `${.166 * geometry.width}px`;
       card.style.height = `${.47 * geometry.height}px`;
     });
-    if (exploreCopy) {
-      exploreCopy.style.left = `${(.232 * geometry.width) - travel}px`;
-      exploreCopy.style.top = `${.277 * geometry.height}px`;
-      exploreCopy.style.width = `${.185 * geometry.width}px`;
-      exploreCopy.style.height = `${.445 * geometry.height}px`;
-    }
   }
 
   function scrollExploreTo(progress, behavior = 'auto') {
