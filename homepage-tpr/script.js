@@ -264,7 +264,7 @@ document.querySelectorAll('.reveal').forEach((element) => {
 const eventsImage = document.querySelector('.events-visual > img:first-child');
 const elevatorHost = document.querySelector('#rooms, .tpr-elevator');
 const parallaxPhotos = [
-  ...document.querySelectorAll('.membership-card .torn-photo img, .phone-mockup img, .events-visual > img:first-child'),
+  ...document.querySelectorAll('.membership-card .torn-photo img, .phone-mockup, .events-visual > img:first-child'),
 ];
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 let ticking = false;
@@ -294,10 +294,6 @@ function onScroll() {
   ticking = true;
   requestAnimationFrame(() => {
     parallaxPhotos.forEach((photo) => shiftParallax(photo, -7));
-    if (elevatorHost && !elevatorHost.classList.contains('is-exploring')) {
-      const shift = Math.round((elevatorHost.getBoundingClientRect().top / innerHeight) * -18);
-      elevatorHost.style.setProperty('--photo-shift', `${shift}px`);
-    }
     ticking = false;
   });
 }
@@ -312,6 +308,5 @@ onScroll();
 reducedMotion.addEventListener('change', (event) => {
   if (event.matches) {
     parallaxPhotos.forEach((photo) => { photo.style.transform = 'none'; });
-    elevatorHost?.style.removeProperty('--photo-shift');
   }
 });

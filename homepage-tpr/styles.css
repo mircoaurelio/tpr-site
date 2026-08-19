@@ -1,5 +1,5 @@
 @import url("../shared-menu.css?v=20260819-rev-5");
-@import url("../shared-elevator.css?v=20260819-rev-10");
+@import url("../shared-elevator.css?v=20260819-rev-20");
 
 :root {
   --royal: #2c64e8;
@@ -124,7 +124,7 @@ body.elevator-active .site-header::after { content: none; display: none; }
   text-align: right;
 }
 .hero h1 span { display: block; }
-.about { position: relative; overflow: visible; padding: clamp(4.5rem, 5vw, 5rem) 0 0; }
+.about { position: relative; z-index: 3; overflow: visible; padding: clamp(4.5rem, 5vw, 5rem) 0 0; background: transparent; }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 8vw, 9rem); align-items: start; }
 .display-title { margin: 0; width: min(23.25vw, 21.97rem); }
 .display-title img { width: 100%; height: auto; max-width: none; }
@@ -164,12 +164,12 @@ body.elevator-active .site-header::after { content: none; display: none; }
 
 .people-nav {
   width: min(100%, 1512px);
-  margin: clamp(4.5rem, 7.94vw, 7.5rem) auto calc(min(100vw, 1512px) * -44 / 1512);
+  margin: clamp(4.5rem, 7.94vw, 7.5rem) auto calc(min(100vw, 1512px) * -67 / 1512);
   overflow: visible;
   padding: 0;
   background: transparent;
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 .people-canvas {
   position: relative;
@@ -217,24 +217,18 @@ body.elevator-active .site-header::after { content: none; display: none; }
 
 .rooms-intro {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  overflow: hidden;
+  isolation: isolate;
   color: var(--royal);
   background: var(--ice);
   margin-top: 0;
-  padding: calc(min(100vw, 1512px) * 141 / 1512) 0 calc(min(100vw, 1512px) * 220 / 1512);
-  -webkit-mask-image: url("../assets/rooms-ice-mask.svg?v=20260819-rev-10");
-  mask-image: url("../assets/rooms-ice-mask.svg?v=20260819-rev-10");
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: top center;
-  mask-position: top center;
+  padding: calc(min(100vw, 1512px) * 141 / 1512) 0 calc(min(100vw, 1512px) * 160 / 1512);
 }
 #rooms {
   position: relative;
-  z-index: 0;
-  margin-top: calc(min(100vw, 1512px) * -210 / 1512);
+  z-index: 1;
+  margin-top: 0;
 }
 .rooms-intro-grid {
   display: grid;
@@ -353,55 +347,65 @@ body.elevator-active .site-header::after { content: none; display: none; }
 .partner-track:hover { animation-play-state: paused; }
 @keyframes partner-marquee { to { transform: translateX(calc(-50% - 1rem)); } }
 
-.world { position: relative; min-height: 100svh; overflow: visible; padding-top: clamp(5rem, 8vw, 8rem); }
+.world { position: relative; min-height: 100svh; overflow: visible; padding-top: clamp(5rem, 8vw, 8rem); padding-bottom: 0; }
 .world-copy { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; position: relative; z-index: 2; }
 .world-copy .body-copy { max-width: 42rem; }
 .phones {
   position: relative;
-  z-index: 3;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   gap: clamp(1.25rem, 4vw, 4.5rem);
-  height: min(78vw, 52rem);
+  height: auto;
   margin: clamp(1.5rem, 3vw, 3rem) auto -18rem;
   overflow: visible;
   pointer-events: none;
 }
 .phone-mockup { position: relative; isolation: isolate; width: min(27.8vw, 22.5rem); filter: drop-shadow(0 1.5rem 2rem rgb(0 0 0 / .25)); }
-.phone-mockup--booking { margin-top: 4.5rem; }
-.phone-mockup img { max-width: none; }
+.phone-mockup--brand { z-index: 2; }
+.phone-mockup--booking { z-index: 1; margin-top: 4.5rem; }
 .phone-mockup__chrome { position: relative; z-index: 1; display: block; width: 100%; height: auto; }
-.phone-mockup__screen {
+.phone-mockup__viewport {
   position: absolute;
   z-index: 2;
-  width: auto;
-  height: auto;
-  object-fit: fill;
+  overflow: hidden;
+  border-radius: 12% / 4.6%;
   pointer-events: none;
+  contain: paint;
 }
-.phone-mockup--brand .phone-mockup__screen {
+.phone-mockup--brand .phone-mockup__viewport {
   top: 1.33%;
   right: 2.24%;
   bottom: 1.1%;
   left: 9.09%;
 }
-.phone-mockup--booking .phone-mockup__screen {
+.phone-mockup--booking .phone-mockup__viewport {
   top: 1.07%;
   right: 9.01%;
   bottom: 1.26%;
   left: 2.31%;
 }
+.phone-mockup__screen {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: fill;
+  pointer-events: none;
+}
 
-.site-footer { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(14rem, .95fr) 1.05fr; gap: 5rem; align-items: start; padding: clamp(4rem, 7vw, 7rem) var(--page-x) 2rem; color: var(--royal); background: var(--white); }
-.footer-logo { position: relative; z-index: 4; align-self: start; width: min(32.01vw, 30.25rem); }
+.site-footer { position: relative; z-index: 4; isolation: isolate; overflow: hidden; display: grid; grid-template-columns: minmax(14rem, .95fr) 1.05fr; gap: 5rem; align-items: start; padding: clamp(4rem, 7vw, 7rem) var(--page-x) 2rem; color: var(--royal); background: var(--white); border: 0; box-shadow: none; }
+.footer-logo { position: relative; z-index: 1; align-self: start; width: min(32.01vw, 30.25rem); }
 .footer-logo img { display: block; width: 100%; height: auto; object-fit: contain; object-position: left top; mix-blend-mode: multiply; }
-.footer-columns { position: relative; z-index: 4; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.footer-columns { position: relative; z-index: 5; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
 .footer-columns h2 { margin: 0 0 1rem; font: 600 1.2rem/1 var(--display); text-transform: uppercase; }
 .footer-columns a { display: block; margin-bottom: .45rem; font-size: .9rem; }
-.footer-bottom { position: relative; z-index: 4; grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding-top: 2rem; border-top: 1px solid currentColor; font-size: .68rem; text-transform: uppercase; }
+.footer-bottom { position: relative; z-index: 5; grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding-top: 2rem; border-top: 0; font-size: .68rem; text-transform: uppercase; color: color-mix(in srgb, var(--royal) 70%, var(--white)); }
 .footer-bottom a { color: inherit; text-decoration: none; }
-.footer-bottom strong { font-weight: 700; }
+.footer-bottom strong { font-weight: 700; color: var(--royal); }
 
 .video-dialog { position: fixed; z-index: 2147483000; width: min(92vw, 70rem); max-width: calc(100vw - 2rem); padding: 0; color: var(--white); background: var(--ink); border: 0; }
 .video-dialog::backdrop { background: rgb(0 0 0 / .72); pointer-events: auto; }
@@ -468,7 +472,7 @@ body.elevator-active .site-header::after { content: none; display: none; }
   .display-type--world { width: min(68vw, 28.78rem); }
   .about-copy { justify-self: end; max-width: 39rem; }
   .people-nav { overflow: visible; }
-  .rooms-intro { min-height: 0; -webkit-mask-size: 100% 150%; mask-size: 100% 150%; }
+  .rooms-intro { min-height: 0; }
   .rooms-intro p { margin-left: 0; }
   .room-stage { min-height: 0; grid-template-columns: 1fr; }
   .room-visual { min-height: min(78vw, 44rem); border-radius: 0 0 45% 0; }
@@ -479,8 +483,8 @@ body.elevator-active .site-header::after { content: none; display: none; }
   .membership-grid { grid-template-columns: 1fr; max-width: 47rem; margin-inline: auto; }
   .membership-card { min-height: 0; }
   .torn-photo { height: min(48vw, 18rem); }
-  .world { height: auto; min-height: 0; overflow: visible; }
-  .phones { height: min(92vw, 44rem); margin-bottom: -14rem; }
+  .world { height: auto; min-height: 0; overflow: visible; padding-bottom: 0; }
+  .phones { height: auto; margin-bottom: -14rem; }
   .phone-mockup { width: min(38vw, 18rem); }
   .site-footer { grid-template-columns: 1fr; }
   .footer-logo { width: min(62vw, 30.25rem); }
@@ -517,7 +521,7 @@ body.elevator-active .site-header::after { content: none; display: none; }
   .people-canvas { width: 100%; min-width: 0; }
   .people-canvas > img { width: 80.62%; margin-left: 9.92%; height: auto; }
   .people-hotspots { left: 9.92%; width: 80.62%; }
-  .rooms-intro { min-height: 0; -webkit-mask-size: 100% 165%; mask-size: 100% 165%; }
+  .rooms-intro { min-height: 0; }
   .rooms-intro p { font-size: clamp(1.25rem, 4.4vw, 1.75rem); }
   .room-tabs { padding-inline: 1rem; }
   .room-tab { min-height: 2.75rem; }
@@ -539,7 +543,7 @@ body.elevator-active .site-header::after { content: none; display: none; }
   .partner-track { grid-template-columns: repeat(5, 10rem); gap: 1rem; overflow-x: auto; }
   .world { height: auto; min-height: 0; padding: 5.5rem 0 0; overflow: visible; }
   .world-copy { position: relative; z-index: 3; }
-  .phones { height: min(118vw, 34rem); margin: 2.5rem auto -10rem; padding-inline: .65rem; gap: .7rem; }
+  .phones { height: auto; margin: 2.5rem auto -10rem; padding-inline: .65rem; gap: .7rem; }
   .phone-mockup { width: 44vw; }
   .phone-mockup--booking { margin-top: 4rem; }
   .site-footer { gap: 2rem; padding-top: 3rem; }

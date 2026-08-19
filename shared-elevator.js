@@ -90,14 +90,7 @@
         <div class="tpr-elevator__explore" aria-hidden="true">
           <div class="tpr-elevator__explore-track" aria-hidden="true">
             <img alt="" width="6864" height="1904">
-            <div class="tpr-elevator__explore-copy">
-              <h2>${roomTitle(rooms[active])}</h2>
-              ${roomCopyHtml}
-              <div class="tpr-elevator__explore-actions">
-                <button class="tpr-elevator__explore-back" type="button" data-elevator-explore-close>&lt; Tutte le Stanze</button>
-                <a class="tpr-elevator__explore-book" data-elevator-book href="${bookingUrl(rooms[active].key)}" ${rooms[active].bookable ? '' : 'hidden'}>Prenota</a>
-              </div>
-            </div>
+            <div class="tpr-elevator__explore-chrome-mask" aria-hidden="true"></div>
             <div class="tpr-elevator__explore-cards"></div>
           </div>
           <div class="tpr-elevator__explore-progress" role="scrollbar" tabindex="0" aria-label="Scorri orizzontalmente la stanza" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
@@ -111,21 +104,26 @@
   const currentCharacter = host.querySelector('.tpr-elevator__character--current');
   const incomingCharacter = host.querySelector('.tpr-elevator__character--incoming');
   const titles = [...host.querySelectorAll('.tpr-elevator__title, .tpr-elevator__desktop-copy h2')];
-  const ctas = [...host.querySelectorAll('.tpr-elevator__cta, .tpr-elevator__mobile-cta')];
+  const ctas = [...host.querySelectorAll('[data-elevator-explore]')];
   const bookLinks = [...host.querySelectorAll('[data-elevator-book]')];
   const buttons = [...host.querySelectorAll('[data-elevator-room]')];
   const status = host.querySelector('#elevatorStatus');
+  const frame = host.querySelector('.tpr-elevator__frame');
+  const nav = host.querySelector('.tpr-elevator__nav');
+  const desktopCopy = host.querySelector('.tpr-elevator__desktop-copy');
   const exploreLayer = host.querySelector('.tpr-elevator__explore');
+  const exploreTrack = host.querySelector('.tpr-elevator__explore-track');
   const exploreTrackImage = host.querySelector('.tpr-elevator__explore-track img');
-  const exploreCopy = host.querySelector('.tpr-elevator__explore-copy');
-  const exploreCopyTitle = exploreCopy.querySelector('h2');
   const exploreCards = host.querySelector('.tpr-elevator__explore-cards');
   const exploreProgressControl = host.querySelector('.tpr-elevator__explore-progress');
   const ROOM_SCROLL_FACTOR = 1.35;
   const ROOM_EXPLORE_PROGRESS = .4;
+  const EXPLORE_OPEN_MS = 720;
   let exploring = false;
   let exploreProgress = 0;
   let exploreStartTimer = 0;
+  let exploreOpenRaf = 0;
+  let exploreOpening = false;
   let exploreHandoffLocked = false;
   const preloadedImages = new Map();
   rooms.forEach((room) => {
@@ -230,9 +228,7 @@
   }
 
   function setExploreRoom(room) {
-    const source = asset(room.routeArt);
-    exploreTrackImage.src = source;
-    if (exploreCopyTitle) exploreCopyTitle.innerHTML = roomTitle(room);
+    exploreTrackImage.src = asset(room.routeArt);
     renderExploreCards(room);
   }
 
@@ -240,15 +236,25 @@
     const ratio = (exploreTrackImage.naturalWidth && exploreTrackImage.naturalHeight)
       ? exploreTrackImage.naturalWidth / exploreTrackImage.naturalHeight
       : 6864 / 1904;
-    const rect = exploreTrackImage.getBoundingClientRect();
-    const fallbackWidth = matchMedia('(max-width: 720px)').matches ? innerHeight * ratio : innerWidth * 2.26984;
-    const width = rect.width > 0 ? rect.width : fallbackWidth;
-    const height = rect.height > 0 ? rect.height : width / ratio;
+    const viewHeight = frame.clientHeight || innerHeight;
+    const expectedWidth = viewHeight * ratio;
+    const rect = exploreTrack.getBoundingClientRect();
+    const width = Math.max(rect.width, expectedWidth);
+    const height = rect.height > 0 ? rect.height : viewHeight;
     const travelMax = Math.max(0, width - innerWidth);
     const scrollDistance = Math.max(1, travelMax * ROOM_SCROLL_FACTOR);
     const handoffDistance = active < rooms.length - 1 ? Math.max(120, innerHeight * .32) : 0;
     if (exploring) host.style.height = `${innerHeight + scrollDistance + handoffDistance}px`;
     return { width, height, travelMax, scrollDistance, handoffDistance };
+  }
+
+  function getOpeningExploreProgress() {
+    const geometry = getExploreGeometry();
+    if (geometry.travelMax <= 0) return ROOM_EXPLORE_PROGRESS;
+    const hideLeftPhoto = Math.min(innerWidth * .5, geometry.width * .22);
+    const keepCopyOnScreen = Math.max(0, geometry.width * .232 - 40);
+    const travel = Math.min(hideLeftPhoto, keepCopyOnScreen);
+    return Math.max(.22, Math.min(ROOM_EXPLORE_PROGRESS, travel / geometry.travelMax));
   }
 
   function setExploreProgress(progress) {
@@ -257,6 +263,8 @@
     const geometry = getExploreGeometry();
     const travel = bounded * geometry.travelMax;
     exploreProgress = bounded;
+    host.style.setProperty('--explore-travel', `${travel}px`);
+    host.style.setProperty('--explore-progress', String(bounded));
     exploreLayer.style.setProperty('--explore-travel', `${travel}px`);
     exploreLayer.style.setProperty('--explore-progress', String(bounded));
     exploreProgressControl.setAttribute('aria-valuenow', String(Math.round(bounded * 100)));
@@ -272,10 +280,16 @@
     });
   }
 
+  function easeExploreOpen(t) {
+    return 1 - ((1 - t) ** 3);
+  }
+
   function openExplore(opener) {
     if (exploring) return;
     clearTimeout(exploreStartTimer);
+    cancelAnimationFrame(exploreOpenRaf);
     exploring = true;
+    exploreOpening = true;
     setExploreRoom(rooms[active]);
     exploreLayer.setAttribute('aria-hidden', 'false');
     host.classList.add('is-exploring', 'is-explore-opening');
@@ -283,32 +297,51 @@
     status.textContent = `${rooms[active].label} Room: esplorazione aperta nella homepage.`;
     host.dataset.mode = 'explore';
     host._exploreOpener = opener;
+    if (desktopCopy.parentElement !== exploreTrack) exploreTrack.appendChild(desktopCopy);
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     setExploreProgress(0);
     scrollExploreTo(0, 'auto');
-    requestAnimationFrame(() => requestAnimationFrame(() => {
+    const opening = getOpeningExploreProgress();
+    const finishOpening = () => {
+      if (!exploring) return;
+      scrollExploreTo(opening, 'auto');
+      setExploreProgress(opening);
       host.classList.add('is-explore-ready');
-      const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
-      scrollExploreTo(ROOM_EXPLORE_PROGRESS, behavior);
-      if (behavior === 'smooth') {
-        exploreStartTimer = setTimeout(() => {
-          scrollExploreTo(ROOM_EXPLORE_PROGRESS, 'auto');
-          host.classList.remove('is-explore-opening');
-        }, 760);
-      } else {
-        host.classList.remove('is-explore-opening');
+      host.classList.remove('is-explore-opening');
+      exploreOpening = false;
+    };
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      if (!exploring) return;
+      if (reduced) {
+        finishOpening();
+        return;
       }
+      const start = performance.now();
+      const tick = (now) => {
+        if (!exploring) return;
+        const t = Math.min(1, (now - start) / EXPLORE_OPEN_MS);
+        setExploreProgress(opening * easeExploreOpen(t));
+        if (t < 1) exploreOpenRaf = requestAnimationFrame(tick);
+        else finishOpening();
+      };
+      exploreOpenRaf = requestAnimationFrame(tick);
     }));
   }
 
   function closeExplore({ restoreFocus = true, scrollBack = true, updateHistory = true } = {}) {
     if (!exploring) return;
     clearTimeout(exploreStartTimer);
+    cancelAnimationFrame(exploreOpenRaf);
     const opener = host._exploreOpener;
     exploring = false;
+    exploreOpening = false;
     exploreProgress = 0;
     host.classList.remove('is-exploring', 'is-explore-ready', 'is-explore-opening');
     document.body.classList.remove('elevator-exploring');
     exploreLayer.setAttribute('aria-hidden', 'true');
+    if (desktopCopy.parentElement !== frame) frame.insertBefore(desktopCopy, nav);
+    host.style.removeProperty('--explore-travel');
+    host.style.removeProperty('--explore-progress');
     exploreLayer.style.removeProperty('--explore-travel');
     exploreLayer.style.removeProperty('--explore-progress');
     host.style.removeProperty('height');
@@ -339,10 +372,10 @@
     });
   }
 
-  ctas.forEach((cta) => cta.addEventListener('click', () => openExplore(cta)));
-  host.querySelectorAll('[data-elevator-explore-close]').forEach((button) => {
-    button.addEventListener('click', () => closeExplore());
-  });
+  ctas.forEach((cta) => cta.addEventListener('click', () => {
+    if (exploring) return;
+    openExplore(cta);
+  }));
 
   exploreProgressControl.addEventListener('pointerdown', (event) => {
     const rect = exploreProgressControl.getBoundingClientRect();
@@ -405,6 +438,7 @@
     const rect = host.getBoundingClientRect();
     document.body.classList.toggle('elevator-active', rect.top <= 1 && rect.bottom >= innerHeight - 1);
     if (exploring) {
+      if (exploreOpening) { ticking = false; return; }
       const geometry = getExploreGeometry();
       const offset = Math.max(0, -rect.top);
       setExploreProgress(offset / geometry.scrollDistance);
