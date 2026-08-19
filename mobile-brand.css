@@ -104,8 +104,8 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
 
 .branded-route--eventi .route-blob {
   top: 0;
-  left: -10%;
-  width: min(78vw, 38rem);
+  left: 0;
+  width: min(108vw, 30rem);
 }
 
 .branded-route--contatti .route-blob {
@@ -333,9 +333,8 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
 
 .mobile-contact-details.wavy-card,
 .mobile-contact-details.route-torn-card {
-  display: grid;
-  align-content: start;
-  justify-items: stretch;
+  display: flex;
+  flex-direction: column;
   gap: 0;
   padding: 0 0 1.15rem;
   text-align: left;
@@ -432,29 +431,35 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
 .mobile-form-status { min-height: 1.25em; margin: 0; }
 
 .route-map {
+  position: relative;
   display: block;
+  flex: 0 0 auto;
   overflow: hidden;
-  width: calc(100% - 1.4rem);
-  min-height: 11rem;
-  margin: .85rem auto 0;
+  width: 100%;
+  aspect-ratio: 2.55 / 1;
+  margin: 0;
   background: #e8eef8;
 }
 
 .route-map img,
 .route-map iframe {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
-  height: 12.5rem;
+  height: 100%;
   object-fit: cover;
+  object-position: 50% 54%;
   border: 0;
 }
 
 .route-contact-meta {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  flex: 0 0 auto;
   gap: .75rem 1.25rem;
   width: 100%;
-  padding: .25rem .35rem .4rem;
+  padding: .85rem 1.05rem .55rem;
   text-align: left;
 }
 
@@ -586,8 +591,8 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
 
   .branded-route--eventi .route-blob {
     top: 0;
-    left: -8%;
-    width: min(42vw, 40rem);
+    left: 0;
+    width: min(58vw, 56rem);
   }
 
   .branded-route--contatti .route-blob {
@@ -688,8 +693,7 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
 
   .route-form-head h2 { font-size: clamp(1.6rem, 2.2vw, 2.1rem); }
   .route-form-icon { width: 6.5rem; height: 7.1rem; }
-  .route-map img,
-  .route-map iframe { height: 16.5rem; }
+  .route-map { aspect-ratio: 604 / 217; }
 
   .route-contact-meta {
     padding: 1rem 1.1rem 0;
