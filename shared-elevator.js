@@ -4,17 +4,33 @@
 
   const base = new URL('.', document.currentScript.src);
   const asset = (file) => new URL(`assets/${file}`, base).href;
-  const route = (slug, explore = false) => {
-    const url = new URL(`rooms/${slug}/`, base);
-    if (explore) url.hash = 'explore';
-    return url.href;
-  };
+  const contactUrl = new URL('contatti/', base).href;
   const rooms = [
-    { key: 'coworking', label: 'Coworking', art: 'homepage-room-coworking-clean-2x.webp', character: 'character-coworking.png', box: [5.85, 30.83, 8.10, 15.97], title: 'type-coworking.png', icon: 'elevator-icon-coworking.svg', off: 'elevator-icon-coworking-off.svg' },
-    { key: 'reformer', label: 'Reformer', art: 'homepage-room-reformer-clean-2x.webp', character: 'character-reformer.png', box: [5.79, 30.72, 8.20, 16.07], title: 'type-reformer.png', icon: 'elevator-icon-reformer.svg', off: 'elevator-icon-reformer-off.svg' },
-    { key: 'wellness', label: 'Wellness', art: 'homepage-room-wellness-clean-2x.webp', character: 'character-wellness.png', box: [5.99, 29.67, 7.80, 17.12], title: 'type-wellness.png', icon: 'elevator-icon-wellness.svg', off: 'elevator-icon-wellness-off.svg' },
-    { key: 'bar', label: 'Bar', art: 'homepage-room-bar-clean-2x.webp', character: 'character-bar.png', box: [6.98, 30.20, 5.82, 16.60], title: 'type-bar.png', icon: 'elevator-icon-bar.svg', off: 'elevator-icon-bar-off.svg' },
-    { key: 'media', label: 'Media', art: 'homepage-room-media-clean-2x.webp', character: 'character-media.png', box: [6.55, 27.57, 6.75, 19.22], title: 'type-media.png', icon: 'elevator-icon-media.svg', off: 'elevator-icon-media-off.svg' },
+    {
+      key: 'coworking', label: 'Coworking', art: 'homepage-room-coworking-clean-2x.webp', routeArt: 'routes/coworking-2x.webp', character: 'character-coworking.png', box: [5.85, 30.83, 8.10, 15.97], title: 'type-coworking.png', icon: 'elevator-icon-coworking.svg', off: 'elevator-icon-coworking-off.svg',
+      description: 'Postazioni flessibili, sale riunioni e spazi per eventi in cui lavorare, incontrarsi e dare forma a nuove idee.', bookable: true,
+      cards: [['Postazioni', 'Approfondisci le postazioni nella Coworking Room.'], ['Sale riunioni', 'Approfondisci le sale riunioni nella Coworking Room.'], ['Eventi', 'Approfondisci gli eventi nella Coworking Room.']],
+    },
+    {
+      key: 'reformer', label: 'Reformer', art: 'homepage-room-reformer-clean-2x.webp', routeArt: 'routes/reformer-2x.webp', character: 'character-reformer.png', box: [5.79, 30.72, 8.20, 16.07], title: 'type-reformer.png', icon: 'elevator-icon-reformer.svg', off: 'elevator-icon-reformer-off.svg',
+      description: 'Uno studio dedicato al movimento consapevole, con classi guidate e attrezzature professionali.', bookable: true,
+      cards: [['Spazi', 'Approfondisci gli spazi nella Reformer Room.'], ['Classi', 'Approfondisci le classi nella Reformer Room.'], ['Attrezzature', 'Approfondisci le attrezzature nella Reformer Room.']],
+    },
+    {
+      key: 'wellness', label: 'Wellness', art: 'homepage-room-wellness-clean-2x.webp', routeArt: 'routes/wellness-2x.webp', character: 'character-wellness.png', box: [5.99, 29.67, 7.80, 17.12], title: 'type-wellness.png', icon: 'elevator-icon-wellness.svg', off: 'elevator-icon-wellness-off.svg',
+      description: 'Rituali e tecnologie per ritrovare equilibrio, energia e presenza.', bookable: false,
+      cards: [['Power', 'Approfondisci Power nella Wellness Room.'], ['Biohacking', 'Approfondisci il biohacking nella Wellness Room.'], ['Contrast Therapy', 'Approfondisci la contrast therapy nella Wellness Room.']],
+    },
+    {
+      key: 'bar', label: 'Bar', art: 'homepage-room-bar-clean-2x.webp', routeArt: 'routes/bar-2x.webp', character: 'character-bar.png', box: [6.98, 30.20, 5.82, 16.60], title: 'type-bar.png', icon: 'elevator-icon-bar.svg', off: 'elevator-icon-bar-off.svg',
+      description: "Il punto di incontro quotidiano della community TPR, dalla colazione all'aperitivo.", bookable: false,
+      cards: [['Servizi', 'Approfondisci i servizi nella Bar Room.'], ['Accessibilità', "Approfondisci l'accessibilità nella Bar Room."], ['Storage', 'Approfondisci lo storage nella Bar Room.']],
+    },
+    {
+      key: 'media', label: 'Media', art: 'homepage-room-media-clean-2x.webp', routeArt: 'routes/media-2x.webp', character: 'character-media.png', box: [6.55, 27.57, 6.75, 19.22], title: 'type-media.png', icon: 'elevator-icon-media.svg', off: 'elevator-icon-media-off.svg',
+      description: 'Uno studio pronto per podcast, shooting, streaming e nuovi linguaggi.', bookable: false,
+      cards: [['Podcast', 'Approfondisci il podcast nella Media Room.'], ['Studio', 'Approfondisci lo studio nella Media Room.'], ['Set fotografico', 'Approfondisci il set fotografico nella Media Room.']],
+    },
   ];
   const copy = "The People's Room è uno spazio ibrido e autentico che nutre corpo, mente e spirito, offrendo un rifugio reale in un mondo sempre più digitale. Attraverso design non convenzionale, pratiche di benessere fisico, esperienze culturali e connessioni autentiche, stimoliamo la creatività, il pensiero critico e il senso di appartenenza.";
   const hashRoom = location.hash.slice(1);
@@ -44,14 +60,29 @@
         <div class="tpr-elevator__mobile-copy">
           <h2 id="elevatorTitle"><img class="tpr-elevator__title" src="${asset(rooms[active].title)}" alt="${rooms[active].label} Room"></h2>
           <p class="tpr-elevator__description">${copy}</p>
-          <a class="tpr-elevator__mobile-cta" href="${route(rooms[active].key, true)}">Esplora Stanza <span aria-hidden="true">›</span></a>
+          <button class="tpr-elevator__mobile-cta" type="button" data-elevator-explore>Esplora Stanza <span aria-hidden="true">›</span></button>
         </div>
-        <a class="tpr-elevator__cta" href="${route(rooms[active].key, true)}"><span class="sr-only">Esplora ${rooms[active].label} Room</span></a>
+        <button class="tpr-elevator__cta" type="button" data-elevator-explore><span class="sr-only">Esplora ${rooms[active].label} Room</span></button>
         <span class="tpr-elevator__reformer-book-mask" aria-hidden="true"></span>
         <nav class="tpr-elevator__nav" aria-label="Ascensore delle stanze">
           ${rooms.map((room, index) => `<button class="tpr-elevator__button" type="button" data-elevator-room="${room.key}" aria-label="Vai a ${room.label} Room" aria-pressed="${index === active}"><img class="icon-off" src="${asset(room.off)}" alt=""><img class="icon-on" src="${asset(room.icon)}" alt=""></button>`).join('')}
         </nav>
         <div class="tpr-elevator__progress" aria-hidden="true"><span></span></div>
+        <div class="tpr-elevator__explore" aria-hidden="true">
+          <div class="tpr-elevator__explore-track" aria-hidden="true"><img alt="" width="6864" height="1904"></div>
+          <div class="tpr-elevator__explore-fixed" aria-hidden="true"><img alt="" width="6864" height="1904"></div>
+          <aside class="tpr-elevator__explore-info">
+            <p class="tpr-elevator__explore-kicker">THE PEOPLE'S ROOM</p>
+            <h2><span></span> <small>Room</small></h2>
+            <p class="tpr-elevator__explore-description"></p>
+            <div class="tpr-elevator__explore-actions">
+              <button type="button" data-elevator-close>← Tutte le Stanze</button>
+              <a href="${contactUrl}" data-elevator-book>Prenota</a>
+            </div>
+          </aside>
+          <div class="tpr-elevator__explore-cards"></div>
+          <div class="tpr-elevator__explore-progress" role="scrollbar" tabindex="0" aria-label="Scorri orizzontalmente la stanza" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+        </div>
         <p class="sr-only" aria-live="polite" id="elevatorStatus">${rooms[active].label} Room selezionata.</p>
       </div>
     </div>`;
@@ -64,6 +95,20 @@
   const ctas = [...host.querySelectorAll('.tpr-elevator__cta, .tpr-elevator__mobile-cta')];
   const buttons = [...host.querySelectorAll('[data-elevator-room]')];
   const status = host.querySelector('#elevatorStatus');
+  const exploreLayer = host.querySelector('.tpr-elevator__explore');
+  const exploreTrackImage = host.querySelector('.tpr-elevator__explore-track img');
+  const exploreFixedImage = host.querySelector('.tpr-elevator__explore-fixed img');
+  const exploreHeading = host.querySelector('.tpr-elevator__explore-info h2 span');
+  const exploreDescription = host.querySelector('.tpr-elevator__explore-description');
+  const exploreBook = host.querySelector('[data-elevator-book]');
+  const exploreCards = host.querySelector('.tpr-elevator__explore-cards');
+  const exploreProgressControl = host.querySelector('.tpr-elevator__explore-progress');
+  const ROOM_SCROLL_FACTOR = 1.35;
+  const ROOM_EXPLORE_PROGRESS = .4;
+  const CARD_POSITIONS = [.439, .6265, .812];
+  let exploring = false;
+  let exploreProgress = 0;
+  let exploreStartTimer = 0;
   const preloadedImages = new Map();
   rooms.forEach((room) => {
     [room.art, room.character, room.title].forEach((file) => {
@@ -94,7 +139,6 @@
     title.alt = `${room.label} Room`;
     status.textContent = `${room.label} Room selezionata.`;
     ctas.forEach((cta) => {
-      cta.href = route(room.key, true);
       const sr = cta.querySelector('.sr-only');
       if (sr) sr.textContent = `Esplora ${room.label} Room`;
     });
@@ -139,6 +183,152 @@
     }, 460);
   }
 
+  function renderExploreCards(room) {
+    exploreCards.innerHTML = room.cards.map(([cardTitle, cardCopy], index) => `
+      <button class="tpr-elevator__explore-card" type="button" data-card-index="${index}" aria-expanded="false" aria-label="Apri la card ${cardTitle}">
+        <span class="sr-only">Apri la card ${cardTitle}</span>
+        <span class="tpr-elevator__card-back" aria-hidden="true">
+          <strong>Cosa si fa?</strong>
+          <span class="tpr-elevator__card-close" aria-hidden="true"></span>
+          <span>${cardCopy}</span>
+          <span class="tpr-elevator__card-cta">Diventa Membro</span>
+        </span>
+      </button>`).join('');
+
+    exploreCards.querySelectorAll('.tpr-elevator__explore-card').forEach((card, index) => {
+      card.addEventListener('click', () => {
+        const expanded = card.classList.toggle('is-flipped');
+        const cardTitle = room.cards[index][0];
+        card.setAttribute('aria-expanded', String(expanded));
+        card.setAttribute('aria-label', expanded ? `Chiudi i dettagli di ${cardTitle}` : `Apri la card ${cardTitle}`);
+        card.querySelector('.tpr-elevator__card-back').setAttribute('aria-hidden', String(!expanded));
+      });
+    });
+  }
+
+  function setExploreRoom(room) {
+    const source = asset(room.routeArt);
+    exploreTrackImage.src = source;
+    exploreFixedImage.src = source;
+    exploreHeading.textContent = room.label;
+    exploreDescription.textContent = room.description;
+    exploreBook.hidden = !room.bookable;
+    renderExploreCards(room);
+  }
+
+  function getExploreGeometry() {
+    const ratio = (exploreTrackImage.naturalWidth && exploreTrackImage.naturalHeight)
+      ? exploreTrackImage.naturalWidth / exploreTrackImage.naturalHeight
+      : 6864 / 1904;
+    const rect = exploreTrackImage.getBoundingClientRect();
+    const fallbackWidth = matchMedia('(max-width: 720px)').matches ? innerHeight * ratio : innerWidth * 2.26984;
+    const width = rect.width > 0 ? rect.width : fallbackWidth;
+    const height = rect.height > 0 ? rect.height : width / ratio;
+    const travelMax = Math.max(0, width - innerWidth);
+    if (exploring) host.style.height = `${innerHeight + (travelMax * ROOM_SCROLL_FACTOR)}px`;
+    return { width, height, travelMax };
+  }
+
+  function setExploreProgress(progress) {
+    if (!exploring) return;
+    const bounded = Math.max(0, Math.min(1, progress));
+    const geometry = getExploreGeometry();
+    const travel = bounded * geometry.travelMax;
+    exploreProgress = bounded;
+    exploreLayer.style.setProperty('--explore-travel', `${travel}px`);
+    exploreLayer.style.setProperty('--explore-progress', String(bounded));
+    host.classList.toggle('has-explore-details', bounded > .22);
+    exploreProgressControl.setAttribute('aria-valuenow', String(Math.round(bounded * 100)));
+
+    exploreCards.querySelectorAll('.tpr-elevator__explore-card').forEach((card, index) => {
+      card.style.left = `${(CARD_POSITIONS[index] * geometry.width) - travel}px`;
+      card.style.top = `${.264 * geometry.height}px`;
+      card.style.width = `${.166 * geometry.width}px`;
+      card.style.height = `${.47 * geometry.height}px`;
+    });
+  }
+
+  function scrollExploreTo(progress, behavior = 'auto') {
+    const bounded = Math.max(0, Math.min(1, progress));
+    const top = host.getBoundingClientRect().top + scrollY;
+    getExploreGeometry();
+    const distance = Math.max(0, host.offsetHeight - innerHeight);
+    scrollTo({ top: top + (distance * bounded), behavior });
+  }
+
+  function openExplore(opener) {
+    if (exploring) return;
+    clearTimeout(exploreStartTimer);
+    exploring = true;
+    setExploreRoom(rooms[active]);
+    exploreLayer.setAttribute('aria-hidden', 'false');
+    host.classList.add('is-exploring');
+    document.body.classList.add('elevator-exploring');
+    status.textContent = `${rooms[active].label} Room: esplorazione aperta nella homepage.`;
+    host.dataset.mode = 'explore';
+    host._exploreOpener = opener;
+    setExploreProgress(0);
+    scrollExploreTo(0, 'auto');
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      host.classList.add('is-explore-ready');
+      const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+      scrollExploreTo(ROOM_EXPLORE_PROGRESS, behavior);
+      if (behavior === 'smooth') {
+        exploreStartTimer = setTimeout(() => scrollExploreTo(ROOM_EXPLORE_PROGRESS, 'auto'), 720);
+      }
+    }));
+  }
+
+  function closeExplore({ restoreFocus = true, scrollBack = true } = {}) {
+    if (!exploring) return;
+    clearTimeout(exploreStartTimer);
+    const opener = host._exploreOpener;
+    exploring = false;
+    exploreProgress = 0;
+    host.classList.remove('is-exploring', 'is-explore-ready', 'has-explore-details');
+    document.body.classList.remove('elevator-exploring');
+    exploreLayer.setAttribute('aria-hidden', 'true');
+    exploreLayer.style.removeProperty('--explore-travel');
+    exploreLayer.style.removeProperty('--explore-progress');
+    host.style.removeProperty('height');
+    delete host.dataset.mode;
+    history.replaceState(null, '', `#${rooms[active].key}`);
+    requestAnimationFrame(() => {
+      if (scrollBack) scrollToFloor(active, 'auto');
+      if (restoreFocus && opener instanceof HTMLElement) opener.focus({ preventScroll: true });
+    });
+  }
+
+  ctas.forEach((cta) => cta.addEventListener('click', () => openExplore(cta)));
+  host.querySelector('[data-elevator-close]').addEventListener('click', () => closeExplore());
+
+  exploreProgressControl.addEventListener('pointerdown', (event) => {
+    const rect = exploreProgressControl.getBoundingClientRect();
+    exploreProgressControl.setPointerCapture(event.pointerId);
+    scrollExploreTo((event.clientX - rect.left) / Math.max(1, rect.width));
+  });
+  exploreProgressControl.addEventListener('pointermove', (event) => {
+    if (!exploreProgressControl.hasPointerCapture(event.pointerId)) return;
+    const rect = exploreProgressControl.getBoundingClientRect();
+    scrollExploreTo((event.clientX - rect.left) / Math.max(1, rect.width));
+  });
+  exploreProgressControl.addEventListener('keydown', (event) => {
+    const moves = {
+      ArrowLeft: exploreProgress - .08,
+      ArrowRight: exploreProgress + .08,
+      PageUp: exploreProgress - .25,
+      PageDown: exploreProgress + .25,
+      Home: 0,
+      End: 1,
+    };
+    if (!(event.key in moves)) return;
+    event.preventDefault();
+    scrollExploreTo(moves[event.key], matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && exploring) closeExplore();
+  });
+
   function scrollToFloor(index, behavior = null) {
     const travel = Math.max(0, host.offsetHeight - innerHeight);
     const top = host.getBoundingClientRect().top + scrollY;
@@ -156,6 +346,7 @@
     const index = rooms.findIndex((room) => room.key === control.dataset.roomLink);
     if (index < 0 || control.closest('.tpr-elevator')) return;
     event.preventDefault();
+    if (exploring) closeExplore({ restoreFocus: false, scrollBack: false });
     history.pushState(null, '', `#${rooms[index].key}`);
     scrollToFloor(index);
   }));
@@ -163,6 +354,12 @@
   function updateFromScroll() {
     const rect = host.getBoundingClientRect();
     document.body.classList.toggle('elevator-active', rect.top <= 1 && rect.bottom >= innerHeight - 1);
+    if (exploring) {
+      const distance = Math.max(1, host.offsetHeight - innerHeight);
+      setExploreProgress(-rect.top / distance);
+      ticking = false;
+      return;
+    }
     if (initialJump || hashJumpIndex !== null) { ticking = false; return; }
     const travel = Math.max(1, host.offsetHeight - innerHeight);
     const progress = Math.min(1, Math.max(0, -rect.top / travel));
@@ -184,6 +381,7 @@
   }, { passive: true });
   addEventListener('resize', updateFromScroll, { passive: true });
   addEventListener('hashchange', () => {
+    if (exploring) return;
     const index = rooms.findIndex((room) => room.key === location.hash.slice(1));
     if (index < 0) return;
     clearTimeout(hashJumpTimer);
