@@ -558,7 +558,7 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   z-index: -2;
   inset: 0;
   background: var(--pill-fill);
-  clip-path: polygon(0 .28rem, 2% .08rem, 5% .2rem, 8% .04rem, 11% .17rem, 14% 0, 18% .16rem, 22% .04rem, 26% .18rem, 30% .02rem, 34% .16rem, 39% .03rem, 44% .17rem, 49% .04rem, 54% .18rem, 59% .02rem, 64% .17rem, 69% .04rem, 74% .18rem, 79% .03rem, 84% .16rem, 89% .04rem, 94% .17rem, 100% .06rem, calc(100% - .18rem) 18%, 100% 36%, calc(100% - .12rem) 55%, 100% 72%, calc(100% - .18rem) 100%, 94% calc(100% - .14rem), 89% 100%, 84% calc(100% - .16rem), 79% calc(100% - .03rem), 74% calc(100% - .17rem), 69% 100%, 64% calc(100% - .15rem), 59% calc(100% - .02rem), 54% calc(100% - .18rem), 49% 100%, 44% calc(100% - .16rem), 39% calc(100% - .03rem), 34% calc(100% - .17rem), 29% 100%, 24% calc(100% - .15rem), 19% calc(100% - .03rem), 14% calc(100% - .17rem), 9% 100%, 4% calc(100% - .14rem), 0 calc(100% - .05rem), .14rem 79%, 0 61%, .15rem 43%, 0 24%);
+  clip-path: var(--cta-jagged);
 }
 
 .branded-route--about .mobile-contact-form button,

@@ -5,7 +5,7 @@
   const base = new URL('.', document.currentScript.src);
   const asset = (file) => {
     const url = new URL(`assets/${file}`, base);
-    if (file.includes('elevator-icon')) url.searchParams.set('v', '20260819-rev-3');
+    if (file.includes('elevator-icon')) url.searchParams.set('v', '20260820-on-glyphs');
     return url.href;
   };
   const bookingUrl = (roomKey) => `${new URL('contatti/', base).href}?room=${encodeURIComponent(roomKey)}`;
@@ -42,46 +42,66 @@
     "Il nostro obiettivo quotidiano è ispirare le persone a esprimere sé stesse, riscoprire il valore dell'umanità e vivere in modo più presente, creativo e vitale.",
   ];
   const roomCopyHtml = copyParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join('');
-  const roomTitle = (room) => `${room.label}<span>Room</span>`;
+  const roomTitle = (room) => `${room.label} <span>Room</span>`;
+  const LIFT_MS = 1250;
+  const LAST_FLOOR_HOLD = 1;
+  const desktopCopyMarkup = (room, { live = true } = {}) => `
+          <h2>${roomTitle(room)}</h2>
+          ${roomCopyHtml}
+          <div class="tpr-elevator__desktop-actions">
+            <button class="tpr-elevator__cta" type="button"${live ? ` data-elevator-explore aria-label="Esplora ${room.label} Room"` : ' tabindex="-1" aria-hidden="true"'}><span class="tpr-elevator__cta-label">Esplora Stanza</span><span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
+            <a class="tpr-elevator__book"${live ? ' data-elevator-book' : ''} href="${bookingUrl(room.key)}" ${room.bookable ? '' : 'hidden'}>Prenota${live ? `<span class="sr-only"> ${room.label} Room</span>` : ''}</a>
+          </div>`;
+  const mobileDropMarkup = (room) => room.cards.map(([cardTitle, cardCopy]) => `
+            <article class="tpr-elevator__mobile-item">
+              <strong>${cardTitle}</strong>
+              <p>${cardCopy}</p>
+            </article>`).join('');
+  const mobileCopyMarkup = (room, { live = true } = {}) => `
+          <h2 class="tpr-elevator__title"${live ? ' id="elevatorTitle"' : ''}>${roomTitle(room)}</h2>
+          <div class="tpr-elevator__mobile-copy-text">${copyParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join('')}</div>
+          <div class="tpr-elevator__mobile-actions">
+            <button class="tpr-elevator__mobile-cta" type="button"${live ? ' data-elevator-explore aria-expanded="false"' : ' tabindex="-1" aria-hidden="true"'}><span class="tpr-elevator__cta-label">Esplora Stanza</span><span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
+            <a class="tpr-elevator__mobile-book"${live ? ' data-elevator-book' : ''} href="${bookingUrl(room.key)}" ${room.bookable ? '' : 'hidden'}><span>Prenota</span></a>
+          </div>
+          <div class="tpr-elevator__mobile-drop">${mobileDropMarkup(room)}</div>`;
+  const isRoomKey = (key) => rooms.some((room) => room.key === key);
   const hashRoom = location.hash.slice(1);
   const initialIndex = Math.max(0, rooms.findIndex((room) => room.key === hashRoom));
-  let initialJump = Boolean(hashRoom && rooms.some((room) => room.key === hashRoom));
+  let initialJump = isRoomKey(hashRoom);
   let active = initialIndex;
   let timer = 0;
   let hashJumpTimer = 0;
   let hashJumpIndex = null;
   let ticking = false;
 
-  if (initialJump) document.body.classList.add('elevator-active');
+  function clearRoomHash() {
+    if (!isRoomKey(location.hash.slice(1))) return;
+    history.replaceState(null, '', `${location.pathname}${location.search}`);
+  }
 
   host.className = 'tpr-elevator';
   host.dataset.elevatorReady = 'true';
   host.dataset.activeRoom = rooms[active].key;
+  host.style.setProperty('--elevator-lift-ms', `${LIFT_MS}ms`);
+  host.style.setProperty('--elevator-floors', String(rooms.length + LAST_FLOOR_HOLD));
   host.setAttribute('aria-labelledby', 'elevatorTitle');
   host.innerHTML = `
     <div class="tpr-elevator__sticky">
       <div class="tpr-elevator__frame">
-        <img class="tpr-elevator__art tpr-elevator__art--current" src="${asset(rooms[active].art)}" width="3024" height="1904" alt="" aria-hidden="true" fetchpriority="high">
-        <img class="tpr-elevator__art tpr-elevator__art--incoming" width="3024" height="1904" alt="" aria-hidden="true">
+        <div class="tpr-elevator__car tpr-elevator__car--current" data-room="${rooms[active].key}">
+          <img class="tpr-elevator__art tpr-elevator__art--current" src="${asset(rooms[active].art)}" width="3024" height="1904" alt="" aria-hidden="true" fetchpriority="high">
+          <div class="tpr-elevator__mobile-copy">${mobileCopyMarkup(rooms[active])}</div>
+          <div class="tpr-elevator__desktop-copy">${desktopCopyMarkup(rooms[active])}</div>
+        </div>
+        <div class="tpr-elevator__car tpr-elevator__car--incoming" aria-hidden="true">
+          <img class="tpr-elevator__art tpr-elevator__art--incoming" width="3024" height="1904" alt="" aria-hidden="true">
+          <div class="tpr-elevator__mobile-copy">${mobileCopyMarkup(rooms[active], { live: false })}</div>
+          <div class="tpr-elevator__desktop-copy">${desktopCopyMarkup(rooms[active], { live: false })}</div>
+        </div>
         <div class="tpr-elevator__character-plane" aria-hidden="true">
           <img class="tpr-elevator__character tpr-elevator__character--current" src="${asset(rooms[active].character)}" alt="">
           <img class="tpr-elevator__character tpr-elevator__character--incoming" alt="">
-        </div>
-        <div class="tpr-elevator__mobile-copy">
-          <h2 class="tpr-elevator__title" id="elevatorTitle">${roomTitle(rooms[active])}</h2>
-          <p class="tpr-elevator__description">${copyParagraphs.join(' ')}</p>
-          <div class="tpr-elevator__mobile-actions">
-            <button class="tpr-elevator__mobile-cta" type="button" data-elevator-explore>Esplora Stanza <span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
-            <a class="tpr-elevator__mobile-book" data-elevator-book href="${bookingUrl(rooms[active].key)}" ${rooms[active].bookable ? '' : 'hidden'}>Prenota</a>
-          </div>
-        </div>
-        <div class="tpr-elevator__desktop-copy">
-          <h2>${roomTitle(rooms[active])}</h2>
-          ${roomCopyHtml}
-          <div class="tpr-elevator__desktop-actions">
-            <button class="tpr-elevator__cta" type="button" data-elevator-explore aria-label="Esplora ${rooms[active].label} Room"><span>Esplora Stanza</span><span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
-            <a class="tpr-elevator__book" data-elevator-book href="${bookingUrl(rooms[active].key)}" ${rooms[active].bookable ? '' : 'hidden'}>Prenota<span class="sr-only"> ${rooms[active].label} Room</span></a>
-          </div>
         </div>
         <nav class="tpr-elevator__nav" aria-label="Ascensore delle stanze">
           ${rooms.map((room, index) => `<button class="tpr-elevator__button" type="button" data-elevator-room="${room.key}" aria-label="Vai a ${room.label} Room" aria-pressed="${index === active}"><img class="icon-off" src="${asset(room.off)}" alt=""><img class="icon-on" src="${asset(room.icon)}" alt=""></button>`).join('')}
@@ -99,35 +119,45 @@
       </div>
     </div>`;
 
-  const art = host.querySelector('.tpr-elevator__art--current');
-  const incomingArt = host.querySelector('.tpr-elevator__art--incoming');
+  const currentCar = host.querySelector('.tpr-elevator__car--current');
+  const incomingCar = host.querySelector('.tpr-elevator__car--incoming');
+  const art = currentCar.querySelector('.tpr-elevator__art');
+  const incomingArt = incomingCar.querySelector('.tpr-elevator__art');
   const currentCharacter = host.querySelector('.tpr-elevator__character--current');
   const incomingCharacter = host.querySelector('.tpr-elevator__character--incoming');
-  const titles = [...host.querySelectorAll('.tpr-elevator__title, .tpr-elevator__desktop-copy h2')];
   const ctas = [...host.querySelectorAll('[data-elevator-explore]')];
-  const bookLinks = [...host.querySelectorAll('[data-elevator-book]')];
   const buttons = [...host.querySelectorAll('[data-elevator-room]')];
   const status = host.querySelector('#elevatorStatus');
   const frame = host.querySelector('.tpr-elevator__frame');
-  const nav = host.querySelector('.tpr-elevator__nav');
-  const desktopCopy = host.querySelector('.tpr-elevator__desktop-copy');
+  const desktopCopy = currentCar.querySelector('.tpr-elevator__desktop-copy');
   const exploreLayer = host.querySelector('.tpr-elevator__explore');
   const exploreTrack = host.querySelector('.tpr-elevator__explore-track');
   const exploreTrackImage = host.querySelector('.tpr-elevator__explore-track img');
   const exploreCards = host.querySelector('.tpr-elevator__explore-cards');
   const exploreProgressControl = host.querySelector('.tpr-elevator__explore-progress');
-  const ROOM_SCROLL_FACTOR = 1.35;
-  const ROOM_EXPLORE_PROGRESS = .4;
+  const ROOM_SCROLL_FACTOR = 1.2;
+  const ROOM_EXPLORE_PROGRESS = .39;
   const EXPLORE_OPEN_MS = 720;
   let exploring = false;
   let exploreProgress = 0;
+  let exploreOpenProgress = ROOM_EXPLORE_PROGRESS;
+  let exploreOrigin = 0;
+  let exploreGeometry = null;
+  let exploreArmed = false;
+  let exploreCanClose = false;
   let exploreStartTimer = 0;
   let exploreOpenRaf = 0;
   let exploreOpening = false;
   let exploreHandoffLocked = false;
+
+  function pageInset() {
+    const header = document.querySelector('.site-header');
+    if (header) return parseFloat(getComputedStyle(header).paddingLeft) || 80;
+    return 80;
+  }
   const preloadedImages = new Map();
   rooms.forEach((room) => {
-    [room.art, room.character].forEach((file) => {
+    [room.art, room.character, room.routeArt].forEach((file) => {
       const image = new Image();
       image.decoding = 'async';
       image.loading = 'eager';
@@ -148,44 +178,91 @@
     element.style.setProperty('--character-height', `${height}%`);
   }
 
-  function updateMeta(index, direction = 0) {
-    const room = rooms[index];
-    active = index;
-    host.dataset.activeRoom = room.key;
-    titles.forEach((title) => { title.innerHTML = roomTitle(room); });
-    status.textContent = `${room.label} Room selezionata.`;
-    ctas.forEach((cta) => {
-      cta.setAttribute('aria-label', `Esplora ${room.label} Room`);
-    });
-    bookLinks.forEach((link) => {
+  function paintCopy(car, room) {
+    if (!car) return;
+    car.dataset.room = room.key;
+    car.querySelectorAll('h2').forEach((title) => { title.innerHTML = roomTitle(room); });
+    car.querySelectorAll('.tpr-elevator__book, .tpr-elevator__mobile-book').forEach((link) => {
       link.href = bookingUrl(room.key);
       link.hidden = !room.bookable;
       const sr = link.querySelector('.sr-only');
       if (sr) sr.textContent = ` ${room.label} Room`;
     });
-    buttons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.elevatorRoom === room.key)));
-    host.classList.toggle('is-reversing', direction < 0);
+    car.querySelectorAll('[data-elevator-explore]').forEach((cta) => {
+      cta.setAttribute('aria-label', `Esplora ${room.label} Room`);
+    });
+    const drop = car.querySelector('.tpr-elevator__mobile-drop');
+    if (drop) drop.innerHTML = mobileDropMarkup(room);
+    syncExploreCtas(room);
   }
 
-  function render(index, direction = 0) {
+  function isMobileView() {
+    return matchMedia('(max-width: 720px)').matches;
+  }
+
+  function setMobileExpanded(open) {
+    host.classList.toggle('is-mobile-expanded', open);
+    currentCar.classList.toggle('is-mobile-expanded', open);
+    incomingCar.classList.remove('is-mobile-expanded');
+    currentCar.querySelectorAll('.tpr-elevator__mobile-cta').forEach((cta) => {
+      cta.setAttribute('aria-expanded', String(open));
+    });
+    incomingCar.querySelectorAll('.tpr-elevator__mobile-cta').forEach((cta) => {
+      cta.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  function closeMobileDrop() {
+    setMobileExpanded(false);
+  }
+
+  function syncExploreCtas(room = rooms[active]) {
+    const exploringMode = exploring || host.classList.contains('is-exploring');
+    host.querySelectorAll('[data-elevator-explore]').forEach((cta) => {
+      const label = cta.querySelector('.tpr-elevator__cta-label');
+      if (label) label.textContent = exploringMode ? 'Tutte le Stanze' : 'Esplora Stanza';
+      cta.setAttribute('aria-label', exploringMode ? 'Torna a tutte le stanze' : `Esplora ${room.label} Room`);
+    });
+  }
+
+  function updateChrome(index) {
     const room = rooms[index];
-    updateMeta(index, direction);
+    status.textContent = `${room.label} Room selezionata.`;
+    buttons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.elevatorRoom === room.key)));
+  }
+
+  function settle(room) {
+    host.classList.add('is-arming');
+    closeMobileDrop();
+    if (host.classList.contains('is-explore-handoff')) {
+      teardownExploreOverlay();
+    }
     art.src = asset(room.art);
     setCharacter(currentCharacter, room);
-    host.classList.remove('is-lifting');
+    paintCopy(currentCar, room);
+    host.dataset.activeRoom = room.key;
+    host.classList.remove('is-lifting', 'is-reversing', 'is-explore-handoff');
+    incomingArt.removeAttribute('src');
+    incomingCharacter.removeAttribute('src');
+    incomingCar.removeAttribute('data-room');
+    incomingCar.offsetHeight;
+    host.classList.remove('is-arming');
+  }
+
+  function render(index) {
+    const room = rooms[index];
+    active = index;
+    updateChrome(index);
+    settle(room);
   }
 
   function select(index, direction = 0, animate = true) {
     if (index < 0 || index >= rooms.length || index === active) return;
+    closeMobileDrop();
     clearTimeout(timer);
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!animate || reduced) { render(index, direction); return; }
-    if (host.classList.contains('is-lifting')) {
-      const previousTarget = rooms[active];
-      art.src = asset(previousTarget.art);
-      setCharacter(currentCharacter, previousTarget);
-      host.classList.remove('is-lifting');
-    }
+    if (!animate || reduced) { render(index); return; }
+    if (host.classList.contains('is-lifting')) settle(rooms[active]);
     const room = rooms[index];
     [room.art, room.character].forEach((file) => {
       const image = preloadedImages.get(file);
@@ -193,21 +270,30 @@
     });
     incomingArt.src = asset(room.art);
     setCharacter(incomingCharacter, room);
-    updateMeta(index, direction);
+    paintCopy(incomingCar, room);
+    active = index;
+    updateChrome(index);
+    host.classList.add('is-arming');
+    host.classList.toggle('is-reversing', direction < 0);
+    incomingCar.offsetHeight;
+    host.classList.remove('is-arming');
     requestAnimationFrame(() => requestAnimationFrame(() => host.classList.add('is-lifting')));
-    timer = setTimeout(() => {
-      art.src = asset(room.art);
-      setCharacter(currentCharacter, room);
-      host.classList.remove('is-lifting');
-      incomingArt.removeAttribute('src');
-      incomingCharacter.removeAttribute('src');
-    }, 460);
+    timer = setTimeout(() => settle(room), LIFT_MS + 50);
   }
+
+  host.addEventListener('wheel', (event) => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (exploring && !exploreHandoffLocked) return;
+    if (!host.classList.contains('is-lifting') && !exploreHandoffLocked) return;
+    const rect = host.getBoundingClientRect();
+    if (rect.top > 1 || rect.bottom < innerHeight - 1) return;
+    event.preventDefault();
+  }, { passive: false });
 
   function renderExploreCards(room) {
     exploreCards.innerHTML = room.cards.map(([cardTitle, cardCopy], index) => `
       <button class="tpr-elevator__explore-card" type="button" data-card-index="${index}" aria-expanded="false" aria-label="Apri la card ${cardTitle}">
-        <span class="tpr-elevator__card-front" aria-hidden="true"><strong>${cardTitle}</strong><span class="tpr-elevator__card-arrow"></span></span>
+        <span class="tpr-elevator__card-front" aria-hidden="true"><strong>${cardTitle}</strong><span class="tpr-elevator__card-arrow" aria-hidden="true"><img src="${new URL('assets/route-arrow-zigzag.png?v=20260819-arrow-2', base).href}" alt="" width="52" height="54" /></span></span>
         <span class="sr-only">Apri la card ${cardTitle}</span>
         <span class="tpr-elevator__card-back" aria-hidden="true">
           <strong>Cosa si fa?</strong>
@@ -233,29 +319,38 @@
     renderExploreCards(room);
   }
 
-  function getExploreGeometry() {
+  function measureExploreGeometry() {
     const ratio = (exploreTrackImage.naturalWidth && exploreTrackImage.naturalHeight)
       ? exploreTrackImage.naturalWidth / exploreTrackImage.naturalHeight
       : 6864 / 1904;
     const viewHeight = frame.clientHeight || innerHeight;
-    const expectedWidth = viewHeight * ratio;
     const rect = exploreTrack.getBoundingClientRect();
+    const trackHeight = rect.height > 0 ? rect.height : viewHeight;
+    const expectedWidth = trackHeight * ratio;
     const width = Math.max(rect.width, expectedWidth);
     const height = rect.height > 0 ? rect.height : viewHeight;
     const travelMax = Math.max(0, width - innerWidth);
     const scrollDistance = Math.max(1, travelMax * ROOM_SCROLL_FACTOR);
-    const handoffDistance = active < rooms.length - 1 ? Math.max(120, innerHeight * .32) : 0;
-    if (exploring) host.style.height = `${innerHeight + scrollDistance + handoffDistance}px`;
+    const handoffDistance = active < rooms.length - 1 ? Math.max(160, innerHeight * .45) : innerHeight * LAST_FLOOR_HOLD;
     return { width, height, travelMax, scrollDistance, handoffDistance };
   }
 
+  function lockExploreLayout() {
+    exploreOrigin = Math.max(0, -host.getBoundingClientRect().top);
+    const geometry = measureExploreGeometry();
+    const needed = exploreOrigin + geometry.scrollDistance + geometry.handoffDistance + innerHeight;
+    host.style.height = `${Math.max(host.offsetHeight, needed)}px`;
+    exploreGeometry = measureExploreGeometry();
+    return exploreGeometry;
+  }
+
+  function getExploreGeometry() {
+    if (exploring && exploreGeometry) return exploreGeometry;
+    return measureExploreGeometry();
+  }
+
   function getOpeningExploreProgress() {
-    const geometry = getExploreGeometry();
-    if (geometry.travelMax <= 0) return ROOM_EXPLORE_PROGRESS;
-    const hideLeftPhoto = Math.min(innerWidth * .5, geometry.width * .22);
-    const keepCopyOnScreen = Math.max(0, geometry.width * .232 - 40);
-    const travel = Math.min(hideLeftPhoto, keepCopyOnScreen);
-    return Math.max(.22, Math.min(ROOM_EXPLORE_PROGRESS, travel / geometry.travelMax));
+    return ROOM_EXPLORE_PROGRESS;
   }
 
   function setExploreProgress(progress) {
@@ -276,7 +371,7 @@
     const top = host.getBoundingClientRect().top + scrollY;
     const geometry = getExploreGeometry();
     scrollTo({
-      top: top + (geometry.scrollDistance * bounded),
+      top: top + exploreOrigin + (geometry.scrollDistance * bounded),
       behavior: behavior === 'auto' ? 'instant' : behavior,
     });
   }
@@ -291,25 +386,31 @@
     cancelAnimationFrame(exploreOpenRaf);
     exploring = true;
     exploreOpening = true;
+    exploreArmed = false;
+    exploreCanClose = false;
+    exploreGeometry = null;
     setExploreRoom(rooms[active]);
     exploreLayer.setAttribute('aria-hidden', 'false');
-    host.classList.add('is-exploring', 'is-explore-opening');
-    document.body.classList.add('elevator-exploring');
-    status.textContent = `${rooms[active].label} Room: esplorazione aperta nella homepage.`;
     host.dataset.mode = 'explore';
     host._exploreOpener = opener;
     if (desktopCopy.parentElement !== exploreTrack) exploreTrack.appendChild(desktopCopy);
+    host.classList.add('is-exploring', 'is-explore-opening');
+    document.body.classList.add('elevator-exploring');
+    syncExploreCtas();
+    status.textContent = `${rooms[active].label} Room: esplorazione aperta nella homepage.`;
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    lockExploreLayout();
     setExploreProgress(0);
-    scrollExploreTo(0, 'auto');
     const opening = getOpeningExploreProgress();
     const finishOpening = () => {
       if (!exploring) return;
-      scrollExploreTo(opening, 'auto');
       setExploreProgress(opening);
+      scrollExploreTo(opening, 'auto');
+      exploreOpenProgress = opening;
       host.classList.add('is-explore-ready');
       host.classList.remove('is-explore-opening');
       exploreOpening = false;
+      requestAnimationFrame(() => { exploreArmed = true; });
     };
     requestAnimationFrame(() => requestAnimationFrame(() => {
       if (!exploring) return;
@@ -321,7 +422,9 @@
       const tick = (now) => {
         if (!exploring) return;
         const t = Math.min(1, (now - start) / EXPLORE_OPEN_MS);
-        setExploreProgress(opening * easeExploreOpen(t));
+        const next = opening * easeExploreOpen(t);
+        setExploreProgress(next);
+        scrollExploreTo(next, 'auto');
         if (t < 1) exploreOpenRaf = requestAnimationFrame(tick);
         else finishOpening();
       };
@@ -329,52 +432,81 @@
     }));
   }
 
-  function closeExplore({ restoreFocus = true, scrollBack = true, updateHistory = true } = {}) {
-    if (!exploring) return;
+  function teardownExploreOverlay() {
     clearTimeout(exploreStartTimer);
     cancelAnimationFrame(exploreOpenRaf);
-    const opener = host._exploreOpener;
     exploring = false;
     exploreOpening = false;
+    exploreArmed = false;
+    exploreCanClose = false;
     exploreProgress = 0;
+    exploreGeometry = null;
     host.classList.remove('is-exploring', 'is-explore-ready', 'is-explore-opening');
     document.body.classList.remove('elevator-exploring');
     exploreLayer.setAttribute('aria-hidden', 'true');
-    if (desktopCopy.parentElement !== frame) frame.insertBefore(desktopCopy, nav);
+    if (desktopCopy.parentElement !== currentCar) currentCar.appendChild(desktopCopy);
     host.style.removeProperty('--explore-travel');
     host.style.removeProperty('--explore-progress');
     exploreLayer.style.removeProperty('--explore-travel');
     exploreLayer.style.removeProperty('--explore-progress');
-    host.style.removeProperty('height');
     delete host.dataset.mode;
-    if (updateHistory) history.replaceState(null, '', `#${rooms[active].key}`);
+    syncExploreCtas();
+  }
+
+  function closeExplore({ restoreFocus = true, scrollBack = true } = {}) {
+    if (!exploring || exploreHandoffLocked) return;
+    const opener = host._exploreOpener;
+    teardownExploreOverlay();
+    exploreOrigin = 0;
+    host.classList.add('is-explore-exit');
+    host.style.removeProperty('height');
     requestAnimationFrame(() => {
       if (scrollBack) scrollToFloor(active, 'auto');
       if (restoreFocus && opener instanceof HTMLElement) opener.focus({ preventScroll: true });
+      requestAnimationFrame(() => host.classList.remove('is-explore-exit'));
+    });
+  }
+
+  function finishExploreHandoff(index) {
+    host.style.removeProperty('height');
+    exploreOrigin = 0;
+    scrollToFloor(index, 'auto');
+    requestAnimationFrame(() => {
+      exploreHandoffLocked = false;
+      hashJumpIndex = null;
+      updateFromScroll();
     });
   }
 
   function handoffExploreToNextRoom() {
     if (!exploring || exploreHandoffLocked || active >= rooms.length - 1) return;
+    if (host.classList.contains('is-lifting')) return;
     exploreHandoffLocked = true;
     const next = active + 1;
     hashJumpIndex = next;
-    closeExplore({ restoreFocus: false, scrollBack: false, updateHistory: false });
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) {
+      teardownExploreOverlay();
+      render(next);
+      finishExploreHandoff(next);
+      return;
+    }
+    host.classList.add('is-explore-handoff');
     select(next, 1);
-    history.replaceState(null, '', `#${rooms[next].key}`);
-    requestAnimationFrame(() => {
-      scrollToFloor(next, 'auto');
-      status.textContent = `${rooms[next].label} Room selezionata.`;
-      setTimeout(() => {
-        exploreHandoffLocked = false;
-        hashJumpIndex = null;
-        updateFromScroll();
-      }, 360);
-    });
+    status.textContent = `${rooms[next].label} Room selezionata.`;
+    setTimeout(() => finishExploreHandoff(next), LIFT_MS + 80);
   }
 
   ctas.forEach((cta) => cta.addEventListener('click', () => {
-    if (exploring) return;
+    if (exploreHandoffLocked) return;
+    if (isMobileView()) {
+      setMobileExpanded(!host.classList.contains('is-mobile-expanded'));
+      return;
+    }
+    if (exploring) {
+      closeExplore({ restoreFocus: false });
+      return;
+    }
     openExplore(cta);
   }));
 
@@ -402,20 +534,33 @@
     scrollExploreTo(moves[event.key], matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
   });
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && exploring) closeExplore();
+    if (event.key !== 'Escape') return;
+    if (host.classList.contains('is-mobile-expanded')) closeMobileDrop();
+    else if (exploring) closeExplore();
   });
 
+  function elevatorTravel() {
+    return Math.max(1, host.offsetHeight - innerHeight);
+  }
+
+  function roomTravel() {
+    return Math.max(1, elevatorTravel() - (innerHeight * LAST_FLOOR_HOLD));
+  }
+
+  function floorOffset(index) {
+    return roomTravel() * (index / (rooms.length - 1));
+  }
+
   function scrollToFloor(index, behavior = null) {
-    const travel = Math.max(0, host.offsetHeight - innerHeight);
     const top = host.getBoundingClientRect().top + scrollY;
-    const target = top + travel * (index / (rooms.length - 1));
+    const target = top + floorOffset(index);
     const requestedBehavior = behavior || (matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
     scrollTo({ top: target, behavior: requestedBehavior === 'auto' ? 'instant' : requestedBehavior });
   }
 
   buttons.forEach((button, index) => button.addEventListener('click', () => {
     select(index, index > active ? 1 : -1);
-    history.pushState(null, '', `#${rooms[index].key}`);
+    clearRoomHash();
     scrollToFloor(index, 'auto');
   }));
 
@@ -426,8 +571,8 @@
     if (exploring) closeExplore({ restoreFocus: false, scrollBack: false });
     clearTimeout(hashJumpTimer);
     hashJumpIndex = index;
-    render(index, 0);
-    history.pushState(null, '', `#${rooms[index].key}`);
+    render(index);
+    clearRoomHash();
     scrollToFloor(index, 'auto');
     hashJumpTimer = setTimeout(() => {
       hashJumpIndex = null;
@@ -439,26 +584,32 @@
     const rect = host.getBoundingClientRect();
     document.body.classList.toggle('elevator-active', rect.top <= 1 && rect.bottom >= innerHeight - 1);
     if (exploring) {
-      if (exploreOpening) { ticking = false; return; }
+      if (exploreOpening || !exploreArmed || exploreHandoffLocked) { ticking = false; return; }
       const geometry = getExploreGeometry();
       const offset = Math.max(0, -rect.top);
-      setExploreProgress(offset / geometry.scrollDistance);
-      if (geometry.handoffDistance > 0 && offset >= geometry.scrollDistance + (geometry.handoffDistance * .72)) {
+      const raw = (offset - exploreOrigin) / geometry.scrollDistance;
+      if (raw >= exploreOpenProgress * .9) exploreCanClose = true;
+      if (exploreCanClose && raw <= 0.02) {
+        ticking = false;
+        closeExplore({ restoreFocus: false, scrollBack: true });
+        return;
+      }
+      setExploreProgress(raw);
+      if (active < rooms.length - 1 && raw >= 1) {
         handoffExploreToNextRoom();
       }
       ticking = false;
       return;
     }
-    if (initialJump || hashJumpIndex !== null) { ticking = false; return; }
-    const travel = Math.max(1, host.offsetHeight - innerHeight);
-    const progress = Math.min(1, Math.max(0, -rect.top / travel));
+    if (initialJump || hashJumpIndex !== null || exploreHandoffLocked) { ticking = false; return; }
+    const offset = Math.max(0, -rect.top);
+    const progress = Math.min(1, offset / roomTravel());
     host.style.setProperty('--elevator-progress', progress);
     const next = Math.min(rooms.length - 1, Math.max(0, Math.round(progress * (rooms.length - 1))));
     if (rect.top <= 1 && rect.bottom >= innerHeight - 1 && next !== active) {
+      if (host.classList.contains('is-lifting')) { ticking = false; return; }
       const direction = next > active ? 1 : -1;
       select(next, direction);
-      const hashIsRoom = rooms.some((room) => room.key === location.hash.slice(1));
-      if (!location.hash || hashIsRoom) history.replaceState(null, '', `#${rooms[next].key}`);
     }
     ticking = false;
   }
@@ -468,46 +619,50 @@
     ticking = true;
     requestAnimationFrame(updateFromScroll);
   }, { passive: true });
-  addEventListener('resize', updateFromScroll, { passive: true });
+  addEventListener('resize', () => {
+    if (!isMobileView()) closeMobileDrop();
+    updateFromScroll();
+  }, { passive: true });
   addEventListener('hashchange', () => {
     if (exploring) return;
     const index = rooms.findIndex((room) => room.key === location.hash.slice(1));
     if (index < 0) return;
     clearTimeout(hashJumpTimer);
     hashJumpIndex = index;
-    render(index, 0);
+    render(index);
     scrollToFloor(index, 'auto');
+    clearRoomHash();
     hashJumpTimer = setTimeout(() => {
       hashJumpIndex = null;
       updateFromScroll();
     }, 120);
   });
-  render(active, 0);
+  render(active);
   requestAnimationFrame(updateFromScroll);
   if (initialJump) {
     let jumpStarted = false;
+    let jumpReleased = false;
+    const releaseInitialJump = () => {
+      if (jumpReleased) return;
+      jumpReleased = true;
+      initialJump = false;
+      if (hashJumpIndex === initialIndex) hashJumpIndex = null;
+      updateFromScroll();
+    };
     const performInitialJump = () => {
       if (jumpStarted) return;
       jumpStarted = true;
+      hashJumpIndex = initialIndex;
+      render(initialIndex);
       requestAnimationFrame(() => {
-      render(initialIndex, 0);
-      scrollToFloor(initialIndex, 'auto');
-      setTimeout(() => scrollToFloor(initialIndex, 'auto'), 180);
-      setTimeout(() => {
-        hashJumpIndex = initialIndex;
-        render(initialIndex, 0);
         scrollToFloor(initialIndex, 'auto');
-        requestAnimationFrame(() => requestAnimationFrame(() => {
-          render(initialIndex, 0);
-          initialJump = false;
-          hashJumpIndex = null;
-          updateFromScroll();
-        }));
-      }, 420);
+        clearRoomHash();
+        requestAnimationFrame(releaseInitialJump);
       });
     };
     if (document.readyState === 'complete') performInitialJump();
     else addEventListener('load', performInitialJump, { once: true });
     setTimeout(performInitialJump, 0);
+    setTimeout(releaseInitialJump, 800);
   }
 })();

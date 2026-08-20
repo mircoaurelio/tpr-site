@@ -209,27 +209,31 @@ a { font: inherit; }
   z-index: 5;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
   color: var(--room-page-ink);
   pointer-events: none;
 }
 .room-explore-copy h2 {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
-  gap: .2em;
-  margin: 0 0 24px;
-  font: 700 clamp(2.6rem, 5.29vw, 5rem)/1 "PP Rader", "Alte Haas Grotesk", Arial, sans-serif;
-  letter-spacing: -.04em;
+  gap: 0 .2em;
+  margin: 0 0 16px;
+  font: 600 clamp(2.6rem, 5.29vw, 5rem)/1 "PP Rader", "Alte Haas Grotesk", Arial, sans-serif;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 .room-explore-copy h2 small {
   font-size: .645em;
   font-weight: 400;
   line-height: 1;
+  letter-spacing: 0;
+  vertical-align: super;
 }
 .room-explore-copy p {
   margin: 0;
-  font: 400 clamp(.95rem, 1.59vw, 1.5rem)/1 "Alte Haas Grotesk", Arial, sans-serif;
+  font: 400 clamp(1rem, 1.59vw, 1.5rem)/1 "Alte Haas Grotesk", Arial, sans-serif;
+  letter-spacing: 0;
 }
 .room-card-front {
   position: absolute;
@@ -250,19 +254,22 @@ a { font: inherit; }
 .room-card-hit.is-flipped .room-card-front { opacity: 0; }
 .room-card-front__arrow {
   position: relative;
+  display: grid;
+  place-items: center;
   width: clamp(1.6rem, 2.4vw, 2.8rem);
   height: clamp(1.6rem, 2.4vw, 2.8rem);
   flex: 0 0 auto;
-  border: 2px solid currentColor;
-  border-radius: 50%;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
 }
-.room-card-front__arrow::after {
-  content: "";
-  position: absolute;
-  inset: 32%;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: rotate(-45deg);
+.room-card-front__arrow::before,
+.room-card-front__arrow::after { content: none; }
+.room-card-front__arrow img,
+.room-card-front__arrow svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 .room-action,
 .room-card-hit {
@@ -432,13 +439,12 @@ a { font: inherit; }
 }
 .room-sticky.is-exploring .room-fixed-info { opacity: 1; pointer-events: auto; transform: translateX(0); }
 .room-fixed-info__kicker { margin: 0 0 .8rem; font-size: clamp(.58rem, .72vw, .75rem); font-weight: 900; letter-spacing: .1em; }
-.room-fixed-info h1 { margin: 0 0 1.15rem; display: flex; align-items: flex-start; gap: .2em; font: 700 clamp(2.6rem, 5.29vw, 5rem)/1 "PP Rader", "Alte Haas Grotesk", Arial, sans-serif; letter-spacing: -.04em; text-transform: uppercase; white-space: nowrap; }
-.room-fixed-info h1 small { font-size: .645em; font-weight: 400; line-height: 1; letter-spacing: -.02em; }
-.room-fixed-info > p:not(.room-fixed-info__kicker) { margin: 0; font-size: clamp(.95rem, 1.59vw, 1.5rem); line-height: 1; letter-spacing: 0; }
+.room-fixed-info h1 { margin: 0 0 1.15rem; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0 .2em; font: 600 clamp(2.6rem, 5.29vw, 5rem)/1 "PP Rader", "Alte Haas Grotesk", Arial, sans-serif; letter-spacing: 0; text-transform: uppercase; white-space: nowrap; }
+.room-fixed-info h1 small { font-size: .645em; font-weight: 400; line-height: 1; letter-spacing: 0; vertical-align: super; }
+.room-fixed-info > p:not(.room-fixed-info__kicker) { margin: 0; font-size: clamp(1rem, 1.59vw, 1.5rem); font-weight: 400; line-height: 1; letter-spacing: 0; }
 .room-fixed-info > div { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 32px; }
 .room-fixed-info button,
 .room-fixed-info a {
-  --jagged: polygon(0 .28rem, 2% .08rem, 5% .2rem, 8% .04rem, 11% .17rem, 14% 0, 18% .16rem, 22% .04rem, 26% .18rem, 30% .02rem, 34% .16rem, 39% .03rem, 44% .17rem, 49% .04rem, 54% .18rem, 59% .02rem, 64% .17rem, 69% .04rem, 74% .18rem, 79% .03rem, 84% .16rem, 89% .04rem, 94% .17rem, 100% .06rem, calc(100% - .18rem) 18%, 100% 36%, calc(100% - .12rem) 55%, 100% 72%, calc(100% - .18rem) 100%, 94% calc(100% - .14rem), 89% 100%, 84% calc(100% - .16rem), 79% calc(100% - .03rem), 74% calc(100% - .17rem), 69% 100%, 64% calc(100% - .15rem), 59% calc(100% - .02rem), 54% calc(100% - .18rem), 49% 100%, 44% calc(100% - .16rem), 39% calc(100% - .03rem), 34% calc(100% - .17rem), 29% 100%, 24% calc(100% - .15rem), 19% calc(100% - .03rem), 14% calc(100% - .17rem), 9% 100%, 4% calc(100% - .14rem), 0 calc(100% - .05rem), .14rem 79%, 0 61%, .15rem 43%, 0 24%);
   position: relative;
   isolation: isolate;
   min-height: 32px;
@@ -462,7 +468,7 @@ a { font: inherit; }
   z-index: -1;
   inset: 0;
   background: var(--room-page-ink);
-  clip-path: var(--jagged);
+  clip-path: var(--cta-jagged);
 }
 
 .room-menu {
@@ -541,9 +547,9 @@ a { font: inherit; }
   .static-route .desktop-route-copy { display: none !important; }
   .static-route { min-height: 100svh; background: var(--royal); }
   .mobile-route-content { display: block; padding: 7rem 1.25rem 5rem; }
-  .mobile-route-content h1 { max-width: 9ch; margin: 0 0 2rem; font-size: clamp(3.6rem, 18vw, 6rem); line-height: 1; letter-spacing: -.04em; text-transform: uppercase; }
-  .mobile-route-content h2 { margin: 0 0 1rem; font-size: clamp(2rem, 10vw, 3.5rem); line-height: 1; letter-spacing: -.04em; text-transform: uppercase; }
-  .mobile-route-content p { font-size: 1rem; line-height: 1.05; letter-spacing: 0; }
+  .mobile-route-content h1 { max-width: 9ch; margin: 0 0 2rem; font: 600 clamp(3.6rem, 18vw, 6rem)/1 "PP Rader", "Alte Haas Grotesk", Arial, sans-serif; letter-spacing: 0; text-transform: uppercase; }
+  .mobile-route-content h2 { margin: 0 0 1rem; font: 600 clamp(2rem, 10vw, 3.5rem)/1 "PP Rader", "Alte Haas Grotesk", Arial, sans-serif; letter-spacing: 0; text-transform: uppercase; }
+  .mobile-route-content p { font: 400 1rem/1 "Alte Haas Grotesk", Arial, sans-serif; letter-spacing: 0; }
   .mobile-route-kicker { margin: 0 0 1.25rem; font-size: .78rem !important; font-weight: 700; letter-spacing: .08em; }
   .mobile-route-lead { max-width: 34rem; margin-bottom: 3.5rem; font-size: 1.25rem !important; }
   .mobile-route-grid { display: grid; gap: 1rem; margin: 2rem 0 4rem; }

@@ -233,7 +233,7 @@ document.querySelectorAll('.people-hotspots [data-room-link]').forEach((hotspot)
   hotspot.addEventListener('pointerenter', () => {
     const hoverId = (hotspot.dataset.hoverState || 'hover1').replace(/\D/g, '') || '1';
     if (peopleTooltipImg) {
-      peopleTooltipImg.src = `../assets/hover-label-${hoverId}.svg?v=20260819-room-labels-2`;
+      peopleTooltipImg.src = `../assets/hover-label-${hoverId}.svg?v=20260820-bar-label-font`;
       peopleTooltipImg.alt = hotspot.dataset.hoverLabel || '';
     }
     peopleTooltip.classList.add('is-visible');

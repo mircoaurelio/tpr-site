@@ -1,9 +1,8 @@
 """Compose clean elevator icons from OFF SVG geometry + sprite colors.
 
-ON icons are not knockouts of --room-bg. They are:
-  1. colored fill of the scalloped sticker interior
-  2. white jagged ring around that fill
-  3. glyph in the sprite color (white / dark green / white / orange / yellow)
+ON icons are a solid scalloped sticker with no white ring:
+  1. colored fill of the outer jagged shape (room accent)
+  2. glyph in the room background color (light blue / dark green / lime / orange / yellow)
 OFF icons stay white ring + white glyph on transparent.
 """
 from __future__ import annotations
@@ -15,9 +14,9 @@ ROOT = Path("assets")
 SIZE = 124
 
 ROOMS = {
-    "coworking": {"fill": "#2c64e8", "glyph": "#ffffff", "label": "Coworking room"},
+    "coworking": {"fill": "#2c64e8", "glyph": "#98caff", "label": "Coworking room"},
     "reformer": {"fill": "#ffc100", "glyph": "#3f9941", "label": "Reformer room"},
-    "wellness": {"fill": "#3f9941", "glyph": "#ffffff", "label": "Wellness room"},
+    "wellness": {"fill": "#3f9941", "glyph": "#c2d569", "label": "Wellness room"},
     "bar": {"fill": "#ffc100", "glyph": "#eb642b", "label": "Bar room"},
     "media": {"fill": "#2c64e8", "glyph": "#ffc100", "label": "Media room"},
 }
@@ -82,7 +81,6 @@ def main() -> None:
         )
         on_body = (
             f'  <path fill="{colors["fill"]}" d="{outer}"/>\n'
-            f'  <path fill="#ffffff" fill-rule="evenodd" d="{ring}"/>\n'
             f'  <path fill="{colors["glyph"]}" fill-rule="evenodd" d="{glyph}"/>\n'
         )
         write_svg(f"elevator-icon-{room}-off.svg", off_body, colors["label"])

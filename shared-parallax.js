@@ -3,7 +3,6 @@
     '.hero-photo',
     '.events-visual > img:first-child',
     '.membership-card .torn-photo img',
-    '.phone-mockup__screen',
     '.mobile-brand-membership__photo img',
     '.route-photo-card__photo-window > img',
     '.mobile-event-card__photo-window > img',

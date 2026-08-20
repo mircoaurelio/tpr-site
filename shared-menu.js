@@ -48,6 +48,34 @@
     cursor.dataset.cursorReady = 'true';
     document.documentElement.classList.add('has-tpr-cursor');
     const actionSelector = 'a, button, input, select, textarea, summary, [role="button"], [data-room-link]';
+    let promoteFrame = 0;
+
+    function topLayerHost() {
+      return document.querySelector('dialog[open]') || document.body;
+    }
+
+    function restackCursor() {
+      const host = topLayerHost();
+      if (cursor.parentElement !== host) host.appendChild(cursor);
+      if (typeof cursor.showPopover !== 'function') return;
+      cursor.setAttribute('popover', 'manual');
+      try {
+        if (cursor.matches(':popover-open')) cursor.hidePopover();
+        cursor.showPopover();
+      } catch {
+        if (cursor.parentElement !== host) host.appendChild(cursor);
+      }
+    }
+
+    function promoteCursor() {
+      if (promoteFrame) return;
+      promoteFrame = requestAnimationFrame(() => {
+        promoteFrame = 0;
+        restackCursor();
+      });
+    }
+
+    restackCursor();
     addEventListener('pointermove', (event) => {
       cursor.style.left = `${event.clientX}px`;
       cursor.style.top = `${event.clientY}px`;
@@ -58,6 +86,17 @@
     }, { passive: true });
     document.documentElement.addEventListener('pointerleave', () => cursor.classList.remove('is-visible'));
     addEventListener('blur', () => cursor.classList.remove('is-visible'));
+    document.addEventListener('toggle', (event) => {
+      if (event.target !== cursor) promoteCursor();
+    }, true);
+    document.addEventListener('close', (event) => {
+      if (event.target instanceof HTMLDialogElement) promoteCursor();
+    }, true);
+    new MutationObserver(promoteCursor).observe(document.documentElement, {
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['open'],
+    });
   }
   let menu = document.querySelector('#siteMenu');
   const openButton = document.querySelector('[data-open-menu], #openMenu');
@@ -85,7 +124,7 @@
   const closeButton = menu.querySelector('[data-close-menu], #closeMenu');
   if (!closeButton || menu.dataset.menuReady) return;
   menu.dataset.menuReady = 'true';
-  const background = [...document.body.children].filter((node) => node !== menu && node.tagName !== 'SCRIPT' && node.tagName !== 'STYLE');
+  const background = [...document.body.children].filter((node) => node !== menu && node !== cursor && node.tagName !== 'SCRIPT' && node.tagName !== 'STYLE');
   let opener = openButton;
 
   function focusable() {

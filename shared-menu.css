@@ -69,6 +69,8 @@
   --tpr-page-bg: var(--tpr-royal);
   --tpr-display: "PP Rader", "Alte Haas Grotesk", Arial, sans-serif;
   --tpr-body: "Alte Haas Grotesk", Arial, sans-serif;
+  --cta-jagged: polygon(0.130rem 0.900rem, 0.055rem 0.779rem, 0.161rem 0.683rem, 0.124rem 0.546rem, 0.249rem 0.482rem, 0.262rem 0.347rem, 0.382rem 0.302rem, 0.449rem 0.199rem, 0.564rem 0.165rem, 0.668rem 0.108rem, 0.784rem 0.091rem, 0.900rem 0.075rem, 7.31% 0.075rem, 9.82% 0.116rem, 12.33% 0.055rem, 14.84% 0.126rem, 17.36% 0.040rem, 19.87% 0.127rem, 22.38% 0.035rem, 24.89% 0.116rem, 27.40% 0.043rem, 29.91% 0.094rem, 32.42% 0.060rem, 34.93% 0.068rem, 37.44% 0.079rem, 39.96% 0.047rem, 42.47% 0.094rem, 44.98% 0.036rem, 47.49% 0.098rem, 50.00% 0.038rem, 52.51% 0.092rem, 55.02% 0.052rem, 57.53% 0.080rem, 60.04% 0.070rem, 62.56% 0.071rem, 65.07% 0.084rem, 67.58% 0.070rem, 70.09% 0.089rem, 72.60% 0.081rem, 75.11% 0.082rem, 77.62% 0.102rem, 80.13% 0.066rem, 82.64% 0.127rem, 85.16% 0.050rem, 87.67% 0.130rem, 90.18% 0.039rem, 92.69% 0.130rem, calc(100% - 0.900rem) 0.084rem, calc(100% - 0.790rem) 0.136rem, calc(100% - 0.666rem) 0.105rem, calc(100% - 0.580rem) 0.200rem, calc(100% - 0.450rem) 0.199rem, calc(100% - 0.393rem) 0.315rem, calc(100% - 0.274rem) 0.357rem, calc(100% - 0.237rem) 0.474rem, calc(100% - 0.154rem) 0.559rem, calc(100% - 0.128rem) 0.673rem, calc(100% - 0.095rem) 0.784rem, calc(100% - 0.084rem) 0.900rem, calc(100% - 0.107rem) 11.94%, calc(100% - 0.080rem) 17.38%, calc(100% - 0.123rem) 22.81%, calc(100% - 0.060rem) 28.25%, calc(100% - 0.130rem) 33.69%, calc(100% - 0.041rem) 39.12%, calc(100% - 0.130rem) 44.56%, calc(100% - 0.030rem) 50.00%, calc(100% - 0.130rem) 55.44%, calc(100% - 0.030rem) 60.88%, calc(100% - 0.130rem) 66.31%, calc(100% - 0.041rem) 71.75%, calc(100% - 0.108rem) 77.19%, calc(100% - 0.057rem) 82.62%, calc(100% - 0.083rem) 88.06%, calc(100% - 0.084rem) calc(100% - 0.900rem), calc(100% - 0.118rem) calc(100% - 0.788rem), calc(100% - 0.134rem) calc(100% - 0.675rem), calc(100% - 0.170rem) calc(100% - 0.567rem), calc(100% - 0.238rem) calc(100% - 0.474rem), calc(100% - 0.289rem) calc(100% - 0.371rem), calc(100% - 0.385rem) calc(100% - 0.305rem), calc(100% - 0.465rem) calc(100% - 0.223rem), calc(100% - 0.569rem) calc(100% - 0.175rem), calc(100% - 0.676rem) calc(100% - 0.136rem), calc(100% - 0.785rem) calc(100% - 0.097rem), calc(100% - 0.900rem) calc(100% - 0.112rem), 92.69% calc(100% - 0.108rem), 90.18% calc(100% - 0.081rem), 87.67% calc(100% - 0.099rem), 85.16% calc(100% - 0.100rem), 82.64% calc(100% - 0.082rem), 80.13% calc(100% - 0.124rem), 77.62% calc(100% - 0.061rem), 75.11% calc(100% - 0.130rem), 72.60% calc(100% - 0.045rem), 70.09% calc(100% - 0.130rem), 67.58% calc(100% - 0.040rem), 65.07% calc(100% - 0.130rem), 62.56% calc(100% - 0.045rem), 60.04% calc(100% - 0.128rem), 57.53% calc(100% - 0.057rem), 55.02% calc(100% - 0.106rem), 52.51% calc(100% - 0.069rem), 50.00% calc(100% - 0.088rem), 47.49% calc(100% - 0.073rem), 44.98% calc(100% - 0.080rem), 42.47% calc(100% - 0.067rem), 39.96% calc(100% - 0.084rem), 37.44% calc(100% - 0.050rem), 34.93% calc(100% - 0.097rem), 32.42% calc(100% - 0.031rem), 29.91% calc(100% - 0.112rem), 27.40% calc(100% - 0.015rem), 24.89% calc(100% - 0.122rem), 22.38% calc(100% - 0.011rem), 19.87% calc(100% - 0.121rem), 17.36% calc(100% - 0.020rem), 14.84% calc(100% - 0.110rem), 12.33% calc(100% - 0.042rem), 9.82% calc(100% - 0.093rem), 7.31% calc(100% - 0.067rem), 0.900rem calc(100% - 0.129rem), 0.781rem calc(100% - 0.071rem), 0.680rem calc(100% - 0.150rem), 0.560rem calc(100% - 0.155rem), 0.472rem calc(100% - 0.234rem), 0.373rem calc(100% - 0.292rem), 0.298rem calc(100% - 0.379rem), 0.227rem calc(100% - 0.467rem), 0.180rem calc(100% - 0.571rem), 0.126rem calc(100% - 0.673rem), 0.127rem calc(100% - 0.789rem), 0.081rem calc(100% - 0.900rem), 0.036rem 88.06%, 0.125rem 82.62%, 0.041rem 77.19%, 0.122rem 71.75%, 0.059rem 66.31%, 0.109rem 60.88%, 0.084rem 55.44%, 0.090rem 50.00%, 0.109rem 44.56%, 0.073rem 39.12%, 0.126rem 33.69%, 0.065rem 28.25%, 0.130rem 22.81%, 0.067rem 17.38%, 0.122rem 11.94%);
+  --cta-jagged-inner: polygon(0.275rem 0.900rem, 0.198rem 0.799rem, 0.300rem 0.724rem, 0.256rem 0.606rem, 0.371rem 0.560rem, 0.371rem 0.442rem, 0.477rem 0.411rem, 0.528rem 0.321rem, 0.624rem 0.297rem, 0.708rem 0.247rem, 0.804rem 0.234rem, 0.900rem 0.220rem, 7.31% 0.220rem, 9.82% 0.261rem, 12.33% 0.200rem, 14.84% 0.271rem, 17.36% 0.185rem, 19.87% 0.272rem, 22.38% 0.180rem, 24.89% 0.261rem, 27.40% 0.188rem, 29.91% 0.239rem, 32.42% 0.205rem, 34.93% 0.213rem, 37.44% 0.224rem, 39.96% 0.192rem, 42.47% 0.239rem, 44.98% 0.181rem, 47.49% 0.243rem, 50.00% 0.183rem, 52.51% 0.237rem, 55.02% 0.197rem, 57.53% 0.225rem, 60.04% 0.215rem, 62.56% 0.216rem, 65.07% 0.229rem, 67.58% 0.215rem, 70.09% 0.234rem, 72.60% 0.226rem, 75.11% 0.227rem, 77.62% 0.247rem, 80.13% 0.211rem, 82.64% 0.272rem, 85.16% 0.195rem, 87.67% 0.275rem, 90.18% 0.184rem, 92.69% 0.275rem, calc(100% - 0.900rem) 0.229rem, calc(100% - 0.811rem) 0.279rem, calc(100% - 0.707rem) 0.244rem, calc(100% - 0.640rem) 0.331rem, calc(100% - 0.528rem) 0.321rem, calc(100% - 0.488rem) 0.425rem, calc(100% - 0.383rem) 0.452rem, calc(100% - 0.359rem) 0.552rem, calc(100% - 0.286rem) 0.619rem, calc(100% - 0.268rem) 0.714rem, calc(100% - 0.238rem) 0.805rem, calc(100% - 0.229rem) 0.900rem, calc(100% - 0.252rem) 11.94%, calc(100% - 0.225rem) 17.38%, calc(100% - 0.268rem) 22.81%, calc(100% - 0.205rem) 28.25%, calc(100% - 0.275rem) 33.69%, calc(100% - 0.186rem) 39.12%, calc(100% - 0.275rem) 44.56%, calc(100% - 0.175rem) 50.00%, calc(100% - 0.275rem) 55.44%, calc(100% - 0.175rem) 60.88%, calc(100% - 0.275rem) 66.31%, calc(100% - 0.186rem) 71.75%, calc(100% - 0.253rem) 77.19%, calc(100% - 0.202rem) 82.62%, calc(100% - 0.228rem) 88.06%, calc(100% - 0.229rem) calc(100% - 0.900rem), calc(100% - 0.262rem) calc(100% - 0.808rem), calc(100% - 0.274rem) calc(100% - 0.716rem), calc(100% - 0.302rem) calc(100% - 0.627rem), calc(100% - 0.360rem) calc(100% - 0.553rem), calc(100% - 0.399rem) calc(100% - 0.466rem), calc(100% - 0.480rem) calc(100% - 0.415rem), calc(100% - 0.543rem) calc(100% - 0.345rem), calc(100% - 0.629rem) calc(100% - 0.307rem), calc(100% - 0.717rem) calc(100% - 0.275rem), calc(100% - 0.805rem) calc(100% - 0.240rem), calc(100% - 0.900rem) calc(100% - 0.257rem), 92.69% calc(100% - 0.253rem), 90.18% calc(100% - 0.226rem), 87.67% calc(100% - 0.244rem), 85.16% calc(100% - 0.245rem), 82.64% calc(100% - 0.227rem), 80.13% calc(100% - 0.269rem), 77.62% calc(100% - 0.206rem), 75.11% calc(100% - 0.275rem), 72.60% calc(100% - 0.190rem), 70.09% calc(100% - 0.275rem), 67.58% calc(100% - 0.185rem), 65.07% calc(100% - 0.275rem), 62.56% calc(100% - 0.190rem), 60.04% calc(100% - 0.273rem), 57.53% calc(100% - 0.202rem), 55.02% calc(100% - 0.251rem), 52.51% calc(100% - 0.214rem), 50.00% calc(100% - 0.233rem), 47.49% calc(100% - 0.218rem), 44.98% calc(100% - 0.225rem), 42.47% calc(100% - 0.212rem), 39.96% calc(100% - 0.229rem), 37.44% calc(100% - 0.195rem), 34.93% calc(100% - 0.242rem), 32.42% calc(100% - 0.176rem), 29.91% calc(100% - 0.257rem), 27.40% calc(100% - 0.160rem), 24.89% calc(100% - 0.267rem), 22.38% calc(100% - 0.156rem), 19.87% calc(100% - 0.266rem), 17.36% calc(100% - 0.165rem), 14.84% calc(100% - 0.255rem), 12.33% calc(100% - 0.187rem), 9.82% calc(100% - 0.238rem), 7.31% calc(100% - 0.212rem), 0.900rem calc(100% - 0.274rem), 0.801rem calc(100% - 0.214rem), 0.721rem calc(100% - 0.289rem), 0.620rem calc(100% - 0.287rem), 0.550rem calc(100% - 0.356rem), 0.468rem calc(100% - 0.401rem), 0.408rem calc(100% - 0.474rem), 0.349rem calc(100% - 0.546rem), 0.311rem calc(100% - 0.631rem), 0.265rem calc(100% - 0.714rem), 0.271rem calc(100% - 0.809rem), 0.226rem calc(100% - 0.900rem), 0.181rem 88.06%, 0.270rem 82.62%, 0.186rem 77.19%, 0.267rem 71.75%, 0.204rem 66.31%, 0.254rem 60.88%, 0.229rem 55.44%, 0.235rem 50.00%, 0.254rem 44.56%, 0.218rem 39.12%, 0.271rem 33.69%, 0.210rem 28.25%, 0.275rem 22.81%, 0.212rem 17.38%, 0.267rem 11.94%);
 }
 
 html {
@@ -126,21 +128,41 @@ body.menu-open .site-header { visibility: hidden; }
   html.has-tpr-cursor * { cursor: none !important; }
 }
 
-.tpr-cursor {
+.tpr-cursor,
+.tpr-cursor[popover],
+.tpr-cursor:popover-open {
   position: fixed;
   z-index: 2147483646;
+  inset: auto;
   top: 0;
+  right: auto;
+  bottom: auto;
   left: 0;
   width: 4.5rem;
   height: 4.5rem;
   display: grid;
   place-items: center;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  color: inherit;
+  background: transparent;
+  border: 0;
   pointer-events: none !important;
   opacity: 0;
   transform: translate3d(-10rem, -10rem, 0) translate(-50%, -50%);
   mix-blend-mode: difference;
   will-change: transform;
   transition: opacity 100ms linear;
+}
+
+html.has-tpr-cursor dialog[open] {
+  overflow: visible;
+}
+
+.tpr-cursor::backdrop {
+  display: none;
+  pointer-events: none;
 }
 .tpr-cursor.is-visible { opacity: 1; }
 .tpr-cursor__spark,
@@ -224,7 +246,12 @@ body.menu-open .site-header { visibility: hidden; }
   color: var(--tpr-royal);
 }
 
-.site-menu__brand img { display: block; width: 100%; height: auto; filter: none !important; }
+.site-menu__brand img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: none !important;
+}
 
 .site-menu__close {
   position: absolute;
@@ -257,16 +284,18 @@ body.menu-open .site-header { visibility: hidden; }
 .site-menu .site-menu__nav {
   position: relative;
   z-index: 2;
-  width: min(46rem, calc(100% - 2rem));
+  width: min(624px, calc(100% - 2rem));
   min-height: 100svh;
-  display: grid;
-  place-content: center;
-  gap: clamp(2rem, 4.2vh, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
   margin: auto;
-  padding: 4rem 1rem;
+  padding: 4rem 0;
   text-align: center;
   font-family: var(--tpr-display);
-  letter-spacing: -.04em;
+  letter-spacing: 0;
   transform: translateY(-18%);
   opacity: 0;
   transition: transform 700ms cubic-bezier(.16,.82,.22,1), opacity 420ms ease;
@@ -280,34 +309,43 @@ body.menu-open .site-header { visibility: hidden; }
 .site-menu .site-menu__primary,
 .site-menu .site-menu__heading {
   width: fit-content;
-  margin: 0 auto;
+  margin: 0;
   color: inherit;
-  font: 600 clamp(2.6rem, 5vw, 4.85rem)/.82 var(--tpr-display);
-  font-stretch: condensed;
-  letter-spacing: -.06em;
+  font: 600 clamp(2.6rem, 5.29vw, 5rem)/1 var(--tpr-display);
+  letter-spacing: 0;
   text-transform: uppercase;
   text-decoration: none;
 }
 .site-menu .site-menu__heading a { color: inherit; font: inherit; text-decoration: none; }
 
+.site-menu__primary + .site-menu__heading,
+.site-menu__rooms + .site-menu__heading,
+.site-menu__sub + .site-menu__heading {
+  margin-top: 16px;
+}
+
 .site-menu__sub {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: .25rem 1rem;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
 }
 
 .site-menu__sub a {
-  min-height: 44px;
+  min-height: 32px;
   display: inline-flex;
   align-items: center;
   color: inherit;
-  font: 600 clamp(.82rem, 1.35vw, 1.05rem)/1 var(--tpr-display);
+  font: 600 clamp(1.15rem, 2.12vw, 2rem)/1 var(--tpr-display);
+  letter-spacing: 0;
   text-transform: uppercase;
   text-decoration: none;
+  white-space: nowrap;
 }
 
-.site-menu__rooms { display: flex; justify-content: center; gap: .55rem; }
+.site-menu__rooms { display: flex; justify-content: center; gap: 16px; }
 .site-menu a.site-menu__room {
   width: 48px;
   height: 48px;
@@ -329,11 +367,15 @@ body.menu-open .site-header { visibility: hidden; }
 
 @media (max-width: 720px) {
   .site-menu { background-position: 44% center; }
-  .site-menu a.site-menu__brand { width: 6.2rem; }
-  .site-menu .site-menu__nav { gap: .6rem; padding: 5.5rem 1rem 2rem; }
+  .site-menu a.site-menu__brand { width: 6.2rem; color: var(--tpr-white); }
+  .site-menu__brand img { filter: brightness(0) invert(1) !important; }
+  .site-menu .site-menu__nav { gap: 12px; padding: 5.5rem 0 2rem; }
   .site-menu__primary,
   .site-menu__heading { font-size: clamp(2.25rem, 11vw, 3.55rem); }
-  .site-menu__sub { gap: 0 .75rem; }
+  .site-menu__primary + .site-menu__heading,
+  .site-menu__rooms + .site-menu__heading,
+  .site-menu__sub + .site-menu__heading { margin-top: 8px; }
+  .site-menu__sub { flex-wrap: wrap; justify-content: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {

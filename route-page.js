@@ -197,7 +197,7 @@ document.querySelectorAll('[data-card-title]').forEach((button) => {
   const front = document.createElement('span');
   front.className = 'room-card-front';
   front.setAttribute('aria-hidden', 'true');
-  front.innerHTML = `<strong>${cardName}</strong><span class="room-card-front__arrow"></span>`;
+  front.innerHTML = `<strong>${cardName}</strong><span class="room-card-front__arrow" aria-hidden="true"><img src="${new URL('assets/route-arrow-zigzag.png?v=20260819-arrow-2', document.currentScript.src).href}" alt="" width="52" height="54" /></span>`;
   const back = document.createElement('span');
   back.className = 'room-card-back';
   back.setAttribute('aria-hidden', 'true');
