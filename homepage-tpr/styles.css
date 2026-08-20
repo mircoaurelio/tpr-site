@@ -1,5 +1,5 @@
-@import url("../shared-menu.css?v=20260820-little-men-3");
-@import url("../shared-elevator.css?v=20260820-mobile-cards-9");
+@import url("../shared-menu.css?v=20260820-overflow-1");
+@import url("../shared-elevator.css?v=20260820-mobile-cards-10");
 
 :root {
   --royal: #2c64e8;
@@ -20,11 +20,12 @@
 *, *::before, *::after { box-sizing: border-box; }
 html {
   background: var(--royal);
+  overflow-x: hidden;
   scroll-behavior: auto;
   scroll-padding-top: 5.5rem;
   scroll-snap-type: y proximity;
 }
-body { margin: 0; overflow-x: hidden; color: var(--ink); font-family: var(--body); background: var(--royal); }
+body { margin: 0; max-width: 100%; overflow-x: hidden; color: var(--ink); font-family: var(--body); background: var(--royal); }
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button { color: inherit; font: inherit; }
@@ -169,7 +170,8 @@ body.elevator-active .site-header::after { content: none; display: none; }
 .people-nav {
   width: min(100%, 1512px);
   margin: clamp(4.5rem, 7.94vw, 7.5rem) auto calc(min(100vw, 1512px) * -67 / 1512);
-  overflow: visible;
+  overflow-x: hidden;
+  overflow-y: visible;
   padding: 0;
   background: transparent;
   position: relative;
@@ -179,7 +181,8 @@ body.elevator-active .site-header::after { content: none; display: none; }
   position: relative;
   width: 100%;
   min-width: 0;
-  overflow: visible;
+  overflow-x: hidden;
+  overflow-y: visible;
   background: transparent;
   transform: translateY(-10px);
 }
@@ -211,22 +214,23 @@ body.elevator-active .site-header::after { content: none; display: none; }
 .people-tooltip {
   position: absolute;
   z-index: 5;
-  left: var(--tooltip-x, 50%);
+  left: var(--tooltip-x, 1rem);
   top: var(--tooltip-y, 18%);
   width: auto;
+  max-width: calc(100% - 2rem);
   height: auto;
   padding: 0;
-  overflow: visible;
+  overflow: hidden;
   color: transparent;
   background: transparent;
   border-radius: 0;
   pointer-events: none;
   opacity: 0;
-  transform: translate(-8%, -110%) scale(.96);
+  transform: translate(0, -110%) scale(.96);
   transform-origin: left bottom;
   transition: opacity 120ms ease, transform 160ms ease;
 }
-.people-tooltip img { display: block; width: auto; height: 5rem; max-width: none; }
+.people-tooltip img { display: block; width: auto; height: 5rem; max-width: 100%; }
 .people-tooltip.is-visible { opacity: 1; transform: translate(-8%, -110%) scale(1); }
 
 .rooms-intro {
@@ -565,7 +569,7 @@ body.elevator-active .site-header::after { content: none; display: none; }
   .display-type--membership { width: min(82vw, 36.63rem); }
   .display-type--world { width: min(68vw, 28.78rem); }
   .about-copy { justify-self: end; max-width: 39rem; }
-  .people-nav { overflow: visible; }
+  .people-nav { overflow-x: hidden; overflow-y: visible; }
   .rooms-intro { min-height: 0; }
   .rooms-intro p { margin-left: 0; }
   .room-stage { min-height: 0; grid-template-columns: 1fr; }
@@ -624,7 +628,7 @@ body.elevator-active .site-header::after { content: none; display: none; }
   .body-copy { font-size: 1rem; }
   .pill { min-height: 2.75rem; padding-inline: 1.5rem; font-size: .85rem; }
   .button-row .pill, .pill--room { min-width: 0; }
-  .people-nav { width: 100%; margin-top: 4rem; overflow: visible; padding: 0; }
+  .people-nav { width: 100%; margin-top: 4rem; overflow-x: hidden; overflow-y: visible; padding: 0; }
   .people-canvas { width: 100%; min-width: 0; }
   .people-figures { width: 80.62%; margin-left: 9.92%; padding-top: .5rem; }
   .people-figure .little-man {
