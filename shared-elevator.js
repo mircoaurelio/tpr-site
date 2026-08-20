@@ -11,27 +11,27 @@
   const bookingUrl = (roomKey) => `${new URL('contatti/', base).href}?room=${encodeURIComponent(roomKey)}`;
   const rooms = [
     {
-      key: 'coworking', label: 'Coworking', art: 'homepage-room-coworking-no-text-2x.webp', routeArt: 'routes/coworking-2x.webp', character: 'character-coworking.png', box: [5.85, 30.83, 8.10, 15.97], icon: 'elevator-icon-coworking.svg', off: 'elevator-icon-coworking-off.svg',
+      key: 'coworking', label: 'Coworking', art: 'homepage-room-coworking-no-text-2x.webp', cardPhoto: 'room-coworking.jpg', routeArt: 'routes/coworking-2x.webp', character: 'character-coworking.png', box: [5.85, 30.83, 8.10, 15.97], icon: 'elevator-icon-coworking.svg', off: 'elevator-icon-coworking-off.svg',
       description: 'Postazioni flessibili, sale riunioni e spazi per eventi in cui lavorare, incontrarsi e dare forma a nuove idee.', bookable: true,
       cards: [['Postazioni', 'Approfondisci le postazioni nella Coworking Room.'], ['Sale riunioni', 'Approfondisci le sale riunioni nella Coworking Room.'], ['Eventi', 'Approfondisci gli eventi nella Coworking Room.']],
     },
     {
-      key: 'reformer', label: 'Reformer', art: 'homepage-room-reformer-no-text-2x.webp', routeArt: 'routes/reformer-2x.webp', character: 'character-reformer.png', box: [5.79, 30.72, 8.20, 16.07], icon: 'elevator-icon-reformer.svg', off: 'elevator-icon-reformer-off.svg',
+      key: 'reformer', label: 'Reformer', art: 'homepage-room-reformer-no-text-2x.webp', cardPhoto: 'room-reformer.jpg', routeArt: 'routes/reformer-2x.webp', character: 'character-reformer.png', box: [5.79, 30.72, 8.20, 16.07], icon: 'elevator-icon-reformer.svg', off: 'elevator-icon-reformer-off.svg',
       description: 'Uno studio dedicato al movimento consapevole, con classi guidate e attrezzature professionali.', bookable: true,
       cards: [['Spazi', 'Approfondisci gli spazi nella Reformer Room.'], ['Classi', 'Approfondisci le classi nella Reformer Room.'], ['Attrezzature', 'Approfondisci le attrezzature nella Reformer Room.']],
     },
     {
-      key: 'wellness', label: 'Wellness', art: 'homepage-room-wellness-no-text-2x.webp', routeArt: 'routes/wellness-2x.webp', character: 'character-wellness.png', box: [5.99, 29.67, 7.80, 17.12], icon: 'elevator-icon-wellness.svg', off: 'elevator-icon-wellness-off.svg',
+      key: 'wellness', label: 'Wellness', art: 'homepage-room-wellness-no-text-2x.webp', cardPhoto: 'room-wellness.jpg', routeArt: 'routes/wellness-2x.webp', character: 'character-wellness.png', box: [5.99, 29.67, 7.80, 17.12], icon: 'elevator-icon-wellness.svg', off: 'elevator-icon-wellness-off.svg',
       description: 'Rituali e tecnologie per ritrovare equilibrio, energia e presenza.', bookable: false,
       cards: [['Power', 'Approfondisci Power nella Wellness Room.'], ['Biohacking', 'Approfondisci il biohacking nella Wellness Room.'], ['Contrast Therapy', 'Approfondisci la contrast therapy nella Wellness Room.']],
     },
     {
-      key: 'bar', label: 'Bar', art: 'homepage-room-bar-no-text-2x.webp', routeArt: 'routes/bar-2x.webp', character: 'character-bar.png', box: [6.98, 30.20, 5.82, 16.60], icon: 'elevator-icon-bar.svg', off: 'elevator-icon-bar-off.svg',
+      key: 'bar', label: 'Bar', art: 'homepage-room-bar-no-text-2x.webp', cardPhoto: 'room-bar.jpg', routeArt: 'routes/bar-2x.webp', character: 'character-bar.png', box: [6.98, 30.20, 5.82, 16.60], icon: 'elevator-icon-bar.svg', off: 'elevator-icon-bar-off.svg',
       description: "Il punto di incontro quotidiano della community TPR, dalla colazione all'aperitivo.", bookable: false,
       cards: [['Servizi', 'Approfondisci i servizi nella Bar Room.'], ['Accessibilità', "Approfondisci l'accessibilità nella Bar Room."], ['Storage', 'Approfondisci lo storage nella Bar Room.']],
     },
     {
-      key: 'media', label: 'Media', art: 'homepage-room-media-no-text-2x.webp', routeArt: 'routes/media-2x.webp', character: 'character-media.png', box: [6.55, 27.57, 6.75, 19.22], icon: 'elevator-icon-media.svg', off: 'elevator-icon-media-off.svg',
+      key: 'media', label: 'Media', art: 'homepage-room-media-no-text-2x.webp', cardPhoto: 'tpr-media.webp', routeArt: 'routes/media-2x.webp', character: 'character-media.png', box: [6.55, 27.57, 6.75, 19.22], icon: 'elevator-icon-media.svg', off: 'elevator-icon-media-off.svg',
       description: 'Uno studio pronto per podcast, shooting, streaming e nuovi linguaggi.', bookable: false,
       cards: [['Podcast', 'Approfondisci il podcast nella Media Room.'], ['Studio', 'Approfondisci lo studio nella Media Room.'], ['Set fotografico', 'Approfondisci il set fotografico nella Media Room.']],
     },
@@ -56,7 +56,7 @@
   const mobileDropMarkup = (room) => room.cards.map(([cardTitle, cardCopy], index) => `
             <button class="tpr-elevator__mobile-card" type="button" data-card-index="${index}" aria-expanded="false" aria-label="Apri la card ${cardTitle}">
               <span class="tpr-elevator__mobile-card-front" aria-hidden="true">
-                <span class="tpr-elevator__mobile-card-photo"><span class="tpr-elevator__mobile-card-photo-window"><img src="${asset(room.art)}" alt="" width="3024" height="1904" decoding="async" /></span></span>
+                <span class="tpr-elevator__mobile-card-photo"><span class="tpr-elevator__mobile-card-photo-window"><img src="${asset(room.cardPhoto)}" alt="" decoding="async" /></span></span>
                 <span class="tpr-elevator__mobile-card-meta"><strong>${cardTitle}</strong><span class="tpr-elevator__card-arrow"><img src="${cardArrowSrc}" alt="" width="52" height="54" /></span></span>
               </span>
               <span class="sr-only">Apri la card ${cardTitle}</span>
@@ -173,7 +173,7 @@
   }
   const preloadedImages = new Map();
   rooms.forEach((room) => {
-    [room.art, room.character, room.routeArt].forEach((file) => {
+    [room.art, room.cardPhoto, room.character, room.routeArt].forEach((file) => {
       const image = new Image();
       image.decoding = 'async';
       image.loading = 'eager';
