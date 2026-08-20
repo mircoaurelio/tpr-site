@@ -1,4 +1,4 @@
-@import url("../shared-menu.css?v=20260820-menu-logo-mobile-2");
+@import url("../shared-menu.css?v=20260820-little-men-1");
 @import url("../shared-elevator.css?v=20260820-character-mobile-nudge");
 
 :root {
@@ -183,22 +183,31 @@ body.elevator-active .site-header::after { content: none; display: none; }
   background: transparent;
   transform: translateY(-10px);
 }
-.people-canvas > img {
-  position: relative;
-  display: block;
-  left: auto;
-  top: auto;
+.people-figures {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: end;
   width: 80.62%;
-  height: auto;
   margin: 0 0 0 9.92%;
-  max-width: none;
-  object-fit: contain;
-  object-position: top center;
-  background: transparent;
-  mix-blend-mode: normal;
+  padding-top: 3.25rem;
+  overflow: visible;
 }
-.people-hotspots { position: absolute; left: 9.92%; top: 0; width: 80.62%; height: 100%; display: grid; grid-template-columns: repeat(5, 1fr); }
-.people-hotspots a { min-width: 0; min-height: 2.75rem; display: block; border-radius: 2rem; }
+.people-figure {
+  display: grid;
+  justify-items: center;
+  align-items: end;
+  min-width: 0;
+  min-height: 2.75rem;
+  color: var(--white);
+  text-decoration: none;
+  overflow: visible;
+}
+.people-figure .little-man {
+  display: block;
+  width: auto;
+  height: clamp(8.25rem, 18.5vw, 13.25rem);
+  overflow: visible;
+}
 .people-tooltip {
   position: absolute;
   z-index: 5;
@@ -617,8 +626,8 @@ body.elevator-active .site-header::after { content: none; display: none; }
   .button-row .pill, .pill--room { min-width: 0; }
   .people-nav { width: 100%; margin-top: 4rem; overflow: visible; padding: 0; }
   .people-canvas { width: 100%; min-width: 0; }
-  .people-canvas > img { width: 80.62%; margin-left: 9.92%; height: auto; }
-  .people-hotspots { left: 9.92%; width: 80.62%; }
+  .people-figures { width: 80.62%; margin-left: 9.92%; }
+  .people-figure .little-man { height: clamp(7.25rem, 34vw, 11.5rem); }
   .rooms-intro { min-height: 0; }
   .rooms-intro p { font-size: clamp(1.25rem, 4.4vw, 1.75rem); }
   .room-tabs { padding-inline: 1rem; }

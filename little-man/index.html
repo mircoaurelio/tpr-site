@@ -3,110 +3,153 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#2c64e8" />
-    <meta name="description" content="The People's Room a Milano: coworking, sale riunioni, reformer, wellness, podcast, eventi e membership in uno spazio dedicato a lavoro e benessere." />
-    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
-    <title>The People's Room Milano | Coworking, Wellness ed Eventi</title>
-    <link rel="canonical" href="https://mircoaurelio.github.io/tpr-site/homepage-tpr/" />
-    <link rel="alternate" hreflang="it-IT" href="https://mircoaurelio.github.io/tpr-site/homepage-tpr/" />
-    <link rel="alternate" hreflang="x-default" href="https://mircoaurelio.github.io/tpr-site/homepage-tpr/" />
-    <link rel="manifest" href="../site.webmanifest" />
-    <link rel="icon" href="../assets/tpr-logo.svg" type="image/svg+xml" />
-    <link rel="preload" href="../assets/tpr-hero.webp" as="image" type="image/webp" media="(min-width: 721px)" fetchpriority="high" />
-    <link rel="preload" href="../assets/homepage-tpr-hero-2x.webp" as="image" type="image/webp" media="(max-width: 720px)" fetchpriority="high" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="it_IT" />
-    <meta property="og:site_name" content="The People's Room" />
-    <meta property="og:title" content="The People's Room Milano | Coworking, Wellness ed Eventi" />
-    <meta property="og:description" content="Coworking, sale riunioni, reformer, wellness, podcast, eventi e membership in un unico spazio a Milano." />
-    <meta property="og:url" content="https://mircoaurelio.github.io/tpr-site/homepage-tpr/" />
-    <meta property="og:image" content="https://mircoaurelio.github.io/tpr-site/assets/homepage-tpr-hero-2x.png" />
-    <meta property="og:image:alt" content="Gli spazi di The People's Room a Milano" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="The People's Room Milano | Coworking, Wellness ed Eventi" />
-    <meta name="twitter:description" content="Coworking, benessere, creatività ed eventi in un unico spazio a Milano." />
-    <meta name="twitter:image" content="https://mircoaurelio.github.io/tpr-site/assets/homepage-tpr-hero-2x.png" />
-    <script type="application/ld+json">
-      {"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://mircoaurelio.github.io/tpr-site/#website","url":"https://mircoaurelio.github.io/tpr-site/homepage-tpr/","name":"The People's Room","alternateName":"TPR Milano","inLanguage":"it-IT","publisher":{"@id":"https://mircoaurelio.github.io/tpr-site/#organization"}},{"@type":"Organization","@id":"https://mircoaurelio.github.io/tpr-site/#organization","name":"The People's Room","alternateName":"TPR","url":"https://mircoaurelio.github.io/tpr-site/homepage-tpr/","logo":{"@type":"ImageObject","url":"https://mircoaurelio.github.io/tpr-site/assets/tpr-logo.svg"},"image":"https://mircoaurelio.github.io/tpr-site/assets/homepage-tpr-hero-2x.png","address":{"@type":"PostalAddress","streetAddress":"Via della Maggiolina 2","addressLocality":"Milano","addressCountry":"IT"}}]}
-    </script>
-    <script>document.documentElement.classList.add('js');</script>
-    <link rel="stylesheet" href="styles.css?v=20260820-little-men-1" />
+    <title>Little men — object animation</title>
+    <style>
+      :root { --ink: #f4f6ff; --muted: #9aa8d6; }
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        min-height: 100%;
+        background: #000;
+        color: var(--ink);
+        font: 16px/1.4 "Alte Haas Grotesk", Arial, sans-serif;
+      }
+      body { padding: clamp(1.5rem, 4vw, 4rem); }
+      h1 {
+        margin: 0 0 .35rem;
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        letter-spacing: -.04em;
+      }
+      .lede {
+        max-width: 46rem;
+        margin: 0 0 2.5rem;
+        color: var(--muted);
+      }
+      .row {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: clamp(.75rem, 2vw, 2rem);
+        align-items: end;
+      }
+      .figure {
+        display: grid;
+        justify-items: center;
+        gap: 1rem;
+        min-height: 28rem;
+        padding: 4.5rem .5rem 1.25rem;
+        overflow: visible;
+        border: 1px solid #1c1c1c;
+        border-radius: 1.25rem;
+        background: #050505;
+      }
+      .figure p {
+        margin: 0;
+        color: var(--muted);
+        font-size: .85rem;
+        text-align: center;
+      }
+      .figure strong {
+        display: block;
+        color: var(--ink);
+        font-size: 1rem;
+      }
+      .little-man {
+        width: min(100%, 11rem);
+        height: auto;
+        overflow: visible;
+      }
+      .person, .object { transform-box: fill-box; }
+      .person {
+        transform-origin: 50% 94%;
+        animation: person-idle 6s ease-in-out infinite;
+      }
+      .object { transform-origin: 50% 80%; }
+
+      .little-man--coworking .object-1 { animation: cloud-mid 1.7s ease-in-out infinite; }
+      .little-man--coworking .object-2 { animation: cloud-left 2.1s ease-in-out infinite; }
+      .little-man--coworking .object-3 { animation: cloud-right 1.85s ease-in-out infinite .12s; }
+
+      .little-man--bar .object-1 {
+        transform-origin: 50% 100%;
+        animation: globe-wobble 1.6s ease-in-out infinite;
+      }
+
+      .little-man--media .object-1 { animation: bolt .7s ease-in-out infinite; }
+      .little-man--media .object-2 { animation: bolt .85s ease-in-out infinite .12s; }
+      .little-man--media .object-3 { animation: bolt .78s ease-in-out infinite .22s; }
+      .little-man--media .object-4 {
+        transform-origin: 50% 100%;
+        animation: dome-sway 1.5s ease-in-out infinite;
+      }
+
+      .little-man--reformer .object-1 {
+        transform-origin: 50% 50%;
+        animation: wave-slither 1.15s ease-in-out infinite;
+      }
+
+      .little-man--wellness .object-1 { animation: signal 1.1s ease-in-out infinite; }
+      .little-man--wellness .object-2 { animation: signal 1.1s ease-in-out infinite .12s; }
+      .little-man--wellness .object-3,
+      .little-man--wellness .object-4 { animation: signal 1.1s ease-in-out infinite .2s; }
+      .little-man--wellness .object-5 { animation: signal 1.1s ease-in-out infinite .32s; }
+
+      @keyframes person-idle {
+        0%, 100% { transform: rotate(-.35deg); }
+        50% { transform: rotate(.35deg) translateY(-1px); }
+      }
+      @keyframes cloud-mid {
+        0%, 100% { transform: translate(0, 0) rotate(-24deg) scale(.9); }
+        50% { transform: translate(8px, -56px) rotate(22deg) scale(1.42); }
+      }
+      @keyframes cloud-left {
+        0%, 100% { transform: translate(0, 0) rotate(18deg) scale(.88); }
+        50% { transform: translate(-28px, -44px) rotate(-20deg) scale(1.38); }
+      }
+      @keyframes cloud-right {
+        0%, 100% { transform: translate(0, 0) rotate(-16deg) scale(.9); }
+        50% { transform: translate(30px, -48px) rotate(18deg) scale(1.4); }
+      }
+      @keyframes globe-wobble {
+        0%, 100% { transform: rotate(0) translateY(0) scale(1); }
+        25% { transform: rotate(12deg) translateY(-22px) scale(1.08); }
+        50% { transform: rotate(-10deg) translateY(-8px) scale(1.14); }
+        75% { transform: rotate(14deg) translateY(-26px) scale(1.05); }
+      }
+      @keyframes bolt {
+        0%, 100% { transform: translateY(0) scaleY(1) rotate(-10deg); opacity: 1; }
+        25% { transform: translateY(-36px) scaleY(1.45) rotate(12deg); opacity: .2; }
+        50% { transform: translateY(-8px) scaleY(.7) rotate(-14deg); opacity: 1; }
+        75% { transform: translateY(-42px) scaleY(1.5) rotate(8deg); opacity: .12; }
+      }
+      @keyframes dome-sway {
+        0%, 100% { transform: rotate(0) scale(1); }
+        50% { transform: rotate(8deg) scale(1.06, .94) translateY(-8px); }
+      }
+      @keyframes wave-slither {
+        0%, 100% { transform: translateX(-26px) rotate(-10deg) scale(1, .85); }
+        50% { transform: translateX(28px) rotate(10deg) scale(1.08, 1.4); }
+      }
+      @keyframes signal {
+        0%, 100% { transform: scale(.92) translateY(0); opacity: 1; }
+        50% { transform: scale(1.28) translateY(-22px); opacity: .25; }
+      }
+      @media (max-width: 900px) {
+        .row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (max-width: 560px) {
+        .row { grid-template-columns: 1fr; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .person, .object { animation: none; }
+      }
+    </style>
   </head>
-<body>
-  <a class="skip-link" href="#main">Vai al contenuto</a>
-  <div class="tpr-cursor" id="tprCursor" aria-hidden="true">
-    <img class="tpr-cursor__spark" src="../assets/cursor-spark.png?v=20260819-rev-5" alt="" width="110" height="87" />
-    <img class="tpr-cursor__eye" src="../assets/cursor-eye.png?v=20260819-rev-5" alt="" width="110" height="61" />
-  </div>
-
-    <header class="site-header" id="siteHeader">
-      <a class="brand" href="./" aria-label="The People's Room — ricarica la home">
-        <img src="../assets/tpr-logo.svg" alt="The People's Room" />
-      </a>
-      <button class="menu-button" id="openMenu" type="button" aria-controls="siteMenu" aria-expanded="false">
-        <span></span><span></span><span></span>
-        <span class="sr-only">Apri il menu</span>
-      </button>
-    </header>
-
-    <aside class="site-menu" id="siteMenu" role="dialog" aria-modal="true" aria-label="Menu principale" aria-hidden="true">
-      <a class="site-menu__brand" href="./" aria-label="The People's Room, ricarica la home"><img src="../assets/tpr-logo-menu.svg" alt="" /></a>
-      <button class="site-menu__close" id="closeMenu" data-close-menu type="button" aria-label="Chiudi il menu"></button>
-      <nav class="site-menu__nav" aria-label="Navigazione principale">
-        <a class="site-menu__primary" href="../about/">About</a>
-        <h2 class="site-menu__heading"><a href="#rooms">TPR Rooms</a></h2>
-        <div class="site-menu__rooms" aria-label="Le stanze">
-          <a class="site-menu__room" href="#coworking" data-room-link="coworking" aria-label="Coworking Room"><img src="../assets/elevator-icon-coworking-off.svg?v=20260819-icons-1" alt="" /></a>
-          <a class="site-menu__room" href="#bar" data-room-link="bar" aria-label="Bar Room"><img src="../assets/elevator-icon-bar-off.svg?v=20260819-icons-1" alt="" /></a>
-          <a class="site-menu__room" href="#media" data-room-link="media" aria-label="Media Room"><img src="../assets/elevator-icon-media-off.svg?v=20260819-icons-1" alt="" /></a>
-          <a class="site-menu__room" href="#reformer" data-room-link="reformer" aria-label="Reformer Room"><img src="../assets/elevator-icon-reformer-off.svg?v=20260819-icons-1" alt="" /></a>
-          <a class="site-menu__room" href="#wellness" data-room-link="wellness" aria-label="Wellness Room"><img src="../assets/elevator-icon-wellness-off.svg?v=20260819-icons-1" alt="" /></a>
-        </div>
-        <h2 class="site-menu__heading"><a href="#membership">Membership</a></h2>
-        <div class="site-menu__sub"><a href="../membership/aziende-startup/">Aziende &amp; Startup</a><a href="../membership/privati-freelancer/">Privati &amp; Freelancer</a></div>
-        <h2 class="site-menu__heading"><a href="#world">TPR World</a></h2>
-        <div class="site-menu__sub"><a href="../eventi/">Eventi</a><a href="../gallery/">Gallery</a><a href="../app/">App</a><a href="../contatti/">Contatti</a></div>
-      </nav>
-    </aside>
-
-    <main id="main">
-      <section class="hero" id="home" aria-labelledby="hero-title">
-        <button class="hero-video-hit" type="button" data-video-trigger><span class="sr-only">Riproduci il video di presentazione TPR</span></button>
-        <img class="hero-photo" src="../assets/tpr-hero.webp" alt="Lo spazio coworking di The People's Room" width="1080" height="1440" fetchpriority="high" decoding="async" />
-        <img class="hero-shapes" src="../assets/tpr-hero-art.png?v=20260819-hero-1" alt="" width="3024" height="1940" aria-hidden="true" />
-        <img class="hero-mobile-composite" src="../assets/homepage-tpr-hero-2x.webp" alt="" width="3024" height="1880" aria-hidden="true" fetchpriority="high" decoding="async" />
-        <img class="hero-mobile-shape hero-mobile-shape--left" src="../assets/tpr-hero-top-left.png" alt="" width="963" height="755" aria-hidden="true" />
-        <img class="hero-mobile-shape hero-mobile-shape--right" src="../assets/tpr-hero-top-right.png" alt="" width="988" height="708" aria-hidden="true" />
-        <div class="hero-curve hero-curve--left" aria-hidden="true"></div>
-        <div class="hero-curve hero-curve--right" aria-hidden="true"></div>
-        <div class="hero-curve hero-curve--bottom" aria-hidden="true"></div>
-        <div class="hero-copy">
-          <p class="hero-kicker">Work · Move · Feel · Connect</p>
-          <h1 id="hero-title"><span>Respira,</span><span>Ispira.</span></h1>
-        </div>
-      </section>
-
-      <section class="about section-blue" id="about" aria-labelledby="about-title">
-        <div class="section-shell about-grid reveal">
-          <h2 class="display-title" id="about-title">
-            <img class="display-type display-type--about" src="../assets/type-about.png" alt="The People's Room" width="703" height="408" />
-          </h2>
-          <div class="body-copy about-copy">
-            <p>The People's Room è uno spazio ibrido e autentico che nutre corpo, mente e spirito, offrendo un rifugio reale in un mondo sempre più digitale.</p>
-            <p>Attraverso design non convenzionale, pratiche di benessere fisico, esperienze culturali e connessioni autentiche, stimoliamo la creatività, il pensiero critico e il senso di appartenenza.</p>
-            <p>Il nostro obiettivo quotidiano è ispirare le persone a esprimere sé stesse, riscoprire il valore dell'umanità e vivere in modo più presente, creativo e vitale.</p>
-            <div class="button-row">
-              <a class="pill pill--pink" href="../about/">Scopri di più</a>
-              <button class="pill pill--ghost" id="videoButton" type="button" data-video-trigger>Guarda il video <span class="play-icon" aria-hidden="true"></span></button>
-            </div>
-          </div>
-        </div>
-
-        <nav class="people-nav" aria-label="Scegli una room">
-          <div class="people-canvas">
-            <div class="people-figures">
-            <a class="people-figure" href="#coworking" data-room-link="coworking" data-hover-state="hover1" data-hover-label="COWORKING ROOM">
-              <svg class="little-man little-man--coworking" viewBox="0 0 358 447" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
+  <body>
+    <h1>Little men</h1>
+    <p class="lede">The people barely move. Clouds, globe, lightning, wave and signal loop with a much bigger motion.</p>
+    <div class="row">
+      <article class="figure figure--coworking">
+        <svg class="little-man little-man--coworking" viewBox="0 0 358 447" xmlns="http://www.w3.org/2000/svg" fill="#2c64e8" role="img" aria-label="coworking">
     <g class="person">
       <path fill-rule="evenodd" d="M219.69 445.87 C207.18 444.86 197.76 441.78 192.69 437.05 L188.58 433.22 L188.48 406.36 L188.39 379.5 L185.7 365.83 C181.64 345.13 175.63 328.22 169.6 320.5 C168.25 318.77 167.9 318.7 167.03 320 C165.12 322.86 159.96 339.65 157.79 350.05 L155.61 360.5 L155.47 394 C155.32 431.35 154.69 436.05 149.1 441.4 C146.58 443.82 144.93 444.38 138.31 445.07 C119.52 447.04 84.01 445.55 79.5 442.59 C75.83 440.19 73.42 424.56 76.35 422.13 C77.09 421.51 79.93 420.58 82.66 420.06 C85.4 419.55 89.68 418.61 92.19 417.97 L96.75 416.83 L97.94 404.16 C104.32 336.23 112.96 283.11 122.04 256 C126.01 244.16 128.12 239.98 132.68 234.93 C134.66 232.74 136.1 230.81 135.89 230.63 C135.68 230.46 132.8 228.35 129.5 225.95 C114.3 214.89 92.83 190.78 77.75 167.85 C66.83 151.24 66 149.46 66 142.69 C66 132.16 73.94 113.59 80.98 107.67 C84.76 104.49 93.39 101.23 102.84 99.41 C111.5 97.75 133.06 97.56 145.03 99.06 C169.55 102.11 215.87 113.7 228.61 119.97 C242.37 126.74 256.62 138.09 268.69 151.89 C279.86 164.66 284.43 172.31 292.17 191.19 C301.08 212.94 301.74 217.68 297.22 227.35 C293.56 235.17 287.35 242.17 281.67 244.9 C276.09 247.58 253.32 250.01 231.17 250.28 C221.74 250.4 214.01 250.76 214.01 251.09 C214 251.41 215.59 257.94 217.52 265.59 C228.84 310.28 236.28 358.94 237.79 398.17 L238.5 416.49 L244 417.86 C247.03 418.62 251.17 419.65 253.2 420.15 C258.68 421.49 260 423.31 260 429.51 C260 432.46 259.56 436.02 259.02 437.43 C256.42 444.3 241.02 447.6 219.69 445.87 Z M248.33 213.64 C252.51 211.89 255 208.06 255 203.37 C255 198.78 248.88 188.65 237.78 174.85 C231.06 166.49 217.2 152.47 216.43 153.24 C216.28 153.38 216.8 155.96 217.58 158.97 C222.22 176.86 213.38 196.72 197.11 204.95 L191.64 207.71 L203.07 209.84 C220.59 213.1 229.68 214.29 241.28 214.83 C243.36 214.92 246.53 214.39 248.33 213.64 Z M145.44 188.33 C141.37 181.57 140.63 178.2 141.23 169.24 C142.05 156.94 148.76 144 157.24 138.33 L161.99 135.16 L155.48 134.46 C143.17 133.14 112.16 136.32 105.94 139.53 C100.86 142.16 98.53 149.36 101.16 154.32 C105.28 162.12 120.93 176.1 137.95 187.19 C143.69 190.94 148.5 194 148.62 194 C148.75 194 147.32 191.45 145.44 188.33 Z"/>
     </g>
@@ -122,10 +165,10 @@
     </g>
     </g>
 </svg>
-              <span class="sr-only">Coworking</span>
-            </a>
-            <a class="people-figure" href="#bar" data-room-link="bar" data-hover-state="hover4" data-hover-label="BAR ROOM">
-              <svg class="little-man little-man--bar" viewBox="0 0 255 465" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
+        <p><strong>Coworking</strong>Clouds</p>
+      </article>
+      <article class="figure figure--bar">
+        <svg class="little-man little-man--bar" viewBox="0 0 255 465" xmlns="http://www.w3.org/2000/svg" fill="#ffc100" role="img" aria-label="bar">
     <g class="person">
       <path fill-rule="evenodd" d="M67 464.37 C60.35 463.09 54.85 460.61 52.53 457.85 C50.42 455.34 50 453.83 50.02 448.67 C50.02 445.28 50.36 442 50.77 441.4 C52.03 439.51 55.22 438.3 63.75 436.48 L72 434.71 L72.01 427.61 C72.02 417.98 73.69 394.53 75.57 377.5 C79.02 346.23 84.79 314.95 93.58 279.87 C96.56 267.97 99 257.78 99 257.23 C99 256.68 95.51 255.32 91.25 254.21 L83.5 252.19 L88.25 252.1 L93 252 L93 232.43 L93 212.87 L94.75 213.36 C95.71 213.63 98.53 214.14 101 214.5 C103.47 214.86 106.4 215.4 107.49 215.72 C109.24 216.22 109.32 216.09 108.12 214.64 L106.76 213 L131.13 213.1 C144.53 213.15 156.58 213.5 157.9 213.87 L160.3 214.54 L157.52 215.81 C152.72 217.99 155.26 218 165.05 215.83 C170.25 214.68 178.89 213.52 184.25 213.27 L194 212.81 L194 227.69 L194 242.57 L187.39 245.83 L180.77 249.09 L182.27 250.8 C192.28 262.17 203.55 311.99 211.51 380 C212.88 391.71 216.99 432.29 217 434.16 C217 434.53 220.49 435.6 224.75 436.54 C229.01 437.48 233.62 438.56 235 438.95 C238.78 440.01 239.98 443.48 238.9 450.2 C237.59 458.38 236.4 460.89 233.27 462.12 C229.42 463.63 203.68 464.63 184.32 464.01 C165.66 463.42 164.26 462.87 160 454.45 L157.5 449.5 L157.34 420 C157.09 376.37 155.94 366.03 149.05 345.64 C144.88 333.32 144.74 333.15 142.14 336.81 C129.21 354.96 119.9 402.82 122.98 435.31 C123.73 443.21 123.8 448.39 123.19 450 C121.1 455.47 114.69 459.84 104.54 462.72 C99.54 464.14 72.06 465.35 67 464.37 Z"/>
     </g>
@@ -135,10 +178,10 @@
     </g>
     </g>
 </svg>
-              <span class="sr-only">Bar Room</span>
-            </a>
-            <a class="people-figure" href="#media" data-room-link="media" data-hover-state="hover5" data-hover-label="MEDIA ROOM">
-              <svg class="little-man little-man--media" viewBox="0 0 299 538" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
+        <p><strong>Bar</strong>Globe</p>
+      </article>
+      <article class="figure figure--media">
+        <svg class="little-man little-man--media" viewBox="0 0 299 538" xmlns="http://www.w3.org/2000/svg" fill="#2c64e8" role="img" aria-label="media">
     <g class="person">
       <path fill-rule="evenodd" d="M76.74 535.47 C72.18 532.37 70 528.37 70 523.11 C70 514.56 72.65 511.88 83.33 509.64 C87.06 508.86 90.37 507.96 90.69 507.64 C91.01 507.33 91.65 498.84 92.13 488.78 C94.02 448.51 100.64 406.11 112.14 360.63 C114.9 349.71 116.79 340.44 116.33 340.05 C115.87 339.66 110.78 338.1 105 336.59 C90.76 332.88 68.34 324.16 51.96 315.97 L38.43 309.2 L35.96 310.56 C32.35 312.56 29.54 312.31 23.93 309.46 C13.16 304.01 10.04 299.66 3.57 281.06 C-1.57 266.29 -1.48 258.2 4.04 241.63 C6.26 234.96 10.22 225.45 12.83 220.5 L17.57 211.5 L34.93 211.5 C56.36 211.5 56.61 211.67 49.33 221.09 C42.55 229.87 38.79 236.03 34.05 246.15 C29.92 254.97 28.72 259.5 30.52 259.5 C31.08 259.5 36.63 254.02 42.86 247.33 C49.08 240.64 56.84 233.21 60.1 230.83 C79.22 216.85 106.43 206.08 126.8 204.41 C138.73 203.43 179.78 207.9 202.32 212.62 C224.17 217.21 242.64 224.54 253.9 233.1 L259.31 237.2 L256.51 232.35 C254.97 229.68 251.7 224.59 249.24 221.04 C242.75 211.66 242.89 211.56 263.79 211.23 L280.87 210.95 L285.66 219.73 C288.29 224.55 292.22 232.78 294.39 238 C297.68 245.9 298.41 248.93 298.75 256 L299.16 264.5 L295.01 276.5 C288.59 295.04 286 298.41 273.12 304.95 L268.74 307.17 L264.54 305.57 C262.23 304.69 259.09 302.66 257.56 301.06 L254.77 298.15 L247.25 303.71 C236.31 311.81 219.85 322.06 209.35 327.33 L200.19 331.92 L203.53 338.21 C214.25 358.39 223.93 408.72 231.47 483.41 C233.1 499.56 234.3 507.57 235.17 508.11 C235.88 508.54 239.58 509.46 243.39 510.14 C252.48 511.76 255.26 514.08 255.18 519.97 C255.09 526.45 253.11 533.59 250.82 535.67 L248.79 537.5 L216.24 537.79 L183.68 538.08 L180.22 534.79 C173.68 528.57 173.63 528.25 172.93 488.5 C172.37 456.89 172.03 451.28 170.13 442.5 C167.5 430.32 163.18 417 161.87 417 C161.34 417 159.13 420.71 156.97 425.25 C147.32 445.43 141.26 485.26 143.96 510.68 C145.3 523.25 145.1 524.06 139.17 530.26 C132.68 537.05 128.2 538 102.69 538 L80.46 538 L76.74 535.47 Z M190 296.35 C205.79 292.42 225.68 284.29 229.13 280.36 C233.72 275.14 232.12 268.57 225.2 264.13 C214.68 257.38 187.57 246.01 176 243.49 L172.5 242.73 L176.84 247.44 C183.87 255.07 185.5 259.7 185.5 272 C185.5 283.97 183.9 288.78 177.61 295.74 L174 299.74 L178.75 298.85 C181.36 298.37 186.43 297.24 190 296.35 Z M121.23 294.75 C120.07 293.51 117.85 289.8 116.31 286.5 C113.82 281.19 113.51 279.41 113.57 271 C113.66 259.57 115.57 254.51 122.67 246.92 L127.4 241.87 L120.45 244.48 C105.93 249.93 85.27 262.06 76.79 270.1 C73.66 273.07 73 274.37 73 277.62 C73 279.79 73.66 282.5 74.47 283.65 C76.33 286.31 88.15 290.11 106.52 293.96 C123.89 297.59 123.91 297.59 121.23 294.75 Z"/>
     </g>
@@ -157,10 +200,10 @@
     </g>
     </g>
 </svg>
-              <span class="sr-only">Media</span>
-            </a>
-            <a class="people-figure" href="#reformer" data-room-link="reformer" data-hover-state="hover2" data-hover-label="REFORMER ROOM">
-              <svg class="little-man little-man--reformer" viewBox="0 0 363 450" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
+        <p><strong>Media</strong>Lightning</p>
+      </article>
+      <article class="figure figure--reformer">
+        <svg class="little-man little-man--reformer" viewBox="0 0 363 450" xmlns="http://www.w3.org/2000/svg" fill="#ffc100" role="img" aria-label="reformer">
     <g class="person">
       <path fill-rule="evenodd" d="M124.28 448.35 C121.95 447.52 118.87 445.44 117.42 443.73 C115.06 440.92 114.83 439.95 115.19 434.3 C115.41 430.84 116.09 427.51 116.7 426.9 C117.31 426.29 122.02 424.81 127.16 423.62 L136.5 421.45 L137.16 404.98 C138.8 364.07 145.63 318.56 156.95 272.97 C159.18 263.99 161 256.35 161 255.98 C161 255.61 151.44 255.02 139.75 254.68 C117.27 254.02 97.56 251.86 93.13 249.57 C88.58 247.22 80.01 237.28 77.34 231.25 C73.4 222.39 74.21 217.2 82.8 196.2 C91.73 174.38 97.67 165.28 112.98 149.99 C134.12 128.86 145.39 122.84 180.5 113.94 C230.35 101.3 258.85 99.25 282.19 106.62 C294.42 110.48 300.56 117.33 306.11 133.29 C309.93 144.25 310 151.61 306.33 157.91 C290.21 185.62 266.65 213.89 246.94 229.17 C242.57 232.55 239 235.62 239 235.97 C239 236.33 240.41 237.95 242.14 239.56 C254.76 251.37 266.77 307.22 275.56 395 C277.02 409.57 278.28 421.58 278.37 421.68 C278.45 421.77 282.56 422.65 287.51 423.63 C292.45 424.6 297.29 426.06 298.25 426.86 C300.31 428.57 300.45 432.18 298.77 440.34 L297.54 446.29 L294.02 447.85 C291.21 449.1 285.21 449.49 264.15 449.81 C233.57 450.26 230.21 449.93 226.13 446.12 C220.56 440.92 219.9 436.01 219.58 397.76 L219.29 363.5 L216.76 352 C215.36 345.68 212.77 336.54 211 331.7 L207.77 322.9 L206 324.5 C198.77 331.05 189.99 359.34 187.03 385.65 C185.82 396.45 185.59 415.11 186.53 427.01 L187.19 435.5 L184.81 439 C181.93 443.22 176.48 446.38 168.5 448.46 C160.38 450.57 130.35 450.5 124.28 448.35 Z M152 218 C166.01 215.88 183 212.64 183 212.08 C182.99 211.76 180.86 210.62 178.25 209.55 C161.76 202.8 151.46 177.2 158.47 160.43 C159.25 158.54 159.53 157 159.07 157 C157.43 157 139.07 176.3 133.37 184.01 C118.63 203.96 116.71 211.03 124.37 217.23 C126.87 219.25 141.09 219.65 152 218 Z M231.91 195.31 C247.26 186.34 267.07 169.5 273.15 160.29 C278.07 152.82 273.32 144.31 262.99 142.09 C253.69 140.1 238.07 138.9 225.24 139.21 L212.99 139.5 L217.74 143.01 C226.48 149.46 232.96 162.1 233.78 174.3 C234.32 182.44 232.78 188.63 228.85 194.05 C227.28 196.22 226.29 198 226.66 198 C227.02 198 229.39 196.79 231.91 195.31 Z"/>
     </g>
@@ -170,10 +213,10 @@
     </g>
     </g>
 </svg>
-              <span class="sr-only">Reformer</span>
-            </a>
-            <a class="people-figure" href="#wellness" data-room-link="wellness" data-hover-state="hover3" data-hover-label="WELLNESS ROOM">
-              <svg class="little-man little-man--wellness" viewBox="0 0 345 480" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
+        <p><strong>Reformer</strong>Wave</p>
+      </article>
+      <article class="figure figure--wellness">
+        <svg class="little-man little-man--wellness" viewBox="0 0 345 480" xmlns="http://www.w3.org/2000/svg" fill="#3f9941" role="img" aria-label="wellness">
     <g class="person">
       <path fill-rule="evenodd" d="M105 479.07 C98.8 477.92 93.69 475.65 91.14 472.92 C89.37 471.02 89 469.4 89 463.47 C89 454.94 89.93 453.76 98 452.08 C101.03 451.44 105.19 450.48 107.25 449.93 L111 448.92 L111.01 441.21 C111.04 413.86 116.68 366.91 124.59 328.03 C127.68 312.86 137.11 273.47 138.58 269.66 C138.93 268.73 137.36 267.96 133.29 267.06 C105.15 260.84 54.67 239.28 46.83 230.12 C40.77 223.04 36.73 207.42 38.89 199.42 C40.47 193.52 44.53 188.01 57.56 174 C71.94 158.55 80.8 151.8 97.5 143.58 C113.28 135.81 126.91 131.36 141.37 129.27 L152.23 127.7 L173.87 129.91 C224.6 135.09 250.84 141.35 272.39 153.4 C280.8 158.1 289.61 165.35 291.6 169.19 C295.88 177.48 297.73 190.94 296.02 201.48 C294.07 213.52 292.6 215.68 279.87 225.23 C263.76 237.32 248.41 247.12 234.5 254.18 C227.9 257.53 222.29 260.45 222.04 260.68 C221.78 260.91 222.13 261.86 222.81 262.8 C225.63 266.66 230.15 277.52 233.42 288.31 C241.54 315.08 249.35 363.41 255.42 424.38 C256.72 437.47 258.17 448.54 258.64 448.96 C259.36 449.62 267.53 451.7 276.79 453.59 C280.08 454.26 281.08 457.84 279.93 464.93 C278.53 473.66 277.55 475.6 273.82 477.05 C270.08 478.5 219.09 479.69 211.19 478.51 C205.68 477.68 200.84 473.33 198.9 467.45 C197.96 464.6 197.56 455.03 197.45 433 C197.38 416.23 196.97 398.9 196.55 394.5 C195.13 379.48 191.72 365.02 186.67 352.61 L184.28 346.73 L181.1 351.35 C174.43 361.05 168.91 377.71 164.8 400.5 C162.96 410.73 162.63 416.42 162.57 439.18 L162.5 465.85 L160.48 468.55 C157.97 471.92 151.32 475.43 143.5 477.52 C136.61 479.36 111.94 480.36 105 479.07 Z M206.79 227.42 C229.52 222.75 254.94 211.81 257.84 205.45 C260.95 198.64 258.34 192.56 250.17 187.61 C238.34 180.42 216.56 170.81 206.68 168.43 L203.86 167.75 L207.27 173.12 C211.57 179.9 213 185.67 213 196.25 C213 210.31 208 220.64 198 227.24 C194.66 229.45 196.71 229.49 206.79 227.42 Z M144.31 222.75 C135.82 213.96 131.78 200.26 134.03 187.86 C135.49 179.79 137.08 176.02 141.67 169.77 L145.35 164.75 L142.93 165.47 C138.88 166.67 120.23 175.72 113.67 179.66 C110.27 181.7 103.59 186.26 98.81 189.8 C88.56 197.4 86.14 201.19 87.87 206.95 C89.43 212.15 92.42 214.52 101 217.3 C111.96 220.86 138.97 226.7 145.46 226.9 L148.42 227 L144.31 222.75 Z"/>
     </g>
@@ -195,130 +238,8 @@
     </g>
     </g>
 </svg>
-              <span class="sr-only">Wellness</span>
-            </a>
-            </div>
-            <output class="people-tooltip" id="peopleTooltip" aria-hidden="true"><img src="../assets/hover-label-1.svg" alt="" width="275" height="80"></output>
-          </div>
-        </nav>
-      </section>
-
-      <section class="rooms-intro" aria-labelledby="rooms-intro-title">
-        <div class="section-shell rooms-intro-grid">
-          <h2 id="rooms-intro-title">TPR Rooms</h2>
-          <p>Il nostro obiettivo quotidiano è ispirare le persone a esprimere sé stesse, riscoprire il valore dell'umanità e vivere in modo più presente.</p>
-        </div>
-      </section>
-
-      <section id="rooms" aria-label="Ascensore delle stanze"></section>
-
-      <section class="events" id="events" aria-labelledby="events-title">
-        <div class="section-shell events-copy reveal">
-          <h2 id="events-title">Eventi</h2>
-          <div class="body-copy">
-            <p>Talk, performance, workshop e incontri inattesi: una programmazione che unisce persone, linguaggi e idee per vivere la città in modo più creativo e vitale.</p>
-            <div class="button-row">
-              <a class="pill pill--blue" href="../eventi/">Eventi &amp; Gallery</a>
-              <a class="pill pill--dark-ghost" href="../contatti/">Organizza un evento</a>
-            </div>
-          </div>
-        </div>
-        <figure class="events-visual reveal" id="gallery">
-          <img src="../assets/tpr-events.webp" alt="DJ set durante un evento TPR" width="1200" height="1600" loading="lazy" decoding="async" />
-          <img class="events-mask" src="../assets/event-mask-exact.png" alt="" width="3024" height="1428" aria-hidden="true" loading="lazy" />
-        </figure>
-      </section>
-
-      <div class="membership-band">
-        <img class="membership-orbit" src="../assets/membership-orbit.png?v=20260820-orbit-exact-1" alt="" width="692" height="1258" aria-hidden="true" />
-      <section class="membership" id="membership" aria-labelledby="membership-title">
-        <div class="section-shell reveal">
-          <h2 id="membership-title">Diventa membro</h2>
-          <div class="membership-grid">
-            <a class="membership-card" href="../membership/aziende-startup/">
-              <div class="torn-photo"><img src="../assets/tpr-startup.webp" alt="" width="1024" height="1534" loading="lazy" decoding="async" /></div>
-              <div class="membership-card__head">
-                <h3>Aziende &amp; Startup</h3>
-                <span class="membership-card__arrow" aria-hidden="true">
-                  <img src="../assets/route-arrow-zigzag.png?v=20260819-arrow-2" alt="" width="52" height="54" />
-                </span>
-              </div>
-              <p>Spazi, membership e servizi pensati per team, startup e aziende che vogliono lavorare e crescere insieme.</p>
-            </a>
-            <a class="membership-card" href="../membership/privati-freelancer/">
-              <div class="torn-photo"><img src="../assets/tpr-freelancer.webp" alt="" width="736" height="1104" loading="lazy" decoding="async" /></div>
-              <div class="membership-card__head">
-                <h3>Privati &amp; Freelancer</h3>
-                <span class="membership-card__arrow" aria-hidden="true">
-                  <img src="../assets/route-arrow-zigzag.png?v=20260819-arrow-2" alt="" width="52" height="54" />
-                </span>
-              </div>
-              <p>Una community per freelancer e privati: desk, classi, eventi e un luogo in cui stare, creare e incontrarsi.</p>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section class="partners" aria-labelledby="partners-title">
-        <h2 id="partners-title">I nostri partner</h2>
-        <div class="partner-track" aria-label="Partner TPR">
-          <span>Partner 01</span><span>Partner 02</span><span>Partner 03</span><span>Partner 04</span><span>Partner 05</span>
-          <span aria-hidden="true">Partner 01</span><span aria-hidden="true">Partner 02</span><span aria-hidden="true">Partner 03</span><span aria-hidden="true">Partner 04</span><span aria-hidden="true">Partner 05</span>
-        </div>
-      </section>
-      </div>
-
-      <section class="world section-blue" id="world" aria-labelledby="world-title">
-        <div class="section-shell world-copy reveal">
-          <h2 id="world-title">Il mondo TPR</h2>
-          <div class="body-copy">
-            <p>Scarica l'app per rimanere sempre aggiornato sugli eventi e prenotare room, classi ed esperienze riservate ai membri.</p>
-            <div class="button-row">
-              <a class="pill pill--pink" href="../app/">Scarica l'app</a>
-              <a class="pill pill--ghost" href="../contatti/">Contattaci</a>
-            </div>
-          </div>
-        </div>
-        <div class="phones reveal">
-          <img src="../assets/tpr-phones.webp" alt="Anteprima dell'app TPR: schermata di apertura e prenotazione" width="1080" height="680" loading="lazy" decoding="async" />
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer" id="footer">
-      <div class="footer-logo"><img src="../assets/type-footer.png" alt="TPR" width="968" height="314" /></div>
-      <div class="footer-columns">
-        <nav class="footer-col" aria-label="TPR">
-          <h2>TPR</h2>
-          <a href="../about/">About</a>
-          <a href="#membership">Membership</a>
-          <a href="../app/">TPR App</a>
-          <a href="../eventi/">Eventi &amp; Gallery</a>
-          <a href="../contatti/">Contatti</a>
-        </nav>
-        <nav class="footer-col" aria-label="Rooms">
-          <h2>Rooms</h2>
-          <a href="#coworking" data-room-link="coworking">Coworking</a>
-          <a href="#reformer" data-room-link="reformer">TPR Move</a>
-          <a href="#wellness" data-room-link="wellness">Wellness</a>
-          <a href="#bar" data-room-link="bar">Bar</a>
-          <a href="#media" data-room-link="media">Media</a>
-        </nav>
-      </div>
-      <div class="footer-bottom">
-        <span>© the people’s room SRL / Via sede legale / P. IVA 0123456789 / Capitale sociale €10.000</span>
-        <span>Privacy Policy / Cookie policy / <a href="https://www.marmellatalab.com/" target="_blank" rel="noopener noreferrer">Designed by <strong>Marmellata Lab</strong></a></span>
-      </div>
-    </footer>
-
-    <dialog class="video-dialog" id="videoDialog">
-      <form method="dialog"><button class="dialog-close" id="closeVideo" type="submit" aria-label="Chiudi video"></button></form>
-      <div class="video-placeholder"><span class="play-icon" aria-hidden="true"></span><p>Video di presentazione TPR</p></div>
-    </dialog>
-
-    <script src="../shared-menu.js?v=20260820-little-men-1"></script>
-    <script src="../shared-elevator.js?v=20260820-character-mobile-nudge"></script>
-    <script src="script.js?v=20260820-people-hover-1"></script>
-    <script src="../shared-parallax.js?v=20260819-parallax-6"></script>
+        <p><strong>Wellness</strong>Signal</p>
+      </article>
+    </div>
   </body>
 </html>

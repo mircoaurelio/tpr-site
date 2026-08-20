@@ -1,0 +1,155 @@
+.little-man {
+  --little-man-move: 1;
+  --lm-repeat: infinite;
+}
+
+.site-menu__room .little-man {
+  --little-man-move: .28;
+}
+
+.little-man .person,
+.little-man .object {
+  transform-box: fill-box;
+}
+
+.little-man .person { transform-origin: 50% 94%; }
+.little-man .object { transform-origin: 50% 80%; }
+.little-man--bar .object-1,
+.little-man--media .object-4 { transform-origin: 50% 100%; }
+.little-man--reformer .object-1 { transform-origin: 50% 50%; }
+
+:is(.people-figure, .site-menu__room).is-playing {
+  --lm-repeat: 1;
+  --lm-dur: 1s;
+}
+
+:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) {
+  --lm-repeat: infinite;
+  --lm-dur: unset;
+}
+
+:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .person,
+:is(.people-figure, .site-menu__room).is-playing .person {
+  animation: people-person-idle var(--lm-dur, 6s) ease-in-out var(--lm-repeat, infinite);
+}
+
+:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--coworking .object-1,
+:is(.people-figure, .site-menu__room).is-playing .little-man--coworking .object-1 {
+  animation: people-cloud-mid var(--lm-dur, 1.7s) ease-in-out var(--lm-repeat, infinite);
+}
+
+:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--coworking .object-2,
+:is(.people-figure, .site-menu__room).is-playing .little-man--coworking .object-2 {
+  animation: people-cloud-left var(--lm-dur, 2.1s) ease-in-out var(--lm-repeat, infinite);
+}
+
+:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--coworking .object-3,
+:is(.people-figure, .site-menu__room).is-playing .little-man--coworking .object-3 {
+  animation: people-cloud-right var(--lm-dur, 1.85s) ease-in-out var(--lm-repeat, infinite) .12s;
+}
+
+:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--bar .object-1,
+:is(.people-figure, .site-menu__room).is-playing .little-man--bar .object-1 {
+  animation: people-globe var(--lm-dur, 1.6s) ease-in-out var(--lm-repeat, infinite);
+}
+
+:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--media .object-1,
+:is(.people-figure, .site-menu__room).is-playing .little-man--media .object-1 {
+  animation: people-bolt var(--lm-dur, .7s) ease-in-out var(--lm-repeat, infinite);
+}
+
+:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--media .object-2,
+:is(.people-figure, .site-menu__room).is-playing .little-man--media .object-2 {
+  animation: people-bolt var(--lm-dur, .85s) ease-in-out var(--lm-repeat, infinite) .12s;
+}
+
+:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--media .object-3,
+:is(.people-figure, .site-menu__room).is-playing .little-man--media .object-3 {
+  animation: people-bolt var(--lm-dur, .78s) ease-in-out var(--lm-repeat, infinite) .22s;
+}
+
+:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--media .object-4,
+:is(.people-figure, .site-menu__room).is-playing .little-man--media .object-4 {
+  animation: people-dome var(--lm-dur, 1.5s) ease-in-out var(--lm-repeat, infinite);
+}
+
+:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--reformer .object-1,
+:is(.people-figure, .site-menu__room).is-playing .little-man--reformer .object-1 {
+  animation: people-wave var(--lm-dur, 1.15s) ease-in-out var(--lm-repeat, infinite);
+}
+
+:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--wellness .object-1,
+:is(.people-figure, .site-menu__room).is-playing .little-man--wellness .object-1 {
+  animation: people-signal var(--lm-dur, 1.1s) ease-in-out var(--lm-repeat, infinite);
+}
+
+:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--wellness .object-2,
+:is(.people-figure, .site-menu__room).is-playing .little-man--wellness .object-2 {
+  animation: people-signal var(--lm-dur, 1.1s) ease-in-out var(--lm-repeat, infinite) .12s;
+}
+
+:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--wellness .object-3,
+:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--wellness .object-4,
+:is(.people-figure, .site-menu__room).is-playing .little-man--wellness .object-3,
+:is(.people-figure, .site-menu__room).is-playing .little-man--wellness .object-4 {
+  animation: people-signal var(--lm-dur, 1.1s) ease-in-out var(--lm-repeat, infinite) .2s;
+}
+
+:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--wellness .object-5,
+:is(.people-figure, .site-menu__room).is-playing .little-man--wellness .object-5 {
+  animation: people-signal var(--lm-dur, 1.1s) ease-in-out var(--lm-repeat, infinite) .32s;
+}
+
+@keyframes people-person-idle {
+  0%, 100% { transform: rotate(-.35deg); }
+  50% { transform: rotate(.35deg) translateY(calc(-1px * var(--little-man-move, 1))); }
+}
+
+@keyframes people-cloud-mid {
+  0%, 100% { transform: translate(0, 0) rotate(-24deg) scale(.9); }
+  50% { transform: translate(calc(8px * var(--little-man-move, 1)), calc(-56px * var(--little-man-move, 1))) rotate(22deg) scale(1.42); }
+}
+
+@keyframes people-cloud-left {
+  0%, 100% { transform: translate(0, 0) rotate(18deg) scale(.88); }
+  50% { transform: translate(calc(-28px * var(--little-man-move, 1)), calc(-44px * var(--little-man-move, 1))) rotate(-20deg) scale(1.38); }
+}
+
+@keyframes people-cloud-right {
+  0%, 100% { transform: translate(0, 0) rotate(-16deg) scale(.9); }
+  50% { transform: translate(calc(30px * var(--little-man-move, 1)), calc(-48px * var(--little-man-move, 1))) rotate(18deg) scale(1.4); }
+}
+
+@keyframes people-globe {
+  0%, 100% { transform: rotate(0) translateY(0) scale(1); }
+  25% { transform: rotate(12deg) translateY(calc(-22px * var(--little-man-move, 1))) scale(1.08); }
+  50% { transform: rotate(-10deg) translateY(calc(-8px * var(--little-man-move, 1))) scale(1.14); }
+  75% { transform: rotate(14deg) translateY(calc(-26px * var(--little-man-move, 1))) scale(1.05); }
+}
+
+@keyframes people-bolt {
+  0%, 100% { transform: translateY(0) scaleY(1) rotate(-10deg); opacity: 1; }
+  25% { transform: translateY(calc(-36px * var(--little-man-move, 1))) scaleY(1.45) rotate(12deg); opacity: .2; }
+  50% { transform: translateY(calc(-8px * var(--little-man-move, 1))) scaleY(.7) rotate(-14deg); opacity: 1; }
+  75% { transform: translateY(calc(-42px * var(--little-man-move, 1))) scaleY(1.5) rotate(8deg); opacity: .12; }
+}
+
+@keyframes people-dome {
+  0%, 100% { transform: rotate(0) scale(1); }
+  50% { transform: rotate(8deg) scale(1.06, .94) translateY(calc(-8px * var(--little-man-move, 1))); }
+}
+
+@keyframes people-wave {
+  0%, 100% { transform: translateX(calc(-26px * var(--little-man-move, 1))) rotate(-10deg) scale(1, .85); }
+  50% { transform: translateX(calc(28px * var(--little-man-move, 1))) rotate(10deg) scale(1.08, 1.4); }
+}
+
+@keyframes people-signal {
+  0%, 100% { transform: scale(.92) translateY(0); opacity: 1; }
+  50% { transform: scale(1.28) translateY(calc(-22px * var(--little-man-move, 1))); opacity: .25; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .little-man .person,
+  .little-man .object { animation: none !important; }
+}

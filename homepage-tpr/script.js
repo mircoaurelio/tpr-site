@@ -229,7 +229,7 @@ addEventListener('hashchange', () => {
 const peopleCanvas = document.querySelector('.people-canvas');
 const peopleTooltip = document.querySelector('#peopleTooltip');
 const peopleTooltipImg = peopleTooltip?.querySelector('img');
-document.querySelectorAll('.people-hotspots [data-room-link]').forEach((hotspot) => {
+document.querySelectorAll('.people-figure[data-room-link]').forEach((hotspot) => {
   hotspot.addEventListener('pointerenter', () => {
     const hoverId = (hotspot.dataset.hoverState || 'hover1').replace(/\D/g, '') || '1';
     if (peopleTooltipImg) {

@@ -1,7 +1,112 @@
 (() => {
   const siteRoot = new URL('.', document.currentScript.src);
   const url = (path) => new URL(path, siteRoot).href;
+  const ROOM_KEYS = ['coworking', 'bar', 'media', 'reformer', 'wellness'];
+  const littleManMarkup = {};
+  let littleMenLoad = null;
+  let littleMenIdleBound = false;
+  let bumpLittleMenIdle = () => {};
   const root = document.documentElement;
+
+  function roomKeyFrom(link) {
+    if (ROOM_KEYS.includes(link.dataset.roomLink)) return link.dataset.roomLink;
+    const match = (link.getAttribute('href') || '').match(/#(coworking|bar|media|reformer|wellness)\b/);
+    return match ? match[1] : '';
+  }
+
+  function normalizeSvg(svg, key) {
+    svg = svg.replace(/\srole="img"\saria-label="[^"]+"/, ' aria-hidden="true"');
+    if (!/class="[^"]*little-man/.test(svg)) {
+      svg = svg.replace(/<svg\b/, `<svg class="little-man little-man--${key}"`);
+    }
+    return svg;
+  }
+
+  function mountLittleManLinks(scope = document) {
+    scope.querySelectorAll('.site-menu__room').forEach((link) => {
+      const key = roomKeyFrom(link);
+      if (!key) return;
+      link.dataset.roomLink = key;
+      if (littleManMarkup[key]) {
+        if (!link.querySelector('.little-man')) link.innerHTML = littleManMarkup[key];
+        return;
+      }
+      if (!link.querySelector('img, .little-man')) {
+        link.innerHTML = `<img src="${url(`assets/elevator-icon-${key}-off.svg`)}?v=20260819-icons-1" alt="">`;
+      }
+    });
+  }
+
+  function visibleLittleMen() {
+    return [...document.querySelectorAll('.people-figure, .site-menu__room')].filter((el) => {
+      if (!el.querySelector('.little-man')) return false;
+      const menuHost = el.closest('.site-menu');
+      return !menuHost || menuHost.classList.contains('is-open');
+    });
+  }
+
+  function stopLittleMen() {
+    document.querySelectorAll('.people-figure.is-playing, .site-menu__room.is-playing').forEach((el) => {
+      el.classList.remove('is-playing');
+    });
+  }
+
+  function bindLittleManIdle() {
+    if (littleMenIdleBound) return;
+    littleMenIdleBound = true;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let idleTimer = 0;
+    let playTimer = 0;
+
+    function schedule() {
+      window.clearTimeout(idleTimer);
+      idleTimer = window.setTimeout(playIdle, 2000);
+    }
+
+    function playIdle() {
+      const items = visibleLittleMen();
+      if (!items.length) {
+        schedule();
+        return;
+      }
+      stopLittleMen();
+      items.forEach((el, index) => {
+        window.setTimeout(() => {
+          el.classList.remove('is-playing');
+          void el.offsetWidth;
+          el.classList.add('is-playing');
+        }, index * 70);
+      });
+      window.clearTimeout(playTimer);
+      playTimer = window.setTimeout(() => {
+        stopLittleMen();
+        schedule();
+      }, 1100 + items.length * 70);
+    }
+
+    bumpLittleMenIdle = () => {
+      window.clearTimeout(playTimer);
+      stopLittleMen();
+      schedule();
+    };
+
+    ['pointermove', 'pointerdown', 'keydown', 'wheel', 'touchstart'].forEach((type) => {
+      addEventListener(type, bumpLittleMenIdle, { passive: true });
+    });
+    schedule();
+  }
+
+  function initLittleMen() {
+    bindLittleManIdle();
+    if (!littleMenLoad) {
+      littleMenLoad = Promise.all(ROOM_KEYS.map(async (key) => {
+        const response = await fetch(`${url(`assets/little-man/${key}.svg`)}?v=20260820-little-men-1`);
+        if (!response.ok) return;
+        littleManMarkup[key] = normalizeSvg(await response.text(), key);
+      })).catch(() => {});
+    }
+    littleMenLoad.then(() => mountLittleManLinks());
+  }
   const scrollLockClasses = ['menu-open', 'dialog-open', 'card-open'];
 
   function scrollbarGap() {
@@ -100,7 +205,10 @@
   }
   let menu = document.querySelector('#siteMenu');
   const openButton = document.querySelector('[data-open-menu], #openMenu');
-  if (!openButton) return;
+  if (!openButton) {
+    initLittleMen();
+    return;
+  }
   if (!menu || !menu.querySelector('.site-menu__nav')) {
     menu?.remove();
     document.body.insertAdjacentHTML('beforeend', `
@@ -111,7 +219,7 @@
           <a class="site-menu__primary" href="${url('about/')}">About</a>
           <h2 class="site-menu__heading"><a href="${url('homepage-tpr/#rooms')}">TPR Rooms</a></h2>
           <div class="site-menu__rooms" aria-label="Le stanze">
-            ${[['coworking','Coworking'],['bar','Bar'],['media','Media'],['reformer','Reformer'],['wellness','Wellness']].map(([key, label]) => `<a class="site-menu__room" href="${url(`homepage-tpr/#${key}`)}" data-room-link="${key}" aria-label="${label} Room"><img src="${url(`assets/elevator-icon-${key}-off.svg`)}?v=20260819-icons-1" alt=""></a>`).join('')}
+            ${[['coworking','Coworking'],['bar','Bar'],['media','Media'],['reformer','Reformer'],['wellness','Wellness']].map(([key, label]) => `<a class="site-menu__room" href="${url(`homepage-tpr/#${key}`)}" data-room-link="${key}" aria-label="${label} Room"></a>`).join('')}
           </div>
           <h2 class="site-menu__heading"><a href="${url('homepage-tpr/#membership')}">Membership</a></h2>
           <div class="site-menu__sub"><a href="${url('membership/aziende-startup/')}">Aziende &amp; Startup</a><a href="${url('membership/privati-freelancer/')}">Privati &amp; Freelancer</a></div>
@@ -122,7 +230,10 @@
     menu = document.querySelector('#siteMenu');
   }
   const closeButton = menu.querySelector('[data-close-menu], #closeMenu');
-  if (!closeButton || menu.dataset.menuReady) return;
+  if (!closeButton || menu.dataset.menuReady) {
+    initLittleMen();
+    return;
+  }
   menu.dataset.menuReady = 'true';
   const background = [...document.body.children].filter((node) => node !== menu && node !== cursor && node.tagName !== 'SCRIPT' && node.tagName !== 'STYLE');
   let opener = openButton;
@@ -141,8 +252,10 @@
     openButton.setAttribute('aria-expanded', String(open));
     document.body.classList.toggle('menu-open', open);
     background.forEach((node) => { if ('inert' in node) node.inert = open; });
-    if (open) requestAnimationFrame(() => closeButton.focus({ preventScroll: true }));
-    else if (restore) opener?.focus({ preventScroll: true });
+    if (open) {
+      requestAnimationFrame(() => closeButton.focus({ preventScroll: true }));
+      bumpLittleMenIdle();
+    } else if (restore) opener?.focus({ preventScroll: true });
   }
 
   openButton.addEventListener('pointerdown', () => { menu.dataset.focusOrigin = 'pointer'; });
@@ -162,4 +275,5 @@
     if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
     else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
   });
+  initLittleMen();
 })();

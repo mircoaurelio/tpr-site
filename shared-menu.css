@@ -1,3 +1,5 @@
+@import url("shared-little-man.css?v=20260820-little-men-1");
+
 @font-face {
   font-family: "Alte Haas Grotesk";
   src: url("assets/fonts/alte-haas-grotesk/AlteHaasGroteskRegular.ttf") format("truetype");
@@ -345,21 +347,40 @@ html.has-tpr-cursor dialog[open] {
   white-space: nowrap;
 }
 
-.site-menu__rooms { display: flex; justify-content: center; gap: 16px; }
+.site-menu__rooms {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 12px 16px;
+  overflow: visible;
+}
 .site-menu a.site-menu__room {
-  width: 48px;
-  height: 48px;
+  width: 3.5rem;
+  height: 4.5rem;
   font-size: 0;
   display: grid;
-  place-items: center;
+  place-items: end center;
   padding: 0;
+  overflow: visible;
+  color: var(--tpr-white);
   background: transparent;
   border: 0;
   text-decoration: none;
 }
-.site-menu__room img { width: 100%; height: 100%; }
+.site-menu a.site-menu__room:hover,
+.site-menu a.site-menu__room:focus-visible { color: var(--tpr-white); }
+.site-menu__room img,
+.site-menu__room .little-man {
+  display: block;
+  width: auto;
+  height: 4.5rem;
+  max-width: none;
+  overflow: visible;
+}
 .site-menu a:hover,
 .site-menu a:focus-visible { color: #ffc100; }
+.site-menu a.site-menu__room:hover,
+.site-menu a.site-menu__room:focus-visible { color: var(--tpr-white); }
 .site-menu__close:focus:not(:focus-visible) { outline: 0; }
 .site-menu__close:focus-visible,
 .site-menu a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
