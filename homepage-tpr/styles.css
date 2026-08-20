@@ -1,5 +1,5 @@
-@import url("../shared-menu.css?v=20260820-overflow-1");
-@import url("../shared-elevator.css?v=20260820-mobile-cards-10");
+@import url("../shared-menu.css?v=20260820-overflow-2");
+@import url("../shared-elevator.css?v=20260820-mobile-cards-11");
 
 :root {
   --royal: #2c64e8;
@@ -20,12 +20,11 @@
 *, *::before, *::after { box-sizing: border-box; }
 html {
   background: var(--royal);
-  overflow-x: hidden;
   scroll-behavior: auto;
   scroll-padding-top: 5.5rem;
   scroll-snap-type: y proximity;
 }
-body { margin: 0; max-width: 100%; overflow-x: hidden; color: var(--ink); font-family: var(--body); background: var(--royal); }
+body { margin: 0; max-width: 100%; overflow-x: hidden; overflow-x: clip; color: var(--ink); font-family: var(--body); background: var(--royal); }
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button { color: inherit; font: inherit; }
