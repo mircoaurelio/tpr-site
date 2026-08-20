@@ -1003,19 +1003,21 @@
     position: relative;
     isolation: isolate;
     flex: 0 0 auto;
-    width: calc((100cqh - 3.2rem) * 715 / 952);
+    width: min(78vw, calc(100cqh * 3 / 4));
     height: 100%;
-    min-width: 11.5rem;
+    min-width: 12rem;
     min-height: 0;
     padding: 0;
     overflow: hidden;
     color: var(--card-accent);
-    background: transparent;
+    background: #fff;
     border: 0;
     border-radius: 0;
     cursor: pointer;
     scroll-snap-align: start;
     perspective: 1200px;
+    -webkit-mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
+    mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
   }
   .tpr-elevator__mobile-card-front,
   .tpr-elevator__mobile-card-back {
@@ -1030,7 +1032,7 @@
     flex-direction: column;
     height: 100%;
     overflow: hidden;
-    background: transparent;
+    background: #fff;
     transition: opacity 180ms ease;
   }
   .tpr-elevator__mobile-card.is-flipped .tpr-elevator__mobile-card-front { opacity: 0; }
@@ -1038,30 +1040,30 @@
     position: relative;
     flex: 1 1 auto;
     min-height: 0;
-    width: 100%;
-    margin: 0;
+    width: calc(100% - .5rem);
+    margin: .25rem auto .1rem;
     overflow: hidden;
-    background: transparent;
+    background: #fff;
+    -webkit-mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
+    mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
   }
   .tpr-elevator__mobile-card-photo-window {
-    position: absolute;
-    top: 0;
-    left: 0;
     display: block;
-    width: calc(100% * 1512 / 715);
+    width: 100%;
     height: 100%;
     overflow: hidden;
-    -webkit-mask: url("assets/elevator-photo-mask.png?v=20260820-fixed-photo") top left / 100% 100% no-repeat;
-    mask: url("assets/elevator-photo-mask.png?v=20260820-fixed-photo") top left / 100% 100% no-repeat;
-    mask-mode: alpha;
+    -webkit-mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
+    mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
   }
   .tpr-elevator__mobile-card-photo-window > img {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: fill;
-    object-position: top left;
+    object-fit: cover;
+    object-position: 16% 42%;
     pointer-events: none;
+    transform: scale(1.45);
+    transform-origin: left center;
   }
   .tpr-elevator__mobile-card-meta {
     position: relative;
