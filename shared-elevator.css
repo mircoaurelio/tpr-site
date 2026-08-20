@@ -983,10 +983,10 @@
     flex-flow: row nowrap;
     align-items: stretch;
     gap: 1rem;
-    width: calc(100% + 1.25rem);
+    width: calc(100% + 2.5rem);
     min-width: 0;
     min-height: 0;
-    margin: 1rem -1.25rem 0 0;
+    margin: 1rem -1.25rem 0 -1.25rem;
     padding-right: 1.25rem;
     overflow-x: auto;
     overflow-y: hidden;
@@ -995,26 +995,27 @@
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
     touch-action: pan-x;
+    container-type: size;
   }
   .tpr-elevator__mobile-drop::-webkit-scrollbar { display: none; }
   .tpr-elevator.is-mobile-expanded .tpr-elevator__car--current .tpr-elevator__mobile-drop { display: flex; }
   .tpr-elevator__mobile-card {
     position: relative;
     isolation: isolate;
-    flex: 0 0 min(78vw, 18.5rem);
-    height: auto;
+    flex: 0 0 auto;
+    width: calc((100cqh - 3.2rem) * 715 / 952);
+    height: 100%;
+    min-width: 11.5rem;
     min-height: 0;
     padding: 0;
     overflow: hidden;
     color: var(--card-accent);
-    background: #fff;
+    background: transparent;
     border: 0;
     border-radius: 0;
     cursor: pointer;
     scroll-snap-align: start;
     perspective: 1200px;
-    -webkit-mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
-    mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
   }
   .tpr-elevator__mobile-card-front,
   .tpr-elevator__mobile-card-back {
@@ -1027,29 +1028,32 @@
     inset: auto;
     display: flex;
     flex-direction: column;
+    height: 100%;
     overflow: hidden;
-    background: #fff;
+    background: transparent;
     transition: opacity 180ms ease;
   }
   .tpr-elevator__mobile-card.is-flipped .tpr-elevator__mobile-card-front { opacity: 0; }
   .tpr-elevator__mobile-card-photo {
     position: relative;
-    flex: 0 0 auto;
+    flex: 1 1 auto;
+    min-height: 0;
     width: 100%;
-    aspect-ratio: 1512 / 952;
-    height: auto;
     margin: 0;
     overflow: hidden;
     background: transparent;
+  }
+  .tpr-elevator__mobile-card-photo-window {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: calc(100% * 1512 / 715);
+    height: 100%;
+    overflow: hidden;
     -webkit-mask: url("assets/elevator-photo-mask.png?v=20260820-fixed-photo") top left / 100% 100% no-repeat;
     mask: url("assets/elevator-photo-mask.png?v=20260820-fixed-photo") top left / 100% 100% no-repeat;
     mask-mode: alpha;
-  }
-  .tpr-elevator__mobile-card-photo-window {
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
   }
   .tpr-elevator__mobile-card-photo-window > img {
     display: block;
@@ -1100,6 +1104,8 @@
     transform-origin: center;
     backface-visibility: hidden;
     transition: opacity 1ms linear 249ms, transform 500ms ease-out;
+    -webkit-mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
+    mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
   }
   .tpr-elevator__mobile-card.is-flipped .tpr-elevator__mobile-card-back {
     opacity: 1;
