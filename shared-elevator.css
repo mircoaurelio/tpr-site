@@ -1035,28 +1035,28 @@
   .tpr-elevator__mobile-card-photo {
     position: relative;
     flex: 0 0 auto;
-    width: calc(100% - .5rem);
-    aspect-ratio: 3 / 2;
+    width: 100%;
+    aspect-ratio: 1512 / 952;
     height: auto;
-    margin: .25rem auto .1rem;
+    margin: 0;
     overflow: hidden;
-    background: #dbe7f8;
-    -webkit-mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
-    mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
+    background: transparent;
+    -webkit-mask: url("assets/elevator-photo-mask.png?v=20260820-fixed-photo") top left / 100% 100% no-repeat;
+    mask: url("assets/elevator-photo-mask.png?v=20260820-fixed-photo") top left / 100% 100% no-repeat;
+    mask-mode: alpha;
   }
   .tpr-elevator__mobile-card-photo-window {
     display: block;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    -webkit-mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
-    mask: url("assets/wavy-frame.svg?v=20260819-exact-edge-1") center / 100% 100% no-repeat;
   }
   .tpr-elevator__mobile-card-photo-window > img {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
+    object-position: top left;
     pointer-events: none;
   }
   .tpr-elevator__mobile-card-meta {

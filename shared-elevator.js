@@ -43,7 +43,6 @@
   ];
   const roomCopyHtml = copyParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join('');
   const roomTitle = (room) => `${room.label} <span>Room</span>`;
-  const CARD_FOCUSES = ['20% 42%', '50% 38%', '82% 42%'];
   const cardArrowSrc = new URL('assets/route-arrow-zigzag.png?v=20260819-arrow-2', base).href;
   const LIFT_MS = 1250;
   const LAST_FLOOR_HOLD = 1;
@@ -54,12 +53,10 @@
             <button class="tpr-elevator__cta" type="button"${live ? ` data-elevator-explore aria-label="Esplora ${room.label} Room"` : ' tabindex="-1" aria-hidden="true"'}><span class="tpr-elevator__cta-label">Esplora Stanza</span><span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
             <a class="tpr-elevator__book"${live ? ' data-elevator-book' : ''} href="${bookingUrl(room.key)}" ${room.bookable ? '' : 'hidden'}>Prenota${live ? `<span class="sr-only"> ${room.label} Room</span>` : ''}</a>
           </div>`;
-  const mobileDropMarkup = (room) => room.cards.map(([cardTitle, cardCopy], index) => {
-    const focus = CARD_FOCUSES[index] || CARD_FOCUSES[0];
-    return `
+  const mobileDropMarkup = (room) => room.cards.map(([cardTitle, cardCopy], index) => `
             <button class="tpr-elevator__mobile-card" type="button" data-card-index="${index}" aria-expanded="false" aria-label="Apri la card ${cardTitle}">
               <span class="tpr-elevator__mobile-card-front" aria-hidden="true">
-                <span class="tpr-elevator__mobile-card-photo"><span class="tpr-elevator__mobile-card-photo-window"><img src="${asset(room.art)}" alt="" width="3024" height="1904" decoding="async" style="object-position:${focus}" /></span></span>
+                <span class="tpr-elevator__mobile-card-photo"><span class="tpr-elevator__mobile-card-photo-window"><img src="${asset(room.art)}" alt="" width="3024" height="1904" decoding="async" /></span></span>
                 <span class="tpr-elevator__mobile-card-meta"><strong>${cardTitle}</strong><span class="tpr-elevator__card-arrow"><img src="${cardArrowSrc}" alt="" width="52" height="54" /></span></span>
               </span>
               <span class="sr-only">Apri la card ${cardTitle}</span>
@@ -69,8 +66,7 @@
                 <span>${cardCopy}</span>
                 <span class="tpr-elevator__card-cta">Diventa Membro</span>
               </span>
-            </button>`;
-  }).join('');
+            </button>`).join('');
   const mobileCopyMarkup = (room, { live = true } = {}) => `
           <h2 class="tpr-elevator__title"${live ? ' id="elevatorTitle"' : ''}>${roomTitle(room)}</h2>
           <div class="tpr-elevator__mobile-copy-text">${copyParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join('')}</div>
