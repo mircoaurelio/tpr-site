@@ -583,9 +583,11 @@
   height: clamp(1.6rem, 2.4vw, 2.8rem);
   flex: 0 0 auto;
   color: inherit;
-  background: transparent;
+  background: currentColor;
   border: 0;
   border-radius: 0;
+  -webkit-mask: url("assets/route-arrow-zigzag.png?v=20260819-arrow-2") center / contain no-repeat;
+  mask: url("assets/route-arrow-zigzag.png?v=20260819-arrow-2") center / contain no-repeat;
 }
 .tpr-elevator__card-arrow::before,
 .tpr-elevator__card-arrow::after { content: none; }
@@ -594,6 +596,7 @@
   display: block;
   width: 100%;
   height: 100%;
+  opacity: 0;
 }
 
 .tpr-elevator__explore-card {
