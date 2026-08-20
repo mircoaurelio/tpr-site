@@ -700,6 +700,15 @@
     aspect-ratio: 1512 / 952;
     transform: none;
   }
+  .tpr-elevator__character {
+    left: auto;
+    right: calc(2.5% + 20px);
+    top: calc(10% + 20px);
+    width: 32%;
+    height: 58%;
+    object-fit: contain;
+    object-position: bottom center;
+  }
   .tpr-elevator__frame::after {
     content: none;
     display: none;
