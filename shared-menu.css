@@ -1,4 +1,4 @@
-@import url("shared-little-man.css?v=20260820-little-men-1");
+@import url("shared-little-man.css?v=20260820-little-men-3");
 
 @font-face {
   font-family: "Alte Haas Grotesk";
@@ -292,7 +292,7 @@ html.has-tpr-cursor dialog[open] {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 48px;
   margin: auto;
   padding: 4rem 0;
   text-align: center;
@@ -320,25 +320,33 @@ html.has-tpr-cursor dialog[open] {
 }
 .site-menu .site-menu__heading a { color: inherit; font: inherit; text-decoration: none; }
 
-.site-menu__primary + .site-menu__heading,
-.site-menu__rooms + .site-menu__heading,
-.site-menu__sub + .site-menu__heading {
-  margin-top: 16px;
+.site-menu__group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  gap: 9px;
+}
+
+.site-menu__group .site-menu__heading {
+  margin: 0;
 }
 
 .site-menu__sub {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
+  align-self: stretch;
   width: 100%;
-  gap: 16px;
+  gap: 0.75rem 1.25rem;
 }
 
 .site-menu__sub a {
-  min-height: 32px;
+  min-height: 0;
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   color: inherit;
   font: 600 clamp(1.15rem, 2.12vw, 2rem)/1 var(--tpr-display);
   letter-spacing: 0;
@@ -351,6 +359,7 @@ html.has-tpr-cursor dialog[open] {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  align-self: center;
   gap: 12px 16px;
   overflow: visible;
 }
@@ -390,13 +399,10 @@ html.has-tpr-cursor dialog[open] {
   .site-menu { background-position: 44% center; }
   .site-menu a.site-menu__brand { width: 6.2rem; color: var(--tpr-white); }
   .site-menu__brand img { filter: brightness(0) invert(1) !important; }
-  .site-menu .site-menu__nav { gap: 12px; padding: 5.5rem 0 2rem; }
+  .site-menu .site-menu__nav { gap: 32px; padding: 5.5rem 0 2rem; }
   .site-menu__primary,
   .site-menu__heading { font-size: clamp(2.25rem, 11vw, 3.55rem); }
-  .site-menu__primary + .site-menu__heading,
-  .site-menu__rooms + .site-menu__heading,
-  .site-menu__sub + .site-menu__heading { margin-top: 8px; }
-  .site-menu__sub { flex-wrap: wrap; justify-content: center; }
+  .site-menu__sub { flex-wrap: wrap; justify-content: center; gap: 0.35rem 1rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

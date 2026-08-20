@@ -7,6 +7,10 @@
   --little-man-move: .28;
 }
 
+.tpr-elevator__character .little-man {
+  --little-man-move: 1;
+}
+
 .little-man .person,
 .little-man .object {
   transform-box: fill-box;
@@ -18,85 +22,85 @@
 .little-man--media .object-4 { transform-origin: 50% 100%; }
 .little-man--reformer .object-1 { transform-origin: 50% 50%; }
 
-:is(.people-figure, .site-menu__room).is-playing {
+:is(.people-figure, .site-menu__room, .tpr-elevator__character).is-playing {
   --lm-repeat: 1;
   --lm-dur: 1s;
 }
 
-:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) {
+:is(.people-figure, .site-menu__room, .tpr-elevator__character):is(:hover, :focus-visible, .is-entering) {
   --lm-repeat: infinite;
   --lm-dur: unset;
 }
 
-:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .person,
-:is(.people-figure, .site-menu__room).is-playing .person {
+:is(.people-figure, .site-menu__room, .tpr-elevator__character):is(:hover, :focus-visible, .is-entering) .person,
+:is(.people-figure, .site-menu__room, .tpr-elevator__character).is-playing .person {
   animation: people-person-idle var(--lm-dur, 6s) ease-in-out var(--lm-repeat, infinite);
 }
 
-:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--coworking .object-1,
-:is(.people-figure, .site-menu__room).is-playing .little-man--coworking .object-1 {
+:is(.people-figure, .site-menu__room, .tpr-elevator__character):is(:hover, :focus-visible, .is-entering) .little-man--coworking .object-1,
+:is(.people-figure, .site-menu__room, .tpr-elevator__character).is-playing .little-man--coworking .object-1 {
   animation: people-cloud-mid var(--lm-dur, 1.7s) ease-in-out var(--lm-repeat, infinite);
 }
 
-:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--coworking .object-2,
-:is(.people-figure, .site-menu__room).is-playing .little-man--coworking .object-2 {
+:is(.people-figure, .site-menu__room, .tpr-elevator__character):is(:hover, :focus-visible, .is-entering) .little-man--coworking .object-2,
+:is(.people-figure, .site-menu__room, .tpr-elevator__character).is-playing .little-man--coworking .object-2 {
   animation: people-cloud-left var(--lm-dur, 2.1s) ease-in-out var(--lm-repeat, infinite);
 }
 
-:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--coworking .object-3,
-:is(.people-figure, .site-menu__room).is-playing .little-man--coworking .object-3 {
+:is(.people-figure, .site-menu__room, .tpr-elevator__character):is(:hover, :focus-visible, .is-entering) .little-man--coworking .object-3,
+:is(.people-figure, .site-menu__room, .tpr-elevator__character).is-playing .little-man--coworking .object-3 {
   animation: people-cloud-right var(--lm-dur, 1.85s) ease-in-out var(--lm-repeat, infinite) .12s;
 }
 
-:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--bar .object-1,
-:is(.people-figure, .site-menu__room).is-playing .little-man--bar .object-1 {
+:is(.people-figure, .site-menu__room, .tpr-elevator__character):is(:hover, :focus-visible, .is-entering) .little-man--bar .object-1,
+:is(.people-figure, .site-menu__room, .tpr-elevator__character).is-playing .little-man--bar .object-1 {
   animation: people-globe var(--lm-dur, 1.6s) ease-in-out var(--lm-repeat, infinite);
 }
 
-:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--media .object-1,
-:is(.people-figure, .site-menu__room).is-playing .little-man--media .object-1 {
+:is(.people-figure, .site-menu__room, .tpr-elevator__character):is(:hover, :focus-visible, .is-entering) .little-man--media .object-1,
+:is(.people-figure, .site-menu__room, .tpr-elevator__character).is-playing .little-man--media .object-1 {
   animation: people-bolt var(--lm-dur, .7s) ease-in-out var(--lm-repeat, infinite);
 }
 
-:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--media .object-2,
-:is(.people-figure, .site-menu__room).is-playing .little-man--media .object-2 {
+:is(.people-figure, .site-menu__room, .tpr-elevator__character):is(:hover, :focus-visible, .is-entering) .little-man--media .object-2,
+:is(.people-figure, .site-menu__room, .tpr-elevator__character).is-playing .little-man--media .object-2 {
   animation: people-bolt var(--lm-dur, .85s) ease-in-out var(--lm-repeat, infinite) .12s;
 }
 
-:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--media .object-3,
-:is(.people-figure, .site-menu__room).is-playing .little-man--media .object-3 {
+:is(.people-figure, .site-menu__room, .tpr-elevator__character):is(:hover, :focus-visible, .is-entering) .little-man--media .object-3,
+:is(.people-figure, .site-menu__room, .tpr-elevator__character).is-playing .little-man--media .object-3 {
   animation: people-bolt var(--lm-dur, .78s) ease-in-out var(--lm-repeat, infinite) .22s;
 }
 
-:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--media .object-4,
-:is(.people-figure, .site-menu__room).is-playing .little-man--media .object-4 {
+:is(.people-figure, .site-menu__room, .tpr-elevator__character):is(:hover, :focus-visible, .is-entering) .little-man--media .object-4,
+:is(.people-figure, .site-menu__room, .tpr-elevator__character).is-playing .little-man--media .object-4 {
   animation: people-dome var(--lm-dur, 1.5s) ease-in-out var(--lm-repeat, infinite);
 }
 
-:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--reformer .object-1,
-:is(.people-figure, .site-menu__room).is-playing .little-man--reformer .object-1 {
+:is(.people-figure, .site-menu__room, .tpr-elevator__character):is(:hover, :focus-visible, .is-entering) .little-man--reformer .object-1,
+:is(.people-figure, .site-menu__room, .tpr-elevator__character).is-playing .little-man--reformer .object-1 {
   animation: people-wave var(--lm-dur, 1.15s) ease-in-out var(--lm-repeat, infinite);
 }
 
-:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--wellness .object-1,
-:is(.people-figure, .site-menu__room).is-playing .little-man--wellness .object-1 {
+:is(.people-figure, .site-menu__room, .tpr-elevator__character):is(:hover, :focus-visible, .is-entering) .little-man--wellness .object-1,
+:is(.people-figure, .site-menu__room, .tpr-elevator__character).is-playing .little-man--wellness .object-1 {
   animation: people-signal var(--lm-dur, 1.1s) ease-in-out var(--lm-repeat, infinite);
 }
 
-:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--wellness .object-2,
-:is(.people-figure, .site-menu__room).is-playing .little-man--wellness .object-2 {
+:is(.people-figure, .site-menu__room, .tpr-elevator__character):is(:hover, :focus-visible, .is-entering) .little-man--wellness .object-2,
+:is(.people-figure, .site-menu__room, .tpr-elevator__character).is-playing .little-man--wellness .object-2 {
   animation: people-signal var(--lm-dur, 1.1s) ease-in-out var(--lm-repeat, infinite) .12s;
 }
 
-:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--wellness .object-3,
-:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--wellness .object-4,
-:is(.people-figure, .site-menu__room).is-playing .little-man--wellness .object-3,
-:is(.people-figure, .site-menu__room).is-playing .little-man--wellness .object-4 {
+:is(.people-figure, .site-menu__room, .tpr-elevator__character):is(:hover, :focus-visible, .is-entering) .little-man--wellness .object-3,
+:is(.people-figure, .site-menu__room, .tpr-elevator__character):is(:hover, :focus-visible, .is-entering) .little-man--wellness .object-4,
+:is(.people-figure, .site-menu__room, .tpr-elevator__character).is-playing .little-man--wellness .object-3,
+:is(.people-figure, .site-menu__room, .tpr-elevator__character).is-playing .little-man--wellness .object-4 {
   animation: people-signal var(--lm-dur, 1.1s) ease-in-out var(--lm-repeat, infinite) .2s;
 }
 
-:is(.people-figure, .site-menu__room):is(:hover, :focus-visible) .little-man--wellness .object-5,
-:is(.people-figure, .site-menu__room).is-playing .little-man--wellness .object-5 {
+:is(.people-figure, .site-menu__room, .tpr-elevator__character):is(:hover, :focus-visible, .is-entering) .little-man--wellness .object-5,
+:is(.people-figure, .site-menu__room, .tpr-elevator__character).is-playing .little-man--wellness .object-5 {
   animation: people-signal var(--lm-dur, 1.1s) ease-in-out var(--lm-repeat, infinite) .32s;
 }
 

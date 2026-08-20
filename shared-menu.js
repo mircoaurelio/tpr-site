@@ -38,15 +38,17 @@
   }
 
   function visibleLittleMen() {
-    return [...document.querySelectorAll('.people-figure, .site-menu__room')].filter((el) => {
+    return [...document.querySelectorAll('.people-figure, .site-menu__room, .tpr-elevator__character--current')].filter((el) => {
       if (!el.querySelector('.little-man')) return false;
       const menuHost = el.closest('.site-menu');
-      return !menuHost || menuHost.classList.contains('is-open');
+      if (menuHost && !menuHost.classList.contains('is-open')) return false;
+      const elevator = el.closest('.tpr-elevator');
+      return !elevator || !elevator.classList.contains('is-exploring');
     });
   }
 
   function stopLittleMen() {
-    document.querySelectorAll('.people-figure.is-playing, .site-menu__room.is-playing').forEach((el) => {
+    document.querySelectorAll('.people-figure.is-playing, .site-menu__room.is-playing, .tpr-elevator__character.is-playing').forEach((el) => {
       el.classList.remove('is-playing');
     });
   }
@@ -96,16 +98,24 @@
     schedule();
   }
 
+  window.tprLittleMen = {
+    svg(key) { return littleManMarkup[key] || ''; },
+    get ready() { return littleMenLoad || Promise.resolve(); },
+  };
+
   function initLittleMen() {
     bindLittleManIdle();
     if (!littleMenLoad) {
       littleMenLoad = Promise.all(ROOM_KEYS.map(async (key) => {
-        const response = await fetch(`${url(`assets/little-man/${key}.svg`)}?v=20260820-little-men-1`);
+        const response = await fetch(`${url(`assets/little-man/${key}.svg`)}?v=20260820-little-men-2`);
         if (!response.ok) return;
         littleManMarkup[key] = normalizeSvg(await response.text(), key);
       })).catch(() => {});
     }
-    littleMenLoad.then(() => mountLittleManLinks());
+    littleMenLoad.then(() => {
+      mountLittleManLinks();
+      document.dispatchEvent(new Event('tpr-little-men-ready'));
+    });
   }
   const scrollLockClasses = ['menu-open', 'dialog-open', 'card-open'];
 
@@ -217,14 +227,20 @@
         <button class="site-menu__close" data-close-menu type="button" aria-label="Chiudi il menu"></button>
         <nav class="site-menu__nav" aria-label="Navigazione principale">
           <a class="site-menu__primary" href="${url('about/')}">About</a>
-          <h2 class="site-menu__heading"><a href="${url('homepage-tpr/#rooms')}">TPR Rooms</a></h2>
-          <div class="site-menu__rooms" aria-label="Le stanze">
-            ${[['coworking','Coworking'],['bar','Bar'],['media','Media'],['reformer','Reformer'],['wellness','Wellness']].map(([key, label]) => `<a class="site-menu__room" href="${url(`homepage-tpr/#${key}`)}" data-room-link="${key}" aria-label="${label} Room"></a>`).join('')}
+          <div class="site-menu__group">
+            <h2 class="site-menu__heading"><a href="${url('homepage-tpr/#rooms')}">TPR Rooms</a></h2>
+            <div class="site-menu__rooms" aria-label="Le stanze">
+              ${[['coworking','Coworking'],['bar','Bar'],['media','Media'],['reformer','Reformer'],['wellness','Wellness']].map(([key, label]) => `<a class="site-menu__room" href="${url(`homepage-tpr/#${key}`)}" data-room-link="${key}" aria-label="${label} Room"></a>`).join('')}
+            </div>
           </div>
-          <h2 class="site-menu__heading"><a href="${url('homepage-tpr/#membership')}">Membership</a></h2>
-          <div class="site-menu__sub"><a href="${url('membership/aziende-startup/')}">Aziende &amp; Startup</a><a href="${url('membership/privati-freelancer/')}">Privati &amp; Freelancer</a></div>
-          <h2 class="site-menu__heading"><a href="${url('homepage-tpr/#world')}">TPR World</a></h2>
-          <div class="site-menu__sub"><a href="${url('eventi/')}">Eventi</a><a href="${url('gallery/')}">Gallery</a><a href="${url('app/')}">App</a><a href="${url('contatti/')}">Contatti</a></div>
+          <div class="site-menu__group">
+            <h2 class="site-menu__heading"><a href="${url('homepage-tpr/#membership')}">Membership</a></h2>
+            <div class="site-menu__sub"><a href="${url('membership/aziende-startup/')}">Aziende &amp; Startup</a><a href="${url('membership/privati-freelancer/')}">Privati &amp; Freelancer</a></div>
+          </div>
+          <div class="site-menu__group">
+            <h2 class="site-menu__heading"><a href="${url('homepage-tpr/#world')}">TPR World</a></h2>
+            <div class="site-menu__sub"><a href="${url('eventi/')}">Eventi</a><a href="${url('gallery/')}">Gallery</a><a href="${url('app/')}">App</a><a href="${url('contatti/')}">Contatti</a></div>
+          </div>
         </nav>
       </aside>`);
     menu = document.querySelector('#siteMenu');

@@ -43,6 +43,8 @@
   ];
   const roomCopyHtml = copyParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join('');
   const roomTitle = (room) => `${room.label} <span>Room</span>`;
+  const CARD_FOCUSES = ['20% 42%', '50% 38%', '82% 42%'];
+  const cardArrowSrc = new URL('assets/route-arrow-zigzag.png?v=20260819-arrow-2', base).href;
   const LIFT_MS = 1250;
   const LAST_FLOOR_HOLD = 1;
   const desktopCopyMarkup = (room, { live = true } = {}) => `
@@ -52,11 +54,23 @@
             <button class="tpr-elevator__cta" type="button"${live ? ` data-elevator-explore aria-label="Esplora ${room.label} Room"` : ' tabindex="-1" aria-hidden="true"'}><span class="tpr-elevator__cta-label">Esplora Stanza</span><span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
             <a class="tpr-elevator__book"${live ? ' data-elevator-book' : ''} href="${bookingUrl(room.key)}" ${room.bookable ? '' : 'hidden'}>Prenota${live ? `<span class="sr-only"> ${room.label} Room</span>` : ''}</a>
           </div>`;
-  const mobileDropMarkup = (room) => room.cards.map(([cardTitle, cardCopy]) => `
-            <article class="tpr-elevator__mobile-item">
-              <strong>${cardTitle}</strong>
-              <p>${cardCopy}</p>
-            </article>`).join('');
+  const mobileDropMarkup = (room) => room.cards.map(([cardTitle, cardCopy], index) => {
+    const focus = CARD_FOCUSES[index] || CARD_FOCUSES[0];
+    return `
+            <button class="tpr-elevator__mobile-card" type="button" data-card-index="${index}" aria-expanded="false" aria-label="Apri la card ${cardTitle}">
+              <span class="tpr-elevator__mobile-card-front" aria-hidden="true">
+                <span class="tpr-elevator__mobile-card-photo"><span class="tpr-elevator__mobile-card-photo-window"><img src="${asset(room.art)}" alt="" width="3024" height="1904" decoding="async" style="object-position:${focus}" /></span></span>
+                <span class="tpr-elevator__mobile-card-meta"><strong>${cardTitle}</strong><span class="tpr-elevator__card-arrow"><img src="${cardArrowSrc}" alt="" width="52" height="54" /></span></span>
+              </span>
+              <span class="sr-only">Apri la card ${cardTitle}</span>
+              <span class="tpr-elevator__mobile-card-back" aria-hidden="true">
+                <strong>Cosa si fa?</strong>
+                <span class="tpr-elevator__card-close" aria-hidden="true"></span>
+                <span>${cardCopy}</span>
+                <span class="tpr-elevator__card-cta">Diventa Membro</span>
+              </span>
+            </button>`;
+  }).join('');
   const mobileCopyMarkup = (room, { live = true } = {}) => `
           <h2 class="tpr-elevator__title"${live ? ' id="elevatorTitle"' : ''}>${roomTitle(room)}</h2>
           <div class="tpr-elevator__mobile-copy-text">${copyParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join('')}</div>
@@ -64,7 +78,7 @@
             <button class="tpr-elevator__mobile-cta" type="button"${live ? ' data-elevator-explore aria-expanded="false"' : ' tabindex="-1" aria-hidden="true"'}><span class="tpr-elevator__cta-label">Esplora Stanza</span><span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
             <a class="tpr-elevator__mobile-book"${live ? ' data-elevator-book' : ''} href="${bookingUrl(room.key)}" ${room.bookable ? '' : 'hidden'}><span>Prenota</span></a>
           </div>
-          <div class="tpr-elevator__mobile-drop">${mobileDropMarkup(room)}</div>`;
+          <div class="tpr-elevator__mobile-drop" aria-label="Card della stanza">${mobileDropMarkup(room)}</div>`;
   const isRoomKey = (key) => rooms.some((room) => room.key === key);
   const hashRoom = location.hash.slice(1);
   const initialIndex = Math.max(0, rooms.findIndex((room) => room.key === hashRoom));
@@ -89,19 +103,23 @@
   host.innerHTML = `
     <div class="tpr-elevator__sticky">
       <div class="tpr-elevator__frame">
+        <div class="tpr-elevator__car tpr-elevator__car--shade tpr-elevator__car--current" data-room="${rooms[active].key}" aria-hidden="true"></div>
+        <div class="tpr-elevator__car tpr-elevator__car--shade tpr-elevator__car--incoming" aria-hidden="true"></div>
         <div class="tpr-elevator__car tpr-elevator__car--current" data-room="${rooms[active].key}">
-          <img class="tpr-elevator__art tpr-elevator__art--current" src="${asset(rooms[active].art)}" width="3024" height="1904" alt="" aria-hidden="true" fetchpriority="high">
           <div class="tpr-elevator__mobile-copy">${mobileCopyMarkup(rooms[active])}</div>
           <div class="tpr-elevator__desktop-copy">${desktopCopyMarkup(rooms[active])}</div>
         </div>
         <div class="tpr-elevator__car tpr-elevator__car--incoming" aria-hidden="true">
-          <img class="tpr-elevator__art tpr-elevator__art--incoming" width="3024" height="1904" alt="" aria-hidden="true">
           <div class="tpr-elevator__mobile-copy">${mobileCopyMarkup(rooms[active], { live: false })}</div>
           <div class="tpr-elevator__desktop-copy">${desktopCopyMarkup(rooms[active], { live: false })}</div>
         </div>
+        <div class="tpr-elevator__photo-plane" aria-hidden="true">
+          <img class="tpr-elevator__art tpr-elevator__art--current" src="${asset(rooms[active].art)}" width="3024" height="1904" alt="" fetchpriority="high">
+          <img class="tpr-elevator__art tpr-elevator__art--incoming" width="3024" height="1904" alt="">
+        </div>
         <div class="tpr-elevator__character-plane" aria-hidden="true">
-          <img class="tpr-elevator__character tpr-elevator__character--current" src="${asset(rooms[active].character)}" alt="">
-          <img class="tpr-elevator__character tpr-elevator__character--incoming" alt="">
+          <div class="tpr-elevator__character tpr-elevator__character--current"></div>
+          <div class="tpr-elevator__character tpr-elevator__character--incoming"></div>
         </div>
         <nav class="tpr-elevator__nav" aria-label="Ascensore delle stanze">
           ${rooms.map((room, index) => `<button class="tpr-elevator__button" type="button" data-elevator-room="${room.key}" aria-label="Vai a ${room.label} Room" aria-pressed="${index === active}"><img class="icon-off" src="${asset(room.off)}" alt=""><img class="icon-on" src="${asset(room.icon)}" alt=""></button>`).join('')}
@@ -119,10 +137,12 @@
       </div>
     </div>`;
 
-  const currentCar = host.querySelector('.tpr-elevator__car--current');
-  const incomingCar = host.querySelector('.tpr-elevator__car--incoming');
-  const art = currentCar.querySelector('.tpr-elevator__art');
-  const incomingArt = incomingCar.querySelector('.tpr-elevator__art');
+  const currentCar = host.querySelector('.tpr-elevator__car--current:not(.tpr-elevator__car--shade)');
+  const incomingCar = host.querySelector('.tpr-elevator__car--incoming:not(.tpr-elevator__car--shade)');
+  const currentShade = host.querySelector('.tpr-elevator__car--shade.tpr-elevator__car--current');
+  const incomingShade = host.querySelector('.tpr-elevator__car--shade.tpr-elevator__car--incoming');
+  const art = host.querySelector('.tpr-elevator__art--current');
+  const incomingArt = host.querySelector('.tpr-elevator__art--incoming');
   const currentCharacter = host.querySelector('.tpr-elevator__character--current');
   const incomingCharacter = host.querySelector('.tpr-elevator__character--incoming');
   const ctas = [...host.querySelectorAll('[data-elevator-explore]')];
@@ -168,19 +188,60 @@
     });
   });
 
+  const CHARACTER_COLOR = {
+    coworking: '#2c64e8',
+    reformer: '#ffc100',
+    wellness: '#3f9941',
+    bar: '#ffc100',
+    media: '#2c64e8',
+  };
+
   function setCharacter(element, room) {
     const [x, y, width, height] = room.box;
     const responsiveYOffset = (18 / 952) * 100;
-    element.src = asset(room.character);
+    const svg = window.tprLittleMen?.svg?.(room.key);
+    element.dataset.room = room.key;
+    element.style.color = CHARACTER_COLOR[room.key] || '#2c64e8';
     element.style.setProperty('--character-x', `${Math.max(0, x - 1.4)}%`);
     element.style.setProperty('--character-y', `${Math.max(0, y - responsiveYOffset)}%`);
     element.style.setProperty('--character-width', `${width}%`);
     element.style.setProperty('--character-height', `${height}%`);
+    if (svg) {
+      element.innerHTML = svg;
+      return;
+    }
+    element.innerHTML = `<img src="${asset(room.character)}" alt="">`;
   }
+
+  let entranceTimer = 0;
+  function playEntrance(element) {
+    if (!element?.querySelector('.little-man')) return;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    element.classList.remove('is-entering');
+    void element.offsetWidth;
+    element.classList.add('is-entering');
+    window.clearTimeout(entranceTimer);
+    entranceTimer = window.setTimeout(() => element.classList.remove('is-entering'), 2000);
+  }
+
+  setCharacter(currentCharacter, rooms[active]);
+  const hydrateLittleMen = () => {
+    setCharacter(currentCharacter, rooms[active]);
+    playEntrance(currentCharacter);
+  };
+  if (window.tprLittleMen?.ready) window.tprLittleMen.ready.then(hydrateLittleMen);
+  document.addEventListener('tpr-little-men-ready', hydrateLittleMen);
+  new IntersectionObserver((entries, observer) => {
+    if (!entries.some((entry) => entry.isIntersecting)) return;
+    playEntrance(currentCharacter);
+    observer.disconnect();
+  }, { threshold: .35 }).observe(host);
 
   function paintCopy(car, room) {
     if (!car) return;
     car.dataset.room = room.key;
+    const shade = car === currentCar ? currentShade : incomingShade;
+    if (shade) shade.dataset.room = room.key;
     car.querySelectorAll('h2').forEach((title) => { title.innerHTML = roomTitle(room); });
     car.querySelectorAll('.tpr-elevator__book, .tpr-elevator__mobile-book').forEach((link) => {
       link.href = bookingUrl(room.key);
@@ -200,6 +261,24 @@
     return matchMedia('(max-width: 720px)').matches;
   }
 
+  function resetMobileCards(scope = currentCar) {
+    scope?.querySelectorAll('.tpr-elevator__mobile-card.is-flipped').forEach((card) => {
+      const cardTitle = rooms[active].cards[Number(card.dataset.cardIndex)]?.[0] || 'stanza';
+      card.classList.remove('is-flipped');
+      card.setAttribute('aria-expanded', 'false');
+      card.setAttribute('aria-label', `Apri la card ${cardTitle}`);
+      card.querySelector('.tpr-elevator__mobile-card-back')?.setAttribute('aria-hidden', 'true');
+    });
+  }
+
+  function setMobileCardExpanded(card, expanded) {
+    const cardTitle = rooms[active].cards[Number(card.dataset.cardIndex)]?.[0] || 'stanza';
+    card.classList.toggle('is-flipped', expanded);
+    card.setAttribute('aria-expanded', String(expanded));
+    card.setAttribute('aria-label', expanded ? `Chiudi i dettagli di ${cardTitle}` : `Apri la card ${cardTitle}`);
+    card.querySelector('.tpr-elevator__mobile-card-back')?.setAttribute('aria-hidden', String(!expanded));
+  }
+
   function setMobileExpanded(open) {
     host.classList.toggle('is-mobile-expanded', open);
     currentCar.classList.toggle('is-mobile-expanded', open);
@@ -210,6 +289,12 @@
     incomingCar.querySelectorAll('.tpr-elevator__mobile-cta').forEach((cta) => {
       cta.setAttribute('aria-expanded', 'false');
     });
+    const drop = currentCar.querySelector('.tpr-elevator__mobile-drop');
+    if (!open) {
+      resetMobileCards();
+      return;
+    }
+    if (drop) drop.scrollLeft = 0;
   }
 
   function closeMobileDrop() {
@@ -243,10 +328,13 @@
     host.dataset.activeRoom = room.key;
     host.classList.remove('is-lifting', 'is-reversing', 'is-explore-handoff');
     incomingArt.removeAttribute('src');
-    incomingCharacter.removeAttribute('src');
+    incomingCharacter.innerHTML = '';
+    incomingCharacter.removeAttribute('data-room');
     incomingCar.removeAttribute('data-room');
+    incomingShade.removeAttribute('data-room');
     incomingCar.offsetHeight;
     host.classList.remove('is-arming');
+    playEntrance(currentCharacter);
   }
 
   function render(index) {
@@ -331,8 +419,9 @@
     const height = rect.height > 0 ? rect.height : viewHeight;
     const travelMax = Math.max(0, width - innerWidth);
     const scrollDistance = Math.max(1, travelMax * ROOM_SCROLL_FACTOR);
-    const handoffDistance = active < rooms.length - 1 ? Math.max(160, innerHeight * .45) : innerHeight * LAST_FLOOR_HOLD;
-    return { width, height, travelMax, scrollDistance, handoffDistance };
+    const leaveDistance = 96;
+    const handoffDistance = active < rooms.length - 1 ? Math.max(160, innerHeight * .45) : leaveDistance;
+    return { width, height, travelMax, scrollDistance, leaveDistance, handoffDistance };
   }
 
   function lockExploreLayout() {
@@ -467,6 +556,26 @@
     });
   }
 
+  function exitExploreToPage(direction) {
+    if (!exploring || exploreHandoffLocked) return;
+    exploreHandoffLocked = true;
+    exploreArmed = false;
+    const top = host.getBoundingClientRect().top + scrollY;
+    host.style.removeProperty('height');
+    exploreOrigin = 0;
+    hashJumpIndex = active;
+    const destination = direction > 0
+      ? top + host.offsetHeight
+      : Math.max(0, top - innerHeight);
+    scrollTo({ top: destination, behavior: 'instant' });
+    teardownExploreOverlay();
+    requestAnimationFrame(() => {
+      exploreHandoffLocked = false;
+      hashJumpIndex = null;
+      updateFromScroll();
+    });
+  }
+
   function finishExploreHandoff(index) {
     host.style.removeProperty('height');
     exploreOrigin = 0;
@@ -509,6 +618,19 @@
     }
     openExplore(cta);
   }));
+
+  host.addEventListener('click', (event) => {
+    const card = event.target.closest('.tpr-elevator__mobile-card');
+    if (!card || !isMobileView() || !currentCar.contains(card)) return;
+    const expanded = !card.classList.contains('is-flipped');
+    currentCar.querySelectorAll('.tpr-elevator__mobile-card.is-flipped').forEach((openCard) => {
+      if (openCard !== card) setMobileCardExpanded(openCard, false);
+    });
+    setMobileCardExpanded(card, expanded);
+    if (expanded) {
+      card.scrollIntoView({ inline: 'center', block: 'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    }
+  });
 
   exploreProgressControl.addEventListener('pointerdown', (event) => {
     const rect = exploreProgressControl.getBoundingClientRect();
@@ -591,12 +713,15 @@
       if (raw >= exploreOpenProgress * .9) exploreCanClose = true;
       if (exploreCanClose && raw <= 0.02) {
         ticking = false;
-        closeExplore({ restoreFocus: false, scrollBack: true });
+        exitExploreToPage(-1);
         return;
       }
       setExploreProgress(raw);
-      if (active < rooms.length - 1 && raw >= 1) {
-        handoffExploreToNextRoom();
+      if ((offset - exploreOrigin) >= geometry.scrollDistance + 24) {
+        ticking = false;
+        if (active < rooms.length - 1) handoffExploreToNextRoom();
+        else exitExploreToPage(1);
+        return;
       }
       ticking = false;
       return;

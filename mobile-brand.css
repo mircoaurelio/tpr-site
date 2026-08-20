@@ -903,17 +903,20 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
   }
 
   .branded-route--eventi .mobile-event-list {
+    --event-bleed: calc((100vw - min(100vw, 1512px)) / 2 + var(--page-x));
     display: grid;
     grid-template-columns: none;
     grid-auto-flow: column;
     grid-auto-columns: clamp(19rem, 28vw, 26rem);
-    width: calc(100% + 14.5vw);
-    margin: 0 0 4.5rem -8.5vw;
-    padding: 0 8.5vw 1rem;
+    width: calc(100% + (var(--event-bleed) * 2));
+    max-width: none;
+    margin: 0 0 4.5rem calc(var(--event-bleed) * -1);
+    padding: .45rem var(--event-bleed) 1.15rem;
     gap: clamp(1.1rem, 2.4vw, 2.2rem);
     overflow-x: auto;
     overscroll-behavior-inline: contain;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--event-bleed);
     scrollbar-color: #fff transparent;
     scrollbar-width: thin;
   }
@@ -1024,10 +1027,13 @@ html:has(body.branded-route--eventi) { background: #ff7bff; }
     grid-auto-flow: column;
     grid-auto-columns: min(78vw, 18.5rem);
     gap: 1rem;
+    width: calc(100% + 2.5rem);
+    max-width: none;
+    margin: 0 0 3rem -1.25rem;
+    padding: .35rem 1.25rem 1rem;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    margin-right: -1.25rem;
-    padding-right: 1.25rem;
+    scroll-padding-inline: 1.25rem;
     scrollbar-width: none;
   }
 

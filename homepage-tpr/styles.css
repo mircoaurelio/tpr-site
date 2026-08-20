@@ -1,5 +1,5 @@
-@import url("../shared-menu.css?v=20260820-little-men-1");
-@import url("../shared-elevator.css?v=20260820-character-mobile-nudge");
+@import url("../shared-menu.css?v=20260820-little-men-3");
+@import url("../shared-elevator.css?v=20260820-mobile-cards-3");
 
 :root {
   --royal: #2c64e8;
@@ -626,8 +626,12 @@ body.elevator-active .site-header::after { content: none; display: none; }
   .button-row .pill, .pill--room { min-width: 0; }
   .people-nav { width: 100%; margin-top: 4rem; overflow: visible; padding: 0; }
   .people-canvas { width: 100%; min-width: 0; }
-  .people-figures { width: 80.62%; margin-left: 9.92%; }
-  .people-figure .little-man { height: clamp(7.25rem, 34vw, 11.5rem); }
+  .people-figures { width: 80.62%; margin-left: 9.92%; padding-top: .5rem; }
+  .people-figure .little-man {
+    width: auto;
+    max-width: 86%;
+    height: calc(100vw * 0.8062 * 479 / 2440);
+  }
   .rooms-intro { min-height: 0; }
   .rooms-intro p { font-size: clamp(1.25rem, 4.4vw, 1.75rem); }
   .room-tabs { padding-inline: 1rem; }
