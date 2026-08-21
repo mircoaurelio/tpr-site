@@ -45,6 +45,7 @@
   const roomTitle = (room) => `${room.label} <span>Room</span>`;
   const cardArrowSrc = new URL('assets/route-arrow-zigzag.png?v=20260819-arrow-2', base).href;
   const LIFT_MS = 1250;
+  const MOBILE_EXPAND_MS = 640;
   const LAST_FLOOR_HOLD = 1;
   const desktopCopyMarkup = (room, { live = true } = {}) => `
           <h2>${roomTitle(room)}</h2>
@@ -69,12 +70,12 @@
             </button>`).join('');
   const mobileCopyMarkup = (room, { live = true } = {}) => `
           <h2 class="tpr-elevator__title"${live ? ' id="elevatorTitle"' : ''}>${roomTitle(room)}</h2>
-          <div class="tpr-elevator__mobile-copy-text">${copyParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join('')}</div>
+          <div class="tpr-elevator__mobile-copy-text"><div class="tpr-elevator__mobile-copy-text-inner">${copyParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join('')}</div></div>
           <div class="tpr-elevator__mobile-actions">
             <button class="tpr-elevator__mobile-cta" type="button"${live ? ' data-elevator-explore aria-expanded="false"' : ' tabindex="-1" aria-hidden="true"'}><span class="tpr-elevator__cta-label">Esplora Stanza</span><span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
             <a class="tpr-elevator__mobile-book"${live ? ' data-elevator-book' : ''} href="${bookingUrl(room.key)}" ${room.bookable ? '' : 'hidden'}><span>Prenota</span></a>
           </div>
-          <div class="tpr-elevator__mobile-drop" aria-label="Card della stanza">${mobileDropMarkup(room)}</div>`;
+          <div class="tpr-elevator__mobile-drop" aria-label="Card della stanza"><div class="tpr-elevator__mobile-drop-inner">${mobileDropMarkup(room)}</div></div>`;
   const isRoomKey = (key) => rooms.some((room) => room.key === key);
   const hashRoom = location.hash.slice(1);
   const initialIndex = Math.max(0, rooms.findIndex((room) => room.key === hashRoom));
@@ -94,6 +95,7 @@
   host.dataset.elevatorReady = 'true';
   host.dataset.activeRoom = rooms[active].key;
   host.style.setProperty('--elevator-lift-ms', `${LIFT_MS}ms`);
+  host.style.setProperty('--elevator-expand-ms', '640ms');
   host.style.setProperty('--elevator-floors', String(rooms.length + LAST_FLOOR_HOLD));
   host.setAttribute('aria-labelledby', 'elevatorTitle');
   host.innerHTML = `
@@ -249,8 +251,14 @@
       cta.setAttribute('aria-label', `Esplora ${room.label} Room`);
     });
     const drop = car.querySelector('.tpr-elevator__mobile-drop');
-    if (drop) drop.innerHTML = mobileDropMarkup(room);
+    if (drop) {
+      const inner = drop.querySelector('.tpr-elevator__mobile-drop-inner');
+      const markup = mobileDropMarkup(room);
+      if (inner) inner.innerHTML = markup;
+      else drop.innerHTML = `<div class="tpr-elevator__mobile-drop-inner">${markup}</div>`;
+    }
     syncExploreCtas(room);
+    scheduleMobileCopyFit();
   }
 
   function isMobileView() {
@@ -275,7 +283,52 @@
     card.querySelector('.tpr-elevator__mobile-card-back')?.setAttribute('aria-hidden', String(!expanded));
   }
 
-  function setMobileExpanded(open) {
+  function clearMobileCopyFit(scope = currentCar) {
+    scope?.querySelectorAll('.tpr-elevator__mobile-copy-text p').forEach((paragraph) => {
+      paragraph.style.fontSize = '';
+    });
+  }
+
+  function fitMobileCopy(scope = currentCar) {
+    if (!scope) return;
+    if (!isMobileView() || host.classList.contains('is-mobile-expanded')) {
+      clearMobileCopyFit(scope);
+      return;
+    }
+    const copy = scope.querySelector('.tpr-elevator__mobile-copy');
+    const inner = copy?.querySelector('.tpr-elevator__mobile-copy-text-inner');
+    const paragraphs = [...(inner?.querySelectorAll('p') || copy?.querySelectorAll('.tpr-elevator__mobile-copy-text p') || [])];
+    if (!copy || !paragraphs.length) return;
+    clearMobileCopyFit(scope);
+    const box = inner || copy;
+    const fits = () => copy.scrollHeight <= copy.clientHeight && box.scrollHeight <= box.clientHeight;
+    if (copy.clientHeight < 8 || fits()) return;
+    const computed = parseFloat(getComputedStyle(paragraphs[0]).fontSize) || 16;
+    let low = 10;
+    let high = computed;
+    for (let i = 0; i < 14; i += 1) {
+      const mid = (low + high) / 2;
+      paragraphs.forEach((paragraph) => { paragraph.style.fontSize = `${mid}px`; });
+      if (fits()) low = mid;
+      else high = mid;
+    }
+    paragraphs.forEach((paragraph) => { paragraph.style.fontSize = `${low}px`; });
+  }
+
+  let mobileCopyFitTimer = 0;
+  function scheduleMobileCopyFit() {
+    window.clearTimeout(mobileCopyFitTimer);
+    mobileCopyFitTimer = window.setTimeout(() => {
+      fitMobileCopy(currentCar);
+      fitMobileCopy(incomingCar);
+    }, 40);
+  }
+
+  let mobileExpandTimer = 0;
+  function setMobileExpanded(open, { instant = false } = {}) {
+    const reduced = instant || matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.clearTimeout(mobileExpandTimer);
+    host.classList.toggle('is-mobile-expand-instant', reduced);
     host.classList.toggle('is-mobile-expanded', open);
     currentCar.classList.toggle('is-mobile-expanded', open);
     incomingCar.classList.remove('is-mobile-expanded');
@@ -285,12 +338,22 @@
     incomingCar.querySelectorAll('.tpr-elevator__mobile-cta').forEach((cta) => {
       cta.setAttribute('aria-expanded', 'false');
     });
-    const drop = currentCar.querySelector('.tpr-elevator__mobile-drop');
+    const drop = currentCar.querySelector('.tpr-elevator__mobile-drop-inner');
     if (!open) {
-      resetMobileCards();
+      const finish = () => {
+        resetMobileCards();
+        host.classList.remove('is-mobile-expand-instant');
+        scheduleMobileCopyFit();
+      };
+      if (reduced) {
+        finish();
+        return;
+      }
+      mobileExpandTimer = window.setTimeout(finish, MOBILE_EXPAND_MS);
       return;
     }
     if (drop) drop.scrollLeft = 0;
+    requestAnimationFrame(() => host.classList.remove('is-mobile-expand-instant'));
   }
 
   function closeMobileDrop() {
@@ -314,7 +377,7 @@
 
   function settle(room) {
     host.classList.add('is-arming');
-    closeMobileDrop();
+    setMobileExpanded(false, { instant: true });
     if (host.classList.contains('is-explore-handoff')) {
       teardownExploreOverlay();
     }
@@ -342,7 +405,7 @@
 
   function select(index, direction = 0, animate = true) {
     if (index < 0 || index >= rooms.length || index === active) return;
-    closeMobileDrop();
+    setMobileExpanded(false, { instant: true });
     clearTimeout(timer);
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!animate || reduced) { render(index); return; }
@@ -741,9 +804,18 @@
     requestAnimationFrame(updateFromScroll);
   }, { passive: true });
   addEventListener('resize', () => {
-    if (!isMobileView()) closeMobileDrop();
+    if (!isMobileView()) setMobileExpanded(false, { instant: true });
+    scheduleMobileCopyFit();
     updateFromScroll();
   }, { passive: true });
+  if (typeof ResizeObserver === 'function') {
+    const copyFitObserver = new ResizeObserver(() => scheduleMobileCopyFit());
+    [currentCar, incomingCar].forEach((car) => {
+      const copy = car.querySelector('.tpr-elevator__mobile-copy');
+      if (copy) copyFitObserver.observe(copy);
+    });
+  }
+  document.fonts?.ready?.then(scheduleMobileCopyFit);
   addEventListener('hashchange', () => {
     if (exploring) return;
     const index = rooms.findIndex((room) => room.key === location.hash.slice(1));
@@ -759,6 +831,7 @@
     }, 120);
   });
   render(active);
+  scheduleMobileCopyFit();
   requestAnimationFrame(updateFromScroll);
   if (initialJump) {
     let jumpStarted = false;
