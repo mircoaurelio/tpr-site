@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#2c64e8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Manca sempre meno. Scopri gli spazi di The People's Room, in arrivo a Milano.">
+    <title>Coming soon — The People's Room</title>
+    <link rel="icon" href="../assets/tpr-character.svg" type="image/svg+xml">
+    <link rel="preload" href="../assets/fonts/pp-rader/PPRader-Regular.otf" as="font" type="font/otf" crossorigin>
+    <link rel="preload" href="../assets/tpr-character.svg" as="image" type="image/svg+xml" crossorigin>
+    <link rel="preload" href="../assets/little-man/coworking.svg" as="image" type="image/svg+xml" crossorigin>
+    <link rel="preload" href="../assets/little-man/reformer.svg" as="image" type="image/svg+xml" crossorigin>
+    <link rel="preload" href="../assets/little-man/bar.svg" as="image" type="image/svg+xml" crossorigin>
+    <link rel="preload" href="../assets/little-man/wellness.svg" as="image" type="image/svg+xml" crossorigin>
+    <link rel="preload" href="../assets/little-man/media.svg" as="image" type="image/svg+xml" crossorigin>
+    <link rel="stylesheet" href="coming-soon.css?v=20260925-interactions">
+    <script src="coming-soon.js?v=20260925-interactions" defer></script>
+  </head>
+  <body data-space="generic">
+    <a class="skip-link" href="#coming-content">Salta al contenuto</a>
+    <div class="coming-page">
+      <div class="background-art" aria-hidden="true"></div>
+      <header class="site-header">
+        <a class="brand" href="./" aria-label="The People's Room — Coming soon"><img src="../assets/tpr-logo.svg" alt="The People's Room" width="131" height="64"></a>
+        <nav class="socials" aria-label="Contatti e social">
+          <button type="button" data-info="contact" aria-label="Contatti"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="6" width="26" height="20" rx="3"/><path d="m4 8 12 9L28 8"/></svg></button>
+          <button type="button" data-info="instagram" aria-label="Instagram"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="5" width="22" height="22" rx="6"/><circle cx="16" cy="16" r="5"/><circle class="solid-dot" cx="23" cy="9" r="1.5"/></svg></button>
+          <button type="button" data-info="tiktok" aria-label="TikTok"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M18 4h4c0 4 2 6 6 7v4a13 13 0 0 1-6-2v10a7 7 0 1 1-8-7v4a3 3 0 1 0 4 3Z"/></svg></button>
+        </nav>
+      </header>
+      <main class="stage" id="coming-content">
+        <div class="content-area" id="space-content">
+          <section class="signup" id="signup" aria-labelledby="coming-title">
+            <h1 id="coming-title">Manca<br>sempre<br>meno</h1>
+            <p class="intro">Lascia la tua email per ricevere<br class="desktop-break"> aggiornamenti su apertura, eventi e<br class="desktop-break"> tutte le cose belle che stiamo<br class="desktop-break"> preparando.</p>
+            <!-- Set a same-origin server endpoint after Brevo is configured. Never put an API key in this page. -->
+            <form class="newsletter" id="newsletter" data-endpoint="" aria-label="Aggiornamenti da The People's Room">
+              <div class="email-row">
+                <label class="sr-only" for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="Email" autocomplete="email" inputmode="email" maxlength="254" required aria-describedby="newsletter-status">
+                <button type="submit">Conferma</button>
+              </div>
+              <label class="consent"><input type="checkbox" name="consent" required><span>Voglio ricevere aggiornamenti, eventi, esperienze e novità da The People’s Room. Ho letto la <button class="text-link" type="button" data-info="privacy">Privacy Policy</button>.</span></label>
+              <p class="form-status" id="newsletter-status" role="status" aria-live="polite"></p>
+            </form>
+          </section>
+          <section class="space-detail" id="space-detail" aria-labelledby="space-title" hidden>
+            <h2 class="sr-only" id="space-title"></h2>
+            <span class="space-character" aria-hidden="true"></span>
+            <div class="space-copy" id="space-description"></div>
+          </section>
+        </div>
+        <div class="space-cards" role="group" aria-label="Scopri gli spazi di The People's Room">
+          <button type="button" class="space-card card-community" data-space="community" aria-pressed="false" aria-controls="space-content"><span class="card-face"><span>Community</span><span class="close-card" aria-hidden="true"></span></span></button>
+          <button type="button" class="space-card card-coworking" data-space="coworking" aria-pressed="false" aria-controls="space-content"><span class="card-face"><span>TPR Coworking</span><span class="close-card" aria-hidden="true"></span></span></button>
+          <button type="button" class="space-card card-move" data-space="move" aria-pressed="false" aria-controls="space-content"><span class="card-face"><span>TPR Move</span><span class="close-card" aria-hidden="true"></span></span></button>
+          <button type="button" class="space-card card-fuel" data-space="fuel" aria-pressed="false" aria-controls="space-content"><span class="card-face"><span>TPR Fuel</span><span class="close-card" aria-hidden="true"></span></span></button>
+          <button type="button" class="space-card card-recharge" data-space="recharge" aria-pressed="false" aria-controls="space-content"><span class="card-face"><span>TPR Recharge</span><span class="close-card" aria-hidden="true"></span></span></button>
+          <button type="button" class="space-card card-media" data-space="media" aria-pressed="false" aria-controls="space-content"><span class="card-face"><span>TPR Media</span><span class="close-card" aria-hidden="true"></span></span></button>
+        </div>
+        <p class="sr-only" role="status" id="space-status"></p>
+      </main>
+      <footer class="site-footer">
+        <div class="company"><span>© TPR IMMOBILIARE S.R.L.</span><span>Via Francesco Olgiati 26, Milano</span><span>P. IVA 14663130962</span></div>
+        <div class="legal"><button type="button" data-info="privacy">Privacy Policy</button><button type="button" data-info="cookies">Cookie policy</button><a href="https://www.marmellatalab.com/" target="_blank" rel="noopener noreferrer">Designed by <strong>Marmellata Lab</strong></a></div>
+      </footer>
+    </div>
+    <dialog id="info-dialog" aria-labelledby="info-title"><button type="button" class="dialog-close" aria-label="Chiudi">×</button><h2 id="info-title"></h2><p id="info-copy"></p></dialog>
+    <noscript><p class="noscript-message">Attiva JavaScript per esplorare gli spazi. Le iscrizioni apriranno a breve.</p></noscript>
+  </body>
+</html>
