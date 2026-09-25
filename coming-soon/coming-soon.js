@@ -68,7 +68,9 @@
 
   function drawContour(element) {
     const { svg, path, seed } = contours.get(element);
-    const { width, height } = element.getBoundingClientRect();
+    // Layout dimensions remain stable while the card's selection pulse is playing.
+    const width = element.clientWidth;
+    const height = element.clientHeight;
     if (width < 8 || height < 8) return;
     const style = getComputedStyle(element);
     svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
@@ -106,14 +108,44 @@
   const title = document.querySelector('#space-title');
   const description = document.querySelector('#space-description');
   const status = document.querySelector('#space-status');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const selectionAnimations = new Map();
   let selected = null;
+
+  function animateSelection(card) {
+    const face = card.querySelector('.card-face');
+    selectionAnimations.get(face)?.cancel();
+    if (reducedMotion.matches) return;
+    // Scale is independent of the continuous floating translation. Repeated clicks
+    // cancel the previous pulse without queuing state changes or moving the hit area.
+    const animation = face.animate([
+      { scale: '1', offset: 0 },
+      { scale: '.985', offset: .25 },
+      { scale: '1.006', offset: .65 },
+      { scale: '1', offset: 1 }
+    ], { duration: 420, easing: 'ease-in-out' });
+    selectionAnimations.set(face, animation);
+    animation.onfinish = () => selectionAnimations.delete(face);
+  }
+
+  reducedMotion.addEventListener('change', () => {
+    if (!reducedMotion.matches) return;
+    selectionAnimations.forEach(animation => animation.cancel());
+    selectionAnimations.clear();
+  });
 
   function selectSpace(key) {
     selected = key === selected ? null : key;
     const space = spaces[selected];
     document.body.dataset.space = selected || 'generic';
     document.querySelector('meta[name="theme-color"]').content = space?.color || '#2c64e8';
-    cards.forEach(card => card.setAttribute('aria-pressed', String(card.dataset.space === selected)));
+    cards.forEach(card => {
+      const pressed = String(card.dataset.space === selected);
+      if (card.getAttribute('aria-pressed') !== pressed) {
+        card.setAttribute('aria-pressed', pressed);
+        animateSelection(card);
+      }
+    });
     signup.hidden = Boolean(space);
     detail.hidden = !space;
     if (space) {
@@ -135,6 +167,7 @@
   const form = document.querySelector('#newsletter');
   const formStatus = document.querySelector('#newsletter-status');
   const submit = form.querySelector('[type=submit]');
+  const submitLabel = submit.querySelector('.submit-label');
   form.addEventListener('submit', async event => {
     event.preventDefault();
     if (!form.reportValidity() || submit.disabled) return;
@@ -144,7 +177,7 @@
       return;
     }
     submit.disabled = true;
-    submit.textContent = 'Invio…';
+    submitLabel.textContent = 'Invio…';
     formStatus.textContent = '';
     try {
       const response = await fetch(endpoint, {
@@ -161,17 +194,14 @@
       formStatus.textContent = 'Non siamo riusciti a inviare la tua email. Riprova tra poco.';
     } finally {
       submit.disabled = false;
-      submit.textContent = 'Conferma';
+      submitLabel.textContent = 'Conferma';
     }
   });
 
-  // The preview does not invent social destinations or publish unapproved legal text.
+  // Legal notices remain previews until approved copy is supplied.
   const info = {
     privacy: ['Privacy Policy', 'L’informativa completa sarà disponibile prima dell’apertura delle iscrizioni. In questa anteprima la tua email non viene inviata né salvata.'],
-    cookies: ['Cookie policy', 'Questa pagina di anteprima non imposta cookie di profilazione e non usa strumenti di analisi. L’informativa completa sarà disponibile con il sito definitivo.'],
-    contact: ['Ci vediamo presto', 'The People’s Room sta arrivando in Via Francesco Olgiati 26, Milano. I contatti saranno disponibili all’apertura.'],
-    instagram: ['The People’s Room su Instagram', 'Il collegamento al profilo ufficiale sarà disponibile a breve.'],
-    tiktok: ['The People’s Room su TikTok', 'Il collegamento al profilo ufficiale sarà disponibile a breve.']
+    cookies: ['Cookie policy', 'Questa pagina di anteprima non imposta cookie di profilazione e non usa strumenti di analisi. L’informativa completa sarà disponibile con il sito definitivo.']
   };
   const dialog = document.querySelector('#info-dialog');
   document.querySelectorAll('[data-info]').forEach(button => button.addEventListener('click', () => {
