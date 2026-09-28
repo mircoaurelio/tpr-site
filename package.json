@@ -1,0 +1,13 @@
+{
+  "name": "tpr-coming-soon",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:cloudflare": "node scripts/build_cloudflare.mjs",
+    "test:newsletter": "node --test server/newsletter.test.mjs cloudflare/worker.test.mjs",
+    "dev:cloudflare": "npm run build:cloudflare && wrangler dev",
+    "deploy:cloudflare": "npm run build:cloudflare && wrangler deploy"
+  },
+  "devDependencies": { "wrangler": "4.143.0" }
+}

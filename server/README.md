@@ -1,5 +1,9 @@
 # Iscrizioni Brevo
 
+## Pubblicazione Cloudflare
+
+Il sito e l'API sono disponibili anche come Cloudflare Worker con asset statici. La pubblicazione del 28/09/2026 è su `https://tpr-coming-soon.devitomirco.workers.dev/`; il segreto Brevo è configurato sul provider. Il dominio principale non è ancora collegato e il form pubblico rimane disabilitato in attesa del link all'informativa privacy definitiva. Istruzioni e stato: [`../cloudflare/README.md`](../cloudflare/README.md).
+
 ## Hosting PHP disponibile
 
 È disponibile anche l'adapter `php/` per PHP 8.3 con cURL, verificato con `php server/php/newsletter.test.php` (67 controlli). Mantiene lo stesso contratto JSON del form e gli stessi valori Brevo dell'adapter Node. Il rate limit PHP usa un file privato con lock condiviso fra processi: 30 tentativi per indirizzo in 10 minuti, massimo 10.000 voci, indirizzi rappresentati da hash HMAC e cancellati alla scadenza durante le richieste successive.
@@ -14,7 +18,7 @@ Solo quando sarà disponibile un endpoint autorizzato, dopo verifica HTTPS e pro
 
 L'utente ha indicato `https://thepeoplesroom.it/` come destinazione. `scripts/build_coming_soon_hosting.ps1` prepara la coming soon alla radice in `dist-coming-soon/www`, con asset locali, canonical corretto, endpoint `/api/newsletter.php` e codice/configurazione privata nella cartella sorella `tpr-newsletter`. Il pacchetto non include credenziali; l'invio resta disabilitato per default. `-EnableNewsletter` lo abilita soltanto dopo la sostituzione del testo privacy di anteprima.
 
-Il caricamento è in attesa della password dell'utente FTP esistente su Register. Prima di sovrascrivere file sullo spazio web, salvare una copia del contenuto attuale e delle regole `.htaccess` di WordPress. Completare la configurazione privata, il certificato HTTPS e la verifica del servizio prima del passaggio del dominio da Framer; preservare i record di posta. Non creare domini, sottodomini o account tecnici aggiuntivi.
+La password del pannello Register è stata provata anche per l'utente FTP esistente, ma il server ha risposto `530 Login incorrect`. Il pacchetto PHP resta un'alternativa: il percorso corrente è Cloudflare e non richiede l'accesso FTP. Prima di un eventuale caricamento sullo spazio Register, salvare una copia del contenuto attuale e delle regole `.htaccess` di WordPress. Completare configurazione privata, HTTPS e verifica del servizio prima del passaggio del dominio da Framer; preservare i record di posta.
 
 ## Adapter Node
 

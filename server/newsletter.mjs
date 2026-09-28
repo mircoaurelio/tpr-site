@@ -47,6 +47,7 @@ async function readJson(request) {
 export async function handleNewsletter(request, env, {
   fetchImpl = fetch,
   allowRequest = rateLimit,
+  rateLimitRetryAfter = 600,
   clientAddress = 'unknown',
   log = console.error
 } = {}) {
@@ -75,7 +76,11 @@ export async function handleNewsletter(request, env, {
   if (!env.BREVO_API_KEY) return reply(503, { success: false });
   if (!/^application\/json(?:\s*;|$)/i.test(request.headers.get('Content-Type') || '')) return reply(415, { success: false });
   if (Number(request.headers.get('Content-Length')) > MAX_BODY_BYTES) return reply(413, { success: false });
-  if (!allowRequest(clientAddress)) return reply(429, { success: false }, { 'Retry-After': '600' });
+  try {
+    if (!await allowRequest(clientAddress)) return reply(429, { success: false }, { 'Retry-After': String(rateLimitRetryAfter) });
+  } catch {
+    return reply(503, { success: false });
+  }
 
   let data;
   try { data = await readJson(request); } catch { return reply(400, { success: false }); }

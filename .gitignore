@@ -5,3 +5,8 @@ assets/_inspect/
 server/php/config.php
 server/php/rate-limit.json
 dist-coming-soon/
+dist-cloudflare/
+node_modules/
+.wrangler/
+.dev.vars
+.dev.vars.*
