@@ -4,3 +4,4 @@ assets/_inspect/
 !.env.example
 server/php/config.php
 server/php/rate-limit.json
+dist-coming-soon/

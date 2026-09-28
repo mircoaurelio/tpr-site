@@ -10,6 +10,12 @@ Il 28/09/2026 sono stati verificati gli accessi ai pannelli: il dominio principa
 
 Solo quando sarà disponibile un endpoint autorizzato, dopo verifica HTTPS e prova reale, impostare `data-endpoint` al suo URL e aggiornare l'informativa di anteprima. Il frontend pubblico resta non collegato finché il servizio non è pronto.
 
+### Pubblicazione sul dominio principale
+
+L'utente ha indicato `https://thepeoplesroom.it/` come destinazione. `scripts/build_coming_soon_hosting.ps1` prepara la coming soon alla radice in `dist-coming-soon/www`, con asset locali, canonical corretto, endpoint `/api/newsletter.php` e codice/configurazione privata nella cartella sorella `tpr-newsletter`. Il pacchetto non include credenziali; l'invio resta disabilitato per default. `-EnableNewsletter` lo abilita soltanto dopo la sostituzione del testo privacy di anteprima.
+
+Il caricamento è in attesa della password dell'utente FTP esistente su Register. Prima di sovrascrivere file sullo spazio web, salvare una copia del contenuto attuale e delle regole `.htaccess` di WordPress. Completare la configurazione privata, il certificato HTTPS e la verifica del servizio prima del passaggio del dominio da Framer; preservare i record di posta. Non creare domini, sottodomini o account tecnici aggiuntivi.
+
 ## Adapter Node
 
 `newsletter.mjs` è un handler server basato sulle API Web Request/Response. `server.mjs` lo espone su `/api/newsletter` con Node 22+ e serve solo i file pubblici generati in `dist/`. Non servono pacchetti npm.
