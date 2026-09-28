@@ -168,33 +168,62 @@
   const formStatus = document.querySelector('#newsletter-status');
   const submit = form.querySelector('[type=submit]');
   const submitLabel = submit.querySelector('.submit-label');
+  const emailInput = form.elements.email;
+  const consentInput = form.elements.consent;
+  let submitting = false;
+
+  function updateSubmitState() {
+    const email = emailInput.value.trim();
+    const ready = emailInput.validity.valid && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && consentInput.checked;
+    submit.classList.toggle('is-ready', ready);
+    submit.disabled = submitting || !ready;
+  }
+
+  form.addEventListener('input', updateSubmitState);
+  form.addEventListener('change', updateSubmitState);
+  form.addEventListener('focusin', updateSubmitState);
+  form.addEventListener('reset', () => queueMicrotask(updateSubmitState));
+  window.addEventListener('pageshow', updateSubmitState);
+  updateSubmitState();
+
   form.addEventListener('submit', async event => {
     event.preventDefault();
-    if (!form.reportValidity() || submit.disabled) return;
+    updateSubmitState();
+    if (submitting || submit.disabled || !form.reportValidity()) return;
     const endpoint = form.dataset.endpoint;
     if (!endpoint) {
       formStatus.textContent = 'Le iscrizioni apriranno a breve. La tua email non è stata inviata.';
       return;
     }
-    submit.disabled = true;
+    submitting = true;
+    form.setAttribute('aria-busy', 'true');
+    updateSubmitState();
     submitLabel.textContent = 'Invio…';
     formStatus.textContent = '';
     try {
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: form.elements.email.value.trim(), consent: form.elements.consent.checked }),
+        body: JSON.stringify({ email: emailInput.value.trim(), consent: consentInput.checked, website: form.elements.website.value }),
         signal: AbortSignal.timeout(15000)
       });
       const result = await response.json();
-      if (!response.ok || result.success !== true) throw new Error('Subscription unavailable');
+      if (!response.ok || result.success !== true) {
+        if (response.status === 429) {
+          formStatus.textContent = 'Hai effettuato diversi tentativi. Attendi qualche minuto e riprova.';
+          return;
+        }
+        throw new Error('Subscription unavailable');
+      }
       formStatus.textContent = 'Grazie! Ti terremo al corrente di tutte le novità.';
       form.reset();
     } catch {
       formStatus.textContent = 'Non siamo riusciti a inviare la tua email. Riprova tra poco.';
     } finally {
-      submit.disabled = false;
+      submitting = false;
+      form.removeAttribute('aria-busy');
       submitLabel.textContent = 'Conferma';
+      updateSubmitState();
     }
   });
 

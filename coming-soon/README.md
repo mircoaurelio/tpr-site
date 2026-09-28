@@ -5,6 +5,7 @@ Pagina autonoma su `/coming-soon/`, HTML/CSS/JavaScript senza dipendenze.
 ## Interazioni
 
 - Una sola card attiva. Click/tap sulla card attiva oppure Escape ripristina il messaggio generico e il form, mantenendo l'email digitata.
+- Conferma passa dall’azzurro al blu Royal `#2c64e8` quando l’email è valida e il consenso è selezionato; torna inattivo quando manca una delle condizioni, durante l’invio e dopo il reset.
 - Layout desktop dimensionato anche in base all’altezza disponibile: verificato senza scroll da 800×600 a 1512×982 nei normali stati di navigazione. Zoom, finestre ancora più basse e messaggi del form possono far crescere la pagina senza tagliare i contenuti.
 - Fluttuazione con sole traslazioni: desktop da −11 a +9 px in verticale, mobile entro 4 px; cicli sfalsati da 6,5 a 8,2 secondi. Hit area stabile e pausa al focus/hover.
 - Selezione/deselezione ispirata al video del 25/09/2026: riempimento e colore in dissolvenza, etichetta da centro a sinistra, comparsa graduale della × e lieve impulso di scala. Click rapidi e passaggio diretto tra card mantengono una sola selezione; `prefers-reduced-motion` disattiva sia le transizioni CSS sia l’impulso JavaScript.
@@ -15,8 +16,8 @@ Pagina autonoma su `/coming-soon/`, HTML/CSS/JavaScript senza dipendenze.
 
 Il form è un'anteprima: valida email e consenso, ma non conserva né trasmette indirizzi. Non mostra conferme di iscrizione finché manca l'endpoint.
 
-1. Aggiungere un endpoint server per Brevo e conservare la chiave API esclusivamente sul server. Implementare validazione, limiti alle richieste e gestione del consenso nel backend.
-2. Impostare `data-endpoint` sul form a un URL same-origin. Contratto: POST JSON `{ email, consent }`; risposta JSON `{ success: true }` solo dopo il salvataggio effettivo.
+1. Pubblicare l’endpoint già implementato in `server/newsletter.mjs` e descritto in `server/README.md`. La chiave resta nei segreti del server; il contatto viene creato/aggiornato nella lista 2 con `FONTE = Landing`. Sono implementati validazione, controllo del consenso, CORS, limite richieste, honeypot e timeout. Verificato il 28/09/2026 anche con Brevo reale usando un contatto temporaneo poi eliminato. Il server pubblico non è ancora configurato.
+2. Impostare `data-endpoint` sul form all’URL HTTPS del server, configurando l’origine del frontend tra quelle consentite. Contratto: POST JSON `{ email, consent, website }`; risposta JSON `{ success: true }` solo dopo il salvataggio effettivo. GitHub Pages non esegue l’endpoint.
 3. Sostituire gli avvisi di anteprima con le informative privacy/cookie approvate. I collegamenti ufficiali sono già configurati: `hello@thepeoplesroom.it`, Instagram `tpr_milano`, TikTok `@tpr_milano`.
 
 ## Riferimenti visivi

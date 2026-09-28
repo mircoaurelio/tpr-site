@@ -31,8 +31,10 @@ button{touch-action:manipulation}button:focus-visible,a:focus-visible,input:focu
 .newsletter{position:relative}.email-row{--paper-radius:11;--paper-stroke:0;position:relative;isolation:isolate;display:flex;align-items:center;gap:4px;padding:7px 8px;background:#fff;border-radius:11px;min-height:48px}.email-row.has-contour{background:transparent}.email-row>.paper-contour path{fill:#fff;stroke:none}
 .email-row input{min-width:0;flex:1;border:0;background:transparent;color:#2c64e8;font-size:16px;padding:4px 10px;outline-offset:1px;box-shadow:none}
 .email-row input::placeholder{color:#98caff;opacity:1;font-size:14px;font-weight:700}
-.email-row button{--paper-radius:12;--paper-stroke:0;position:relative;isolation:isolate;width:40%;min-height:32px;border:0;border-radius:12px;background:#98caff;color:#fff;font-size:14px;font-weight:700;padding:7px 10px}.email-row button.has-contour{background:transparent}.email-row button>.paper-contour path{fill:#98caff;stroke:none}
-.email-row button:disabled{opacity:.65;cursor:wait}
+.email-row button{--paper-radius:12;--paper-stroke:0;--submit-color:#98caff;position:relative;isolation:isolate;width:40%;min-height:32px;border:0;border-radius:12px;background:var(--submit-color);color:#fff;font-size:14px;font-weight:700;padding:7px 10px;transition:background-color .2s ease,opacity .2s ease}.email-row button.has-contour{background:transparent}.email-row button>.paper-contour path{fill:var(--submit-color);stroke:none;transition:fill .2s ease}
+.email-row button.is-ready{--submit-color:#2c64e8}.email-row button.is-ready:hover{--submit-color:#214cbc}
+.email-row button:disabled{cursor:default}.newsletter[aria-busy=true] .email-row button{opacity:.7;cursor:wait}
+.newsletter-trap{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
 .consent{display:flex;align-items:flex-start;gap:8px;text-align:left;margin-top:14px;font-size:11px;line-height:14px;cursor:pointer}.consent input{flex:0 0 16px;width:16px;height:16px;margin:0;accent-color:#98caff}.text-link{background:none;border:0;padding:0;text-decoration:underline;font-size:inherit;text-align:inherit}
 .form-status:empty{display:none}.form-status{font-size:12px;line-height:1.35;text-align:left;margin:10px 0 0;padding:8px 10px;border:1px solid #ffffff90;border-radius:6px}
 .space-detail{display:flex;flex-direction:column;align-items:center;gap:clamp(20px,3.5svh,32px)}
