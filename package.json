@@ -5,9 +5,12 @@
   "type": "module",
   "scripts": {
     "build:cloudflare": "node scripts/build_cloudflare.mjs",
-    "test:newsletter": "node --test server/newsletter.test.mjs cloudflare/worker.test.mjs",
-    "dev:cloudflare": "npm run build:cloudflare && wrangler dev",
-    "deploy:cloudflare": "npm run build:cloudflare && wrangler deploy"
+    "test:newsletter": "node --test server/newsletter.test.mjs cloudflare/worker.test.mjs cloudflare/runtime.test.mjs",
+    "dev:cloudflare": "npm run build:cloudflare && node scripts/wrangler_tpr.mjs dev",
+    "deploy:cloudflare": "npm run build:cloudflare && node scripts/wrangler_tpr.mjs deploy"
   },
-  "devDependencies": { "wrangler": "4.143.0" }
+  "devDependencies": {
+    "miniflare": "5.20260926.0-alpha",
+    "wrangler": "4.143.0"
+  }
 }

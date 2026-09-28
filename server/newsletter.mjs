@@ -100,7 +100,9 @@ export async function handleNewsletter(request, env, {
         updateEnabled: true
       }),
       signal: AbortSignal.timeout(10000),
-      redirect: 'error'
+      // Workers supports manual redirects; rejecting non-success statuses below
+      // prevents forwarding the API key to a redirected host.
+      redirect: 'manual'
     });
     // Brevo returns 201 for creation and may return 204 for an existing contact.
     if (response.status === 201 || response.status === 204 || response.status === 200) return reply(200, { success: true });

@@ -2,7 +2,7 @@
 
 ## Pubblicazione Cloudflare
 
-Il sito e l'API sono disponibili anche come Cloudflare Worker con asset statici. La pubblicazione del 28/09/2026 è su `https://tpr-coming-soon.devitomirco.workers.dev/`; il segreto Brevo è configurato sul provider. Il dominio principale non è ancora collegato e il form pubblico rimane disabilitato in attesa del link all'informativa privacy definitiva. Istruzioni e stato: [`../cloudflare/README.md`](../cloudflare/README.md).
+Il sito e l'API sono pubblicati nell'account Cloudflare TPR `social@thepeoplesroom.it`, all'indirizzo `https://tpr-coming-soon.tpr-coming-soon.workers.dev/`; la vecchia copia nell'account personale è stata eliminata. Chiave e account Brevo verificati; creazione e aggiornamento reali dal Worker confermati sulla lista 2 con `FONTE=Landing`. Il dominio principale non è ancora collegato e il form pubblico rimane disabilitato in attesa del link all'informativa privacy definitiva. Istruzioni e stato: [`../cloudflare/README.md`](../cloudflare/README.md).
 
 ## Hosting PHP disponibile
 
