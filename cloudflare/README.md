@@ -2,14 +2,18 @@
 
 Un Worker serve gli asset statici e `/api/newsletter` sullo stesso dominio. La chiave Brevo è un secret del Worker; non è inclusa nel repository o nei file pubblici. L'API riusa `server/newsletter.mjs`, impone lista 2 e `FONTE: Landing` e aggiorna i contatti esistenti.
 
-## Stato al 28 settembre 2026
+## Stato al 30 settembre 2026
 
 - Pubblicazione nell'account `social@thepeoplesroom.it`: https://tpr-coming-soon.tpr-coming-soon.workers.dev/
 - Il Worker `tpr-coming-soon` dell'account personale precedente è stato eliminato su richiesta dell'utente.
 - `wrangler.jsonc` fissa l'account TPR; `scripts/wrangler_tpr.mjs` usa credenziali locali separate da quelle personali.
 - Secret `BREVO_API_KEY` configurato nell'account TPR. La chiave è stata verificata via API Brevo: account `social@thepeoplesroom.it`, azienda The People's Room, lista 2 `Contatti TPR`, attributo `FONTE` di tipo testo.
 - Form disabilitato nella build pubblica (`data-endpoint=""`): manca il link dell'informativa privacy definitiva.
-- Zona `thepeoplesroom.it` aggiunta all'account TPR con piano Free e stato `pending`. Importati 13 record; record di posta, DKIM, FTP e sito attuale mantenuti DNS-only. La scansione deve ancora essere confrontata con l'elenco completo di Register, che richiede un codice temporaneo del titolare. Nameserver Register invariati, sito principale ancora su Framer.
+- Zona `thepeoplesroom.it` nell'account TPR, piano Free. Confrontati tutti i 17 record applicativi con l'esportazione Register e completati i quattro record mancanti dalla scansione.
+- Cambio nameserver salvato su Register il 30 settembre alle 12:56 Europe/Rome: `boyd.ns.cloudflare.com` e `colette.ns.cloudflare.com`. Il registro `.it` restituisce entrambi dalle 13:07; Cloudflare è `active` dalle 13:10. I resolver possono conservare i precedenti indirizzi Framer fino alla scadenza delle rispettive cache.
+- Root e `www` associati al Worker con Custom Domains, deploy completato (versione `3b606ffc-e7c1-4ea5-a5ca-a424af2abf1f`). Sostituiti soltanto i due record A Framer del dominio principale e il CNAME Framer di `www`; preservati i 14 record di posta e altri servizi. La tabella Cloudflare contiene ora 16 record.
+- DNSSEC Register disabilitato per il trasferimento; vecchio DS assente dal 29 settembre. Riattivare la firma Cloudflare e registrare il nuovo DS su Register dopo la propagazione dei nameserver, senza riutilizzare il vecchio DS.
+- Certificato HTTPS gestito da Cloudflare attivo per root e `www`; abilitato `Always Use HTTPS`. Verifica diretta sugli IP autorevoli Cloudflare: TLS valido su entrambi i domini, HTML identico alla build e 18 asset/file pubblici verificati. Confermati MX Google/PEC, DKIM Brevo, SPF e DMARC dalla nuova autorità DNS.
 - 15 test superati, incluso il runtime nativo workerd. Prova reale sul Worker pubblico completata: creazione e reinvio dello stesso contatto, verifica della lista 2 e `FONTE=Landing` via API Brevo, rimozione del contatto temporaneo. Il form pubblico resta comunque disabilitato finché manca l'informativa.
 
 ## Sviluppo e pubblicazione
@@ -40,7 +44,9 @@ Il limite nativo Cloudflare è 30 richieste per minuto per indirizzo, con chiave
 
 L'accesso FTP non è necessario. La zona `thepeoplesroom.it` è già stata aggiunta dal pannello Cloudflare dell'account TPR. Il token CLI dispone di lettura delle zone, non della modifica dei DNS: completare questa parte nel pannello.
 
-Prima di cambiare i nameserver su Register, confrontare tutti i record importati con quelli esistenti, soprattutto MX, SPF, DKIM, DMARC e verifiche di altri servizi. Usare solo i nameserver assegnati alla zona, senza inventarli. Quando la zona è attiva, associare il dominio al Worker tramite Custom Domains e verificare HTTPS, asset, redirect e invio reale alla lista Brevo. Il dominio può restare registrato presso Register.
+Il dominio resta registrato presso Register; il DNS passa a Cloudflare. I Custom Domains sono definiti in `wrangler.jsonc`, quindi i deploy successivi mantengono root e `www` collegati al Worker. Cloudflare gestisce i record del sito e i certificati. Non ricreare i vecchi A/CNAME Framer, che entrerebbero in conflitto con questi collegamenti.
+
+Prima di considerare conclusa l'attivazione, verificare stato della zona `active`, HTTPS e asset sia sul dominio principale sia su `www`, redirect `/coming-soon/` verso `/`, e conservazione dei record MX/SPF/DKIM/DMARC. La prova Brevo sul dominio finale deve seguire l'attivazione del form con informativa approvata.
 
 Non creare `newsletter.thepeoplesroom.it` o un servizio/account Plesk dedicato: la pagina e l'API sono sullo stesso sito.
 
