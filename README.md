@@ -11,7 +11,7 @@ Open http://localhost:4173/homepage-tpr/. The preview uses native HTML, CSS and 
 
 Content lives in `design/updated-content.json`, shared templates in `scripts/build_updated_preview.py`, and responsive styles and interactions in `updated-preview.css` and `updated-preview.js`. Generated HTML is committed so GitHub Pages can serve it directly.
 
-See [ROUTES.md](ROUTES.md) for frames and routes, and [design/IMPLEMENTATION.md](design/IMPLEMENTATION.md) for validation and outstanding assets. This is a draft implementation: the exact October artwork exports remain unavailable, and the booking provider has not been specified. It is not yet a verified pixel-perfect match.
+See [ROUTES.md](ROUTES.md) for frames and routes, and [design/IMPLEMENTATION.md](design/IMPLEMENTATION.md) for validation and remaining gaps. Supplied Figma PDFs now provide the available photos, partner logos, original vectors and Home compositions; the six main desktop page heights match their source canvases. Seventeen room photo roles, four left photo/eye stages, two coming-soon illustrations, updated mobile frames and the booking provider remain unresolved. This preview is not claimed as a completed 1:1 match.
 
 The older `/homepage/` variant remains available. Production hosting and the Cloudflare newsletter backend are separate from this preview.
 

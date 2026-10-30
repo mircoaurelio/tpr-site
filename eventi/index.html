@@ -8,11 +8,15 @@
 <meta name="description" content="The People's Room: coworking, movimento, cultura e benessere a Milano.">
 <link rel="icon" href="../assets/tpr-character.svg" type="image/svg+xml">
 <link rel="preload" href="../assets/fonts/pp-rader/PPRader-Bold.otf" as="font" type="font/otf" crossorigin>
-<link rel="stylesheet" href="../updated-preview.css?v=20261030">
-<script src="../updated-preview.js?v=20261030" defer>
+<link rel="stylesheet" href="../updated-preview.css?v=20261030-pdf">
+<link rel="stylesheet" href="../figma-refinements.css?v=20261030-pdf">
+<link rel="stylesheet" href="../pdf-assets.css?v=20261030-pdf">
+<script src="../updated-preview.js?v=20261030-pdf" defer>
+</script>
+<script src="../zigzag-controls.js?v=20261030-pdf" defer>
 </script>
 </head>
-<body class="updated-preview updated-preview--pink">
+<body class="updated-preview updated-preview--pink preview-page--events">
 <a class="skip-link" href="#main">Vai al contenuto</a>
 <header class="preview-header">
 <a class="preview-brand" href="../homepage-tpr/" aria-label="The People's Room — Home">
@@ -20,12 +24,7 @@
 </a>
 <div class="preview-header-actions">
 <button class="preview-menu-button" type="button" data-menu-open aria-label="Apri il menu" aria-controls="siteMenu" aria-expanded="false">
-<span>
-</span>
-<span>
-</span>
-<span>
-</span>
+<img class="preview-menu-glyph" src="../assets/figma-updated/shapes/header-hamburger.svg" alt="" decoding="async" aria-hidden="true">
 </button>
 </div>
 </header>
@@ -63,6 +62,9 @@
 </nav>
 </aside>
 <main id="main">
+<div class="preview-page-art" aria-hidden="true">
+<img src="../assets/figma-updated/shapes/events-top-s.svg" alt="" aria-hidden="true" class="preview-decoration preview-decoration--events-top-s" style="--decor-x:-1405.743408203125;--decor-y:-1896.361572265625;--decor-w:2135.951416015625">
+</div>
 <section class="preview-shell preview-page-section preview-events" data-figma-node="616:2678">
 <div class="preview-two-columns">
 <h1 class="preview-section-title">TPR è energia,<br>musica,<br>connessioni</h1>
@@ -73,9 +75,10 @@
 </div>
 <section id="gallery" class="preview-event-gallery">
 <h2 class="preview-section-title preview-centered">Eventi passati</h2>
-<div class="preview-event-carousel" tabindex="0" role="region" aria-label="Eventi passati, scorri per esplorare" data-carousel>
-<article class="preview-event-card preview-paper" data-pending-figma-image="1075:2207">
-<div class="preview-event-media">
+<div class="preview-event-carousel" data-initial-scroll="center" tabindex="0" role="region" aria-label="Eventi passati, scorri per esplorare" data-carousel>
+<article class="preview-event-card preview-paper" data-figma-node="1075:2211">
+<div class="preview-event-media" data-asset-role="events.shamans-ritual" data-figma-node="1075:2207">
+<img src="../assets/figma-updated/photos/shamans-ritual.jpeg" alt="Shamans Ritual" decoding="async" >
 </div>
 <div>
 <h3>Shamans Ritual</h3>
@@ -86,8 +89,9 @@
 </p>
 </div>
 </article>
-<article class="preview-event-card preview-paper" data-pending-figma-image="1075:2209">
-<div class="preview-event-media">
+<article class="preview-event-card preview-paper" data-figma-node="1075:2222">
+<div class="preview-event-media" data-asset-role="events.the-dinner" data-figma-node="1075:2209">
+<img src="../assets/figma-updated/photos/the-dinner.jpeg" alt="The Dinner" decoding="async" >
 </div>
 <div>
 <h3>The Dinner</h3>
@@ -97,8 +101,9 @@
 </p>
 </div>
 </article>
-<article class="preview-event-card preview-paper" data-pending-figma-image="1075:2208">
-<div class="preview-event-media">
+<article class="preview-event-card preview-paper" data-figma-node="1075:2233">
+<div class="preview-event-media" data-asset-role="events.ceramic-workshop" data-figma-node="1075:2208">
+<img src="../assets/figma-updated/photos/ceramic-workshop.jpeg" alt="Ceramic Workshop" decoding="async" >
 </div>
 <div>
 <h3>Ceramic Workshop</h3>
@@ -108,8 +113,9 @@
 </p>
 </div>
 </article>
-<article class="preview-event-card preview-paper" data-pending-figma-image="1075:2206">
-<div class="preview-event-media">
+<article class="preview-event-card preview-paper" data-figma-node="1075:2244">
+<div class="preview-event-media" data-asset-role="events.the-peoples-week-talk" data-figma-node="1075:2206">
+<img src="../assets/figma-updated/photos/the-peoples-week-talk.jpeg" alt="The People’s Week Talk" decoding="async" >
 </div>
 <div>
 <h3>The People’s Week Talk</h3>
@@ -164,7 +170,8 @@
 <textarea name="message" placeholder="Messaggio" rows="3">
 </textarea>
 </label>
-<button class="preview-submit" type="submit">Invia <span aria-hidden="true">›</span>
+<button class="preview-submit" type="submit">Invia <span class="preview-chevron" aria-hidden="true">
+</span>
 </button>
 </div>
 <p class="preview-form-status" role="status" aria-live="polite"></p>

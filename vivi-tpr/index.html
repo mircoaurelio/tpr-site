@@ -8,11 +8,15 @@
 <meta name="description" content="The People's Room: coworking, movimento, cultura e benessere a Milano.">
 <link rel="icon" href="../assets/tpr-character.svg" type="image/svg+xml">
 <link rel="preload" href="../assets/fonts/pp-rader/PPRader-Bold.otf" as="font" type="font/otf" crossorigin>
-<link rel="stylesheet" href="../updated-preview.css?v=20261030">
-<script src="../updated-preview.js?v=20261030" defer>
+<link rel="stylesheet" href="../updated-preview.css?v=20261030-pdf">
+<link rel="stylesheet" href="../figma-refinements.css?v=20261030-pdf">
+<link rel="stylesheet" href="../pdf-assets.css?v=20261030-pdf">
+<script src="../updated-preview.js?v=20261030-pdf" defer>
+</script>
+<script src="../zigzag-controls.js?v=20261030-pdf" defer>
 </script>
 </head>
-<body class="updated-preview updated-preview--blue">
+<body class="updated-preview updated-preview--blue preview-page--vivi">
 <a class="skip-link" href="#main">Vai al contenuto</a>
 <header class="preview-header">
 <a class="preview-brand" href="../homepage-tpr/" aria-label="The People's Room — Home">
@@ -20,12 +24,7 @@
 </a>
 <div class="preview-header-actions">
 <button class="preview-menu-button" type="button" data-menu-open aria-label="Apri il menu" aria-controls="siteMenu" aria-expanded="false">
-<span>
-</span>
-<span>
-</span>
-<span>
-</span>
+<img class="preview-menu-glyph" src="../assets/figma-updated/shapes/header-hamburger.svg" alt="" decoding="async" aria-hidden="true">
 </button>
 </div>
 </header>
@@ -63,10 +62,14 @@
 </nav>
 </aside>
 <main id="main">
+<div class="preview-page-art" aria-hidden="true">
+<img src="../assets/figma-updated/shapes/vivi-top-s.svg" alt="" aria-hidden="true" class="preview-decoration preview-decoration--vivi-top-s" style="--decor-x:-1405.743408203125;--decor-y:-1896.361572265625;--decor-w:2135.951416015625">
+</div>
 <div class="preview-vivi preview-page-section">
 <section class="preview-vivi-intro preview-shell">
 <div class="preview-two-columns">
-<h1 class="preview-section-title">Vivi <span class="preview-inline-wordmark">
+<h1 class="preview-section-title">
+<span class="preview-cap-text">Vivi</span> <span class="preview-inline-wordmark">
 <img class="" src="../assets/brand/Logotype_blue.svg" alt="TPR™" decoding="async" >
 </span>
 </h1>
@@ -80,9 +83,10 @@
 <div class="preview-offers-heading">
 <h2 class="preview-section-title">Scopri le offerte</h2>
 </div>
-<div class="preview-offer-carousel" tabindex="0" role="region" aria-label="Offerte TPR, scorri per esplorare" data-carousel>
-<article class="preview-offer-card preview-paper" id="day-pass" data-figma-node="1086:2242">
-<div class="preview-offer-media" data-pending-figma-image="1086:2242">
+<div data-initial-scroll="end" class="preview-offer-carousel" tabindex="0" role="region" aria-label="Offerte TPR, scorri per esplorare" data-carousel>
+<article class="preview-offer-card preview-paper" id="day-pass" data-figma-node="1086:2304">
+<div class="preview-offer-media" data-asset-role="offers.day-pass" data-figma-node="1086:2306">
+<img src="../assets/figma-updated/photos/day-pass.jpeg" alt="day pass" decoding="async" >
 </div>
 <div class="preview-offer-body">
 <div class="preview-offer-summary">
@@ -106,8 +110,9 @@
 <a class="preview-button preview-button--solid" href="../contatti/?offer=day-pass">Acquista</a>
 </div>
 </article>
-<article class="preview-offer-card preview-paper" id="all-inclusive" data-figma-node="1086:2258">
-<div class="preview-offer-media" data-pending-figma-image="1086:2258">
+<article class="preview-offer-card preview-paper" id="all-inclusive" data-figma-node="1086:2320">
+<div class="preview-offer-media" data-asset-role="offers.all-inclusive" data-figma-node="1086:2322">
+<img src="../assets/figma-updated/photos/all-inclusive.jpeg" alt="All inclusive" decoding="async" >
 </div>
 <div class="preview-offer-body">
 <div class="preview-offer-summary">
@@ -133,8 +138,9 @@
 <a class="preview-button preview-button--blue-outline" href="../contatti/?offer=all-inclusive">Richiedi informazioni</a>
 </div>
 </article>
-<article class="preview-offer-card preview-paper" id="flex-8" data-figma-node="1086:2276">
-<div class="preview-offer-media" data-pending-figma-image="1086:2276">
+<article class="preview-offer-card preview-paper" id="flex-8" data-figma-node="1086:2338">
+<div class="preview-offer-media" data-asset-role="offers.flex-8" data-figma-node="1086:2340">
+<img src="../assets/figma-updated/photos/flex-8.jpeg" alt="flex 8" decoding="async" >
 </div>
 <div class="preview-offer-body">
 <div class="preview-offer-summary">
@@ -159,8 +165,9 @@
 <a class="preview-button preview-button--blue-outline" href="../contatti/?offer=flex-8">Richiedi informazioni</a>
 </div>
 </article>
-<article class="preview-offer-card preview-paper" id="ufficio-virtuale" data-figma-node="1086:2292">
-<div class="preview-offer-media" data-pending-figma-image="1086:2292">
+<article class="preview-offer-card preview-paper" id="ufficio-virtuale" data-figma-node="1086:2354">
+<div class="preview-offer-media" data-asset-role="offers.ufficio-virtuale" data-figma-node="1086:2357">
+<img src="../assets/figma-updated/photos/ufficio-virtuale.jpeg" alt="ufficio virtuale" decoding="async" >
 </div>
 <div class="preview-offer-body">
 <div class="preview-offer-summary">
@@ -177,7 +184,8 @@
 <section class="preview-company" id="aziende">
 <h2 class="preview-section-title preview-centered">Offerte personalizzate per startup e aziende</h2>
 <div class="preview-company-card preview-paper">
-<div class="preview-company-media" data-pending-figma-image="1086:2237">
+<div class="preview-company-media" data-asset-role="offers.company" data-figma-node="1086:2368">
+<img src="../assets/figma-updated/photos/company.jpeg" alt="Gli spazi TPR per aziende e startup" decoding="async" >
 </div>
 <div class="preview-company-copy">
 <div class="preview-company-text">
@@ -228,7 +236,8 @@
 <textarea name="message" placeholder="Messaggio" rows="3">
 </textarea>
 </label>
-<button class="preview-submit" type="submit">Invia <span aria-hidden="true">›</span>
+<button class="preview-submit" type="submit">Invia <span class="preview-chevron" aria-hidden="true">
+</span>
 </button>
 </div>
 <p class="preview-form-status" role="status" aria-live="polite"></p>

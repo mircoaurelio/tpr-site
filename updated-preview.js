@@ -142,6 +142,33 @@
 
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
   document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+    const initial = carousel.dataset.initialScroll;
+    if (initial) {
+      let used = false;
+      for (const event of ["pointerdown", "wheel", "keydown"])
+        carousel.addEventListener(
+          event,
+          () => {
+            used = true;
+          },
+          { once: true, passive: true },
+        );
+      Promise.all([
+        document.fonts?.ready,
+        ...[...carousel.querySelectorAll("img")].map((image) =>
+          image.decode().catch(() => {}),
+        ),
+      ]).then(() =>
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => {
+            if (used || !matchMedia("(min-width: 901px)").matches) return;
+            carousel.style.scrollSnapType = "none";
+            const maximum = carousel.scrollWidth - carousel.clientWidth;
+            carousel.scrollLeft = initial === "end" ? maximum : maximum / 2;
+          }),
+        ),
+      );
+    }
     carousel.addEventListener("keydown", (event) => {
       if (
         event.target !== carousel ||
@@ -217,6 +244,13 @@
         );
       }),
     );
+    const nextRoom = explorer.querySelector("[data-room-next]");
+    nextRoom?.addEventListener("click", () => {
+      const current = nav.findIndex(
+        (button) => button.getAttribute("aria-pressed") === "true",
+      );
+      nav[(current + 1) % nav.length]?.click();
+    });
     panels.forEach((panel) => {
       panel
         .querySelector("[data-room-explore]")
@@ -281,21 +315,45 @@
         } else {
           selected = key;
           const title = document.createElement("h2");
+          title.className = "sr-only";
           title.textContent =
             key === "community" ? "Community" : data.rooms[key].title;
+          const character = document.createElement("img");
+          character.className = "preview-discover-character";
+          character.src = new URL(
+            key === "reformer"
+              ? "assets/figma-updated/shapes/about-selected-move-character.svg"
+              : `assets/little-man/${key === "community" ? "coworking" : key}.svg`,
+            base,
+          ).href;
+          character.alt = "";
+          character.setAttribute("aria-hidden", "true");
           const copy = document.createElement("p");
-          copy.textContent =
-            key === "community"
-              ? data.newsletter.description
-              : data.rooms[key].paragraphs.slice(0, 2).join(" ");
+          const paragraphs =
+            data.about.discovery?.[key]?.paragraphs ||
+            (key === "community"
+              ? [data.newsletter.description]
+              : data.rooms[key].paragraphs);
+          copy.className = "preview-discover-copy";
+          for (const text of paragraphs) {
+            const paragraph = document.createElement("span");
+            paragraph.className = "preview-discover-paragraph";
+            paragraph.textContent = text;
+            copy.append(paragraph);
+          }
           const link = document.createElement("a");
-          link.className = "preview-button preview-button--outline";
+          link.className = "preview-button preview-button--pink";
           link.href = new URL(
             key === "community" ? "homepage-tpr/#community" : `rooms/${key}/`,
             base,
           ).href;
-          link.textContent = "Scopri di più";
-          content.replaceChildren(title, copy, link);
+          link.textContent = "Esplora Stanza";
+          const arrow = document.createElement("span");
+          arrow.className = "preview-chevron";
+          arrow.setAttribute("aria-hidden", "true");
+          link.append(arrow);
+          content.replaceChildren(title, character, copy, link);
+          content.dataset.selectedKey = key;
           content.classList.add("is-detail");
         }
         discover

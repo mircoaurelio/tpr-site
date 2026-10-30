@@ -8,11 +8,15 @@
 <meta name="description" content="The People's Room: coworking, movimento, cultura e benessere a Milano.">
 <link rel="icon" href="../../assets/tpr-character.svg" type="image/svg+xml">
 <link rel="preload" href="../../assets/fonts/pp-rader/PPRader-Bold.otf" as="font" type="font/otf" crossorigin>
-<link rel="stylesheet" href="../../updated-preview.css?v=20261030">
-<script src="../../updated-preview.js?v=20261030" defer>
+<link rel="stylesheet" href="../../updated-preview.css?v=20261030-pdf">
+<link rel="stylesheet" href="../../figma-refinements.css?v=20261030-pdf">
+<link rel="stylesheet" href="../../pdf-assets.css?v=20261030-pdf">
+<script src="../../updated-preview.js?v=20261030-pdf" defer>
+</script>
+<script src="../../zigzag-controls.js?v=20261030-pdf" defer>
 </script>
 </head>
-<body class="updated-preview updated-preview--blue">
+<body class="updated-preview updated-preview--blue preview-page--rooms">
 <a class="skip-link" href="#main">Vai al contenuto</a>
 <header class="preview-header">
 <a class="preview-brand" href="../../homepage-tpr/" aria-label="The People's Room — Home">
@@ -20,12 +24,7 @@
 </a>
 <div class="preview-header-actions">
 <button class="preview-menu-button" type="button" data-menu-open aria-label="Apri il menu" aria-controls="siteMenu" aria-expanded="false">
-<span>
-</span>
-<span>
-</span>
-<span>
-</span>
+<img class="preview-menu-glyph" src="../../assets/figma-updated/shapes/header-hamburger.svg" alt="" decoding="async" aria-hidden="true">
 </button>
 </div>
 </header>
@@ -63,10 +62,12 @@
 </nav>
 </aside>
 <main id="main">
+<div class="preview-page-art" aria-hidden="true">
+</div>
 <section id="rooms" class="preview-room-explorer" aria-label="TPR Rooms" data-room-explorer>
 <div class="preview-room-panel" data-room-panel="reformer" style="--room-bg:#3f9941;--room-accent:#ffc100"  data-figma-node="643:1823">
 <img class="preview-room-art" src="../../assets/homepage-room-reformer-no-text-2x.webp" alt="" decoding="async" aria-hidden="true" data-pending-figma-image="643:1823">
-<div class="preview-room-character">
+<div class="preview-room-character" style="--room-character:url('../../assets/little-man/reformer.svg')">
 <img class="" src="../../assets/little-man/reformer.svg" alt="" decoding="async" aria-hidden="true">
 </div>
 <div class="preview-room-copy">
@@ -77,7 +78,8 @@
 <p class="">Le classi seguono percorsi diversi, ognuna con un obiettivo specifico, e si prenotano singolarmente in base ai propri tempi.</p>
 <p class="">Un luogo dove respirare e prendersi cura di sé.</p>
 <div class="preview-room-actions">
-<button class="preview-button" data-room-explore type="button" aria-expanded="false">Esplora Stanza <span aria-hidden="true">›</span>
+<button class="preview-button" data-room-explore type="button" aria-expanded="false">Esplora Stanza <span class="preview-chevron" aria-hidden="true">
+</span>
 </button>
 <a class="preview-button preview-button--room-outline" href="../../prenota/">Prenota</a>
 </div>
@@ -90,7 +92,7 @@
 </div>
 <div class="preview-room-cards" tabindex="0" role="region" aria-label="Spazi TPR MOVE" data-carousel>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="643:1823">
+<div class="preview-room-card-photo" data-asset-role="rooms.reformer.cards.studio" data-figma-node="1085:2354" data-pending-figma-image="1085:2354">
 </div>
 <div class="preview-room-card-label">
 <h3>studio</h3>
@@ -98,7 +100,7 @@
 </div>
 </article>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="643:1823">
+<div class="preview-room-card-photo" data-asset-role="rooms.reformer.cards.classi" data-figma-node="1074:2832" data-pending-figma-image="1074:2832">
 </div>
 <div class="preview-room-card-label">
 <h3>classi</h3>
@@ -106,7 +108,7 @@
 </div>
 </article>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="643:1823">
+<div class="preview-room-card-photo" data-asset-role="rooms.reformer.cards.attrezzature" data-figma-node="1085:2353" data-pending-figma-image="1085:2353">
 </div>
 <div class="preview-room-card-label">
 <h3>attrezzature</h3>

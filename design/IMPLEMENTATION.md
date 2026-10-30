@@ -1,39 +1,52 @@
 # Versione Aggiornata implementation
 
-This branch updates the GitHub preview. Production `thepeoplesroom.it`, Cloudflare bindings and server credentials were not changed.
+This branch updates the native HTML/CSS/JavaScript preview. Production `thepeoplesroom.it`, Cloudflare bindings and server credentials are unchanged.
 
-## Implemented
+## Source assets and implementation
 
-- Shared TM logo, header, menu, footer, legal links, fonts and palette.
-- Updated home introduction, room copy, events, offers, company enquiries, partner layout and community form.
-- About manifesto, discovery selector, offer/event links and contact section.
-- Contacts layout and address/hours; updated events gallery and event enquiry layout.
-- Vivi TPR page with four offers, company section and community subscription.
-- Pilates page with the empty embed area shown in the supplied frame.
-- Five room routes, floor selector, room exploration, card labels/order and coming-soon states.
-- Responsive adaptations, keyboard navigation, focus handling and form validation.
+The supplied Figma PDFs now provide 15 unique embedded JPEGs, four partner logos, original decorative vectors and paper/control outlines, plus the Home hero, event and Coworking photo/eye compositions. Available offer, company, event, map and About-card photos are wired into native components. JPEG bytes and dimensions were preserved; extracted SVG paths were retained. The three main compositions were isolated from original static PDF operators and encoded as lossless WebP with identical decoded RGBA. Whole-screen renders are used only for review.
 
-## Assets and limits
+The approved TM header/menu logo and original `assets/brand/Logotype_blue.svg` remain in use. The Home/About body wordmark uses the original PDF letter paths; CSS clips the source registered-mark area and positions the approved TM artwork. Neither source SVG's paths were rewritten. Detailed provenance and remaining slots are in [asset-status.json](asset-status.json), [asset-files.json](asset-files.json), [figma-slots.json](figma-slots.json) and [page-decorations.json](page-decorations.json).
 
-The exact October photos, composed masks, decorative vectors and partner logos could not be exported: Figma MCP reports its View-seat call limit, and the returned asset URLs fail with proxy CONNECT 403. The newer Drive folder requires Google sign-in. No screenshots of whole screens were introduced as page assets.
+Shared templates implement the six main pages and five room routes, with native menus, room/discovery selectors, carousels, forms, keyboard navigation and focus handling. Source text, source photo crops, original paper edges and navigation artwork have been reconciled with the desktop references.
 
-The public original brand folder provided the approved `Logotype_blue.svg` TM artwork, used in the footer and inline Vivi headings. Its original paths are preserved; CSS positions the existing artboard in a cropped wrapper. Existing TM full logo and same-role legacy hero/room/event/map artwork remain in use pending exact exports. Newly introduced image slots are neutral empty media areas. `data-pending-figma-image` attributes and [asset-status.json](asset-status.json) identify these gaps. This draft must not be described as a completed 1:1 visual match.
+## Geometry and mobile
 
-The room detail fronts and coming-soon labels are implemented; card back states and the exact prototype motion were not available for verification. The mobile layout is an adaptation, because a complete updated mobile frame set was not supplied.
+At 1512px wide, the six main page heights match the supplied PDF canvases after removing the 30px mock macOS menu bar:
 
-## Forms
+| Route | Height |
+| --- | ---: |
+| `/homepage-tpr/` | 8523px |
+| `/about/` | 4444px |
+| `/contatti/` | 1670px |
+| `/eventi/` | 2806px |
+| `/vivi-tpr/` | 4036px |
+| `/prenota/` | 1750px |
 
-The community form calls the existing newsletter endpoint with email, explicit consent and honeypot. The unchanged server implementation enforces Brevo list 2 and `FONTE=Landing`; no API key is present in the browser. Its button is enabled and blue only after a valid email and checked consent. Success is shown only after a successful server response. The production endpoint must allow the preview origin; localhost is not automatically allowed.
+Height matching verifies page geometry; it does not establish a complete pixel-perfect match. The latest six-page desktop/393px capture records no script errors, failed local images or document-wide horizontal overflow. Evidence is under `/workspace/tpr-redesign-audit/pdf-comparison/`.
 
-Enquiries hand off a prepared message to the visitor’s email application at the existing `hello@thepeoplesroom.it` address. They do not claim delivery. Direct server delivery, checkout/payment for Day Pass, and a real Pilates booking embed are not configured by the supplied design. Offer buttons currently lead to an enquiry with the selected offer. The Pilates panel remains empty as in Figma, pending the provider URL.
+Mobile refinements address hero photo proportions and blue header corners using the original eye mask, wordmark spacing, card/media clipping, wrapping partner logos and narrow forms. Updated mobile frames were not supplied, so mobile remains a responsive adaptation. Responsive zigzag controls and paper frames passed 65 route/viewport checks at 320, 393, 430, 768 and 1512px, including focus, dynamic About controls and post-submit redraw. The original source paper contours apply at their nominal desktop sizes; the mobile controls retain a consistent CSS-pixel wavelength.
 
-## Validation
+## Remaining source gaps
 
-- Built all 11 canonical routes and captured desktop 1512×952 and mobile 393×852 screenshots.
-- Checked layouts at 320, 393, 768, 1024, 1512 and 1920px.
-- Tested menu focus containment/restoration, Escape, all five room selections and room exploration, discovery selector and keyboard carousels.
-- Tested newsletter validity, button color, failure and success using intercepted responses. Tested enquiry handoff by intercepting the mailto link. No test contacts or emails were sent.
-- Existing server/Cloudflare newsletter suite: 15 tests passed.
-- No browser script errors or failed local image requests in the canonical route capture.
+Seventeen updated room photo roles remain unavailable: five standalone `picture` roles plus twelve card photos. The shared template does not currently render the five `picture` roles; the twelve missing card photos retain empty media areas. The missing roles by room are:
 
-Visual review remains open until the exact exports and booking destination are available. Screenshots and the before/after report are saved in the task workspace under `/workspace/tpr-redesign-audit/`.
+- Coworking: picture, postazioni, sale riunioni.
+- Move (`/rooms/reformer/`): picture, studio, classi, attrezzature.
+- Recharge (`/rooms/wellness/`): picture, gym, contrast therapy.
+- Fuel (`/rooms/bar/`): picture, servizi, accessibilità, storage.
+- Media: picture, podcast, set fotografico.
+
+The Coworking event card uses the exact supplied Dinner photo. Recharge longevity and Media studio audio also lack their exact source illustrations; native coming-soon labels are present. These are two illustration gaps, separate from the seventeen photos.
+
+Move, Recharge, Fuel and Media still use legacy left photo/eye stage artwork. Their original right-side vector decorations were recovered, but the Home PDF does not retain their four updated left photo compositions. The repeated right-vector identities and generic Home `image74` photo do not establish a valid replacement. Standalone room exports are required. Exact prototype motion and card-back states also remain unverified.
+
+## Forms and booking
+
+The community form calls the existing newsletter endpoint with email, explicit consent and honeypot. The unchanged server enforces Brevo list 2 and `FONTE=Landing`; no API key is present in the browser. Its button is enabled and blue after valid email and checked consent. Success appears only after a successful response; the production endpoint must permit the preview origin.
+
+Enquiries prepare a message in the visitor's email application at `hello@thepeoplesroom.it`; they do not claim delivery. Day Pass checkout/payment and direct server enquiry delivery are not configured. Offer actions lead to an enquiry with the selected offer. The Pilates booking area is empty in the supplied PDF and remains empty until a provider/embed URL is supplied.
+
+## Checks
+
+The existing validation record covers all 11 canonical routes, menu focus/Escape, room selection/exploration, discovery and keyboard carousels, newsletter validity/failure/success, and enquiry handoff. Form tests intercepted responses and mailto navigation; no test email or contact was sent. The newsletter server/Cloudflare suite previously passed 15 tests. Current desktop/mobile comparison evidence and the remaining source gaps above define the review limits; this preview is not claimed as a completed 1:1 match.

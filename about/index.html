@@ -8,11 +8,15 @@
 <meta name="description" content="The People's Room: coworking, movimento, cultura e benessere a Milano.">
 <link rel="icon" href="../assets/tpr-character.svg" type="image/svg+xml">
 <link rel="preload" href="../assets/fonts/pp-rader/PPRader-Bold.otf" as="font" type="font/otf" crossorigin>
-<link rel="stylesheet" href="../updated-preview.css?v=20261030">
-<script src="../updated-preview.js?v=20261030" defer>
+<link rel="stylesheet" href="../updated-preview.css?v=20261030-pdf">
+<link rel="stylesheet" href="../figma-refinements.css?v=20261030-pdf">
+<link rel="stylesheet" href="../pdf-assets.css?v=20261030-pdf">
+<script src="../updated-preview.js?v=20261030-pdf" defer>
+</script>
+<script src="../zigzag-controls.js?v=20261030-pdf" defer>
 </script>
 </head>
-<body class="updated-preview updated-preview--blue">
+<body class="updated-preview updated-preview--blue preview-page--about">
 <a class="skip-link" href="#main">Vai al contenuto</a>
 <header class="preview-header">
 <a class="preview-brand" href="../homepage-tpr/" aria-label="The People's Room — Home">
@@ -20,12 +24,7 @@
 </a>
 <div class="preview-header-actions">
 <button class="preview-menu-button" type="button" data-menu-open aria-label="Apri il menu" aria-controls="siteMenu" aria-expanded="false">
-<span>
-</span>
-<span>
-</span>
-<span>
-</span>
+<img class="preview-menu-glyph" src="../assets/figma-updated/shapes/header-hamburger.svg" alt="" decoding="async" aria-hidden="true">
 </button>
 </div>
 </header>
@@ -63,10 +62,20 @@
 </nav>
 </aside>
 <main id="main">
+<div class="preview-page-art" aria-hidden="true">
+<img src="../assets/figma-updated/shapes/about-top-s.svg" alt="" aria-hidden="true" class="preview-decoration preview-decoration--about-top-s" style="--decor-x:-1405.743408203125;--decor-y:-1896.361572265625;--decor-w:2135.951416015625">
+<img src="../assets/figma-updated/shapes/about-ice-bolt-left.svg" alt="" aria-hidden="true" class="preview-decoration preview-decoration--about-ice-bolt-left" style="--decor-x:-491.949462890625;--decor-y:1136.7652587890625;--decor-w:1041.302734375">
+<img src="../assets/figma-updated/shapes/about-ice-bolt-right.svg" alt="" aria-hidden="true" class="preview-decoration preview-decoration--about-ice-bolt-right" style="--decor-x:965.0506591796875;--decor-y:1744.7652587890625;--decor-w:1041.302734375">
+</div>
 <section class="preview-shell preview-page-section preview-about" data-figma-node="616:2410">
 <div class="preview-two-columns">
 <h1 class="preview-about-logo">
-<img class="" src="../assets/tpr-logo.svg" alt="The People&#x27;s Room" decoding="async" >
+<span class="preview-body-wordmark">
+<img class="preview-body-wordmark-source" src="../assets/figma-updated/composites/home-about-wordmark-original.svg" alt="The People’s Room™" decoding="async" >
+<span class="preview-body-trademark" aria-hidden="true">
+<img class="" src="../assets/brand/Logotype_blue.svg" alt="" decoding="async" >
+</span>
+</span>
 </h1>
 <div class="preview-lead">
 <p class="">Il nostro obiettivo quotidiano è ispirare le persone a esprimere sé stesse, riscoprire il valore dell&#x27;umanità e vivere in modo più presente, creativo e vitale.</p>
@@ -112,19 +121,27 @@
 <button type="button" data-discover="bar" class="preview-discover-button preview-discover-button--bar" aria-pressed="false">TPR Fuel</button>
 <button type="button" data-discover="coworking" class="preview-discover-button preview-discover-button--coworking" aria-pressed="false">TPR Coworking</button>
 <div class="preview-discover-content" aria-live="polite">
-<h2>Scopri<br>TPR</h2>
+<h2>
+<span class="preview-cap-text">Scopri</span>
+<br>
+<span class="preview-inline-wordmark">
+<img class="" src="../assets/brand/Logotype_blue.svg" alt="TPR™" decoding="async" >
+</span>
+</h2>
 <p>Seleziona una voce per esplorare gli spazi e le persone che li abitano.</p>
 </div>
 </section>
 <div class="preview-feature-cards">
-<a href="../vivi-tpr/" class="preview-feature-card preview-paper" data-pending-figma-image="1086:2391">
-<div class="preview-feature-media">
+<a href="../vivi-tpr/" class="preview-feature-card preview-paper" >
+<div class="preview-feature-media" data-asset-role="about.offers" data-figma-node="1086:2391">
+<img src="../assets/figma-updated/photos/day-pass.jpeg" alt="Scopri le offerte TPR" decoding="async" >
 </div>
 <span>Scopri le offerte <img class="" src="../assets/route-arrow-zigzag.png" alt="" decoding="async" width="48" height="48" aria-hidden="true">
 </span>
 </a>
-<a href="../eventi/" class="preview-feature-card preview-paper" data-pending-figma-image="616:2459">
-<div class="preview-feature-media">
+<a href="../eventi/" class="preview-feature-card preview-paper" >
+<div class="preview-feature-media" data-asset-role="about.events" data-figma-node="1075:2268">
+<img src="../assets/figma-updated/photos/the-dinner.jpeg" alt="Un evento TPR" decoding="async" >
 </div>
 <span>Eventi <img class="" src="../assets/route-arrow-zigzag.png" alt="" decoding="async" width="48" height="48" aria-hidden="true">
 </span>
@@ -170,15 +187,16 @@
 <textarea name="message" placeholder="Messaggio" rows="3">
 </textarea>
 </label>
-<button class="preview-submit" type="submit">Invia <span aria-hidden="true">›</span>
+<button class="preview-submit" type="submit">Invia <span class="preview-chevron" aria-hidden="true">
+</span>
 </button>
 </div>
 <p class="preview-form-status" role="status" aria-live="polite"></p>
 </form>
 </div>
-<a class="preview-map-card preview-paper" href="https://www.google.com/maps/search/?api=1&amp;query=Via+Cola+Montano+36+Milano" target="_blank" rel="noopener" data-pending-figma-image="649:2504">
-<div class="preview-map-image">
-<img class="" src="../assets/tpr-map.png" alt="Mappa della zona Isola a Milano" decoding="async" >
+<a class="preview-map-card preview-paper" href="https://www.google.com/maps/search/?api=1&amp;query=Via+Cola+Montano+36+Milano" target="_blank" rel="noopener">
+<div class="preview-map-image" data-asset-role="contact.map" data-figma-node="649:2460">
+<img src="../assets/figma-updated/photos/location-map.jpeg" alt="Mappa della zona Isola a Milano" decoding="async" >
 </div>
 <div class="preview-map-caption">
 <p>

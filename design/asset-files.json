@@ -1,0 +1,3020 @@
+{
+  "schema_version": 1,
+  "source_file": "FpPfXalg4PRyqtnvwt2DUL",
+  "source_section": "616:2194",
+  "asset_policy": "Embedded JPEG source files are copied byte-for-byte from supplied Figma PDFs. Original vector path data is retained. Static photo/eye clip groups are isolated from PDF operators and rendered to lossless WebP; whole-screen captures are review evidence only.",
+  "assets": {
+    "home.hero": {
+      "path": "assets/figma-updated/composites/home-hero-photo-eye-2x.webp",
+      "status": "available",
+      "kind": "lossless-static-composite",
+      "source": {
+        "figma_layers": {
+          "home": {
+            "id": "616:1710",
+            "name": "Maschera immagine",
+            "asset_variable": "imgMascheraImmagine"
+          }
+        }
+      },
+      "embedded_photo": {
+        "path": "assets/figma-updated/photos/home-hero-room.jpeg",
+        "sha256": "98604344e4689c2feadf8316b132888bebd50f404ae0e0b7a1355bde90027bd0",
+        "bytes": 1032535,
+        "width": 4096,
+        "height": 2730,
+        "original_extraction_filename": "98604344e4689c2f.jpeg",
+        "sources": [
+          {
+            "pdf": "Homepage_TPR.pdf",
+            "pdf_key": "home",
+            "page": 1,
+            "xref": 130,
+            "bbox_pdf_px": [
+              -131.00003051757812,
+              -178.0638427734375,
+              1514.0,
+              918.3350830078125
+            ],
+            "transform": [
+              1644.9998779296875,
+              0.00014400000509340316,
+              -9.600000339560211e-05,
+              1096.3988037109375,
+              -130.99993896484375,
+              -178.0638427734375
+            ],
+            "soft_mask_xref": 128
+          },
+          {
+            "pdf": "Homepage_TPR.pdf",
+            "pdf_key": "home",
+            "page": 1,
+            "xref": 130,
+            "bbox_pdf_px": [
+              -661.5178833007812,
+              1947.78271484375,
+              1304.831298828125,
+              3258.36181640625
+            ],
+            "transform": [
+              1966.3489990234375,
+              0.0001720000000204891,
+              -0.00011500000255182385,
+              1310.5791015625,
+              -661.5177612304688,
+              1947.78271484375
+            ],
+            "soft_mask_xref": 128
+          }
+        ]
+      },
+      "note": "Original photo/eye clip groups isolated from PDF operators before rendering. Live headings and controls are implemented separately. Exact decoded RGBA equals the PNG extraction.",
+      "sha256": "1c4871b67cb4d76ea990fe0889c7e631cd585a76e3a332c6c07b60710d0776f7"
+    },
+    "home.events": {
+      "path": "assets/figma-updated/composites/home-events-photo-eye-2x.webp",
+      "status": "available",
+      "kind": "lossless-static-composite",
+      "source": {
+        "figma_layers": {
+          "home": {
+            "id": "616:1781",
+            "name": "Vector",
+            "asset_variable": "imgVector9"
+          }
+        }
+      },
+      "embedded_photo": {
+        "path": "assets/figma-updated/photos/shamans-ritual.jpeg",
+        "sha256": "a496f04183367ac866410633f9d94bc1afbb3e04cdfc74d27f71676601fd58ad",
+        "bytes": 1539971,
+        "width": 4096,
+        "height": 2731,
+        "original_extraction_filename": "a496f04183367ac8.jpeg",
+        "sources": [
+          {
+            "pdf": "Homepage_TPR.pdf",
+            "pdf_key": "home",
+            "page": 1,
+            "xref": 112,
+            "bbox_pdf_px": [
+              -335.4952697753906,
+              3220.34814453125,
+              1715.0819091796875,
+              4587.56640625
+            ],
+            "transform": [
+              2050.5771484375,
+              0.0,
+              -0.0,
+              1367.21826171875,
+              -335.4952697753906,
+              3220.34814453125
+            ],
+            "soft_mask_xref": 110
+          },
+          {
+            "pdf": "Eventi_TPR.pdf",
+            "pdf_key": "events",
+            "page": 1,
+            "xref": 50,
+            "bbox_pdf_px": [
+              -598.201904296875,
+              778.0,
+              189.20196533203125,
+              1303.0
+            ],
+            "transform": [
+              787.4038696289062,
+              0.0,
+              -0.0,
+              525.0,
+              -598.201904296875,
+              778.0
+            ],
+            "soft_mask_xref": 48
+          }
+        ]
+      },
+      "note": "Original photo/eye clip groups isolated from PDF operators before rendering. Live headings and controls are implemented separately. Exact decoded RGBA equals the PNG extraction.",
+      "sha256": "25d1755c1af2b21af1f179e15b4e5cd7b160e47c745d7a5c26287407df1ba523"
+    },
+    "offers.day-pass": {
+      "path": "assets/figma-updated/photos/day-pass.jpeg",
+      "status": "available",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "home": {
+            "id": "1086:2244",
+            "name": "Prova1-20 1",
+            "asset_variable": "imgProva1201"
+          },
+          "vivi": {
+            "id": "1086:2306",
+            "name": "Prova1-20 1",
+            "asset_variable": "imgProva1201"
+          }
+        },
+        "pdf_occurrences": [
+          {
+            "pdf": "Homepage_TPR.pdf",
+            "pdf_key": "home",
+            "page": 1,
+            "xref": 80,
+            "bbox_pdf_px": [
+              -14.076942443847656,
+              4647.0,
+              616.076904296875,
+              5067.0
+            ],
+            "transform": [
+              630.1538696289062,
+              0.0,
+              -0.0,
+              419.9999694824219,
+              -14.076942443847656,
+              4647.0
+            ],
+            "soft_mask_xref": 78
+          },
+          {
+            "pdf": "Vivi_TPR.pdf",
+            "pdf_key": "vivi",
+            "page": 1,
+            "xref": 76,
+            "bbox_pdf_px": [
+              -822.0769653320312,
+              798.0,
+              -191.923095703125,
+              1218.0
+            ],
+            "transform": [
+              630.1538696289062,
+              0.0,
+              -0.0,
+              419.9999694824219,
+              -822.0769653320312,
+              798.0
+            ],
+            "soft_mask_xref": 74
+          },
+          {
+            "pdf": "About_TPR.pdf",
+            "pdf_key": "about",
+            "page": 1,
+            "xref": 40,
+            "bbox_pdf_px": [
+              101.92305755615234,
+              2610.0,
+              732.076904296875,
+              3030.0
+            ],
+            "transform": [
+              630.1538696289062,
+              0.0,
+              -0.0,
+              419.9999694824219,
+              101.92305755615234,
+              2610.0
+            ],
+            "soft_mask_xref": 38
+          }
+        ],
+        "match_evidence": "Exact cached Figma layer name and source crop geometry match the corresponding embedded PDF image, whose bytes repeat across those PDFs."
+      },
+      "sha256": "4fcb975f554725b9f07f93a8159df87c4283f005f7a1c389458092b901d90ca4",
+      "bytes": 576604,
+      "width": 4096,
+      "height": 2730
+    },
+    "offers.all-inclusive": {
+      "path": "assets/figma-updated/photos/all-inclusive.jpeg",
+      "status": "available",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "home": {
+            "id": "1086:2260",
+            "name": "Prova1-16 1",
+            "asset_variable": "imgProva1161"
+          },
+          "vivi": {
+            "id": "1086:2322",
+            "name": "Prova1-16 1",
+            "asset_variable": "imgProva1161"
+          }
+        },
+        "pdf_occurrences": [
+          {
+            "pdf": "Homepage_TPR.pdf",
+            "pdf_key": "home",
+            "page": 1,
+            "xref": 34,
+            "bbox_pdf_px": [
+              600.0,
+              4646.6455078125,
+              1123.0,
+              4995.3544921875
+            ],
+            "transform": [
+              523.0,
+              0.0,
+              -0.0,
+              348.709228515625,
+              600.0,
+              4646.6455078125
+            ],
+            "soft_mask_xref": 32
+          },
+          {
+            "pdf": "Vivi_TPR.pdf",
+            "pdf_key": "vivi",
+            "page": 1,
+            "xref": 34,
+            "bbox_pdf_px": [
+              -208.0,
+              797.6453857421875,
+              315.0,
+              1146.3546142578125
+            ],
+            "transform": [
+              523.0,
+              0.0,
+              -0.0,
+              348.709228515625,
+              -208.0,
+              797.6453857421875
+            ],
+            "soft_mask_xref": 32
+          }
+        ],
+        "match_evidence": "Exact cached Figma layer name and source crop geometry match the corresponding embedded PDF image, whose bytes repeat across those PDFs."
+      },
+      "sha256": "8b13c23696c03b4252c548b113145e199cb90716a4b2958c1d13f5d4d4ccfd62",
+      "bytes": 887685,
+      "width": 4096,
+      "height": 2731
+    },
+    "offers.flex-8": {
+      "path": "assets/figma-updated/photos/flex-8.jpeg",
+      "status": "available",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "home": {
+            "id": "1086:2278",
+            "name": "Prova1-19 1",
+            "asset_variable": "imgProva1191"
+          },
+          "vivi": {
+            "id": "1086:2340",
+            "name": "Prova1-19 1",
+            "asset_variable": "imgProva1191"
+          }
+        },
+        "pdf_occurrences": [
+          {
+            "pdf": "Homepage_TPR.pdf",
+            "pdf_key": "home",
+            "page": 1,
+            "xref": 64,
+            "bbox_pdf_px": [
+              592.0,
+              4223.98974609375,
+              2517.0,
+              5507.009765625
+            ],
+            "transform": [
+              1925.0,
+              0.0,
+              -0.0,
+              1283.0198974609375,
+              592.0,
+              4223.98974609375
+            ],
+            "soft_mask_xref": 62
+          },
+          {
+            "pdf": "Vivi_TPR.pdf",
+            "pdf_key": "vivi",
+            "page": 1,
+            "xref": 60,
+            "bbox_pdf_px": [
+              -216.0,
+              374.989990234375,
+              1709.0,
+              1658.0098876953125
+            ],
+            "transform": [
+              1925.0,
+              0.0,
+              -0.0,
+              1283.0198974609375,
+              -216.0,
+              374.989990234375
+            ],
+            "soft_mask_xref": 58
+          }
+        ],
+        "match_evidence": "Exact cached Figma layer name and source crop geometry match the corresponding embedded PDF image, whose bytes repeat across those PDFs."
+      },
+      "sha256": "9b9436816abd35f6bc952be1bcfd84c175b869b3b3e11c079b9d9d2618639a89",
+      "bytes": 982056,
+      "width": 4096,
+      "height": 2730
+    },
+    "offers.ufficio-virtuale": {
+      "path": "assets/figma-updated/photos/ufficio-virtuale.jpeg",
+      "status": "available",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "home": {
+            "id": "1086:2295",
+            "name": "Prova1-18 1",
+            "asset_variable": "imgProva1181"
+          },
+          "vivi": {
+            "id": "1086:2357",
+            "name": "Prova1-18 1",
+            "asset_variable": "imgProva1181"
+          }
+        },
+        "pdf_occurrences": [
+          {
+            "pdf": "Homepage_TPR.pdf",
+            "pdf_key": "home",
+            "page": 1,
+            "xref": 18,
+            "bbox_pdf_px": [
+              1597.0,
+              4621.79931640625,
+              2439.0,
+              5183.201171875
+            ],
+            "transform": [
+              842.0,
+              0.0,
+              -0.0,
+              561.4019165039062,
+              1597.0,
+              4621.79931640625
+            ],
+            "soft_mask_xref": 16
+          },
+          {
+            "pdf": "Vivi_TPR.pdf",
+            "pdf_key": "vivi",
+            "page": 1,
+            "xref": 18,
+            "bbox_pdf_px": [
+              789.0,
+              772.7991333007812,
+              1631.0,
+              1334.2010498046875
+            ],
+            "transform": [
+              842.0,
+              0.0,
+              -0.0,
+              561.4019165039062,
+              789.0,
+              772.7991333007812
+            ],
+            "soft_mask_xref": 16
+          }
+        ],
+        "match_evidence": "Exact cached Figma layer name and source crop geometry match the corresponding embedded PDF image, whose bytes repeat across those PDFs."
+      },
+      "sha256": "6c11da191a60247afa22b336600fb34425a55132412d7663e912165ebc6e5710",
+      "bytes": 1062665,
+      "width": 4096,
+      "height": 2731
+    },
+    "offers.company": {
+      "path": "assets/figma-updated/photos/company.jpeg",
+      "status": "available",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "home": {
+            "id": "1086:2237",
+            "name": "Prova1-17_1 1",
+            "asset_variable": "imgProva11711"
+          },
+          "vivi": {
+            "id": "1086:2368",
+            "name": "Prova1-17_1 1",
+            "asset_variable": "imgProva11711"
+          }
+        },
+        "pdf_occurrences": [
+          {
+            "pdf": "Homepage_TPR.pdf",
+            "pdf_key": "home",
+            "page": 1,
+            "xref": 50,
+            "bbox_pdf_px": [
+              -305.1714172363281,
+              6043.0,
+              1099.1715087890625,
+              6979.0
+            ],
+            "transform": [
+              1404.3428955078125,
+              0.0,
+              -0.0,
+              936.0,
+              -305.1714172363281,
+              6043.0
+            ],
+            "soft_mask_xref": 48
+          },
+          {
+            "pdf": "Vivi_TPR.pdf",
+            "pdf_key": "vivi",
+            "page": 1,
+            "xref": 8,
+            "bbox_pdf_px": [
+              -305.1714172363281,
+              1914.0,
+              1099.1715087890625,
+              2850.0
+            ],
+            "transform": [
+              1404.3428955078125,
+              0.0,
+              -0.0,
+              936.0,
+              -305.1714172363281,
+              1914.0
+            ],
+            "soft_mask_xref": 3
+          }
+        ],
+        "match_evidence": "Exact cached Figma layer name and source crop geometry match the corresponding embedded PDF image, whose bytes repeat across those PDFs."
+      },
+      "sha256": "9a48b78d3b4c64512dc07d29956d4e6d1a50d523f5ebc1dd95283294e580f985",
+      "bytes": 609485,
+      "width": 4096,
+      "height": 2730
+    },
+    "partners.1": {
+      "path": "assets/figma-updated/partners/partner-1.svg",
+      "status": "available",
+      "kind": "original-svg-paths",
+      "source": {
+        "figma_layers": {
+          "home": {
+            "id": "663:1818",
+            "name": null,
+            "asset_variable": "imgGroup161"
+          }
+        }
+      },
+      "sha256": "7f2c9cea61c5ef051807a57ef79521a3c8666499cb6fbe04e75e1f928a3a7032",
+      "note": "Original paths isolated from the supplied Homepage PDF; artwork is not redrawn."
+    },
+    "partners.2": {
+      "path": "assets/figma-updated/partners/partner-2-revo.svg",
+      "status": "available",
+      "kind": "original-svg-paths",
+      "source": {
+        "figma_layers": {
+          "home": {
+            "id": "663:1871",
+            "name": "RevoMarchioW",
+            "asset_variable": "imgRevoMarchioW"
+          }
+        }
+      },
+      "sha256": "f9b232a605acd66963a60cf820644daf275466b198c71f3594a6d05dbc6b4858",
+      "note": "Original paths isolated from the supplied Homepage PDF; artwork is not redrawn."
+    },
+    "partners.3": {
+      "path": "assets/figma-updated/partners/partner-3.svg",
+      "status": "available",
+      "kind": "original-svg-paths",
+      "source": {
+        "figma_layers": {
+          "home": {
+            "id": "663:1858",
+            "name": "Group",
+            "asset_variable": "imgGroup1"
+          }
+        }
+      },
+      "sha256": "80f14a8519b4150666481101af84911b2ae034b54936cb0489c47a4ca961c64d",
+      "note": "Original paths isolated from the supplied Homepage PDF; artwork is not redrawn."
+    },
+    "partners.4": {
+      "path": "assets/figma-updated/partners/partner-4.svg",
+      "status": "available",
+      "kind": "original-svg-paths",
+      "source": {
+        "figma_layers": {
+          "home": {
+            "id": "663:1822",
+            "name": null,
+            "asset_variable": "imgGroup160"
+          }
+        }
+      },
+      "sha256": "b1908819af05ef2d413b67555510c4a2ceb03c8a113477075d9fb257ba215d43",
+      "note": "Original paths isolated from the supplied Homepage PDF; artwork is not redrawn."
+    },
+    "about.offers": {
+      "path": "assets/figma-updated/photos/day-pass.jpeg",
+      "status": "available",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "about": {
+            "id": "1086:2391",
+            "name": "Prova1-20 1",
+            "asset_variable": "imgProva1201"
+          }
+        },
+        "pdf_occurrences": [
+          {
+            "pdf": "Homepage_TPR.pdf",
+            "pdf_key": "home",
+            "page": 1,
+            "xref": 80,
+            "bbox_pdf_px": [
+              -14.076942443847656,
+              4647.0,
+              616.076904296875,
+              5067.0
+            ],
+            "transform": [
+              630.1538696289062,
+              0.0,
+              -0.0,
+              419.9999694824219,
+              -14.076942443847656,
+              4647.0
+            ],
+            "soft_mask_xref": 78
+          },
+          {
+            "pdf": "Vivi_TPR.pdf",
+            "pdf_key": "vivi",
+            "page": 1,
+            "xref": 76,
+            "bbox_pdf_px": [
+              -822.0769653320312,
+              798.0,
+              -191.923095703125,
+              1218.0
+            ],
+            "transform": [
+              630.1538696289062,
+              0.0,
+              -0.0,
+              419.9999694824219,
+              -822.0769653320312,
+              798.0
+            ],
+            "soft_mask_xref": 74
+          },
+          {
+            "pdf": "About_TPR.pdf",
+            "pdf_key": "about",
+            "page": 1,
+            "xref": 40,
+            "bbox_pdf_px": [
+              101.92305755615234,
+              2610.0,
+              732.076904296875,
+              3030.0
+            ],
+            "transform": [
+              630.1538696289062,
+              0.0,
+              -0.0,
+              419.9999694824219,
+              101.92305755615234,
+              2610.0
+            ],
+            "soft_mask_xref": 38
+          }
+        ],
+        "match_evidence": "Exact cached Figma layer name and source crop geometry match the corresponding embedded PDF image, whose bytes repeat across those PDFs."
+      },
+      "sha256": "4fcb975f554725b9f07f93a8159df87c4283f005f7a1c389458092b901d90ca4",
+      "bytes": 576604,
+      "width": 4096,
+      "height": 2730
+    },
+    "about.events": {
+      "path": "assets/figma-updated/photos/the-dinner.jpeg",
+      "status": "available",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "about": {
+            "id": "1075:2268",
+            "name": "DSC04323 1",
+            "asset_variable": "imgDsc043231"
+          }
+        },
+        "pdf_occurrences": [
+          {
+            "pdf": "About_TPR.pdf",
+            "pdf_key": "about",
+            "page": 1,
+            "xref": 24,
+            "bbox_pdf_px": [
+              795.66845703125,
+              2429.0,
+              1356.33154296875,
+              3130.0
+            ],
+            "transform": [
+              560.6630249023438,
+              0.0,
+              -0.0,
+              700.9999389648438,
+              795.66845703125,
+              2429.0
+            ],
+            "soft_mask_xref": 22
+          },
+          {
+            "pdf": "Eventi_TPR.pdf",
+            "pdf_key": "events",
+            "page": 1,
+            "xref": 30,
+            "bbox_pdf_px": [
+              155.66845703125,
+              728.0000610351562,
+              716.3314819335938,
+              1429.0
+            ],
+            "transform": [
+              560.6630249023438,
+              0.0,
+              -0.0,
+              700.9999389648438,
+              155.66845703125,
+              728.0000610351562
+            ],
+            "soft_mask_xref": 28
+          }
+        ],
+        "match_evidence": "Exact cached Figma layer name and source crop geometry match the corresponding embedded PDF image, whose bytes repeat across those PDFs."
+      },
+      "sha256": "4fcd8e8450b617ff8746a1a88843f641012fb35418529efdb15bbbed09e72836",
+      "bytes": 2268585,
+      "width": 3276,
+      "height": 4096
+    },
+    "contact.map": {
+      "path": "assets/figma-updated/photos/location-map.jpeg",
+      "status": "available",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "about": {
+            "id": "649:2460",
+            "name": "image 74",
+            "asset_variable": "imgImage74"
+          },
+          "contacts": {
+            "id": "649:2504",
+            "name": "image 74",
+            "asset_variable": "imgImage74"
+          }
+        },
+        "pdf_occurrences": [
+          {
+            "pdf": "About_TPR.pdf",
+            "pdf_key": "about",
+            "page": 1,
+            "xref": 14,
+            "bbox_pdf_px": [
+              627.5455932617188,
+              3107.0,
+              1624.454345703125,
+              3931.0
+            ],
+            "transform": [
+              996.9087524414062,
+              0.0,
+              -0.0,
+              823.9999389648438,
+              627.5455932617188,
+              3107.0
+            ],
+            "soft_mask_xref": 12
+          },
+          {
+            "pdf": "Contatti_TPR.pdf",
+            "pdf_key": "contacts",
+            "page": 1,
+            "xref": 8,
+            "bbox_pdf_px": [
+              627.5455932617188,
+              333.00006103515625,
+              1624.454345703125,
+              1157.0
+            ],
+            "transform": [
+              996.9087524414062,
+              0.0,
+              -0.0,
+              823.9999389648438,
+              627.5455932617188,
+              333.00006103515625
+            ],
+            "soft_mask_xref": 3
+          }
+        ],
+        "match_evidence": "Exact cached Figma layer name and source crop geometry match the corresponding embedded PDF image, whose bytes repeat across those PDFs."
+      },
+      "sha256": "f63943ba46c127873d4d1800b45b1df48f60ab7143f0e2a488c80b2215387a56",
+      "bytes": 88361,
+      "width": 836,
+      "height": 691
+    },
+    "events.shamans-ritual": {
+      "path": "assets/figma-updated/photos/shamans-ritual.jpeg",
+      "status": "available",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "events": {
+            "id": "1075:2207",
+            "name": "Sciamana_20_10_2026-7 1",
+            "asset_variable": "imgSciamana2010202671"
+          }
+        },
+        "pdf_occurrences": [
+          {
+            "pdf": "Homepage_TPR.pdf",
+            "pdf_key": "home",
+            "page": 1,
+            "xref": 112,
+            "bbox_pdf_px": [
+              -335.4952697753906,
+              3220.34814453125,
+              1715.0819091796875,
+              4587.56640625
+            ],
+            "transform": [
+              2050.5771484375,
+              0.0,
+              -0.0,
+              1367.21826171875,
+              -335.4952697753906,
+              3220.34814453125
+            ],
+            "soft_mask_xref": 110
+          },
+          {
+            "pdf": "Eventi_TPR.pdf",
+            "pdf_key": "events",
+            "page": 1,
+            "xref": 50,
+            "bbox_pdf_px": [
+              -598.201904296875,
+              778.0,
+              189.20196533203125,
+              1303.0
+            ],
+            "transform": [
+              787.4038696289062,
+              0.0,
+              -0.0,
+              525.0,
+              -598.201904296875,
+              778.0
+            ],
+            "soft_mask_xref": 48
+          }
+        ],
+        "match_evidence": "Exact cached Figma layer name and source crop geometry match the corresponding embedded PDF image, whose bytes repeat across those PDFs."
+      },
+      "sha256": "a496f04183367ac866410633f9d94bc1afbb3e04cdfc74d27f71676601fd58ad",
+      "bytes": 1539971,
+      "width": 4096,
+      "height": 2731
+    },
+    "events.the-dinner": {
+      "path": "assets/figma-updated/photos/the-dinner.jpeg",
+      "status": "available",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "events": {
+            "id": "1075:2209",
+            "name": "DSC04323 1",
+            "asset_variable": "imgDsc043231"
+          }
+        },
+        "pdf_occurrences": [
+          {
+            "pdf": "About_TPR.pdf",
+            "pdf_key": "about",
+            "page": 1,
+            "xref": 24,
+            "bbox_pdf_px": [
+              795.66845703125,
+              2429.0,
+              1356.33154296875,
+              3130.0
+            ],
+            "transform": [
+              560.6630249023438,
+              0.0,
+              -0.0,
+              700.9999389648438,
+              795.66845703125,
+              2429.0
+            ],
+            "soft_mask_xref": 22
+          },
+          {
+            "pdf": "Eventi_TPR.pdf",
+            "pdf_key": "events",
+            "page": 1,
+            "xref": 30,
+            "bbox_pdf_px": [
+              155.66845703125,
+              728.0000610351562,
+              716.3314819335938,
+              1429.0
+            ],
+            "transform": [
+              560.6630249023438,
+              0.0,
+              -0.0,
+              700.9999389648438,
+              155.66845703125,
+              728.0000610351562
+            ],
+            "soft_mask_xref": 28
+          }
+        ],
+        "match_evidence": "Exact cached Figma layer name and source crop geometry match the corresponding embedded PDF image, whose bytes repeat across those PDFs."
+      },
+      "sha256": "4fcd8e8450b617ff8746a1a88843f641012fb35418529efdb15bbbed09e72836",
+      "bytes": 2268585,
+      "width": 3276,
+      "height": 4096
+    },
+    "events.ceramic-workshop": {
+      "path": "assets/figma-updated/photos/ceramic-workshop.jpeg",
+      "status": "available",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "events": {
+            "id": "1075:2208",
+            "name": "Ceramica_21_10_2026-7 1",
+            "asset_variable": "imgCeramica2110202671"
+          }
+        },
+        "pdf_occurrences": [
+          {
+            "pdf": "Eventi_TPR.pdf",
+            "pdf_key": "events",
+            "page": 1,
+            "xref": 40,
+            "bbox_pdf_px": [
+              707.9988403320312,
+              579.000244140625,
+              1462.3553466796875,
+              1697.363037109375
+            ],
+            "transform": [
+              738.7109375,
+              10.431642532348633,
+              -15.645553588867188,
+              1107.93115234375,
+              723.6444091796875,
+              579.000244140625
+            ],
+            "soft_mask_xref": 38
+          }
+        ],
+        "match_evidence": "Exact cached Figma layer name and source crop geometry match the corresponding embedded PDF image, whose bytes repeat across those PDFs."
+      },
+      "sha256": "ef934bbdc613ae22948ad3f0ceeb15a9e5047dc7b8234b121f4e27d71fe806b6",
+      "bytes": 1295698,
+      "width": 2731,
+      "height": 4096
+    },
+    "events.the-peoples-week-talk": {
+      "path": "assets/figma-updated/photos/the-peoples-week-talk.jpeg",
+      "status": "available",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "events": {
+            "id": "1075:2206",
+            "name": "DSC04478 1",
+            "asset_variable": "imgDsc044781"
+          }
+        },
+        "pdf_occurrences": [
+          {
+            "pdf": "Eventi_TPR.pdf",
+            "pdf_key": "events",
+            "page": 1,
+            "xref": 20,
+            "bbox_pdf_px": [
+              1436.0,
+              890.9771728515625,
+              1997.0,
+              1265.0228271484375
+            ],
+            "transform": [
+              561.0,
+              0.0,
+              -0.0,
+              374.045654296875,
+              1436.0,
+              890.9771728515625
+            ],
+            "soft_mask_xref": 18
+          }
+        ],
+        "match_evidence": "Exact cached Figma layer name and source crop geometry match the corresponding embedded PDF image, whose bytes repeat across those PDFs."
+      },
+      "sha256": "f51da589cc73cb02180ffa44029df6b2e3c183210c47f55b56e74f084a59923a",
+      "bytes": 1210000,
+      "width": 4096,
+      "height": 2731
+    },
+    "rooms.coworking.artwork": {
+      "path": "assets/figma-updated/composites/home-coworking-photo-eye-2x.webp",
+      "status": "available",
+      "kind": "lossless-static-composite",
+      "source": {
+        "figma_layers": {
+          "coworking": {
+            "id": "809:3284",
+            "name": "Vector",
+            "asset_variable": "imgVector1"
+          }
+        }
+      },
+      "sha256": "4d8a2948d99d934456619aa21679b4290bd256b98d7e1826f8bc4acb378abc33",
+      "note": "Original photo/eye clip groups isolated from PDF operators before rendering. Live headings and controls are implemented separately. Exact decoded RGBA equals the PNG extraction."
+    },
+    "rooms.coworking.picture": {
+      "path": null,
+      "status": "missing-exact-standalone-room-photo",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "coworking": {
+            "id": "809:3286",
+            "name": "image 74",
+            "asset_variable": "imgImage74"
+          }
+        }
+      },
+      "note": "No standalone room PDF or accessible raw source file was supplied for this cached detailed-room role. Generic homepage image74 is a different source version and is not substituted.",
+      "source_versions": {
+        "home_instance": {
+          "path": "assets/figma-updated/photos/home-room-instance.jpeg",
+          "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+          "width": 1080,
+          "height": 1440,
+          "pdf": "Homepage_TPR.pdf",
+          "xref": 134,
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "scope": "Only the cached homepage Ascensore instance and its original image74 layers.",
+          "image74_image_geometry_px": {
+            "width": 636,
+            "height": 848,
+            "x": -38,
+            "y": -207
+          },
+          "wrapper_geometry_px": {
+            "width": 560,
+            "height": 434
+          }
+        },
+        "standalone": {
+          "path": null,
+          "status": "unprovided-source"
+        }
+      }
+    },
+    "rooms.coworking.cards.postazioni": {
+      "path": null,
+      "status": "missing-exact-standalone-room-photo",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "coworking": {
+            "id": "1085:2343",
+            "name": "Prova1-10 1",
+            "asset_variable": "imgProva1101"
+          }
+        }
+      },
+      "note": "No standalone room PDF or accessible raw source file was supplied for this cached detailed-room role. Generic homepage image74 is a different source version and is not substituted.",
+      "source_versions": {
+        "home_instance": {
+          "path": "assets/figma-updated/photos/home-room-instance.jpeg",
+          "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+          "width": 1080,
+          "height": 1440,
+          "pdf": "Homepage_TPR.pdf",
+          "xref": 134,
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "scope": "Only the cached homepage Ascensore instance and its original image74 layers.",
+          "image74_image_geometry_px": {
+            "width": 636,
+            "height": 848,
+            "x": -38,
+            "y": -255
+          },
+          "wrapper_geometry_px": {
+            "width": 560,
+            "height": 338
+          }
+        },
+        "standalone": {
+          "path": null,
+          "status": "unprovided-source"
+        }
+      }
+    },
+    "rooms.coworking.cards.sale-riunioni": {
+      "path": null,
+      "status": "missing-exact-standalone-room-photo",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "coworking": {
+            "id": "1085:2344",
+            "name": "Prova1-2 1",
+            "asset_variable": "imgProva121"
+          }
+        }
+      },
+      "note": "No standalone room PDF or accessible raw source file was supplied for this cached detailed-room role. Generic homepage image74 is a different source version and is not substituted.",
+      "source_versions": {
+        "home_instance": {
+          "path": "assets/figma-updated/photos/home-room-instance.jpeg",
+          "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+          "width": 1080,
+          "height": 1440,
+          "pdf": "Homepage_TPR.pdf",
+          "xref": 134,
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "scope": "Only the cached homepage Ascensore instance and its original image74 layers.",
+          "image74_image_geometry_px": {
+            "width": 636,
+            "height": 848,
+            "x": -38,
+            "y": -255
+          },
+          "wrapper_geometry_px": {
+            "width": 560,
+            "height": 338
+          }
+        },
+        "standalone": {
+          "path": null,
+          "status": "unprovided-source"
+        }
+      }
+    },
+    "rooms.coworking.cards.eventi": {
+      "path": "assets/figma-updated/photos/the-dinner.jpeg",
+      "status": "available-cross-page-source",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "coworking": {
+            "id": "1085:2347",
+            "name": "DSC04323 1",
+            "asset_variable": "imgDsc043231"
+          }
+        },
+        "pdf_occurrences": [
+          {
+            "pdf": "About_TPR.pdf",
+            "pdf_key": "about",
+            "page": 1,
+            "xref": 24,
+            "bbox_pdf_px": [
+              795.66845703125,
+              2429.0,
+              1356.33154296875,
+              3130.0
+            ],
+            "transform": [
+              560.6630249023438,
+              0.0,
+              -0.0,
+              700.9999389648438,
+              795.66845703125,
+              2429.0
+            ],
+            "soft_mask_xref": 22
+          },
+          {
+            "pdf": "Eventi_TPR.pdf",
+            "pdf_key": "events",
+            "page": 1,
+            "xref": 30,
+            "bbox_pdf_px": [
+              155.66845703125,
+              728.0000610351562,
+              716.3314819335938,
+              1429.0
+            ],
+            "transform": [
+              560.6630249023438,
+              0.0,
+              -0.0,
+              700.9999389648438,
+              155.66845703125,
+              728.0000610351562
+            ],
+            "soft_mask_xref": 28
+          }
+        ],
+        "match_evidence": "Cached room photo1085:2347 is DSC04323 1 with560×701 centered crop. Same original layer name and crop appear on About1075:2268 and Events1075:2209; their PDF embedded photo SHA256 matches. No standalone room PDF was supplied."
+      },
+      "sha256": "4fcd8e8450b617ff8746a1a88843f641012fb35418529efdb15bbbed09e72836",
+      "bytes": 2268585,
+      "width": 3276,
+      "height": 4096
+    },
+    "rooms.reformer.artwork": {
+      "path": null,
+      "status": "missing-exact-left-photo-eye-composition",
+      "kind": "composed-artwork",
+      "source": {
+        "figma_layers": {
+          "move": {
+            "id": "643:1825",
+            "name": "Vector",
+            "asset_variable": "imgVector1"
+          }
+        }
+      }
+    },
+    "rooms.reformer.picture": {
+      "path": null,
+      "status": "missing-exact-standalone-room-photo",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "move": {
+            "id": "643:1827",
+            "name": "image 74",
+            "asset_variable": "imgImage74"
+          }
+        }
+      },
+      "note": "No standalone room PDF or accessible raw source file was supplied for this cached detailed-room role. Generic homepage image74 is a different source version and is not substituted.",
+      "source_versions": {
+        "home_instance": {
+          "path": "assets/figma-updated/photos/home-room-instance.jpeg",
+          "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+          "width": 1080,
+          "height": 1440,
+          "pdf": "Homepage_TPR.pdf",
+          "xref": 134,
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "scope": "Only the cached homepage Ascensore instance and its original image74 layers.",
+          "image74_image_geometry_px": {
+            "width": 636,
+            "height": 848,
+            "x": -38,
+            "y": -207
+          },
+          "wrapper_geometry_px": {
+            "width": 560,
+            "height": 434
+          }
+        },
+        "standalone": {
+          "path": null,
+          "status": "unprovided-source"
+        }
+      }
+    },
+    "rooms.reformer.cards.studio": {
+      "path": null,
+      "status": "missing-exact-standalone-room-photo",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "move": {
+            "id": "1085:2354",
+            "name": "Prova1-5 1",
+            "asset_variable": "imgProva151"
+          }
+        }
+      },
+      "note": "No standalone room PDF or accessible raw source file was supplied for this cached detailed-room role. Generic homepage image74 is a different source version and is not substituted.",
+      "source_versions": {
+        "home_instance": {
+          "path": "assets/figma-updated/photos/home-room-instance.jpeg",
+          "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+          "width": 1080,
+          "height": 1440,
+          "pdf": "Homepage_TPR.pdf",
+          "xref": 134,
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "scope": "Only the cached homepage Ascensore instance and its original image74 layers.",
+          "image74_image_geometry_px": {
+            "width": 636,
+            "height": 848,
+            "x": -38,
+            "y": -255
+          },
+          "wrapper_geometry_px": {
+            "width": 560,
+            "height": 338
+          }
+        },
+        "standalone": {
+          "path": null,
+          "status": "unprovided-source"
+        }
+      }
+    },
+    "rooms.reformer.cards.classi": {
+      "path": null,
+      "status": "missing-exact-standalone-room-photo",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "move": {
+            "id": "1074:2832",
+            "name": "Pilates_Fuel_21_10_2026-29 1",
+            "asset_variable": "imgPilatesFuel21102026291"
+          }
+        }
+      },
+      "note": "No standalone room PDF or accessible raw source file was supplied for this cached detailed-room role. Generic homepage image74 is a different source version and is not substituted.",
+      "source_versions": {
+        "home_instance": {
+          "path": "assets/figma-updated/photos/home-room-instance.jpeg",
+          "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+          "width": 1080,
+          "height": 1440,
+          "pdf": "Homepage_TPR.pdf",
+          "xref": 134,
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "scope": "Only the cached homepage Ascensore instance and its original image74 layers.",
+          "image74_image_geometry_px": {
+            "width": 636,
+            "height": 848,
+            "x": -38,
+            "y": -255
+          },
+          "wrapper_geometry_px": {
+            "width": 560,
+            "height": 338
+          }
+        },
+        "standalone": {
+          "path": null,
+          "status": "unprovided-source"
+        }
+      }
+    },
+    "rooms.reformer.cards.attrezzature": {
+      "path": null,
+      "status": "missing-exact-standalone-room-photo",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "move": {
+            "id": "1085:2353",
+            "name": "Prova1-11 1",
+            "asset_variable": "imgProva1111"
+          }
+        }
+      },
+      "note": "No standalone room PDF or accessible raw source file was supplied for this cached detailed-room role. Generic homepage image74 is a different source version and is not substituted.",
+      "source_versions": {
+        "home_instance": {
+          "path": "assets/figma-updated/photos/home-room-instance.jpeg",
+          "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+          "width": 1080,
+          "height": 1440,
+          "pdf": "Homepage_TPR.pdf",
+          "xref": 134,
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "scope": "Only the cached homepage Ascensore instance and its original image74 layers.",
+          "image74_image_geometry_px": {
+            "width": 636,
+            "height": 848,
+            "x": -38,
+            "y": -255
+          },
+          "wrapper_geometry_px": {
+            "width": 560,
+            "height": 338
+          }
+        },
+        "standalone": {
+          "path": null,
+          "status": "unprovided-source"
+        }
+      }
+    },
+    "rooms.wellness.artwork": {
+      "path": null,
+      "status": "missing-exact-left-photo-eye-composition",
+      "kind": "composed-artwork",
+      "source": {
+        "figma_layers": {
+          "recharge": {
+            "id": "643:1966",
+            "name": "Vector",
+            "asset_variable": "imgVector1"
+          }
+        }
+      }
+    },
+    "rooms.wellness.picture": {
+      "path": null,
+      "status": "missing-exact-standalone-room-photo",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "recharge": {
+            "id": "643:1968",
+            "name": "image 74",
+            "asset_variable": "imgImage74"
+          }
+        }
+      },
+      "note": "No standalone room PDF or accessible raw source file was supplied for this cached detailed-room role. Generic homepage image74 is a different source version and is not substituted.",
+      "source_versions": {
+        "home_instance": {
+          "path": "assets/figma-updated/photos/home-room-instance.jpeg",
+          "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+          "width": 1080,
+          "height": 1440,
+          "pdf": "Homepage_TPR.pdf",
+          "xref": 134,
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "scope": "Only the cached homepage Ascensore instance and its original image74 layers.",
+          "image74_image_geometry_px": {
+            "width": 636,
+            "height": 848,
+            "x": -38,
+            "y": -207
+          },
+          "wrapper_geometry_px": {
+            "width": 560,
+            "height": 434
+          }
+        },
+        "standalone": {
+          "path": null,
+          "status": "unprovided-source"
+        }
+      }
+    },
+    "rooms.wellness.cards.gym": {
+      "path": null,
+      "status": "missing-exact-standalone-room-photo",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "recharge": {
+            "id": "1085:2357",
+            "name": "Prova1-9 1",
+            "asset_variable": "imgProva191"
+          }
+        }
+      },
+      "note": "No standalone room PDF or accessible raw source file was supplied for this cached detailed-room role. Generic homepage image74 is a different source version and is not substituted.",
+      "source_versions": {
+        "home_instance": {
+          "path": "assets/figma-updated/photos/home-room-instance.jpeg",
+          "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+          "width": 1080,
+          "height": 1440,
+          "pdf": "Homepage_TPR.pdf",
+          "xref": 134,
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "scope": "Only the cached homepage Ascensore instance and its original image74 layers.",
+          "image74_image_geometry_px": {
+            "width": 636,
+            "height": 848,
+            "x": -38,
+            "y": -255
+          },
+          "wrapper_geometry_px": {
+            "width": 560,
+            "height": 338
+          }
+        },
+        "standalone": {
+          "path": null,
+          "status": "unprovided-source"
+        }
+      }
+    },
+    "rooms.wellness.cards.contrast-therapy": {
+      "path": null,
+      "status": "missing-exact-standalone-room-photo",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "recharge": {
+            "id": "1085:2356",
+            "name": "Prova1-13 1",
+            "asset_variable": "imgProva1131"
+          }
+        }
+      },
+      "note": "No standalone room PDF or accessible raw source file was supplied for this cached detailed-room role. Generic homepage image74 is a different source version and is not substituted.",
+      "source_versions": {
+        "home_instance": {
+          "path": "assets/figma-updated/photos/home-room-instance.jpeg",
+          "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+          "width": 1080,
+          "height": 1440,
+          "pdf": "Homepage_TPR.pdf",
+          "xref": 134,
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "scope": "Only the cached homepage Ascensore instance and its original image74 layers.",
+          "image74_image_geometry_px": {
+            "width": 636,
+            "height": 848,
+            "x": -38,
+            "y": -255
+          },
+          "wrapper_geometry_px": {
+            "width": 560,
+            "height": 338
+          }
+        },
+        "standalone": {
+          "path": null,
+          "status": "unprovided-source"
+        }
+      }
+    },
+    "rooms.wellness.cards.longevity": {
+      "path": null,
+      "status": "missing-exact-coming-soon-vector",
+      "kind": "coming-soon-icon",
+      "source": {
+        "figma_layers": {
+          "recharge": {
+            "id": "1074:2889",
+            "name": null,
+            "asset_variable": "imgFrame1618873434"
+          }
+        }
+      },
+      "note": "Cached source uses imgFrame1618873434 icon, not a photo."
+    },
+    "rooms.bar.artwork": {
+      "path": null,
+      "status": "missing-exact-left-photo-eye-composition",
+      "kind": "composed-artwork",
+      "source": {
+        "figma_layers": {
+          "fuel": {
+            "id": "643:1897",
+            "name": "Vector",
+            "asset_variable": "imgVector1"
+          }
+        }
+      }
+    },
+    "rooms.bar.picture": {
+      "path": null,
+      "status": "missing-exact-standalone-room-photo",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "fuel": {
+            "id": "643:1899",
+            "name": "image 74",
+            "asset_variable": "imgImage74"
+          }
+        }
+      },
+      "note": "No standalone room PDF or accessible raw source file was supplied for this cached detailed-room role. Generic homepage image74 is a different source version and is not substituted.",
+      "source_versions": {
+        "home_instance": {
+          "path": "assets/figma-updated/photos/home-room-instance.jpeg",
+          "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+          "width": 1080,
+          "height": 1440,
+          "pdf": "Homepage_TPR.pdf",
+          "xref": 134,
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "scope": "Only the cached homepage Ascensore instance and its original image74 layers.",
+          "image74_image_geometry_px": {
+            "width": 636,
+            "height": 848,
+            "x": -38,
+            "y": -207
+          },
+          "wrapper_geometry_px": {
+            "width": 560,
+            "height": 434
+          }
+        },
+        "standalone": {
+          "path": null,
+          "status": "unprovided-source"
+        }
+      }
+    },
+    "rooms.bar.cards.servizi": {
+      "path": null,
+      "status": "missing-exact-standalone-room-photo",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "fuel": {
+            "id": "1074:2893",
+            "name": "DSC03630 1",
+            "asset_variable": "imgDsc036301"
+          }
+        }
+      },
+      "note": "No standalone room PDF or accessible raw source file was supplied for this cached detailed-room role. Generic homepage image74 is a different source version and is not substituted.",
+      "source_versions": {
+        "home_instance": {
+          "path": "assets/figma-updated/photos/home-room-instance.jpeg",
+          "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+          "width": 1080,
+          "height": 1440,
+          "pdf": "Homepage_TPR.pdf",
+          "xref": 134,
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "scope": "Only the cached homepage Ascensore instance and its original image74 layers.",
+          "image74_image_geometry_px": {
+            "width": 636,
+            "height": 848,
+            "x": -38,
+            "y": -255
+          },
+          "wrapper_geometry_px": {
+            "width": 560,
+            "height": 338
+          }
+        },
+        "standalone": {
+          "path": null,
+          "status": "unprovided-source"
+        }
+      }
+    },
+    "rooms.bar.cards.accessibilita": {
+      "path": null,
+      "status": "missing-exact-standalone-room-photo",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "fuel": {
+            "id": "1086:2208",
+            "name": "Prova1-3 1",
+            "asset_variable": "imgProva131"
+          }
+        }
+      },
+      "note": "No standalone room PDF or accessible raw source file was supplied for this cached detailed-room role. Generic homepage image74 is a different source version and is not substituted.",
+      "source_versions": {
+        "home_instance": {
+          "path": "assets/figma-updated/photos/home-room-instance.jpeg",
+          "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+          "width": 1080,
+          "height": 1440,
+          "pdf": "Homepage_TPR.pdf",
+          "xref": 134,
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "scope": "Only the cached homepage Ascensore instance and its original image74 layers.",
+          "image74_image_geometry_px": {
+            "width": 636,
+            "height": 848,
+            "x": -38,
+            "y": -255
+          },
+          "wrapper_geometry_px": {
+            "width": 560,
+            "height": 338
+          }
+        },
+        "standalone": {
+          "path": null,
+          "status": "unprovided-source"
+        }
+      }
+    },
+    "rooms.bar.cards.storage": {
+      "path": null,
+      "status": "missing-exact-standalone-room-photo",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "fuel": {
+            "id": "1086:2206",
+            "name": "Prova1-15 1",
+            "asset_variable": "imgProva1151"
+          }
+        }
+      },
+      "note": "No standalone room PDF or accessible raw source file was supplied for this cached detailed-room role. Generic homepage image74 is a different source version and is not substituted.",
+      "source_versions": {
+        "home_instance": {
+          "path": "assets/figma-updated/photos/home-room-instance.jpeg",
+          "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+          "width": 1080,
+          "height": 1440,
+          "pdf": "Homepage_TPR.pdf",
+          "xref": 134,
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "scope": "Only the cached homepage Ascensore instance and its original image74 layers.",
+          "image74_image_geometry_px": {
+            "width": 636,
+            "height": 848,
+            "x": -38,
+            "y": -255
+          },
+          "wrapper_geometry_px": {
+            "width": 560,
+            "height": 338
+          }
+        },
+        "standalone": {
+          "path": null,
+          "status": "unprovided-source"
+        }
+      }
+    },
+    "rooms.media.artwork": {
+      "path": null,
+      "status": "missing-exact-left-photo-eye-composition",
+      "kind": "composed-artwork",
+      "source": {
+        "figma_layers": {
+          "media": {
+            "id": "643:2035",
+            "name": "Vector",
+            "asset_variable": "imgVector1"
+          }
+        }
+      }
+    },
+    "rooms.media.picture": {
+      "path": null,
+      "status": "missing-exact-standalone-room-photo",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "media": {
+            "id": "643:2037",
+            "name": "image 74",
+            "asset_variable": "imgImage74"
+          }
+        }
+      },
+      "note": "No standalone room PDF or accessible raw source file was supplied for this cached detailed-room role. Generic homepage image74 is a different source version and is not substituted.",
+      "source_versions": {
+        "home_instance": {
+          "path": "assets/figma-updated/photos/home-room-instance.jpeg",
+          "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+          "width": 1080,
+          "height": 1440,
+          "pdf": "Homepage_TPR.pdf",
+          "xref": 134,
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "scope": "Only the cached homepage Ascensore instance and its original image74 layers.",
+          "image74_image_geometry_px": {
+            "width": 636,
+            "height": 848,
+            "x": -38,
+            "y": -207
+          },
+          "wrapper_geometry_px": {
+            "width": 560,
+            "height": 434
+          }
+        },
+        "standalone": {
+          "path": null,
+          "status": "unprovided-source"
+        }
+      }
+    },
+    "rooms.media.cards.podcast": {
+      "path": null,
+      "status": "missing-exact-standalone-room-photo",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "media": {
+            "id": "1086:2219",
+            "name": "Prova1-7 1",
+            "asset_variable": "imgProva171"
+          }
+        }
+      },
+      "note": "No standalone room PDF or accessible raw source file was supplied for this cached detailed-room role. Generic homepage image74 is a different source version and is not substituted.",
+      "source_versions": {
+        "home_instance": {
+          "path": "assets/figma-updated/photos/home-room-instance.jpeg",
+          "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+          "width": 1080,
+          "height": 1440,
+          "pdf": "Homepage_TPR.pdf",
+          "xref": 134,
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "scope": "Only the cached homepage Ascensore instance and its original image74 layers.",
+          "image74_image_geometry_px": {
+            "width": 636,
+            "height": 848,
+            "x": -38,
+            "y": -255
+          },
+          "wrapper_geometry_px": {
+            "width": 560,
+            "height": 338
+          }
+        },
+        "standalone": {
+          "path": null,
+          "status": "unprovided-source"
+        }
+      }
+    },
+    "rooms.media.cards.set-fotografico": {
+      "path": null,
+      "status": "missing-exact-standalone-room-photo",
+      "kind": "photo",
+      "source": {
+        "figma_layers": {
+          "media": {
+            "id": "1086:2220",
+            "name": "Prova1-21 1",
+            "asset_variable": "imgProva1211"
+          }
+        }
+      },
+      "note": "No standalone room PDF or accessible raw source file was supplied for this cached detailed-room role. Generic homepage image74 is a different source version and is not substituted.",
+      "source_versions": {
+        "home_instance": {
+          "path": "assets/figma-updated/photos/home-room-instance.jpeg",
+          "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+          "width": 1080,
+          "height": 1440,
+          "pdf": "Homepage_TPR.pdf",
+          "xref": 134,
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "scope": "Only the cached homepage Ascensore instance and its original image74 layers.",
+          "image74_image_geometry_px": {
+            "width": 636,
+            "height": 848,
+            "x": -38,
+            "y": -255
+          },
+          "wrapper_geometry_px": {
+            "width": 560,
+            "height": 338
+          }
+        },
+        "standalone": {
+          "path": null,
+          "status": "unprovided-source"
+        }
+      }
+    },
+    "rooms.media.cards.studio-audio": {
+      "path": null,
+      "status": "missing-exact-coming-soon-vector",
+      "kind": "coming-soon-icon",
+      "source": {
+        "figma_layers": {
+          "media": {
+            "id": "1074:2890",
+            "name": null,
+            "asset_variable": "imgFrame1618873434"
+          }
+        }
+      },
+      "note": "Cached source uses imgFrame1618873434 icon, not a photo."
+    }
+  },
+  "photo_inventory": {
+    "98604344e4689c2f": {
+      "path": "assets/figma-updated/photos/home-hero-room.jpeg",
+      "sha256": "98604344e4689c2feadf8316b132888bebd50f404ae0e0b7a1355bde90027bd0",
+      "bytes": 1032535,
+      "width": 4096,
+      "height": 2730,
+      "original_extraction_filename": "98604344e4689c2f.jpeg",
+      "sources": [
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 130,
+          "bbox_pdf_px": [
+            -131.00003051757812,
+            -178.0638427734375,
+            1514.0,
+            918.3350830078125
+          ],
+          "transform": [
+            1644.9998779296875,
+            0.00014400000509340316,
+            -9.600000339560211e-05,
+            1096.3988037109375,
+            -130.99993896484375,
+            -178.0638427734375
+          ],
+          "soft_mask_xref": 128
+        },
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 130,
+          "bbox_pdf_px": [
+            -661.5178833007812,
+            1947.78271484375,
+            1304.831298828125,
+            3258.36181640625
+          ],
+          "transform": [
+            1966.3489990234375,
+            0.0001720000000204891,
+            -0.00011500000255182385,
+            1310.5791015625,
+            -661.5177612304688,
+            1947.78271484375
+          ],
+          "soft_mask_xref": 128
+        }
+      ]
+    },
+    "cea95061e8eb0bf9": {
+      "path": "assets/figma-updated/photos/home-room-instance.jpeg",
+      "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+      "bytes": 190312,
+      "width": 1080,
+      "height": 1440,
+      "original_extraction_filename": "cea95061e8eb0bf9.jpeg",
+      "sources": [
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 134,
+          "bbox_pdf_px": [
+            1474.0,
+            2298.0,
+            2110.0,
+            3146.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            1474.0,
+            2298.0
+          ],
+          "soft_mask_xref": 132
+        },
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 134,
+          "bbox_pdf_px": [
+            2754.0,
+            2250.0,
+            3390.0,
+            3098.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            2754.0,
+            2250.0
+          ],
+          "soft_mask_xref": 132
+        },
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 134,
+          "bbox_pdf_px": [
+            2114.0,
+            2250.0,
+            2750.0,
+            3098.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            2114.0,
+            2250.0
+          ],
+          "soft_mask_xref": 132
+        },
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 134,
+          "bbox_pdf_px": [
+            1474.0,
+            2250.0,
+            2110.0,
+            3098.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            1474.0,
+            2250.0
+          ],
+          "soft_mask_xref": 132
+        },
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 134,
+          "bbox_pdf_px": [
+            1474.0,
+            3250.0,
+            2110.0,
+            4098.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            1474.0,
+            3250.0
+          ],
+          "soft_mask_xref": 132
+        },
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 134,
+          "bbox_pdf_px": [
+            1474.0,
+            3202.0,
+            2110.0,
+            4050.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            1474.0,
+            3202.0
+          ],
+          "soft_mask_xref": 132
+        },
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 134,
+          "bbox_pdf_px": [
+            2754.0,
+            3202.0,
+            3390.0,
+            4050.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            2754.0,
+            3202.0
+          ],
+          "soft_mask_xref": 132
+        },
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 134,
+          "bbox_pdf_px": [
+            2114.0,
+            3202.0,
+            2750.0,
+            4050.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            2114.0,
+            3202.0
+          ],
+          "soft_mask_xref": 132
+        },
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 134,
+          "bbox_pdf_px": [
+            1474.0,
+            3250.0,
+            2110.0,
+            4098.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            1474.0,
+            3250.0
+          ],
+          "soft_mask_xref": 132
+        },
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 134,
+          "bbox_pdf_px": [
+            2754.0,
+            3202.0,
+            3390.0,
+            4050.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            2754.0,
+            3202.0
+          ],
+          "soft_mask_xref": 132
+        },
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 134,
+          "bbox_pdf_px": [
+            2114.0,
+            3202.0,
+            2750.0,
+            4050.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            2114.0,
+            3202.0
+          ],
+          "soft_mask_xref": 132
+        },
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 134,
+          "bbox_pdf_px": [
+            1474.0,
+            3202.0,
+            2110.0,
+            4050.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            1474.0,
+            3202.0
+          ],
+          "soft_mask_xref": 132
+        },
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 134,
+          "bbox_pdf_px": [
+            1474.0,
+            3250.0,
+            2110.0,
+            4098.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            1474.0,
+            3250.0
+          ],
+          "soft_mask_xref": 132
+        },
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 134,
+          "bbox_pdf_px": [
+            2114.0,
+            3202.0,
+            2750.0,
+            4050.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            2114.0,
+            3202.0
+          ],
+          "soft_mask_xref": 132
+        },
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 134,
+          "bbox_pdf_px": [
+            2754.0,
+            3202.0,
+            3390.0,
+            4050.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            2754.0,
+            3202.0
+          ],
+          "soft_mask_xref": 132
+        },
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 134,
+          "bbox_pdf_px": [
+            1474.0,
+            3202.0,
+            2110.0,
+            4050.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            1474.0,
+            3202.0
+          ],
+          "soft_mask_xref": 132
+        },
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 134,
+          "bbox_pdf_px": [
+            1474.0,
+            3250.0,
+            2110.0,
+            4098.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            1474.0,
+            3250.0
+          ],
+          "soft_mask_xref": 132
+        },
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 134,
+          "bbox_pdf_px": [
+            2754.0,
+            3202.0,
+            3390.0,
+            4050.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            2754.0,
+            3202.0
+          ],
+          "soft_mask_xref": 132
+        },
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 134,
+          "bbox_pdf_px": [
+            2114.0,
+            3202.0,
+            2750.0,
+            4050.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            2114.0,
+            3202.0
+          ],
+          "soft_mask_xref": 132
+        },
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 134,
+          "bbox_pdf_px": [
+            1474.0,
+            3202.0,
+            2110.0,
+            4050.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            1474.0,
+            3202.0
+          ],
+          "soft_mask_xref": 132
+        },
+        {
+          "pdf": "About_TPR_Varianti.pdf",
+          "pdf_key": "about-variants",
+          "page": 1,
+          "xref": 18,
+          "bbox_pdf_px": [
+            -202.0,
+            783.0,
+            434.0,
+            1631.0
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            848.0,
+            -202.0,
+            783.0
+          ],
+          "soft_mask_xref": 16
+        }
+      ]
+    },
+    "b9655b2c85e2243f": {
+      "path": "assets/figma-updated/photos/source-home-xref-126.jpeg",
+      "sha256": "b9655b2c85e2243fda703f879f762eb098a99c6b1f169be733c8402526d8168f",
+      "bytes": 877471,
+      "width": 4096,
+      "height": 2731,
+      "original_extraction_filename": "b9655b2c85e2243f.jpeg",
+      "sources": [
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 126,
+          "bbox_pdf_px": [
+            -1986.0147705078125,
+            1467.88671875,
+            1519.5029296875,
+            3859.511474609375
+          ],
+          "transform": [
+            -3440.303466796875,
+            97.80937194824219,
+            65.21419525146484,
+            2293.8154296875,
+            1454.2886962890625,
+            1467.88671875
+          ],
+          "soft_mask_xref": 124
+        }
+      ]
+    },
+    "be398c413e83f49f": {
+      "path": "assets/figma-updated/photos/source-home-xref-116.jpeg",
+      "sha256": "be398c413e83f49fdaabbc9f9a9472e900b9873f73b3d99f84df849f8cd1120e",
+      "bytes": 1202189,
+      "width": 4096,
+      "height": 2731,
+      "original_extraction_filename": "be398c413e83f49f.jpeg",
+      "sources": [
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 116,
+          "bbox_pdf_px": [
+            -343.3289489746094,
+            3178.4375,
+            1946.5911865234375,
+            4705.2373046875
+          ],
+          "transform": [
+            2289.920166015625,
+            0.0,
+            -0.0,
+            1526.7999267578125,
+            -343.3289489746094,
+            3178.4375
+          ],
+          "soft_mask_xref": 114
+        }
+      ]
+    },
+    "a496f04183367ac8": {
+      "path": "assets/figma-updated/photos/shamans-ritual.jpeg",
+      "sha256": "a496f04183367ac866410633f9d94bc1afbb3e04cdfc74d27f71676601fd58ad",
+      "bytes": 1539971,
+      "width": 4096,
+      "height": 2731,
+      "original_extraction_filename": "a496f04183367ac8.jpeg",
+      "sources": [
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 112,
+          "bbox_pdf_px": [
+            -335.4952697753906,
+            3220.34814453125,
+            1715.0819091796875,
+            4587.56640625
+          ],
+          "transform": [
+            2050.5771484375,
+            0.0,
+            -0.0,
+            1367.21826171875,
+            -335.4952697753906,
+            3220.34814453125
+          ],
+          "soft_mask_xref": 110
+        },
+        {
+          "pdf": "Eventi_TPR.pdf",
+          "pdf_key": "events",
+          "page": 1,
+          "xref": 50,
+          "bbox_pdf_px": [
+            -598.201904296875,
+            778.0,
+            189.20196533203125,
+            1303.0
+          ],
+          "transform": [
+            787.4038696289062,
+            0.0,
+            -0.0,
+            525.0,
+            -598.201904296875,
+            778.0
+          ],
+          "soft_mask_xref": 48
+        }
+      ]
+    },
+    "4fcb975f554725b9": {
+      "path": "assets/figma-updated/photos/day-pass.jpeg",
+      "sha256": "4fcb975f554725b9f07f93a8159df87c4283f005f7a1c389458092b901d90ca4",
+      "bytes": 576604,
+      "width": 4096,
+      "height": 2730,
+      "original_extraction_filename": "4fcb975f554725b9.jpeg",
+      "sources": [
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 80,
+          "bbox_pdf_px": [
+            -14.076942443847656,
+            4647.0,
+            616.076904296875,
+            5067.0
+          ],
+          "transform": [
+            630.1538696289062,
+            0.0,
+            -0.0,
+            419.9999694824219,
+            -14.076942443847656,
+            4647.0
+          ],
+          "soft_mask_xref": 78
+        },
+        {
+          "pdf": "Vivi_TPR.pdf",
+          "pdf_key": "vivi",
+          "page": 1,
+          "xref": 76,
+          "bbox_pdf_px": [
+            -822.0769653320312,
+            798.0,
+            -191.923095703125,
+            1218.0
+          ],
+          "transform": [
+            630.1538696289062,
+            0.0,
+            -0.0,
+            419.9999694824219,
+            -822.0769653320312,
+            798.0
+          ],
+          "soft_mask_xref": 74
+        },
+        {
+          "pdf": "About_TPR.pdf",
+          "pdf_key": "about",
+          "page": 1,
+          "xref": 40,
+          "bbox_pdf_px": [
+            101.92305755615234,
+            2610.0,
+            732.076904296875,
+            3030.0
+          ],
+          "transform": [
+            630.1538696289062,
+            0.0,
+            -0.0,
+            419.9999694824219,
+            101.92305755615234,
+            2610.0
+          ],
+          "soft_mask_xref": 38
+        }
+      ]
+    },
+    "8b13c23696c03b42": {
+      "path": "assets/figma-updated/photos/all-inclusive.jpeg",
+      "sha256": "8b13c23696c03b4252c548b113145e199cb90716a4b2958c1d13f5d4d4ccfd62",
+      "bytes": 887685,
+      "width": 4096,
+      "height": 2731,
+      "original_extraction_filename": "8b13c23696c03b42.jpeg",
+      "sources": [
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 34,
+          "bbox_pdf_px": [
+            600.0,
+            4646.6455078125,
+            1123.0,
+            4995.3544921875
+          ],
+          "transform": [
+            523.0,
+            0.0,
+            -0.0,
+            348.709228515625,
+            600.0,
+            4646.6455078125
+          ],
+          "soft_mask_xref": 32
+        },
+        {
+          "pdf": "Vivi_TPR.pdf",
+          "pdf_key": "vivi",
+          "page": 1,
+          "xref": 34,
+          "bbox_pdf_px": [
+            -208.0,
+            797.6453857421875,
+            315.0,
+            1146.3546142578125
+          ],
+          "transform": [
+            523.0,
+            0.0,
+            -0.0,
+            348.709228515625,
+            -208.0,
+            797.6453857421875
+          ],
+          "soft_mask_xref": 32
+        }
+      ]
+    },
+    "9b9436816abd35f6": {
+      "path": "assets/figma-updated/photos/flex-8.jpeg",
+      "sha256": "9b9436816abd35f6bc952be1bcfd84c175b869b3b3e11c079b9d9d2618639a89",
+      "bytes": 982056,
+      "width": 4096,
+      "height": 2730,
+      "original_extraction_filename": "9b9436816abd35f6.jpeg",
+      "sources": [
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 64,
+          "bbox_pdf_px": [
+            592.0,
+            4223.98974609375,
+            2517.0,
+            5507.009765625
+          ],
+          "transform": [
+            1925.0,
+            0.0,
+            -0.0,
+            1283.0198974609375,
+            592.0,
+            4223.98974609375
+          ],
+          "soft_mask_xref": 62
+        },
+        {
+          "pdf": "Vivi_TPR.pdf",
+          "pdf_key": "vivi",
+          "page": 1,
+          "xref": 60,
+          "bbox_pdf_px": [
+            -216.0,
+            374.989990234375,
+            1709.0,
+            1658.0098876953125
+          ],
+          "transform": [
+            1925.0,
+            0.0,
+            -0.0,
+            1283.0198974609375,
+            -216.0,
+            374.989990234375
+          ],
+          "soft_mask_xref": 58
+        }
+      ]
+    },
+    "6c11da191a60247a": {
+      "path": "assets/figma-updated/photos/ufficio-virtuale.jpeg",
+      "sha256": "6c11da191a60247afa22b336600fb34425a55132412d7663e912165ebc6e5710",
+      "bytes": 1062665,
+      "width": 4096,
+      "height": 2731,
+      "original_extraction_filename": "6c11da191a60247a.jpeg",
+      "sources": [
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 18,
+          "bbox_pdf_px": [
+            1597.0,
+            4621.79931640625,
+            2439.0,
+            5183.201171875
+          ],
+          "transform": [
+            842.0,
+            0.0,
+            -0.0,
+            561.4019165039062,
+            1597.0,
+            4621.79931640625
+          ],
+          "soft_mask_xref": 16
+        },
+        {
+          "pdf": "Vivi_TPR.pdf",
+          "pdf_key": "vivi",
+          "page": 1,
+          "xref": 18,
+          "bbox_pdf_px": [
+            789.0,
+            772.7991333007812,
+            1631.0,
+            1334.2010498046875
+          ],
+          "transform": [
+            842.0,
+            0.0,
+            -0.0,
+            561.4019165039062,
+            789.0,
+            772.7991333007812
+          ],
+          "soft_mask_xref": 16
+        }
+      ]
+    },
+    "9a48b78d3b4c6451": {
+      "path": "assets/figma-updated/photos/company.jpeg",
+      "sha256": "9a48b78d3b4c64512dc07d29956d4e6d1a50d523f5ebc1dd95283294e580f985",
+      "bytes": 609485,
+      "width": 4096,
+      "height": 2730,
+      "original_extraction_filename": "9a48b78d3b4c6451.jpeg",
+      "sources": [
+        {
+          "pdf": "Homepage_TPR.pdf",
+          "pdf_key": "home",
+          "page": 1,
+          "xref": 50,
+          "bbox_pdf_px": [
+            -305.1714172363281,
+            6043.0,
+            1099.1715087890625,
+            6979.0
+          ],
+          "transform": [
+            1404.3428955078125,
+            0.0,
+            -0.0,
+            936.0,
+            -305.1714172363281,
+            6043.0
+          ],
+          "soft_mask_xref": 48
+        },
+        {
+          "pdf": "Vivi_TPR.pdf",
+          "pdf_key": "vivi",
+          "page": 1,
+          "xref": 8,
+          "bbox_pdf_px": [
+            -305.1714172363281,
+            1914.0,
+            1099.1715087890625,
+            2850.0
+          ],
+          "transform": [
+            1404.3428955078125,
+            0.0,
+            -0.0,
+            936.0,
+            -305.1714172363281,
+            1914.0
+          ],
+          "soft_mask_xref": 3
+        }
+      ]
+    },
+    "4fcd8e8450b617ff": {
+      "path": "assets/figma-updated/photos/the-dinner.jpeg",
+      "sha256": "4fcd8e8450b617ff8746a1a88843f641012fb35418529efdb15bbbed09e72836",
+      "bytes": 2268585,
+      "width": 3276,
+      "height": 4096,
+      "original_extraction_filename": "4fcd8e8450b617ff.jpeg",
+      "sources": [
+        {
+          "pdf": "About_TPR.pdf",
+          "pdf_key": "about",
+          "page": 1,
+          "xref": 24,
+          "bbox_pdf_px": [
+            795.66845703125,
+            2429.0,
+            1356.33154296875,
+            3130.0
+          ],
+          "transform": [
+            560.6630249023438,
+            0.0,
+            -0.0,
+            700.9999389648438,
+            795.66845703125,
+            2429.0
+          ],
+          "soft_mask_xref": 22
+        },
+        {
+          "pdf": "Eventi_TPR.pdf",
+          "pdf_key": "events",
+          "page": 1,
+          "xref": 30,
+          "bbox_pdf_px": [
+            155.66845703125,
+            728.0000610351562,
+            716.3314819335938,
+            1429.0
+          ],
+          "transform": [
+            560.6630249023438,
+            0.0,
+            -0.0,
+            700.9999389648438,
+            155.66845703125,
+            728.0000610351562
+          ],
+          "soft_mask_xref": 28
+        }
+      ]
+    },
+    "f63943ba46c12787": {
+      "path": "assets/figma-updated/photos/location-map.jpeg",
+      "sha256": "f63943ba46c127873d4d1800b45b1df48f60ab7143f0e2a488c80b2215387a56",
+      "bytes": 88361,
+      "width": 836,
+      "height": 691,
+      "original_extraction_filename": "f63943ba46c12787.jpeg",
+      "sources": [
+        {
+          "pdf": "About_TPR.pdf",
+          "pdf_key": "about",
+          "page": 1,
+          "xref": 14,
+          "bbox_pdf_px": [
+            627.5455932617188,
+            3107.0,
+            1624.454345703125,
+            3931.0
+          ],
+          "transform": [
+            996.9087524414062,
+            0.0,
+            -0.0,
+            823.9999389648438,
+            627.5455932617188,
+            3107.0
+          ],
+          "soft_mask_xref": 12
+        },
+        {
+          "pdf": "Contatti_TPR.pdf",
+          "pdf_key": "contacts",
+          "page": 1,
+          "xref": 8,
+          "bbox_pdf_px": [
+            627.5455932617188,
+            333.00006103515625,
+            1624.454345703125,
+            1157.0
+          ],
+          "transform": [
+            996.9087524414062,
+            0.0,
+            -0.0,
+            823.9999389648438,
+            627.5455932617188,
+            333.00006103515625
+          ],
+          "soft_mask_xref": 3
+        }
+      ]
+    },
+    "83fe883a4fc0ac86": {
+      "path": "assets/figma-updated/photos/source-about-variants-xref-8.jpeg",
+      "sha256": "83fe883a4fc0ac86485f25b9b732d0d7136aa44fb1d95282545ab9b249921903",
+      "bytes": 238624,
+      "width": 1024,
+      "height": 1534,
+      "original_extraction_filename": "83fe883a4fc0ac86.jpeg",
+      "sources": [
+        {
+          "pdf": "About_TPR_Varianti.pdf",
+          "pdf_key": "about-variants",
+          "page": 1,
+          "xref": 8,
+          "bbox_pdf_px": [
+            438.0,
+            730.6211547851562,
+            1074.0,
+            1683.37890625
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            952.7577514648438,
+            438.0,
+            730.6211547851562
+          ],
+          "soft_mask_xref": 3
+        },
+        {
+          "pdf": "About_TPR_Varianti.pdf",
+          "pdf_key": "about-variants",
+          "page": 1,
+          "xref": 8,
+          "bbox_pdf_px": [
+            1078.0,
+            730.6211547851562,
+            1714.0,
+            1683.37890625
+          ],
+          "transform": [
+            636.0,
+            0.0,
+            -0.0,
+            952.7577514648438,
+            1078.0,
+            730.6211547851562
+          ],
+          "soft_mask_xref": 3
+        }
+      ]
+    },
+    "ef934bbdc613ae22": {
+      "path": "assets/figma-updated/photos/ceramic-workshop.jpeg",
+      "sha256": "ef934bbdc613ae22948ad3f0ceeb15a9e5047dc7b8234b121f4e27d71fe806b6",
+      "bytes": 1295698,
+      "width": 2731,
+      "height": 4096,
+      "original_extraction_filename": "ef934bbdc613ae22.jpeg",
+      "sources": [
+        {
+          "pdf": "Eventi_TPR.pdf",
+          "pdf_key": "events",
+          "page": 1,
+          "xref": 40,
+          "bbox_pdf_px": [
+            707.9988403320312,
+            579.000244140625,
+            1462.3553466796875,
+            1697.363037109375
+          ],
+          "transform": [
+            738.7109375,
+            10.431642532348633,
+            -15.645553588867188,
+            1107.93115234375,
+            723.6444091796875,
+            579.000244140625
+          ],
+          "soft_mask_xref": 38
+        }
+      ]
+    },
+    "f51da589cc73cb02": {
+      "path": "assets/figma-updated/photos/the-peoples-week-talk.jpeg",
+      "sha256": "f51da589cc73cb02180ffa44029df6b2e3c183210c47f55b56e74f084a59923a",
+      "bytes": 1210000,
+      "width": 4096,
+      "height": 2731,
+      "original_extraction_filename": "f51da589cc73cb02.jpeg",
+      "sources": [
+        {
+          "pdf": "Eventi_TPR.pdf",
+          "pdf_key": "events",
+          "page": 1,
+          "xref": 20,
+          "bbox_pdf_px": [
+            1436.0,
+            890.9771728515625,
+            1997.0,
+            1265.0228271484375
+          ],
+          "transform": [
+            561.0,
+            0.0,
+            -0.0,
+            374.045654296875,
+            1436.0,
+            890.9771728515625
+          ],
+          "soft_mask_xref": 18
+        }
+      ]
+    }
+  },
+  "missing_exact_photo_roles": [
+    "rooms.coworking.picture",
+    "rooms.coworking.cards.postazioni",
+    "rooms.coworking.cards.sale-riunioni",
+    "rooms.reformer.picture",
+    "rooms.reformer.cards.studio",
+    "rooms.reformer.cards.classi",
+    "rooms.reformer.cards.attrezzature",
+    "rooms.wellness.picture",
+    "rooms.wellness.cards.gym",
+    "rooms.wellness.cards.contrast-therapy",
+    "rooms.bar.picture",
+    "rooms.bar.cards.servizi",
+    "rooms.bar.cards.accessibilita",
+    "rooms.bar.cards.storage",
+    "rooms.media.picture",
+    "rooms.media.cards.podcast",
+    "rooms.media.cards.set-fotografico"
+  ],
+  "verification": {
+    "unique_photos_copied": 15,
+    "all_source_and_destination_sha256_equal": true,
+    "source_dimensions_preserved": true
+  },
+  "notes": [
+    "PDF image bounding boxes include the30px browser chrome above page coordinates.",
+    "PDF embed transforms include object-fit cover adjustment within the Figma image layer; CSS uses the layer crop dimensions from figma-slots.json.",
+    "Room standalone source photos require their actual named source files or matching room PDF exports. The generic1080×1440 homepage image74 version is tracked separately."
+  ]
+}

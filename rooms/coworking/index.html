@@ -8,11 +8,15 @@
 <meta name="description" content="The People's Room: coworking, movimento, cultura e benessere a Milano.">
 <link rel="icon" href="../../assets/tpr-character.svg" type="image/svg+xml">
 <link rel="preload" href="../../assets/fonts/pp-rader/PPRader-Bold.otf" as="font" type="font/otf" crossorigin>
-<link rel="stylesheet" href="../../updated-preview.css?v=20261030">
-<script src="../../updated-preview.js?v=20261030" defer>
+<link rel="stylesheet" href="../../updated-preview.css?v=20261030-pdf">
+<link rel="stylesheet" href="../../figma-refinements.css?v=20261030-pdf">
+<link rel="stylesheet" href="../../pdf-assets.css?v=20261030-pdf">
+<script src="../../updated-preview.js?v=20261030-pdf" defer>
+</script>
+<script src="../../zigzag-controls.js?v=20261030-pdf" defer>
 </script>
 </head>
-<body class="updated-preview updated-preview--blue">
+<body class="updated-preview updated-preview--blue preview-page--rooms">
 <a class="skip-link" href="#main">Vai al contenuto</a>
 <header class="preview-header">
 <a class="preview-brand" href="../../homepage-tpr/" aria-label="The People's Room — Home">
@@ -20,12 +24,7 @@
 </a>
 <div class="preview-header-actions">
 <button class="preview-menu-button" type="button" data-menu-open aria-label="Apri il menu" aria-controls="siteMenu" aria-expanded="false">
-<span>
-</span>
-<span>
-</span>
-<span>
-</span>
+<img class="preview-menu-glyph" src="../../assets/figma-updated/shapes/header-hamburger.svg" alt="" decoding="async" aria-hidden="true">
 </button>
 </div>
 </header>
@@ -63,10 +62,12 @@
 </nav>
 </aside>
 <main id="main">
+<div class="preview-page-art" aria-hidden="true">
+</div>
 <section id="rooms" class="preview-room-explorer" aria-label="TPR Rooms" data-room-explorer>
 <div class="preview-room-panel" data-room-panel="coworking" style="--room-bg:#98caff;--room-accent:#2c64e8"  data-figma-node="809:3282">
-<img class="preview-room-art" src="../../assets/homepage-room-coworking-no-text-2x.webp" alt="" decoding="async" aria-hidden="true" data-pending-figma-image="809:3282">
-<div class="preview-room-character">
+<img src="../../assets/figma-updated/composites/home-coworking-photo-eye-2x.webp" alt="" decoding="async" class="preview-room-art preview-room-art--pdf" aria-hidden="true">
+<div class="preview-room-character" style="--room-character:url('../../assets/little-man/coworking.svg')">
 <img class="" src="../../assets/little-man/coworking.svg" alt="" decoding="async" aria-hidden="true">
 </div>
 <div class="preview-room-copy">
@@ -77,9 +78,10 @@
 <p class="">Uno spazio adatto tanto a chi lavora da solo quanto ai team che hanno bisogno di una base fissa. Ogni giorno lo stesso piano è condiviso da professionisti indipendenti, aziende e nuove realtà, ed è da questa convivenza che nascono confronti e collaborazioni inaspettate.</p>
 <p class="">Gente che lavora sul serio senza prendersi troppo sul serio. Perché l&#x27;ispirazione nasce sempre da una nuova connessione.</p>
 <div class="preview-room-actions">
-<button class="preview-button" data-room-explore type="button" aria-expanded="false">Esplora Stanza <span aria-hidden="true">›</span>
+<button class="preview-button" data-room-explore type="button" aria-expanded="false">Esplora Stanza <span class="preview-chevron" aria-hidden="true">
+</span>
 </button>
-<a class="preview-button preview-button--room-outline" href="../../contatti/?room=coworking">Prenota</a>
+<a class="preview-button preview-button--room-outline" href="../../vivi-tpr/">Scopri come accedere</a>
 </div>
 </div>
 </div>
@@ -90,7 +92,7 @@
 </div>
 <div class="preview-room-cards" tabindex="0" role="region" aria-label="Spazi TPR COWORKING" data-carousel>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="809:3282">
+<div class="preview-room-card-photo" data-asset-role="rooms.coworking.cards.postazioni" data-figma-node="1085:2343" data-pending-figma-image="1085:2343">
 </div>
 <div class="preview-room-card-label">
 <h3>postazioni</h3>
@@ -98,7 +100,7 @@
 </div>
 </article>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="809:3282">
+<div class="preview-room-card-photo" data-asset-role="rooms.coworking.cards.sale-riunioni" data-figma-node="1085:2344" data-pending-figma-image="1085:2344">
 </div>
 <div class="preview-room-card-label">
 <h3>Sale riunioni</h3>
@@ -106,7 +108,8 @@
 </div>
 </article>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="809:3282">
+<div class="preview-room-card-photo" data-asset-role="rooms.coworking.cards.eventi" data-figma-node="1085:2347">
+<img src="../../assets/figma-updated/photos/the-dinner.jpeg" alt="eventi" decoding="async" >
 </div>
 <div class="preview-room-card-label">
 <h3>eventi</h3>

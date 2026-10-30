@@ -1,0 +1,100 @@
+[
+  {
+    "name": "about-top-s",
+    "path": "assets/figma-updated/shapes/about-top-s.svg",
+    "css": {
+      "left_px": -1405.743408203125,
+      "top_px": -1896.361572265625,
+      "width_px": 2135.951416015625,
+      "height_px": 3219.9345703125
+    },
+    "source": {
+      "pdf": "About_TPR.pdf",
+      "drawing": 2
+    }
+  },
+  {
+    "name": "about-ice-bolt-left",
+    "path": "assets/figma-updated/shapes/about-ice-bolt-left.svg",
+    "css": {
+      "left_px": -491.949462890625,
+      "top_px": 1136.7652587890625,
+      "width_px": 1041.302734375,
+      "height_px": 1303.1451416015625
+    },
+    "source": {
+      "pdf": "About_TPR.pdf",
+      "drawing": 3
+    }
+  },
+  {
+    "name": "about-ice-bolt-right",
+    "path": "assets/figma-updated/shapes/about-ice-bolt-right.svg",
+    "css": {
+      "left_px": 965.0506591796875,
+      "top_px": 1744.7652587890625,
+      "width_px": 1041.302734375,
+      "height_px": 1303.1451416015625
+    },
+    "source": {
+      "pdf": "About_TPR.pdf",
+      "drawing": 4
+    }
+  },
+  {
+    "name": "contacts-top-s",
+    "path": "assets/figma-updated/shapes/contacts-top-s.svg",
+    "css": {
+      "left_px": -1405.743408203125,
+      "top_px": -1896.361572265625,
+      "width_px": 2135.951416015625,
+      "height_px": 3219.9345703125
+    },
+    "source": {
+      "pdf": "Contatti_TPR.pdf",
+      "drawing": 2
+    }
+  },
+  {
+    "name": "events-top-s",
+    "path": "assets/figma-updated/shapes/events-top-s.svg",
+    "css": {
+      "left_px": -1405.743408203125,
+      "top_px": -1896.361572265625,
+      "width_px": 2135.951416015625,
+      "height_px": 3219.9345703125
+    },
+    "source": {
+      "pdf": "Eventi_TPR.pdf",
+      "drawing": 2
+    }
+  },
+  {
+    "name": "vivi-top-s",
+    "path": "assets/figma-updated/shapes/vivi-top-s.svg",
+    "css": {
+      "left_px": -1405.743408203125,
+      "top_px": -1896.361572265625,
+      "width_px": 2135.951416015625,
+      "height_px": 3219.9345703125
+    },
+    "source": {
+      "pdf": "Vivi_TPR.pdf",
+      "drawing": 2
+    }
+  },
+  {
+    "name": "booking-top-s",
+    "path": "assets/figma-updated/shapes/booking-top-s.svg",
+    "css": {
+      "left_px": -1405.743408203125,
+      "top_px": -1896.361572265625,
+      "width_px": 2135.951416015625,
+      "height_px": 3219.9345703125
+    },
+    "source": {
+      "pdf": "Prenota_TPRmove.pdf",
+      "drawing": 2
+    }
+  }
+]

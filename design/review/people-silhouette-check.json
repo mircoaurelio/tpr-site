@@ -1,0 +1,117 @@
+[
+  {
+    "role": "coworking",
+    "source_node": "616:1755",
+    "source_asset_variable": "imgOmino3",
+    "expected_frame": [
+      203.9688,
+      40.728,
+      159.0624,
+      198.6
+    ],
+    "reference_white_silhouette_bounds": [
+      204,
+      41,
+      363,
+      239
+    ],
+    "native_white_silhouette_bounds": [
+      205,
+      42,
+      362,
+      239
+    ]
+  },
+  {
+    "role": "bar",
+    "source_node": "616:1749",
+    "source_asset_variable": "imgOmino1",
+    "expected_frame": [
+      459.0432,
+      32.592,
+      113.7024,
+      206.88
+    ],
+    "reference_white_silhouette_bounds": [
+      459,
+      33,
+      572,
+      239
+    ],
+    "native_white_silhouette_bounds": [
+      460,
+      34,
+      572,
+      239
+    ]
+  },
+  {
+    "role": "media",
+    "source_node": "616:1750",
+    "source_asset_variable": "imgOmino2",
+    "expected_frame": [
+      668.7576,
+      0,
+      132.9048,
+      239.928
+    ],
+    "reference_white_silhouette_bounds": [
+      669,
+      1,
+      801,
+      239
+    ],
+    "native_white_silhouette_bounds": [
+      669,
+      1,
+      801,
+      239
+    ]
+  },
+  {
+    "role": "reformer",
+    "source_node": "616:1761",
+    "source_asset_variable": "imgOmino4",
+    "expected_frame": [
+      897.6744,
+      38.688,
+      161.3304,
+      200.664
+    ],
+    "reference_white_silhouette_bounds": [
+      898,
+      39,
+      1059,
+      239
+    ],
+    "native_white_silhouette_bounds": [
+      899,
+      40,
+      1059,
+      239
+    ]
+  },
+  {
+    "role": "wellness",
+    "source_node": "616:1742",
+    "source_asset_variable": "imgOmino",
+    "expected_frame": [
+      1155.0168,
+      26.472,
+      153.6192,
+      213.528
+    ],
+    "reference_white_silhouette_bounds": [
+      1156,
+      27,
+      1308,
+      240
+    ],
+    "native_white_silhouette_bounds": [
+      1156,
+      27,
+      1308,
+      239
+    ]
+  }
+]

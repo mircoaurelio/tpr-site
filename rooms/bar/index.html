@@ -8,11 +8,15 @@
 <meta name="description" content="The People's Room: coworking, movimento, cultura e benessere a Milano.">
 <link rel="icon" href="../../assets/tpr-character.svg" type="image/svg+xml">
 <link rel="preload" href="../../assets/fonts/pp-rader/PPRader-Bold.otf" as="font" type="font/otf" crossorigin>
-<link rel="stylesheet" href="../../updated-preview.css?v=20261030">
-<script src="../../updated-preview.js?v=20261030" defer>
+<link rel="stylesheet" href="../../updated-preview.css?v=20261030-pdf">
+<link rel="stylesheet" href="../../figma-refinements.css?v=20261030-pdf">
+<link rel="stylesheet" href="../../pdf-assets.css?v=20261030-pdf">
+<script src="../../updated-preview.js?v=20261030-pdf" defer>
+</script>
+<script src="../../zigzag-controls.js?v=20261030-pdf" defer>
 </script>
 </head>
-<body class="updated-preview updated-preview--blue">
+<body class="updated-preview updated-preview--blue preview-page--rooms">
 <a class="skip-link" href="#main">Vai al contenuto</a>
 <header class="preview-header">
 <a class="preview-brand" href="../../homepage-tpr/" aria-label="The People's Room — Home">
@@ -20,12 +24,7 @@
 </a>
 <div class="preview-header-actions">
 <button class="preview-menu-button" type="button" data-menu-open aria-label="Apri il menu" aria-controls="siteMenu" aria-expanded="false">
-<span>
-</span>
-<span>
-</span>
-<span>
-</span>
+<img class="preview-menu-glyph" src="../../assets/figma-updated/shapes/header-hamburger.svg" alt="" decoding="async" aria-hidden="true">
 </button>
 </div>
 </header>
@@ -63,10 +62,12 @@
 </nav>
 </aside>
 <main id="main">
+<div class="preview-page-art" aria-hidden="true">
+</div>
 <section id="rooms" class="preview-room-explorer" aria-label="TPR Rooms" data-room-explorer>
 <div class="preview-room-panel" data-room-panel="bar" style="--room-bg:#eb642b;--room-accent:#ffc100"  data-figma-node="643:1895">
 <img class="preview-room-art" src="../../assets/homepage-room-bar-no-text-2x.webp" alt="" decoding="async" aria-hidden="true" data-pending-figma-image="643:1895">
-<div class="preview-room-character">
+<div class="preview-room-character" style="--room-character:url('../../assets/little-man/bar.svg')">
 <img class="" src="../../assets/little-man/bar.svg" alt="" decoding="async" aria-hidden="true">
 </div>
 <div class="preview-room-copy">
@@ -77,7 +78,8 @@
 <p class="">Nella stessa area, una cucina attrezzata disponibile per pranzare o preparare qualcosa in autonomia.</p>
 <p class="">Dove il nutrimento diventa carburante.</p>
 <div class="preview-room-actions">
-<button class="preview-button" data-room-explore type="button" aria-expanded="false">Esplora Stanza <span aria-hidden="true">›</span>
+<button class="preview-button" data-room-explore type="button" aria-expanded="false">Esplora Stanza <span class="preview-chevron" aria-hidden="true">
+</span>
 </button>
 </div>
 </div>
@@ -89,7 +91,7 @@
 </div>
 <div class="preview-room-cards" tabindex="0" role="region" aria-label="Spazi TPR FUEL" data-carousel>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="643:1895">
+<div class="preview-room-card-photo" data-asset-role="rooms.bar.cards.servizi" data-figma-node="1074:2893" data-pending-figma-image="1074:2893">
 </div>
 <div class="preview-room-card-label">
 <h3>servizi</h3>
@@ -97,7 +99,7 @@
 </div>
 </article>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="643:1895">
+<div class="preview-room-card-photo" data-asset-role="rooms.bar.cards.accessibilita" data-figma-node="1086:2208" data-pending-figma-image="1086:2208">
 </div>
 <div class="preview-room-card-label">
 <h3>accessibilità</h3>
@@ -105,7 +107,7 @@
 </div>
 </article>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="643:1895">
+<div class="preview-room-card-photo" data-asset-role="rooms.bar.cards.storage" data-figma-node="1086:2206" data-pending-figma-image="1086:2206">
 </div>
 <div class="preview-room-card-label">
 <h3>storage</h3>

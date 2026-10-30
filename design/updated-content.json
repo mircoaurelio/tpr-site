@@ -43,7 +43,57 @@
       "The People's Room è uno spazio per chi lavora con le idee. Esiste per dare a chi lo frequenta un posto dove fare tutto quello che una giornata richiede, senza doversi spostare.",
       "Sotto lo stesso tetto ci sono un coworking con postazioni e sale riunioni, una sala Reformer con macchinari Technogym, uno studio per la produzione di contenuti, un'area dedicata al benessere e un bar con preparazioni funzionali. Gli spazi ospitano anche talk, workshop e appuntamenti costruiti con le realtà che li abitano.",
       "Non un posto dove rallentare, ma un posto dove respirare meglio mentre acceleri."
-    ]
+    ],
+    "discovery": {
+      "community": {
+        "name": "Community",
+        "color": "#ff7bff",
+        "paragraphs": [
+          "Prima delle stanze vengono le persone. Chi entra porta qualcosa, e da quella somma nasce tutto il resto. Perché nessuno si ispira da solo.",
+          "Perché le stanze sono solo l'inizio. Coming Soon."
+        ]
+      },
+      "coworking": {
+        "name": "TPR Coworking",
+        "color": "#98caff",
+        "paragraphs": [
+          "Il cuore operativo dello spazio. Un piano condiviso da professionisti indipendenti, aziende e nuove realtà, dove nascono confronti e collaborazioni inaspettate.",
+          "Perché l'ispirazione nasce sempre da una nuova connessione."
+        ]
+      },
+      "reformer": {
+        "name": "TPR Move",
+        "color": "#3f9941",
+        "paragraphs": [
+          "Un ambiente luminoso e ampio dedicato al Reformer Pilates, con macchinari Tecnogym e istruttori qualificati a guidare ogni classe.",
+          "Un luogo dove respirare e prendersi cura di sé."
+        ]
+      },
+      "wellness": {
+        "name": "TPR Recharge",
+        "color": "#c2d569",
+        "paragraphs": [
+          "Un’area dedicata al recupero. Sauna, relax e contrast therapy, per rigenerarsi e tornare a dare il massimo.",
+          "Il respiro che precede ogni nuova ispirazione."
+        ]
+      },
+      "bar": {
+        "name": "TPR Fuel",
+        "color": "#eb642b",
+        "paragraphs": [
+          "Un'area dove l'alimentazione ha una funzione precisa. Bevande funzionali preparate al momento e una cucina attrezzata sempre a disposizione.",
+          "Dove il nutrimento diventa carburante."
+        ]
+      },
+      "media": {
+        "name": "TPR Media",
+        "color": "#ffc100",
+        "paragraphs": [
+          "Una sala di registrazione professionale per podcast, interviste, musica e shooting fotografici, per lavorare con la voce, il suono e l'immagine.",
+          "Dove le idee diventano realtà."
+        ]
+      }
+    }
   },
   "contacts": {
     "intro": [

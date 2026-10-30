@@ -1,25 +1,25 @@
 # Updated Figma preview review
 
-Draft: exact October artwork and booking integration remain pending. This is not a verified 1:1 match.
+The supplied PDF photos, partner logos, static compositions, decorations and paper controls are integrated. Six main desktop page heights match the source. Updated mobile and remaining room exports are still required to verify a full 1:1 match.
 
-22 after screenshots cover 11 routes at desktop 1512×952 and mobile 393×852. Before screenshots are available for 9 existing routes. WebP copies are resized for review; original PNG captures remain in the task workspace.
+22 current screenshots cover 11 routes at desktop 1512×952 and mobile 393×852. Six source PDF screenshots exclude the 30px mock browser chrome. Review images are resized to 1200px wide; original PNG evidence remains in the task workspace.
 
-[Interactive comparison](index.html) · [Asset gaps](../asset-status.json) · [Implementation and validation](../IMPLEMENTATION.md)
+[Interactive comparison](index.html) · [Asset status](../asset-status.json) · [Implementation](../IMPLEMENTATION.md)
 
-| Page | Figma height¹ | Preview height¹ | Desktop | Mobile |
+| Page | Source height¹ | Current height¹ | Desktop | Mobile |
 | --- | ---: | ---: | --- | --- |
-| [Home](https://www.figma.com/design/FpPfXalg4PRyqtnvwt2DUL/TPR?node-id=616-1707) | 8523 | 8482 | [After](after-home-desktop.webp) / [Before](before-home-desktop.webp) | [After](after-home-mobile.webp) / [Before](before-home-mobile.webp) |
-| [About](https://www.figma.com/design/FpPfXalg4PRyqtnvwt2DUL/TPR?node-id=616-2407) | 4444 | 4446 | [After](after-about-desktop.webp) / [Before](before-about-desktop.webp) | [After](after-about-mobile.webp) / [Before](before-about-mobile.webp) |
-| [Contacts](https://www.figma.com/design/FpPfXalg4PRyqtnvwt2DUL/TPR?node-id=616-2569) | 1670 | 1670 | [After](after-contacts-desktop.webp) / [Before](before-contacts-desktop.webp) | [After](after-contacts-mobile.webp) / [Before](before-contacts-mobile.webp) |
-| [Events & Gallery](https://www.figma.com/design/FpPfXalg4PRyqtnvwt2DUL/TPR?node-id=616-2675) | 2806 | 2806 | [After](after-events-desktop.webp) / [Before](before-events-desktop.webp) | [After](after-events-mobile.webp) / [Before](before-events-mobile.webp) |
-| [Vivi TPR](https://www.figma.com/design/FpPfXalg4PRyqtnvwt2DUL/TPR?node-id=685-1973) | 4036 | 4092 | [After](after-vivi-desktop.webp) | [After](after-vivi-mobile.webp) |
-| [Pilates](https://www.figma.com/design/FpPfXalg4PRyqtnvwt2DUL/TPR?node-id=1065-3382) | 1750 | 1750 | [After](after-booking-desktop.webp) | [After](after-booking-mobile.webp) |
-| [Coworking](https://www.figma.com/design/FpPfXalg4PRyqtnvwt2DUL/TPR?node-id=809-3282) | 952 | 952 | [After](after-coworking-desktop.webp) / [Before](before-coworking-desktop.webp) | [After](after-coworking-mobile.webp) / [Before](before-coworking-mobile.webp) |
-| [TPR Move](https://www.figma.com/design/FpPfXalg4PRyqtnvwt2DUL/TPR?node-id=643-1823) | 952 | 952 | [After](after-move-desktop.webp) / [Before](before-move-desktop.webp) | [After](after-move-mobile.webp) / [Before](before-move-mobile.webp) |
-| [Recharge](https://www.figma.com/design/FpPfXalg4PRyqtnvwt2DUL/TPR?node-id=643-1964) | 952 | 952 | [After](after-recharge-desktop.webp) / [Before](before-recharge-desktop.webp) | [After](after-recharge-mobile.webp) / [Before](before-recharge-mobile.webp) |
-| [Fuel](https://www.figma.com/design/FpPfXalg4PRyqtnvwt2DUL/TPR?node-id=643-1895) | 952 | 952 | [After](after-fuel-desktop.webp) / [Before](before-fuel-desktop.webp) | [After](after-fuel-mobile.webp) / [Before](before-fuel-mobile.webp) |
-| [Media](https://www.figma.com/design/FpPfXalg4PRyqtnvwt2DUL/TPR?node-id=643-2033) | 952 | 952 | [After](after-media-desktop.webp) / [Before](before-media-desktop.webp) | [After](after-media-mobile.webp) / [Before](before-media-mobile.webp) |
+| Home | 8523 | 8523 | [Current](after-home-desktop.webp) / [PDF](source-home-desktop.webp) | [Current](after-home-mobile.webp) |
+| About | 4444 | 4444 | [Current](after-about-desktop.webp) / [PDF](source-about-desktop.webp) | [Current](after-about-mobile.webp) |
+| Contatti | 1670 | 1670 | [Current](after-contacts-desktop.webp) / [PDF](source-contacts-desktop.webp) | [Current](after-contacts-mobile.webp) |
+| Eventi & Gallery | 2806 | 2806 | [Current](after-events-desktop.webp) / [PDF](source-events-desktop.webp) | [Current](after-events-mobile.webp) |
+| Vivi TPR | 4036 | 4036 | [Current](after-vivi-desktop.webp) / [PDF](source-vivi-desktop.webp) | [Current](after-vivi-mobile.webp) |
+| Pilates | 1750 | 1750 | [Current](after-booking-desktop.webp) / [PDF](source-booking-desktop.webp) | [Current](after-booking-mobile.webp) |
+| Coworking | 952 | 952 | [Current](after-coworking-desktop.webp) | [Current](after-coworking-mobile.webp) |
+| TPR Move | 952 | 952 | [Current](after-move-desktop.webp) | [Current](after-move-mobile.webp) |
+| Recharge | 952 | 952 | [Current](after-recharge-desktop.webp) | [Current](after-recharge-mobile.webp) |
+| Fuel | 952 | 952 | [Current](after-fuel-desktop.webp) | [Current](after-fuel-mobile.webp) |
+| Media | 952 | 952 | [Current](after-media-desktop.webp) | [Current](after-media-mobile.webp) |
 
-¹ Desktop website height excludes the Figma mock browser menu (30px). Room values compare the 952px room stage; the preview adds the shared footer. Height agreement does not establish a pixel-perfect match.
+¹ Room values cover the room stage only; the shared footer is additional. Matching height is one check and does not prove pixel equality.
 
-Validation: 15 existing newsletter tests passed; menu, all five rooms, exploration, About discovery, keyboard carousels and mocked form states passed at three sizes. Six viewport widths were checked without body overflow or header overlaps. No browser script errors or missing local image requests were recorded. No test contacts or emails were sent.
+Menu, floor navigation, exploration, discovery, keyboard carousels and intercepted form states passed at 1512, 393 and 320px. No test contacts or emails were sent.

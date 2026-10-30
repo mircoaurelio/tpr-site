@@ -1,0 +1,233 @@
+[
+  {
+    "route": "vivi-tpr",
+    "before": {
+      "width": 1512,
+      "height": 4036,
+      "carousels": [
+        {
+          "class": "preview-offer-carousel",
+          "x": 808,
+          "w": 1512,
+          "max": 808,
+          "firstX": -728
+        }
+      ]
+    },
+    "tall": {
+      "width": 1512,
+      "height": 4036,
+      "carousels": [
+        {
+          "class": "preview-offer-carousel",
+          "x": 808,
+          "w": 1512,
+          "max": 808,
+          "firstX": -728
+        }
+      ]
+    },
+    "after": {
+      "width": 1512,
+      "height": 4036,
+      "carousels": [
+        {
+          "class": "preview-offer-carousel",
+          "x": 808,
+          "w": 1512,
+          "max": 808,
+          "firstX": -728
+        }
+      ]
+    }
+  },
+  {
+    "route": "eventi",
+    "before": {
+      "width": 1512,
+      "height": 2806,
+      "carousels": [
+        {
+          "class": "preview-event-carousel",
+          "x": 564,
+          "w": 1512,
+          "max": 1128,
+          "firstX": -484
+        }
+      ]
+    },
+    "tall": {
+      "width": 1512,
+      "height": 2806,
+      "carousels": [
+        {
+          "class": "preview-event-carousel",
+          "x": 564,
+          "w": 1512,
+          "max": 1128,
+          "firstX": -484
+        }
+      ]
+    },
+    "after": {
+      "width": 1512,
+      "height": 2806,
+      "carousels": [
+        {
+          "class": "preview-event-carousel",
+          "x": 564,
+          "w": 1512,
+          "max": 1128,
+          "firstX": -484
+        }
+      ]
+    }
+  },
+  {
+    "route": "homepage-tpr",
+    "before": {
+      "width": 1512,
+      "height": 8523,
+      "carousels": [
+        {
+          "class": "preview-room-cards",
+          "x": 7,
+          "w": 1439,
+          "max": 488,
+          "firstX": 1585
+        },
+        {
+          "class": "preview-room-cards",
+          "x": 0,
+          "w": 0,
+          "max": 0,
+          "firstX": 0
+        },
+        {
+          "class": "preview-room-cards",
+          "x": 0,
+          "w": 0,
+          "max": 0,
+          "firstX": 0
+        },
+        {
+          "class": "preview-room-cards",
+          "x": 0,
+          "w": 0,
+          "max": 0,
+          "firstX": 0
+        },
+        {
+          "class": "preview-room-cards",
+          "x": 0,
+          "w": 0,
+          "max": 0,
+          "firstX": 0
+        },
+        {
+          "class": "preview-offer-carousel",
+          "x": 0,
+          "w": 1512,
+          "max": 808,
+          "firstX": 80
+        }
+      ]
+    },
+    "tall": {
+      "width": 1512,
+      "height": 8523,
+      "carousels": [
+        {
+          "class": "preview-room-cards",
+          "x": 7,
+          "w": 1439,
+          "max": 488,
+          "firstX": 1585
+        },
+        {
+          "class": "preview-room-cards",
+          "x": 0,
+          "w": 0,
+          "max": 0,
+          "firstX": 0
+        },
+        {
+          "class": "preview-room-cards",
+          "x": 0,
+          "w": 0,
+          "max": 0,
+          "firstX": 0
+        },
+        {
+          "class": "preview-room-cards",
+          "x": 0,
+          "w": 0,
+          "max": 0,
+          "firstX": 0
+        },
+        {
+          "class": "preview-room-cards",
+          "x": 0,
+          "w": 0,
+          "max": 0,
+          "firstX": 0
+        },
+        {
+          "class": "preview-offer-carousel",
+          "x": 0,
+          "w": 1512,
+          "max": 808,
+          "firstX": 80
+        }
+      ]
+    },
+    "after": {
+      "width": 1512,
+      "height": 8523,
+      "carousels": [
+        {
+          "class": "preview-room-cards",
+          "x": 7,
+          "w": 1439,
+          "max": 488,
+          "firstX": 1585
+        },
+        {
+          "class": "preview-room-cards",
+          "x": 0,
+          "w": 0,
+          "max": 0,
+          "firstX": 0
+        },
+        {
+          "class": "preview-room-cards",
+          "x": 0,
+          "w": 0,
+          "max": 0,
+          "firstX": 0
+        },
+        {
+          "class": "preview-room-cards",
+          "x": 0,
+          "w": 0,
+          "max": 0,
+          "firstX": 0
+        },
+        {
+          "class": "preview-room-cards",
+          "x": 0,
+          "w": 0,
+          "max": 0,
+          "firstX": 0
+        },
+        {
+          "class": "preview-offer-carousel",
+          "x": 0,
+          "w": 1512,
+          "max": 808,
+          "firstX": 80
+        }
+      ]
+    }
+  }
+]

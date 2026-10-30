@@ -8,26 +8,26 @@
 <meta name="description" content="The People's Room: coworking, movimento, cultura e benessere a Milano.">
 <link rel="icon" href="../assets/tpr-character.svg" type="image/svg+xml">
 <link rel="preload" href="../assets/fonts/pp-rader/PPRader-Bold.otf" as="font" type="font/otf" crossorigin>
-<link rel="stylesheet" href="../updated-preview.css?v=20261030">
-<script src="../updated-preview.js?v=20261030" defer>
+<link rel="stylesheet" href="../updated-preview.css?v=20261030-pdf">
+<link rel="stylesheet" href="../figma-refinements.css?v=20261030-pdf">
+<link rel="stylesheet" href="../pdf-assets.css?v=20261030-pdf">
+<script src="../updated-preview.js?v=20261030-pdf" defer>
+</script>
+<script src="../zigzag-controls.js?v=20261030-pdf" defer>
 </script>
 </head>
-<body class="updated-preview updated-preview--blue">
+<body class="updated-preview updated-preview--blue preview-page--home">
 <a class="skip-link" href="#main">Vai al contenuto</a>
 <header class="preview-header">
 <a class="preview-brand" href="../homepage-tpr/" aria-label="The People's Room — Home">
 <img class="" src="../assets/tpr-logo.svg" alt="The People&#x27;s Room" decoding="async" width="131" height="64">
 </a>
 <div class="preview-header-actions">
-<a class="preview-button preview-button--outline" href="../prenota/">Prenota il Pilates <span aria-hidden="true">›</span>
+<a class="preview-button preview-button--outline" href="../prenota/">Prenota il Pilates <span class="preview-chevron" aria-hidden="true">
+</span>
 </a>
 <button class="preview-menu-button" type="button" data-menu-open aria-label="Apri il menu" aria-controls="siteMenu" aria-expanded="false">
-<span>
-</span>
-<span>
-</span>
-<span>
-</span>
+<img class="preview-menu-glyph" src="../assets/figma-updated/shapes/header-hamburger.svg" alt="" decoding="async" aria-hidden="true">
 </button>
 </div>
 </header>
@@ -65,31 +65,29 @@
 </nav>
 </aside>
 <main id="main">
-<section class="hero" id="home" aria-labelledby="hero-title">
-
-        <img class="hero-photo" src="../assets/tpr-hero.webp" alt="Lo spazio coworking di The People's Room" width="1080" height="1440" fetchpriority="high" decoding="async" />
-        <img class="hero-shapes" src="../assets/tpr-hero-art.png?v=20260819-hero-1" alt="" width="3024" height="1940" aria-hidden="true" />
-        <img class="hero-mobile-composite" src="../assets/homepage-tpr-hero-2x.webp" alt="" width="3024" height="1880" aria-hidden="true" fetchpriority="high" decoding="async" />
-        <img class="hero-mobile-shape hero-mobile-shape--left" src="../assets/tpr-hero-top-left.png" alt="" width="963" height="755" aria-hidden="true" />
-        <img class="hero-mobile-shape hero-mobile-shape--right" src="../assets/tpr-hero-top-right.png" alt="" width="988" height="708" aria-hidden="true" />
-        <div class="hero-curve hero-curve--left" aria-hidden="true">
+<div class="preview-page-art" aria-hidden="true">
 </div>
-        <div class="hero-curve hero-curve--right" aria-hidden="true">
-</div>
-        <div class="hero-curve hero-curve--bottom" aria-hidden="true">
-</div>
-        <div class="hero-copy">
-
-          <h1 id="hero-title">
+<section class="hero preview-hero--pdf" id="home" aria-labelledby="hero-title">
+<picture>
+<source media="(max-width:900px)" srcset="../assets/figma-updated/photos/home-hero-room.jpeg">
+<img src="../assets/figma-updated/composites/home-hero-photo-eye-2x.webp" alt="Lo spazio The People’s Room" decoding="async" class="preview-hero-composite" fetchpriority="high">
+</picture>
+<div class="hero-copy">
+<h1 id="hero-title">
 <span>Respira,</span>
 <span>Ispira.</span>
 </h1>
-        </div>
-      </section>
+</div>
+</section>
 <section class="preview-home-about preview-shell">
 <div class="preview-two-columns">
 <div class="preview-about-logo">
-<img class="" src="../assets/tpr-logo.svg" alt="The People&#x27;s Room" decoding="async" >
+<span class="preview-body-wordmark">
+<img class="preview-body-wordmark-source" src="../assets/figma-updated/composites/home-about-wordmark-original.svg" alt="The People’s Room™" decoding="async" >
+<span class="preview-body-trademark" aria-hidden="true">
+<img class="" src="../assets/brand/Logotype_blue.svg" alt="" decoding="async" >
+</span>
+</span>
 </div>
 <div class="preview-body-copy">
 <p class="">The People&#x27;s Room è uno spazio ibrido e autentico in cui lavoro, movimento, cultura e benessere convivono senza escludersi.</p>
@@ -206,8 +204,8 @@
 </section>
 <section id="rooms" class="preview-room-explorer" aria-label="TPR Rooms" data-room-explorer>
 <div class="preview-room-panel" data-room-panel="coworking" style="--room-bg:#98caff;--room-accent:#2c64e8"  data-figma-node="809:3282">
-<img class="preview-room-art" src="../assets/homepage-room-coworking-no-text-2x.webp" alt="" decoding="async" aria-hidden="true" data-pending-figma-image="809:3282">
-<div class="preview-room-character">
+<img src="../assets/figma-updated/composites/home-coworking-photo-eye-2x.webp" alt="" decoding="async" class="preview-room-art preview-room-art--pdf" aria-hidden="true">
+<div class="preview-room-character" style="--room-character:url('../assets/little-man/coworking.svg')">
 <img class="" src="../assets/little-man/coworking.svg" alt="" decoding="async" aria-hidden="true">
 </div>
 <div class="preview-room-copy">
@@ -218,9 +216,9 @@
 <p class="">Uno spazio adatto tanto a chi lavora da solo quanto ai team che hanno bisogno di una base fissa. Ogni giorno lo stesso piano è condiviso da professionisti indipendenti, aziende e nuove realtà, ed è da questa convivenza che nascono confronti e collaborazioni inaspettate.</p>
 <p class="">Gente che lavora sul serio senza prendersi troppo sul serio. Perché l&#x27;ispirazione nasce sempre da una nuova connessione.</p>
 <div class="preview-room-actions">
-<button class="preview-button" data-room-explore type="button" aria-expanded="false">Esplora Stanza <span aria-hidden="true">›</span>
+<button class="preview-button" data-room-explore type="button" aria-expanded="false">Esplora Stanza <span class="preview-chevron" aria-hidden="true">
+</span>
 </button>
-<a class="preview-button preview-button--room-outline" href="../contatti/?room=coworking">Prenota</a>
 </div>
 </div>
 </div>
@@ -231,7 +229,7 @@
 </div>
 <div class="preview-room-cards" tabindex="0" role="region" aria-label="Spazi TPR COWORKING" data-carousel>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="809:3282">
+<div class="preview-room-card-photo" data-asset-role="rooms.coworking.cards.postazioni" data-figma-node="1085:2343" data-pending-figma-image="1085:2343">
 </div>
 <div class="preview-room-card-label">
 <h3>postazioni</h3>
@@ -239,7 +237,7 @@
 </div>
 </article>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="809:3282">
+<div class="preview-room-card-photo" data-asset-role="rooms.coworking.cards.sale-riunioni" data-figma-node="1085:2344" data-pending-figma-image="1085:2344">
 </div>
 <div class="preview-room-card-label">
 <h3>Sale riunioni</h3>
@@ -247,7 +245,8 @@
 </div>
 </article>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="809:3282">
+<div class="preview-room-card-photo" data-asset-role="rooms.coworking.cards.eventi" data-figma-node="1085:2347">
+<img src="../assets/figma-updated/photos/the-dinner.jpeg" alt="eventi" decoding="async" >
 </div>
 <div class="preview-room-card-label">
 <h3>eventi</h3>
@@ -259,7 +258,7 @@
 </div>
 <div class="preview-room-panel" data-room-panel="reformer" style="--room-bg:#3f9941;--room-accent:#ffc100" hidden data-figma-node="643:1823">
 <img class="preview-room-art" src="../assets/homepage-room-reformer-no-text-2x.webp" alt="" decoding="async" aria-hidden="true" data-pending-figma-image="643:1823">
-<div class="preview-room-character">
+<div class="preview-room-character" style="--room-character:url('../assets/little-man/reformer.svg')">
 <img class="" src="../assets/little-man/reformer.svg" alt="" decoding="async" aria-hidden="true">
 </div>
 <div class="preview-room-copy">
@@ -270,9 +269,9 @@
 <p class="">Le classi seguono percorsi diversi, ognuna con un obiettivo specifico, e si prenotano singolarmente in base ai propri tempi.</p>
 <p class="">Un luogo dove respirare e prendersi cura di sé.</p>
 <div class="preview-room-actions">
-<button class="preview-button" data-room-explore type="button" aria-expanded="false">Esplora Stanza <span aria-hidden="true">›</span>
+<button class="preview-button" data-room-explore type="button" aria-expanded="false">Esplora Stanza <span class="preview-chevron" aria-hidden="true">
+</span>
 </button>
-<a class="preview-button preview-button--room-outline" href="../prenota/">Prenota</a>
 </div>
 </div>
 </div>
@@ -283,7 +282,7 @@
 </div>
 <div class="preview-room-cards" tabindex="0" role="region" aria-label="Spazi TPR MOVE" data-carousel>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="643:1823">
+<div class="preview-room-card-photo" data-asset-role="rooms.reformer.cards.studio" data-figma-node="1085:2354" data-pending-figma-image="1085:2354">
 </div>
 <div class="preview-room-card-label">
 <h3>studio</h3>
@@ -291,7 +290,7 @@
 </div>
 </article>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="643:1823">
+<div class="preview-room-card-photo" data-asset-role="rooms.reformer.cards.classi" data-figma-node="1074:2832" data-pending-figma-image="1074:2832">
 </div>
 <div class="preview-room-card-label">
 <h3>classi</h3>
@@ -299,7 +298,7 @@
 </div>
 </article>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="643:1823">
+<div class="preview-room-card-photo" data-asset-role="rooms.reformer.cards.attrezzature" data-figma-node="1085:2353" data-pending-figma-image="1085:2353">
 </div>
 <div class="preview-room-card-label">
 <h3>attrezzature</h3>
@@ -311,7 +310,7 @@
 </div>
 <div class="preview-room-panel" data-room-panel="wellness" style="--room-bg:#c2d569;--room-accent:#3f9941" hidden data-figma-node="643:1964">
 <img class="preview-room-art" src="../assets/homepage-room-wellness-no-text-2x.webp" alt="" decoding="async" aria-hidden="true" data-pending-figma-image="643:1964">
-<div class="preview-room-character">
+<div class="preview-room-character" style="--room-character:url('../assets/little-man/wellness.svg')">
 <img class="" src="../assets/little-man/wellness.svg" alt="" decoding="async" aria-hidden="true">
 </div>
 <div class="preview-room-copy">
@@ -322,7 +321,8 @@
 <p class="">Non un&#x27;area pensata per il relax fine a sé stesso, ma un momento in cui il corpo si rigenera per tornare a dare il massimo.</p>
 <p class="">Il respiro che precede ogni nuova ispirazione.</p>
 <div class="preview-room-actions">
-<button class="preview-button" data-room-explore type="button" aria-expanded="false">Esplora Stanza <span aria-hidden="true">›</span>
+<button class="preview-button" data-room-explore type="button" aria-expanded="false">Esplora Stanza <span class="preview-chevron" aria-hidden="true">
+</span>
 </button>
 </div>
 </div>
@@ -334,7 +334,7 @@
 </div>
 <div class="preview-room-cards" tabindex="0" role="region" aria-label="Spazi TPR RECHARGE" data-carousel>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="643:1964">
+<div class="preview-room-card-photo" data-asset-role="rooms.wellness.cards.gym" data-figma-node="1085:2357" data-pending-figma-image="1085:2357">
 </div>
 <div class="preview-room-card-label">
 <h3>gym</h3>
@@ -342,7 +342,7 @@
 </div>
 </article>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="643:1964">
+<div class="preview-room-card-photo" data-asset-role="rooms.wellness.cards.contrast-therapy" data-figma-node="1085:2356" data-pending-figma-image="1085:2356">
 </div>
 <div class="preview-room-card-label">
 <h3>contrast therapy</h3>
@@ -350,7 +350,7 @@
 </div>
 </article>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="643:1964">
+<div class="preview-room-card-photo" data-asset-role="rooms.wellness.cards.longevity" data-figma-node="1074:2889" data-pending-figma-image="1074:2889">
 </div>
 <div class="preview-room-card-label">
 <h3>longevity</h3>
@@ -362,7 +362,7 @@
 </div>
 <div class="preview-room-panel" data-room-panel="bar" style="--room-bg:#eb642b;--room-accent:#ffc100" hidden data-figma-node="643:1895">
 <img class="preview-room-art" src="../assets/homepage-room-bar-no-text-2x.webp" alt="" decoding="async" aria-hidden="true" data-pending-figma-image="643:1895">
-<div class="preview-room-character">
+<div class="preview-room-character" style="--room-character:url('../assets/little-man/bar.svg')">
 <img class="" src="../assets/little-man/bar.svg" alt="" decoding="async" aria-hidden="true">
 </div>
 <div class="preview-room-copy">
@@ -373,7 +373,8 @@
 <p class="">Nella stessa area, una cucina attrezzata disponibile per pranzare o preparare qualcosa in autonomia.</p>
 <p class="">Dove il nutrimento diventa carburante.</p>
 <div class="preview-room-actions">
-<button class="preview-button" data-room-explore type="button" aria-expanded="false">Esplora Stanza <span aria-hidden="true">›</span>
+<button class="preview-button" data-room-explore type="button" aria-expanded="false">Esplora Stanza <span class="preview-chevron" aria-hidden="true">
+</span>
 </button>
 </div>
 </div>
@@ -385,7 +386,7 @@
 </div>
 <div class="preview-room-cards" tabindex="0" role="region" aria-label="Spazi TPR FUEL" data-carousel>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="643:1895">
+<div class="preview-room-card-photo" data-asset-role="rooms.bar.cards.servizi" data-figma-node="1074:2893" data-pending-figma-image="1074:2893">
 </div>
 <div class="preview-room-card-label">
 <h3>servizi</h3>
@@ -393,7 +394,7 @@
 </div>
 </article>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="643:1895">
+<div class="preview-room-card-photo" data-asset-role="rooms.bar.cards.accessibilita" data-figma-node="1086:2208" data-pending-figma-image="1086:2208">
 </div>
 <div class="preview-room-card-label">
 <h3>accessibilità</h3>
@@ -401,7 +402,7 @@
 </div>
 </article>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="643:1895">
+<div class="preview-room-card-photo" data-asset-role="rooms.bar.cards.storage" data-figma-node="1086:2206" data-pending-figma-image="1086:2206">
 </div>
 <div class="preview-room-card-label">
 <h3>storage</h3>
@@ -413,7 +414,7 @@
 </div>
 <div class="preview-room-panel" data-room-panel="media" style="--room-bg:#ffc100;--room-accent:#2c64e8" hidden data-figma-node="643:2033">
 <img class="preview-room-art" src="../assets/homepage-room-media-no-text-2x.webp" alt="" decoding="async" aria-hidden="true" data-pending-figma-image="643:2033">
-<div class="preview-room-character">
+<div class="preview-room-character" style="--room-character:url('../assets/little-man/media.svg')">
 <img class="" src="../assets/little-man/media.svg" alt="" decoding="async" aria-hidden="true">
 </div>
 <div class="preview-room-copy">
@@ -424,7 +425,8 @@
 <p class="">Qui si registrano podcast e interviste, si incidono tracce musicali e si realizzano shooting fotografici e video, con attrezzatura professionale sempre a disposizione. Un ambiente costruito perché la qualità tecnica non sia mai il limite di quello che si vuole raccontare.</p>
 <p class="">Dove le idee diventano realtà.</p>
 <div class="preview-room-actions">
-<button class="preview-button" data-room-explore type="button" aria-expanded="false">Esplora Stanza <span aria-hidden="true">›</span>
+<button class="preview-button" data-room-explore type="button" aria-expanded="false">Esplora Stanza <span class="preview-chevron" aria-hidden="true">
+</span>
 </button>
 </div>
 </div>
@@ -436,7 +438,7 @@
 </div>
 <div class="preview-room-cards" tabindex="0" role="region" aria-label="Spazi TPR MEDIA" data-carousel>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="643:2033">
+<div class="preview-room-card-photo" data-asset-role="rooms.media.cards.podcast" data-figma-node="1086:2219" data-pending-figma-image="1086:2219">
 </div>
 <div class="preview-room-card-label">
 <h3>podcast</h3>
@@ -444,7 +446,7 @@
 </div>
 </article>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="643:2033">
+<div class="preview-room-card-photo" data-asset-role="rooms.media.cards.set-fotografico" data-figma-node="1086:2220" data-pending-figma-image="1086:2220">
 </div>
 <div class="preview-room-card-label">
 <h3>set fotografico</h3>
@@ -452,7 +454,7 @@
 </div>
 </article>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-pending-figma-image="643:2033">
+<div class="preview-room-card-photo" data-asset-role="rooms.media.cards.studio-audio" data-figma-node="1074:2890" data-pending-figma-image="1074:2890">
 </div>
 <div class="preview-room-card-label">
 <h3>studio audio</h3>
@@ -464,21 +466,29 @@
 </div>
 <nav class="preview-room-nav" aria-label="Scegli la tua stanza">
 <button type="button" data-room-select="coworking" aria-label="Coworking" aria-pressed="true">
-<img class="" src="../assets/elevator-icon-coworking.svg" alt="" decoding="async" aria-hidden="true">
+<img class="preview-room-icon--on preview-room-icon--painted" src="../assets/figma-updated/shapes/room-toolbar-coworking-default.svg" alt="" decoding="async" aria-hidden="true">
+<img class="preview-room-icon--off" src="../assets/elevator-icon-coworking-off.svg" alt="" decoding="async" aria-hidden="true">
 </button>
 <button type="button" data-room-select="reformer" aria-label="TPR Move" aria-pressed="false">
-<img class="" src="../assets/elevator-icon-reformer.svg" alt="" decoding="async" aria-hidden="true">
+<img class="preview-room-icon--on" src="../assets/elevator-icon-reformer.svg" alt="" decoding="async" aria-hidden="true">
+<img class="preview-room-icon--off preview-room-icon--painted" src="../assets/figma-updated/shapes/room-toolbar-move-default.svg" alt="" decoding="async" aria-hidden="true">
 </button>
 <button type="button" data-room-select="wellness" aria-label="Recharge" aria-pressed="false">
-<img class="" src="../assets/elevator-icon-wellness.svg" alt="" decoding="async" aria-hidden="true">
+<img class="preview-room-icon--on" src="../assets/elevator-icon-wellness.svg" alt="" decoding="async" aria-hidden="true">
+<img class="preview-room-icon--off preview-room-icon--painted" src="../assets/figma-updated/shapes/room-toolbar-recharge-default.svg" alt="" decoding="async" aria-hidden="true">
 </button>
 <button type="button" data-room-select="bar" aria-label="Fuel" aria-pressed="false">
-<img class="" src="../assets/elevator-icon-bar.svg" alt="" decoding="async" aria-hidden="true">
+<img class="preview-room-icon--on" src="../assets/elevator-icon-bar.svg" alt="" decoding="async" aria-hidden="true">
+<img class="preview-room-icon--off preview-room-icon--painted" src="../assets/figma-updated/shapes/room-toolbar-fuel-default.svg" alt="" decoding="async" aria-hidden="true">
 </button>
 <button type="button" data-room-select="media" aria-label="Media" aria-pressed="false">
-<img class="" src="../assets/elevator-icon-media.svg" alt="" decoding="async" aria-hidden="true">
+<img class="preview-room-icon--on" src="../assets/elevator-icon-media.svg" alt="" decoding="async" aria-hidden="true">
+<img class="preview-room-icon--off preview-room-icon--painted" src="../assets/figma-updated/shapes/room-toolbar-media-default.svg" alt="" decoding="async" aria-hidden="true">
 </button>
 </nav>
+<button type="button" class="preview-room-next" data-room-next aria-label="Stanza successiva">
+<img class="" src="../assets/figma-updated/shapes/room-next-circle-painted.svg" alt="" decoding="async" aria-hidden="true">
+</button>
 </section>
 <section class="preview-home-events preview-shell">
 <div class="preview-two-columns">
@@ -492,13 +502,15 @@
 </div>
 </div>
 </div>
-<figure class="preview-home-event-photo" data-pending-figma-image="616:1779">
-<img class="" src="../assets/tpr-events.webp" alt="Un evento The People’s Room" decoding="async" >
+<figure class="preview-home-event-photo preview-events--pdf" data-figma-node="616:1780">
+<img src="../assets/figma-updated/composites/home-events-photo-eye-2x.webp" alt="Un evento The People’s Room" decoding="async" class="preview-event-composite">
 </figure>
 </section>
+<div class="preview-membership">
 <section class="preview-offers preview-shell" id="offerte">
 <div class="preview-offers-heading">
-<h2 class="preview-section-title">Vivi <span class="preview-inline-wordmark">
+<h2 class="preview-section-title">
+<span class="preview-cap-text">Vivi</span> <span class="preview-inline-wordmark">
 <img class="" src="../assets/brand/Logotype_blue.svg" alt="TPR™" decoding="async" >
 </span>
 </h2>
@@ -506,7 +518,8 @@
 </div>
 <div class="preview-offer-carousel" tabindex="0" role="region" aria-label="Offerte TPR, scorri per esplorare" data-carousel>
 <article class="preview-offer-card preview-paper" id="day-pass" data-figma-node="1086:2242">
-<div class="preview-offer-media" data-pending-figma-image="1086:2242">
+<div class="preview-offer-media" data-asset-role="offers.day-pass" data-figma-node="1086:2244">
+<img src="../assets/figma-updated/photos/day-pass.jpeg" alt="day pass" decoding="async" >
 </div>
 <div class="preview-offer-body">
 <div class="preview-offer-summary">
@@ -531,7 +544,8 @@
 </div>
 </article>
 <article class="preview-offer-card preview-paper" id="all-inclusive" data-figma-node="1086:2258">
-<div class="preview-offer-media" data-pending-figma-image="1086:2258">
+<div class="preview-offer-media" data-asset-role="offers.all-inclusive" data-figma-node="1086:2260">
+<img src="../assets/figma-updated/photos/all-inclusive.jpeg" alt="All inclusive" decoding="async" >
 </div>
 <div class="preview-offer-body">
 <div class="preview-offer-summary">
@@ -558,7 +572,8 @@
 </div>
 </article>
 <article class="preview-offer-card preview-paper" id="flex-8" data-figma-node="1086:2276">
-<div class="preview-offer-media" data-pending-figma-image="1086:2276">
+<div class="preview-offer-media" data-asset-role="offers.flex-8" data-figma-node="1086:2278">
+<img src="../assets/figma-updated/photos/flex-8.jpeg" alt="flex 8" decoding="async" >
 </div>
 <div class="preview-offer-body">
 <div class="preview-offer-summary">
@@ -584,7 +599,8 @@
 </div>
 </article>
 <article class="preview-offer-card preview-paper" id="ufficio-virtuale" data-figma-node="1086:2292">
-<div class="preview-offer-media" data-pending-figma-image="1086:2292">
+<div class="preview-offer-media" data-asset-role="offers.ufficio-virtuale" data-figma-node="1086:2295">
+<img src="../assets/figma-updated/photos/ufficio-virtuale.jpeg" alt="ufficio virtuale" decoding="async" >
 </div>
 <div class="preview-offer-body">
 <div class="preview-offer-summary">
@@ -605,7 +621,8 @@
 <section class="preview-company" id="aziende">
 <h2 class="preview-section-title preview-centered">Offerte personalizzate per startup e aziende</h2>
 <div class="preview-company-card preview-paper">
-<div class="preview-company-media" data-pending-figma-image="1086:2237">
+<div class="preview-company-media" data-asset-role="offers.company" data-figma-node="1086:2237">
+<img src="../assets/figma-updated/photos/company.jpeg" alt="Gli spazi TPR per aziende e startup" decoding="async" >
 </div>
 <div class="preview-company-copy">
 <div class="preview-company-text">
@@ -656,7 +673,8 @@
 <textarea name="message" placeholder="Messaggio" rows="3">
 </textarea>
 </label>
-<button class="preview-submit" type="submit">Invia <span aria-hidden="true">›</span>
+<button class="preview-submit" type="submit">Invia <span class="preview-chevron" aria-hidden="true">
+</span>
 </button>
 </div>
 <p class="preview-form-status" role="status" aria-live="polite"></p>
@@ -667,17 +685,22 @@
 </section>
 <section class="preview-partners preview-shell" data-figma-node="791:1770">
 <h2>I nostri partner</h2>
-<div class="preview-partner-logos" aria-label="Partner TPR" data-pending-figma-image="663:1817">
-<span>
+<div class="preview-partner-logos" aria-label="Partner TPR">
+<span data-asset-role="partners.1">
+<img src="../assets/figma-updated/partners/partner-1.svg" alt="Partner TPR 1" decoding="async" >
 </span>
-<span>
+<span data-asset-role="partners.2">
+<img src="../assets/figma-updated/partners/partner-2-revo.svg" alt="Partner TPR 2" decoding="async" >
 </span>
-<span>
+<span data-asset-role="partners.3">
+<img src="../assets/figma-updated/partners/partner-3.svg" alt="Partner TPR 3" decoding="async" >
 </span>
-<span>
+<span data-asset-role="partners.4">
+<img src="../assets/figma-updated/partners/partner-4.svg" alt="Partner TPR 4" decoding="async" >
 </span>
 </div>
 </section>
+</div>
 <section class="preview-newsletter preview-shell" id="community" data-figma-node="677:1739">
 <div class="preview-two-columns">
 <h2 class="preview-section-title">Community e aggiornamenti</h2>

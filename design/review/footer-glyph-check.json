@@ -1,0 +1,218 @@
+[
+  {
+    "page": "home",
+    "page_height": 8523,
+    "labels": [
+      {
+        "label": "TPR",
+        "reference_glyph_bbox": [
+          1109,
+          8180,
+          1149,
+          8197
+        ],
+        "native_glyph_bbox": [
+          1110,
+          8179,
+          1150,
+          8196
+        ]
+      },
+      {
+        "label": "ROOMS",
+        "reference_glyph_bbox": [
+          1344,
+          8180,
+          1415,
+          8197
+        ],
+        "native_glyph_bbox": [
+          1344,
+          8179,
+          1415,
+          8196
+        ]
+      }
+    ]
+  },
+  {
+    "page": "vivi",
+    "page_height": 4036,
+    "labels": [
+      {
+        "label": "TPR",
+        "reference_glyph_bbox": [
+          1109,
+          3699,
+          1149,
+          3716
+        ],
+        "native_glyph_bbox": [
+          1110,
+          3698,
+          1150,
+          3715
+        ]
+      },
+      {
+        "label": "ROOMS",
+        "reference_glyph_bbox": [
+          1344,
+          3699,
+          1415,
+          3716
+        ],
+        "native_glyph_bbox": [
+          1344,
+          3698,
+          1415,
+          3715
+        ]
+      }
+    ]
+  },
+  {
+    "page": "events",
+    "page_height": 2806,
+    "labels": [
+      {
+        "label": "TPR",
+        "reference_glyph_bbox": [
+          1109,
+          2469,
+          1149,
+          2486
+        ],
+        "native_glyph_bbox": [
+          1110,
+          2468,
+          1150,
+          2485
+        ]
+      },
+      {
+        "label": "ROOMS",
+        "reference_glyph_bbox": [
+          1344,
+          2469,
+          1415,
+          2486
+        ],
+        "native_glyph_bbox": [
+          1344,
+          2468,
+          1415,
+          2485
+        ]
+      }
+    ]
+  },
+  {
+    "page": "contacts",
+    "page_height": 1670,
+    "labels": [
+      {
+        "label": "TPR",
+        "reference_glyph_bbox": [
+          1109,
+          1333,
+          1149,
+          1350
+        ],
+        "native_glyph_bbox": [
+          1110,
+          1332,
+          1150,
+          1349
+        ]
+      },
+      {
+        "label": "ROOMS",
+        "reference_glyph_bbox": [
+          1344,
+          1333,
+          1415,
+          1350
+        ],
+        "native_glyph_bbox": [
+          1344,
+          1332,
+          1415,
+          1349
+        ]
+      }
+    ]
+  },
+  {
+    "page": "booking",
+    "page_height": 1750,
+    "labels": [
+      {
+        "label": "TPR",
+        "reference_glyph_bbox": [
+          1109,
+          1413,
+          1149,
+          1430
+        ],
+        "native_glyph_bbox": [
+          1110,
+          1412,
+          1150,
+          1429
+        ]
+      },
+      {
+        "label": "ROOMS",
+        "reference_glyph_bbox": [
+          1344,
+          1413,
+          1415,
+          1430
+        ],
+        "native_glyph_bbox": [
+          1344,
+          1412,
+          1415,
+          1429
+        ]
+      }
+    ]
+  },
+  {
+    "page": "about",
+    "page_height": 4444,
+    "labels": [
+      {
+        "label": "TPR",
+        "reference_glyph_bbox": [
+          1109,
+          4107,
+          1149,
+          4124
+        ],
+        "native_glyph_bbox": [
+          1110,
+          4106,
+          1150,
+          4123
+        ]
+      },
+      {
+        "label": "ROOMS",
+        "reference_glyph_bbox": [
+          1344,
+          4107,
+          1415,
+          4124
+        ],
+        "native_glyph_bbox": [
+          1344,
+          4106,
+          1415,
+          4123
+        ]
+      }
+    ]
+  }
+]

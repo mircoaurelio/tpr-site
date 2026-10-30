@@ -2633,3 +2633,998 @@ body.updated-preview {
 .preview-room-card-photo {
   margin-top: 0;
 }
+/* Restore the approved paper-cut control contour at every viewport size.
+   zigzag-controls.js reuses the existing coming-soon outline implementation. */
+.updated-preview
+  :where(
+    .preview-button,
+    .preview-submit,
+    .preview-discover-button,
+    .preview-email-row,
+    .preview-email-row button,
+    .preview-pilates-banner > span
+  ) {
+  --paper-radius: 10;
+  --paper-stroke: 0;
+  --control-fill: var(--royal);
+  --control-stroke: none;
+}
+.updated-preview .preview-button--outline {
+  --paper-stroke: 2.4;
+  --control-fill: transparent;
+  --control-stroke: white;
+}
+.updated-preview .preview-button--blue-outline {
+  --paper-stroke: 2.4;
+  --control-fill: transparent;
+  --control-stroke: var(--royal);
+}
+.updated-preview .preview-button--pink {
+  --control-fill: var(--pink);
+}
+.updated-preview .preview-submit,
+.updated-preview .preview-email-row button {
+  --control-fill: var(--ice);
+}
+.updated-preview .preview-submit.is-ready,
+.updated-preview .preview-email-row button.is-ready {
+  --control-fill: var(--royal);
+}
+.updated-preview .preview-email-row {
+  --paper-radius: 11;
+  --control-fill: white;
+}
+.updated-preview .preview-email-row button {
+  --paper-radius: 12;
+}
+.updated-preview .preview-discover-button {
+  --paper-stroke: 2.4;
+  --control-fill: transparent;
+  --control-stroke: white;
+  font: 700 40px/1 var(--preview-display);
+}
+.updated-preview .preview-discover-button[aria-pressed="true"] {
+  --control-fill: white;
+}
+.updated-preview .preview-room-actions .preview-button {
+  --control-fill: var(--room-accent);
+}
+.updated-preview .preview-room-actions .preview-button--room-outline {
+  --paper-stroke: 2.4;
+  --control-fill: transparent;
+  --control-stroke: var(--room-accent);
+}
+.updated-preview .preview-pilates-banner > span {
+  --control-fill: var(--green);
+}
+.updated-preview .has-zigzag {
+  isolation: isolate;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.updated-preview
+  :where(
+    .preview-button,
+    .preview-submit,
+    .preview-email-row,
+    .preview-email-row button,
+    .preview-pilates-banner > span
+  ) {
+  position: relative;
+}
+.updated-preview .preview-discover-button.has-zigzag {
+  position: absolute;
+}
+@media (max-width: 900px) {
+  .updated-preview .preview-discover-button.has-zigzag {
+    position: relative;
+    inset: auto;
+  }
+  .updated-preview .preview-discover-button {
+    font-size: clamp(16px, calc(6.85vw - 5.92px), 23px);
+    white-space: nowrap;
+  }
+}
+@media (min-width: 901px) and (max-width: 1200px) {
+  .updated-preview .preview-discover-button {
+    font-size: 30px;
+  }
+}
+.updated-preview .zigzag-contour {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.updated-preview .zigzag-contour path {
+  fill: var(--control-fill, transparent);
+  stroke: var(--control-stroke, none);
+  stroke-width: var(--paper-stroke, 0);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition:
+    fill 0.2s ease,
+    stroke 0.2s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .updated-preview .zigzag-contour path {
+    transition: none;
+  }
+}
+/* Form controls and paper surfaces retain the same approved rough edge.
+   Keep focus on native inputs; the decorative contour never masks text. */
+.updated-preview .preview-fields > label {
+  --paper-radius: 10;
+  --paper-stroke: 3;
+  --control-fill: white;
+  --control-stroke: var(--ice);
+}
+.updated-preview .preview-fields > label.preview-select {
+  --paper-stroke: 0;
+  --control-fill: var(--royal);
+  --control-stroke: none;
+}
+.updated-preview
+  .preview-fields
+  > label.has-zigzag
+  > :is(input, select, textarea) {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+.updated-preview .preview-fields select option {
+  background: white;
+  color: var(--royal);
+}
+.preview-paper {
+  mask: url("assets/wavy-frame.svg") center/100% 100% no-repeat;
+  border-radius: 0;
+}
+.preview-paper:focus-visible {
+  outline-offset: -7px;
+}
+/* At the source desktop dimensions, retain the original PDF brush vectors.
+   Responsive mobile controls keep the CSS-pixel contour above instead of
+   compressing the source's wave pattern into a narrower control. */
+@media (min-width: 1201px) {
+  .updated-preview .preview-discover-button.has-zigzag > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview .preview-discover-button.has-zigzag::before {
+    content: "";
+    position: absolute;
+    left: -2.227356px;
+    top: -2.400024px;
+    width: 364.448242px;
+    height: 76.837555px;
+    z-index: -1;
+    background: white;
+    mask: url("assets/figma-updated/shapes/community-outline-360x72.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview
+    .preview-discover-button.has-zigzag[aria-pressed="true"]::before {
+    mask-image: url("assets/figma-updated/shapes/discovery-selected-mask-360x72.svg");
+  }
+}
+@media (min-width: 901px) {
+  .updated-preview .preview-header .preview-button.has-zigzag {
+    width: 279.6914px;
+    height: 32px;
+    min-height: 32px;
+  }
+  .updated-preview
+    .preview-header
+    .preview-button.has-zigzag
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview .preview-header .preview-button.has-zigzag::before {
+    content: "";
+    position: absolute;
+    left: -2.16419px;
+    top: -2.39966px;
+    width: 284.00403px;
+    height: 36.83755px;
+    z-index: -1;
+    background: white;
+    mask: url("assets/figma-updated/shapes/header-cta-outline.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+}
+/* SOURCE-EXACT DESKTOP CONTROL GRAPHICS — original PDF paths, no labels. */
+@media (min-width: 1201px) {
+  .updated-preview .preview-home-about .preview-button.has-zigzag::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -2.009094px;
+    top: -2.400024px;
+    width: 215.088806px;
+    height: 36.62085px;
+    background: var(--control-fill);
+    mask: url("assets/figma-updated/shapes/about-primary-mask.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview
+    .preview-home-about
+    .preview-button.has-zigzag
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview
+    .preview-offer-card:first-child
+    .preview-button.has-zigzag::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -2.043823px;
+    top: -2.399902px;
+    width: 436.426575px;
+    height: 36.837402px;
+    background: var(--control-fill);
+    mask: url("assets/figma-updated/shapes/offer-cta-filled-mask.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview
+    .preview-offer-card:first-child
+    .preview-button.has-zigzag
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview
+    .preview-offer-card:not(:first-child)
+    .preview-button.has-zigzag::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -2.043823px;
+    top: -2.399902px;
+    width: 436.426636px;
+    height: 36.837402px;
+    background: var(--control-stroke);
+    mask: url("assets/figma-updated/shapes/offer-cta-outline.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview
+    .preview-offer-card:not(:first-child)
+    .preview-button.has-zigzag
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview
+    .preview-company-copy
+    .preview-fields
+    > label.preview-select.has-zigzag::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -2.281738px;
+    top: -2.399902px;
+    width: 294.365967px;
+    height: 52.837402px;
+    background: var(--control-fill);
+    mask: url("assets/figma-updated/shapes/company-select-mask.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview
+    .preview-company-copy
+    .preview-fields
+    > label.preview-select.has-zigzag
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview
+    .preview-company-copy
+    .preview-fields
+    > label.has-zigzag:not(.preview-select):not(
+      .preview-field-message
+    )::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -2.281738px;
+    top: -2.399902px;
+    width: 294.365967px;
+    height: 52.837402px;
+    background: var(--control-stroke);
+    mask: url("assets/figma-updated/shapes/company-input-outline.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview
+    .preview-company-copy
+    .preview-fields
+    > label.has-zigzag:not(.preview-select):not(.preview-field-message)
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview
+    .preview-company-copy
+    .preview-fields
+    > label.preview-field-message.has-zigzag::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -2.385803px;
+    top: -2.4375px;
+    width: 608.667542px;
+    height: 100.809082px;
+    background: var(--control-stroke);
+    mask: url("assets/figma-updated/shapes/company-textarea-outline.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview
+    .preview-company-copy
+    .preview-fields
+    > label.preview-field-message.has-zigzag
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview .preview-company-copy .preview-submit.has-zigzag::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -2.129028px;
+    top: -2.4375px;
+    width: 608.254395px;
+    height: 36.799805px;
+    background: var(--control-fill);
+    mask: url("assets/figma-updated/shapes/company-submit-mask.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview
+    .preview-company-copy
+    .preview-submit.has-zigzag
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview .preview-email-row.has-zigzag::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -2.073273px;
+    top: -2.4375px;
+    width: 700.339386px;
+    height: 52.838867px;
+    background: var(--control-fill);
+    mask: url("assets/figma-updated/shapes/newsletter-row-mask.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview .preview-email-row.has-zigzag > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview .preview-email-row button.has-zigzag::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -2.437866px;
+    top: -2.399902px;
+    width: 264.480835px;
+    height: 36.782715px;
+    background: var(--control-fill);
+    mask: url("assets/figma-updated/shapes/newsletter-submit-mask.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview .preview-email-row button.has-zigzag > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview
+    .preview-contact-card:not(.preview-contact-card--event)
+    .preview-fields
+    > label.preview-select.has-zigzag::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -2.265633px;
+    top: -2.400146px;
+    width: 274.441231px;
+    height: 52.837646px;
+    background: var(--control-fill);
+    mask: url("assets/figma-updated/shapes/contact-select-mask.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview
+    .preview-contact-card:not(.preview-contact-card--event)
+    .preview-fields
+    > label.preview-select.has-zigzag
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview
+    .preview-contact-card:not(.preview-contact-card--event)
+    .preview-fields
+    > label.has-zigzag:not(.preview-select):not(
+      .preview-field-message
+    )::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -2.265625px;
+    top: -2.400146px;
+    width: 274.441223px;
+    height: 52.837646px;
+    background: var(--control-stroke);
+    mask: url("assets/figma-updated/shapes/contact-input-outline.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview
+    .preview-contact-card:not(.preview-contact-card--event)
+    .preview-fields
+    > label.has-zigzag:not(.preview-select):not(.preview-field-message)
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview
+    .preview-contact-card:not(.preview-contact-card--event)
+    .preview-fields
+    > label.preview-field-message.has-zigzag::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -2.413193px;
+    top: -2.4375px;
+    width: 568.694931px;
+    height: 100.799805px;
+    background: var(--control-stroke);
+    mask: url("assets/figma-updated/shapes/contact-textarea-outline.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview
+    .preview-contact-card:not(.preview-contact-card--event)
+    .preview-fields
+    > label.preview-field-message.has-zigzag
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview
+    .preview-contact-card:not(.preview-contact-card--event)
+    .preview-submit.has-zigzag::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -1.973183px;
+    top: -2.4375px;
+    width: 567.99131px;
+    height: 36.792725px;
+    background: var(--control-fill);
+    mask: url("assets/figma-updated/shapes/contact-submit-mask.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview
+    .preview-contact-card:not(.preview-contact-card--event)
+    .preview-submit.has-zigzag
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview
+    .preview-home-events
+    .preview-button--solid.has-zigzag::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -1.755676px;
+    top: -2.400146px;
+    width: 250.890808px;
+    height: 36.782959px;
+    background: var(--control-fill);
+    mask: url("assets/figma-updated/shapes/home-events-filled-mask.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview
+    .preview-home-events
+    .preview-button--solid.has-zigzag
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview
+    .preview-home-events
+    .preview-button--blue-outline.has-zigzag::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -2.170044px;
+    top: -2.400146px;
+    width: 288.933228px;
+    height: 36.837646px;
+    background: var(--control-stroke);
+    mask: url("assets/figma-updated/shapes/home-events-outline.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview
+    .preview-home-events
+    .preview-button--blue-outline.has-zigzag
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview
+    .preview-room-actions
+    .preview-button.has-zigzag:not(.preview-button--room-outline)::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -1.78949px;
+    top: -2.399902px;
+    width: 269.614441px;
+    height: 36.782959px;
+    background: var(--control-fill);
+    mask: url("assets/figma-updated/shapes/room-explore-mask.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview
+    .preview-room-actions
+    .preview-button.has-zigzag:not(.preview-button--room-outline)
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview .preview-pilates-banner > span.has-zigzag::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -2.074768px;
+    top: -2.399902px;
+    width: 298.068176px;
+    height: 36.837402px;
+    background: var(--control-fill);
+    mask: url("assets/figma-updated/shapes/pilates-banner-cta-mask.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview .preview-pilates-banner > span.has-zigzag > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview
+    .preview-contact-card--event
+    .preview-fields
+    > label.preview-select.has-zigzag::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -2.267693px;
+    top: -2.400024px;
+    width: 300.351982px;
+    height: 52.837524px;
+    background: var(--control-fill);
+    mask: url("assets/figma-updated/shapes/event-select-mask.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview
+    .preview-contact-card--event
+    .preview-fields
+    > label.preview-select.has-zigzag
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview
+    .preview-contact-card--event
+    .preview-fields
+    > label.has-zigzag:not(.preview-select):not(
+      .preview-field-message
+    )::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -2.2677px;
+    top: -2.400024px;
+    width: 300.35199px;
+    height: 52.837524px;
+    background: var(--control-stroke);
+    mask: url("assets/figma-updated/shapes/event-input-outline.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview
+    .preview-contact-card--event
+    .preview-fields
+    > label.has-zigzag:not(.preview-select):not(.preview-field-message)
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview
+    .preview-contact-card--event
+    .preview-fields
+    > label.preview-field-message.has-zigzag::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -2.400208px;
+    top: -2.4375px;
+    width: 1260.801453px;
+    height: 100.860107px;
+    background: var(--control-stroke);
+    mask: url("assets/figma-updated/shapes/event-textarea-outline.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview
+    .preview-contact-card--event
+    .preview-fields
+    > label.preview-field-message.has-zigzag
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview
+    .preview-contact-card--event
+    .preview-submit.has-zigzag::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -2.188759px;
+    top: -2.4375px;
+    width: 1260.489052px;
+    height: 36.860107px;
+    background: var(--control-fill);
+    mask: url("assets/figma-updated/shapes/event-submit-mask.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview
+    .preview-contact-card--event
+    .preview-submit.has-zigzag
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview
+    .preview-discover-content
+    .preview-button--pink.has-zigzag::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -1.78949px;
+    top: -2.400024px;
+    width: 269.614441px;
+    height: 36.782776px;
+    background: var(--control-fill);
+    mask: url("assets/figma-updated/shapes/discovery-center-cta-mask.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  .updated-preview
+    .preview-discover-content
+    .preview-button--pink.has-zigzag
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  .updated-preview .preview-home-about .preview-button.has-zigzag {
+    width: 211px;
+    height: 32px;
+    min-height: 32px;
+    flex-shrink: 0;
+    justify-content: flex-start;
+  }
+  .updated-preview .preview-home-events .preview-button--solid.has-zigzag {
+    width: 247px;
+    height: 32px;
+    min-height: 32px;
+    flex-shrink: 0;
+    justify-content: flex-start;
+  }
+  .updated-preview
+    .preview-home-events
+    .preview-button--blue-outline.has-zigzag {
+    width: 284px;
+    height: 32px;
+    min-height: 32px;
+    flex-shrink: 0;
+    justify-content: flex-start;
+  }
+  .updated-preview
+    .preview-room-actions
+    .preview-button.has-zigzag:not(.preview-button--room-outline) {
+    width: 265.6915px;
+    height: 32px;
+    min-height: 32px;
+    flex-shrink: 0;
+    justify-content: flex-start;
+  }
+  .updated-preview .preview-pilates-banner > span.has-zigzag {
+    width: 294px;
+    height: 32px;
+    min-height: 32px;
+    flex-shrink: 0;
+    justify-content: flex-start;
+  }
+  .updated-preview .preview-email-row button.has-zigzag {
+    width: 260px;
+    height: 32px;
+    min-height: 32px;
+    flex-shrink: 0;
+    justify-content: flex-start;
+  }
+  .updated-preview .preview-discover-content .preview-button--pink.has-zigzag {
+    width: 265.691528px;
+    height: 32px;
+    min-height: 32px;
+    flex-shrink: 0;
+    justify-content: flex-start;
+  }
+  .updated-preview
+    .preview-room-actions
+    .preview-button.has-zigzag:not(.preview-button--room-outline) {
+    padding-inline: 64px;
+  }
+  .updated-preview .preview-pilates-banner > span.has-zigzag {
+    display: inline-flex;
+    align-items: center;
+  }
+}
+.updated-preview
+  :is(
+    .preview-button,
+    .preview-submit,
+    .preview-discover-button,
+    .preview-email-row button
+  ) {
+  letter-spacing: 0;
+}
+.updated-preview .preview-fields > label > :is(input, select, textarea) {
+  letter-spacing: 0;
+}
+/* Rough paper frames paint above photographs instead of behind them. */
+.updated-preview .preview-paper {
+  position: relative;
+}
+.updated-preview .preview-paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 8px solid white;
+  border-radius: 12px;
+  z-index: 2;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+.updated-preview .preview-manifesto-card {
+  --paper-radius: 12;
+  --paper-stroke: 3;
+  --control-fill: transparent;
+  --control-stroke: white;
+}
+.updated-preview .preview-manifesto-card.has-zigzag {
+  position: relative;
+  outline: 0;
+}
+/* SOURCE-EXACT PAPER SURFACES — original silhouette plus white brush frame. */
+@media (min-width: 1201px) {
+  body.updated-preview .preview-offer-card.has-source-paper {
+    overflow: visible;
+    mask-image: url("assets/figma-updated/shapes/offer-card-mask-480x756.svg");
+    mask-size: 492.634392px 768.899902px;
+    mask-position: -6.280388px -6.399902px;
+    mask-origin: border-box;
+    mask-repeat: no-repeat;
+    mask-clip: no-clip;
+    border-radius: 0;
+  }
+  body.updated-preview .preview-offer-card.has-source-paper::after {
+    inset: auto;
+    left: -6.280388px;
+    top: -6.399902px;
+    width: 492.634392px;
+    height: 768.899902px;
+    border: 0;
+    border-radius: 0;
+    background: url("assets/figma-updated/shapes/offer-card-frame-480x756.svg")
+      center/contain no-repeat;
+  }
+  body.updated-preview .preview-company-card.has-source-paper {
+    overflow: visible;
+    mask-image: url("assets/figma-updated/shapes/company-card-mask-1352x920.svg");
+    mask-size: 1364.878983px 932.803223px;
+    mask-position: -6.378983px -6.399902px;
+    mask-origin: border-box;
+    mask-repeat: no-repeat;
+    mask-clip: no-clip;
+    border-radius: 0;
+  }
+  body.updated-preview .preview-company-card.has-source-paper::after {
+    inset: auto;
+    left: -6.378983px;
+    top: -6.399902px;
+    width: 1364.878983px;
+    height: 932.803223px;
+    border: 0;
+    border-radius: 0;
+    background: url("assets/figma-updated/shapes/company-card-frame-1352x920.svg")
+      center/contain no-repeat;
+  }
+  body.updated-preview .preview-feature-card.has-source-paper,
+  body.updated-preview .preview-room-card.has-source-paper {
+    overflow: visible;
+    mask-image: url("assets/figma-updated/shapes/about-card-mask-560x434.svg");
+    mask-size: 571.929932px 446.900146px;
+    mask-position: -6.084595px -6.400146px;
+    mask-origin: border-box;
+    mask-repeat: no-repeat;
+    mask-clip: no-clip;
+    border-radius: 0;
+  }
+  body.updated-preview .preview-feature-card.has-source-paper::after,
+  body.updated-preview .preview-room-card.has-source-paper::after {
+    inset: auto;
+    left: -6.084595px;
+    top: -6.400146px;
+    width: 571.929932px;
+    height: 446.900146px;
+    border: 0;
+    border-radius: 0;
+    background: url("assets/figma-updated/shapes/about-card-frame-560x434.svg")
+      center/contain no-repeat;
+  }
+  body.updated-preview .preview-event-card.has-source-paper {
+    overflow: visible;
+    mask-image: url("assets/figma-updated/shapes/event-card-mask-560x440.svg");
+    mask-size: 571.929932px 452.900208px;
+    mask-position: -6.084595px -6.400085px;
+    mask-origin: border-box;
+    mask-repeat: no-repeat;
+    mask-clip: no-clip;
+    border-radius: 0;
+  }
+  body.updated-preview .preview-event-card.has-source-paper::after {
+    inset: auto;
+    left: -6.084595px;
+    top: -6.400085px;
+    width: 571.929932px;
+    height: 452.900208px;
+    border: 0;
+    border-radius: 0;
+    background: url("assets/figma-updated/shapes/event-card-frame-560x440.svg")
+      center/contain no-repeat;
+  }
+  body.updated-preview
+    .preview-contact-card:not(.preview-contact-card--event).has-source-paper {
+    overflow: visible;
+    mask-image: url("assets/figma-updated/shapes/contact-card-mask-660x568.svg");
+    mask-size: 672.634392px 580.900146px;
+    mask-position: -6.280388px -6.400146px;
+    mask-origin: border-box;
+    mask-repeat: no-repeat;
+    mask-clip: no-clip;
+    border-radius: 0;
+  }
+  body.updated-preview
+    .preview-contact-card:not(
+      .preview-contact-card--event
+    ).has-source-paper::after {
+    inset: auto;
+    left: -6.280388px;
+    top: -6.400146px;
+    width: 672.634392px;
+    height: 580.900146px;
+    border: 0;
+    border-radius: 0;
+    background: url("assets/figma-updated/shapes/contact-card-frame-660x568.svg")
+      center/contain no-repeat;
+  }
+  body.updated-preview .preview-map-card.has-source-paper {
+    overflow: visible;
+    mask-image: url("assets/figma-updated/shapes/map-card-mask-612x568.svg");
+    mask-size: 624.202759px 580.900146px;
+    mask-position: -6.280396px -6.400146px;
+    mask-origin: border-box;
+    mask-repeat: no-repeat;
+    mask-clip: no-clip;
+    border-radius: 0;
+  }
+  body.updated-preview .preview-map-card.has-source-paper::after {
+    inset: auto;
+    left: -6.280396px;
+    top: -6.400146px;
+    width: 624.202759px;
+    height: 580.900146px;
+    border: 0;
+    border-radius: 0;
+    background: url("assets/figma-updated/shapes/map-card-frame-612x568.svg")
+      center/contain no-repeat;
+  }
+  body.updated-preview .preview-contact-card--event.has-source-paper {
+    overflow: visible;
+    mask-image: url("assets/figma-updated/shapes/event-form-mask-1352x496.svg");
+    mask-size: 1364.903366px 508.699219px;
+    mask-position: -6.403366px -6.400146px;
+    mask-origin: border-box;
+    mask-repeat: no-repeat;
+    mask-clip: no-clip;
+    border-radius: 0;
+  }
+  body.updated-preview .preview-contact-card--event.has-source-paper::after {
+    inset: auto;
+    left: -6.403366px;
+    top: -6.400146px;
+    width: 1364.903366px;
+    height: 508.699219px;
+    border: 0;
+    border-radius: 0;
+    background: url("assets/figma-updated/shapes/event-form-frame-1352x496.svg")
+      center/contain no-repeat;
+  }
+  body.updated-preview .preview-booking-panel.has-source-paper {
+    overflow: visible;
+    mask-image: url("assets/figma-updated/shapes/booking-panel-mask-1352x568.svg");
+    mask-size: 1364.903366px 580.69928px;
+    mask-position: -6.403366px -6.400085px;
+    mask-origin: border-box;
+    mask-repeat: no-repeat;
+    mask-clip: no-clip;
+    border-radius: 0;
+  }
+  body.updated-preview .preview-booking-panel.has-source-paper::after {
+    inset: auto;
+    left: -6.403366px;
+    top: -6.400085px;
+    width: 1364.903366px;
+    height: 580.69928px;
+    border: 0;
+    border-radius: 0;
+    background: url("assets/figma-updated/shapes/booking-panel-frame-1352x568.svg")
+      center/contain no-repeat;
+  }
+  body.updated-preview
+    .preview-manifesto-card.has-source-paper
+    > .zigzag-contour {
+    visibility: hidden;
+  }
+  body.updated-preview .preview-manifesto-card.has-source-paper::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -3.191986px;
+    top: -3.19989px;
+    width: 642.441986px;
+    height: 630.401672px;
+    background: white;
+    mask: url("assets/figma-updated/shapes/manifesto-outline-636x624.svg")
+      center/contain no-repeat;
+    pointer-events: none;
+  }
+  body.updated-preview .preview-offer-carousel {
+    width: calc(100% + 160px);
+    max-width: none;
+    margin-inline: -80px;
+    padding-inline: 80px;
+    padding-block: 7px;
+    margin-block: -7px;
+    scroll-padding-inline: 80px;
+  }
+  body.updated-preview .preview-event-carousel {
+    padding-block: 7px;
+    margin-block: -7px;
+  }
+  body.updated-preview
+    .preview-offer-card.has-source-paper
+    > .preview-offer-media {
+    clip-path: inset(0 40px);
+  }
+  body.updated-preview .preview-room-cards {
+    width: calc(100% + 87px);
+    margin-left: -7px;
+    padding-left: 7px;
+    padding-block: 7px;
+    margin-block: -7px;
+  }
+}
+/* END SOURCE-EXACT PAPER SURFACES */
