@@ -1,0 +1,387 @@
+{
+  "source_file": "FpPfXalg4PRyqtnvwt2DUL",
+  "source_section": "616:2194",
+  "status": "draft-exact-exports-unavailable",
+  "approved_asset": {
+    "path": "assets/brand/Logotype_blue.svg",
+    "source_drive_file": "1sFqhGB-_NoxD_3HBqBbu-KfO-u2VsftO",
+    "source": "Original public TM brand folder",
+    "callsites": [
+      "footer wordmark",
+      "Vivi heading"
+    ]
+  },
+  "blockers": [
+    "Figma MCP View-seat export quota",
+    "Figma asset URLs fail proxy CONNECT 403",
+    "New assets Drive folder requires Google authentication"
+  ],
+  "other_pending": [
+    "Exact decorative vectors and composed masks used in backgrounds",
+    "Partner logos",
+    "Prototype transitions and room card back states",
+    "Booking provider URL and Day Pass checkout destination"
+  ],
+  "slots": [
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "809:3282",
+      "status": "legacy-artwork-retained",
+      "current_asset": "../assets/homepage-room-coworking-no-text-2x.webp"
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "809:3282",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "809:3282",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "809:3282",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "643:1823",
+      "status": "legacy-artwork-retained",
+      "current_asset": "../assets/homepage-room-reformer-no-text-2x.webp"
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "643:1823",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "643:1823",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "643:1823",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "643:1964",
+      "status": "legacy-artwork-retained",
+      "current_asset": "../assets/homepage-room-wellness-no-text-2x.webp"
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "643:1964",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "643:1964",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "643:1964",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "643:1895",
+      "status": "legacy-artwork-retained",
+      "current_asset": "../assets/homepage-room-bar-no-text-2x.webp"
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "643:1895",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "643:1895",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "643:1895",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "643:2033",
+      "status": "legacy-artwork-retained",
+      "current_asset": "../assets/homepage-room-media-no-text-2x.webp"
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "643:2033",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "643:2033",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "643:2033",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "616:1779",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "1086:2242",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "1086:2258",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "1086:2276",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "1086:2292",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "1086:2237",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/homepage-tpr/",
+      "figma_node": "663:1817",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/about/",
+      "figma_node": "1086:2391",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/about/",
+      "figma_node": "616:2459",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/about/",
+      "figma_node": "649:2504",
+      "status": "legacy-artwork-retained",
+      "current_asset": null
+    },
+    {
+      "route": "/contatti/",
+      "figma_node": "649:2504",
+      "status": "legacy-artwork-retained",
+      "current_asset": null
+    },
+    {
+      "route": "/eventi/",
+      "figma_node": "1075:2207",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/eventi/",
+      "figma_node": "1075:2209",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/eventi/",
+      "figma_node": "1075:2208",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/eventi/",
+      "figma_node": "1075:2206",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/vivi-tpr/",
+      "figma_node": "1086:2242",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/vivi-tpr/",
+      "figma_node": "1086:2258",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/vivi-tpr/",
+      "figma_node": "1086:2276",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/vivi-tpr/",
+      "figma_node": "1086:2292",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/vivi-tpr/",
+      "figma_node": "1086:2237",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/rooms/coworking/",
+      "figma_node": "809:3282",
+      "status": "legacy-artwork-retained",
+      "current_asset": "../../assets/homepage-room-coworking-no-text-2x.webp"
+    },
+    {
+      "route": "/rooms/coworking/",
+      "figma_node": "809:3282",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/rooms/coworking/",
+      "figma_node": "809:3282",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/rooms/coworking/",
+      "figma_node": "809:3282",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/rooms/reformer/",
+      "figma_node": "643:1823",
+      "status": "legacy-artwork-retained",
+      "current_asset": "../../assets/homepage-room-reformer-no-text-2x.webp"
+    },
+    {
+      "route": "/rooms/reformer/",
+      "figma_node": "643:1823",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/rooms/reformer/",
+      "figma_node": "643:1823",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/rooms/reformer/",
+      "figma_node": "643:1823",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/rooms/wellness/",
+      "figma_node": "643:1964",
+      "status": "legacy-artwork-retained",
+      "current_asset": "../../assets/homepage-room-wellness-no-text-2x.webp"
+    },
+    {
+      "route": "/rooms/wellness/",
+      "figma_node": "643:1964",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/rooms/wellness/",
+      "figma_node": "643:1964",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/rooms/wellness/",
+      "figma_node": "643:1964",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/rooms/bar/",
+      "figma_node": "643:1895",
+      "status": "legacy-artwork-retained",
+      "current_asset": "../../assets/homepage-room-bar-no-text-2x.webp"
+    },
+    {
+      "route": "/rooms/bar/",
+      "figma_node": "643:1895",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/rooms/bar/",
+      "figma_node": "643:1895",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/rooms/bar/",
+      "figma_node": "643:1895",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/rooms/media/",
+      "figma_node": "643:2033",
+      "status": "legacy-artwork-retained",
+      "current_asset": "../../assets/homepage-room-media-no-text-2x.webp"
+    },
+    {
+      "route": "/rooms/media/",
+      "figma_node": "643:2033",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/rooms/media/",
+      "figma_node": "643:2033",
+      "status": "awaiting-export",
+      "current_asset": null
+    },
+    {
+      "route": "/rooms/media/",
+      "figma_node": "643:2033",
+      "status": "awaiting-export",
+      "current_asset": null
+    }
+  ]
+}

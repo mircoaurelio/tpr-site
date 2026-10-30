@@ -1,0 +1,266 @@
+{
+  "figmaFile": "FpPfXalg4PRyqtnvwt2DUL",
+  "section": "616:2194",
+  "home": {
+    "intro": [
+      "The People's Room è uno spazio ibrido e autentico in cui lavoro, movimento, cultura e benessere convivono senza escludersi.",
+      "Ogni stanza ha la sua atmosfera, ma a darle energia sono le persone che la attraversano.",
+      "Non un posto dove rallentare, ma un posto dove respirare meglio mentre acceleri."
+    ],
+    "roomIntro": [
+      "Entri in un modo, esci in un altro: più leggero, perché ti sei già allenato, con il cuore pieno di relazioni vere, più avanti con i tuoi progetti, grazie alle persone che hai incontrato.\""
+    ],
+    "events": [
+      "Uno spazio si accende quando la gente lo abita insieme. Ecco perché li facciamo. Il prossimo, se vuoi, lo organizzi tu.",
+      "Un calendario di appuntamenti che attraversa musica, cultura e confronto, costruito insieme alle realtà che frequentano lo spazio"
+    ]
+  },
+  "about": {
+    "intro": [
+      "Il nostro obiettivo quotidiano è ispirare le persone a esprimere sé stesse, riscoprire il valore dell'umanità e vivere in modo più presente, creativo e vitale."
+    ],
+    "respira": [
+      "Viviamo in un'incompleta frenesia.",
+      "Più veloci di sempre, ma fermi. Pieni di tutto, ma scollegati da noi stessi.",
+      "Si corre senza una meta precisa.",
+      "Si rincorrono i trend, si copiano le idee, si resta a galla per inerzia. Il risultato è una saturazione, digitale, corporea, mentale, dove tutto si somiglia.",
+      "E in mezzo a questo rumore, ci siamo dimenticati come ci si connette con sé stessi.",
+      "The People's Room nasce da un gesto semplice e radicale: fermarsi a prendere fiato."
+    ],
+    "ispira": [
+      "Il respiro è il momento del distacco. ",
+      "L'interruttore che spegne il rumore fuori e accende l'ascolto dentro.",
+      "Non per fermarsi: per ritrovarsi e ripartire più lucidi, più liberi.",
+      "Non siamo casa, non siamo ufficio, non siamo palestra.",
+      "Siamo un terzo spazio. Un luogo plurale per chi vuole creare energia nuova.",
+      "Qui non c'è una sola attività, c'è un sistema vivo. Ogni incontro è una possibilità,  ogni momento può diventare quello giusto.",
+      "Ogni stanza ha la sua atmosfera.",
+      "Ma quell'atmosfera non nasce dall'architettura: nasce da chi la abita. Tu.",
+      "Poi gli occhi si riaprono.",
+      "E il respiro che hai trattenuto diventa qualcosa che prima non c'era."
+    ],
+    "body": [
+      "The People's Room è uno spazio per chi lavora con le idee. Esiste per dare a chi lo frequenta un posto dove fare tutto quello che una giornata richiede, senza doversi spostare.",
+      "Sotto lo stesso tetto ci sono un coworking con postazioni e sale riunioni, una sala Reformer con macchinari Technogym, uno studio per la produzione di contenuti, un'area dedicata al benessere e un bar con preparazioni funzionali. Gli spazi ospitano anche talk, workshop e appuntamenti costruiti con le realtà che li abitano.",
+      "Non un posto dove rallentare, ma un posto dove respirare meglio mentre acceleri."
+    ]
+  },
+  "contacts": {
+    "intro": [
+      "Per informazioni sulla membership, per prenotare uno spazio o semplicemente per capire se questo posto fa per te."
+    ]
+  },
+  "events": {
+    "intro": [
+      "Quello che succede qui non si programma solo a tavolino. Gli eventi nascono dalle persone che frequentano lo spazio e dalle cose che hanno da dire, tra musica, cultura e confronto.",
+      "Ogni incontro è una nuova ispirazione."
+    ],
+    "organize": [
+      "Lo spazio è disponibile per eventi aziendali, presentazioni e workshop. Le stanze si adattano, il contenuto lo scegli tu."
+    ]
+  },
+  "offers": [
+    {
+      "id": "day-pass",
+      "eyebrow": "35€ iva inclusa",
+      "title": "day pass",
+      "description": "L'essenziale per entrare nel mondo TPR.",
+      "tags": [
+        "giornaliero coworking"
+      ],
+      "benefits": [
+        "✓ Postazione coworking",
+        "✓ Booth telefonici",
+        "✓ Accesso agli spazi comuni",
+        "✓ Eventi community aperti",
+        "✕ Accesso alle sale riunione",
+        "✕ Accesso all’area benessere",
+        "✕ Accesso alla palestra",
+        "✕ Reformer Pilates TPR Move"
+      ],
+      "cta": "Acquista",
+      "sourceNode": "1086:2242"
+    },
+    {
+      "id": "all-inclusive",
+      "eyebrow": "scopri di più",
+      "title": "All inclusive",
+      "description": "Lavoro e benessere senza pensieri.",
+      "tags": [
+        "illimitato",
+        "full-access",
+        "free trial tpr move"
+      ],
+      "benefits": [
+        "✓ Postazione fissa coworking",
+        "✓ Booth telefonici",
+        "✓ Accesso agli spazi comuni",
+        "✓ Eventi community esclusivi",
+        "✓ Accesso alle sale riunione",
+        "✓ Accesso all’area benessere",
+        "✓ Accesso alla palestra",
+        "✓ Lezione di prova Reformer Pilates inclusa"
+      ],
+      "cta": "Richiedi informazioni",
+      "sourceNode": "1086:2258"
+    },
+    {
+      "id": "flex-8",
+      "eyebrow": "scopri di più",
+      "title": "flex 8",
+      "description": "8 accessi mensili tra lavoro e benessere.",
+      "tags": [
+        "full-access",
+        "su prenotazione"
+      ],
+      "benefits": [
+        "✓ Postazione coworking",
+        "✓ Booth telefonici",
+        "✓ Accesso agli spazi comuni",
+        "✓ Eventi community aperti",
+        "✓ 2h di accesso alle sale riunione",
+        "✓ Accesso all’area benessere",
+        "✓ Accesso alla palestra",
+        "✕ Reformer Pilates TPR Move"
+      ],
+      "cta": "Richiedi informazioni",
+      "sourceNode": "1086:2276"
+    },
+    {
+      "id": "ufficio-virtuale",
+      "eyebrow": "scopri di più",
+      "title": "ufficio virtuale",
+      "description": "La tua sede legale per la gestione della corrispondenza e l’affissione della targhetta con il logo della tua azienda.",
+      "tags": [],
+      "benefits": [],
+      "cta": "Richiedi informazioni",
+      "sourceNode": "1086:2292"
+    }
+  ],
+  "rooms": {
+    "coworking": {
+      "title": "TPR COWORKING",
+      "paragraphs": [
+        "Il cuore operativo dello spazio.",
+        "Postazioni e sale riunioni prenotabili, pensate per chi ha bisogno di concentrarsi e di un posto affidabile dove farlo.",
+        "Uno spazio adatto tanto a chi lavora da solo quanto ai team che hanno bisogno di una base fissa. Ogni giorno lo stesso piano è condiviso da professionisti indipendenti, aziende e nuove realtà, ed è da questa convivenza che nascono confronti e collaborazioni inaspettate.",
+        "Gente che lavora sul serio senza prendersi troppo sul serio. Perché l'ispirazione nasce sempre da una nuova connessione."
+      ],
+      "cards": [
+        "postazioni",
+        "Sale riunioni",
+        "eventi"
+      ],
+      "sourceNode": "809:3282"
+    },
+    "reformer": {
+      "title": "TPR MOVE",
+      "paragraphs": [
+        "La sala dedicata al Reformer Pilates.",
+        "Un ambiente luminoso e ampio, attrezzato con macchinari Technogym e guidato da istruttori qualificati.",
+        "Le classi seguono percorsi diversi, ognuna con un obiettivo specifico, e si prenotano singolarmente in base ai propri tempi.",
+        "Un luogo dove respirare e prendersi cura di sé."
+      ],
+      "cards": [
+        "studio",
+        "classi",
+        "attrezzature"
+      ],
+      "sourceNode": "643:1823"
+    },
+    "wellness": {
+      "title": "TPR RECHARGE",
+      "paragraphs": [
+        "La sala dedicata al recupero.",
+        "Sauna, contrast therapy e logevity room: pratiche che agiscono su circolazione, energia e lucidità mentale.",
+        "Non un'area pensata per il relax fine a sé stesso, ma un momento in cui il corpo si rigenera per tornare a dare il massimo.",
+        "Il respiro che precede ogni nuova ispirazione."
+      ],
+      "cards": [
+        "gym",
+        "contrast therapy",
+        "longevity"
+      ],
+      "sourceNode": "643:1964"
+    },
+    "bar": {
+      "title": "TPR FUEL",
+      "paragraphs": [
+        "Un'area dove l'alimentazione ha una funzione precisa.",
+        "I frullati e le bevande funzionali sono preparati al momento e pensati per la concentrazione, il recupero e l'energia, a seconda di quello che occorre.",
+        "Nella stessa area, una cucina attrezzata disponibile per pranzare o preparare qualcosa in autonomia.",
+        "Dove il nutrimento diventa carburante."
+      ],
+      "cards": [
+        "servizi",
+        "accessibilità",
+        "storage"
+      ],
+      "sourceNode": "643:1895"
+    },
+    "media": {
+      "title": "TPR MEDIA",
+      "paragraphs": [
+        "Lo spazio dedicato alla produzione di contenuti.",
+        "Una sala di registrazione professionale, pensata per lavorare con la voce, il suono e l'immagine.",
+        "Qui si registrano podcast e interviste, si incidono tracce musicali e si realizzano shooting fotografici e video, con attrezzatura professionale sempre a disposizione. Un ambiente costruito perché la qualità tecnica non sia mai il limite di quello che si vuole raccontare.",
+        "Dove le idee diventano realtà."
+      ],
+      "cards": [
+        "podcast",
+        "set fotografico",
+        "studio audio"
+      ],
+      "sourceNode": "643:2033"
+    }
+  },
+  "newsletter": {
+    "title": "Community e aggiornamenti",
+    "description": "Lascia la tua mail per ricevere tutte le novità sugli eventi, la community e le nuove esperienze che prenderanno vita nello spazio.",
+    "consent": "Voglio ricevere aggiornamenti, eventi, esperienze e novità da The People’s Room. Ho letto la"
+  },
+  "company": {
+    "title": "Offerte personalizzate per startup e aziende",
+    "subtitle": "Il tuo spazio, quando serve davvero",
+    "description": "Da un accesso più semplice per lavorare quando vuoi, fino a un'esperienza completa che integra lavoro, movimento e benessere. Raccontaci come vivi il tuo lavoro e troviamo insieme il livello più adatto alle esigenze tue o del tuo team.",
+    "benefits": [
+      "Sale riunione",
+      "Booth telefonici",
+      "Accesso all’area sauna/cold plunge/longevity",
+      "Accesso all’area palestra",
+      "TPR Media",
+      "Armadietto personale",
+      "Prezzi dedicati sui servizi TPR",
+      "Domiciliazione legale + targhetta della tua azienda all’esterno",
+      "Portineria e ritiro pacchi",
+      "Accesso a eventi curati"
+    ]
+  },
+  "booking": {
+    "title": "Prenota la tua lezione di Pilates",
+    "intro": [
+      "Percorsi diversi guidati da istruttori qualificati, ognuno costruito intorno a un obiettivo specifico. ",
+      "Nessun abbonamento obbligatorio, prenoti quando ti serve."
+    ]
+  },
+  "legal": {
+    "company": "TPR Immobiliare S.r.l.",
+    "address": "Via Francesco Olgiati 26, Milano",
+    "vat": "14663130962",
+    "privacy": "https://www.iubenda.com/privacy-policy/70616678",
+    "cookie": "https://www.iubenda.com/privacy-policy/70616678/cookie-policy"
+  },
+  "visit": {
+    "address": "Via Cola Montano, 36",
+    "city": "20159 Milano MI",
+    "days": "Lun - Ven",
+    "hours": "7:00 - 22:00"
+  },
+  "vivi": {
+    "intro": [
+      "Che tu sia un privato, un freelance o una startup, le nostre formule ti permettono di vivere TPR con la libertà che ti serve.",
+      "Siamo aperti dal lunedì al venerdì, dalle 7:00 alle 22:00."
+    ],
+    "communityIntro": "Prima delle stanze vengono le persone. Chi entra porta qualcosa, e da quella somma nasce tutto il resto."
+  }
+}

@@ -1,0 +1,891 @@
+{
+  "captures": [
+    {
+      "name": "home",
+      "screen": "desktop",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 1512,
+      "height": 8482,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "hero",
+          "top": 0,
+          "height": 952
+        },
+        {
+          "class": "preview-home-about preview-shell",
+          "top": 952,
+          "height": 1264
+        },
+        {
+          "class": "preview-room-explorer",
+          "top": 2216,
+          "height": 952
+        },
+        {
+          "class": "preview-home-events preview-shell",
+          "top": 3168,
+          "height": 1120
+        },
+        {
+          "class": "preview-offers preview-shell",
+          "top": 4288,
+          "height": 2844
+        },
+        {
+          "class": "preview-partners preview-shell",
+          "top": 7132,
+          "height": 320
+        },
+        {
+          "class": "preview-newsletter preview-shell",
+          "top": 7452,
+          "height": 602
+        }
+      ],
+      "overflow": [
+        {
+          "tag": "SECTION",
+          "class": "preview-room-explorer",
+          "w": 1512,
+          "s": 3024
+        }
+      ]
+    },
+    {
+      "name": "home",
+      "screen": "mobile",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 393,
+      "height": 7294,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "hero",
+          "top": 0,
+          "height": 740
+        },
+        {
+          "class": "preview-home-about preview-shell",
+          "top": 740,
+          "height": 1034
+        },
+        {
+          "class": "preview-room-explorer",
+          "top": 1774,
+          "height": 880
+        },
+        {
+          "class": "preview-home-events preview-shell",
+          "top": 2654,
+          "height": 793
+        },
+        {
+          "class": "preview-offers preview-shell",
+          "top": 3447,
+          "height": 2590
+        },
+        {
+          "class": "preview-partners preview-shell",
+          "top": 6037,
+          "height": 196
+        },
+        {
+          "class": "preview-newsletter preview-shell",
+          "top": 6233,
+          "height": 530
+        }
+      ],
+      "overflow": [
+        {
+          "tag": "SECTION",
+          "class": "preview-room-explorer",
+          "w": 393,
+          "s": 786
+        }
+      ]
+    },
+    {
+      "name": "about",
+      "screen": "desktop",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 1512,
+      "height": 4446,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "preview-shell preview-page-section preview-about",
+          "top": 0,
+          "height": 4024
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "about",
+      "screen": "mobile",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 393,
+      "height": 5240,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "preview-shell preview-page-section preview-about",
+          "top": 0,
+          "height": 4709
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "contacts",
+      "screen": "desktop",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 1512,
+      "height": 1670,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "preview-shell preview-page-section preview-contacts",
+          "top": 0,
+          "height": 1248
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "contacts",
+      "screen": "mobile",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 393,
+      "height": 1945,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "preview-shell preview-page-section preview-contacts",
+          "top": 0,
+          "height": 1414
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "events",
+      "screen": "desktop",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 1512,
+      "height": 2806,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "preview-shell preview-page-section preview-events",
+          "top": 0,
+          "height": 2384
+        }
+      ],
+      "overflow": [
+        {
+          "tag": "SECTION",
+          "class": "preview-event-gallery",
+          "w": 1352,
+          "s": 1432
+        }
+      ]
+    },
+    {
+      "name": "events",
+      "screen": "mobile",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 393,
+      "height": 2645,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "preview-shell preview-page-section preview-events",
+          "top": 0,
+          "height": 2114
+        }
+      ],
+      "overflow": [
+        {
+          "tag": "SECTION",
+          "class": "preview-event-gallery",
+          "w": 345,
+          "s": 369
+        }
+      ]
+    },
+    {
+      "name": "vivi",
+      "screen": "desktop",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 1512,
+      "height": 4092,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "preview-vivi preview-page-section",
+          "top": 0,
+          "height": 3670
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "vivi",
+      "screen": "mobile",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 393,
+      "height": 3978,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "preview-vivi preview-page-section",
+          "top": 0,
+          "height": 3447
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "booking",
+      "screen": "desktop",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 1512,
+      "height": 1750,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "preview-shell preview-page-section preview-booking",
+          "top": 0,
+          "height": 1328
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "booking",
+      "screen": "mobile",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 393,
+      "height": 1683,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "preview-shell preview-page-section preview-booking",
+          "top": 0,
+          "height": 1153
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "coworking",
+      "screen": "desktop",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 1512,
+      "height": 1374,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "preview-room-explorer",
+          "top": 0,
+          "height": 952
+        }
+      ],
+      "overflow": [
+        {
+          "tag": "SECTION",
+          "class": "preview-room-explorer",
+          "w": 1512,
+          "s": 3024
+        }
+      ]
+    },
+    {
+      "name": "coworking",
+      "screen": "mobile",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 393,
+      "height": 1411,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "preview-room-explorer",
+          "top": 0,
+          "height": 880
+        }
+      ],
+      "overflow": [
+        {
+          "tag": "SECTION",
+          "class": "preview-room-explorer",
+          "w": 393,
+          "s": 786
+        }
+      ]
+    },
+    {
+      "name": "move",
+      "screen": "desktop",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 1512,
+      "height": 1374,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "preview-room-explorer",
+          "top": 0,
+          "height": 952
+        }
+      ],
+      "overflow": [
+        {
+          "tag": "SECTION",
+          "class": "preview-room-explorer",
+          "w": 1512,
+          "s": 3024
+        }
+      ]
+    },
+    {
+      "name": "move",
+      "screen": "mobile",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 393,
+      "height": 1411,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "preview-room-explorer",
+          "top": 0,
+          "height": 880
+        }
+      ],
+      "overflow": [
+        {
+          "tag": "SECTION",
+          "class": "preview-room-explorer",
+          "w": 393,
+          "s": 786
+        }
+      ]
+    },
+    {
+      "name": "recharge",
+      "screen": "desktop",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 1512,
+      "height": 1374,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "preview-room-explorer",
+          "top": 0,
+          "height": 952
+        }
+      ],
+      "overflow": [
+        {
+          "tag": "SECTION",
+          "class": "preview-room-explorer",
+          "w": 1512,
+          "s": 3024
+        }
+      ]
+    },
+    {
+      "name": "recharge",
+      "screen": "mobile",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 393,
+      "height": 1411,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "preview-room-explorer",
+          "top": 0,
+          "height": 880
+        }
+      ],
+      "overflow": [
+        {
+          "tag": "SECTION",
+          "class": "preview-room-explorer",
+          "w": 393,
+          "s": 786
+        }
+      ]
+    },
+    {
+      "name": "fuel",
+      "screen": "desktop",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 1512,
+      "height": 1374,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "preview-room-explorer",
+          "top": 0,
+          "height": 952
+        }
+      ],
+      "overflow": [
+        {
+          "tag": "SECTION",
+          "class": "preview-room-explorer",
+          "w": 1512,
+          "s": 3024
+        }
+      ]
+    },
+    {
+      "name": "fuel",
+      "screen": "mobile",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 393,
+      "height": 1411,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "preview-room-explorer",
+          "top": 0,
+          "height": 880
+        }
+      ],
+      "overflow": [
+        {
+          "tag": "SECTION",
+          "class": "preview-room-explorer",
+          "w": 393,
+          "s": 786
+        }
+      ]
+    },
+    {
+      "name": "media",
+      "screen": "desktop",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 1512,
+      "height": 1374,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "preview-room-explorer",
+          "top": 0,
+          "height": 952
+        }
+      ],
+      "overflow": [
+        {
+          "tag": "SECTION",
+          "class": "preview-room-explorer",
+          "w": 1512,
+          "s": 3024
+        }
+      ]
+    },
+    {
+      "name": "media",
+      "screen": "mobile",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 393,
+      "height": 1411,
+      "brokenImages": [],
+      "sections": [
+        {
+          "class": "preview-room-explorer",
+          "top": 0,
+          "height": 880
+        }
+      ],
+      "overflow": [
+        {
+          "tag": "SECTION",
+          "class": "preview-room-explorer",
+          "w": 393,
+          "s": 786
+        }
+      ]
+    }
+  ],
+  "layout": [
+    {
+      "width": 320,
+      "route": "homepage-tpr",
+      "scrollWidth": 320,
+      "headerOverlap": false,
+      "headerRight": 296,
+      "headingOverflow": []
+    },
+    {
+      "width": 320,
+      "route": "about",
+      "scrollWidth": 320,
+      "headerOverlap": false,
+      "headerRight": 296,
+      "headingOverflow": []
+    },
+    {
+      "width": 320,
+      "route": "contatti",
+      "scrollWidth": 320,
+      "headerOverlap": false,
+      "headerRight": 296,
+      "headingOverflow": []
+    },
+    {
+      "width": 320,
+      "route": "eventi",
+      "scrollWidth": 320,
+      "headerOverlap": false,
+      "headerRight": 296,
+      "headingOverflow": []
+    },
+    {
+      "width": 320,
+      "route": "vivi-tpr",
+      "scrollWidth": 320,
+      "headerOverlap": false,
+      "headerRight": 296,
+      "headingOverflow": []
+    },
+    {
+      "width": 320,
+      "route": "prenota",
+      "scrollWidth": 320,
+      "headerOverlap": false,
+      "headerRight": 296,
+      "headingOverflow": []
+    },
+    {
+      "width": 393,
+      "route": "homepage-tpr",
+      "scrollWidth": 393,
+      "headerOverlap": false,
+      "headerRight": 369,
+      "headingOverflow": []
+    },
+    {
+      "width": 393,
+      "route": "about",
+      "scrollWidth": 393,
+      "headerOverlap": false,
+      "headerRight": 369,
+      "headingOverflow": []
+    },
+    {
+      "width": 393,
+      "route": "contatti",
+      "scrollWidth": 393,
+      "headerOverlap": false,
+      "headerRight": 369,
+      "headingOverflow": []
+    },
+    {
+      "width": 393,
+      "route": "eventi",
+      "scrollWidth": 393,
+      "headerOverlap": false,
+      "headerRight": 369,
+      "headingOverflow": []
+    },
+    {
+      "width": 393,
+      "route": "vivi-tpr",
+      "scrollWidth": 393,
+      "headerOverlap": false,
+      "headerRight": 369,
+      "headingOverflow": []
+    },
+    {
+      "width": 393,
+      "route": "prenota",
+      "scrollWidth": 393,
+      "headerOverlap": false,
+      "headerRight": 369,
+      "headingOverflow": []
+    },
+    {
+      "width": 768,
+      "route": "homepage-tpr",
+      "scrollWidth": 768,
+      "headerOverlap": false,
+      "headerRight": 744,
+      "headingOverflow": []
+    },
+    {
+      "width": 768,
+      "route": "about",
+      "scrollWidth": 768,
+      "headerOverlap": false,
+      "headerRight": 744,
+      "headingOverflow": []
+    },
+    {
+      "width": 768,
+      "route": "contatti",
+      "scrollWidth": 768,
+      "headerOverlap": false,
+      "headerRight": 744,
+      "headingOverflow": []
+    },
+    {
+      "width": 768,
+      "route": "eventi",
+      "scrollWidth": 768,
+      "headerOverlap": false,
+      "headerRight": 744,
+      "headingOverflow": []
+    },
+    {
+      "width": 768,
+      "route": "vivi-tpr",
+      "scrollWidth": 768,
+      "headerOverlap": false,
+      "headerRight": 744,
+      "headingOverflow": []
+    },
+    {
+      "width": 768,
+      "route": "prenota",
+      "scrollWidth": 768,
+      "headerOverlap": false,
+      "headerRight": 744,
+      "headingOverflow": []
+    },
+    {
+      "width": 1024,
+      "route": "homepage-tpr",
+      "scrollWidth": 1024,
+      "headerOverlap": false,
+      "headerRight": 976,
+      "headingOverflow": []
+    },
+    {
+      "width": 1024,
+      "route": "about",
+      "scrollWidth": 1024,
+      "headerOverlap": false,
+      "headerRight": 976,
+      "headingOverflow": []
+    },
+    {
+      "width": 1024,
+      "route": "contatti",
+      "scrollWidth": 1024,
+      "headerOverlap": false,
+      "headerRight": 976,
+      "headingOverflow": []
+    },
+    {
+      "width": 1024,
+      "route": "eventi",
+      "scrollWidth": 1024,
+      "headerOverlap": false,
+      "headerRight": 976,
+      "headingOverflow": []
+    },
+    {
+      "width": 1024,
+      "route": "vivi-tpr",
+      "scrollWidth": 1024,
+      "headerOverlap": false,
+      "headerRight": 976,
+      "headingOverflow": []
+    },
+    {
+      "width": 1024,
+      "route": "prenota",
+      "scrollWidth": 1024,
+      "headerOverlap": false,
+      "headerRight": 976,
+      "headingOverflow": []
+    },
+    {
+      "width": 1512,
+      "route": "homepage-tpr",
+      "scrollWidth": 1512,
+      "headerOverlap": false,
+      "headerRight": 1432,
+      "headingOverflow": []
+    },
+    {
+      "width": 1512,
+      "route": "about",
+      "scrollWidth": 1512,
+      "headerOverlap": false,
+      "headerRight": 1432,
+      "headingOverflow": []
+    },
+    {
+      "width": 1512,
+      "route": "contatti",
+      "scrollWidth": 1512,
+      "headerOverlap": false,
+      "headerRight": 1432,
+      "headingOverflow": []
+    },
+    {
+      "width": 1512,
+      "route": "eventi",
+      "scrollWidth": 1512,
+      "headerOverlap": false,
+      "headerRight": 1432,
+      "headingOverflow": []
+    },
+    {
+      "width": 1512,
+      "route": "vivi-tpr",
+      "scrollWidth": 1512,
+      "headerOverlap": false,
+      "headerRight": 1432,
+      "headingOverflow": []
+    },
+    {
+      "width": 1512,
+      "route": "prenota",
+      "scrollWidth": 1512,
+      "headerOverlap": false,
+      "headerRight": 1432,
+      "headingOverflow": []
+    },
+    {
+      "width": 1920,
+      "route": "homepage-tpr",
+      "scrollWidth": 1920,
+      "headerOverlap": false,
+      "headerRight": 1636,
+      "headingOverflow": []
+    },
+    {
+      "width": 1920,
+      "route": "about",
+      "scrollWidth": 1920,
+      "headerOverlap": false,
+      "headerRight": 1636,
+      "headingOverflow": []
+    },
+    {
+      "width": 1920,
+      "route": "contatti",
+      "scrollWidth": 1920,
+      "headerOverlap": false,
+      "headerRight": 1636,
+      "headingOverflow": []
+    },
+    {
+      "width": 1920,
+      "route": "eventi",
+      "scrollWidth": 1920,
+      "headerOverlap": false,
+      "headerRight": 1636,
+      "headingOverflow": []
+    },
+    {
+      "width": 1920,
+      "route": "vivi-tpr",
+      "scrollWidth": 1920,
+      "headerOverlap": false,
+      "headerRight": 1636,
+      "headingOverflow": []
+    },
+    {
+      "width": 1920,
+      "route": "prenota",
+      "scrollWidth": 1920,
+      "headerOverlap": false,
+      "headerRight": 1636,
+      "headingOverflow": []
+    }
+  ],
+  "interactions": [
+    {
+      "viewport": {
+        "width": 1512,
+        "height": 952
+      },
+      "menu": "passed",
+      "rooms": "5 panels, exploration and Escape passed",
+      "newsletter": "validity, blue state, mocked failure/success passed; no contacts created",
+      "inquiry": "mailto handoff captured; no email sent",
+      "discovery": "passed",
+      "carousel": "keyboard passed"
+    },
+    {
+      "viewport": {
+        "width": 393,
+        "height": 852
+      },
+      "menu": "passed",
+      "rooms": "5 panels, exploration and Escape passed",
+      "newsletter": "validity, blue state, mocked failure/success passed; no contacts created",
+      "inquiry": "mailto handoff captured; no email sent",
+      "discovery": "passed",
+      "carousel": "keyboard passed"
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "menu": "passed",
+      "rooms": "5 panels, exploration and Escape passed",
+      "newsletter": "validity, blue state, mocked failure/success passed; no contacts created",
+      "inquiry": "mailto handoff captured; no email sent",
+      "discovery": "passed",
+      "carousel": "keyboard passed"
+    }
+  ],
+  "newsletter_tests": {
+    "passed": 15,
+    "failed": 0
+  },
+  "comparison_status": "not-pixel-perfect-exact-exports-pending"
+}

@@ -1,0 +1,119 @@
+"""Build the native HTML preview from the retrieved Versione Aggiornata copy.
+
+Run with: python scripts/build_updated_preview.py
+Existing illustration/photo components stay in use until the matching Figma
+exports are accessible. Asset gaps are recorded in design/asset-status.json.
+"""
+from pathlib import Path
+import json, html, re
+
+ROOT=Path(__file__).resolve().parents[1]
+DATA=json.loads((ROOT/'design/updated-content.json').read_text())
+E=html.escape
+ROOMS=[('coworking','Coworking'),('reformer','TPR Move'),('wellness','Recharge'),('bar','Fuel'),('media','Media')]
+PRIVACY=DATA['legal']['privacy']; COOKIE=DATA['legal']['cookie']
+def paras(items,cls=''):
+ return ''.join(f'<p class="{cls}">{E(v)}</p>' for v in items)
+def link(root,path,label,cls=''):
+ return f'<a class="{cls}" href="{root}{path}">{label}</a>'
+def img(root,path,alt='',cls='',extra=''):
+ return f'<img class="{cls}" src="{root}assets/{path}" alt="{E(alt)}" decoding="async" {extra}>'
+def head(root,title,home=False):
+ legacy=''
+ return f'''<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#2c64e8"><title>{E(title)} — The People's Room</title><meta name="description" content="The People's Room: coworking, movimento, cultura e benessere a Milano."><link rel="icon" href="{root}assets/tpr-character.svg" type="image/svg+xml"><link rel="preload" href="{root}assets/fonts/pp-rader/PPRader-Bold.otf" as="font" type="font/otf" crossorigin>{legacy}<link rel="stylesheet" href="{root}updated-preview.css?v=20261030"><script src="{root}updated-preview.js?v=20261030" defer></script></head>'''
+def header(root,cta=False):
+ return f'''<a class="skip-link" href="#main">Vai al contenuto</a><header class="preview-header"><a class="preview-brand" href="{root}homepage-tpr/" aria-label="The People's Room — Home">{img(root,'tpr-logo.svg',"The People's Room",extra='width="131" height="64"')}</a><div class="preview-header-actions">{link(root,'prenota/','Prenota il Pilates <span aria-hidden="true">›</span>','preview-button preview-button--outline') if cta else ''}<button class="preview-menu-button" type="button" data-menu-open aria-label="Apri il menu" aria-controls="siteMenu" aria-expanded="false"><span></span><span></span><span></span></button></div></header>'''
+def menu(root):
+ rooms=''.join(link(root,f'rooms/{key}/',img(root,f'little-man/{key}.svg',name,extra='width="112" height="180"'),'preview-menu-room') for key,name in ROOMS)
+ return f'''<aside class="preview-menu" id="siteMenu" role="dialog" aria-label="Menu principale" aria-modal="true" aria-hidden="true" inert><a class="preview-menu-brand" href="{root}homepage-tpr/">{img(root,'tpr-logo.svg',"The People's Room")}</a><button class="preview-menu-close" type="button" data-menu-close aria-label="Chiudi il menu">×</button><nav><a href="{root}about/">About</a><div class="preview-menu-group"><a href="{root}homepage-tpr/#rooms">TPR Rooms</a><div class="preview-menu-rooms">{rooms}</div></div><a href="{root}vivi-tpr/">Vivi TPR</a><a href="{root}eventi/">Eventi &amp; Gallery</a><a href="{root}contatti/">Contatti</a><a class="preview-button preview-button--outline" href="{root}prenota/">Prenota il Pilates</a></nav></aside>'''
+def footer(root,home=False):
+ brand='brand/Logotype_blue.svg' if (ROOT/'assets/brand/Logotype_blue.svg').exists() else 'type-footer.png'
+ links=''.join(link(root,p,t) for p,t in [('about/','About'),('vivi-tpr/','Vivi TPR'),('eventi/','Eventi &amp; Gallery'),('contatti/','Contatti')])
+ roomlinks=''.join(link(root,f'rooms/{key}/',E(name)) for key,name in ROOMS)
+ return f'''<footer class="preview-footer {'preview-footer--home' if home else ''}"><div class="preview-footer-top"><a class="preview-footer-wordmark {'is-artboard' if brand.endswith('.svg') else ''}" href="{root}homepage-tpr/" aria-label="TPR — Home">{img(root,brand,'TPR™')}</a><div class="preview-footer-columns"><nav aria-label="TPR"><h2>TPR</h2>{links}</nav><nav aria-label="Rooms"><h2>Rooms</h2>{roomlinks}</nav></div></div><div class="preview-footer-bottom"><div><span>© {E(DATA['legal']['company'])}</span><i>/</i><span>{E(DATA['legal']['address'])}</span><i>/</i><span>P. IVA {DATA['legal']['vat']}</span></div><div><a href="{PRIVACY}" target="_blank" rel="noopener">Privacy Policy</a><i>/</i><a href="{COOKIE}" target="_blank" rel="noopener">Cookie policy</a><i>/</i><a href="https://www.marmellatalab.com/" target="_blank" rel="noopener">Designed by <strong>Marmellata Lab</strong></a></div></div></footer>'''
+def fields(subject,flat=False):
+ return f'''<form class="preview-contact-form {'preview-contact-form--flat' if flat else ''}" data-inquiry-form data-subject="{E(subject)}"><div class="preview-fields"><label class="preview-select"><span class="sr-only">Tipologia utente</span><select name="user_type" required aria-label="Tipologia utente"><option value="">Tipologia utente*</option><option>Privato</option><option>Freelancer</option><option>Startup</option><option>Azienda</option></select></label><label><span class="sr-only">Nome e Cognome</span><input name="name" autocomplete="name" placeholder="Nome e Cognome*" required></label><label><span class="sr-only">Email</span><input name="email" type="email" autocomplete="email" placeholder="Email*" required></label><label><span class="sr-only">Telefono</span><input name="phone" type="tel" autocomplete="tel" placeholder="Telefono*" required></label><label class="preview-field-message"><span class="sr-only">Messaggio</span><textarea name="message" placeholder="Messaggio" rows="3"></textarea></label><button class="preview-submit" type="submit">Invia <span aria-hidden="true">›</span></button></div><p class="preview-form-status" role="status" aria-live="polite"></p></form>'''
+def contact_card(root,subject='Informazioni TPR',event=False):
+ title='Raccontaci che tipo di evento hai in mente e quando:<br>al resto pensiamo insieme.' if event else 'Raccontaci chi sei<br>e cosa cerchi.'
+ return f'''<div class="preview-contact-card preview-paper {'preview-contact-card--event' if event else ''}"><div class="preview-form-heading"><div><h2>{title}</h2><p>Ti rispondiamo il prima possibile.</p></div>{img(root,'tpr-character.svg','',extra='width="64" height="80" aria-hidden="true"')}</div>{fields(subject,event)}</div>'''
+def map_card(root):
+ return f'''<a class="preview-map-card preview-paper" href="https://www.google.com/maps/search/?api=1&amp;query=Via+Cola+Montano+36+Milano" target="_blank" rel="noopener" data-pending-figma-image="649:2504"><div class="preview-map-image">{img(root,'tpr-map.png','Mappa della zona Isola a Milano')}</div><div class="preview-map-caption"><p><strong>{DATA['visit']['address']}</strong><br>{DATA['visit']['city']}</p><p><strong>{DATA['visit']['days']}</strong><br>{DATA['visit']['hours']}</p></div></a>'''
+def contact_section(root):
+ return f'''<section class="preview-contact-section" id="contattaci" data-figma-node="616:2469"><h2 class="preview-section-title preview-centered">Contattaci</h2><div class="preview-contact-row">{contact_card(root)}{map_card(root)}</div></section>'''
+def newsletter(root,vivi=False):
+ n=DATA['newsletter'];return f'''<section class="preview-newsletter preview-shell" id="community" data-figma-node="677:1739"><div class="preview-two-columns"><h2 class="preview-section-title">{n['title']}</h2><div class="preview-lead">{paras([DATA['vivi']['communityIntro'],n['description']] if vivi else [n['description']])}</div></div><form class="preview-newsletter-form" data-newsletter-form data-endpoint="https://thepeoplesroom.it/api/newsletter"><div class="preview-email-row"><label class="sr-only" for="newsletter-email">Indirizzo email</label><input id="newsletter-email" name="email" type="email" placeholder="Inserisci il tuo indirizzo email" autocomplete="email" required><button type="submit" disabled>Resta aggiornato</button></div><label class="preview-consent"><input name="consent" type="checkbox" required><span>{E(n['consent'])} <a href="{PRIVACY}" target="_blank" rel="noopener">Privacy Policy</a>.</span></label><label class="preview-trap" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label><p class="preview-form-status" role="status" aria-live="polite"></p></form></section>'''
+def offer_cards(root):
+ cards=[]
+ for i,o in enumerate(DATA['offers']):
+  tags=''.join(f'<span>{E(t)}</span>' for t in o['tags']);benefits=''.join(f'<li class="{"is-excluded" if t.startswith("✕") else ""}">{E(t)}</li>' for t in o['benefits'])
+  cta_class='preview-button--solid' if i==0 else 'preview-button--blue-outline'
+  cards.append(f'''<article class="preview-offer-card preview-paper" id="{o['id']}" data-figma-node="{o['sourceNode']}"><div class="preview-offer-media" data-pending-figma-image="{o['sourceNode']}"></div><div class="preview-offer-body"><div class="preview-offer-summary"><p class="preview-offer-eyebrow">{E(o['eyebrow'])}</p><h3>{E(o['title'])}</h3><p class="preview-offer-description">{E(o['description'])}</p></div><div class="preview-offer-tags">{tags}</div>{'<ul>'+benefits+'</ul>' if benefits else ''}<a class="preview-button {cta_class}" href="{root}contatti/?offer={o['id']}">{E(o['cta'])}</a></div></article>''')
+ return '<div class="preview-offer-carousel" tabindex="0" role="region" aria-label="Offerte TPR, scorri per esplorare" data-carousel>'+''.join(cards)+'</div>'
+def company(root):
+ c=DATA['company'];return f'''<section class="preview-company" id="aziende"><h2 class="preview-section-title preview-centered">{E(c['title'])}</h2><div class="preview-company-card preview-paper"><div class="preview-company-media" data-pending-figma-image="1086:2237"></div><div class="preview-company-copy"><div class="preview-company-text"><h3>{E(c['subtitle'])}</h3><div><p>{E(c['description'])}</p><p>Alcuni vantaggi esclusivi che puoi sbloccare:</p><ul>{''.join('<li>✓ '+E(t)+'</li>' for t in c['benefits'])}</ul></div></div>{fields('Offerte startup e aziende')}</div></div></section>'''
+def wordmark(root):
+ return '<span class="preview-inline-wordmark">'+img(root,'brand/Logotype_blue.svg','TPR™')+'</span>'
+def offers(root,heading='Vivi TPR'):
+ title='Vivi '+wordmark(root) if heading=='Vivi TPR' else E(heading)
+ subtitle='<p>Offerte per privati, freelance e startup</p>' if heading=='Vivi TPR' else ''
+ banner=f'<a class="preview-pilates-banner" href="{root}prenota/"><strong>Vuoi iniziare col Reformer Pilates?</strong><span>Prenota la tua lezione</span></a>' if heading=='Vivi TPR' else ''
+ return f'''<section class="preview-offers preview-shell" id="offerte"><div class="preview-offers-heading"><h2 class="preview-section-title">{title}</h2>{subtitle}</div>{offer_cards(root)}{banner}{company(root)}</section>'''
+def vivi(root):
+ intro=paras(DATA['vivi']['intro'])
+ return f'<section class="preview-vivi-intro preview-shell"><div class="preview-two-columns"><h1 class="preview-section-title">Vivi {wordmark(root)}</h1><div class="preview-lead">{intro}</div></div></section>'+offers(root,'Scopri le offerte')+newsletter(root,True)
+def about_selector(root):
+ labels=[('community','Community'),('reformer','TPR Move'),('wellness','TPR Recharge'),('media','TPR Media'),('bar','TPR Fuel'),('coworking','TPR Coworking')]
+ buttons=''.join(f'<button type="button" data-discover="{key}" class="preview-discover-button preview-discover-button--{key}" aria-pressed="false">{label}</button>' for key,label in labels)
+ return f'''<section class="preview-discover" aria-label="Scopri TPR" data-figma-node="809:2800">{buttons}<div class="preview-discover-content" aria-live="polite"><h2>Scopri<br>TPR</h2><p>Seleziona una voce per esplorare gli spazi e le persone che li abitano.</p></div></section>'''
+def about(root):
+ d=DATA['about'];return f'''<section class="preview-shell preview-page-section preview-about" data-figma-node="616:2410"><div class="preview-two-columns"><h1 class="preview-about-logo">{img(root,'tpr-logo.svg',"The People's Room")}</h1><div class="preview-lead">{paras(d['intro'])}</div></div><div class="preview-two-columns preview-manifesto"><article class="preview-manifesto-card">{paras(d['respira'])}<h2>Respira.</h2></article><article class="preview-manifesto-card">{paras(d['ispira'])}<h2>Ispira.</h2></article></div><div class="preview-two-columns"><h2 class="preview-section-title">TPR è energia,<br>musica,<br>connessioni</h2><div class="preview-body-copy">{paras(d['body'])}</div></div>{about_selector(root)}<div class="preview-feature-cards"><a href="{root}vivi-tpr/" class="preview-feature-card preview-paper" data-pending-figma-image="1086:2391"><div class="preview-feature-media"></div><span>Scopri le offerte {img(root,'route-arrow-zigzag.png','',extra='width="48" height="48" aria-hidden="true"')}</span></a><a href="{root}eventi/" class="preview-feature-card preview-paper" data-pending-figma-image="616:2459"><div class="preview-feature-media"></div><span>Eventi {img(root,'route-arrow-zigzag.png','',extra='width="48" height="48" aria-hidden="true"')}</span></a></div>{contact_section(root)}</section>'''
+def contacts(root):
+ return f'''<section class="preview-shell preview-page-section preview-contacts" data-figma-node="616:2572"><div class="preview-two-columns"><h1 class="preview-section-title">Contatti</h1><p class="preview-lead">{E(DATA['contacts']['intro'][0])}</p></div><div class="preview-contact-row">{contact_card(root)}{map_card(root)}</div></section>'''
+def events(root):
+ cards=[]
+ for title,person,source in [('Shamans Ritual','','1075:2207'),('The Dinner','@casa_buri','1075:2209'),('Ceramic Workshop','@casa_buri','1075:2208'),('The People’s Week Talk','','1075:2206')]:
+  cards.append(f'<article class="preview-event-card preview-paper" data-pending-figma-image="{source}"><div class="preview-event-media"></div><div><h3>{E(title)}</h3><p><span>Ottobre 2026</span><span>{E(person)}</span></p></div></article>')
+ return f'''<section class="preview-shell preview-page-section preview-events" data-figma-node="616:2678"><div class="preview-two-columns"><h1 class="preview-section-title">TPR è energia,<br>musica,<br>connessioni</h1><div class="preview-lead">{paras(DATA['events']['intro'])}</div></div><section id="gallery" class="preview-event-gallery"><h2 class="preview-section-title preview-centered">Eventi passati</h2><div class="preview-event-carousel" tabindex="0" role="region" aria-label="Eventi passati, scorri per esplorare" data-carousel>{''.join(cards)}</div></section><section class="preview-event-organize" id="organizza"><div class="preview-two-columns"><h2 class="preview-section-title">Organizza un<br>evento</h2><p class="preview-lead">{E(DATA['events']['organize'][0])}</p></div>{contact_card(root,'Organizza un evento',True)}</section></section>'''
+def home(root):
+ hero=(ROOT/'design/partials/home-hero.html').read_text();people=(ROOT/'design/partials/home-people.html').read_text()
+ intro=f'''<section class="preview-home-about preview-shell"><div class="preview-two-columns"><div class="preview-about-logo">{img(root,'tpr-logo.svg',"The People's Room")}</div><div class="preview-body-copy">{paras(DATA['home']['intro'])}<a class="preview-button preview-button--pink" href="{root}about/">About TPR</a></div></div>{people}<div class="preview-two-columns preview-rooms-intro"><h2 class="preview-section-title">TPR Rooms</h2><p class="preview-lead">{E(DATA['home']['roomIntro'][0])}</p></div></section>'''
+ ev=f'''<section class="preview-home-events preview-shell"><div class="preview-two-columns"><h2 class="preview-section-title">Eventi</h2><div class="preview-body-copy">{paras(DATA['home']['events'])}<div class="preview-button-row"><a class="preview-button preview-button--solid" href="{root}eventi/">Eventi e Gallery</a><a class="preview-button preview-button--blue-outline" href="{root}eventi/#organizza">Organizza un evento</a></div></div></div><figure class="preview-home-event-photo" data-pending-figma-image="616:1779">{img(root,'tpr-events.webp','Un evento The People’s Room')}</figure></section>'''
+ return hero+intro+room_explorer(root)+ev+offers(root)+partners()+newsletter(root)
+
+def partners():
+ return '<section class="preview-partners preview-shell" data-figma-node="791:1770"><h2>I nostri partner</h2><div class="preview-partner-logos" aria-label="Partner TPR" data-pending-figma-image="663:1817"><span></span><span></span><span></span><span></span></div></section>'
+
+def room_explorer(root,standalone=None):
+ colors={'coworking':('#98caff','#2c64e8'),'reformer':('#3f9941','#ffc100'),'wellness':('#c2d569','#3f9941'),'bar':('#eb642b','#ffc100'),'media':('#ffc100','#2c64e8')}
+ keys=[standalone] if standalone else [key for key,_ in ROOMS]
+ panels=[]
+ for i,key in enumerate(keys):
+  d=DATA['rooms'][key];bg,accent=colors[key];heading_tag='h1' if standalone else 'h2'
+  cards=[]
+  for label in d['cards']:
+   soon=label in ('longevity','studio audio')
+   cards.append(f'<article class="preview-room-card preview-paper"><div class="preview-room-card-photo" data-pending-figma-image="{d["sourceNode"]}"></div><div class="preview-room-card-label"><h3>{E(label)}</h3>{"<small>coming soon</small>" if soon else "<span aria-hidden=\"true\">↗</span>"}</div></article>')
+  book=f'<a class="preview-button preview-button--room-outline" href="{root}{"prenota/" if key=="reformer" else "contatti/?room=coworking"}">Prenota</a>' if key in ('coworking','reformer') else ''
+  panels.append(f'''<div class="preview-room-panel" data-room-panel="{key}" style="--room-bg:{bg};--room-accent:{accent}" {'hidden' if i else ''} data-figma-node="{d['sourceNode']}">{img(root,f'homepage-room-{key}-no-text-2x.webp','', 'preview-room-art', 'aria-hidden="true" data-pending-figma-image="'+d['sourceNode']+'"')}<div class="preview-room-character">{img(root,f'little-man/{key}.svg','',extra='aria-hidden="true"')}</div><div class="preview-room-copy"><{heading_tag}>{d['title']}</{heading_tag}><div class="preview-room-body">{paras(d['paragraphs'])}<div class="preview-room-actions"><button class="preview-button" data-room-explore type="button" aria-expanded="false">Esplora Stanza <span aria-hidden="true">›</span></button>{book}</div></div></div><section class="preview-room-details" aria-label="Esplora {d['title']}" inert aria-hidden="true"><div class="preview-room-details-top"><h2>{d['title']}</h2><button class="preview-room-back" type="button" data-room-back>‹ Torna alla stanza</button></div><div class="preview-room-cards" tabindex="0" role="region" aria-label="Spazi {d['title']}" data-carousel>{''.join(cards)}</div></section></div>''')
+ nav='' if standalone else '<nav class="preview-room-nav" aria-label="Scegli la tua stanza">'+''.join(f'<button type="button" data-room-select="{key}" aria-label="{label}" aria-pressed="{str(i==0).lower()}">{img(root,f"elevator-icon-{key}.svg", "",extra="aria-hidden=\"true\"")}</button>' for i,(key,label) in enumerate(ROOMS))+'</nav>'
+ return f'<section id="rooms" class="preview-room-explorer" aria-label="TPR Rooms" data-room-explorer>{"".join(panels)}{nav}</section>'
+def booking(root):
+ return f'''<section class="preview-shell preview-page-section preview-booking" data-figma-node="1065:3385"><div class="preview-two-columns"><h1 class="preview-section-title">{E(DATA['booking']['title'])}</h1><div class="preview-lead">{paras(DATA['booking']['intro'])}</div></div><section class="preview-booking-panel preview-paper" aria-label="Prenotazione Reformer Pilates" data-figma-node="1065:3390"></section></section>'''
+def write(path,title,body,kind='blue',home_page=False):
+ depth=len(Path(path).parts)-1;root='../'*depth
+ classes=f'updated-preview updated-preview--{kind}'
+ source=head(root,title,home_page)+f'<body class="{classes}">'+header(root,home_page)+menu(root)+f'<main id="main">'+body(root)+f'</main>'+footer(root,home_page)
+ source+='</body></html>\n';target=ROOT/path;target.parent.mkdir(parents=True,exist_ok=True);source=re.sub(r'(<p\b[^>]*>)\s*(</p>)',r'\1\2',source.replace('><','>\n<'))
+ target.write_text('\n'.join(line.rstrip() for line in source.splitlines())+'\n')
+write('homepage-tpr/index.html','Respira, ispira',home,home_page=True)
+write('about/index.html','About TPR',about)
+write('contatti/index.html','Contatti',contacts)
+write('eventi/index.html','Eventi & Gallery',events,'pink')
+write('vivi-tpr/index.html','Vivi TPR',lambda root:'<div class="preview-vivi preview-page-section">'+vivi(root)+'</div>')
+write('prenota/index.html','Prenota il Pilates',booking,'green')
+for key,label in ROOMS:
+ write(f'rooms/{key}/index.html',label,lambda root,key=key:room_explorer(root,key))
+for p,anchor in [('membership/aziende-startup/index.html','aziende'),('membership/privati-freelancer/index.html','offerte')]:
+ target='../../vivi-tpr/#'+anchor
+ (ROOT/p).write_text(f'<!doctype html><html lang="it"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0;url={target}"><title>Vivi TPR</title><script>location.replace({json.dumps(target)});</script><a href="{target}">Scopri le offerte TPR</a></html>\n')
+print('Built updated homepage, About, contacts, events, Vivi TPR and Pilates pages with shared native components.')
