@@ -309,7 +309,7 @@
   if (discover) {
     const content = discover.querySelector(".preview-discover-content");
     const original = content.innerHTML;
-    const roomData = fetch(new URL("design/updated-content.json", base))
+    const roomData = fetch(new URL("design/updated-content.json?v=20261031-review", base))
       .then((response) => {
         if (!response.ok) throw new Error("Content unavailable");
         return response.json();

@@ -11,6 +11,37 @@
   mask: var(--character-mask) center / contain no-repeat;
 }
 
+/* Nominal Figma tap frames stay48px; normalize the two original SVG canvases
+   by their painted bounds so changing the active Room never changes icon size. */
+.updated-preview .tpr-elevator__button {
+  width: 48px;
+  height: 48px;
+}
+.updated-preview .tpr-elevator__button img {
+  inset: auto;
+  left: -1.699707px;
+  top: -2.769775px;
+  width: 51.808655px;
+  height: 53.660400px;
+  max-width: none;
+}
+.updated-preview .tpr-elevator__button img[src*="/elevator-icon-"] {
+  left: -5.25px;
+  top: -6.75px;
+  width: 62px;
+  height: 62px;
+}
+@media (min-width: 721px) {
+  .updated-preview .tpr-elevator__button {
+    bottom: clamp(16px, 8.403361svh, 80px);
+  }
+  .updated-preview .tpr-elevator__button:nth-child(1) { left: calc(50% - 160px); }
+  .updated-preview .tpr-elevator__button:nth-child(2) { left: calc(50% - 80px); }
+  .updated-preview .tpr-elevator__button:nth-child(3) { left: 50%; }
+  .updated-preview .tpr-elevator__button:nth-child(4) { left: calc(50% + 80px); }
+  .updated-preview .tpr-elevator__button:nth-child(5) { left: calc(50% + 160px); }
+}
+
 @font-face {
   font-family: "Alte Haas Grotesk";
   src: url("assets/fonts/alte-haas-grotesk/AlteHaasGroteskRegular.ttf") format("truetype");

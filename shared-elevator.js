@@ -50,11 +50,19 @@
   const escapeCopy = (text) => String(text).replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
   const paragraphsFor = (room) => room.paragraphs || copyParagraphs;
   const roomCopyHtml = (room) => paragraphsFor(room).map((paragraph) => `<p>${escapeCopy(paragraph)}</p>`).join('');
+  const roomName = (room) => room.title || `${room.label} Room`;
   const desktopParagraphs = (room) => configuration
     ? `<div class="tpr-elevator__updated-text" tabindex="0" role="region" aria-label="Descrizione della stanza">${roomCopyHtml(room)}</div>`
     : roomCopyHtml(room);
   const roomTitle = (room) => room.title ? escapeCopy(room.title) : `${room.label} <span>Room</span>`;
   const cardArrowSrc = new URL('assets/route-arrow-zigzag.png?v=20260819-arrow-2', base).href;
+  const cardCtaMarkup = (labels) => {
+    if (!Array.isArray(labels)) return '<span class="tpr-elevator__card-cta">Diventa Membro</span>';
+    if (!labels.length) return '';
+    return `<span class="tpr-elevator__card-cta">${labels.map((label) => `<span>${escapeCopy(label)}</span>`).join('')}</span>`;
+  };
+  const cardSoonMarkup = (room, title) => configuration && room.comingSoonCards?.includes(title)
+    ? '<small class="tpr-elevator__card-soon">coming soon</small>' : '';
   const LIFT_MS = 1250;
   const MOBILE_EXPAND_MS = 640;
   const LAST_FLOOR_HOLD = 1;
@@ -62,21 +70,21 @@
           <h2>${roomTitle(room)}</h2>
           ${desktopParagraphs(room)}
           <div class="tpr-elevator__desktop-actions">
-            <button class="tpr-elevator__cta" type="button"${live ? ` data-elevator-explore aria-label="Esplora ${room.label} Room"` : ' tabindex="-1" aria-hidden="true"'}><span class="tpr-elevator__cta-label">Esplora Stanza</span><span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
-            <a class="tpr-elevator__book"${live ? ' data-elevator-book' : ''} href="${bookingUrl(room.key)}" ${room.bookable ? '' : 'hidden'}>Prenota${live ? `<span class="sr-only"> ${room.label} Room</span>` : ''}</a>
+            <button class="tpr-elevator__cta" type="button"${live ? ` data-elevator-explore aria-label="Esplora ${escapeCopy(roomName(room))}"` : ' tabindex="-1" aria-hidden="true"'}><span class="tpr-elevator__cta-label">Esplora Stanza</span><span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
+            <a class="tpr-elevator__book"${live ? ' data-elevator-book' : ''} href="${bookingUrl(room.key)}" ${room.bookable ? '' : 'hidden'}>Prenota${live ? `<span class="sr-only"> ${escapeCopy(roomName(room))}</span>` : ''}</a>
           </div>`;
-  const mobileDropMarkup = (room) => room.cards.map(([cardTitle, cardCopy], index) => `
-            <button class="tpr-elevator__mobile-card" type="button" data-card-index="${index}" aria-expanded="false" aria-label="Apri la card ${cardTitle}">
+  const mobileDropMarkup = (room) => room.cards.map(([cardTitle, cardCopy, ctaLabels], index) => `
+            <button class="tpr-elevator__mobile-card" type="button" data-card-index="${index}" aria-expanded="false" aria-label="Apri la card ${escapeCopy(cardTitle)}">
               <span class="tpr-elevator__mobile-card-front" aria-hidden="true">
                 <span class="tpr-elevator__mobile-card-photo"><span class="tpr-elevator__mobile-card-photo-window"><img src="${asset(room.cardPhoto)}" alt="" decoding="async" /></span></span>
-                <span class="tpr-elevator__mobile-card-meta"><strong>${cardTitle}</strong><span class="tpr-elevator__card-arrow"><img src="${cardArrowSrc}" alt="" width="52" height="54" /></span></span>
+                <span class="tpr-elevator__mobile-card-meta"><strong>${escapeCopy(cardTitle)}</strong>${cardSoonMarkup(room, cardTitle)}<span class="tpr-elevator__card-arrow"><img src="${cardArrowSrc}" alt="" width="52" height="54" /></span></span>
               </span>
-              <span class="sr-only">Apri la card ${cardTitle}</span>
+              <span class="sr-only">Apri la card ${escapeCopy(cardTitle)}</span>
               <span class="tpr-elevator__mobile-card-back" aria-hidden="true">
-                <strong>Cosa si fa?</strong>
+                <strong>${configuration ? escapeCopy(cardTitle) : 'Cosa si fa?'}</strong>
                 <span class="tpr-elevator__card-close" aria-hidden="true"></span>
-                <span>${cardCopy}</span>
-                <span class="tpr-elevator__card-cta">Diventa Membro</span>
+                <span${configuration ? ' class="tpr-elevator__card-description"' : ''}>${escapeCopy(cardCopy)}</span>
+                ${cardCtaMarkup(ctaLabels)}
               </span>
             </button>`).join('');
   const mobileCopyMarkup = (room, { live = true } = {}) => `
@@ -131,7 +139,7 @@
           <div class="tpr-elevator__character tpr-elevator__character--incoming"></div>
         </div>
         <nav class="tpr-elevator__nav" aria-label="Ascensore delle stanze">
-          ${rooms.map((room, index) => `<button class="tpr-elevator__button" type="button" data-elevator-room="${room.key}" aria-label="Vai a ${room.label} Room" aria-pressed="${index === active}"><img class="icon-off" src="${asset(room.off)}" alt=""><img class="icon-on" src="${asset(room.icon)}" alt=""></button>`).join('')}
+          ${rooms.map((room, index) => `<button class="tpr-elevator__button" type="button" data-elevator-room="${room.key}" aria-label="Vai a ${escapeCopy(roomName(room))}" aria-pressed="${index === active}"><img class="icon-off" src="${asset(room.off)}" alt=""><img class="icon-on" src="${asset(room.icon)}" alt=""></button>`).join('')}
         </nav>
         <div class="tpr-elevator__progress" aria-hidden="true"><span></span></div>
         <div class="tpr-elevator__explore" aria-hidden="true">
@@ -142,7 +150,7 @@
           </div>
           <div class="tpr-elevator__explore-progress" role="scrollbar" tabindex="0" aria-label="Scorri orizzontalmente la stanza" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
         </div>
-        <p class="sr-only" aria-live="polite" id="elevatorStatus">${rooms[active].label} Room selezionata.</p>
+        <p class="sr-only" aria-live="polite" id="elevatorStatus">${escapeCopy(roomName(rooms[active]))} selezionata.</p>
       </div>
     </div>`;
 
@@ -271,10 +279,10 @@
       link.href = bookingUrl(room.key);
       link.hidden = !room.bookable;
       const sr = link.querySelector('.sr-only');
-      if (sr) sr.textContent = ` ${room.label} Room`;
+      if (sr) sr.textContent = ` ${roomName(room)}`;
     });
     car.querySelectorAll('[data-elevator-explore]').forEach((cta) => {
-      cta.setAttribute('aria-label', `Esplora ${room.label} Room`);
+      cta.setAttribute('aria-label', `Esplora ${roomName(room)}`);
     });
     const drop = car.querySelector('.tpr-elevator__mobile-drop');
     if (drop) {
@@ -394,13 +402,13 @@
     host.querySelectorAll('[data-elevator-explore]').forEach((cta) => {
       const label = cta.querySelector('.tpr-elevator__cta-label');
       if (label) label.textContent = exploringMode ? 'Tutte le Stanze' : 'Esplora Stanza';
-      cta.setAttribute('aria-label', exploringMode ? 'Torna a tutte le stanze' : `Esplora ${room.label} Room`);
+      cta.setAttribute('aria-label', exploringMode ? 'Torna a tutte le stanze' : `Esplora ${roomName(room)}`);
     });
   }
 
   function updateChrome(index) {
     const room = rooms[index];
-    status.textContent = `${room.label} Room selezionata.`;
+    status.textContent = `${roomName(room)} selezionata.`;
     buttons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.elevatorRoom === room.key)));
   }
 
@@ -467,15 +475,15 @@
   }, { passive: false });
 
   function renderExploreCards(room) {
-    exploreCards.innerHTML = room.cards.map(([cardTitle, cardCopy], index) => `
-      <button class="tpr-elevator__explore-card" type="button" data-card-index="${index}" aria-expanded="false" aria-label="Apri la card ${cardTitle}">
-        <span class="tpr-elevator__card-front" aria-hidden="true"><strong>${cardTitle}</strong><span class="tpr-elevator__card-arrow" aria-hidden="true"><img src="${new URL('assets/route-arrow-zigzag.png?v=20260819-arrow-2', base).href}" alt="" width="52" height="54" /></span></span>
-        <span class="sr-only">Apri la card ${cardTitle}</span>
+    exploreCards.innerHTML = room.cards.map(([cardTitle, cardCopy, ctaLabels], index) => `
+      <button class="tpr-elevator__explore-card" type="button" data-card-index="${index}" aria-expanded="false" aria-label="Apri la card ${escapeCopy(cardTitle)}">
+        <span class="tpr-elevator__card-front" aria-hidden="true"><strong>${escapeCopy(cardTitle)}</strong>${cardSoonMarkup(room, cardTitle)}<span class="tpr-elevator__card-arrow" aria-hidden="true"><img src="${new URL('assets/route-arrow-zigzag.png?v=20260819-arrow-2', base).href}" alt="" width="52" height="54" /></span></span>
+        <span class="sr-only">Apri la card ${escapeCopy(cardTitle)}</span>
         <span class="tpr-elevator__card-back" aria-hidden="true">
-          <strong>Cosa si fa?</strong>
+          <strong>${configuration ? escapeCopy(cardTitle) : 'Cosa si fa?'}</strong>
           <span class="tpr-elevator__card-close" aria-hidden="true"></span>
-          <span>${cardCopy}</span>
-          <span class="tpr-elevator__card-cta">Diventa Membro</span>
+          <span${configuration ? ' class="tpr-elevator__card-description"' : ''}>${escapeCopy(cardCopy)}</span>
+          ${cardCtaMarkup(ctaLabels)}
         </span>
       </button>`).join('');
 
@@ -574,7 +582,7 @@
     host.classList.add('is-exploring', 'is-explore-opening');
     document.body.classList.add('elevator-exploring');
     syncExploreCtas();
-    status.textContent = `${rooms[active].label} Room: esplorazione aperta nella homepage.`;
+    status.textContent = `${roomName(rooms[active])}: esplorazione aperta nella homepage.`;
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     lockExploreLayout();
     setExploreProgress(0);
@@ -690,7 +698,7 @@
     }
     host.classList.add('is-explore-handoff');
     select(next, 1);
-    status.textContent = `${rooms[next].label} Room selezionata.`;
+    status.textContent = `${roomName(rooms[next])} selezionata.`;
     setTimeout(() => finishExploreHandoff(next), LIFT_MS + 80);
   }
 

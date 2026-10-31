@@ -4,6 +4,10 @@ The recovered-session responsive fixes and their reproducible checks are
 recorded in [the 31 October responsive review](RESPONSIVE-QA-2026-10-31.md).
 This does not close the remaining exact-artwork and mobile-reference gaps below.
 
+The subsequent [footer, navigator and copy review](FOOTER-NAV-TEXT-REVIEW-2026-10-31.md)
+records shared full-width page canvases, stable original toolbar sizing, and the
+14 Card Back descriptions/labels recovered directly from the authenticated Figma UI.
+
 This branch updates the native HTML/CSS/JavaScript preview. Production `thepeoplesroom.it`, Cloudflare bindings and server credentials are unchanged.
 
 ## Source assets and implementation
@@ -63,7 +67,7 @@ Seventeen updated room photo roles remain unavailable: five standalone `picture`
 
 The Coworking event card uses the exact supplied Dinner photo. Recharge longevity and Media studio audio also lack their exact source illustrations; native coming-soon labels are present. These are two illustration gaps, separate from the seventeen photos.
 
-Move, Recharge, Fuel and Media still use legacy left photo/eye stage artwork. Their original right-side vector decorations were recovered, but the Home PDF does not retain their four updated left photo compositions. The repeated right-vector identities and generic Home `image74` photo do not establish a valid replacement. Standalone room exports are required. Exact prototype motion and card-back states also remain unverified.
+Move, Recharge, Fuel and Media still use legacy left photo/eye stage artwork. Their original right-side vector decorations were recovered, but the Home PDF does not retain their four updated left photo compositions. The repeated right-vector identities and generic Home `image74` photo do not establish a valid replacement. Standalone room exports are required. Card-back titles, descriptions and CTA wording are now verified against 14 live Figma frames; the original flip controls and motion remain. Exact Figma prototype motion is still unverified.
 
 ## Forms and booking
 

@@ -8,7 +8,7 @@
       "Non un posto dove rallentare, ma un posto dove respirare meglio mentre acceleri."
     ],
     "roomIntro": [
-      "Entri in un modo, esci in un altro: più leggero, perché ti sei già allenato, con il cuore pieno di relazioni vere, più avanti con i tuoi progetti, grazie alle persone che hai incontrato.\""
+      "Entri in un modo, esci in un altro: più leggero, perché ti sei già allenato, con il cuore pieno di relazioni vere, più avanti con i tuoi progetti, grazie alle persone che hai incontrato."
     ],
     "events": [
       "Uno spazio si accende quando la gente lo abita insieme. Ecco perché li facciamo. Il prossimo, se vuoi, lo organizzi tu.",
@@ -65,7 +65,7 @@
         "name": "TPR Move",
         "color": "#3f9941",
         "paragraphs": [
-          "Un ambiente luminoso e ampio dedicato al Reformer Pilates, con macchinari Tecnogym e istruttori qualificati a guidare ogni classe.",
+          "Un ambiente luminoso e ampio dedicato al Reformer Pilates, con macchinari Technogym e istruttori qualificati a guidare ogni classe.",
           "Un luogo dove respirare e prendersi cura di sé."
         ]
       },
@@ -201,6 +201,30 @@
         "Sale riunioni",
         "eventi"
       ],
+      "cardDetails": {
+        "postazioni": {
+          "description": "Un desk fisso, tutto tuo. Sempre lì che ti aspetta quando hai bisogno di concentrarti; e la community intorno a te, appena alzi la testa.",
+          "ctaLabels": [
+            "Scopri come accedere"
+          ],
+          "sourceNode": "616:3793"
+        },
+        "Sale riunioni": {
+          "description": "4 sale insonorizzate per le call che contano. Le prenoti e nessuno ti disturba.",
+          "ctaLabels": [
+            "Scopri come accedere"
+          ],
+          "sourceNode": "616:3808"
+        },
+        "eventi": {
+          "description": "La sera ti motiviamo a finire di lavorare a un orario che non ti fa male, così hai voglia di restare per un talk, un aperitivo, due chiacchiere con chi lavora vicino a te.",
+          "ctaLabels": [
+            "Eventi e Gallery",
+            "Organizza un evento"
+          ],
+          "sourceNode": "616:3822"
+        }
+      },
       "sourceNode": "809:3282"
     },
     "reformer": {
@@ -216,13 +240,36 @@
         "classi",
         "attrezzature"
       ],
+      "cardDetails": {
+        "studio": {
+          "description": "Una sala ampia e luminosa, pensata per lezioni in piccoli gruppi e per il lavoro individuale.",
+          "ctaLabels": [
+            "Prenota la tua lezione"
+          ],
+          "sourceNode": "643:2102"
+        },
+        "classi": {
+          "description": "Percorsi diversi guidati da istruttori qualificati, ognuno costruito intorno a un obiettivo specifico.",
+          "ctaLabels": [
+            "Prenota la tua lezione"
+          ],
+          "sourceNode": "643:2115"
+        },
+        "attrezzature": {
+          "description": "Macchinari Technogym di ultima generazione, per un allenamento preciso e su misura.",
+          "ctaLabels": [
+            "Prenota la tua lezione"
+          ],
+          "sourceNode": "643:2128"
+        }
+      },
       "sourceNode": "643:1823"
     },
     "wellness": {
       "title": "TPR RECHARGE",
       "paragraphs": [
         "La sala dedicata al recupero.",
-        "Sauna, contrast therapy e logevity room: pratiche che agiscono su circolazione, energia e lucidità mentale.",
+        "Sauna, contrast therapy e longevity room: pratiche che agiscono su circolazione, energia e lucidità mentale.",
         "Non un'area pensata per il relax fine a sé stesso, ma un momento in cui il corpo si rigenera per tornare a dare il massimo.",
         "Il respiro che precede ogni nuova ispirazione."
       ],
@@ -231,6 +278,29 @@
         "contrast therapy",
         "longevity"
       ],
+      "cardDetails": {
+        "gym": {
+          "description": "Rack, multipower, panche, manubri e kettlebell in una sala raccolta e curata in ogni dettaglio. Tutto quello che serve per allenarti in libertà.",
+          "ctaLabels": [
+            "Scopri come accedere"
+          ],
+          "sourceNode": "643:2141"
+        },
+        "contrast therapy": {
+          "description": "Caldo, freddo, caldo. Sauna, cold plunge e poi di nuovo sauna: sembra una tortura, poi non ne fai più a meno.",
+          "ctaLabels": [
+            "Scopri come accedere"
+          ],
+          "sourceNode": "643:2167"
+        },
+        "longevity": {
+          "description": "Un power nap tra una call e l'altra, e i dati del tuo corpo per prenderti cura di te nel lungo periodo.",
+          "ctaLabels": [
+            "Scopri come accedere"
+          ],
+          "sourceNode": "643:2154"
+        }
+      },
       "sourceNode": "643:1964"
     },
     "bar": {
@@ -246,6 +316,29 @@
         "accessibilità",
         "storage"
       ],
+      "cardDetails": {
+        "servizi": {
+          "description": "Smoothies e bevande funzionali preparati al momento, pensati per concentrazione, energia e recupero.",
+          "ctaLabels": [
+            "Scopri come accedere"
+          ],
+          "sourceNode": "643:2180"
+        },
+        "accessibilità": {
+          "description": "Bancone, utensili e microonde sono a disposizione di chi lavora nello spazio, in ogni momento della giornata.",
+          "ctaLabels": [
+            "Scopri come accedere"
+          ],
+          "sourceNode": "643:2193"
+        },
+        "storage": {
+          "description": "Frigo e dispensa condivisi, per conservare le proprie cose e organizzarsi con calma.",
+          "ctaLabels": [
+            "Scopri come accedere"
+          ],
+          "sourceNode": "643:2206"
+        }
+      },
       "sourceNode": "643:1895"
     },
     "media": {
@@ -261,6 +354,27 @@
         "set fotografico",
         "studio audio"
       ],
+      "cardDetails": {
+        "podcast": {
+          "description": "Una postazione completa per registrare episodi e interviste, con regia e supporto tecnico.",
+          "ctaLabels": [
+            "Scopri come accedere"
+          ],
+          "sourceNode": "643:2219"
+        },
+        "set fotografico": {
+          "description": "Un ambiente pronto per shooting fotografici e riprese video, a disposizione di chi produce contenuti.",
+          "ctaLabels": [
+            "Scopri come accedere"
+          ],
+          "sourceNode": "643:2245"
+        },
+        "studio audio": {
+          "description": "coming soon",
+          "ctaLabels": [],
+          "sourceNode": "643:2033"
+        }
+      },
       "sourceNode": "643:2033"
     }
   },

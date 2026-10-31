@@ -1,0 +1,22 @@
+/* The shared footer and static-page canvas fill wide viewports. Their inner
+   content and original decorative SVGs retain the 1512px source geometry. */
+@media (min-width: 1513px) {
+  .updated-preview .preview-footer {
+    max-width: none;
+    padding-inline: calc((100vw - 1512px) / 2 + 92px);
+  }
+  .updated-preview:not(.preview-page--home):not(.preview-page--rooms) main {
+    max-width: none;
+  }
+  .updated-preview:not(.preview-page--home):not(.preview-page--rooms) .preview-shell {
+    padding-inline: calc((100vw - 1512px) / 2 + 80px);
+  }
+  .updated-preview .preview-vivi .preview-newsletter > .preview-two-columns {
+    padding-inline: calc((100vw - 1512px) / 2 + 80px);
+  }
+  .updated-preview:not(.preview-page--home):not(.preview-page--rooms) .preview-decoration {
+    left: calc((100vw - 1512px) / 2 + var(--decor-x) * 1px);
+    top: calc(var(--decor-y) * 1px);
+    width: calc(var(--decor-w) * 1px);
+  }
+}

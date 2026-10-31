@@ -40,10 +40,6 @@
     /* Keep the full-width source artwork clear of the partner heading. */
     background-position: center bottom;
   }
-  .preview-page--home .preview-footer {
-    max-width: none;
-    padding-inline: calc((100vw - 1512px) / 2 + 92px);
-  }
   .preview-page--home .preview-header {
     width: 100%;
     max-width: none;
