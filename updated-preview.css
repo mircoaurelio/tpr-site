@@ -294,6 +294,8 @@ body.updated-preview {
   padding: 0;
   border: 0;
   background: none;
+}
+.updated-preview .preview-menu-close {
   font: 400 48px/1 var(--preview-body);
 }
 .preview-menu nav {
@@ -2039,8 +2041,14 @@ body.updated-preview {
   }
 }
 @media (max-width: 380px) {
+  .updated-preview .hero-copy h1 {
+    font-size: calc(25vw - 12px) !important;
+  }
   .preview-section-title {
     font-size: 44px;
+  }
+  .preview-newsletter .preview-section-title {
+    font-size: min(44px, 12vw);
   }
   .preview-header .preview-button {
     padding-inline: 10px;
@@ -2703,6 +2711,9 @@ body.updated-preview {
   border: 0;
   border-radius: 0;
   box-shadow: none;
+}
+.updated-preview .preview-email-row button.has-zigzag {
+  background: transparent;
 }
 .updated-preview
   :where(

@@ -6,6 +6,7 @@
   "scripts": {
     "build:cloudflare": "node scripts/build_cloudflare.mjs",
     "test:newsletter": "node --test server/newsletter.test.mjs cloudflare/worker.test.mjs cloudflare/runtime.test.mjs",
+    "test:ui": "node --test --test-concurrency=1 tests/resume-mobile-regressions.mjs tests/resume-desktop-regressions.mjs",
     "dev:cloudflare": "npm run build:cloudflare && node scripts/wrangler_tpr.mjs dev",
     "deploy:cloudflare": "npm run build:cloudflare && node scripts/wrangler_tpr.mjs deploy",
     "dev": "python3 -m http.server 4173 --bind 0.0.0.0",
@@ -13,6 +14,7 @@
   },
   "devDependencies": {
     "miniflare": "5.20260926.0-alpha",
+    "playwright": "1.64.0-alpha-1790635538000",
     "wrangler": "4.143.0"
   }
 }

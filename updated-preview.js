@@ -215,10 +215,24 @@
       panel
         .querySelector("[data-room-explore]")
         .setAttribute("aria-expanded", String(open));
-      (open
+      const focusTarget = open
         ? panel.querySelector("[data-room-back]")
-        : panel.querySelector("[data-room-explore]")
-      ).focus({ preventScroll: true });
+        : panel.querySelector("[data-room-explore]");
+      focusTarget.focus({ preventScroll: true });
+      if (matchMedia("(max-width: 900px)").matches) {
+        const bounds = focusTarget.getBoundingClientRect();
+        if (bounds.top < 24 || bounds.bottom > innerHeight - 24) {
+          // Mobile copy can extend below the details panel's opening controls.
+          // Align the new view vertically without moving desktop or carousel X.
+          const offset = open
+            ? explorer.getBoundingClientRect().top - 24
+            : bounds.top - (innerHeight - bounds.height) / 2;
+          window.scrollTo({
+            top: Math.max(0, scrollY + offset),
+            behavior: reducedMotion ? "instant" : "smooth",
+          });
+        }
+      }
     };
     nav.forEach((button) =>
       button.addEventListener("click", () => {

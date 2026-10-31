@@ -8,10 +8,10 @@ from pathlib import Path
 import json, html, re
 
 ROOT=Path(__file__).resolve().parents[1]
-DATA=json.loads((ROOT/'design/updated-content.json').read_text())
-SLOTS=json.loads((ROOT/'design/figma-slots.json').read_text())['roles']
+DATA=json.loads((ROOT/'design/updated-content.json').read_text(encoding='utf-8'))
+SLOTS=json.loads((ROOT/'design/figma-slots.json').read_text(encoding='utf-8'))['roles']
 ASSET_FILE=ROOT/'design/asset-files.json'
-ASSETS=json.loads(ASSET_FILE.read_text()).get('assets',{}) if ASSET_FILE.exists() else {}
+ASSETS=json.loads(ASSET_FILE.read_text(encoding='utf-8')).get('assets',{}) if ASSET_FILE.exists() else {}
 for i,name in enumerate(['partner-1.svg','partner-2-revo.svg','partner-3.svg','partner-4.svg'],1):
  ASSETS[f'partners.{i}']={'path':'assets/figma-updated/partners/'+name}
 COMPOSITES={'home.hero-window':'home-hero-photo-eye-2x.webp','home.events-window':'home-events-photo-eye-2x.webp','home.coworking-window':'home-coworking-photo-eye-2x.webp'}
@@ -19,7 +19,7 @@ for role,name in COMPOSITES.items():
  ASSETS[role]={'path':'assets/figma-updated/composites/'+name}
 ASSETS['home.hero-mobile-photo']=ASSETS.get('home.hero',{}).get('embedded_photo',{})
 PAGE='home'
-DECORATIONS=json.loads((ROOT/'design/page-decorations.json').read_text())
+DECORATIONS=json.loads((ROOT/'design/page-decorations.json').read_text(encoding='utf-8'))
 E=html.escape
 ROOMS=[('coworking','Coworking'),('reformer','TPR Move'),('wellness','Recharge'),('bar','Fuel'),('media','Media')]
 PRIVACY=DATA['legal']['privacy']; COOKIE=DATA['legal']['cookie']
@@ -102,7 +102,7 @@ def events(root):
   cards.append(f'<article class="preview-event-card preview-paper" data-figma-node="{slot_source(role,'card_layer_id')}">{media(root,role,'preview-event-media',title)}<div><h3>{E(title)}</h3><p><span>Ottobre 2026</span><span>{E(person)}</span></p></div></article>')
  return f'''<section class="preview-shell preview-page-section preview-events" data-figma-node="616:2678"><div class="preview-two-columns"><h1 class="preview-section-title">TPR è energia,<br>musica,<br>connessioni</h1><div class="preview-lead">{paras(DATA['events']['intro'])}</div></div><section id="gallery" class="preview-event-gallery"><h2 class="preview-section-title preview-centered">Eventi passati</h2><div class="preview-event-carousel" data-initial-scroll="center" tabindex="0" role="region" aria-label="Eventi passati, scorri per esplorare" data-carousel>{''.join(cards)}</div></section><section class="preview-event-organize" id="organizza"><div class="preview-two-columns"><h2 class="preview-section-title">Organizza un<br>evento</h2><p class="preview-lead">{E(DATA['events']['organize'][0])}</p></div>{contact_card(root,'Organizza un evento',True)}</section></section>'''
 def home(root):
- hero=(ROOT/'design/partials/home-hero.html').read_text();people=(ROOT/'design/partials/home-people.html').read_text()
+ hero=(ROOT/'design/partials/home-hero.html').read_text(encoding='utf-8');people=(ROOT/'design/partials/home-people.html').read_text(encoding='utf-8')
  if asset_image(root,'home.hero-window'):
   hero='<section class="hero preview-hero--pdf" id="home" aria-labelledby="hero-title"><picture><source media="(max-width:900px)" srcset="'+root+ASSETS['home.hero-mobile-photo']['path']+'">'+asset_image(root,'home.hero-window','Lo spazio The People’s Room','class="preview-hero-composite" fetchpriority="high"')+'</picture><div class="hero-copy"><h1 id="hero-title"><span>Respira,</span><span>Ispira.</span></h1></div></section>'
  intro=f'''<section class="preview-home-about preview-shell"><div class="preview-two-columns"><div class="preview-about-logo">{body_wordmark(root)}</div><div class="preview-body-copy">{paras(DATA['home']['intro'])}<a class="preview-button preview-button--pink" href="{root}about/">About TPR</a></div></div>{people}<div class="preview-two-columns preview-rooms-intro"><h2 class="preview-section-title">TPR Rooms</h2><p class="preview-lead">{E(DATA['home']['roomIntro'][0])}</p></div></section>'''
@@ -148,7 +148,7 @@ def write(path,title,body,kind='blue',home_page=False):
  decor=''.join(f'<img src="{root}{r["path"]}" alt="" aria-hidden="true" class="preview-decoration preview-decoration--{r["name"]}" style="--decor-x:{r["css"]["left_px"]};--decor-y:{r["css"]["top_px"]};--decor-w:{r["css"]["width_px"]}">' for r in DECORATIONS if r['name'].startswith(PAGE+'-'))
  source=head(root,title,home_page)+f'<body class="{classes}">'+header(root,home_page)+menu(root)+f'<main id="main"><div class="preview-page-art" aria-hidden="true">'+decor+'</div>'+body(root)+f'</main>'+footer(root,home_page)
  source+='</body></html>\n';target=ROOT/path;target.parent.mkdir(parents=True,exist_ok=True);source=re.sub(r'(<p\b[^>]*>)\s*(</p>)',r'\1\2',source.replace('><','>\n<'))
- target.write_text('\n'.join(line.rstrip() for line in source.splitlines())+'\n')
+ target.write_text('\n'.join(line.rstrip() for line in source.splitlines())+'\n',encoding='utf-8')
 write('homepage-tpr/index.html','Respira, ispira',home,home_page=True)
 write('about/index.html','About TPR',about)
 write('contatti/index.html','Contatti',contacts)
@@ -159,5 +159,5 @@ for key,label in ROOMS:
  write(f'rooms/{key}/index.html',label,lambda root,key=key:room_explorer(root,key))
 for p,anchor in [('membership/aziende-startup/index.html','aziende'),('membership/privati-freelancer/index.html','offerte')]:
  target='../../vivi-tpr/#'+anchor
- (ROOT/p).write_text(f'<!doctype html><html lang="it"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0;url={target}"><title>Vivi TPR</title><script>location.replace({json.dumps(target)});</script><a href="{target}">Scopri le offerte TPR</a></html>\n')
+ (ROOT/p).write_text(f'<!doctype html><html lang="it"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0;url={target}"><title>Vivi TPR</title><script>location.replace({json.dumps(target)});</script><a href="{target}">Scopri le offerte TPR</a></html>\n',encoding='utf-8')
 print('Built updated homepage, About, contacts, events, Vivi TPR and Pilates pages with shared native components.')

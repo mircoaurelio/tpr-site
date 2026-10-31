@@ -1,5 +1,9 @@
 # Versione Aggiornata implementation
 
+The recovered-session responsive fixes and their reproducible checks are
+recorded in [the 31 October responsive review](RESPONSIVE-QA-2026-10-31.md).
+This does not close the remaining exact-artwork and mobile-reference gaps below.
+
 This branch updates the native HTML/CSS/JavaScript preview. Production `thepeoplesroom.it`, Cloudflare bindings and server credentials are unchanged.
 
 ## Source assets and implementation

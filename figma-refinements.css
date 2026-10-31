@@ -961,3 +961,45 @@
 .updated-preview .preview-home-about .people-nav::before {
   top: 91.25%;
 }
+
+/* Reuse the unchanged PDF control contour on a decorative layer. Nine-slice
+   sizing prevents letterboxing as the banner wraps; text, focus outline and
+   the native link hit area are never masked. */
+.updated-preview .preview-pilates-banner {
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+  border-radius: 0;
+}
+.updated-preview .preview-pilates-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--yellow);
+  border-radius: 12px;
+  -webkit-mask-box-image: url("assets/figma-updated/shapes/pilates-banner-cta-mask.svg")
+    12 fill / 16px / 0 stretch;
+  pointer-events: none;
+}
+
+/* The source's white V is the existing hand-drawn control arrow, rotated.
+   Keep the full select above its paper background and reserve the arrow space. */
+.updated-preview .preview-fields > label.preview-select > select {
+  appearance: none;
+  padding-right: 48px;
+}
+.updated-preview .preview-fields > label.preview-select::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  z-index: 1;
+  width: 12px;
+  height: 22px;
+  background: white;
+  mask: url("assets/figma-updated/shapes/control-arrow.svg") center / contain
+    no-repeat;
+  transform: translateY(-50%) rotate(90deg);
+  pointer-events: none;
+}
