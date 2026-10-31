@@ -155,6 +155,14 @@ reaches the viewport edges, smaller desktop partner rows wrap, and mobile title,
 header and section dimensions use the inspected source values. The original
 desktop source rendering and Room scroll effect are preserved.
 
+The follow-up Event rail regression extends all Home colored canvases above
+1512px while retaining the source inner grid. Event artwork fills the viewport
+without clipping; footer and people-strip backgrounds also reach both edges.
+The membership background remains proportional and anchors at its bottom to
+preserve partner-heading visibility. The linked review includes before/after
+screenshots, the identical full-page 1512px comparison, 88 passing UI tests and
+the final 16 edge/contrast checks on Chromium and WebKit.
+
 ## Verification limits
 
 The current Figma MCP connection reached its View-seat quota. The native Chrome

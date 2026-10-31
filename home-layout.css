@@ -14,8 +14,36 @@
     right: max(80px, calc((100vw - 1512px) / 2 + 80px)) !important;
   }
 }
-/* On wider screens keep the white navigation in the artwork's blue corners. */
+/* Wide canvases fill the viewport; content retains its source grid. */
 @media (min-width: 1513px) {
+  /* Limit the content grid, rather than the colored page canvas. */
+  .updated-preview.preview-page--home main {
+    max-width: none;
+  }
+  .preview-page--home .preview-shell {
+    --home-content-inset: calc((100vw - 1512px) / 2 + 80px);
+    padding-inline: var(--home-content-inset);
+  }
+  .preview-page--home .preview-event-composite {
+    left: calc(-1 * var(--home-content-inset));
+    width: 100vw;
+  }
+  .preview-page--home .preview-home-event-photo {
+    /* The original 720px photo extends through 120px of section padding. */
+    height: calc(100vw * 720 / 1512 - 120px);
+  }
+  .preview-page--home .people-nav::before {
+    left: calc((1512px - 100vw) / 2);
+    width: 100vw;
+  }
+  .preview-page--home .preview-membership::before {
+    /* Keep the full-width source artwork clear of the partner heading. */
+    background-position: center bottom;
+  }
+  .preview-page--home .preview-footer {
+    max-width: none;
+    padding-inline: calc((100vw - 1512px) / 2 + 92px);
+  }
   .preview-page--home .preview-header {
     width: 100%;
     max-width: none;

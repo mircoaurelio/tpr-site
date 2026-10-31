@@ -74,3 +74,35 @@ panorama travel. These Windows browser-engine runs do not certify physical iOS.
 - [Desktop after](review/hero-2026-10-31/desktop-1920.png)
 - [Mobile before](review/hero-2026-10-31/mobile-before-393.png)
 - [Mobile after](review/hero-2026-10-31/mobile-393.png)
+
+## Full-width colored sections
+
+The subsequent Event screenshot exposed the same container limit outside the
+hero. At 1536px / DPR1.25, Events painted from x12 to x1524, leaving body-blue
+rails on both sides. The original photograph stopped at those same boundaries.
+
+Above 1512px, Home now limits its inner content grid rather than its page canvas.
+Colored sections and the footer fill the viewport; adaptive padding preserves
+the 1352px text/card grid and the footer's original 92px inset. The Event photo
+and eye scale together to the full viewport. Its figure grows enough to retain
+the complete original composition, including the part occupying bottom padding.
+The people strip's pink plane also reaches both edges.
+
+The membership decoration remains proportional and full width, anchored at the
+bottom so it does not hide the same-colored partner heading. At very wide sizes
+this crops more of the top decoration. The original 1512px page composition is
+unchanged; an independent full-page A/B comparison produced identical PNG bytes
+(SHA256 `1a0f29311840c51c9873d523840e480dbde35e3f18e382b8e5c22c3a5c1b000e`).
+Mobile rules and original Room geometry remain unchanged.
+
+The full UI run passed 88 tests with two independent file workers. The new edge
+regression reproduced blue rails at 1536/1920/2560 before the fix. Its final
+focused run passed 16 checks on Chromium and WebKit at
+320/393/1280/1512/1536/1920/2560, including DPR1.25 and1.5, painted edge colors,
+photo reach, grid width, document overflow and partner glyph visibility. The
+added contrast check reproduced 82.59% visible glyph pixels before correcting
+decorative placement; both engines paint 100% afterward. Generator locale and
+diff checks pass. No form submissions were sent.
+
+- [Event section before](review/section-edges-2026-10-31/events-before-1536.png)
+- [Event section after](review/section-edges-2026-10-31/events-after-1536.png)
