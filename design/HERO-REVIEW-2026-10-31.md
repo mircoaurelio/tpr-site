@@ -47,6 +47,10 @@ boxes because native text Range height includes unused font descenders beyond
 the source 90% leading. A further screenshot-pixel regression requires at least
 95% blue behind the white booking CTA at 1920px. Moving Home navigation to the
 viewport corners above 1512px raises that coverage from 58.57% to 100%.
+Below the nominal desktop canvas, booking moves into the menu so its white
+header text does not sit over the bright photograph. At 1512px the source
+header remains unchanged. A browser check verifies menu booking access at
+1280px and 1440px.
 
 `mobile-hero-figma-regression.mjs` uses independent literals from the inspected
 Figma Properties panel. It verifies the 393px geometry, font actually painted

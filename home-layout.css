@@ -21,6 +21,13 @@
     max-width: none;
   }
 }
+/* The narrower artwork leaves insufficient blue space for the white CTA.
+   Booking remains available in the menu, as in the mobile source header. */
+@media (min-width: 901px) and (max-width: 1511px) {
+  .preview-page--home .preview-header .preview-button {
+    display: none;
+  }
+}
 /* Website Mobile / Article 560:2843, inspected at 393px: hero ends at 326,
    the 36px title starts at 262 with a 28px right inset, and intro padding is 24.
    Reuse the supplied photo/eye together; no second stretched desktop mask. */
