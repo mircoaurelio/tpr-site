@@ -24,5 +24,10 @@ The older `/homepage/` variant remains available. Production hosting and the Clo
 npm ci
 npx playwright install chromium webkit
 npm run test:newsletter
-npm run test:ui
 ```
+
+For browser checks, run `npm run dev:qa` in one terminal. In another, set
+`TPR_BASE_URL=http://127.0.0.1:4174` and run `npm run test:ui` (PowerShell:
+`$env:TPR_BASE_URL='http://127.0.0.1:4174'`). Native scrollbars stay hidden while
+text/cards remain scrollable. Character colors are checked during slow/failed
+SVG hydration as well as after loading; see the [color review](design/COLOR-REVIEW-2026-10-31.md).

@@ -118,6 +118,35 @@ tests** and the generator locale regression. A repeat build preserved generated
 HTML bytes. Syntax and diff checks passed. The original elevator stylesheet is
 unchanged; configuration and a scoped bridge adapt its content and dependencies.
 
+## Native scrollbars and character colors
+
+The follow-up hides native scrollbar tracks on the document and every preview
+scroll container. Overflow, touch gestures, keyboard scrolling and the original
+custom panorama progress control remain functional. Chromium and WebKit passed
+all 88 route/viewport combinations, including menus, filled textareas and Room
+cards; 537 overflowing-container observations had no scrollbar-style violations.
+
+All five source figure SVGs use `currentColor`. External-image fallbacks painted
+black while inline SVG hydration was delayed or failed. Home now paints that
+same source silhouette as an alpha mask in the Room foreground color until the
+animated inline SVG is ready. Existing PNG fallbacks on legacy routes remain.
+The [independent color audit](COLOR-REVIEW-2026-10-31.md) records 20 reproduced
+black fallbacks before the fix and 51 passing raster specimens after it,
+including incoming figures, standalone Rooms, white intro/menu figures and
+About discovery variants.
+
+WebKit also exposed a resize-delivery loop in the paper controls. ResizeObserver
+now queues targets and draws them in one animation frame, preserving source
+paths and control states. The dedicated uninstrumented regression passes without
+loop warnings after initial load, responsive changes and dynamic About content.
+
+- [Media mobile without native bars](review/scrollbar-color-2026-10-31/media-mobile.png)
+- [Yellow Move figure before inline SVG hydration](review/scrollbar-color-2026-10-31/reformer-before-hydration.png)
+
+Follow-up verification passed **48/48 browser tests** on the final clean source,
+plus the separate **10/10 scrollbar suite** covering all 88 combinations.
+The generator locale regression, syntax and diff checks also passed.
+
 ## Verification limits
 
 The current Figma MCP connection reached its View-seat quota. The browser can

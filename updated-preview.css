@@ -42,6 +42,20 @@ html {
   scroll-padding-top: 24px;
   scroll-snap-type: none;
 }
+/* Keep native scrolling, touch gestures and keyboard access without browser
+   scrollbar tracks on the page, text slots, menus, cards or form fields. */
+html:has(body.updated-preview),
+body.updated-preview,
+body.updated-preview * {
+  scrollbar-width: none;
+}
+html:has(body.updated-preview)::-webkit-scrollbar,
+body.updated-preview::-webkit-scrollbar,
+body.updated-preview *::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
 body.updated-preview {
   margin: 0;
   min-width: 320px;

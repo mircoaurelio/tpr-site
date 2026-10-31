@@ -219,6 +219,15 @@
       element.innerHTML = svg;
       return;
     }
+    if (configuration && room.character.endsWith('.svg')) {
+      // External SVG images cannot inherit currentColor. Keep the exact source
+      // silhouette colored even while inline SVG hydration is slow or fails.
+      const fallback = document.createElement('span');
+      fallback.className = 'tpr-elevator__character-fallback';
+      fallback.style.setProperty('--character-mask', `url("${asset(room.character)}")`);
+      element.replaceChildren(fallback);
+      return;
+    }
     element.innerHTML = `<img src="${asset(room.character)}" alt="">`;
   }
 

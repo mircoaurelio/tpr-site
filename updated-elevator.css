@@ -3,6 +3,14 @@
    masks, panorama geometry, responsive breakpoints and animation timing. */
 @import url("shared-little-man.css?v=20260820-little-men-3");
 
+.updated-preview .tpr-elevator__character-fallback {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: currentColor;
+  mask: var(--character-mask) center / contain no-repeat;
+}
+
 @font-face {
   font-family: "Alte Haas Grotesk";
   src: url("assets/fonts/alte-haas-grotesk/AlteHaasGroteskRegular.ttf") format("truetype");

@@ -125,11 +125,23 @@
         Math.abs(element.clientHeight - size[2]) < 0.5,
     );
   }
+  const resizedElements = new Set();
+  let resizeFrame = 0;
   const observer = new ResizeObserver((entries) => {
-    for (const entry of entries) {
-      drawContour(entry.target);
-      syncPaper(entry.target);
-    }
+    for (const entry of entries) resizedElements.add(entry.target);
+    if (resizeFrame) return;
+    // Drawing can change control geometry. Run outside observer delivery so
+    // WebKit can settle those dimensions without a ResizeObserver loop error.
+    resizeFrame = requestAnimationFrame(() => {
+      resizeFrame = 0;
+      const elements = [...resizedElements];
+      resizedElements.clear();
+      for (const element of elements) {
+        if (!element.isConnected) continue;
+        drawContour(element);
+        syncPaper(element);
+      }
+    });
   });
   function attachPaper(element) {
     if (paperElements.has(element)) return;
