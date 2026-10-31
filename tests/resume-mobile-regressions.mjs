@@ -206,11 +206,13 @@ test('menu close glyph uses its 48px design size and retains keyboard behavior',
   }
 });
 
-test('393px and 430px typography keeps the reviewed sizes', async () => {
+test('393px and 430px typography follows the inspected mobile source sizes', async () => {
   for (const width of [393, 430]) {
     const { page, context } = await pageAt(width);
     try {
-      assert.equal((await headingBounds(page.locator('.hero-copy h1'))).fontSize, '88px');
+      // Figma Mobile Article 560:2843 uses 36px at its native 393px width.
+      const heroFont = parseFloat((await headingBounds(page.locator('.hero-copy h1'))).fontSize);
+      assert.ok(Math.abs(heroFont - 36 * width / 393) < .01);
       assert.equal((await headingBounds(page.locator('.preview-newsletter .preview-section-title'))).fontSize, '48px');
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width);
     } finally { await context.close(); }

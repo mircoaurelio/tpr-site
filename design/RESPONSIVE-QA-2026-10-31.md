@@ -147,14 +147,23 @@ Follow-up verification passed **48/48 browser tests** on the final clean source,
 plus the separate **10/10 scrollbar suite** covering all 88 combinations.
 The generator locale regression, syntax and diff checks also passed.
 
+## Home container and inspected mobile hero
+
+The [Home hero review](HERO-REVIEW-2026-10-31.md) records the follow-up gutter
+fix and direct browser inspection of Figma's393px Mobile Article. The hero now
+reaches the viewport edges, smaller desktop partner rows wrap, and mobile title,
+header and section dimensions use the inspected source values. The original
+desktop source rendering and Room scroll effect are preserved.
+
 ## Verification limits
 
-The current Figma MCP connection reached its View-seat quota. The browser can
-view the updated Drive folder, but PDF downloads failed. Computer control was
-then stopped because it could not confidently verify the native browser URL.
-The suggested Google Drive plugin has not been confirmed connected.
+The current Figma MCP connection reached its View-seat quota. The native Chrome
+workflow was stopped because it could not confidently verify its URL. A later
+authenticated in-app browser inspection did verify the393px Mobile Article and
+its Properties values. Figma asset downloads still did not yield the exact
+mobile Vector. The suggested Google Drive plugin has not been confirmed connected.
 
-The remaining exact Room artwork and full updated mobile frames therefore remain
+The remaining exact Room artwork and other updated mobile frames therefore remain
 unverified. See `IMPLEMENTATION.md` and `asset-status.json` for the outstanding
 17 photo roles, four left-stage compositions and two illustrations. The booking
 provider is also still unspecified. Neither successful browser tests nor the
