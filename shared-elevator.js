@@ -36,20 +36,31 @@
       cards: [['Podcast', 'Approfondisci il podcast nella Media Room.'], ['Studio', 'Approfondisci lo studio nella Media Room.'], ['Set fotografico', 'Approfondisci il set fotografico nella Media Room.']],
     },
   ];
+  // Updated Home supplies content/assets; legacy routes retain these defaults.
+  const configuration = host.querySelector('[data-elevator-config]');
+  if (configuration) {
+    const overrides = JSON.parse(configuration.textContent);
+    rooms.forEach((room) => Object.assign(room, overrides[room.key] || {}));
+  }
   const copyParagraphs = [
     "The People's Room è uno spazio ibrido e autentico che nutre corpo, mente e spirito, offrendo un rifugio reale in un mondo sempre più digitale.",
     "Attraverso design non convenzionale, pratiche di benessere fisico, esperienze culturali e connessioni autentiche, stimoliamo la creatività, il pensiero critico e il senso di appartenenza.",
     "Il nostro obiettivo quotidiano è ispirare le persone a esprimere sé stesse, riscoprire il valore dell'umanità e vivere in modo più presente, creativo e vitale.",
   ];
-  const roomCopyHtml = copyParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join('');
-  const roomTitle = (room) => `${room.label} <span>Room</span>`;
+  const escapeCopy = (text) => String(text).replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
+  const paragraphsFor = (room) => room.paragraphs || copyParagraphs;
+  const roomCopyHtml = (room) => paragraphsFor(room).map((paragraph) => `<p>${escapeCopy(paragraph)}</p>`).join('');
+  const desktopParagraphs = (room) => configuration
+    ? `<div class="tpr-elevator__updated-text" tabindex="0" role="region" aria-label="Descrizione della stanza">${roomCopyHtml(room)}</div>`
+    : roomCopyHtml(room);
+  const roomTitle = (room) => room.title ? escapeCopy(room.title) : `${room.label} <span>Room</span>`;
   const cardArrowSrc = new URL('assets/route-arrow-zigzag.png?v=20260819-arrow-2', base).href;
   const LIFT_MS = 1250;
   const MOBILE_EXPAND_MS = 640;
   const LAST_FLOOR_HOLD = 1;
   const desktopCopyMarkup = (room, { live = true } = {}) => `
           <h2>${roomTitle(room)}</h2>
-          ${roomCopyHtml}
+          ${desktopParagraphs(room)}
           <div class="tpr-elevator__desktop-actions">
             <button class="tpr-elevator__cta" type="button"${live ? ` data-elevator-explore aria-label="Esplora ${room.label} Room"` : ' tabindex="-1" aria-hidden="true"'}><span class="tpr-elevator__cta-label">Esplora Stanza</span><span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
             <a class="tpr-elevator__book"${live ? ' data-elevator-book' : ''} href="${bookingUrl(room.key)}" ${room.bookable ? '' : 'hidden'}>Prenota${live ? `<span class="sr-only"> ${room.label} Room</span>` : ''}</a>
@@ -70,7 +81,7 @@
             </button>`).join('');
   const mobileCopyMarkup = (room, { live = true } = {}) => `
           <h2 class="tpr-elevator__title"${live ? ' id="elevatorTitle"' : ''}>${roomTitle(room)}</h2>
-          <div class="tpr-elevator__mobile-copy-text"><div class="tpr-elevator__mobile-copy-text-inner">${copyParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join('')}</div></div>
+          <div class="tpr-elevator__mobile-copy-text"><div class="tpr-elevator__mobile-copy-text-inner">${roomCopyHtml(room)}</div></div>
           <div class="tpr-elevator__mobile-actions">
             <button class="tpr-elevator__mobile-cta" type="button"${live ? ' data-elevator-explore aria-expanded="false"' : ' tabindex="-1" aria-hidden="true"'}><span class="tpr-elevator__cta-label">Esplora Stanza</span><span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
             <a class="tpr-elevator__mobile-book"${live ? ' data-elevator-book' : ''} href="${bookingUrl(room.key)}" ${room.bookable ? '' : 'hidden'}><span>Prenota</span></a>
@@ -241,6 +252,12 @@
     const shade = car === currentCar ? currentShade : incomingShade;
     if (shade) shade.dataset.room = room.key;
     car.querySelectorAll('h2').forEach((title) => { title.innerHTML = roomTitle(room); });
+    if (configuration) {
+      const text = car.querySelector('.tpr-elevator__mobile-copy-text-inner');
+      if (text) text.innerHTML = roomCopyHtml(room);
+      const copy = car.querySelector('.tpr-elevator__updated-text');
+      if (copy) copy.innerHTML = roomCopyHtml(room);
+    }
     car.querySelectorAll('.tpr-elevator__book, .tpr-elevator__mobile-book').forEach((link) => {
       link.href = bookingUrl(room.key);
       link.hidden = !room.bookable;
@@ -300,12 +317,15 @@
     const paragraphs = [...(inner?.querySelectorAll('p') || copy?.querySelectorAll('.tpr-elevator__mobile-copy-text p') || [])];
     if (!copy || !paragraphs.length) return;
     clearMobileCopyFit(scope);
+    if (configuration) paragraphs.forEach((paragraph) => {
+      if (parseFloat(getComputedStyle(paragraph).fontSize) < 14) paragraph.style.fontSize = '14px';
+    });
     const box = inner || copy;
     const fits = () => copy.scrollHeight <= copy.clientHeight && box.scrollHeight <= box.clientHeight;
     if (copy.clientHeight < 8 || fits()) return;
     const computed = parseFloat(getComputedStyle(paragraphs[0]).fontSize) || 16;
-    let low = 10;
-    let high = computed;
+    let low = configuration ? 14 : 10;
+    let high = Math.max(low, computed);
     for (let i = 0; i < 14; i += 1) {
       const mid = (low + high) / 2;
       paragraphs.forEach((paragraph) => { paragraph.style.fontSize = `${mid}px`; });

@@ -32,6 +32,9 @@ async function pageAt(route, width = 1512) {
   await page.goto(new URL(route, process.env.TPR_BASE_URL || 'http://127.0.0.1:4173').href, { waitUntil: 'networkidle' });
   await page.evaluate(() => document.fonts.ready);
   resources.parsedStylesheets = await page.evaluate(() => [...document.querySelectorAll('link[rel="stylesheet"]')].map(link => ({ url: link.href, rules: link.sheet?.cssRules.length || 0, disabled: link.sheet?.disabled })));
+  assert.deepEqual(resources.failed, [], 'required page resources must finish loading');
+  assert.deepEqual(resources.httpErrors, [], 'required page resources must return successful responses');
+  assert.deepEqual(resources.errors, [], 'page initialization must not raise browser errors');
   assert.ok(resources.parsedStylesheets.every(sheet => sheet.rules > 0 && !sheet.disabled), `required stylesheet failed to parse: ${JSON.stringify(resources)}`);
   return page;
 }

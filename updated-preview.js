@@ -18,7 +18,8 @@
     );
   const toggleMenu = (open) => {
     if (!menu) return;
-    if (open) previousFocus = document.activeElement;
+    // A touch activation need not focus its button (notably in WebKit).
+    if (open) previousFocus = menuOpen || document.activeElement;
     menu.inert = !open;
     menu.setAttribute("aria-hidden", String(!open));
     menu.classList.toggle("is-open", open);
@@ -41,15 +42,16 @@
       event.preventDefault();
       toggleMenu(false);
     }
-    if (event.key !== "Tab") return;
+    if (event.key !== "Tab" || event.ctrlKey || event.metaKey || event.altKey) return;
     const nodes = focusable(menu);
-    if (event.shiftKey && document.activeElement === nodes[0]) {
-      event.preventDefault();
-      nodes.at(-1)?.focus();
-    } else if (!event.shiftKey && document.activeElement === nodes.at(-1)) {
-      event.preventDefault();
-      nodes[0]?.focus();
-    }
+    if (!nodes.length) return;
+    // Cycle explicitly: native Tab preferences can skip every link in WebKit.
+    event.preventDefault();
+    const current = nodes.indexOf(document.activeElement);
+    const next = current < 0
+      ? (event.shiftKey ? nodes.length - 1 : 0)
+      : (current + (event.shiftKey ? -1 : 1) + nodes.length) % nodes.length;
+    nodes[next].focus();
   });
 
   // The static preview hands enquiries to the visitor's email application.

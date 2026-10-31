@@ -16,7 +16,9 @@ const base = process.env.TPR_BASE_URL || 'http://127.0.0.1:4173';
 const phase = process.env.TPR_QA_PHASE || 'after';
 const output = path.resolve('.qa/resume-mobile', `regression-${phase}`);
 const widths = [320, 393, 430];
-const roomRoutes = ['/homepage-tpr/', '/rooms/coworking/', '/rooms/reformer/', '/rooms/wellness/', '/rooms/bar/', '/rooms/media/'];
+// Home uses the original layered elevator/panorama, covered by
+// legacy-room-effect.test.mjs. These assertions cover standalone Room overlays.
+const roomRoutes = ['/rooms/coworking/', '/rooms/reformer/', '/rooms/wellness/', '/rooms/bar/', '/rooms/media/'];
 const measurements = [];
 let browser;
 
@@ -38,11 +40,16 @@ async function pageAt(width, route = '/homepage-tpr/', reducedMotion = 'reduce')
   // newsletter test that needs synthetic responses. No live writes can escape.
   await context.route('**/*', route => ['GET', 'HEAD'].includes(route.request().method()) ? route.continue() : route.abort());
   const page = await context.newPage();
+  const failures = [];
+  page.on('requestfailed', request => failures.push({ url: request.url(), error: request.failure()?.errorText }));
+  page.on('pageerror', error => failures.push({ error: error.message }));
+  page.on('response', response => { if (response.status() >= 400) failures.push({ url: response.url(), status: response.status() }); });
   await page.goto(new URL(route, base).href, { waitUntil: 'networkidle' });
   await page.evaluate(async () => {
     await document.fonts.ready;
     await Promise.all([...document.images].map(image => image.decode().catch(() => {})));
   });
+  assert.deepEqual(failures, [], 'page scripts and assets must load before interaction checks');
   return { context, page };
 }
 async function capture(page, name, selector) {
@@ -211,7 +218,7 @@ test('393px and 430px typography keeps the reviewed sizes', async () => {
 });
 
 test('normal-motion mobile navigation settles on a visible focused control', async () => {
-  for (const route of ['/homepage-tpr/', '/rooms/coworking/']) {
+  for (const route of ['/rooms/coworking/']) {
     const { page, context } = await pageAt(393, route, 'no-preference');
     try {
       const explore = page.locator('[data-room-explore]').first();
@@ -224,7 +231,7 @@ test('normal-motion mobile navigation settles on a visible focused control', asy
   }
 });
 
-test('desktop exploration preserves the existing viewport position', async () => {
+test('desktop standalone Room exploration preserves viewport position', async () => {
   for (const route of roomRoutes) {
     const { page, context } = await pageAt(1512, route);
     try {

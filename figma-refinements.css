@@ -1003,3 +1003,21 @@
   transform: translateY(-50%) rotate(90deg);
   pointer-events: none;
 }
+
+/* Preserve the original company paper's CSS-pixel edge depth when its content
+   changes the card proportions. Repeat the unchanged source edge slices rather
+   than stretching a whole-page silhouette over the tall responsive card.
+   The exact 1352 x 920 source treatment remains owned by has-source-paper. */
+@supports (-webkit-mask-box-image-source: url("")) {
+  .updated-preview .preview-company-card:not(.has-source-paper) {
+    mask: none;
+    -webkit-mask-box-image: url("assets/figma-updated/shapes/company-card-mask-1352x920.svg")
+      24 fill / 24px / 0 repeat;
+  }
+  .updated-preview .preview-company-card:not(.has-source-paper)::after {
+    border: 24px solid transparent;
+    border-radius: 0;
+    border-image: url("assets/figma-updated/shapes/company-card-frame-1352x920.svg")
+      24 / 24px / 0 repeat;
+  }
+}

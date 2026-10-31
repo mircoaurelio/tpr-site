@@ -16,6 +16,26 @@ Shared templates implement the six main pages and five room routes, with native 
 
 ## Geometry and mobile
 
+Home reuses the original `shared-elevator.js` controller and unchanged
+`shared-elevator.css` motion/geometry. Its fixed masked photograph crossfades
+while separate copy/background cars lift over 1250ms. Desktop Explore opens the
+real 6864×1904 panorama at39% over720ms; native vertical scrolling drives the
+image/card track at the original1.2 factor, reverses out above or hands off to
+the next Room. The final panorama releases to the following page. At720px and
+below the original expanding/flipping mobile cards replace the desktop panorama.
+
+Only Home supplies configuration for source-backed replacement art, SVG figures,
+titles, paragraphs and card labels. Existing wide panoramas and unmatched floor
+composites remain aligned with their original photo mask and embedded card
+windows until matching updated originals are available. A scoped bridge supplies
+original font/CTA dependencies, normal-motion photo visibility, inert incoming
+copies and updated Figma desktop copy metrics/position. Long updated copy can
+scroll within its text slot with a14px minimum on mobile; motion is unchanged.
+Legacy routes without configuration keep their original content and fit rules.
+
+The table below records the static source dimensions before restoring this
+scroll travel, rather than the new full Home document height.
+
 At 1512px wide, the six main page heights match the supplied PDF canvases after removing the 30px mock macOS menu bar:
 
 | Route | Height |

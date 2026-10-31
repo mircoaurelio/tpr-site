@@ -44,8 +44,9 @@ def media(root,role,cls,alt='',fallback=''):
 def body_wordmark(root):
  return '<span class="preview-body-wordmark">'+img(root,'figma-updated/composites/home-about-wordmark-original.svg',"The People’s Room™",'preview-body-wordmark-source')+'<span class="preview-body-trademark" aria-hidden="true">'+img(root,'brand/Logotype_blue.svg','')+'</span></span>'
 def head(root,title,home=False):
- legacy=''
- return f'''<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#2c64e8"><title>{E(title)} — The People's Room</title><meta name="description" content="The People's Room: coworking, movimento, cultura e benessere a Milano."><link rel="icon" href="{root}assets/tpr-character.svg" type="image/svg+xml"><link rel="preload" href="{root}assets/fonts/pp-rader/PPRader-Bold.otf" as="font" type="font/otf" crossorigin>{legacy}<link rel="stylesheet" href="{root}updated-preview.css?v=20261030-pdf"><link rel="stylesheet" href="{root}figma-refinements.css?v=20261030-pdf"><link rel="stylesheet" href="{root}pdf-assets.css?v=20261030-pdf"><script src="{root}updated-preview.js?v=20261030-pdf" defer></script><script src="{root}zigzag-controls.js?v=20261030-pdf" defer></script></head>'''
+ legacy=f'<link rel="stylesheet" href="{root}shared-elevator.css?v=20261031-original"><link rel="stylesheet" href="{root}updated-elevator.css?v=20261031-original">' if home else ''
+ elevator=f'<script src="{root}shared-elevator.js?v=20261031-original" defer></script><script src="{root}updated-elevator.js?v=20261031-original" defer></script>' if home else ''
+ return f'''<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#2c64e8"><title>{E(title)} — The People's Room</title><meta name="description" content="The People's Room: coworking, movimento, cultura e benessere a Milano."><link rel="icon" href="{root}assets/tpr-character.svg" type="image/svg+xml"><link rel="preload" href="{root}assets/fonts/pp-rader/PPRader-Bold.otf" as="font" type="font/otf" crossorigin><link rel="stylesheet" href="{root}updated-preview.css?v=20261031-scroll"><link rel="stylesheet" href="{root}figma-refinements.css?v=20261031-scroll"><link rel="stylesheet" href="{root}pdf-assets.css?v=20261031-scroll">{legacy}<script src="{root}updated-preview.js?v=20261031-scroll" defer></script>{elevator}<script src="{root}zigzag-controls.js?v=20261031-scroll" defer></script></head>'''
 def header(root,cta=False):
  return f'''<a class="skip-link" href="#main">Vai al contenuto</a><header class="preview-header"><a class="preview-brand" href="{root}homepage-tpr/" aria-label="The People's Room — Home">{img(root,'tpr-logo.svg',"The People's Room",extra='width="131" height="64"')}</a><div class="preview-header-actions">{link(root,'prenota/','Prenota il Pilates <span class="preview-chevron" aria-hidden="true"></span>','preview-button preview-button--outline') if cta else ''}<button class="preview-menu-button" type="button" data-menu-open aria-label="Apri il menu" aria-controls="siteMenu" aria-expanded="false">{img(root,'figma-updated/shapes/header-hamburger.svg','','preview-menu-glyph','aria-hidden="true"')}</button></div></header>'''
 def menu(root):
@@ -114,8 +115,23 @@ def partners(root):
  return '<section class="preview-partners preview-shell" data-figma-node="791:1770"><h2>I nostri partner</h2><div class="preview-partner-logos" aria-label="Partner TPR">'+logos+'</div></section>'
 
 def room_explorer(root,standalone=None):
+ if not standalone:
+  # Reuse the previous elevator and its panorama geometry. Only source-backed
+  # asset/content overrides are supplied here; unmatched wide composites stay
+  # on the originals so their embedded photo windows remain aligned.
+  overrides={}
+  shapes={'coworking':'coworking','reformer':'move','wellness':'recharge','bar':'fuel','media':'media'}
+  for key,_ in ROOMS:
+   d=DATA['rooms'][key]
+   overrides[key]={'title':d['title'],'paragraphs':d['paragraphs'],'character':f'little-man/{key}.svg','cards':[[label,d['paragraphs'][0]] for label in d['cards']]}
+   overrides[key]['icon']=f'figma-updated/shapes/room-toolbar-{shapes[key]}-default.svg' if key=='coworking' else f'elevator-icon-{key}.svg'
+   overrides[key]['off']=f'elevator-icon-{key}-off.svg' if key=='coworking' else f'figma-updated/shapes/room-toolbar-{shapes[key]}-default.svg'
+  overrides['coworking']['art']='figma-updated/composites/home-coworking-photo-eye-2x.webp'
+  payload=json.dumps(overrides,ensure_ascii=False).replace('<','\\u003c')
+  return '<section id="rooms" aria-label="TPR Rooms"><script type="application/json" data-elevator-config>'+payload+'</script></section>'
  colors={'coworking':('#98caff','#2c64e8'),'reformer':('#3f9941','#ffc100'),'wellness':('#c2d569','#3f9941'),'bar':('#eb642b','#ffc100'),'media':('#ffc100','#2c64e8')}
  keys=[standalone] if standalone else [key for key,_ in ROOMS]
+ # Mask URLs in custom properties resolve in pdf-assets.css, not in this route.
  panels=[]
  for i,key in enumerate(keys):
   d=DATA['rooms'][key];bg,accent=colors[key];heading_tag='h1' if standalone else 'h2'
@@ -126,7 +142,7 @@ def room_explorer(root,standalone=None):
   book=f'<a class="preview-button preview-button--room-outline" href="{root}{"prenota/" if key=="reformer" else "vivi-tpr/"}">{"Prenota" if key=="reformer" else "Scopri come accedere"}</a>' if key in ('coworking','reformer') and standalone else ''
   art=asset_image(root,'home.coworking-window','', 'class="preview-room-art preview-room-art--pdf" aria-hidden="true"') if key=='coworking' else ''
   art=art or img(root,f'homepage-room-{key}-no-text-2x.webp','', 'preview-room-art', 'aria-hidden="true" data-pending-figma-image="'+d['sourceNode']+'"')
-  panels.append(f'''<div class="preview-room-panel" data-room-panel="{key}" style="--room-bg:{bg};--room-accent:{accent}" {'hidden' if i else ''} data-figma-node="{d['sourceNode']}">{art}<div class="preview-room-character" style="--room-character:url('{root}assets/little-man/{key}.svg')">{img(root,f'little-man/{key}.svg','',extra='aria-hidden="true"')}</div><div class="preview-room-copy"><{heading_tag}>{d['title']}</{heading_tag}><div class="preview-room-body">{paras(d['paragraphs'])}<div class="preview-room-actions"><button class="preview-button" data-room-explore type="button" aria-expanded="false">Esplora Stanza <span class="preview-chevron" aria-hidden="true"></span></button>{book}</div></div></div><section class="preview-room-details" aria-label="Esplora {d['title']}" inert aria-hidden="true"><div class="preview-room-details-top"><h2>{d['title']}</h2><button class="preview-room-back" type="button" data-room-back>‹ Torna alla stanza</button></div><div class="preview-room-cards" tabindex="0" role="region" aria-label="Spazi {d['title']}" data-carousel>{''.join(cards)}</div></section></div>''')
+  panels.append(f'''<div class="preview-room-panel" data-room-panel="{key}" style="--room-bg:{bg};--room-accent:{accent}" {'hidden' if i else ''} data-figma-node="{d['sourceNode']}">{art}<div class="preview-room-character" style="--room-character:url('assets/little-man/{key}.svg')">{img(root,f'little-man/{key}.svg','',extra='aria-hidden="true"')}</div><div class="preview-room-copy"><{heading_tag}>{d['title']}</{heading_tag}><div class="preview-room-body">{paras(d['paragraphs'])}<div class="preview-room-actions"><button class="preview-button" data-room-explore type="button" aria-expanded="false">Esplora Stanza <span class="preview-chevron" aria-hidden="true"></span></button>{book}</div></div></div><section class="preview-room-details" aria-label="Esplora {d['title']}" inert aria-hidden="true"><div class="preview-room-details-top"><h2>{d['title']}</h2><button class="preview-room-back" type="button" data-room-back>‹ Torna alla stanza</button></div><div class="preview-room-cards" tabindex="0" role="region" aria-label="Spazi {d['title']}" data-carousel>{''.join(cards)}</div></section></div>''')
  nav=''
  if not standalone:
   icons=[]

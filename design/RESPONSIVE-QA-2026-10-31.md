@@ -33,12 +33,13 @@ on one row at 402/430px. No breakpoint was changed based only on that crop.
 ## Verification and reproducibility
 
 Install the locked development dependencies with `npm ci`, then install the
-matching test browser with `npx playwright install chromium`. Serve the project
-root on port 4173 (`npm run dev` requires Python 3). In another terminal run:
+matching test browsers with `npx playwright install chromium webkit`. Serve the
+project with `npm run dev:qa` on port 4174. In another terminal run (PowerShell
+uses `$env:TPR_BASE_URL='http://127.0.0.1:4174'`):
 
 ```sh
 npm run test:newsletter
-npm run test:ui
+TPR_BASE_URL=http://127.0.0.1:4174 npm run test:ui
 python3 -m unittest discover -s tests -p test_preview_generator.py
 ```
 
@@ -48,9 +49,9 @@ Screenshots and measurements are written to the ignored `.qa/` directory.
 UI test files run serially against the shared local server. Assertions are not
 retried or weakened to accommodate resource contention.
 
-The final unchanged-tree runs passed: 10 UI tests, 15 newsletter tests and the
-generator locale regression. The full rebuild succeeded without changing the
-generated HTML. Representative final captures:
+The first recovered-session run passed 10 UI tests, 15 newsletter tests and the
+generator locale regression. The additional public review below extends that
+coverage. Representative captures from the first run:
 
 - [Newsletter ready, 393px](review/responsive-2026-10-31/newsletter-393-ready.png)
 - [Menu, 393px](review/responsive-2026-10-31/menu-393.png)
@@ -58,6 +59,64 @@ generated HTML. Representative final captures:
 
 These captures are evidence of the implementation, not substitutes for the
 missing updated mobile Figma export.
+
+## Public review and restored scroll elevator
+
+The first GitHub Pages publication exposed stylesheet-relative mask URLs that
+escaped the `/tpr-site/` project base. The generator now uses paths relative to
+the consuming stylesheet; the new project-base regression requests every Room
+mask at both root and project mounts and rejects escaped URLs.
+
+Independent WebKit testing also found focus escaping the menu when native Tab
+navigation skipped links. The menu now cycles its visible controls explicitly
+and restores its opener after touch activation. The company paper uses unchanged
+source mask/frame slices at responsive sizes, with the original nominal desktop
+rendering retained. Unsupported mask-box-image engines retain their prior mask.
+
+Home now reuses the original layered elevator controller and unchanged motion
+stylesheet. Separate photo/copy/background planes preserve the fixed masked
+photograph and crossfade during the1250ms lift. Explore restores the real wide
+panorama,39% opening position,720ms opening animation,1.2 native-scroll factor,
+reverse exit, next-Room handoff and final exit. The original720px mobile
+boundary and expanding/flipping cards remain. Only data/assets and a scoped
+compatibility bridge adapt the section to the new preview.
+
+Four independent baseline cases passed against the previous Git revision and
+failed on the replaced preview before restoration. Current comparison tests
+exercise actual computed transforms and image/card motion, not just selected
+Room buttons. Further checks cover forward/reverse floors, hashes/query
+preservation, readable copy in constrained viewports, the project asset prefix,
+WebKit menu focus and source-scaled company paper edges.
+
+An independent designer compared the available six desktop PDF exports and
+11routes at1512/393/320px. It confirmed source families and sizes, and identified
+a30.766px Room-copy offset: the bridge aligns the nominal title/body to264/384px,
+with80px Rader Bold and24px Haas Regular. Updated titles/paragraphs are supplied
+as content; the legacy motion and image geometry remain separate. Mobile
+checks verify readability and fit because full updated mobile source frames
+are still unavailable. The footer legal capitalization follows the source.
+
+See [the independent typography review](TYPE-REVIEW-2026-10-31.md) for source
+families, nominal sizes, font-file inspection and comparison limits.
+
+Final visual captures of the restored section:
+
+- [Desktop overview](review/restored-elevator-2026-10-31/desktop-overview.png)
+- [Desktop panorama after native scrolling](review/restored-elevator-2026-10-31/desktop-explore.png)
+- [Mobile overview](review/restored-elevator-2026-10-31/mobile-overview.png)
+- [Original mobile expanding cards](review/restored-elevator-2026-10-31/mobile-explore.png)
+
+Browser-engine runs are on Windows and do not establish physical iOS behavior.
+All write requests are intercepted. The earlier local Python server produced
+connection-refused asset loads during a combined run; the async Node QA server
+and explicit resource-load assertions make incomplete pages fail before visual
+comparisons. Source-sized paper preservation is checked with a same-page A/B,
+so independent application changes cannot invalidate a stale screenshot hash.
+
+The final unchanged-source run passed **43/43 browser tests**, **15/15 newsletter
+tests** and the generator locale regression. A repeat build preserved generated
+HTML bytes. Syntax and diff checks passed. The original elevator stylesheet is
+unchanged; configuration and a scoped bridge adapt its content and dependencies.
 
 ## Verification limits
 
