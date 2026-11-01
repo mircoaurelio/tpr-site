@@ -493,6 +493,15 @@
   flex: none;
   overflow: visible;
 }
+
+/* Safari keeps svh at the toolbar's expanded height while the visible viewport
+   grows during scrolling. The moving Room must cover that whole visible area. */
+@media (max-width: 720px) {
+  .updated-preview .tpr-elevator__sticky {
+    height: 100vh;
+    height: 100dvh;
+  }
+}
 .updated-preview .tpr-elevator__desktop-copy > h2,
 .updated-preview .tpr-elevator__desktop-copy > .tpr-elevator__desktop-actions {
   flex: none;
