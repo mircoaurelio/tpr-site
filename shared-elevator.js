@@ -8,7 +8,9 @@
     if (file.includes('elevator-icon')) url.searchParams.set('v', '20260820-on-glyphs');
     return url.href;
   };
-  const bookingUrl = (roomKey) => `${new URL('contatti/', base).href}?room=${encodeURIComponent(roomKey)}`;
+  const bookingUrl = (roomKey) => configuration && roomKey === 'reformer'
+    ? new URL('prenota/', base).href
+    : `${new URL('contatti/', base).href}?room=${encodeURIComponent(roomKey)}`;
   const rooms = [
     {
       key: 'coworking', label: 'Coworking', art: 'homepage-room-coworking-no-text-2x.webp', cardPhoto: 'room-coworking.jpg', routeArt: 'routes/coworking-2x.webp', character: 'character-coworking.png', box: [5.85, 30.83, 8.10, 15.97], icon: 'elevator-icon-coworking.svg', off: 'elevator-icon-coworking-off.svg',

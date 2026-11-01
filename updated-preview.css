@@ -1184,9 +1184,17 @@ body.updated-preview {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 .preview-booking-panel {
-  height: 568px;
+  min-height: 568px;
+  height: auto;
   width: 100%;
+  padding: 24px;
   background: white;
+}
+.preview-booking-panel iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border: 0;
 }
 .preview-room-explorer {
   position: relative;
@@ -1927,7 +1935,8 @@ body.updated-preview {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .preview-booking-panel {
-    height: 500px;
+    min-height: 500px;
+    padding: 12px;
   }
   .preview-footer {
     padding: 48px 24px;

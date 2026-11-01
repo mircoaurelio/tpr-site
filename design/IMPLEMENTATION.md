@@ -8,6 +8,9 @@ The subsequent [footer, navigator and copy review](FOOTER-NAV-TEXT-REVIEW-2026-1
 records shared full-width page canvases, stable original toolbar sizing, and the
 14 Card Back descriptions/labels recovered directly from the authenticated Figma UI.
 
+The [1 November booking review](PILATES-BOOKING-REVIEW-2026-11-01.md) records the
+user-supplied Mindbody calendar, corrected Move booking destination and offer copy.
+
 This branch updates the native HTML/CSS/JavaScript preview. Production `thepeoplesroom.it`, Cloudflare bindings and server credentials are unchanged.
 
 ## Source assets and implementation
@@ -73,7 +76,7 @@ Move, Recharge, Fuel and Media still use legacy left photo/eye stage artwork. Th
 
 The community form calls the existing newsletter endpoint with email, explicit consent and honeypot. The unchanged server enforces Brevo list 2 and `FONTE=Landing`; no API key is present in the browser. Its button is enabled and blue after valid email and checked consent. Success appears only after a successful response; the production endpoint must permit the preview origin.
 
-Enquiries prepare a message in the visitor's email application at `hello@thepeoplesroom.it`; they do not claim delivery. Day Pass checkout/payment and direct server enquiry delivery are not configured. Offer actions lead to an enquiry with the selected offer. The Pilates booking area is empty in the supplied PDF and remains empty until a provider/embed URL is supplied.
+Enquiries prepare a message in the visitor's email application at `hello@thepeoplesroom.it`; they do not claim delivery. Day Pass checkout/payment and direct server enquiry delivery are not configured. Offer actions lead to an enquiry with the selected offer. The Pilates placeholder now contains the user-supplied Mindbody Schedules widget `4581434fffc`. Updated Home Move, standalone Move, the Home Pilates banner and menu/header booking links lead to `/prenota/`. Its paper panel grows with the provider's automatically sized iframe, preserving the original minimum dimensions without clipping class listings.
 
 ## Checks
 

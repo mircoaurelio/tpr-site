@@ -123,7 +123,7 @@
         "✓ Booth telefonici",
         "✓ Accesso agli spazi comuni",
         "✓ Eventi community aperti",
-        "✕ Accesso alle sale riunione",
+        "✕ Accesso alle sale riunioni",
         "✕ Accesso all’area benessere",
         "✕ Accesso alla palestra",
         "✕ Reformer Pilates TPR Move"
@@ -146,7 +146,7 @@
         "✓ Booth telefonici",
         "✓ Accesso agli spazi comuni",
         "✓ Eventi community esclusivi",
-        "✓ Accesso alle sale riunione",
+        "✓ Accesso alle sale riunioni",
         "✓ Accesso all’area benessere",
         "✓ Accesso alla palestra",
         "✓ Lezione di prova Reformer Pilates inclusa"
@@ -168,7 +168,7 @@
         "✓ Booth telefonici",
         "✓ Accesso agli spazi comuni",
         "✓ Eventi community aperti",
-        "✓ 2h di accesso alle sale riunione",
+        "✓ 2h di accesso alle sale riunioni",
         "✓ Accesso all’area benessere",
         "✓ Accesso alla palestra",
         "✕ Reformer Pilates TPR Move"
@@ -180,7 +180,7 @@
       "id": "ufficio-virtuale",
       "eyebrow": "scopri di più",
       "title": "ufficio virtuale",
-      "description": "La tua sede legale per la gestione della corrispondenza e l’affissione della targhetta con il logo della tua azienda.",
+      "description": "Tu lavori dove vuoi, la tua attività ha casa qui. Sede legale, gestione della corrispondenza e una targhetta con il tuo logo",
       "tags": [],
       "benefits": [],
       "cta": "Richiedi informazioni",
@@ -388,7 +388,7 @@
     "subtitle": "Il tuo spazio, quando serve davvero",
     "description": "Da un accesso più semplice per lavorare quando vuoi, fino a un'esperienza completa che integra lavoro, movimento e benessere. Raccontaci come vivi il tuo lavoro e troviamo insieme il livello più adatto alle esigenze tue o del tuo team.",
     "benefits": [
-      "Sale riunione",
+      "Sale riunioni",
       "Booth telefonici",
       "Accesso all’area sauna/cold plunge/longevity",
       "Accesso all’area palestra",
