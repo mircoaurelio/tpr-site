@@ -46,7 +46,7 @@ def media(root,role,cls,alt='',fallback=''):
 def body_wordmark(root):
  return '<span class="preview-body-wordmark">'+img(root,'figma-updated/composites/home-about-wordmark-original.svg',"The People’s Room™",'preview-body-wordmark-source')+'<span class="preview-body-trademark" aria-hidden="true">'+img(root,'brand/Logotype_blue.svg','')+'</span></span>'
 def head(root,title,home=False):
- feedback='20261101-seo-figma-4'
+ feedback='20261101-skip-source-5'
  styles=[('updated-preview.css',feedback),('figma-refinements.css',feedback),('pdf-assets.css','20261031-clean'),('page-layout.css','20261031-review')]
  if home:styles.extend([('shared-elevator.css','20261031-clean'),('updated-elevator.css',feedback),('home-layout.css','20261031-review')])
  styles.extend((name,feedback) for name in ['updated-carousels.css','updated-motion.css','updated-refinements.css','updated-inquiries.css','updated-characters.css','updated-menu.css','updated-card-motion.css'])
@@ -127,7 +127,7 @@ def contacts(root):
  return f'''<section class="preview-shell preview-page-section preview-contacts" data-figma-node="616:2572"><div class="preview-two-columns"><h1 class="preview-section-title">Contatti</h1><p class="preview-lead">{E(DATA['contacts']['intro'][0])}</p></div><div class="preview-contact-row">{contact_card(root)}{map_card(root)}</div></section>'''
 def events(root):
  cards=[]
- for title,person,role in [('Shamans Ritual','','events.shamans-ritual'),('The Dinner','@casa_buri','events.the-dinner'),('The People’s Week Talk','','events.the-peoples-week-talk')]:
+ for title,person,role in [('Shamans Ritual','','events.shamans-ritual'),('The Dinner','@casa_buri','events.the-dinner'),('Ceramic Workshop','','events.ceramic-workshop'),('The People’s Week Talk','','events.the-peoples-week-talk')]:
   cards.append(f'<article class="preview-event-card preview-paper" data-figma-node="{slot_source(role,'card_layer_id')}">{media(root,role,'preview-event-media',title)}<div><h3>{E(title)}</h3><p><span>Ottobre 2026</span><span>{E(person)}</span></p></div></article>')
  return f'''<section class="preview-shell preview-page-section preview-events" data-figma-node="616:2678"><div class="preview-two-columns"><h1 class="preview-section-title">TPR è energia,<br>musica,<br>connessioni</h1><div class="preview-lead">{paras(DATA['events']['intro'])}</div></div><section id="gallery" class="preview-event-gallery"><h2 class="preview-section-title preview-centered">Eventi passati</h2>{carousel('event',cards)}</section><section class="preview-event-organize" id="organizza"><div class="preview-two-columns"><h2 class="preview-section-title">Organizza un<br>evento</h2><p class="preview-lead">{E(DATA['events']['organize'][0])}</p></div>{contact_card(root,'Organizza un evento',True)}</section></section>'''
 def home(root):

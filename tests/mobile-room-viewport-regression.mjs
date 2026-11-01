@@ -53,12 +53,25 @@ async function measure(page) {
     };
     const host = document.querySelector('#rooms');
     return { room: host.dataset.activeRoom, lifting: host.classList.contains('is-lifting'), viewport: innerHeight, width: innerWidth, documentWidth: document.documentElement.scrollWidth,
+      frameScrollTop: document.querySelector('.tpr-elevator__frame').scrollTop,
+      stickyScrollTop: document.querySelector('.tpr-elevator__sticky').scrollTop,
       sticky: rect('.tpr-elevator__sticky'), frame: rect('.tpr-elevator__frame'), nav: rect('.tpr-elevator__nav'),
+      skip: rect('.tpr-elevator__skip'), skipArt: rect('.tpr-elevator__skip img'),
       current: rect('.tpr-elevator__car--shade.tpr-elevator__car--current'), incoming: rect('.tpr-elevator__car--shade.tpr-elevator__car--incoming') };
   });
 }
 function uncovered(data) {
   return ['sticky', 'frame'].filter(key => data[key].top > 1 || data[key].bottom < data.viewport - 1).map(key => `${key}: ${data[key].top}..${data[key].bottom}, visible viewport 0..${data.viewport}`);
+}
+function misplacedControls(data) {
+  const problems = [];
+  if (data.frameScrollTop || data.stickyScrollTop) problems.push('native focus scrolled the Room canvas');
+  // The original48px icon replaces a44px text pill. Its separate tap row and
+  // native painted bleed require four more pixels than the previous100px band.
+  if (data.nav.bottom > data.viewport || data.nav.top < data.viewport - 104) problems.push('navigator does not follow the visible bottom');
+  if (data.skip.top < data.nav.bottom || data.skipArt.top < data.nav.bottom) problems.push('Skip overlaps the navigator');
+  if (data.skip.bottom > data.viewport || data.skipArt.bottom > data.viewport) problems.push('Skip artwork extends outside the viewport');
+  return problems;
 }
 
 for (const engine of ['chromium', 'webkit']) {
@@ -82,7 +95,7 @@ for (const engine of ['chromium', 'webkit']) {
         problems.push(...uncovered(settled));
         assert.equal(settled.documentWidth, 393);
         if (Math.round(settled.current.height) !== 852) problems.push(`${room}: shade height ${settled.current.height} does not cover 852px`);
-        if (settled.nav.bottom > settled.viewport || settled.nav.top < settled.viewport - 100) problems.push(`${room}: navigator does not follow the visible bottom`);
+        problems.push(...misplacedControls(settled).map(problem => `${room}: ${problem}`));
       }
       assert.deepEqual(problems, [], 'no unpainted strip beneath the moving Room');
     } finally { await context.close(); }
@@ -107,7 +120,7 @@ for (const engine of ['chromium', 'webkit']) {
           evidence.push({ engine, phase: 'expanded-cards-resize', ...data });
           assert.deepEqual(uncovered(data), []);
           assert.equal(data.documentWidth, width);
-          assert.ok(data.nav.bottom <= height && data.nav.top >= height - 100);
+          assert.deepEqual(misplacedControls(data), []);
         }
       } finally { await context.close(); }
     }

@@ -41,22 +41,31 @@
 .tpr-cursor.is-action .tpr-cursor__eye { display: block; }
 .updated-preview :is(textarea, [contenteditable="true"], [contenteditable=""], input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="color"]):not([type="range"]):not([type="hidden"])) { cursor: text; }
 
+/* Home source616:1707:48px tap frame, original painted circle/double chevron.
+   Keep the SVG's native bleed and the desktop Room navigator's baseline. */
 .updated-preview .tpr-elevator__skip {
   position: absolute;
   z-index: 10;
-  right: clamp(16px, 2.65vw, 40px);
-  bottom: max(16px, 2%);
+  right: clamp(24px, 5.291005vw, 80px);
+  bottom: clamp(16px, 8.403361svh, 80px);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
-  padding: 8px 16px;
-  border: 1px solid currentColor;
-  border-radius: 999px;
-  background: #fff;
-  color: #2c64e8;
-  font: 700 14px/1.1 var(--preview-body, Arial, sans-serif);
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  background: transparent;
   cursor: pointer;
+}
+.updated-preview .tpr-elevator__skip img {
+  position: absolute;
+  left: -1.686768px;
+  top: -2.709473px;
+  width: 51.8465576171875px;
+  height: 53.600830078125px;
+  max-width: none;
+  pointer-events: none;
 }
 .updated-preview .tpr-elevator__skip:focus-visible {
   outline: 3px solid #2c64e8;
@@ -64,15 +73,18 @@
   box-shadow: 0 0 0 4px white;
 }
 @media (max-width: 720px) {
+  /* Safari can scroll an overflow:hidden canvas toward the focused Explore
+     control after a viewport resize. Clip the canvas without making it a
+     scroll container; the inner card strip retains its native scrolling. */
+  .updated-preview #rooms .tpr-elevator__frame { overflow: clip; }
   .updated-preview #rooms .tpr-elevator__skip {
     right: 12px;
     bottom: max(4px, env(safe-area-inset-bottom));
-    padding-inline: 12px;
-    font-size: 12px;
   }
   .updated-preview #rooms .tpr-elevator__nav {
     height: 3rem;
-    bottom: calc(3.25rem + env(safe-area-inset-bottom));
+    /* Clear the source SVG bleed above the separate bottom-right tap frame. */
+    bottom: calc(3.5rem + env(safe-area-inset-bottom));
   }
-  .updated-preview #rooms .tpr-elevator__mobile-copy { bottom: calc(6.75rem + env(safe-area-inset-bottom)); }
+  .updated-preview #rooms .tpr-elevator__mobile-copy { bottom: calc(7rem + env(safe-area-inset-bottom)); }
 }

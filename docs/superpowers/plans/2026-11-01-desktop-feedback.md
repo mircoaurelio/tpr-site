@@ -81,3 +81,30 @@ Three real integration defects were fixed: the transparent incoming actor interc
 Validation: the complete inherited UI suite ran against an isolated frozen copy of commit `3861c6f`:197/197 pass. The final motion implementation has14/14 Chromium/WebKit checks, plus6/6 affected Skip checks after the pose-hold refinement. Root integration checks for all Room card actions/Pilates links, original scroll/panorama, mobile viewport and cursor passed33/33. A fresh independent reviewer inspected all five joints at motion extrema and verified hydration, rapid changes, hover, reduced motion, exact first-visible fade frames and cleanup in both engines; no findings remain. The temporary baseline copy/server were removed after completion, retaining its full test log.
 
 Production version `d620004a-5f95-4d6d-ae74-a02dcc449125` replaces `e2c06235-77d7-4bc6-9244-6ecd3b86bc24`; all eleven generated pages use cache version `20261101-room-motion-3`. Fresh public checks compare46 files to the enabled-newsletter artifact, verify320/393/1512px Home and exercise actual entry/hover/rest/touch/reduced-motion behavior at1512/393px in Chromium and WebKit. Actual public hover and mobile screenshots were inspected. No form or booking was submitted during these motion checks.
+
+## Follow-up: source Skip style and Ceramic Workshop credit
+
+The Home export616:1707 shows a white irregular circle/double chevron for Skip,
+not the later white text pill. The configured Home now reuses the existing
+original `room-next-circle-painted.svg`, preserving its native51.8466×53.6008px
+painted bounds inside the source48px tap frame. Desktop placement follows the
+Room navigator's80px baseline at1512×952. The native button retains the accessible
+name “Salta le stanze”, focus, keyboard and cancellation behavior. Mobile reserves
+four extra pixels above the separate48px tap row so the artwork clears the navigator.
+
+Dynamic-height testing exposed WebKit focus-scrolling the hidden Room frame by
+602px after expanding and resizing430px mobile. Its outer viewport remained
+correct while all inner controls shifted. Mobile `overflow:clip` prevents this
+unintended canvas scrolling; the nested card strip keeps native scrolling.
+The viewport tests now check both canvas scroll offsets and the complete Skip
+artwork bounds, alongside the original painted-viewport checks. The nearby-control
+band is104px rather than100px because the source tap frame replaces a44px pill.
+Final checks: viewport4/4, Skip6/6, native card-strip/panorama scroll1/1; the gallery
+reachability group also passes across both engines and desktop/mobile widths.
+
+User clarification restores the complete Ceramic Workshop card and “Ottobre2026”
+date; only its incorrect `@casa_buri` attribution is removed. The Dinner retains
+its credit. Production version `313c5f4f-74f3-4323-9b7c-24e3a99d85a1` publishes
+both changes with cache version `20261101-skip-source-5`. The Figma MCP quota
+remains exhausted; the style comparison uses the existing original Home export
+and original SVG rather than claiming a new live design-context response.

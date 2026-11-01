@@ -185,7 +185,7 @@
           </div>
           <div class="tpr-elevator__explore-progress" role="scrollbar" tabindex="0" aria-label="Scorri orizzontalmente la stanza" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
         </div>
-        ${configuration ? '<button class="tpr-elevator__skip" type="button" data-elevator-skip>Salta le stanze</button>' : ''}
+        ${configuration ? `<button class="tpr-elevator__skip" type="button" data-elevator-skip aria-label="Salta le stanze" title="Salta le stanze"><img src="${asset('figma-updated/shapes/room-next-circle-painted.svg')}" alt="" aria-hidden="true" width="51.8465576171875" height="53.600830078125"></button>` : ''}
         <p class="sr-only" aria-live="polite" id="elevatorStatus">${escapeCopy(roomName(rooms[active]))} selezionata.</p>
       </div>
     </div>`;
