@@ -35,7 +35,8 @@
   max-width: none;
   pointer-events: none;
 }
-.tpr-cursor__eye { display: none; width: 3.35rem; }
+/* Outrank the page-wide image reset, which otherwise exposes both artworks. */
+.tpr-cursor .tpr-cursor__eye { display: none; width: 3.35rem; }
 .tpr-cursor.is-action .tpr-cursor__spark { display: none; }
 .tpr-cursor.is-action .tpr-cursor__eye { display: block; }
 .updated-preview :is(textarea, [contenteditable="true"], [contenteditable=""], input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="color"]):not([type="range"]):not([type="hidden"])) { cursor: text; }

@@ -48,7 +48,13 @@
     openers.set(dialog, trigger);
     dialog.showModal();
     document.documentElement.classList.add('is-inquiry-open');
-    dialog.querySelector('select,input:not([type="hidden"])')?.focus({ preventScroll: true });
+    const firstField = dialog.querySelector('select,input:not([type="hidden"])');
+    const frame = dialog.getBoundingClientRect(), field = firstField?.getBoundingClientRect();
+    // Very short mobile viewports can clip the first field below the heading.
+    // Start on the visible close control instead of focusing off-screen content.
+    const initialFocus = field && field.top >= frame.top && field.bottom <= frame.bottom
+      ? firstField : dialog.querySelector('[data-inquiry-close]');
+    initialFocus?.focus({ preventScroll: true });
   });
 
   document.querySelectorAll('[data-inquiry-form]').forEach(form => {
@@ -57,7 +63,22 @@
     const label = [...button.childNodes].find(node => node.nodeType === Node.TEXT_NODE && node.textContent.trim());
     const originalLabel = label?.textContent || '';
     let busy = false;
+    const fields = Object.fromEntries(['name','email','phone','message'].map(key => [key, form.elements.namedItem(key)]));
+    const limits = { name:120, email:254, phone:40, message:4000 };
+    for (const [key, limit] of Object.entries(limits)) fields[key].maxLength = limit;
+    const validate = () => {
+      for (const field of Object.values(fields)) field.setCustomValidity('');
+      const name = fields.name.value.trim(), phone = fields.phone.value.trim();
+      if (fields.name.value && (name.length < 2 || name.length > limits.name || /[\u0000-\u001f\u007f]/.test(name))) fields.name.setCustomValidity('Inserisci nome e cognome validi (da 2 a 120 caratteri).');
+      const email = fields.email.value.trim();
+      if (email && (email.length > limits.email || !/^[a-z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)+$/i.test(email))) fields.email.setCustomValidity('Inserisci un indirizzo email valido di massimo 254 caratteri.');
+      const digits = phone.replace(/\D/g, '').length;
+      if (fields.phone.value && (phone.length > limits.phone || !/^\+?[0-9 ().\/-]+$/.test(phone) || digits < 5 || digits > 20)) fields.phone.setCustomValidity('Inserisci un numero di telefono valido (da 5 a 20 cifre).');
+      const message = fields.message.value.trim();
+      if (message.length > limits.message || /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(message)) fields.message.setCustomValidity('Inserisci un messaggio valido di massimo 4000 caratteri.');
+    };
     const update = () => {
+      validate();
       button.disabled = busy;
       button.classList.toggle('is-ready', form.checkValidity());
     };
@@ -65,7 +86,9 @@
     form.addEventListener('change', update);
     form.addEventListener('submit', async event => {
       event.preventDefault();
-      if (busy || !form.reportValidity()) return;
+      if (busy) return;
+      validate();
+      if (!form.reportValidity()) return;
       const values = new FormData(form);
       const kind = form.dataset.kind || 'contact';
       const body = { kind };

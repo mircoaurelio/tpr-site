@@ -122,9 +122,12 @@ async function assertPaintedCursor(page, { action, label }) {
       pointerEvents: getComputedStyle(node).pointerEvents,
       imageLoaded: image.naturalWidth > 0,
       imageDisplay: getComputedStyle(image).display,
+      visibleArtworks: [...node.querySelectorAll('img')]
+        .filter(art => getComputedStyle(art).display !== 'none')
+        .map(art => art.className),
     };
   }, action);
-  assert.deepEqual(state, { topLayer: true, inert: false, pointerEvents: 'none', imageLoaded: true, imageDisplay: 'block' }, label);
+  assert.deepEqual(state, { topLayer: true, inert: false, pointerEvents: 'none', imageLoaded: true, imageDisplay: 'block', visibleArtworks: [action ? 'tpr-cursor__eye' : 'tpr-cursor__spark'] }, `${label}: show exactly one cursor artwork`);
   const clip = await cursor.boundingBox();
   assert.ok(clip && clip.x >= 0 && clip.y >= 0, 'cursor artwork stays in the viewport');
   const painted = await page.screenshot({ clip, path: path.join(output, `${label}.png`) });
