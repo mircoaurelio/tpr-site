@@ -27,7 +27,7 @@
 - [x] Real two-face card rotation: complete original fronts and native backs rotate together under one perspective. The source install waits for every required asset and any held pointer; it preserves native focus, click, links, inert state and Escape. Source failures retain the complete fallback panorama. Eleven Chromium checks pass, with the corresponding WebKit source and loading-race checks also passing.
 - [x] Card back typography/grouping: source frame `616:3793`560x434/padding24; title PP Rader600/48px/100%/tracking0, body Haas400/24px/100%/tracking0. Heading/body top group, bottom CTA512x32. `updated-refinements.css/js`, focused tests green in Chromium/WebKit.
 - [x] Elevator Skip: `shared-elevator.js`, `updated-motion.css`; cancels transition/explore work and focuses the next section; focused checks green.
-- [x] Destination photo gradient: a separate photo-room palette updates at Room selection start; settled `activeRoom`, fixed photo geometry and original1250ms lift remain intact. Both engines/all five transitions, mobile viewport, booking and original lift checks passed.
+- [x] Destination photo gradient: a separate photo-room palette updates at Room selection start; settled `activeRoom`, fixed photo geometry and original1250ms lift remain intact. Both engines/all five transitions, mobile viewport, booking and original lift checks passed. Public verification exposed a separate cold CSS-mask fetch: mask image preloads now use the same anonymous CORS mode before `src` assignment. A controlled regression fails on the previous runtime and passes on the correction without changing source masks or paint thresholds.
 - [x] Offers and Events scrolling: `updated-carousels.css/js`, generator controls, first-card start, arrows/drag/native touch/keyboard. Optional automatic/infinite loop omitted in favor of complete manual reachability. Six focused tests green.
 - [x] Offer contact pop-ups: native offer-specific dialogs on Home/Vivi preserve selected offer and use the direct inquiry endpoint. Source AI frame `1068:2675` is recorded; selected-offer context, focus/Escape, pending/error/success and mobile paper controls have focused browser coverage. Provider calls remain mocked during testing.
 - [x] Hover/focus for text controls: scoped presentation module; icon and card-open geometry preserved.
@@ -41,7 +41,18 @@
 - [x] Register new runtime files in build-test allowlist and new tests in package scripts. All new modules, including card motion and its explicit public manifest, are wired. Six packaging checks and all26 backend checks pass.
 - [x] Resolve combined-suite failures with source/interaction evidence; keep meaningful background and contour checks. The first combined run passed182/189 checks. All affected files were corrected and rerun together:42/42 pass, covering company paper, all Room actions and Move bookings, original Room effects, root/project asset mounts, cursor and Skip. The image-decode helper retries only actual source changes and still rejects settled corrupt images; the exact paper-edge comparison excludes only independently identified native control contours and detects a real mask-removal mutation.
 - [x] Independently review all changes and compare desktop/mobile screenshots, not only resource/overflow counts. A fresh independent reviewer checked the implementation and final race/fixture corrections, plus all five Room intros, expanded source cards, backs and mobile states. No actionable findings remain.
-- [ ] Build the enabled-newsletter artifact, deploy through dedicated TPR wrapper with `--keep-vars`, record old/new version IDs, verify public files and real read-only user paths.
+- [x] Build the enabled-newsletter artifact, deploy through dedicated TPR wrapper with `--keep-vars`, record old/new version IDs, verify public files and real read-only user paths.
+
+## Release verification
+
+- Production rollback baseline: `9ea698b3-fed5-4509-91bd-4290038c85b0`.
+- Definitive asset/checklist deployment: `8ec5041a-58c1-4d55-9fbe-0ba5e1afa482`.
+- Final mask-cache correction deployment: `c0ba7768-b168-4ce4-9a1d-348af7a40d9d`.
+- Final public artifact:11 pages plus root Home,10 aliases,374 public assets,431 files,180955852 bytes; newsletter enabled with the existing approved privacy URL and opaque provider binding.
+- Public smoke compares46 canonical/discovery/runtime files and the Room manifest byte-for-byte against the artifact, checks320/393/1512px Home without overflow or image errors, and validates newsletter/inquiry preflights. Empty inquiry JSON is rejected400 before provider access; no valid inquiry was submitted.
+- Public user paths: eight source Menu cases pass across both engines/portrait/short landscape; all Move card booking links pass pointer/touch and keyboard checks in both engines. Both bare and www domains serve the approved artifact. Desktop1512px and mobile393px Room/Menu screenshots were inspected.
+- Final public gradient file:4/4 pass in Chromium/WebKit, including controlled first-use CSS cache checks and actual painted-edge checks for all five destination colors during the unchanged lift. The independent reviewer found no issue in the request-mode correction or its regression.
+- Main source commit: `68e19c0`; GitHub Pages built that commit successfully. The final mask correction is saved as a follow-up commit on the same preview branch.
 
 ## Current source facts and limits
 

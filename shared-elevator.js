@@ -233,6 +233,9 @@
   rooms.forEach((room) => {
     [room.art, room.cardPhoto, room.character, room.routeArt, room.photoMask, ...(room.cardPhotos || [])].filter(Boolean).forEach((file) => {
       const image = new Image();
+      // CSS masks use CORS mode. Match it before src so the decoded preload
+      // also supplies their first paint instead of starting another request.
+      if (file === room.photoMask) image.crossOrigin = 'anonymous';
       image.decoding = 'async';
       image.loading = 'eager';
       image.fetchPriority = room.key === rooms[active].key ? 'high' : 'low';

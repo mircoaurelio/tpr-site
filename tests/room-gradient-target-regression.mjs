@@ -1,16 +1,79 @@
 import assert from 'node:assert/strict';
 import { after, before, test } from 'node:test';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { chromium, webkit } from 'playwright';
 
 const base = new URL(process.env.TPR_BASE_URL || 'http://127.0.0.1:4175/');
 const phase = (process.env.TPR_QA_PHASE || 'current').replace(/[^a-z0-9_-]/gi, '-');
 const output = path.resolve('.qa/room-gradient-target', phase), evidence = [];
 const browsers = new Map();
+const repository = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 before(async () => {
   await mkdir(output, { recursive: true });
   for (const [name, engine] of Object.entries({ chromium, webkit })) browsers.set(name, await engine.launch({ headless: true }));
+});
+
+for (const engine of ['chromium', 'webkit']) test(`${engine}: decoded Room mask preload also supplies its first CSS use without another request`, { timeout: 30_000 }, async () => {
+  const context = await browsers.get(engine).newContext({ viewport: { width: 393, height: 852 }, isMobile: true, hasTouch: true, reducedMotion: 'no-preference' });
+  let probeStarted = false, releaseMask;
+  const pendingMask = new Promise(resolve => { releaseMask = resolve; });
+  const secondRequests = [];
+  await context.route('**/*', async route => {
+    const request = route.request(), url = new URL(request.url());
+    if (!['GET', 'HEAD'].includes(request.method()) || url.origin !== base.origin) return route.abort();
+    const headers = request.headers();
+    // WebKit sends Origin for a CSS mask's CORS request; Chromium exposes the
+    // same mode through Sec-Fetch-Mode. A completed Image preload must supply
+    // that resource, even when a second request would be slow on a cold visit.
+    if (probeStarted && url.pathname.endsWith('/room-wellness-photo-mask-union-2x.webp') && (headers.origin || headers['sec-fetch-mode'] === 'cors')) {
+      secondRequests.push(url.pathname);
+      await pendingMask;
+    }
+    return route.continue();
+  });
+  const page = await context.newPage();
+  try {
+    await page.goto(new URL('homepage-tpr/#reformer', base).href, { waitUntil: 'networkidle' });
+    await page.evaluate(() => document.fonts.ready);
+    await page.waitForFunction(() => document.querySelector('#rooms').dataset.activeRoom === 'reformer' && Math.abs(document.querySelector('.tpr-elevator__sticky').getBoundingClientRect().top) < 2);
+    const initialMaskRequest = await page.evaluate(() => performance.getEntriesByType('resource').some(resource => resource.name.endsWith('/room-wellness-photo-mask-union-2x.webp') && resource.initiatorType === 'img' && resource.responseEnd > 0));
+    assert.ok(initialMaskRequest, 'the original image preload has already completed before selection');
+    probeStarted = true;
+    await page.locator('[data-elevator-room="wellness"]').tap();
+    await page.waitForFunction(() => document.querySelector('#rooms').classList.contains('is-lifting'));
+    const rect = await page.locator('.tpr-elevator__photo-plane').boundingBox();
+    const png = await page.screenshot({
+      style: '#rooms .tpr-elevator__car:not(.tpr-elevator__car--shade), #rooms .tpr-elevator__character-plane { visibility:hidden !important }',
+      clip: { x: 20, y: Math.floor(rect.y + rect.height) - 2, width: 353, height: 1 },
+    });
+    // Decode the exact repository mask as data only after taking the screenshot.
+    // This measures its alpha without warming the CSS resource being tested.
+    const maskBytes = await readFile(path.join(repository, 'assets/figma-updated/composites/room-wellness-photo-mask-union-2x.webp'));
+    const painted = await page.evaluate(async ({ png, maskData, rect }) => {
+      const decode = async src => { const image = new Image(); image.src = src; await image.decode(); return image; };
+      const [image, mask] = await Promise.all([decode('data:image/png;base64,' + png), decode(maskData)]);
+      const canvas = document.createElement('canvas'); canvas.width = image.width; canvas.height = image.height;
+      const ctx = canvas.getContext('2d'); ctx.drawImage(image, 0, 0);
+      const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+      const alphaCanvas = document.createElement('canvas'); alphaCanvas.width = Math.ceil(rect.width); alphaCanvas.height = Math.ceil(rect.height);
+      const alphaContext = alphaCanvas.getContext('2d'); alphaContext.drawImage(mask, 0, 0, rect.width, rect.height);
+      const alpha = alphaContext.getImageData(20, Math.floor(rect.height) - 2, canvas.width, 1).data;
+      const distanceFromBottom = rect.y + rect.height - (Math.floor(rect.y + rect.height) - 1.5);
+      const tolerance = Math.ceil(255 * distanceFromBottom / (rect.height * .28)) + 2;
+      let total = 0, matches = 0;
+      for (let i = 0; i < pixels.length; i += 4) {
+        if (alpha[i + 3] < 250) continue;
+        total++;
+        if (Math.max(...[194, 213, 105].map((value, channel) => Math.abs(pixels[i + channel] - value))) <= tolerance) matches++;
+      }
+      return { total, matches, ratio: matches / total, tolerance };
+    }, { png: png.toString('base64'), maskData: 'data:image/webp;base64,' + maskBytes.toString('base64'), rect });
+    evidence.push({ engine, probe: 'cold-css-mask', secondRequests, painted });
+    assert.deepEqual(secondRequests, [], 'decoded masks must not start a separate first-use CSS request');
+    assert.ok(painted.total >= 8 && painted.ratio >= .95, `destination edge must paint immediately while a redundant mask request would be pending: ${JSON.stringify(painted)}`);
+  } finally { releaseMask(); await context.close(); }
 });
 after(async () => {
   await Promise.all([...browsers.values()].map(browser => browser.close()));
