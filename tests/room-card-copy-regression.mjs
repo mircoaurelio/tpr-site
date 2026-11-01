@@ -74,12 +74,13 @@ async function backData(card, mobile) {
     const copyBox = copy.getBoundingClientRect(), textBox = range.getBoundingClientRect(), box = back.getBoundingClientRect();
     return {
       heading: back.querySelector('strong').textContent, description: copy.textContent,
-      ctaLabels: [...back.querySelectorAll('.tpr-elevator__card-cta > span')].map(span => span.textContent),
+      ctaLabels: [...back.querySelectorAll('.tpr-elevator__card-cta > span, .tpr-elevator__card-cta > a')].map(label => label.textContent),
       ctaText: back.querySelector('.tpr-elevator__card-cta')?.textContent || '',
       ctaCount: back.querySelectorAll('.tpr-elevator__card-cta').length,
       frontSoon: element.querySelector('.tpr-elevator__card-soon')?.textContent || '',
       nestedControls: element.querySelectorAll('a,button,[role="link"]').length,
-      expanded: element.getAttribute('aria-expanded'), backHidden: back.getAttribute('aria-hidden'),
+      nestedInteractive: element.querySelectorAll('button button, button a, a button, a a').length,
+      expanded: (element.querySelector('[data-elevator-card-open]') || element).getAttribute('aria-expanded'), backHidden: back.getAttribute('aria-hidden'),
       geometry: { back: box.toJSON(), heading: back.querySelector('strong').getBoundingClientRect().toJSON(), cta: back.querySelector('.tpr-elevator__card-cta')?.getBoundingClientRect().toJSON(), copy: copyBox.toJSON(), text: textBox.toJSON(), copyOverflow: getComputedStyle(copy).overflowY, copyScrollHeight: copy.scrollHeight, copyClientHeight: copy.clientHeight, textClipped: textBox.bottom > box.bottom + 1 || copy.scrollHeight > copy.clientHeight + 1 },
     };
   }, mobile);
@@ -105,21 +106,21 @@ for (const width of [1512, 393, 320]) {
             const parent = soon.parentElement, box = soon.getBoundingClientRect(), frame = parent.getBoundingClientRect();
             return { box: box.toJSON(), frame: frame.toJSON(), fontSize: getComputedStyle(soon).fontSize, display: getComputedStyle(soon).display, overflow: box.left < frame.left - 1 || box.right > frame.right + 1 || box.top < frame.top - 1 || box.bottom > frame.bottom + 1 };
           });
-          // Native keyboard activation exercises the existing outer flip button.
+          // Native keyboard activation exercises the front flip button.
           // Prevent focus scrolling so it cannot alter panorama/floor geometry.
-          await card.evaluate(element => element.focus({ preventScroll: true })); await page.keyboard.press('Enter');
-          await page.waitForFunction(({ selector, index }) => document.querySelectorAll(selector)[index].getAttribute('aria-expanded') === 'true', { selector: locator, index });
+          await card.locator('[data-elevator-card-open]').evaluate(element => element.focus({ preventScroll: true })); await page.keyboard.press('Enter');
+          await page.waitForFunction(({ selector, index }) => document.querySelectorAll(selector)[index].querySelector('[data-elevator-card-open]').getAttribute('aria-expanded') === 'true', { selector: locator, index });
           const actual = await backData(card, width <= 720);
           const problems = [];
           if (normalize(actual.heading) !== title) problems.push('source heading');
           if (normalize(actual.description) !== description) problems.push('source description');
-          if (JSON.stringify(actual.ctaLabels) !== JSON.stringify(ctaLabels) || actual.ctaCount !== (ctaLabels.length ? 1 : 0)) problems.push('source CTA labels in one existing span');
+          if (JSON.stringify(actual.ctaLabels) !== JSON.stringify(ctaLabels) || actual.ctaCount !== (ctaLabels.length ? 1 : 0)) problems.push('source CTA labels in one existing frame');
           const soon = key === 'wellness' && title === 'longevity' || key === 'media' && title === 'studio audio';
           if (actual.frontSoon !== (soon ? 'coming soon' : '')) problems.push('source coming-soon front label');
-          if (actual.nestedControls || actual.expanded !== 'true' || actual.backHidden !== 'false') problems.push('existing outer-button flip semantics');
+          if (actual.nestedControls !== ctaLabels.length + 2 || actual.nestedInteractive || actual.expanded !== 'true' || actual.backHidden !== 'false') problems.push('native sibling-control flip semantics');
           evidence.push({ width, key, title, frontSoonGeometry: front, ...actual, problems });
           if (problems.length) failures.push({ key, title, actual, problems });
-          await page.keyboard.press('Enter'); assert.equal(await card.getAttribute('aria-expanded'), 'false');
+          await page.keyboard.press('Enter'); assert.equal(await card.locator('[data-elevator-card-open]').getAttribute('aria-expanded'), 'false');
         }
         await page.keyboard.press('Escape');
       }

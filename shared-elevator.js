@@ -58,9 +58,17 @@
     : roomCopyHtml(room);
   const roomTitle = (room) => room.title ? escapeCopy(room.title) : `${room.label} <span>Room</span>`;
   const cardArrowSrc = new URL('assets/route-arrow-zigzag.png?v=20260819-arrow-2', base).href;
-  const cardCtaMarkup = (labels) => {
+  const cardCtaMarkup = (labels, room) => {
     if (!Array.isArray(labels)) return '<span class="tpr-elevator__card-cta">Diventa Membro</span>';
     if (!labels.length) return '';
+    if (configuration) {
+      return `<span class="tpr-elevator__card-cta">${labels.map((label) => {
+        const route = room.key === 'reformer' ? 'prenota/'
+          : label === 'Eventi e Gallery' ? 'eventi/'
+            : label === 'Organizza un evento' ? 'eventi/#organizza' : 'vivi-tpr/';
+        return `<a href="${new URL(route, base).href}">${escapeCopy(label)}</a>`;
+      }).join('')}</span>`;
+    }
     return `<span class="tpr-elevator__card-cta">${labels.map((label) => `<span>${escapeCopy(label)}</span>`).join('')}</span>`;
   };
   const cardSoonMarkup = (room, title) => configuration && room.comingSoonCards?.includes(title)
@@ -68,6 +76,22 @@
   const LIFT_MS = 1250;
   const MOBILE_EXPAND_MS = 640;
   const LAST_FLOOR_HOLD = 1;
+  let cardRenderId = 0;
+  const configuredCardMarkup = (room, [cardTitle, cardCopy, ctaLabels], index, mobile = false, renderId) => {
+    const backId = `elevator-card-${renderId}-${index}`;
+    const front = mobile
+      ? `<span class="tpr-elevator__mobile-card-front" aria-hidden="true"><span class="tpr-elevator__mobile-card-photo"><span class="tpr-elevator__mobile-card-photo-window"><img src="${asset(room.cardPhoto)}" alt="" decoding="async" /></span></span><span class="tpr-elevator__mobile-card-meta"><strong>${escapeCopy(cardTitle)}</strong>${cardSoonMarkup(room, cardTitle)}<span class="tpr-elevator__card-arrow"><img src="${cardArrowSrc}" alt="" width="52" height="54" /></span></span></span>`
+      : `<span class="tpr-elevator__card-front" aria-hidden="true"><strong>${escapeCopy(cardTitle)}</strong>${cardSoonMarkup(room, cardTitle)}<span class="tpr-elevator__card-arrow" aria-hidden="true"><img src="${cardArrowSrc}" alt="" width="52" height="54" /></span></span>`;
+    return `<div class="tpr-elevator__${mobile ? 'mobile' : 'explore'}-card" data-card-index="${index}">
+      <button class="tpr-elevator__card-toggle" type="button" data-elevator-card-open aria-expanded="false" aria-controls="${backId}" aria-label="Apri la card ${escapeCopy(cardTitle)}">${front}</button>
+      <span class="tpr-elevator__${mobile ? 'mobile-card' : 'card'}-back" id="${backId}" aria-hidden="true" inert>
+        <strong>${escapeCopy(cardTitle)}</strong>
+        <button class="tpr-elevator__card-close" type="button" data-elevator-card-close aria-label="Chiudi i dettagli di ${escapeCopy(cardTitle)}"></button>
+        <span class="tpr-elevator__card-description">${escapeCopy(cardCopy)}</span>
+        ${cardCtaMarkup(ctaLabels, room)}
+      </span>
+    </div>`;
+  };
   const desktopCopyMarkup = (room, { live = true } = {}) => `
           <h2>${roomTitle(room)}</h2>
           ${desktopParagraphs(room)}
@@ -75,7 +99,12 @@
             <button class="tpr-elevator__cta" type="button"${live ? ` data-elevator-explore aria-label="Esplora ${escapeCopy(roomName(room))}"` : ' tabindex="-1" aria-hidden="true"'}><span class="tpr-elevator__cta-label">Esplora Stanza</span><span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
             <a class="tpr-elevator__book"${live ? ' data-elevator-book' : ''} href="${bookingUrl(room.key)}" ${room.bookable ? '' : 'hidden'}>Prenota${live ? `<span class="sr-only"> ${escapeCopy(roomName(room))}</span>` : ''}</a>
           </div>`;
-  const mobileDropMarkup = (room) => room.cards.map(([cardTitle, cardCopy, ctaLabels], index) => `
+  const mobileDropMarkup = (room) => {
+    if (configuration) {
+      const renderId = ++cardRenderId;
+      return room.cards.map((card, index) => configuredCardMarkup(room, card, index, true, renderId)).join('');
+    }
+    return room.cards.map(([cardTitle, cardCopy, ctaLabels], index) => `
             <button class="tpr-elevator__mobile-card" type="button" data-card-index="${index}" aria-expanded="false" aria-label="Apri la card ${escapeCopy(cardTitle)}">
               <span class="tpr-elevator__mobile-card-front" aria-hidden="true">
                 <span class="tpr-elevator__mobile-card-photo"><span class="tpr-elevator__mobile-card-photo-window"><img src="${asset(room.cardPhoto)}" alt="" decoding="async" /></span></span>
@@ -89,6 +118,7 @@
                 ${cardCtaMarkup(ctaLabels)}
               </span>
             </button>`).join('');
+  };
   const mobileCopyMarkup = (room, { live = true } = {}) => `
           <h2 class="tpr-elevator__title"${live ? ' id="elevatorTitle"' : ''}>${roomTitle(room)}</h2>
           <div class="tpr-elevator__mobile-copy-text"><div class="tpr-elevator__mobile-copy-text-inner">${roomCopyHtml(room)}</div></div>
@@ -303,6 +333,7 @@
 
   function resetMobileCards(scope = currentCar) {
     scope?.querySelectorAll('.tpr-elevator__mobile-card.is-flipped').forEach((card) => {
+      if (configuration) { setConfiguredCardExpanded(card, false); return; }
       const cardTitle = rooms[active].cards[Number(card.dataset.cardIndex)]?.[0] || 'stanza';
       card.classList.remove('is-flipped');
       card.setAttribute('aria-expanded', 'false');
@@ -312,11 +343,24 @@
   }
 
   function setMobileCardExpanded(card, expanded) {
+    if (configuration) { setConfiguredCardExpanded(card, expanded); return; }
     const cardTitle = rooms[active].cards[Number(card.dataset.cardIndex)]?.[0] || 'stanza';
     card.classList.toggle('is-flipped', expanded);
     card.setAttribute('aria-expanded', String(expanded));
     card.setAttribute('aria-label', expanded ? `Chiudi i dettagli di ${cardTitle}` : `Apri la card ${cardTitle}`);
     card.querySelector('.tpr-elevator__mobile-card-back')?.setAttribute('aria-hidden', String(!expanded));
+  }
+
+  function setConfiguredCardExpanded(card, expanded, { focus = false } = {}) {
+    const open = card.querySelector('[data-elevator-card-open]');
+    const back = card.querySelector('.tpr-elevator__card-back, .tpr-elevator__mobile-card-back');
+    card.classList.toggle('is-flipped', expanded);
+    open.setAttribute('aria-expanded', String(expanded));
+    open.setAttribute('aria-hidden', String(expanded));
+    open.inert = expanded;
+    back.setAttribute('aria-hidden', String(!expanded));
+    back.inert = !expanded;
+    if (focus) (expanded ? back.querySelector('[data-elevator-card-close]') : open).focus({ preventScroll: true });
   }
 
   function clearMobileCopyFit(scope = currentCar) {
@@ -477,6 +521,11 @@
   }, { passive: false });
 
   function renderExploreCards(room) {
+    if (configuration) {
+      const renderId = ++cardRenderId;
+      exploreCards.innerHTML = room.cards.map((card, index) => configuredCardMarkup(room, card, index, false, renderId)).join('');
+      return;
+    }
     exploreCards.innerHTML = room.cards.map(([cardTitle, cardCopy, ctaLabels], index) => `
       <button class="tpr-elevator__explore-card" type="button" data-card-index="${index}" aria-expanded="false" aria-label="Apri la card ${escapeCopy(cardTitle)}">
         <span class="tpr-elevator__card-front" aria-hidden="true"><strong>${escapeCopy(cardTitle)}</strong>${cardSoonMarkup(room, cardTitle)}<span class="tpr-elevator__card-arrow" aria-hidden="true"><img src="${new URL('assets/route-arrow-zigzag.png?v=20260819-arrow-2', base).href}" alt="" width="52" height="54" /></span></span>
@@ -718,6 +767,20 @@
   }));
 
   host.addEventListener('click', (event) => {
+    if (configuration) {
+      const control = event.target.closest('[data-elevator-card-open], [data-elevator-card-close]');
+      const card = control?.closest('.tpr-elevator__mobile-card, .tpr-elevator__explore-card');
+      if (!card) return;
+      const mobile = card.classList.contains('tpr-elevator__mobile-card');
+      if (mobile && (!isMobileView() || !currentCar.contains(card))) return;
+      const expanded = control.hasAttribute('data-elevator-card-open');
+      if (mobile && expanded) currentCar.querySelectorAll('.tpr-elevator__mobile-card.is-flipped').forEach((openCard) => {
+        if (openCard !== card) setConfiguredCardExpanded(openCard, false);
+      });
+      setConfiguredCardExpanded(card, expanded, { focus: true });
+      if (mobile && expanded) card.scrollIntoView({ inline: 'center', block: 'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      return;
+    }
     const card = event.target.closest('.tpr-elevator__mobile-card');
     if (!card || !isMobileView() || !currentCar.contains(card)) return;
     const expanded = !card.classList.contains('is-flipped');
@@ -755,6 +818,17 @@
   });
   document.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape') return;
+    if (configuration) {
+      const openCards = isMobileView()
+        ? currentCar.querySelectorAll('.tpr-elevator__mobile-card.is-flipped')
+        : exploreCards.querySelectorAll('.tpr-elevator__explore-card.is-flipped');
+      if (openCards.length) {
+        const focusedCard = [...openCards].find(card => card.contains(document.activeElement)) || openCards[openCards.length - 1];
+        setConfiguredCardExpanded(focusedCard, false, { focus: true });
+        event.preventDefault();
+        return;
+      }
+    }
     if (host.classList.contains('is-mobile-expanded')) closeMobileDrop();
     else if (exploring) closeExplore();
   });

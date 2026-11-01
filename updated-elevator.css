@@ -238,6 +238,57 @@
   color: transparent;
 }
 
+/* Keep the original card frames while giving the flip and destination
+   separate native controls. Back links never activate the front toggle. */
+.updated-preview .tpr-elevator__card-toggle {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+  appearance: none;
+}
+
+.updated-preview [data-elevator-card-close] {
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  appearance: none;
+}
+
+.updated-preview .tpr-elevator__card-cta {
+  padding-inline: 0;
+}
+
+.updated-preview .tpr-elevator__card-cta > a {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding-inline: 1rem;
+  color: inherit;
+  font: inherit;
+  text-align: center;
+  text-decoration: none;
+}
+
+.updated-preview .tpr-elevator__card-toggle:focus-visible,
+.updated-preview [data-elevator-card-close]:focus-visible,
+.updated-preview .tpr-elevator__card-cta > a:focus-visible {
+  outline: 2px solid var(--card-accent);
+  outline-offset: -4px;
+}
+
 .updated-preview .tpr-elevator__card-back {
   color: var(--card-accent);
 }
