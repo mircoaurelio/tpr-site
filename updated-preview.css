@@ -1341,6 +1341,12 @@ body.updated-preview {
   scrollbar-width: none;
   padding-right: 80px;
 }
+.preview-room-panel[data-room-panel="reformer"] {
+  --room-card-ink: var(--green);
+}
+.preview-room-panel[data-room-panel="bar"] {
+  --room-card-ink: var(--orange);
+}
 .preview-room-card {
   position: relative;
   flex: none;
@@ -1349,7 +1355,7 @@ body.updated-preview {
   padding: 0 24px 24px;
   border: 0;
   background: white;
-  color: var(--room-accent);
+  color: var(--room-card-ink, var(--room-accent));
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -1381,13 +1387,34 @@ body.updated-preview {
 .preview-room-card-label b {
   font: 400 36px/1 var(--preview-body);
 }
+.preview-room-card-front {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  gap: 24px;
+}
+.preview-room-card-open {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.preview-room-card-open:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: -12px;
+}
 .preview-room-card-back {
   display: none;
   position: absolute;
   inset: 0;
   padding: 32px;
   background: white;
-  color: var(--room-accent);
+  color: var(--room-card-ink, var(--room-accent));
   flex-direction: column;
   gap: 24px;
   font: 400 24px/1 var(--preview-body);
@@ -1395,12 +1422,34 @@ body.updated-preview {
 .preview-room-card.is-flipped .preview-room-card-back {
   display: flex;
 }
-.preview-room-card-back strong {
-  font: 700 40px/1 var(--preview-display);
+.preview-room-card-back-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.preview-room-card-back h3 {
+  min-width: 0;
+  font: 700 48px/1 var(--preview-display);
   text-transform: uppercase;
 }
-.preview-room-card-back a {
+.preview-room-card-close {
+  flex: none;
+  border: 0;
+  padding: 8px 0;
+  background: transparent;
+  color: inherit;
+  font: 700 16px/1 var(--preview-body);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.preview-room-card-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
   margin-top: auto;
+}
+.preview-room-card-back a {
   font: 700 16px/1 var(--preview-body);
   text-decoration: underline;
 }
@@ -2059,7 +2108,7 @@ body.updated-preview {
     padding: 24px;
     font-size: 18px;
   }
-  .preview-room-card-back strong {
+  .preview-room-card-back h3 {
     font-size: 32px;
   }
 }

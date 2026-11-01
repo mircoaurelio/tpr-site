@@ -46,7 +46,7 @@ def body_wordmark(root):
 def head(root,title,home=False):
  legacy=f'<link rel="stylesheet" href="{root}shared-elevator.css?v=20261031-clean"><link rel="stylesheet" href="{root}updated-elevator.css?v=20261031-review"><link rel="stylesheet" href="{root}home-layout.css?v=20261031-review">' if home else ''
  elevator=f'<script src="{root}shared-elevator.js?v=20261101-pilates" defer></script><script src="{root}updated-elevator.js?v=20261031-clean" defer></script>' if home else ''
- return f'''<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#2c64e8"><title>{E(title)} — The People's Room</title><meta name="description" content="The People's Room: coworking, movimento, cultura e benessere a Milano."><link rel="icon" href="{root}assets/tpr-character.svg" type="image/svg+xml"><link rel="preload" href="{root}assets/fonts/pp-rader/PPRader-Bold.otf" as="font" type="font/otf" crossorigin><link rel="stylesheet" href="{root}updated-preview.css?v=20261101-pilates"><link rel="stylesheet" href="{root}figma-refinements.css?v=20261031-clean"><link rel="stylesheet" href="{root}pdf-assets.css?v=20261031-clean"><link rel="stylesheet" href="{root}page-layout.css?v=20261031-review">{legacy}<script src="{root}updated-preview.js?v=20261031-review" defer></script>{elevator}<script src="{root}zigzag-controls.js?v=20261031-clean" defer></script></head>'''
+ return f'''<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#2c64e8"><title>{E(title)} — The People's Room</title><meta name="description" content="The People's Room: coworking, movimento, cultura e benessere a Milano."><link rel="icon" href="{root}assets/tpr-character.svg" type="image/svg+xml"><link rel="preload" href="{root}assets/fonts/pp-rader/PPRader-Bold.otf" as="font" type="font/otf" crossorigin><link rel="stylesheet" href="{root}updated-preview.css?v=20261101-allcopy"><link rel="stylesheet" href="{root}figma-refinements.css?v=20261031-clean"><link rel="stylesheet" href="{root}pdf-assets.css?v=20261031-clean"><link rel="stylesheet" href="{root}page-layout.css?v=20261031-review">{legacy}<script src="{root}updated-preview.js?v=20261101-allcopy" defer></script>{elevator}<script src="{root}zigzag-controls.js?v=20261031-clean" defer></script></head>'''
 def header(root,cta=False):
  return f'''<a class="skip-link" href="#main">Vai al contenuto</a><header class="preview-header"><a class="preview-brand" href="{root}homepage-tpr/" aria-label="The People's Room — Home">{img(root,'tpr-logo.svg',"The People's Room",extra='width="131" height="64"')}</a><div class="preview-header-actions">{link(root,'prenota/','Prenota il Pilates <span class="preview-chevron" aria-hidden="true"></span>','preview-button preview-button--outline') if cta else ''}<button class="preview-menu-button" type="button" data-menu-open aria-label="Apri il menu" aria-controls="siteMenu" aria-expanded="false">{img(root,'figma-updated/shapes/header-hamburger.svg','','preview-menu-glyph','aria-hidden="true"')}</button></div></header>'''
 def menu(root):
@@ -138,9 +138,20 @@ def room_explorer(root,standalone=None):
  for i,key in enumerate(keys):
   d=DATA['rooms'][key];bg,accent=colors[key];heading_tag='h1' if standalone else 'h2'
   cards=[]
-  for label in d['cards']:
+  for card_index,label in enumerate(d['cards']):
    soon=label in ('longevity','studio audio')
-   cards.append(f'<article class="preview-room-card preview-paper">{media(root,'rooms.'+key+'.cards.'+label.lower().replace(' ','-').replace('à','a'),'preview-room-card-photo',label)}<div class="preview-room-card-label"><h3>{E(label)}</h3>{"<small>coming soon</small>" if soon else "<span aria-hidden=\"true\">↗</span>"}</div></article>')
+   detail=d.get('cardDetails',{}).get(label)
+   card_id=f'room-{key}-card-{card_index}'
+   front=media(root,'rooms.'+key+'.cards.'+label.lower().replace(' ','-').replace('à','a'),'preview-room-card-photo',label)+f'<div class="preview-room-card-label"><h3 id="{card_id}-title">{E(label)}</h3>{"<small>coming soon</small>" if soon else "<span aria-hidden=\"true\">↗</span>"}</div>'
+   back=''
+   # Studio audio has only a coming-soon front in the source, not a Card Back.
+   if detail and detail.get('ctaLabels'):
+    front=f'<div class="preview-room-card-front" aria-hidden="false">{front}<button class="preview-room-card-open" type="button" data-room-card-open aria-labelledby="{card_id}-title" aria-controls="{card_id}-back" aria-expanded="false"></button></div>'
+    default_route='prenota/' if key=='reformer' else 'vivi-tpr/'
+    cta_routes={'Eventi e Gallery':'eventi/','Organizza un evento':'eventi/#organizza'}
+    ctas=''.join(link(root,cta_routes.get(cta,default_route),E(cta)) for cta in detail['ctaLabels'])
+    back=f'<div class="preview-room-card-back" id="{card_id}-back" data-figma-node="{detail["sourceNode"]}" aria-hidden="true" inert><div class="preview-room-card-back-top"><h3>{E(label)}</h3><button class="preview-room-card-close" type="button" data-room-card-close aria-label="Chiudi {E(label)}">Chiudi</button></div><p>{E(detail["description"])}</p><div class="preview-room-card-ctas">{ctas}</div></div>'
+   cards.append(f'<article class="preview-room-card preview-paper">{front}{back}</article>')
   book=f'<a class="preview-button preview-button--room-outline" href="{root}{"prenota/" if key=="reformer" else "vivi-tpr/"}">{"Prenota" if key=="reformer" else "Scopri come accedere"}</a>' if key in ('coworking','reformer') and standalone else ''
   art=asset_image(root,'home.coworking-window','', 'class="preview-room-art preview-room-art--pdf" aria-hidden="true"') if key=='coworking' else ''
   art=art or img(root,f'homepage-room-{key}-no-text-2x.webp','', 'preview-room-art', 'aria-hidden="true" data-pending-figma-image="'+d['sourceNode']+'"')

@@ -198,6 +198,22 @@
   document.querySelectorAll("[data-room-explorer]").forEach((explorer) => {
     const panels = [...explorer.querySelectorAll("[data-room-panel]")];
     const nav = [...explorer.querySelectorAll("[data-room-select]")];
+    const setCard = (card, open, moveFocus = true) => {
+      const front = card.querySelector(".preview-room-card-front");
+      const back = card.querySelector(".preview-room-card-back");
+      const button = card.querySelector("[data-room-card-open]");
+      card.classList.toggle("is-flipped", open);
+      front.inert = open;
+      front.setAttribute("aria-hidden", String(open));
+      back.inert = !open;
+      back.setAttribute("aria-hidden", String(!open));
+      button.setAttribute("aria-expanded", String(open));
+      if (moveFocus)
+        (open ? card.querySelector("[data-room-card-close]") : button).focus({ preventScroll: true });
+    };
+    const closeCards = (panel) => {
+      panel.querySelectorAll(".preview-room-card.is-flipped").forEach((card) => setCard(card, false, false));
+    };
     const syncColors = (panel) => {
       for (const property of ["--room-bg", "--room-accent"])
         explorer.style.setProperty(
@@ -208,6 +224,7 @@
     const setExplore = (panel, open) => {
       const details = panel.querySelector(".preview-room-details");
       const copy = panel.querySelector(".preview-room-copy");
+      if (!open) closeCards(panel);
       panel.classList.toggle("is-exploring", open);
       details.inert = !open;
       details.setAttribute("aria-hidden", String(!open));
@@ -244,6 +261,7 @@
           panel.hidden = !active;
           if (active) syncColors(panel);
           else {
+            closeCards(panel);
             panel.classList.remove("is-exploring");
             panel.querySelector(".preview-room-details").inert = true;
             panel
@@ -268,6 +286,14 @@
       nav[(current + 1) % nav.length]?.click();
     });
     panels.forEach((panel) => {
+      panel.querySelectorAll("[data-room-card-open]").forEach((button) => {
+        const card = button.closest(".preview-room-card");
+        button.addEventListener("click", () => {
+          closeCards(panel);
+          setCard(card, true);
+        });
+        card.querySelector("[data-room-card-close]").addEventListener("click", () => setCard(card, false));
+      });
       panel
         .querySelector("[data-room-explore]")
         .addEventListener("click", () => setExplore(panel, true));
@@ -280,6 +306,11 @@
           panel.classList.contains("is-exploring")
         ) {
           event.preventDefault();
+          const card = panel.querySelector(".preview-room-card.is-flipped");
+          if (card) {
+            setCard(card, false);
+            return;
+          }
           setExplore(panel, false);
         }
       });

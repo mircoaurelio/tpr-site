@@ -11,6 +11,10 @@ records shared full-width page canvases, stable original toolbar sizing, and the
 The [1 November booking review](PILATES-BOOKING-REVIEW-2026-11-01.md) records the
 user-supplied Mindbody calendar, corrected Move booking destination and offer copy.
 
+The subsequent [all-card text audit](ALL-CARD-TEXT-REVIEW-2026-11-01.md) checks
+first-party copy on all 11 routes and makes the 14 sourced Room card backs
+available in the standalone Room explorers as well as Home.
+
 This branch updates the native HTML/CSS/JavaScript preview. Production `thepeoplesroom.it`, Cloudflare bindings and server credentials are unchanged.
 
 ## Source assets and implementation
