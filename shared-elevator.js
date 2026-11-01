@@ -292,7 +292,10 @@
 
   setCharacter(currentCharacter, rooms[active]);
   const hydrateLittleMen = () => {
-    setCharacter(currentCharacter, rooms[active]);
+    // Selection advances active before the lift settles. Late SVG hydration
+    // must retain the outgoing actor's settled Room during that transition.
+    const visibleRoom = rooms.find(room => room.key === host.dataset.activeRoom) || rooms[active];
+    setCharacter(currentCharacter, visibleRoom);
     playEntrance(currentCharacter);
   };
   if (window.tprLittleMen?.ready) window.tprLittleMen.ready.then(hydrateLittleMen);

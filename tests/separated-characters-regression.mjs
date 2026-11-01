@@ -32,16 +32,23 @@ after(async () => {
   await Promise.all([...browsers.values()].map(browser => browser.close()));
   server.closeAllConnections(); await new Promise(resolve => server.close(resolve));
 });
-async function fixture(engine, reducedMotion = 'no-preference', route = 'homepage-tpr/') {
-  const context = await browsers.get(engine).newContext({ viewport: { width: 1512, height: 952 }, reducedMotion });
+async function fixture(engine, reducedMotion = 'no-preference', route = 'homepage-tpr/', options = {}) {
+  const context = await browsers.get(engine).newContext({ viewport: { width: 1512, height: 952 }, reducedMotion, ...options });
   await context.route('**/*', route => ['GET', 'HEAD'].includes(route.request().method()) && new URL(route.request().url()).origin === origin ? route.continue() : route.abort());
   const page = await context.newPage(); page.setDefaultTimeout(6000);
   await page.goto(origin + '/' + route, { waitUntil: 'networkidle' });
   await page.evaluate(() => document.fonts.ready);
   return { context, page };
 }
+async function waitForGesture(page, selector) {
+  await page.waitForFunction(selector => [...document.querySelector(selector).querySelectorAll('g')].some(part => part.getAnimations().some(animation => animation.playState === 'running')), selector);
+}
+async function waitForRest(page, selector) {
+  await page.waitForFunction(selector => [...document.querySelector(selector).querySelectorAll('g')].every(part => part.getAnimations().length === 0), selector);
+  assert.equal(await page.locator(selector).evaluate(node => [...node.querySelectorAll('g')].every(part => getComputedStyle(part).transform === 'none')), true, 'rest must be the exact supplied source pose');
+}
 for (const engine of ['chromium', 'webkit']) {
-  test(`${engine}: supplied separated parts retain exact paths and animate continuously across loop and hover boundaries`, async () => {
+  test(`${engine}: original separated parts enter once, respond to hover/focus without restarting and return to their exact source pose`, async () => {
     const { context, page } = await fixture(engine);
     try {
       assert.equal(await page.locator('.people-figure .tpr-character').count(), 5, 'mount the supplied separated characters');
@@ -54,23 +61,24 @@ for (const engine of ['chromium', 'webkit']) {
       });
       assert.equal(identity, true, 'path commands must be original, never traced or redrawn');
       await page.locator('.people-figures').scrollIntoViewIfNeeded();
-      await page.waitForFunction(() => document.querySelector('.people-figure .tpr-character__upper').getAnimations().length > 0);
-      const continuity = await page.locator('.people-figure .tpr-character__upper').first().evaluate(node => {
-        const animation = node.getAnimations()[0], duration = Number(animation.effect.getTiming().duration);
-        animation.pause(); animation.currentTime = duration - 10;
-        const before = new DOMMatrixReadOnly(getComputedStyle(node).transform);
-        animation.currentTime = duration + 10;
-        const after = new DOMMatrixReadOnly(getComputedStyle(node).transform);
-        const delta = Math.max(...['a','b','c','d','e','f'].map(key => Math.abs(before[key] - after[key])));
-        animation.play();
-        return { delta, iterations: animation.effect.getTiming().iterations, time: animation.currentTime };
-      });
-      assert.ok(continuity.delta < .15, 'no transform jump when the continuous loop wraps');
-      assert.equal(continuity.iterations, Infinity);
-      await page.locator('.people-figure').first().hover();
-      await page.waitForTimeout(120);
-      assert.ok(await page.locator('.people-figure .tpr-character__upper').first().evaluate(node => node.getAnimations()[0].currentTime) > continuity.time, 'hover must not restart the rig');
+      const rig = '.people-figure:first-child .tpr-character';
+      await waitForGesture(page, rig);
+      assert.equal(await page.locator(rig).locator('.tpr-character__upper').evaluate(node => node.getAnimations()[0].effect.getTiming().iterations), 1, 'entry is a finite gesture');
+      await waitForRest(page, rig);
+      const figure = page.locator('.people-figure').first();
+      await figure.hover(); await waitForGesture(page, rig);
+      await page.waitForTimeout(350);
+      const first = await figure.locator('.tpr-character__upper').evaluate(node => { window.__observedCharacterAnimation = node.getAnimations()[0]; return window.__observedCharacterAnimation.currentTime; });
+      assert.ok(await figure.locator('.tpr-character__upper').evaluate(node => Math.abs(new DOMMatrixReadOnly(getComputedStyle(node).transform).b)) > .02, 'the supplied upper-body part visibly rotates during hover');
+      await page.mouse.move(-20, -20); await figure.hover();
+      assert.equal(await figure.locator('.tpr-character__upper').evaluate(node => node.getAnimations()[0] === window.__observedCharacterAnimation && node.getAnimations()[0].currentTime >= 300), true, 'rapid hover retains the running gesture and its phase');
+      await page.waitForTimeout(2100);
+      assert.ok(await figure.locator('.tpr-character__upper').evaluate(node => node.getAnimations().some(animation => animation.playState === 'running')), 'hover sustains gestures beyond the entry duration');
       await page.mouse.move(-20, -20);
+      await waitForRest(page, rig);
+      await figure.focus(); await waitForGesture(page, rig);
+      assert.ok(first > 0, 'the first hover visibly progresses');
+      await figure.evaluate(node => node.blur()); await waitForRest(page, rig);
       await page.locator('.people-figures').screenshot({ path: path.join(output, `${engine}-people.png`) });
       await page.locator('[data-elevator-room=reformer]').click();
       await page.waitForFunction(() => document.querySelector('#rooms').dataset.activeRoom === 'reformer' && !document.querySelector('#rooms').classList.contains('is-lifting'));
@@ -92,12 +100,15 @@ for (const engine of ['chromium', 'webkit']) {
     try {
       assert.equal(await page.locator('.preview-room-character .tpr-character').count(), 1);
       assert.equal(await page.locator('.tpr-character__upper').first().evaluate(node => getComputedStyle(node).animationName), 'none');
+      assert.equal(await page.locator('.tpr-character').evaluate(node => node.getAnimations({ subtree: true }).length), 0);
+      await page.locator('.preview-room-character').hover();
+      assert.equal(await page.locator('.tpr-character').evaluate(node => node.getAnimations({ subtree: true }).length), 0, 'reduced motion also suppresses hover');
       assert.equal(await page.locator('.preview-room-character').evaluate(node => getComputedStyle(node).maskImage), 'none');
       assert.equal(await page.locator('.preview-room-character .tpr-character path').first().evaluate(node => getComputedStyle(node).fill), 'rgb(255, 193, 0)');
       await page.locator('.preview-room-character').screenshot({ path: path.join(output, `${engine}-reduced-move.png`) });
     } finally { await context.close(); }
   });
-  test(`${engine}: a synchronous elevator hydration callback leaves the replacement rig playing`, async () => {
+  test(`${engine}: a synchronous elevator hydration callback gives the replacement rig one entry gesture`, async () => {
     const context = await browsers.get(engine).newContext({ viewport: { width: 500, height: 700 }, reducedMotion: 'no-preference' });
     await context.route('**/*', route => {
       const url = new URL(route.request().url());
@@ -110,6 +121,109 @@ for (const engine of ['chromium', 'webkit']) {
       await page.waitForFunction(() => document.querySelector('.tpr-elevator__character .tpr-character')?.classList.contains('is-character-visible'), undefined, { timeout: 1200 });
       assert.equal(await page.locator('.tpr-elevator__character .tpr-character__upper').evaluate(node => node.getAnimations()[0].playState), 'running');
       assert.equal(await page.locator('[data-menu-icon] img').count(), 1, 'preserve the registered source Menu icon instead of substituting a character');
+      await waitForRest(page, '.tpr-elevator__character .tpr-character');
     } finally { await context.close(); }
+  });
+  test(`${engine}: Home entry, each settled Room and reentry animate while incoming and offscreen rigs stay idle`, async () => {
+    const {context,page}=await fixture(engine);
+    try {
+      await page.mouse.move(-20,-20);
+      await page.evaluate(()=>{const host=document.querySelector('#rooms');scrollTo({top:host.getBoundingClientRect().top+scrollY,behavior:'instant'})});
+      const rig='.tpr-elevator__character--current .tpr-character';
+      await waitForGesture(page,rig); await waitForRest(page,rig);
+      await page.locator('[data-elevator-room=reformer]').click();
+      await page.waitForFunction(()=>document.querySelector('#rooms').classList.contains('is-lifting')&&document.querySelector('.tpr-elevator__character--incoming .tpr-character'));
+      assert.equal(await page.locator('.tpr-elevator__character--incoming .tpr-character').evaluate(node=>node.getAnimations({subtree:true}).length),0,'incoming source parts have no hidden gesture');
+      await page.waitForFunction(()=>document.querySelector('#rooms').dataset.activeRoom==='reformer'&&!document.querySelector('#rooms').classList.contains('is-lifting'));
+      await waitForGesture(page,rig);await waitForRest(page,rig);
+      await page.locator('.tpr-elevator__character--current').hover();await waitForGesture(page,rig);
+      await page.mouse.move(-20,-20);await waitForRest(page,rig);
+      await page.evaluate(()=>scrollTo({top:0,behavior:'instant'}));
+      await page.waitForFunction(()=>[...document.querySelectorAll('.tpr-character')].every(node=>node.getAnimations({subtree:true}).length===0));
+      await page.evaluate(()=>{const host=document.querySelector('#rooms');scrollTo({top:host.getBoundingClientRect().top+scrollY,behavior:'instant'})});
+      await waitForGesture(page,rig);
+    }finally{await context.close()}
+  });
+  test(`${engine}: standalone Room enters again on reentry and touch does not start a hover loop`, async () => {
+    const {context,page}=await fixture(engine,'no-preference','rooms/reformer/',{viewport:{width:393,height:852},isMobile:true,hasTouch:true});
+    try{
+      const rig='.preview-room-character .tpr-character';
+      await waitForGesture(page,rig);await waitForRest(page,rig);
+      await page.locator('.preview-room-character').dispatchEvent('pointerenter',{pointerType:'touch'});
+      await page.waitForTimeout(200);
+      assert.equal(await page.locator(rig).evaluate(node=>node.getAnimations({subtree:true}).length),0,'touch has entry motion without a sticky hover gesture');
+      await page.evaluate(()=>scrollTo({top:innerHeight*2,behavior:'instant'}));
+      await page.waitForFunction(()=>{const r=document.querySelector('.preview-room-character').getBoundingClientRect();return r.bottom<0});
+      await page.evaluate(()=>scrollTo({top:0,behavior:'instant'}));
+      await waitForGesture(page,rig);
+    }finally{await context.close()}
+  });
+  test(`${engine}: delayed source hydration preserves the outgoing Room until its lift settles`, async () => {
+    const context=await browsers.get(engine).newContext({viewport:{width:1512,height:952},reducedMotion:'no-preference'});
+    let release;const delayed=new Promise(resolve=>{release=resolve});
+    await context.route('**/*',async route=>{
+      const request=route.request(),url=new URL(request.url());
+      if(!['GET','HEAD'].includes(request.method())||url.origin!==origin)return route.abort();
+      if(url.pathname.includes('/assets/figma-updated/characters/')&&request.resourceType()==='fetch')await delayed;
+      return route.continue();
+    });
+    const page=await context.newPage();page.setDefaultTimeout(6000);
+    try{
+      await page.goto(origin+'/homepage-tpr/',{waitUntil:'domcontentloaded'});
+      await page.waitForFunction(()=>document.querySelector('#rooms').dataset.elevatorReady==='true');
+      await page.evaluate(()=>{const host=document.querySelector('#rooms');scrollTo({top:host.getBoundingClientRect().top+scrollY,behavior:'instant'})});
+      await page.locator('[data-elevator-room=reformer]').click();
+      await page.waitForFunction(()=>document.querySelector('#rooms').classList.contains('is-lifting'));
+      release();
+      await page.waitForFunction(()=>document.querySelector('.tpr-elevator__character--current .tpr-character')&&document.querySelector('.tpr-elevator__character--incoming .tpr-character'));
+      const actors=await page.evaluate(()=>({
+        settled:document.querySelector('#rooms').dataset.activeRoom,lifting:document.querySelector('#rooms').classList.contains('is-lifting'),
+        current:document.querySelector('.tpr-elevator__character--current .tpr-character').dataset.character,
+        incoming:document.querySelector('.tpr-elevator__character--incoming .tpr-character').dataset.character,
+      }));
+      assert.deepEqual(actors,{settled:'coworking',lifting:true,current:'coworking',incoming:'reformer'},'hydration must preserve the two Room identities while the original lift is in progress');
+      await page.waitForFunction(()=>document.querySelector('#rooms').dataset.activeRoom==='reformer'&&!document.querySelector('#rooms').classList.contains('is-lifting'));
+      await waitForGesture(page,'.tpr-elevator__character--current .tpr-character');
+    }finally{release();await context.close()}
+  });
+  test(`${engine}: selecting a Room at the hover peak holds the outgoing pose through its visible fade`, async () => {
+    const {context,page}=await fixture(engine,'no-preference','homepage-tpr/#coworking');
+    try{
+      const rig='.tpr-elevator__character--current .tpr-character';
+      await page.mouse.move(-20,-20);await waitForRest(page,rig);
+      await page.locator('.tpr-elevator__character--current').hover();
+      await page.waitForFunction(()=>new DOMMatrixReadOnly(getComputedStyle(document.querySelector('.tpr-elevator__character--current .tpr-character__upper')).transform).b<-.13);
+      await page.evaluate(()=>{
+        const button=document.querySelector('[data-elevator-room="reformer"]');
+        button.addEventListener('click',()=>{
+          const actor=document.querySelector('.tpr-elevator__character--current'),rig=actor.querySelector('.tpr-character');
+          window.__outgoingRig=rig;
+          const snapshot=()=>({
+            lifting:document.querySelector('#rooms').classList.contains('is-lifting'),opacity:Number(getComputedStyle(actor).opacity),
+            matrices:[...rig.querySelectorAll('.tpr-character__body,.tpr-character__upper,.tpr-character__emblem,.tpr-character__detail')].map(part=>{
+              const m=new DOMMatrixReadOnly(getComputedStyle(part).transform);return ['a','b','c','d','e','f'].map(key=>m[key]);
+            }),animations:rig.getAnimations({subtree:true}).map(animation=>({state:animation.playState,time:animation.currentTime})),
+          });
+          let before=snapshot();const frames=[];
+          window.__liftPoseCapture=new Promise(resolve=>{
+            const sample=()=>{const frame=snapshot();if(!frame.lifting)before=frame;else frames.push(frame);if(frames.length===5)resolve({before,frames});else requestAnimationFrame(sample)};
+            requestAnimationFrame(sample);
+          });
+        },{once:true,capture:true});
+      });
+      await page.locator('[data-elevator-room=reformer]').click();
+      const samples=await page.evaluate(()=>window.__liftPoseCapture);
+      assert.ok(Math.abs(samples.before.matrices[1][1])>.1,'selection samples an actual upper-body peak');
+      assert.ok(samples.frames[0].opacity>.95,'compare while the outgoing actor is still plainly visible');
+      for(const frame of samples.frames){
+        assert.equal(frame.matrices.length,samples.before.matrices.length);
+        for(let i=0;i<frame.matrices.length;i++)for(let j=0;j<6;j++)assert.ok(Math.abs(frame.matrices[i][j]-samples.before.matrices[i][j])<(j<4?.015:.5),'native lift must preserve the articulated outgoing pose without a rest-pose pop');
+        assert.ok(frame.animations.length>0&&frame.animations.every(animation=>animation.state==='paused'),'outgoing pose is paused, without a hidden running loop');
+      }
+      assert.deepEqual(samples.frames.at(-1).animations.map(animation=>animation.time),samples.frames[0].animations.map(animation=>animation.time),'held part animation times do not advance through the fade');
+      await page.waitForFunction(()=>document.querySelector('#rooms').dataset.activeRoom==='reformer'&&!document.querySelector('#rooms').classList.contains('is-lifting'));
+      await waitForGesture(page,rig);await waitForRest(page,rig);
+      assert.equal(await page.evaluate(()=>!window.__outgoingRig.isConnected&&window.__outgoingRig.getAnimations({subtree:true}).length===0),true,'settling disposes the paused outgoing animations');
+    }finally{await context.close()}
   });
 }
