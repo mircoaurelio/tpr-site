@@ -55,7 +55,9 @@ test('visible controls reach every offer and event card from the first card', as
       }
       const last = await position(track);
       assert.ok(Math.abs(last.left - last.max) <= 1);
-      assert.equal(reached.size, 4, `all four cards must become fully readable: ${[...reached]}`);
+      const expectedTitles = route === 'eventi' ? ['Shamans Ritual', 'The Dinner', 'The People’s Week Talk'] : null;
+      if (expectedTitles) assert.deepEqual([...reached].sort(), expectedTitles.sort(), 'all published events must become fully readable');
+      else assert.equal(reached.size, 4, `all four offer cards must become fully readable: ${[...reached]}`);
       assert.equal(await next.isDisabled(), true);
       await previous.click();
       await page.waitForTimeout(80);
