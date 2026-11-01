@@ -16,9 +16,21 @@ Content lives in `design/updated-content.json`, shared templates in `scripts/bui
 
 Home reuses the original Room elevator: the masked photograph stays on its own plane as copy/background layers lift and photos crossfade. Explore opens the original wide image; vertical page scrolling pans it and its cards horizontally, then hands off to the next Room. Its original timing, easing, panorama geometry and 720px mobile expansion remain. Available updated assets and copy are supplied through a Home-only configuration. The scroll travel intentionally extends Home beyond its static Figma canvas; standalone Room pages retain their ordinary layout.
 
-See [ROUTES.md](ROUTES.md) for frames and routes, and [design/IMPLEMENTATION.md](design/IMPLEMENTATION.md) for validation and remaining gaps. Supplied Figma PDFs provide the available photos, partner logos, original vectors and Home compositions. Seventeen room photo roles, four left photo/eye stages, two coming-soon illustrations, updated mobile frames and the booking provider remain unresolved. This preview is not claimed as a completed 1:1 match.
+See [ROUTES.md](ROUTES.md) for frames and routes, and [design/IMPLEMENTATION.md](design/IMPLEMENTATION.md) for validation and remaining gaps. Supplied Figma PDFs provide the available photos, partner logos, original vectors and Home compositions. Seventeen room photo roles, four left photo/eye stages, two coming-soon illustrations and some updated mobile frames remain unresolved. Pilates booking uses the supplied Mindbody widget. This preview is not claimed as a completed 1:1 match.
 
-The older `/homepage/` variant remains available. Production hosting and the Cloudflare newsletter backend are separate from this preview.
+The older `/homepage/` variant remains available in the GitHub preview. The Cloudflare production build redirects that variant to the current Home.
+
+Production uses the existing `tpr-coming-soon` Cloudflare Worker for both [thepeoplesroom.it](https://thepeoplesroom.it/) and www. The build serves Home directly at `/`, includes all 11 canonical pages, and copies only public assets and runtime dependencies into `dist-cloudflare`. The newsletter Worker, its secret and rate limiter remain in place. Deployment uses the dedicated TPR authentication profile through `scripts/wrangler_tpr.mjs`, retaining dashboard variables with `--keep-vars`.
+
+```powershell
+$env:NEWSLETTER_ENABLED='true'
+$env:PRIVACY_POLICY_URL='https://www.iubenda.com/privacy-policy/70616678'
+npm run test:newsletter
+npm run test:cloudflare-build
+npm run deploy:cloudflare
+```
+
+Signups are disabled in builds without the explicit newsletter enable switch and approved HTTPS privacy notice. Keep secrets in Cloudflare; do not add them to the build environment or public files.
 
 ```sh
 npm ci
