@@ -1,0 +1,181 @@
+/* Confirmed Figma CardBack_C1 616:3793, inspected 1 November 2026.
+   The Bold font file is the source's PP Rader 600 style. Its hhea metrics
+   match the existing Figma display alias without substituting another face. */
+@font-face {
+  font-family: "TPR Rader Reference";
+  src: url("assets/fonts/pp-rader/PPRader-Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  ascent-override: 100%;
+  descent-override: 20.01953125%;
+  line-gap-override: 0%;
+}
+
+/* Keep the native button and its hit target stationary. The label, existing
+   zigzag SVG and source brush pseudo-element float together; zigzag-controls
+   retains ownership of its direct SVG child and resize observer. */
+.updated-preview .preview-discover-button {
+  z-index: 2;
+  --discover-duration: 7s;
+  --discover-delay: -4s;
+}
+.updated-preview .preview-discover-content { z-index: 1; }
+.preview-discover-face { display: block; pointer-events: none; }
+.updated-preview .preview-discover-button.has-discover-float > .preview-discover-face,
+.updated-preview .preview-discover-button.has-discover-float > .zigzag-contour,
+.updated-preview .preview-discover-button.has-discover-float.has-zigzag::before {
+  animation: tpr-discover-float var(--discover-duration) ease-in-out var(--discover-delay) infinite;
+  will-change: translate;
+}
+.updated-preview .preview-discover-button--community { --discover-duration: 6.5s; --discover-delay: -2s; }
+.updated-preview .preview-discover-button--coworking { --discover-duration: 7.8s; --discover-delay: -5s; }
+.updated-preview .preview-discover-button--reformer { --discover-duration: 7s; --discover-delay: -4s; }
+.updated-preview .preview-discover-button--bar { --discover-duration: 8.2s; --discover-delay: -6s; }
+.updated-preview .preview-discover-button--wellness { --discover-duration: 6.8s; --discover-delay: -3s; }
+.updated-preview .preview-discover-button--media { --discover-duration: 7.4s; --discover-delay: -1s; }
+.updated-preview .preview-discover-button:is(:hover, :focus-visible) > .preview-discover-face,
+.updated-preview .preview-discover-button:is(:hover, :focus-visible) > .zigzag-contour,
+.updated-preview .preview-discover-button.has-zigzag:is(:hover, :focus-visible)::before {
+  animation-play-state: paused;
+}
+@keyframes tpr-discover-float {
+  0%, 100% { translate: -5px 3px; }
+  25% { translate: 3px -11px; }
+  50% { translate: 8px -1px; }
+  75% { translate: -3px 9px; }
+}
+
+.updated-preview .preview-discover-content a.preview-button.preview-button--pink {
+  align-self: center;
+  width: min(265.691528px, 100%);
+  height: 32px;
+  min-height: 32px;
+  margin-inline: auto;
+  padding-block: 8px;
+  padding-inline: 16px;
+  justify-content: center;
+}
+@media (max-width: 900px) {
+  /* Preserve the established36px mobile target. Its responsive content-box
+     height must change too: the existing contour ResizeObserver intentionally
+     watches content-box, so a padding-only height change would miss redraw. */
+  .updated-preview .preview-discover-content a.preview-button.preview-button--pink {
+    height: 36px;
+    min-height: 36px;
+  }
+}
+
+/* Text controls share a response that changes no geometry and also affects
+   the original SVG/pseudo-element contours. Runtime classification excludes
+   icon-only controls and card flip targets. */
+.updated-preview .tpr-text-control {
+  transition: filter 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .updated-preview .tpr-text-control:not(:disabled):not([aria-disabled="true"]):hover {
+    filter: brightness(.86);
+  }
+}
+.updated-preview .tpr-text-control:not(:disabled):not([aria-disabled="true"]):focus-visible {
+  filter: brightness(.86);
+  outline: 3px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* Home card geometry stays with the original panorama. Descendant container
+   units scale the source text/padding/CTA together with that rendered card,
+   rather than varying type with the unrelated browser viewport width. */
+.updated-preview .tpr-elevator__explore-card { container-type: inline-size; }
+.updated-preview .tpr-elevator__explore-card .tpr-elevator__card-back {
+  justify-content: flex-start;
+  gap: 0;
+  padding: 4.285714286cqw;
+  border: 0;
+  border-radius: 2.142857143cqw;
+}
+.updated-preview .tpr-elevator__explore-card .tpr-elevator__card-back strong {
+  max-width: calc(100% - 11.42857143cqw);
+  flex: none;
+  font: 600 8.571428571cqw/1 "TPR Rader Reference", Arial, sans-serif;
+  letter-spacing: 0;
+}
+.updated-preview .tpr-elevator .tpr-elevator__explore-card .tpr-elevator__card-back > .tpr-elevator__card-description {
+  flex: none;
+  margin-top: 4.285714286cqw;
+  font: 400 4.285714286cqw/1 var(--tpr-body);
+  letter-spacing: 0;
+}
+.updated-preview .tpr-elevator__explore-card .tpr-elevator__card-close {
+  top: 4.285714286cqw;
+  right: 4.285714286cqw;
+  width: 8.571428571cqw;
+}
+.updated-preview .tpr-elevator__explore-card .tpr-elevator__card-cta {
+  flex: none;
+  display: flex;
+  gap: 1.428571429cqw;
+  min-height: 5.714285714cqw;
+  margin-top: auto;
+  font: 700 2.857142857cqw/1 var(--tpr-body);
+}
+.updated-preview .tpr-elevator__explore-card .tpr-elevator__card-cta > a {
+  flex: 1;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  align-self: stretch;
+}
+
+/* Mobile retains the established readable sizes; only the source family,
+   tracking and top grouping change. No unavailable mobile frame is inferred. */
+.updated-preview .tpr-elevator__mobile-card-back {
+  justify-content: flex-start;
+  gap: 0;
+}
+.updated-preview .tpr-elevator__mobile-card-back strong {
+  font-family: "TPR Rader Reference", Arial, sans-serif;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0;
+}
+.updated-preview .tpr-elevator__mobile-card-back > .tpr-elevator__card-description { margin-top: .65rem; }
+.updated-preview .tpr-elevator__mobile-card-back .tpr-elevator__card-cta { margin-top: auto; }
+
+/* The standalone template already groups its header. Match the same source
+   padding and full bottom action frame while retaining its native controls. */
+@media (min-width: 901px) {
+  .updated-preview .preview-room-card-back { padding: 24px; }
+  .updated-preview .preview-room-card-back h3 {
+    font: 600 48px/1 "TPR Rader Reference", Arial, sans-serif;
+    letter-spacing: 0;
+  }
+  .updated-preview .preview-room-card-ctas {
+    min-height: 32px;
+    gap: 16px;
+  }
+  .updated-preview .preview-room-card-ctas a {
+    flex: 1;
+    display: flex;
+    min-height: 32px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (max-width: 900px) {
+  .updated-preview .preview-room-card-back h3 {
+    font-family: "TPR Rader Reference", Arial, sans-serif;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .updated-preview .preview-discover-button > .preview-discover-face,
+  .updated-preview .preview-discover-button > .zigzag-contour,
+  .updated-preview .preview-discover-button.has-zigzag::before {
+    animation: none;
+    will-change: auto;
+  }
+  .updated-preview .tpr-text-control { transition: none; }
+}

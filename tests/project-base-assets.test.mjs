@@ -66,6 +66,7 @@ async function fixtureAt(mount) {
 async function prime(page) {
   await page.evaluate(async () => {
     await document.fonts.ready;
+    await window.tprLittleMen?.ready;
     await Promise.all([...document.images].map(image => {
       image.loading = 'eager';
       return image.decode().catch(() => {});
@@ -73,11 +74,33 @@ async function prime(page) {
   });
 }
 
-// Catches route-depth URLs in CSS custom properties resolving from the shared
-// stylesheet, dropping the public /tpr-site/ prefix and hiding Room characters.
+function inspectSourceCharacter(element, { key, source }) {
+  const figure = element.querySelector('.tpr-character');
+  const original = new DOMParser().parseFromString(source, 'image/svg+xml');
+  const paths = [...(figure?.querySelectorAll('path') || [])];
+  const expected = [...original.querySelectorAll('path')];
+  const rect = figure?.getBoundingClientRect();
+  return {
+    characterKey: figure?.dataset.character,
+    source: figure?.dataset.characterSource,
+    sourcePathsMatch: paths.length > 0 && paths.length === expected.length
+      && paths.every((node, index) => node.getAttribute('d') === expected[index].getAttribute('d')
+        && node.dataset.sourcePathIndex === expected[index].dataset.sourcePathIndex),
+    painted: !!figure && rect.width > 0 && rect.height > 0
+      && getComputedStyle(figure).visibility === 'visible'
+      && paths.some(node => !['none', 'transparent', 'rgba(0, 0, 0, 0)'].includes(getComputedStyle(node).fill)),
+    maskImage: getComputedStyle(element).maskImage,
+    expectedCharacter: key,
+  };
+}
+
+// Catches shared CSS and source SVG/photo URLs dropping /tpr-site/ at runtime.
 test('Room assets load at the project prefix and root preview mount', { timeout: 120_000 }, async () => {
   const evidence = { phase, started: new Date().toISOString(), mounts: [], failures: [] };
   await mkdir(output, { recursive: true });
+  const characterSources = Object.fromEntries(await Promise.all(roomKeys.map(async key => [
+    key, await readFile(path.join(repository, `assets/figma-updated/characters/${key}.svg`), 'utf8'),
+  ])));
   const browser = await chromium.launch({
     headless: true,
     ...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH
@@ -103,44 +126,62 @@ test('Room assets load at the project prefix and root preview mount', { timeout:
             const page = await context.newPage();
             page.setDefaultTimeout(3_000);
             page.setDefaultNavigationTimeout(10_000);
-            page.on('response', response => responses.set(response.url(), {
+            const captureResponse = response => responses.set(response.url(), {
               status: response.status(), resourceType: response.request().resourceType(),
               contentType: response.headers()['content-type'],
-            }));
+            });
+            page.on('response', captureResponse);
             const documentResponse = await page.goto(`${fixture.origin}${mount}${route}`, { waitUntil: 'networkidle' });
             assert.equal(documentResponse.status(), 200, `fixture must serve real ${mount}${route}`);
             await prime(page);
             if (route === 'homepage-tpr/') {
               assert.equal(await page.locator('#rooms.tpr-elevator').count(), 1, 'Home must use the original elevator');
+              // Keep the desktop check and load a separate mobile document:
+              // resizing a scrolled elevator can legitimately change its Room.
+              const mobilePage = await context.newPage();
+              mobilePage.setDefaultTimeout(3_000);
+              mobilePage.on('response', captureResponse);
+              await mobilePage.setViewportSize({ width: 393, height: 852 });
+              await mobilePage.goto(`${fixture.origin}${mount}${route}`, { waitUntil: 'networkidle' });
+              await prime(mobilePage);
               const arts = new Set();
               for (const key of roomKeys) {
                 await page.locator(`[data-elevator-room="${key}"]`).click();
                 await page.waitForFunction(key => document.querySelector('#rooms').dataset.activeRoom === key && !document.querySelector('#rooms').classList.contains('is-lifting'), key);
                 await page.locator('#rooms').evaluate(async host => {
-                  await Promise.all([...host.querySelectorAll('.tpr-elevator__art--current,.tpr-elevator__character--current img')].map(image => image.decode().catch(() => {})));
+                  await Promise.all([...host.querySelectorAll('.tpr-elevator__art--current')].map(image => image.decode().catch(() => {})));
                 });
+                await page.waitForFunction(key => document.querySelector('.tpr-elevator__character--current .tpr-character')?.dataset.character === key, key);
+                const characterState = await page.locator('.tpr-elevator__character--current').evaluate(inspectSourceCharacter, { key, source: characterSources[key] });
                 const state = await page.locator('#rooms').evaluate(host => {
                   const image = host.querySelector('.tpr-elevator__art--current');
-                  const character = host.querySelector('.tpr-elevator__character--current');
-                  const characterImage = character.querySelector('img');
+                  const plane = host.querySelector('.tpr-elevator__photo-plane');
                   return {
                     room: host.dataset.activeRoom, art: image.src, naturalWidth: image.naturalWidth,
-                    characterSvg: !!character.querySelector('svg'),
-                    characterImage: characterImage ? { src: characterImage.src, naturalWidth: characterImage.naturalWidth } : null,
-                    maskImage: getComputedStyle(host.querySelector('.tpr-elevator__photo-plane')).maskImage,
+                    planeMaskImage: getComputedStyle(plane).maskImage,
                   };
                 });
-                const maskUrl = /^url\(["']?(.+?)["']?\)$/.exec(state.maskImage)?.[1];
-                const assetUrls = [state.art, maskUrl, state.characterImage?.src].filter(Boolean);
+                // The source union mask now belongs to the mobile-only fade,
+                // while the desktop photograph carries its own exact alpha.
+                // Exercise the actual pseudo-element before checking its URL.
+                await mobilePage.locator(`[data-elevator-room="${key}"]`).click();
+                await mobilePage.waitForFunction(key => document.querySelector('#rooms').dataset.activeRoom === key && !document.querySelector('#rooms').classList.contains('is-lifting'), key);
+                state.gradientMaskImage = await mobilePage.locator('#rooms .tpr-elevator__photo-plane').evaluate(plane => getComputedStyle(plane, '::after').maskImage);
+                const maskUrl = /^url\(["']?(.+?)["']?\)$/.exec(state.gradientMaskImage)?.[1];
+                const characterUrl = `${fixture.origin}${mount}assets/figma-updated/characters/${key}.svg`;
+                const assetUrls = [state.art, maskUrl, characterUrl].filter(Boolean);
                 for (const url of assetUrls) if (!responses.has(url)) await page.waitForResponse(response => response.url() === url, { timeout: 2_000 }).catch(() => {});
-                const actual = { route, key, ...state, maskUrl, assets: assetUrls.map(url => ({ url, response: responses.get(url) })) };
+                const actual = { route, key, ...state, character: characterState, maskUrl, assets: assetUrls.map(url => ({ url, response: responses.get(url) })) };
                 mountEvidence.states.push(actual); arts.add(state.art);
                 const problems = [];
-                if (state.room !== key || !state.naturalWidth || !(state.characterSvg || state.characterImage?.naturalWidth)) problems.push('selected room must render its real art and character');
-                if (!maskUrl) problems.push('original photo-plane mask must remain present');
+                if (state.room !== key || !state.naturalWidth || characterState.characterKey !== key || characterState.source !== 'figma-separato' || !characterState.sourcePathsMatch || !characterState.painted) problems.push('selected room must render its real source artwork and supplied inline character paths');
+                if (new URL(state.art).pathname !== `${mount}assets/figma-updated/composites/room-${key}-masked-photos-2x.webp`) problems.push('selected Room must use its exact alpha photo composition');
+                if (state.planeMaskImage !== 'none') problems.push('source alpha photos must not be clipped a second time');
+                if (!maskUrl || new URL(maskUrl).pathname !== `${mount}assets/figma-updated/composites/room-${key}-photo-mask-union-2x.webp`) problems.push('gradient must use the selected Room original source mask');
                 for (const asset of actual.assets) {
                   if (new URL(asset.url).origin !== fixture.origin || !new URL(asset.url).pathname.startsWith(`${mount}assets/`)) problems.push(`effective asset must remain under ${mount}assets/: ${asset.url}`);
-                  if (asset.response?.status !== 200 || asset.response?.resourceType !== 'image') problems.push(`effective image must have an actual successful response: ${asset.url}`);
+                  const character = asset.url === characterUrl;
+                  if (asset.response?.status !== 200 || asset.response?.resourceType !== (character ? 'fetch' : 'image') || (character && !asset.response?.contentType?.startsWith('image/svg+xml'))) problems.push(`effective source asset must have an actual successful response: ${asset.url}`);
                 }
                 if (problems.length) evidence.failures.push({ mount, ...actual, problems });
               }
@@ -150,24 +191,23 @@ test('Room assets load at the project prefix and root preview mount', { timeout:
             }
             for (const key of [route.split('/')[1]]) {
               const character = page.locator('[data-room-panel]:visible .preview-room-character');
-              const state = await character.evaluate(element => ({
-                maskImage: getComputedStyle(element).maskImage,
-                childImageVisibility: getComputedStyle(element.querySelector('img')).visibility,
-                room: element.closest('[data-room-panel]').dataset.roomPanel,
-              }));
-              const match = /^url\(["']?(.+?)["']?\)$/.exec(state.maskImage);
-              const maskUrl = match?.[1];
-              if (maskUrl && !responses.has(maskUrl)) {
-                await page.waitForResponse(response => response.url() === maskUrl, { timeout: 2_000 }).catch(() => {});
+              await character.locator(`.tpr-character[data-character="${key}"]`).waitFor();
+              const state = await character.evaluate(inspectSourceCharacter, { key, source: characterSources[key] });
+              state.room = await character.evaluate(element => element.closest('[data-room-panel]').dataset.roomPanel);
+              const characterUrl = `${fixture.origin}${mount}assets/figma-updated/characters/${key}.svg`;
+              if (!responses.has(characterUrl)) {
+                await page.waitForResponse(response => response.url() === characterUrl, { timeout: 2_000 }).catch(() => {});
               }
-              const actual = { route, key, ...state, maskUrl, response: responses.get(maskUrl) };
+              const actual = { route, key, ...state, characterUrl, response: responses.get(characterUrl) };
               mountEvidence.states.push(actual);
               // These expected public paths are independent of source markup.
-              const expectedPath = `${mount}assets/little-man/${key}.svg`;
+              const expectedPath = `${mount}assets/figma-updated/characters/${key}.svg`;
               const problems = [];
               if (state.room !== key) problems.push(`Room state must be ${key}`);
-              if (!maskUrl || new URL(maskUrl).origin !== fixture.origin || new URL(maskUrl).pathname !== expectedPath) problems.push(`effective mask URL must be ${expectedPath}`);
-              if (actual.response?.status !== 200 || actual.response?.resourceType !== 'image' || !actual.response?.contentType?.startsWith('image/svg+xml')) problems.push('effective CSS mask must have an actual successful SVG image response');
+              if (state.characterKey !== key || state.source !== 'figma-separato' || !state.sourcePathsMatch || !state.painted) problems.push('the supplied source character paths must be painted in the selected Room');
+              if (state.maskImage !== 'none') problems.push('the source inline rig must replace the legacy CSS silhouette mask');
+              if (new URL(characterUrl).origin !== fixture.origin || new URL(characterUrl).pathname !== expectedPath) problems.push(`effective source SVG URL must be ${expectedPath}`);
+              if (actual.response?.status !== 200 || actual.response?.resourceType !== 'fetch' || !actual.response?.contentType?.startsWith('image/svg+xml')) problems.push('effective source SVG must have an actual successful SVG fetch response');
               if (problems.length) {
                 evidence.failures.push({ mount, ...actual, problems });
                 if (evidence.failures.length === 1) {

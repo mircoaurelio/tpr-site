@@ -6,6 +6,7 @@ import { readFile, stat, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
+import { decodeStableImage } from './helpers/decode-stable-image.mjs';
 
 const repository = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const output = path.join(repository, '.qa/public-journeys/legacy-effect');
@@ -116,7 +117,7 @@ async function openExplore(page, key = 'coworking') {
   await floor(page, key);
   await page.locator('.tpr-elevator__car--current:not(.tpr-elevator__car--shade) .tpr-elevator__desktop-copy [data-elevator-explore]').click();
   await page.waitForFunction(() => { const host = document.querySelector('#rooms'); return host.classList.contains('is-exploring') && host.classList.contains('is-explore-ready') && !host.classList.contains('is-explore-opening'); });
-  await page.locator('.tpr-elevator__explore-track > img').evaluate(image => image.decode());
+  await decodeStableImage(page.locator('.tpr-elevator__explore-track > img'));
   // Ensure the initial opening scroll has been observed before a boundary test.
   await page.waitForFunction(() => Number(document.querySelector('.tpr-elevator__explore-progress').getAttribute('aria-valuenow')) >= 38);
 }

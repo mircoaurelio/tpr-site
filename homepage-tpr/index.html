@@ -8,18 +8,40 @@
 <meta name="description" content="The People's Room: coworking, movimento, cultura e benessere a Milano.">
 <link rel="icon" href="../assets/tpr-character.svg" type="image/svg+xml">
 <link rel="preload" href="../assets/fonts/pp-rader/PPRader-Bold.otf" as="font" type="font/otf" crossorigin>
-<link rel="stylesheet" href="../updated-preview.css?v=20261101-allcopy">
+<link rel="stylesheet" href="../updated-preview.css?v=20261101-desktop-feedback-1">
 <link rel="stylesheet" href="../figma-refinements.css?v=20261031-clean">
 <link rel="stylesheet" href="../pdf-assets.css?v=20261031-clean">
 <link rel="stylesheet" href="../page-layout.css?v=20261031-review">
 <link rel="stylesheet" href="../shared-elevator.css?v=20261031-clean">
-<link rel="stylesheet" href="../updated-elevator.css?v=20261101-cardactions">
+<link rel="stylesheet" href="../updated-elevator.css?v=20261101-desktop-feedback-1">
 <link rel="stylesheet" href="../home-layout.css?v=20261031-review">
-<script src="../updated-preview.js?v=20261101-allcopy" defer>
+<link rel="stylesheet" href="../updated-carousels.css?v=20261101-desktop-feedback-1">
+<link rel="stylesheet" href="../updated-motion.css?v=20261101-desktop-feedback-1">
+<link rel="stylesheet" href="../updated-refinements.css?v=20261101-desktop-feedback-1">
+<link rel="stylesheet" href="../updated-inquiries.css?v=20261101-desktop-feedback-1">
+<link rel="stylesheet" href="../updated-characters.css?v=20261101-desktop-feedback-1">
+<link rel="stylesheet" href="../updated-menu.css?v=20261101-desktop-feedback-1">
+<link rel="stylesheet" href="../updated-card-motion.css?v=20261101-desktop-feedback-1">
+<link rel="stylesheet" href="../updated-parallax.css?v=20261101-desktop-feedback-1">
+<script src="../updated-preview.js?v=20261101-desktop-feedback-1" defer>
 </script>
-<script src="../shared-elevator.js?v=20261101-cardactions" defer>
+<script src="../updated-inquiries.js?v=20261101-desktop-feedback-1" defer>
 </script>
-<script src="../updated-elevator.js?v=20261031-clean" defer>
+<script src="../updated-carousels.js?v=20261101-desktop-feedback-1" defer>
+</script>
+<script src="../updated-characters.js?v=20261101-desktop-feedback-1" defer>
+</script>
+<script src="../shared-elevator.js?v=20261101-desktop-feedback-1" defer>
+</script>
+<script src="../updated-elevator.js?v=20261101-desktop-feedback-1" defer>
+</script>
+<script src="../updated-motion.js?v=20261101-desktop-feedback-1" defer>
+</script>
+<script src="../updated-refinements.js?v=20261101-desktop-feedback-1" defer>
+</script>
+<script src="../updated-card-motion.js?v=20261101-desktop-feedback-1" defer>
+</script>
+<script src="../updated-parallax.js?v=20261101-desktop-feedback-1" defer>
 </script>
 <script src="../zigzag-controls.js?v=20261031-clean" defer>
 </script>
@@ -40,37 +62,42 @@
 </div>
 </header>
 <aside class="preview-menu" id="siteMenu" role="dialog" aria-label="Menu principale" aria-modal="true" aria-hidden="true" inert>
-<a class="preview-menu-brand" href="../homepage-tpr/">
-<img class="" src="../assets/tpr-logo.svg" alt="The People&#x27;s Room" decoding="async" >
+<a class="preview-menu-brand" href="../homepage-tpr/" aria-label="The People's Room — Home">
+<img class="" src="../assets/tpr-logo.svg" alt="The People&#x27;s Room" decoding="async" width="131" height="64">
 </a>
 <button class="preview-menu-close" type="button" data-menu-close aria-label="Chiudi il menu">×</button>
-<nav>
+<nav aria-label="Navigazione principale">
 <a href="../about/">About</a>
 <div class="preview-menu-group">
 <a href="../homepage-tpr/#rooms">TPR Rooms</a>
 <div class="preview-menu-rooms">
-<a class="preview-menu-room" href="../rooms/coworking/">
-<img class="" src="../assets/little-man/coworking.svg" alt="Coworking" decoding="async" width="112" height="180">
+<a class="preview-menu-room" data-menu-icon="coworking" href="../rooms/coworking/" aria-label="Coworking">
+<img class="" src="../assets/figma-updated/menu/coworking.svg" alt="" decoding="async" width="58" height="58" aria-hidden="true">
 </a>
-<a class="preview-menu-room" href="../rooms/reformer/">
-<img class="" src="../assets/little-man/reformer.svg" alt="TPR Move" decoding="async" width="112" height="180">
+<a class="preview-menu-room" data-menu-icon="wellness" href="../rooms/wellness/" aria-label="Recharge">
+<img class="" src="../assets/figma-updated/menu/wellness.svg" alt="" decoding="async" width="58" height="58" aria-hidden="true">
 </a>
-<a class="preview-menu-room" href="../rooms/wellness/">
-<img class="" src="../assets/little-man/wellness.svg" alt="Recharge" decoding="async" width="112" height="180">
+<a class="preview-menu-room" data-menu-icon="media" href="../rooms/media/" aria-label="Media">
+<img class="" src="../assets/figma-updated/menu/media.svg" alt="" decoding="async" width="58" height="58" aria-hidden="true">
 </a>
-<a class="preview-menu-room" href="../rooms/bar/">
-<img class="" src="../assets/little-man/bar.svg" alt="Fuel" decoding="async" width="112" height="180">
+<a class="preview-menu-room" data-menu-icon="reformer" href="../rooms/reformer/" aria-label="TPR Move">
+<img class="" src="../assets/figma-updated/menu/reformer.svg" alt="" decoding="async" width="58" height="58" aria-hidden="true">
 </a>
-<a class="preview-menu-room" href="../rooms/media/">
-<img class="" src="../assets/little-man/media.svg" alt="Media" decoding="async" width="112" height="180">
+<a class="preview-menu-room" data-menu-icon="bar" href="../rooms/bar/" aria-label="Fuel">
+<img class="" src="../assets/figma-updated/menu/bar.svg" alt="" decoding="async" width="58" height="58" aria-hidden="true">
 </a>
 </div>
 </div>
 <a href="../vivi-tpr/">Vivi TPR</a>
-<a href="../eventi/">Eventi &amp; Gallery</a>
+<div class="preview-menu-world">
+<span class="preview-menu-world-label" role="heading" aria-level="2">TPR World</span>
+<div class="preview-menu-world-links">
+<a href="../eventi/">Eventi</a>
 <a href="../contatti/">Contatti</a>
-<a class="preview-button preview-button--outline" href="../prenota/">Prenota il Pilates</a>
+</div>
+</div>
 </nav>
+<p class="preview-menu-hours">Siamo aperti dal lunedì al venerdì, dalle 7:00 alle 22:00.</p>
 </aside>
 <main id="main">
 <div class="preview-page-art" aria-hidden="true">
@@ -209,8 +236,8 @@
 <p class="preview-lead">Entri in un modo, esci in un altro: più leggero, perché ti sei già allenato, con il cuore pieno di relazioni vere, più avanti con i tuoi progetti, grazie alle persone che hai incontrato.</p>
 </div>
 </section>
-<section id="rooms" aria-label="TPR Rooms">
-<script type="application/json" data-elevator-config>{"coworking": {"title": "TPR COWORKING", "paragraphs": ["Il cuore operativo dello spazio.", "Postazioni e sale riunioni prenotabili, pensate per chi ha bisogno di concentrarsi e di un posto affidabile dove farlo.", "Uno spazio adatto tanto a chi lavora da solo quanto ai team che hanno bisogno di una base fissa. Ogni giorno lo stesso piano è condiviso da professionisti indipendenti, aziende e nuove realtà, ed è da questa convivenza che nascono confronti e collaborazioni inaspettate.", "Gente che lavora sul serio senza prendersi troppo sul serio. Perché l'ispirazione nasce sempre da una nuova connessione."], "character": "little-man/coworking.svg", "cards": [["postazioni", "Un desk fisso, tutto tuo. Sempre lì che ti aspetta quando hai bisogno di concentrarti; e la community intorno a te, appena alzi la testa.", ["Scopri come accedere"]], ["Sale riunioni", "4 sale insonorizzate per le call che contano. Le prenoti e nessuno ti disturba.", ["Scopri come accedere"]], ["eventi", "La sera ti motiviamo a finire di lavorare a un orario che non ti fa male, così hai voglia di restare per un talk, un aperitivo, due chiacchiere con chi lavora vicino a te.", ["Eventi e Gallery", "Organizza un evento"]]], "comingSoonCards": [], "icon": "figma-updated/shapes/room-toolbar-coworking-default.svg", "off": "elevator-icon-coworking-off.svg", "art": "figma-updated/composites/home-coworking-photo-eye-2x.webp"}, "reformer": {"title": "TPR MOVE", "paragraphs": ["La sala dedicata al Reformer Pilates.", "Un ambiente luminoso e ampio, attrezzato con macchinari Technogym e guidato da istruttori qualificati.", "Le classi seguono percorsi diversi, ognuna con un obiettivo specifico, e si prenotano singolarmente in base ai propri tempi.", "Un luogo dove respirare e prendersi cura di sé."], "character": "little-man/reformer.svg", "cards": [["studio", "Una sala ampia e luminosa, pensata per lezioni in piccoli gruppi e per il lavoro individuale.", ["Prenota la tua lezione"]], ["classi", "Percorsi diversi guidati da istruttori qualificati, ognuno costruito intorno a un obiettivo specifico.", ["Prenota la tua lezione"]], ["attrezzature", "Macchinari Technogym di ultima generazione, per un allenamento preciso e su misura.", ["Prenota la tua lezione"]]], "comingSoonCards": [], "icon": "elevator-icon-reformer.svg", "off": "figma-updated/shapes/room-toolbar-move-default.svg"}, "wellness": {"title": "TPR RECHARGE", "paragraphs": ["La sala dedicata al recupero.", "Sauna, contrast therapy e longevity room: pratiche che agiscono su circolazione, energia e lucidità mentale.", "Non un'area pensata per il relax fine a sé stesso, ma un momento in cui il corpo si rigenera per tornare a dare il massimo.", "Il respiro che precede ogni nuova ispirazione."], "character": "little-man/wellness.svg", "cards": [["gym", "Rack, multipower, panche, manubri e kettlebell in una sala raccolta e curata in ogni dettaglio. Tutto quello che serve per allenarti in libertà.", ["Scopri come accedere"]], ["contrast therapy", "Caldo, freddo, caldo. Sauna, cold plunge e poi di nuovo sauna: sembra una tortura, poi non ne fai più a meno.", ["Scopri come accedere"]], ["longevity", "Un power nap tra una call e l'altra, e i dati del tuo corpo per prenderti cura di te nel lungo periodo.", ["Scopri come accedere"]]], "comingSoonCards": ["longevity"], "icon": "elevator-icon-wellness.svg", "off": "figma-updated/shapes/room-toolbar-recharge-default.svg"}, "bar": {"title": "TPR FUEL", "paragraphs": ["Un'area dove l'alimentazione ha una funzione precisa.", "I frullati e le bevande funzionali sono preparati al momento e pensati per la concentrazione, il recupero e l'energia, a seconda di quello che occorre.", "Nella stessa area, una cucina attrezzata disponibile per pranzare o preparare qualcosa in autonomia.", "Dove il nutrimento diventa carburante."], "character": "little-man/bar.svg", "cards": [["servizi", "Smoothies e bevande funzionali preparati al momento, pensati per concentrazione, energia e recupero.", ["Scopri come accedere"]], ["accessibilità", "Bancone, utensili e microonde sono a disposizione di chi lavora nello spazio, in ogni momento della giornata.", ["Scopri come accedere"]], ["storage", "Frigo e dispensa condivisi, per conservare le proprie cose e organizzarsi con calma.", ["Scopri come accedere"]]], "comingSoonCards": [], "icon": "elevator-icon-bar.svg", "off": "figma-updated/shapes/room-toolbar-fuel-default.svg"}, "media": {"title": "TPR MEDIA", "paragraphs": ["Lo spazio dedicato alla produzione di contenuti.", "Una sala di registrazione professionale, pensata per lavorare con la voce, il suono e l'immagine.", "Qui si registrano podcast e interviste, si incidono tracce musicali e si realizzano shooting fotografici e video, con attrezzatura professionale sempre a disposizione. Un ambiente costruito perché la qualità tecnica non sia mai il limite di quello che si vuole raccontare.", "Dove le idee diventano realtà."], "character": "little-man/media.svg", "cards": [["podcast", "Una postazione completa per registrare episodi e interviste, con regia e supporto tecnico.", ["Scopri come accedere"]], ["set fotografico", "Un ambiente pronto per shooting fotografici e riprese video, a disposizione di chi produce contenuti.", ["Scopri come accedere"]], ["studio audio", "coming soon", []]], "comingSoonCards": ["studio audio"], "icon": "elevator-icon-media.svg", "off": "figma-updated/shapes/room-toolbar-media-default.svg"}}</script>
+<section id="rooms" aria-label="TPR Rooms" data-source-room-photos>
+<script type="application/json" data-elevator-config>{"coworking": {"title": "TPR COWORKING", "paragraphs": ["Il cuore operativo dello spazio.", "Postazioni e sale riunioni prenotabili, pensate per chi ha bisogno di concentrarsi e di un posto affidabile dove farlo.", "Uno spazio adatto tanto a chi lavora da solo quanto ai team che hanno bisogno di una base fissa. Ogni giorno lo stesso piano è condiviso da professionisti indipendenti, aziende e nuove realtà, ed è da questa convivenza che nascono confronti e collaborazioni inaspettate.", "Gente che lavora sul serio senza prendersi troppo sul serio. Perché l'ispirazione nasce sempre da una nuova connessione."], "character": "little-man/coworking.svg", "cards": [["postazioni", "Un desk fisso, tutto tuo. Sempre lì che ti aspetta quando hai bisogno di concentrarti; e la community intorno a te, appena alzi la testa.", ["Scopri come accedere"]], ["Sale riunioni", "4 sale insonorizzate per le call che contano. Le prenoti e nessuno ti disturba.", ["Scopri come accedere"]], ["eventi", "La sera ti motiviamo a finire di lavorare a un orario che non ti fa male, così hai voglia di restare per un talk, un aperitivo, due chiacchiere con chi lavora vicino a te.", ["Eventi e Gallery", "Organizza un evento"]]], "comingSoonCards": [], "icon": "figma-updated/shapes/room-toolbar-coworking-default.svg", "off": "elevator-icon-coworking-off.svg", "art": "figma-updated/composites/room-coworking-masked-photos-2x.webp", "photoMask": "figma-updated/composites/room-coworking-photo-mask-union-2x.webp", "routeArt": "figma-updated/composites/room-coworking-panorama-fallback-2x.webp", "cardPhoto": "figma-updated/photos/room-coworking-postazioni-window-2x.webp", "cardPhotos": ["figma-updated/photos/room-coworking-postazioni-window-2x.webp", "figma-updated/photos/room-coworking-sale-riunioni-window-2x.webp", "figma-updated/photos/room-coworking-eventi-window-2x.webp"]}, "reformer": {"title": "TPR MOVE", "paragraphs": ["La sala dedicata al Reformer Pilates.", "Un ambiente luminoso e ampio, attrezzato con macchinari Technogym e guidato da istruttori qualificati.", "Le classi seguono percorsi diversi, ognuna con un obiettivo specifico, e si prenotano singolarmente in base ai propri tempi.", "Un luogo dove respirare e prendersi cura di sé."], "character": "little-man/reformer.svg", "cards": [["studio", "Una sala ampia e luminosa, pensata per lezioni in piccoli gruppi e per il lavoro individuale.", ["Prenota la tua lezione"]], ["classi", "Percorsi diversi guidati da istruttori qualificati, ognuno costruito intorno a un obiettivo specifico.", ["Prenota la tua lezione"]], ["attrezzature", "Macchinari Technogym di ultima generazione, per un allenamento preciso e su misura.", ["Prenota la tua lezione"]]], "comingSoonCards": [], "icon": "elevator-icon-reformer.svg", "off": "figma-updated/shapes/room-toolbar-move-default.svg", "art": "figma-updated/composites/room-reformer-masked-photos-2x.webp", "photoMask": "figma-updated/composites/room-reformer-photo-mask-union-2x.webp", "routeArt": "figma-updated/composites/room-reformer-panorama-fallback-2x.webp", "cardPhoto": "figma-updated/photos/room-reformer-studio-window-2x.webp", "cardPhotos": ["figma-updated/photos/room-reformer-studio-window-2x.webp", "figma-updated/photos/room-reformer-classi-window-2x.webp", "figma-updated/photos/room-reformer-attrezzature-window-2x.webp"]}, "wellness": {"title": "TPR RECHARGE", "paragraphs": ["La sala dedicata al recupero.", "Sauna, contrast therapy e longevity room: pratiche che agiscono su circolazione, energia e lucidità mentale.", "Non un'area pensata per il relax fine a sé stesso, ma un momento in cui il corpo si rigenera per tornare a dare il massimo.", "Il respiro che precede ogni nuova ispirazione."], "character": "little-man/wellness.svg", "cards": [["gym", "Rack, multipower, panche, manubri e kettlebell in una sala raccolta e curata in ogni dettaglio. Tutto quello che serve per allenarti in libertà.", ["Scopri come accedere"]], ["contrast therapy", "Caldo, freddo, caldo. Sauna, cold plunge e poi di nuovo sauna: sembra una tortura, poi non ne fai più a meno.", ["Scopri come accedere"]], ["longevity", "Un power nap tra una call e l'altra, e i dati del tuo corpo per prenderti cura di te nel lungo periodo.", ["Scopri come accedere"]]], "comingSoonCards": ["longevity"], "icon": "elevator-icon-wellness.svg", "off": "figma-updated/shapes/room-toolbar-recharge-default.svg", "art": "figma-updated/composites/room-wellness-masked-photos-2x.webp", "photoMask": "figma-updated/composites/room-wellness-photo-mask-union-2x.webp", "routeArt": "figma-updated/composites/room-wellness-panorama-fallback-2x.webp", "cardPhoto": "figma-updated/photos/room-wellness-gym-window-2x.webp", "cardPhotos": ["figma-updated/photos/room-wellness-gym-window-2x.webp", "figma-updated/photos/room-wellness-contrast-therapy-window-2x.webp", "figma-updated/photos/room-wellness-longevity-window-2x.webp"]}, "bar": {"title": "TPR FUEL", "paragraphs": ["Un'area dove l'alimentazione ha una funzione precisa.", "I frullati e le bevande funzionali sono preparati al momento e pensati per la concentrazione, il recupero e l'energia, a seconda di quello che occorre.", "Nella stessa area, una cucina attrezzata disponibile per pranzare o preparare qualcosa in autonomia.", "Dove il nutrimento diventa carburante."], "character": "little-man/bar.svg", "cards": [["servizi", "Smoothies e bevande funzionali preparati al momento, pensati per concentrazione, energia e recupero.", ["Scopri come accedere"]], ["accessibilità", "Bancone, utensili e microonde sono a disposizione di chi lavora nello spazio, in ogni momento della giornata.", ["Scopri come accedere"]], ["storage", "Frigo e dispensa condivisi, per conservare le proprie cose e organizzarsi con calma.", ["Scopri come accedere"]]], "comingSoonCards": [], "icon": "elevator-icon-bar.svg", "off": "figma-updated/shapes/room-toolbar-fuel-default.svg", "art": "figma-updated/composites/room-bar-masked-photos-2x.webp", "photoMask": "figma-updated/composites/room-bar-photo-mask-union-2x.webp", "routeArt": "figma-updated/composites/room-bar-panorama-fallback-2x.webp", "cardPhoto": "figma-updated/photos/room-bar-servizi-window-2x.webp", "cardPhotos": ["figma-updated/photos/room-bar-servizi-window-2x.webp", "figma-updated/photos/room-bar-accessibilita-window-2x.webp", "figma-updated/photos/room-bar-storage-window-2x.webp"]}, "media": {"title": "TPR MEDIA", "paragraphs": ["Lo spazio dedicato alla produzione di contenuti.", "Una sala di registrazione professionale, pensata per lavorare con la voce, il suono e l'immagine.", "Qui si registrano podcast e interviste, si incidono tracce musicali e si realizzano shooting fotografici e video, con attrezzatura professionale sempre a disposizione. Un ambiente costruito perché la qualità tecnica non sia mai il limite di quello che si vuole raccontare.", "Dove le idee diventano realtà."], "character": "little-man/media.svg", "cards": [["podcast", "Una postazione completa per registrare episodi e interviste, con regia e supporto tecnico.", ["Scopri come accedere"]], ["set fotografico", "Un ambiente pronto per shooting fotografici e riprese video, a disposizione di chi produce contenuti.", ["Scopri come accedere"]], ["studio audio", "coming soon", []]], "comingSoonCards": ["studio audio"], "icon": "elevator-icon-media.svg", "off": "figma-updated/shapes/room-toolbar-media-default.svg", "art": "figma-updated/composites/room-media-masked-photos-2x.webp", "photoMask": "figma-updated/composites/room-media-photo-mask-union-2x.webp", "routeArt": "figma-updated/composites/room-media-panorama-fallback-2x.webp", "cardPhoto": "figma-updated/photos/room-media-podcast-window-2x.webp", "cardPhotos": ["figma-updated/photos/room-media-podcast-window-2x.webp", "figma-updated/photos/room-media-set-fotografico-window-2x.webp", "figma-updated/photos/room-media-studio-audio-window-2x.webp"]}}</script>
 </section>
 <section class="preview-home-events preview-shell">
 <div class="preview-two-columns">
@@ -238,7 +265,8 @@
 </h2>
 <p>Offerte per privati, freelance e startup</p>
 </div>
-<div class="preview-offer-carousel" tabindex="0" role="region" aria-label="Offerte TPR, scorri per esplorare" data-carousel>
+<div class="preview-carousel" data-accessible-carousel>
+<div id="offer-carousel" class="preview-offer-carousel" tabindex="0" role="region" aria-label="Offerte TPR, scorri per esplorare" data-carousel>
 <article class="preview-offer-card preview-paper" id="day-pass" data-figma-node="1086:2242">
 <div class="preview-offer-media" data-asset-role="offers.day-pass" data-figma-node="1086:2244">
 <img src="../assets/figma-updated/photos/day-pass.jpeg" alt="day pass" decoding="async" >
@@ -262,7 +290,7 @@
 <li class="is-excluded">✕ Accesso alla palestra</li>
 <li class="is-excluded">✕ Reformer Pilates TPR Move</li>
 </ul>
-<a class="preview-button preview-button--solid" href="../contatti/?offer=day-pass">Acquista</a>
+<a class="preview-button preview-button--solid" href="../contatti/?offer=day-pass" data-inquiry-open="inquiry-day-pass" aria-haspopup="dialog" aria-controls="inquiry-day-pass">Acquista</a>
 </div>
 </article>
 <article class="preview-offer-card preview-paper" id="all-inclusive" data-figma-node="1086:2258">
@@ -290,7 +318,7 @@
 <li class="">✓ Accesso alla palestra</li>
 <li class="">✓ Lezione di prova Reformer Pilates inclusa</li>
 </ul>
-<a class="preview-button preview-button--blue-outline" href="../contatti/?offer=all-inclusive">Richiedi informazioni</a>
+<a class="preview-button preview-button--blue-outline" href="../contatti/?offer=all-inclusive" data-inquiry-open="inquiry-all-inclusive" aria-haspopup="dialog" aria-controls="inquiry-all-inclusive">Richiedi informazioni</a>
 </div>
 </article>
 <article class="preview-offer-card preview-paper" id="flex-8" data-figma-node="1086:2276">
@@ -317,7 +345,7 @@
 <li class="">✓ Accesso alla palestra</li>
 <li class="is-excluded">✕ Reformer Pilates TPR Move</li>
 </ul>
-<a class="preview-button preview-button--blue-outline" href="../contatti/?offer=flex-8">Richiedi informazioni</a>
+<a class="preview-button preview-button--blue-outline" href="../contatti/?offer=flex-8" data-inquiry-open="inquiry-flex-8" aria-haspopup="dialog" aria-controls="inquiry-flex-8">Richiedi informazioni</a>
 </div>
 </article>
 <article class="preview-offer-card preview-paper" id="ufficio-virtuale" data-figma-node="1086:2292">
@@ -332,9 +360,19 @@
 </div>
 <div class="preview-offer-tags">
 </div>
-<a class="preview-button preview-button--blue-outline" href="../contatti/?offer=ufficio-virtuale">Richiedi informazioni</a>
+<a class="preview-button preview-button--blue-outline" href="../contatti/?offer=ufficio-virtuale" data-inquiry-open="inquiry-ufficio-virtuale" aria-haspopup="dialog" aria-controls="inquiry-ufficio-virtuale">Richiedi informazioni</a>
 </div>
 </article>
+</div>
+<div class="preview-carousel__controls" role="group" aria-label="Controlli offerte" hidden>
+<span class="preview-carousel__hint">Scorri per esplorare</span>
+<button class="preview-carousel__button" type="button" data-carousel-prev aria-controls="offer-carousel" aria-label="Offerte precedenti">
+<span aria-hidden="true">‹</span>
+</button>
+<button class="preview-carousel__button" type="button" data-carousel-next aria-controls="offer-carousel" aria-label="Offerte successive">
+<span aria-hidden="true">›</span>
+</button>
+</div>
 </div>
 <a class="preview-pilates-banner" href="../prenota/">
 <strong>Vuoi iniziare col Reformer Pilates?</strong>
@@ -366,7 +404,7 @@
 </ul>
 </div>
 </div>
-<form class="preview-contact-form " data-inquiry-form data-subject="Offerte startup e aziende">
+<form class="preview-contact-form " data-inquiry-form data-kind="company" data-endpoint="https://thepeoplesroom.it/api/inquiry" data-subject="Offerte startup e aziende">
 <div class="preview-fields">
 <label class="preview-select">
 <span class="sr-only">Tipologia utente</span>
@@ -399,6 +437,8 @@
 </span>
 </button>
 </div>
+<label class="preview-trap" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off">
+</label>
 <p class="preview-form-status" role="status" aria-live="polite"></p>
 </form>
 </div>
@@ -487,5 +527,213 @@
 </div>
 </div>
 </footer>
+<dialog class="preview-inquiry-dialog" id="inquiry-day-pass" aria-labelledby="inquiry-day-pass-title" data-inquiry-dialog>
+<button class="preview-inquiry-close" type="button" data-inquiry-close aria-label="Chiudi il modulo">
+<span aria-hidden="true">×</span>
+</button>
+<section class="preview-contact-card preview-inquiry-card preview-paper">
+<div class="preview-inquiry-heading">
+<div class="preview-inquiry-heading-row">
+<h2 class="preview-inquiry-title" id="inquiry-day-pass-title">Richiedi maggiori informazioni</h2>
+<img class="" src="../assets/tpr-character.svg" alt="" decoding="async" width="64" height="80" aria-hidden="true">
+</div>
+<p class="preview-inquiry-subtitle">Offerta <strong>DAY PASS</strong>
+</p>
+</div>
+<form class="preview-contact-form " data-inquiry-form data-kind="contact" data-endpoint="https://thepeoplesroom.it/api/inquiry" data-subject="Informazioni TPR" data-offer="day-pass">
+<div class="preview-fields">
+<label class="preview-select">
+<span class="sr-only">Tipologia utente</span>
+<select name="user_type" required aria-label="Tipologia utente">
+<option value="">Tipologia utente*</option>
+<option>Privato</option>
+<option>Freelancer</option>
+<option>Startup</option>
+<option>Azienda</option>
+</select>
+</label>
+<label>
+<span class="sr-only">Nome e Cognome</span>
+<input name="name" autocomplete="name" placeholder="Nome e Cognome*" required>
+</label>
+<label>
+<span class="sr-only">Email</span>
+<input name="email" type="email" autocomplete="email" placeholder="Email*" required>
+</label>
+<label>
+<span class="sr-only">Telefono</span>
+<input name="phone" type="tel" autocomplete="tel" placeholder="Telefono*" required>
+</label>
+<label class="preview-field-message">
+<span class="sr-only">Messaggio</span>
+<textarea name="message" placeholder="Messaggio" rows="3">
+</textarea>
+</label>
+<button class="preview-submit" type="submit">Invia <span class="preview-chevron" aria-hidden="true">
+</span>
+</button>
+</div>
+<label class="preview-trap" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off">
+</label>
+<p class="preview-form-status" role="status" aria-live="polite"></p>
+</form>
+</section>
+</dialog>
+<dialog class="preview-inquiry-dialog" id="inquiry-all-inclusive" aria-labelledby="inquiry-all-inclusive-title" data-inquiry-dialog>
+<button class="preview-inquiry-close" type="button" data-inquiry-close aria-label="Chiudi il modulo">
+<span aria-hidden="true">×</span>
+</button>
+<section class="preview-contact-card preview-inquiry-card preview-paper" data-figma-node="1068:2675">
+<div class="preview-inquiry-heading">
+<div class="preview-inquiry-heading-row">
+<h2 class="preview-inquiry-title" id="inquiry-all-inclusive-title">Richiedi maggiori informazioni</h2>
+<img class="" src="../assets/tpr-character.svg" alt="" decoding="async" width="64" height="80" aria-hidden="true">
+</div>
+<p class="preview-inquiry-subtitle">Offerta <strong>ALL INCLUSIVE</strong>
+</p>
+</div>
+<form class="preview-contact-form " data-inquiry-form data-kind="contact" data-endpoint="https://thepeoplesroom.it/api/inquiry" data-subject="Informazioni TPR" data-offer="all-inclusive">
+<div class="preview-fields">
+<label class="preview-select">
+<span class="sr-only">Tipologia utente</span>
+<select name="user_type" required aria-label="Tipologia utente">
+<option value="">Tipologia utente*</option>
+<option>Privato</option>
+<option>Freelancer</option>
+<option>Startup</option>
+<option>Azienda</option>
+</select>
+</label>
+<label>
+<span class="sr-only">Nome e Cognome</span>
+<input name="name" autocomplete="name" placeholder="Nome e Cognome*" required>
+</label>
+<label>
+<span class="sr-only">Email</span>
+<input name="email" type="email" autocomplete="email" placeholder="Email*" required>
+</label>
+<label>
+<span class="sr-only">Telefono</span>
+<input name="phone" type="tel" autocomplete="tel" placeholder="Telefono*" required>
+</label>
+<label class="preview-field-message">
+<span class="sr-only">Messaggio</span>
+<textarea name="message" placeholder="Messaggio" rows="3">
+</textarea>
+</label>
+<button class="preview-submit" type="submit">Invia <span class="preview-chevron" aria-hidden="true">
+</span>
+</button>
+</div>
+<label class="preview-trap" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off">
+</label>
+<p class="preview-form-status" role="status" aria-live="polite"></p>
+</form>
+</section>
+</dialog>
+<dialog class="preview-inquiry-dialog" id="inquiry-flex-8" aria-labelledby="inquiry-flex-8-title" data-inquiry-dialog>
+<button class="preview-inquiry-close" type="button" data-inquiry-close aria-label="Chiudi il modulo">
+<span aria-hidden="true">×</span>
+</button>
+<section class="preview-contact-card preview-inquiry-card preview-paper">
+<div class="preview-inquiry-heading">
+<div class="preview-inquiry-heading-row">
+<h2 class="preview-inquiry-title" id="inquiry-flex-8-title">Richiedi maggiori informazioni</h2>
+<img class="" src="../assets/tpr-character.svg" alt="" decoding="async" width="64" height="80" aria-hidden="true">
+</div>
+<p class="preview-inquiry-subtitle">Offerta <strong>FLEX 8</strong>
+</p>
+</div>
+<form class="preview-contact-form " data-inquiry-form data-kind="contact" data-endpoint="https://thepeoplesroom.it/api/inquiry" data-subject="Informazioni TPR" data-offer="flex-8">
+<div class="preview-fields">
+<label class="preview-select">
+<span class="sr-only">Tipologia utente</span>
+<select name="user_type" required aria-label="Tipologia utente">
+<option value="">Tipologia utente*</option>
+<option>Privato</option>
+<option>Freelancer</option>
+<option>Startup</option>
+<option>Azienda</option>
+</select>
+</label>
+<label>
+<span class="sr-only">Nome e Cognome</span>
+<input name="name" autocomplete="name" placeholder="Nome e Cognome*" required>
+</label>
+<label>
+<span class="sr-only">Email</span>
+<input name="email" type="email" autocomplete="email" placeholder="Email*" required>
+</label>
+<label>
+<span class="sr-only">Telefono</span>
+<input name="phone" type="tel" autocomplete="tel" placeholder="Telefono*" required>
+</label>
+<label class="preview-field-message">
+<span class="sr-only">Messaggio</span>
+<textarea name="message" placeholder="Messaggio" rows="3">
+</textarea>
+</label>
+<button class="preview-submit" type="submit">Invia <span class="preview-chevron" aria-hidden="true">
+</span>
+</button>
+</div>
+<label class="preview-trap" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off">
+</label>
+<p class="preview-form-status" role="status" aria-live="polite"></p>
+</form>
+</section>
+</dialog>
+<dialog class="preview-inquiry-dialog" id="inquiry-ufficio-virtuale" aria-labelledby="inquiry-ufficio-virtuale-title" data-inquiry-dialog>
+<button class="preview-inquiry-close" type="button" data-inquiry-close aria-label="Chiudi il modulo">
+<span aria-hidden="true">×</span>
+</button>
+<section class="preview-contact-card preview-inquiry-card preview-paper">
+<div class="preview-inquiry-heading">
+<div class="preview-inquiry-heading-row">
+<h2 class="preview-inquiry-title" id="inquiry-ufficio-virtuale-title">Richiedi maggiori informazioni</h2>
+<img class="" src="../assets/tpr-character.svg" alt="" decoding="async" width="64" height="80" aria-hidden="true">
+</div>
+<p class="preview-inquiry-subtitle">Offerta <strong>UFFICIO VIRTUALE</strong>
+</p>
+</div>
+<form class="preview-contact-form " data-inquiry-form data-kind="contact" data-endpoint="https://thepeoplesroom.it/api/inquiry" data-subject="Informazioni TPR" data-offer="ufficio-virtuale">
+<div class="preview-fields">
+<label class="preview-select">
+<span class="sr-only">Tipologia utente</span>
+<select name="user_type" required aria-label="Tipologia utente">
+<option value="">Tipologia utente*</option>
+<option>Privato</option>
+<option>Freelancer</option>
+<option>Startup</option>
+<option>Azienda</option>
+</select>
+</label>
+<label>
+<span class="sr-only">Nome e Cognome</span>
+<input name="name" autocomplete="name" placeholder="Nome e Cognome*" required>
+</label>
+<label>
+<span class="sr-only">Email</span>
+<input name="email" type="email" autocomplete="email" placeholder="Email*" required>
+</label>
+<label>
+<span class="sr-only">Telefono</span>
+<input name="phone" type="tel" autocomplete="tel" placeholder="Telefono*" required>
+</label>
+<label class="preview-field-message">
+<span class="sr-only">Messaggio</span>
+<textarea name="message" placeholder="Messaggio" rows="3">
+</textarea>
+</label>
+<button class="preview-submit" type="submit">Invia <span class="preview-chevron" aria-hidden="true">
+</span>
+</button>
+</div>
+<label class="preview-trap" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off">
+</label>
+<p class="preview-form-status" role="status" aria-live="polite"></p>
+</form>
+</section>
+</dialog>
 </body>
 </html>

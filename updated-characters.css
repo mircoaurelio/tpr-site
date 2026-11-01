@@ -1,0 +1,55 @@
+/* Supplied upper-body, torso/legs and emblem paths; no traced replacements. */
+.updated-preview .little-man .person,
+.updated-preview .little-man .object { animation: none !important; }
+.updated-preview .tpr-character {
+  --character-period: 5.8s;
+  display: block;
+  overflow: visible;
+  flex: none;
+}
+.updated-preview .tpr-character--coworking { --character-period: 5.4s; }
+.updated-preview .tpr-character--wellness { --character-period: 6.4s; }
+.updated-preview .tpr-character--bar { --character-period: 6s; }
+.updated-preview .tpr-character--reformer { --character-period: 5.2s; }
+.updated-preview .tpr-character :is(.tpr-character__body, .tpr-character__upper, .tpr-character__emblem, .tpr-character__detail) {
+  transform-box: fill-box;
+  animation-duration: var(--character-period);
+  animation-delay: var(--character-clock, 0s);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+}
+.updated-preview .tpr-character.is-character-visible :is(.tpr-character__body, .tpr-character__upper, .tpr-character__emblem, .tpr-character__detail) { animation-play-state: running; }
+.updated-preview .tpr-character__body { animation-name: tpr-character-breathe; }
+.updated-preview .tpr-character__upper { animation-name: tpr-character-upper; }
+.updated-preview .tpr-character__emblem {
+  transform-origin: 50% 100%;
+  animation-name: tpr-character-emblem;
+}
+.updated-preview .tpr-character .tpr-character__detail {
+  transform-origin: 50% 70%;
+  animation-name: tpr-character-detail;
+  animation-delay: calc(var(--character-clock, 0s) + var(--part-delay, 0s));
+}
+@keyframes tpr-character-breathe {
+  0%, 100% { transform: rotate(-.65deg) translateY(0); }
+  50% { transform: rotate(.65deg) translateY(-.7px); }
+}
+@keyframes tpr-character-upper {
+  0%, 100% { transform: rotate(-2.4deg); }
+  50% { transform: rotate(2.4deg); }
+}
+@keyframes tpr-character-emblem {
+  0%, 100% { transform: rotate(-1.4deg) translateY(0); }
+  50% { transform: rotate(1.4deg) translateY(-1px); }
+}
+@keyframes tpr-character-detail {
+  0%, 100% { transform: translateY(1.5px) rotate(-2deg); }
+  50% { transform: translateY(-2.5px) rotate(2deg); }
+}
+.updated-preview .preview-menu-room .tpr-character { width: 100%; height: 100%; color: white; }
+.updated-preview .preview-room-character.has-separated-character { mask: none; -webkit-mask: none; background: transparent; }
+.updated-preview .preview-room-character .tpr-character { width: 100%; height: 100%; color: var(--room-accent); }
+@media (prefers-reduced-motion: reduce) {
+  .updated-preview .tpr-character :is(.tpr-character__body, .tpr-character__upper, .tpr-character__emblem, .tpr-character__detail) { animation: none !important; }
+}

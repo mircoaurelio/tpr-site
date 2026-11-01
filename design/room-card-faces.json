@@ -1,0 +1,839 @@
+{
+  "sourceCanvas": [
+    3432,
+    952
+  ],
+  "rooms": {
+    "coworking": {
+      "source": {
+        "file": "Coworking.pdf",
+        "sha256": "255db819bb37f14251719c976f8d6359b523e8ae3b39250b96bed3f92de64db7",
+        "node": "809:3282",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      },
+      "background": "assets/figma-updated/composites/room-coworking-panorama-background-2x.webp",
+      "artwork": "assets/figma-updated/composites/room-coworking-artwork-2x.webp",
+      "cards": [
+        {
+          "role": "rooms.coworking.cards.postazioni",
+          "front": "assets/figma-updated/composites/room-coworking-card-postazioni-front-2x.webp",
+          "crop": [
+            1504,
+            251,
+            576,
+            450
+          ],
+          "nominalFrame": [
+            1512,
+            259,
+            560,
+            434
+          ],
+          "photo": "assets/figma-updated/photos/room-coworking-postazioni-window-2x.webp",
+          "photoKind": "photo",
+          "rawPhoto": "assets/figma-updated/photos/room-coworking-postazioni-source.jpeg",
+          "sourceFormXref": 46,
+          "sourcePhoto": {
+            "path": "assets/figma-updated/photos/room-coworking-postazioni-source.jpeg",
+            "sha256": "b9655b2c85e2243fda703f879f762eb098a99c6b1f169be733c8402526d8168f",
+            "width": 4096,
+            "height": 2731,
+            "pdf": "Coworking.pdf",
+            "xref": 40,
+            "intrinsic_alpha_opaque": true
+          }
+        },
+        {
+          "role": "rooms.coworking.cards.sale-riunioni",
+          "front": "assets/figma-updated/composites/room-coworking-card-sale-riunioni-front-2x.webp",
+          "crop": [
+            2144,
+            251,
+            576,
+            450
+          ],
+          "nominalFrame": [
+            2152,
+            259,
+            560,
+            434
+          ],
+          "photo": "assets/figma-updated/photos/room-coworking-sale-riunioni-window-2x.webp",
+          "photoKind": "photo",
+          "rawPhoto": "assets/figma-updated/photos/room-coworking-sale-riunioni-source.jpeg",
+          "sourceFormXref": 26,
+          "sourcePhoto": {
+            "path": "assets/figma-updated/photos/room-coworking-sale-riunioni-source.jpeg",
+            "sha256": "c12423d229a008db7f5fb5eb5aae44a7e6ea552e719fd7909d0f3d6a45b7d582",
+            "width": 4096,
+            "height": 2730,
+            "pdf": "Coworking.pdf",
+            "xref": 20,
+            "intrinsic_alpha_opaque": true
+          }
+        },
+        {
+          "role": "rooms.coworking.cards.eventi",
+          "front": "assets/figma-updated/composites/room-coworking-card-eventi-front-2x.webp",
+          "crop": [
+            2784,
+            251,
+            576,
+            450
+          ],
+          "nominalFrame": [
+            2792,
+            259,
+            560,
+            434
+          ],
+          "photo": "assets/figma-updated/photos/room-coworking-eventi-window-2x.webp",
+          "photoKind": "photo",
+          "rawPhoto": "assets/figma-updated/photos/room-coworking-eventi-source.jpeg",
+          "sourceFormXref": 36,
+          "sourcePhoto": {
+            "path": "assets/figma-updated/photos/room-coworking-eventi-source.jpeg",
+            "sha256": "4fcd8e8450b617ff8746a1a88843f641012fb35418529efdb15bbbed09e72836",
+            "width": 3276,
+            "height": 4096,
+            "pdf": "Coworking.pdf",
+            "xref": 30,
+            "intrinsic_alpha_opaque": true
+          }
+        }
+      ],
+      "photoLayers": [
+        {
+          "raw": "assets/figma-updated/photos/room-coworking-primary-1-source.jpeg",
+          "rawSize": [
+            4096,
+            2730
+          ],
+          "matrix": [
+            0.4800656735839844,
+            4.19921875e-08,
+            -4.212454212454213e-08,
+            0.4800656051282051,
+            -661.5177679999999,
+            -298.2167969999998
+          ],
+          "mask": "assets/figma-updated/composites/room-coworking-photo-mask-1-2x.webp",
+          "maskFrame": [
+            0,
+            0,
+            1512,
+            952
+          ],
+          "source": {
+            "path": "assets/figma-updated/photos/room-coworking-primary-1-source.jpeg",
+            "sha256": "98604344e4689c2feadf8316b132888bebd50f404ae0e0b7a1355bde90027bd0",
+            "width": 4096,
+            "height": 2730,
+            "pdf": "Coworking.pdf",
+            "xref": 56,
+            "intrinsic_alpha_opaque": true
+          }
+        },
+        {
+          "raw": "assets/figma-updated/photos/room-coworking-primary-2-source.jpeg",
+          "rawSize": [
+            4096,
+            2731
+          ],
+          "matrix": [
+            -0.8399178386230469,
+            0.0238792412109375,
+            0.023879236543390702,
+            0.8399177700476016,
+            1454.288735,
+            -778.1130370000001
+          ],
+          "mask": "assets/figma-updated/composites/room-coworking-photo-mask-2-2x.webp",
+          "maskFrame": [
+            0,
+            0,
+            1512,
+            952
+          ],
+          "source": {
+            "path": "assets/figma-updated/photos/room-coworking-primary-2-source.jpeg",
+            "sha256": "b9655b2c85e2243fda703f879f762eb098a99c6b1f169be733c8402526d8168f",
+            "width": 4096,
+            "height": 2731,
+            "pdf": "Coworking.pdf",
+            "xref": 40,
+            "intrinsic_alpha_opaque": true
+          }
+        }
+      ],
+      "backgroundWithoutPhotos": "assets/figma-updated/composites/room-coworking-background-without-photos-2x.webp",
+      "artworkWithoutPhotos": "assets/figma-updated/composites/room-coworking-artwork-without-photos-2x.webp",
+      "photoComposite": "assets/figma-updated/composites/room-coworking-masked-photos-2x.webp",
+      "fallbackPanorama": "assets/figma-updated/composites/room-coworking-panorama-fallback-2x.webp",
+      "photoMask": "assets/figma-updated/composites/room-coworking-photo-mask-union-2x.webp",
+      "photoMaskFrame": [
+        0,
+        0,
+        1512,
+        952
+      ],
+      "maskProvenance": "Alpha of original isolated PDF photo layers and their unmodified vector clips; no tracing.",
+      "retainedUnderlay": {
+        "path": "assets/figma-updated/photos/room-coworking-image74-backing-source.jpeg",
+        "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+        "width": 1080,
+        "height": 1440,
+        "pdf": "Coworking.pdf",
+        "xref": 50,
+        "intrinsic_alpha_opaque": true
+      }
+    },
+    "reformer": {
+      "source": {
+        "file": "Move.pdf",
+        "sha256": "b2bdee03460757aeb75ba9d22392706967d7d2c911d3570ef202922abefa8e1c",
+        "node": "643:1823",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      },
+      "background": "assets/figma-updated/composites/room-reformer-panorama-background-2x.webp",
+      "artwork": "assets/figma-updated/composites/room-reformer-artwork-2x.webp",
+      "cards": [
+        {
+          "role": "rooms.reformer.cards.studio",
+          "front": "assets/figma-updated/composites/room-reformer-card-studio-front-2x.webp",
+          "crop": [
+            1504,
+            251,
+            576,
+            450
+          ],
+          "nominalFrame": [
+            1512,
+            259,
+            560,
+            434
+          ],
+          "photo": "assets/figma-updated/photos/room-reformer-studio-window-2x.webp",
+          "photoKind": "photo",
+          "rawPhoto": "assets/figma-updated/photos/room-reformer-studio-source.jpeg",
+          "sourceFormXref": 52,
+          "sourcePhoto": {
+            "path": "assets/figma-updated/photos/room-reformer-studio-source.jpeg",
+            "sha256": "8dcb459adec5ee58f67dbcaeb715a20a0f1a112d6bb9fb29dd472cb09233beea",
+            "width": 4096,
+            "height": 2731,
+            "pdf": "Move.pdf",
+            "xref": 46,
+            "intrinsic_alpha_opaque": true
+          }
+        },
+        {
+          "role": "rooms.reformer.cards.classi",
+          "front": "assets/figma-updated/composites/room-reformer-card-classi-front-2x.webp",
+          "crop": [
+            2144,
+            251,
+            576,
+            450
+          ],
+          "nominalFrame": [
+            2152,
+            259,
+            560,
+            434
+          ],
+          "photo": "assets/figma-updated/photos/room-reformer-classi-window-2x.webp",
+          "photoKind": "photo",
+          "rawPhoto": "assets/figma-updated/photos/room-reformer-classi-source.jpeg",
+          "sourceFormXref": 28,
+          "sourcePhoto": {
+            "path": "assets/figma-updated/photos/room-reformer-classi-source.jpeg",
+            "sha256": "a995b3e7a178bc2bedf62cd92458828af9fa3dc244ce1bdaba186c81a05cdae6",
+            "width": 4096,
+            "height": 2731,
+            "pdf": "Move.pdf",
+            "xref": 18,
+            "intrinsic_alpha_opaque": true
+          }
+        },
+        {
+          "role": "rooms.reformer.cards.attrezzature",
+          "front": "assets/figma-updated/composites/room-reformer-card-attrezzature-front-2x.webp",
+          "crop": [
+            2784,
+            251,
+            576,
+            450
+          ],
+          "nominalFrame": [
+            2792,
+            259,
+            560,
+            434
+          ],
+          "photo": "assets/figma-updated/photos/room-reformer-attrezzature-window-2x.webp",
+          "photoKind": "photo",
+          "rawPhoto": "assets/figma-updated/photos/room-reformer-attrezzature-source.jpeg",
+          "sourceFormXref": 38,
+          "sourcePhoto": {
+            "path": "assets/figma-updated/photos/room-reformer-attrezzature-source.jpeg",
+            "sha256": "f68ffccbbc4f0c0c22574e354a67817da37544f929f3abc26d7a361b5758ebab",
+            "width": 4096,
+            "height": 2731,
+            "pdf": "Move.pdf",
+            "xref": 32,
+            "intrinsic_alpha_opaque": true
+          }
+        }
+      ],
+      "photoLayers": [
+        {
+          "raw": "assets/figma-updated/photos/room-reformer-primary-1-source.jpeg",
+          "rawSize": [
+            4096,
+            2730
+          ],
+          "matrix": [
+            0.48476150634765625,
+            4.248046875e-08,
+            -4.249084249084249e-08,
+            0.48476151135531137,
+            -741.9427549999999,
+            -151.1164550000001
+          ],
+          "mask": "assets/figma-updated/composites/room-reformer-photo-mask-1-2x.webp",
+          "maskFrame": [
+            0,
+            0,
+            1512,
+            952
+          ],
+          "source": {
+            "path": "assets/figma-updated/photos/room-reformer-primary-1-source.jpeg",
+            "sha256": "96c2a9382b08480aabc02d8c9091fb5a09376f0a1c16857898e6168254d37e41",
+            "width": 4096,
+            "height": 2730,
+            "pdf": "Move.pdf",
+            "xref": 56,
+            "intrinsic_alpha_opaque": true
+          }
+        }
+      ],
+      "backgroundWithoutPhotos": "assets/figma-updated/composites/room-reformer-background-without-photos-2x.webp",
+      "artworkWithoutPhotos": "assets/figma-updated/composites/room-reformer-artwork-without-photos-2x.webp",
+      "photoComposite": "assets/figma-updated/composites/room-reformer-masked-photos-2x.webp",
+      "fallbackPanorama": "assets/figma-updated/composites/room-reformer-panorama-fallback-2x.webp",
+      "photoMask": "assets/figma-updated/composites/room-reformer-photo-mask-union-2x.webp",
+      "photoMaskFrame": [
+        0,
+        0,
+        1512,
+        952
+      ],
+      "maskProvenance": "Alpha of original isolated PDF photo layers and their unmodified vector clips; no tracing.",
+      "retainedUnderlay": {
+        "path": "assets/figma-updated/photos/room-reformer-image74-backing-source.jpeg",
+        "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+        "width": 1080,
+        "height": 1440,
+        "pdf": "Move.pdf",
+        "xref": 22,
+        "intrinsic_alpha_opaque": true
+      }
+    },
+    "bar": {
+      "source": {
+        "file": "Fuel.pdf",
+        "sha256": "3554590e6fbc3bb100b9e8088602520dedfe9738a6e7bfdffaf9f62273f7942a",
+        "node": "643:1895",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      },
+      "background": "assets/figma-updated/composites/room-bar-panorama-background-2x.webp",
+      "artwork": "assets/figma-updated/composites/room-bar-artwork-2x.webp",
+      "cards": [
+        {
+          "role": "rooms.bar.cards.servizi",
+          "front": "assets/figma-updated/composites/room-bar-card-servizi-front-2x.webp",
+          "crop": [
+            1504,
+            251,
+            576,
+            450
+          ],
+          "nominalFrame": [
+            1512,
+            259,
+            560,
+            434
+          ],
+          "photo": "assets/figma-updated/photos/room-bar-servizi-window-2x.webp",
+          "photoKind": "photo",
+          "rawPhoto": "assets/figma-updated/photos/room-bar-servizi-source.jpeg",
+          "sourceFormXref": 28,
+          "sourcePhoto": {
+            "path": "assets/figma-updated/photos/room-bar-servizi-source.jpeg",
+            "sha256": "38880a76564cde6bd5eac64844d8455d43201c697cb25ce67723afabe98ebf73",
+            "width": 2731,
+            "height": 4096,
+            "pdf": "Fuel.pdf",
+            "xref": 18,
+            "intrinsic_alpha_opaque": true
+          }
+        },
+        {
+          "role": "rooms.bar.cards.accessibilita",
+          "front": "assets/figma-updated/composites/room-bar-card-accessibilita-front-2x.webp",
+          "crop": [
+            2144,
+            251,
+            576,
+            450
+          ],
+          "nominalFrame": [
+            2152,
+            259,
+            560,
+            434
+          ],
+          "photo": "assets/figma-updated/photos/room-bar-accessibilita-window-2x.webp",
+          "photoKind": "photo",
+          "rawPhoto": "assets/figma-updated/photos/room-bar-accessibilita-source.jpeg",
+          "sourceFormXref": 52,
+          "sourcePhoto": {
+            "path": "assets/figma-updated/photos/room-bar-accessibilita-source.jpeg",
+            "sha256": "cb4083769b67465c719951cef456b3c3c18c47fefe0d4356f1fb968193abefa9",
+            "width": 4096,
+            "height": 2730,
+            "pdf": "Fuel.pdf",
+            "xref": 46,
+            "intrinsic_alpha_opaque": true
+          }
+        },
+        {
+          "role": "rooms.bar.cards.storage",
+          "front": "assets/figma-updated/composites/room-bar-card-storage-front-2x.webp",
+          "crop": [
+            2784,
+            251,
+            576,
+            450
+          ],
+          "nominalFrame": [
+            2792,
+            259,
+            560,
+            434
+          ],
+          "photo": "assets/figma-updated/photos/room-bar-storage-window-2x.webp",
+          "photoKind": "photo",
+          "rawPhoto": "assets/figma-updated/photos/room-bar-storage-source.jpeg",
+          "sourceFormXref": 38,
+          "sourcePhoto": {
+            "path": "assets/figma-updated/photos/room-bar-storage-source.jpeg",
+            "sha256": "8074acd7d5152887fed5ad4083b06b04301a0a5a611b75150a3d428ab4aa0326",
+            "width": 4096,
+            "height": 2731,
+            "pdf": "Fuel.pdf",
+            "xref": 32,
+            "intrinsic_alpha_opaque": true
+          }
+        }
+      ],
+      "photoLayers": [
+        {
+          "raw": "assets/figma-updated/photos/room-bar-primary-1-source.jpeg",
+          "rawSize": [
+            4096,
+            2730
+          ],
+          "matrix": [
+            0.5487011669921875,
+            4.78515625e-08,
+            -4.798534798534799e-08,
+            0.548701180952381,
+            -482.40843800000005,
+            -159.62268099999983
+          ],
+          "mask": "assets/figma-updated/composites/room-bar-photo-mask-1-2x.webp",
+          "maskFrame": [
+            0,
+            0,
+            1512,
+            952
+          ],
+          "source": {
+            "path": "assets/figma-updated/photos/room-bar-primary-1-source.jpeg",
+            "sha256": "d5a81505635a0d6cc0a46dfedf7bf8cda746cbf69175da1bd43633bd945a3bde",
+            "width": 4096,
+            "height": 2730,
+            "pdf": "Fuel.pdf",
+            "xref": 56,
+            "intrinsic_alpha_opaque": true
+          }
+        }
+      ],
+      "backgroundWithoutPhotos": "assets/figma-updated/composites/room-bar-background-without-photos-2x.webp",
+      "artworkWithoutPhotos": "assets/figma-updated/composites/room-bar-artwork-without-photos-2x.webp",
+      "photoComposite": "assets/figma-updated/composites/room-bar-masked-photos-2x.webp",
+      "fallbackPanorama": "assets/figma-updated/composites/room-bar-panorama-fallback-2x.webp",
+      "photoMask": "assets/figma-updated/composites/room-bar-photo-mask-union-2x.webp",
+      "photoMaskFrame": [
+        0,
+        0,
+        1512,
+        952
+      ],
+      "maskProvenance": "Alpha of original isolated PDF photo layers and their unmodified vector clips; no tracing.",
+      "retainedUnderlay": {
+        "path": "assets/figma-updated/photos/room-bar-image74-backing-source.jpeg",
+        "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+        "width": 1080,
+        "height": 1440,
+        "pdf": "Fuel.pdf",
+        "xref": 22,
+        "intrinsic_alpha_opaque": true
+      }
+    },
+    "wellness": {
+      "source": {
+        "file": "Recharge.pdf",
+        "sha256": "69426c7d2aea99d327ec7e7c398520fcc4bdc4b957e48bc83e94d5088f704946",
+        "node": "643:1964",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      },
+      "background": "assets/figma-updated/composites/room-wellness-panorama-background-2x.webp",
+      "artwork": "assets/figma-updated/composites/room-wellness-artwork-2x.webp",
+      "cards": [
+        {
+          "role": "rooms.wellness.cards.gym",
+          "front": "assets/figma-updated/composites/room-wellness-card-gym-front-2x.webp",
+          "crop": [
+            1504,
+            251,
+            576,
+            450
+          ],
+          "nominalFrame": [
+            1512,
+            259,
+            560,
+            434
+          ],
+          "photo": "assets/figma-updated/photos/room-wellness-gym-window-2x.webp",
+          "photoKind": "photo",
+          "rawPhoto": "assets/figma-updated/photos/room-wellness-gym-source.jpeg",
+          "sourceFormXref": 30,
+          "sourcePhoto": {
+            "path": "assets/figma-updated/photos/room-wellness-gym-source.jpeg",
+            "sha256": "fdd18dff9b334d1243c8f815d5e4d90456364a571087fe2219a70f4ea822a9c2",
+            "width": 4096,
+            "height": 2730,
+            "pdf": "Recharge.pdf",
+            "xref": 20,
+            "intrinsic_alpha_opaque": true
+          }
+        },
+        {
+          "role": "rooms.wellness.cards.contrast-therapy",
+          "front": "assets/figma-updated/composites/room-wellness-card-contrast-therapy-front-2x.webp",
+          "crop": [
+            2144,
+            251,
+            576,
+            450
+          ],
+          "nominalFrame": [
+            2152,
+            259,
+            560,
+            434
+          ],
+          "photo": "assets/figma-updated/photos/room-wellness-contrast-therapy-window-2x.webp",
+          "photoKind": "photo",
+          "rawPhoto": "assets/figma-updated/photos/room-wellness-contrast-therapy-source.jpeg",
+          "sourceFormXref": 48,
+          "sourcePhoto": {
+            "path": "assets/figma-updated/photos/room-wellness-contrast-therapy-source.jpeg",
+            "sha256": "244c01d0ad4bd35256be460859864e86971df6b5411248969fc0fa1dbb65b2ac",
+            "width": 4096,
+            "height": 2730,
+            "pdf": "Recharge.pdf",
+            "xref": 42,
+            "intrinsic_alpha_opaque": true
+          }
+        },
+        {
+          "role": "rooms.wellness.cards.longevity",
+          "front": "assets/figma-updated/composites/room-wellness-card-longevity-front-2x.webp",
+          "crop": [
+            2784,
+            251,
+            576,
+            450
+          ],
+          "nominalFrame": [
+            2792,
+            259,
+            560,
+            434
+          ],
+          "photo": "assets/figma-updated/photos/room-wellness-longevity-window-2x.webp",
+          "photoKind": "illustration",
+          "rawPhoto": null,
+          "sourceFormXref": 38,
+          "sourcePhoto": null
+        }
+      ],
+      "photoLayers": [
+        {
+          "raw": "assets/figma-updated/photos/room-wellness-primary-1-source.jpeg",
+          "rawSize": [
+            4096,
+            2730
+          ],
+          "matrix": [
+            -0.570631265625,
+            -0.008328327880859375,
+            -0.00832832673992674,
+            0.5706312241758241,
+            2108.629887,
+            -315.62280199999987
+          ],
+          "mask": "assets/figma-updated/composites/room-wellness-photo-mask-1-2x.webp",
+          "maskFrame": [
+            0,
+            0,
+            1512,
+            952
+          ],
+          "source": {
+            "path": "assets/figma-updated/photos/room-wellness-primary-1-source.jpeg",
+            "sha256": "fdd18dff9b334d1243c8f815d5e4d90456364a571087fe2219a70f4ea822a9c2",
+            "width": 4096,
+            "height": 2730,
+            "pdf": "Recharge.pdf",
+            "xref": 20,
+            "intrinsic_alpha_opaque": true
+          }
+        }
+      ],
+      "backgroundWithoutPhotos": "assets/figma-updated/composites/room-wellness-background-without-photos-2x.webp",
+      "artworkWithoutPhotos": "assets/figma-updated/composites/room-wellness-artwork-without-photos-2x.webp",
+      "photoComposite": "assets/figma-updated/composites/room-wellness-masked-photos-2x.webp",
+      "fallbackPanorama": "assets/figma-updated/composites/room-wellness-panorama-fallback-2x.webp",
+      "photoMask": "assets/figma-updated/composites/room-wellness-photo-mask-union-2x.webp",
+      "photoMaskFrame": [
+        0,
+        0,
+        1512,
+        952
+      ],
+      "maskProvenance": "Alpha of original isolated PDF photo layers and their unmodified vector clips; no tracing.",
+      "retainedUnderlay": {
+        "path": "assets/figma-updated/photos/room-wellness-image74-backing-source.jpeg",
+        "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+        "width": 1080,
+        "height": 1440,
+        "pdf": "Recharge.pdf",
+        "xref": 24,
+        "intrinsic_alpha_opaque": true
+      }
+    },
+    "media": {
+      "source": {
+        "file": "Media.pdf",
+        "sha256": "20a648554172fcf3e4565664103ee4ea9cc5ca05769c75e5a981d90e67656a7f",
+        "node": "643:2033",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      },
+      "background": "assets/figma-updated/composites/room-media-panorama-background-2x.webp",
+      "artwork": "assets/figma-updated/composites/room-media-artwork-2x.webp",
+      "cards": [
+        {
+          "role": "rooms.media.cards.podcast",
+          "front": "assets/figma-updated/composites/room-media-card-podcast-front-2x.webp",
+          "crop": [
+            1504,
+            251,
+            576,
+            450
+          ],
+          "nominalFrame": [
+            1512,
+            259,
+            560,
+            434
+          ],
+          "photo": "assets/figma-updated/photos/room-media-podcast-window-2x.webp",
+          "photoKind": "photo",
+          "rawPhoto": "assets/figma-updated/photos/room-media-podcast-source.jpeg",
+          "sourceFormXref": 46,
+          "sourcePhoto": {
+            "path": "assets/figma-updated/photos/room-media-podcast-source.jpeg",
+            "sha256": "da9d5e0f96ed895ba55c57e1193d4c40db831ddc7862a3c7b36e55840f4800bb",
+            "width": 4096,
+            "height": 2731,
+            "pdf": "Media.pdf",
+            "xref": 40,
+            "intrinsic_alpha_opaque": true
+          }
+        },
+        {
+          "role": "rooms.media.cards.set-fotografico",
+          "front": "assets/figma-updated/composites/room-media-card-set-fotografico-front-2x.webp",
+          "crop": [
+            2144,
+            251,
+            576,
+            450
+          ],
+          "nominalFrame": [
+            2152,
+            259,
+            560,
+            434
+          ],
+          "photo": "assets/figma-updated/photos/room-media-set-fotografico-window-2x.webp",
+          "photoKind": "photo",
+          "rawPhoto": "assets/figma-updated/photos/room-media-set-fotografico-source.jpeg",
+          "sourceFormXref": 32,
+          "sourcePhoto": {
+            "path": "assets/figma-updated/photos/room-media-set-fotografico-source.jpeg",
+            "sha256": "a5ba9993406705c95e55ab09a31fd2092958a2cc1794f3310f19b9b74c8b71b0",
+            "width": 1536,
+            "height": 1024,
+            "pdf": "Media.pdf",
+            "xref": 26,
+            "intrinsic_alpha_opaque": true
+          }
+        },
+        {
+          "role": "rooms.media.cards.studio-audio",
+          "front": "assets/figma-updated/composites/room-media-card-studio-audio-front-2x.webp",
+          "crop": [
+            2784,
+            251,
+            576,
+            450
+          ],
+          "nominalFrame": [
+            2792,
+            259,
+            560,
+            434
+          ],
+          "photo": "assets/figma-updated/photos/room-media-studio-audio-window-2x.webp",
+          "photoKind": "illustration",
+          "rawPhoto": null,
+          "sourceFormXref": 22,
+          "sourcePhoto": null
+        }
+      ],
+      "photoLayers": [
+        {
+          "raw": "assets/figma-updated/photos/room-media-primary-1-source.jpeg",
+          "rawSize": [
+            1200,
+            1598
+          ],
+          "matrix": [
+            0.8491237383333333,
+            -0.0,
+            -0.0,
+            0.8500826076345432,
+            -103.948486,
+            -203.9669190000002
+          ],
+          "mask": "assets/figma-updated/composites/room-media-photo-mask-1-2x.webp",
+          "maskFrame": [
+            0,
+            0,
+            1512,
+            952
+          ],
+          "source": {
+            "path": "assets/figma-updated/photos/room-media-primary-1-source.jpeg",
+            "sha256": "c30d7332b65a1a053982c8ffa816e3141c062a21d67a9285bd17d88460bc8b78",
+            "width": 1200,
+            "height": 1598,
+            "pdf": "Media.pdf",
+            "xref": 56,
+            "intrinsic_alpha_opaque": true
+          }
+        },
+        {
+          "raw": "assets/figma-updated/photos/room-media-primary-2-source.jpeg",
+          "rawSize": [
+            2731,
+            4096
+          ],
+          "matrix": [
+            0.3588429146832662,
+            3.1490296594653976e-08,
+            -3.125e-08,
+            0.35884296899414064,
+            -211.68248899999995,
+            -135.1857910000001
+          ],
+          "mask": "assets/figma-updated/composites/room-media-photo-mask-2-2x.webp",
+          "maskFrame": [
+            0,
+            0,
+            1512,
+            952
+          ],
+          "source": {
+            "path": "assets/figma-updated/photos/room-media-primary-2-source.jpeg",
+            "sha256": "e0cd3b5d2d3f90792166d331825aef01c9e115cb129968fe85efc168351c4b09",
+            "width": 2731,
+            "height": 4096,
+            "pdf": "Media.pdf",
+            "xref": 36,
+            "intrinsic_alpha_opaque": true
+          }
+        }
+      ],
+      "backgroundWithoutPhotos": "assets/figma-updated/composites/room-media-background-without-photos-2x.webp",
+      "artworkWithoutPhotos": "assets/figma-updated/composites/room-media-artwork-without-photos-2x.webp",
+      "photoComposite": "assets/figma-updated/composites/room-media-masked-photos-2x.webp",
+      "fallbackPanorama": "assets/figma-updated/composites/room-media-panorama-fallback-2x.webp",
+      "photoMask": "assets/figma-updated/composites/room-media-photo-mask-union-2x.webp",
+      "photoMaskFrame": [
+        0,
+        0,
+        1512,
+        952
+      ],
+      "maskProvenance": "Alpha of original isolated PDF photo layers and their unmodified vector clips; no tracing.",
+      "retainedUnderlay": {
+        "path": "assets/figma-updated/photos/room-media-image74-backing-source.jpeg",
+        "sha256": "cea95061e8eb0bf94c72f0f4ab7106d27ddd4226e0929e0670cb82700cb318af",
+        "width": 1080,
+        "height": 1440,
+        "pdf": "Media.pdf",
+        "xref": 50,
+        "intrinsic_alpha_opaque": true
+      }
+    }
+  }
+}

@@ -1,0 +1,133 @@
+/* A complete front and back are fixed180deg apart inside one rigid rotor.
+   Outer card dimensions and native controls remain owned by their templates. */
+body.updated-preview :is(.preview-room-card, .tpr-elevator__mobile-card, .tpr-elevator__explore-card).tpr-card-scene {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  isolation: auto;
+  overflow: visible;
+  background: transparent;
+  box-shadow: none;
+  -webkit-mask: none;
+  mask: none;
+}
+body.updated-preview .preview-room-card.tpr-card-scene { padding: 0; }
+body.updated-preview .preview-room-card.tpr-card-scene::after { content: none; display: none; }
+.updated-preview .tpr-card-scene > .tpr-card-rotor {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+  transform-origin: center;
+}
+.updated-preview .tpr-card-scene.is-flipped > .tpr-card-rotor { transform: rotateY(180deg); }
+.updated-preview .tpr-card-scene .tpr-card-face.tpr-card-front-face,
+.updated-preview .tpr-card-scene .tpr-card-face.tpr-card-back-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transform-origin: center;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: none;
+}
+.updated-preview .tpr-card-scene .tpr-card-face.tpr-card-front-face { transform: rotateY(0deg); }
+.updated-preview .tpr-card-scene .tpr-card-face.tpr-card-back-face { display: flex; transform: rotateY(180deg); }
+.updated-preview .tpr-card-scene .tpr-elevator__mobile-card-front { opacity: 1; }
+
+/* Standalone native photo/title/arrow are one full surface. Move the original
+   paper mask and frame onto each face, so neither is a stationary overlay. */
+.updated-preview .preview-room-card.tpr-card-scene {
+  --card-surface-mask: url("assets/wavy-frame.svg");
+  --card-surface-size: 100% 100%;
+  --card-surface-position: center;
+}
+.updated-preview .preview-room-card.tpr-card-scene .tpr-card-face {
+  background: white;
+  mask-image: var(--card-surface-mask);
+  mask-size: var(--card-surface-size);
+  mask-position: var(--card-surface-position);
+  mask-repeat: no-repeat;
+  mask-origin: border-box;
+  mask-clip: no-clip;
+}
+.updated-preview .preview-room-card.tpr-card-scene .tpr-card-front-face {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 0 24px 24px;
+}
+.updated-preview .preview-room-card.tpr-card-scene .tpr-card-face::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 8px solid white;
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 2;
+}
+@media (min-width: 1201px) {
+  .updated-preview .preview-room-card.tpr-card-scene.has-source-paper {
+    --card-surface-mask: url("assets/figma-updated/shapes/about-card-mask-560x434.svg");
+    --card-surface-size: 571.929932px 446.900146px;
+    --card-surface-position: -6.084595px -6.400146px;
+  }
+  .updated-preview .preview-room-card.tpr-card-scene.has-source-paper .tpr-card-face::after {
+    inset: auto;
+    left: -6.084595px;
+    top: -6.400146px;
+    width: 571.929932px;
+    height: 446.900146px;
+    border: 0;
+    border-radius: 0;
+    background: url("assets/figma-updated/shapes/about-card-frame-560x434.svg") center/contain no-repeat;
+  }
+}
+@media (max-width: 900px) {
+  .updated-preview .preview-room-card.tpr-card-scene .tpr-card-front-face { padding-inline: 20px; }
+}
+
+/* Home mobile retains its existing native photo and readable label layout. */
+.updated-preview .tpr-elevator__mobile-card.tpr-card-scene .tpr-card-face {
+  background: white;
+  mask: url("assets/wavy-frame.svg") center/100% 100% no-repeat;
+}
+.updated-preview .tpr-elevator__mobile-card.tpr-card-scene .tpr-card-front-face { overflow: hidden; }
+
+/* Home desktop uses the alpha front exported from the original card Form.
+   Its precise source paint frame can extend beyond the unchanged hit frame. */
+.updated-preview .tpr-elevator__explore-card.tpr-card-scene .tpr-card-source-front {
+  position: absolute;
+  left: var(--source-front-x);
+  top: var(--source-front-y);
+  width: var(--source-front-width);
+  height: var(--source-front-height);
+  max-width: none;
+  max-height: none;
+  object-fit: fill;
+  pointer-events: none;
+}
+.updated-preview .tpr-elevator__explore-card.tpr-card-scene .tpr-elevator__card-front { opacity: 0; }
+.updated-preview .tpr-elevator__explore-card.tpr-card-scene .tpr-card-back-face {
+  overflow: visible;
+  isolation: isolate;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  mask: none;
+}
+.updated-preview .tpr-elevator__explore-card.tpr-card-scene .tpr-card-back-face::before {
+  content: "";
+  position: absolute;
+  left: var(--source-front-x);
+  top: var(--source-front-y);
+  width: var(--source-front-width);
+  height: var(--source-front-height);
+  background: white;
+  mask: var(--source-front-image) center/100% 100% no-repeat;
+  pointer-events: none;
+  z-index: -1;
+}

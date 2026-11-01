@@ -185,8 +185,9 @@ test('mobile room exploration and back keep their focused controls visible', asy
   }
 });
 
-// Catches the body-font reset winning over the close button's source-sized glyph.
-test('menu close glyph uses its 48px design size and retains keyboard behavior', async () => {
+// The recovered Menu_TPR reference replaces the old menu. Keep its explicit
+// glyph styling protected from the body reset and retain a48px touch target.
+test('source menu close glyph retains its 48px target and keyboard behavior', async () => {
   for (const width of [...widths, 1512]) {
     const { page, context } = await pageAt(width);
     try {
@@ -194,12 +195,12 @@ test('menu close glyph uses its 48px design size and retains keyboard behavior',
       const fontSize = await page.locator('[data-menu-close]').evaluate(element => getComputedStyle(element).fontSize);
       const position = await page.locator('[data-menu-close]').evaluate(element => {
         const style = getComputedStyle(element);
-        return { right: parseFloat(style.right), top: parseFloat(style.top) };
+        return { right: parseFloat(style.right), top: parseFloat(style.top), width: element.clientWidth, height: element.clientHeight };
       });
       measurements.push({ check: 'menu-close', width, fontSize, position });
       await capture(page, `menu-${width}`, '.preview-menu');
-      assert.equal(fontSize, '48px');
-      assert.deepEqual(position, width <= 900 ? { right: 14, top: 10 } : { right: 70, top: 16 });
+      assert.equal(fontSize, '36px');
+      assert.deepEqual(position, width <= 900 ? { right: 16, top: 20, width: 48, height: 48 } : { right: 72, top: 24, width: 48, height: 48 });
       await page.keyboard.press('Escape');
       assert.equal(await page.locator('[data-menu-open]').evaluate(element => element === document.activeElement), true);
     } finally { await context.close(); }

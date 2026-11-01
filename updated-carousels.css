@@ -1,0 +1,44 @@
+/* Keep the source card widths and paper contours while exposing navigation. */
+.updated-preview .preview-carousel {
+  width: 100%;
+  min-width: 0;
+}
+.updated-preview .preview-carousel__controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  padding-top: 24px;
+  color: inherit;
+}
+.updated-preview .preview-carousel__controls[hidden] { display: none; }
+.updated-preview .preview-carousel__hint {
+  margin-right: 8px;
+  font: 700 16px/1.2 var(--preview-body);
+}
+.updated-preview .preview-carousel__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  padding: 0 0 4px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  background: white;
+  color: var(--royal);
+  font: 400 40px/1 Arial, sans-serif;
+  cursor: pointer;
+}
+.updated-preview .preview-carousel__button:disabled { opacity: .35; cursor: default; }
+.updated-preview .preview-carousel__button:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
+.updated-preview [data-accessible-carousel] > [data-carousel] { cursor: grab; }
+.updated-preview [data-accessible-carousel] > [data-carousel] a { cursor: pointer; }
+.updated-preview [data-accessible-carousel] > .is-carousel-dragging,
+.updated-preview [data-accessible-carousel] > .is-carousel-dragging * { cursor: grabbing; user-select: none; }
+.updated-preview [data-accessible-carousel] img { -webkit-user-drag: none; user-select: none; }
+@media (max-width: 900px) {
+  .updated-preview .preview-carousel__controls { padding-top: 20px; }
+  .updated-preview .preview-carousel__hint { font-size: 14px; }
+}

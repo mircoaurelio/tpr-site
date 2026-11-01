@@ -16,7 +16,7 @@ Content lives in `design/updated-content.json`, shared templates in `scripts/bui
 
 Home reuses the original Room elevator: the masked photograph stays on its own plane as copy/background layers lift and photos crossfade. Explore opens the original wide image; vertical page scrolling pans it and its cards horizontally, then hands off to the next Room. Its original timing, easing, panorama geometry and 720px mobile expansion remain. Available updated assets and copy are supplied through a Home-only configuration. The scroll travel intentionally extends Home beyond its static Figma canvas; standalone Room pages retain their ordinary layout.
 
-See [ROUTES.md](ROUTES.md) for frames and routes, and [design/IMPLEMENTATION.md](design/IMPLEMENTATION.md) for validation and remaining gaps. Supplied Figma PDFs provide the available photos, partner logos, original vectors and Home compositions. Seventeen room photo roles, four left photo/eye stages, two coming-soon illustrations and some updated mobile frames remain unresolved. Pilates booking uses the supplied Mindbody widget. This preview is not claimed as a completed 1:1 match.
+See [ROUTES.md](ROUTES.md) for frames and routes, and [design/IMPLEMENTATION.md](design/IMPLEMENTATION.md) for source provenance, validation and reference limits. The five recovered Room PDFs now supply all definitive Room photos, masked compositions and 15 original card fronts. Original separated-part SVGs animate the characters; complete card faces rotate together. Offers open contact dialogs backed by the existing Brevo service. Pilates booking uses the supplied Mindbody widget. Exact approved prototype timing and some updated mobile frames remain unverified.
 
 The older `/homepage/` variant remains available in the GitHub preview. The Cloudflare production build redirects that variant to the current Home.
 
@@ -25,7 +25,7 @@ Production uses the existing `tpr-coming-soon` Cloudflare Worker for both [thepe
 ```powershell
 $env:NEWSLETTER_ENABLED='true'
 $env:PRIVACY_POLICY_URL='https://www.iubenda.com/privacy-policy/70616678'
-npm run test:newsletter
+npm run test:backend
 npm run test:cloudflare-build
 npm run deploy:cloudflare
 ```

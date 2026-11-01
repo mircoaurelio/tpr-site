@@ -131,6 +131,19 @@
   max-width: 100%;
 }
 
+/* The updated exports already contain their exact original photo clips.
+   Applying the old eye mask again would crop them a second time. The mobile
+   fade has its own source alpha mask, following the destination immediately. */
+.updated-preview #rooms[data-source-room-photos] .tpr-elevator__photo-plane {
+  -webkit-mask: none;
+  mask: none;
+}
+.updated-preview #rooms[data-source-room-photos][data-photo-room="coworking"] { --source-photo-mask: url("assets/figma-updated/composites/room-coworking-photo-mask-union-2x.webp"); }
+.updated-preview #rooms[data-source-room-photos][data-photo-room="reformer"] { --source-photo-mask: url("assets/figma-updated/composites/room-reformer-photo-mask-union-2x.webp"); }
+.updated-preview #rooms[data-source-room-photos][data-photo-room="wellness"] { --source-photo-mask: url("assets/figma-updated/composites/room-wellness-photo-mask-union-2x.webp"); }
+.updated-preview #rooms[data-source-room-photos][data-photo-room="bar"] { --source-photo-mask: url("assets/figma-updated/composites/room-bar-photo-mask-union-2x.webp"); }
+.updated-preview #rooms[data-source-room-photos][data-photo-room="media"] { --source-photo-mask: url("assets/figma-updated/composites/room-media-photo-mask-union-2x.webp"); }
+
 .updated-preview .tpr-elevator__car {
   color: var(--room-ink);
 }
@@ -318,6 +331,17 @@
 .updated-preview .tpr-elevator__photo-plane,
 .updated-preview .tpr-elevator__art {
   max-width: none;
+}
+
+/* The photo remains fixed as the cars lift; its lower fade follows the selected
+   destination immediately without changing the settled Room background. */
+.updated-preview .tpr-elevator[data-photo-room] .tpr-elevator__photo-plane::after {
+  background: linear-gradient(to bottom, transparent 72%, var(--photo-room-bg, var(--room-bg)) 100%);
+}
+.updated-preview #rooms[data-source-room-photos] .tpr-elevator__photo-plane::after {
+  -webkit-mask: var(--source-photo-mask) top left / 100% 100% no-repeat;
+  mask: var(--source-photo-mask) top left / 100% 100% no-repeat;
+  mask-mode: alpha;
 }
 
 .updated-preview .tpr-elevator__title {

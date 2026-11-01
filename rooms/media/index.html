@@ -8,11 +8,30 @@
 <meta name="description" content="The People's Room: coworking, movimento, cultura e benessere a Milano.">
 <link rel="icon" href="../../assets/tpr-character.svg" type="image/svg+xml">
 <link rel="preload" href="../../assets/fonts/pp-rader/PPRader-Bold.otf" as="font" type="font/otf" crossorigin>
-<link rel="stylesheet" href="../../updated-preview.css?v=20261101-allcopy">
+<link rel="stylesheet" href="../../updated-preview.css?v=20261101-desktop-feedback-1">
 <link rel="stylesheet" href="../../figma-refinements.css?v=20261031-clean">
 <link rel="stylesheet" href="../../pdf-assets.css?v=20261031-clean">
 <link rel="stylesheet" href="../../page-layout.css?v=20261031-review">
-<script src="../../updated-preview.js?v=20261101-allcopy" defer>
+<link rel="stylesheet" href="../../updated-carousels.css?v=20261101-desktop-feedback-1">
+<link rel="stylesheet" href="../../updated-motion.css?v=20261101-desktop-feedback-1">
+<link rel="stylesheet" href="../../updated-refinements.css?v=20261101-desktop-feedback-1">
+<link rel="stylesheet" href="../../updated-inquiries.css?v=20261101-desktop-feedback-1">
+<link rel="stylesheet" href="../../updated-characters.css?v=20261101-desktop-feedback-1">
+<link rel="stylesheet" href="../../updated-menu.css?v=20261101-desktop-feedback-1">
+<link rel="stylesheet" href="../../updated-card-motion.css?v=20261101-desktop-feedback-1">
+<script src="../../updated-preview.js?v=20261101-desktop-feedback-1" defer>
+</script>
+<script src="../../updated-inquiries.js?v=20261101-desktop-feedback-1" defer>
+</script>
+<script src="../../updated-carousels.js?v=20261101-desktop-feedback-1" defer>
+</script>
+<script src="../../updated-characters.js?v=20261101-desktop-feedback-1" defer>
+</script>
+<script src="../../updated-motion.js?v=20261101-desktop-feedback-1" defer>
+</script>
+<script src="../../updated-refinements.js?v=20261101-desktop-feedback-1" defer>
+</script>
+<script src="../../updated-card-motion.js?v=20261101-desktop-feedback-1" defer>
 </script>
 <script src="../../zigzag-controls.js?v=20261031-clean" defer>
 </script>
@@ -30,44 +49,49 @@
 </div>
 </header>
 <aside class="preview-menu" id="siteMenu" role="dialog" aria-label="Menu principale" aria-modal="true" aria-hidden="true" inert>
-<a class="preview-menu-brand" href="../../homepage-tpr/">
-<img class="" src="../../assets/tpr-logo.svg" alt="The People&#x27;s Room" decoding="async" >
+<a class="preview-menu-brand" href="../../homepage-tpr/" aria-label="The People's Room — Home">
+<img class="" src="../../assets/tpr-logo.svg" alt="The People&#x27;s Room" decoding="async" width="131" height="64">
 </a>
 <button class="preview-menu-close" type="button" data-menu-close aria-label="Chiudi il menu">×</button>
-<nav>
+<nav aria-label="Navigazione principale">
 <a href="../../about/">About</a>
 <div class="preview-menu-group">
 <a href="../../homepage-tpr/#rooms">TPR Rooms</a>
 <div class="preview-menu-rooms">
-<a class="preview-menu-room" href="../../rooms/coworking/">
-<img class="" src="../../assets/little-man/coworking.svg" alt="Coworking" decoding="async" width="112" height="180">
+<a class="preview-menu-room" data-menu-icon="coworking" href="../../rooms/coworking/" aria-label="Coworking">
+<img class="" src="../../assets/figma-updated/menu/coworking.svg" alt="" decoding="async" width="58" height="58" aria-hidden="true">
 </a>
-<a class="preview-menu-room" href="../../rooms/reformer/">
-<img class="" src="../../assets/little-man/reformer.svg" alt="TPR Move" decoding="async" width="112" height="180">
+<a class="preview-menu-room" data-menu-icon="wellness" href="../../rooms/wellness/" aria-label="Recharge">
+<img class="" src="../../assets/figma-updated/menu/wellness.svg" alt="" decoding="async" width="58" height="58" aria-hidden="true">
 </a>
-<a class="preview-menu-room" href="../../rooms/wellness/">
-<img class="" src="../../assets/little-man/wellness.svg" alt="Recharge" decoding="async" width="112" height="180">
+<a class="preview-menu-room" data-menu-icon="media" href="../../rooms/media/" aria-label="Media">
+<img class="" src="../../assets/figma-updated/menu/media.svg" alt="" decoding="async" width="58" height="58" aria-hidden="true">
 </a>
-<a class="preview-menu-room" href="../../rooms/bar/">
-<img class="" src="../../assets/little-man/bar.svg" alt="Fuel" decoding="async" width="112" height="180">
+<a class="preview-menu-room" data-menu-icon="reformer" href="../../rooms/reformer/" aria-label="TPR Move">
+<img class="" src="../../assets/figma-updated/menu/reformer.svg" alt="" decoding="async" width="58" height="58" aria-hidden="true">
 </a>
-<a class="preview-menu-room" href="../../rooms/media/">
-<img class="" src="../../assets/little-man/media.svg" alt="Media" decoding="async" width="112" height="180">
+<a class="preview-menu-room" data-menu-icon="bar" href="../../rooms/bar/" aria-label="Fuel">
+<img class="" src="../../assets/figma-updated/menu/bar.svg" alt="" decoding="async" width="58" height="58" aria-hidden="true">
 </a>
 </div>
 </div>
 <a href="../../vivi-tpr/">Vivi TPR</a>
-<a href="../../eventi/">Eventi &amp; Gallery</a>
+<div class="preview-menu-world">
+<span class="preview-menu-world-label" role="heading" aria-level="2">TPR World</span>
+<div class="preview-menu-world-links">
+<a href="../../eventi/">Eventi</a>
 <a href="../../contatti/">Contatti</a>
-<a class="preview-button preview-button--outline" href="../../prenota/">Prenota il Pilates</a>
+</div>
+</div>
 </nav>
+<p class="preview-menu-hours">Siamo aperti dal lunedì al venerdì, dalle 7:00 alle 22:00.</p>
 </aside>
 <main id="main">
 <div class="preview-page-art" aria-hidden="true">
 </div>
 <section id="rooms" class="preview-room-explorer" aria-label="TPR Rooms" data-room-explorer>
 <div class="preview-room-panel" data-room-panel="media" style="--room-bg:#ffc100;--room-accent:#2c64e8"  data-figma-node="643:2033">
-<img class="preview-room-art" src="../../assets/homepage-room-media-no-text-2x.webp" alt="" decoding="async" aria-hidden="true" data-pending-figma-image="643:2033">
+<img src="../../assets/figma-updated/composites/room-media-artwork-2x.webp" alt="" decoding="async" class="preview-room-art preview-room-art--source" data-asset-role="rooms.media.artwork" aria-hidden="true">
 <div class="preview-room-character" style="--room-character:url('assets/little-man/media.svg')">
 <img class="" src="../../assets/little-man/media.svg" alt="" decoding="async" aria-hidden="true">
 </div>
@@ -93,7 +117,8 @@
 <div class="preview-room-cards" tabindex="0" role="region" aria-label="Spazi TPR MEDIA" data-carousel>
 <article class="preview-room-card preview-paper">
 <div class="preview-room-card-front" aria-hidden="false">
-<div class="preview-room-card-photo" data-asset-role="rooms.media.cards.podcast" data-figma-node="1086:2219" data-pending-figma-image="1086:2219">
+<div class="preview-room-card-photo" data-asset-role="rooms.media.cards.podcast" data-figma-node="1086:2219">
+<img src="../../assets/figma-updated/photos/room-media-podcast-window-2x.webp" alt="podcast" decoding="async" >
 </div>
 <div class="preview-room-card-label">
 <h3 id="room-media-card-0-title">podcast</h3>
@@ -115,7 +140,8 @@
 </article>
 <article class="preview-room-card preview-paper">
 <div class="preview-room-card-front" aria-hidden="false">
-<div class="preview-room-card-photo" data-asset-role="rooms.media.cards.set-fotografico" data-figma-node="1086:2220" data-pending-figma-image="1086:2220">
+<div class="preview-room-card-photo" data-asset-role="rooms.media.cards.set-fotografico" data-figma-node="1086:2220">
+<img src="../../assets/figma-updated/photos/room-media-set-fotografico-window-2x.webp" alt="set fotografico" decoding="async" >
 </div>
 <div class="preview-room-card-label">
 <h3 id="room-media-card-1-title">set fotografico</h3>
@@ -136,7 +162,8 @@
 </div>
 </article>
 <article class="preview-room-card preview-paper">
-<div class="preview-room-card-photo" data-asset-role="rooms.media.cards.studio-audio" data-figma-node="1074:2890" data-pending-figma-image="1074:2890">
+<div class="preview-room-card-photo" data-asset-role="rooms.media.cards.studio-audio" data-figma-node="1074:2890">
+<img src="../../assets/figma-updated/photos/room-media-studio-audio-window-2x.webp" alt="studio audio" decoding="async" >
 </div>
 <div class="preview-room-card-label">
 <h3 id="room-media-card-2-title">studio audio</h3>

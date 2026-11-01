@@ -88,6 +88,9 @@ for (const filename of dependencies) {
   if (filename.endsWith('.css')) discoverSharedFiles(content, `/${filename}`);
 }
 files.set('design/updated-content.json', await readFile(path.join(root, 'design/updated-content.json'), 'utf8'));
+// The two-face Room loader requires only this explicit public asset manifest.
+// Do not publish the broader design directory or original source exports.
+files.set('design/room-card-faces.json', await readFile(path.join(root, 'design/room-card-faces.json'), 'utf8'));
 
 // Keep these old asset URLs working for clients that already loaded the former landing page.
 for (const filename of ['coming-soon.css', 'coming-soon.js']) {

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { before, after, test } from 'node:test';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { chromium } from 'playwright';
 
@@ -9,6 +9,7 @@ base.pathname = base.pathname.replace(/\/$/, '') + '/'; base.search = ''; base.h
 const phase = (process.env.TPR_QA_PHASE || 'current').replace(/[^a-z0-9_-]/gi, '-');
 const output = path.resolve('.qa/text-audit-current/standalone-card-copy-regression');
 const sourceInk = { coworking: 'rgb(44, 100, 232)', reformer: 'rgb(63, 153, 65)', wellness: 'rgb(63, 153, 65)', bar: 'rgb(235, 100, 43)', media: 'rgb(44, 100, 232)' };
+const sourceArt = JSON.parse(await readFile(new URL('../design/room-card-faces.json', import.meta.url), 'utf8')).rooms;
 // Independent source literals, transcribed from the authenticated Figma card
 // backs (31 October 2026); deliberately not imported from the content builder.
 const expected = {
@@ -54,6 +55,10 @@ for (const width of [1512, 393, 320]) {
         await page.goto(new URL(`rooms/${key}/`, base).href, { waitUntil: 'networkidle' });
         await page.evaluate(() => document.fonts.ready);
         const panel = page.locator('[data-room-panel]');
+        const art = panel.locator('.preview-room-art');
+        assert.equal(await art.evaluate(image => image.src), new URL(sourceArt[key].artwork, base).href, `${key} intro must use its own definitive source artwork`);
+        assert.equal(await art.evaluate(image => image.complete && image.naturalWidth === 3024 && image.naturalHeight === 1904), true, `${key} source stage must load completely`);
+        assert.equal(await art.getAttribute('data-pending-figma-image'), null);
         await page.locator('[data-room-explore]').click();
         assert.equal(await page.locator('.preview-room-card').count(), cards.length);
         assert.equal(await page.locator('[data-room-card-open]').count(), cards.filter(([, description]) => description).length, `${key} must expose source card backs through native front buttons`);

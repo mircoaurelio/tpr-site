@@ -1,0 +1,162 @@
+{
+  "source": "SVGs.svg — Figma SVGs section, Separato column",
+  "sha256": "23504a4a42dec5e1dff0ef42f6e79d4e0b50d1ac7dd8f737ce97e90eaa37818e",
+  "source_bytes": 109031,
+  "note": "Original source copied byte for byte. The white supplied parts are cropped and grouped without changing any path command; currentColor supplies each existing site palette. Source torso/legs remain one original part.",
+  "characters": {
+    "generic": {
+      "file": "generic.svg",
+      "source_path_indices": [
+        20,
+        21
+      ],
+      "crop": [
+        554,
+        917,
+        140,
+        181
+      ],
+      "joint": {
+        "x": 631.1915588378906,
+        "y": 987.0390625
+      },
+      "path_sha256": {
+        "20": "49decf53343d74fc91438048662adaa8c55afd2aa211ec901153db7852787136",
+        "21": "a642fbc56305b9f49a802f3c199fade1331cbbb88a37d289c22c89f1d89ebb95"
+      }
+    },
+    "wellness": {
+      "file": "wellness.svg",
+      "source_path_indices": [
+        27,
+        28,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "crop": [
+        536,
+        1139,
+        178,
+        238
+      ],
+      "joint": {
+        "x": 631.1915588378906,
+        "y": 1267.037353515625
+      },
+      "path_sha256": {
+        "22": "00a1a6b7acf316d4d8e49d55c8c4a0f2c95b1b2675ea712650aff75f0714f63d",
+        "23": "38751b56dc3476b0e94232ba1f191d2a35e4864b71e20c0ecf790d71c7d9b86d",
+        "24": "c3d48fb31edb40f9d55586fed056fffbe363d8a3b223a03e58760c0eadef8bbc",
+        "25": "1bfd52a3fc6aa0ee98ddd3cfbfcb0658b4802ddff8329a16868168f1ea94cecc",
+        "26": "aa4ada26e91dbb05df1a34dada4f31d61c9f0ea1d222c0331504d90bbaa6d305",
+        "27": "feb32819a9bb07f6eb6a75c48c4670f78b0894993312b7163fc3b44231a03f07",
+        "28": "89aa83a35714716f8aea368256bf0cdca1c44f366137cb0507b73df08031a38e"
+      }
+    },
+    "coworking": {
+      "file": "coworking.svg",
+      "source_path_indices": [
+        30,
+        29,
+        31,
+        32,
+        33
+      ],
+      "crop": [
+        540,
+        1394,
+        190,
+        225
+      ],
+      "joint": {
+        "x": 631.1915588378906,
+        "y": 1508.037353515625
+      },
+      "path_sha256": {
+        "29": "1b0b2af8e30f2ee7bca31ea3e2c2c5de7c20fc53a1ce989dc8c79f226e9968ad",
+        "30": "07f5d237c3489d2090b06790edbdfe19da161fe8d5a74d484e53e5abfd08efa0",
+        "31": "3d4516ed49f750c98b1253279a4255e54c14975d779fe4096432fedd8bbbedc9",
+        "32": "fadf887533bc85c5766368f903a144d1180590458cb848479443aaf8dbb00385",
+        "33": "13d559fa5128dff72078b7871ab297347ff71b6a3a0be79a545a7a68e76a4674"
+      }
+    },
+    "bar": {
+      "file": "bar.svg",
+      "source_path_indices": [
+        36,
+        35,
+        34
+      ],
+      "crop": [
+        554,
+        1620,
+        139,
+        232
+      ],
+      "joint": {
+        "x": 631.1915588378906,
+        "y": 1741.037353515625
+      },
+      "path_sha256": {
+        "34": "6bd5474b8e4a9b1acda7d977a46abe1501a81e647b93a63460f0ac3dfe24d6fa",
+        "35": "5cd50321f97329f5754dba5c70970d7bc8b50c07a2356cd8693450ce059f8b78",
+        "36": "049540bc54af318b6468271cd3330a0724c28f4325ef52c5336e64a48810f274"
+      }
+    },
+    "media": {
+      "file": "media.svg",
+      "source_path_indices": [
+        40,
+        42,
+        41,
+        37,
+        38,
+        39
+      ],
+      "crop": [
+        544,
+        1846,
+        163,
+        276
+      ],
+      "joint": {
+        "x": 631.1915588378906,
+        "y": 2011.037353515625
+      },
+      "path_sha256": {
+        "37": "44e22faf9072d02b070cf88e361578c13948900fe69af2141b6360bb6a9cf22d",
+        "38": "37d50186b613954456a2839f7c96596e4f3c5e6deb4f1711c4de01f39916c369",
+        "39": "7173c90e75108431b7f283deb1afb3941e127d7560e93446b297c8bfa3e44966",
+        "40": "e82f848f4910c12171ff07b4135a925c1b2d4bd134c38bc9df001a16f93af099",
+        "41": "21505fbc98789aca5a17b2fd5a0f2b1fe90c0799271de2af03ee5a7ea269400c",
+        "42": "9dd24d4d1b7f693b602a8ce53215f51f2400c69055613f87a9c405067c99cd31"
+      }
+    },
+    "reformer": {
+      "file": "reformer.svg",
+      "source_path_indices": [
+        44,
+        45,
+        43
+      ],
+      "crop": [
+        527,
+        2140,
+        186,
+        225
+      ],
+      "joint": {
+        "x": 631.1915588378906,
+        "y": 2254.037353515625
+      },
+      "path_sha256": {
+        "43": "d4bedfca3490d03b073ceb1400c01c70a54859ba7cc16254699dab6e65368810",
+        "44": "75fc20607cfdf2e3280c6f1975ff67752e904793bea478e1cd889e3e401be6f2",
+        "45": "3e7381bfe7efed7724eb9c531ece62c48cb82fd80279b72844b41b0158e18fb2"
+      }
+    }
+  }
+}

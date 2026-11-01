@@ -54,41 +54,7 @@
     nodes[next].focus();
   });
 
-  // The static preview hands enquiries to the visitor's email application.
-  // It never reports that a message was sent by a nonexistent form backend.
-  document.querySelectorAll("[data-inquiry-form]").forEach((form) => {
-    const submit = form.querySelector("[type=submit]");
-    const status = form.querySelector("[role=status]");
-    const update = () =>
-      submit.classList.toggle("is-ready", form.checkValidity());
-    form.addEventListener("input", update);
-    form.addEventListener("change", update);
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      if (!form.reportValidity()) return;
-      const values = new FormData(form);
-      const context = new URLSearchParams(location.search);
-      const body = [
-        `Tipologia: ${values.get("user_type")}`,
-        `Nome: ${values.get("name")}`,
-        `Email: ${values.get("email")}`,
-        `Telefono: ${values.get("phone")}`,
-        ...(context.get("offer") ? [`Offerta: ${context.get("offer")}`] : []),
-        ...(context.get("room") ? [`Stanza: ${context.get("room")}`] : []),
-        "",
-        values.get("message") || "",
-      ].join("\n");
-      const url = `mailto:hello@thepeoplesroom.it?subject=${encodeURIComponent(form.dataset.subject)}&body=${encodeURIComponent(body)}`;
-      const emailLink = document.createElement("a");
-      emailLink.href = url;
-      emailLink.textContent =
-        "Apri il messaggio nella tua app email per inviarlo.";
-      status.replaceChildren(emailLink);
-      form.closest(".preview-contact-card")?.classList.add("has-status");
-      emailLink.click();
-    });
-    update();
-  });
+  // Direct inquiry handling lives in updated-inquiries.js.
 
   document.querySelectorAll("[data-newsletter-form]").forEach((form) => {
     const email = form.elements.email;

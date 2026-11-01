@@ -1,0 +1,29 @@
+/* The source alpha stays in document space. Only the original raw photograph
+   inside this separate mask window receives a translation. */
+.updated-preview .tpr-photo-window {
+  position: absolute;
+  display: block;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  mask-mode: alpha;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: cover;
+}
+.updated-preview .tpr-photo-window > .tpr-parallax-photo {
+  position: absolute;
+  display: block;
+  max-width: none;
+  margin: 0;
+  object-fit: fill;
+  pointer-events: none;
+  will-change: translate;
+}
+.updated-preview .tpr-photo-window.is-photo-parallax-active { opacity: 1; }
+.updated-preview .tpr-photo-source.is-photo-parallax-active { opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .updated-preview .tpr-photo-window { opacity: 0; }
+  .updated-preview .tpr-photo-window > .tpr-parallax-photo { translate: none; will-change: auto; }
+  .updated-preview .tpr-photo-source.is-photo-parallax-active { opacity: 1; }
+}

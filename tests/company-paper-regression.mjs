@@ -10,6 +10,7 @@ const phase = process.env.TPR_QA_PHASE || 'after';
 const output = path.resolve(process.env.TPR_QA_OUTPUT || `.qa/public-visual-reference/company-fix/${phase}`);
 const base = (process.env.TPR_BASE_URL || 'http://127.0.0.1:4173').replace(/\/?$/, '/');
 const engines = (process.env.TPR_PAPER_BROWSERS || 'chromium,webkit').split(',');
+const widths = (process.env.TPR_PAPER_WIDTHS || '360,390,820,1440,1512').split(',').map(Number);
 const browsers = new Map();
 const measurements = [];
 before(async () => {
@@ -59,14 +60,77 @@ async function nominalState(card) {
         tag: e.tagName, rect: e.getBoundingClientRect().toJSON(), value: e.value,
         selectedIndex: e.selectedIndex, focused: e === document.activeElement,
       })),
+      contours: [...element.querySelectorAll('.has-zigzag')].map(e => {
+        const before = getComputedStyle(e, '::before'), svg = e.querySelector(':scope > .zigzag-contour');
+        return { rect: e.getBoundingClientRect().toJSON(),
+          source: { mask: before.maskImage, maskSize: before.maskSize, maskPosition: before.maskPosition,
+            left: before.left, top: before.top, width: before.width, height: before.height, fill: before.backgroundColor },
+          svg: svg && { viewBox: svg.getAttribute('viewBox'), width: svg.getAttribute('width'), height: svg.getAttribute('height'),
+            visibility: getComputedStyle(svg).visibility, paths: [...svg.querySelectorAll('path')].map(p => p.getAttribute('d')) },
+        };
+      }),
     };
   });
+}
+
+async function compareNominalPaper(page, enabledPNG, disabledPNG) {
+  return page.evaluate(async ({ enabled, disabled, base }) => {
+    const load = async src => { const img = new Image(); img.src = src; await img.decode(); return img; };
+    const [a, b, mask, frame] = await Promise.all([
+      load(enabled), load(disabled),
+      load(new URL('assets/figma-updated/shapes/company-card-mask-1352x920.svg', base).href),
+      load(new URL('assets/figma-updated/shapes/company-card-frame-1352x920.svg', base).href),
+    ]);
+    if (a.width !== 1352 || a.height !== 920 || b.width !== a.width || b.height !== a.height) throw Error('nominal source-paper comparison requires its exact 1352x920 frame');
+    const raster = (image, source = false) => {
+      const canvas = document.createElement('canvas'); canvas.width = a.width; canvas.height = a.height;
+      const ctx = canvas.getContext('2d');
+      // The original SVG's first solid path is the PDF paper rectangle at
+      // (80,6043), inside its paint bbox (73.621017456,6036.600097656).
+      // These source offsets place that rectangle at (0,0), one source unit
+      // per CSS pixel, independently of the DOM's current mask/frame styles.
+      if (source) ctx.drawImage(image, -6.3789825439453125, -6.39990234375, 1364.8789825439453, 932.80322265625);
+      else ctx.drawImage(image, 0, 0);
+      return ctx.getImageData(0, 0, a.width, a.height).data;
+    };
+    const A = raster(a), B = raster(b), M = raster(mask, true), F = raster(frame, true);
+    const roi = new Uint8Array(a.width * a.height);
+    // Compare every original brush-frame pixel and silhouette boundary/corner,
+    // including a one-pixel sampling fringe. Never select regions from a diff
+    // or from form-control bounds; the immutable source artwork defines ROI.
+    for (let y = 0; y < a.height; y++) for (let x = 0; x < a.width; x++) {
+      const i = y * a.width + x;
+      if (F[i * 4 + 3] || M[i * 4 + 3] < 255) for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+        if (x + dx >= 0 && x + dx < a.width && y + dy >= 0 && y + dy < a.height) roi[(y + dy) * a.width + x + dx] = 1;
+      }
+    }
+    const selectedA = [], selectedB = [];
+    let pixels = 0, different = 0, outsideDifferences = 0, deepestSourcePixel = 0;
+    const outsideBounds = [a.width, a.height, -1, -1];
+    for (let i = 0; i < roi.length; i++) {
+      const x = i % a.width, y = Math.floor(i / a.width);
+      const changed = [0, 1, 2, 3].some(c => A[i * 4 + c] !== B[i * 4 + c]);
+      if (roi[i]) {
+        pixels++; if (changed) different++;
+        deepestSourcePixel = Math.max(deepestSourcePixel, Math.min(x, y, a.width - x - 1, a.height - y - 1));
+        for (let c = 0; c < 4; c++) { selectedA.push(A[i * 4 + c]); selectedB.push(B[i * 4 + c]); }
+      } else if (changed) {
+        outsideDifferences++;
+        outsideBounds[0] = Math.min(outsideBounds[0], x); outsideBounds[1] = Math.min(outsideBounds[1], y);
+        outsideBounds[2] = Math.max(outsideBounds[2], x); outsideBounds[3] = Math.max(outsideBounds[3], y);
+      }
+    }
+    const hash = async data => [...new Uint8Array(await crypto.subtle.digest('SHA-256', new Uint8Array(data)))].map(n => n.toString(16).padStart(2, '0')).join('');
+    return { pixels, different, deepestSourcePixel, outsideDifferences, outsideBounds,
+      enabledHash: await hash(selectedA), disabledHash: await hash(selectedB),
+      source: { mask: mask.src, frame: frame.src, offset: [-6.3789825439453125, -6.39990234375], size: [1364.8789825439453, 932.80322265625] } };
+  }, { enabled: 'data:image/png;base64,' + enabledPNG.toString('base64'), disabled: 'data:image/png;base64,' + disabledPNG.toString('base64'), base });
 }
 
 for (const engine of engines) {
   test(`${engine}: company paper retains source-scale edge depth instead of stretching with card height`, async t => {
     const browser = browsers.get(engine);
-    for (const width of [360, 390, 820, 1440, 1512]) await t.test(`${width}px`, async () => {
+    for (const width of widths) await t.test(`${width}px`, async () => {
       const page = await browser.newPage({ viewport: { width, height: 1000 }, deviceScaleFactor: 1, reducedMotion: 'reduce' });
       try {
         await page.route('**/*', route => ['GET', 'HEAD'].includes(route.request().method()) ? route.continue() : route.abort());
@@ -103,14 +167,26 @@ for (const engine of engines) {
             const baseline = await card.screenshot({ path: path.join(output, `${engine}-${width}-without-responsive-company.png`), animations: 'disabled' });
             const baselineRaster = await analyzeImage(page, 'data:image/png;base64,' + baseline.toString('base64'));
             const disabled = await nominalState(card);
-            nominalAB = { enabled, disabled, enabledHash: raster.hash, disabledHash: baselineRaster.hash };
+            const paper = await compareNominalPaper(page, png, baseline);
+            nominalAB = { enabled, disabled, enabledHash: raster.hash, disabledHash: baselineRaster.hash, paper };
+            await writeFile(path.join(output, `${engine}-${width}-nominal-ab.json`), JSON.stringify(nominalAB, null, 2));
             assert.match(enabled.mask, /company-card-mask-1352x920\.svg/, 'nominal company must retain its original mask');
             assert.match(enabled.frame, /company-card-frame-1352x920\.svg/, 'nominal company must retain its original brush frame');
             assert.deepEqual(enabled, disabled, 'nominal mask, geometry, scroll and existing form-control state must be unchanged');
-            assert.equal(raster.hash, baselineRaster.hash, 'nominal desktop pixels must be identical with responsive company rules enabled/disabled');
+            assert.ok(paper.pixels > 2 * (1352 + 920), 'the independent original source must select the complete rough paper perimeter');
+            assert.equal(paper.different, 0, 'every source paper-edge RGBA pixel must be identical with responsive company rules enabled/disabled');
+            assert.equal(paper.enabledHash, paper.disabledHash, 'nominal source paper edge must match exactly, without pixel tolerance');
           } finally {
             await page.evaluate(() => { for (const [rule, css] of window.__companyPaperAB) rule.style.cssText = css; delete window.__companyPaperAB; });
           }
+          // A real paper-mask regression must still fail the strict source ROI,
+          // even though interior form rasterization is outside this test's scope.
+          const unmasked = await card.screenshot({ animations: 'disabled',
+            style: '.preview-company-card { mask-image: none !important; }' });
+          const mutation = await compareNominalPaper(page, png, unmasked);
+          assert.ok(mutation.different > 0, 'source paper-edge comparison must detect removing the actual paper mask');
+          nominalAB.maskMutationPixels = mutation.different;
+          await writeFile(path.join(output, `${engine}-${width}-nominal-ab.json`), JSON.stringify(nominalAB, null, 2));
         }
         // Hide contents only for the silhouette measurement: the unchanged real
         // card geometry/mask remains, while bright/dark photo pixels cannot be

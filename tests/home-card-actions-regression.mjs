@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { after, before, test } from 'node:test';
 import { chromium, webkit } from 'playwright';
+import { decodeStableImage } from './helpers/decode-stable-image.mjs';
 
 const base = new URL(process.env.TPR_BASE_URL || 'http://127.0.0.1:4175/');
 base.pathname = base.pathname.replace(/\/$/, '') + '/'; base.search = ''; base.hash = '';
@@ -20,6 +21,9 @@ after(async () => Promise.all([...browsers.values()].map(browser => browser.clos
 async function pageAt(engine, width) {
   const context = await browsers.get(engine).newContext({ viewport: { width, height: width <= 720 ? 852 : 952 }, reducedMotion: 'reduce', hasTouch: width <= 720, isMobile: width <= 720 });
   const page = await context.newPage(); page.setDefaultTimeout(6000);
+  // Public verification can transfer definitive Room assets over the network;
+  // keep interaction waits strict while allowing navigation its own deadline.
+  page.setDefaultNavigationTimeout(Number(process.env.TPR_NAVIGATION_TIMEOUT_MS) || 15000);
   // Exercise the real local destination and supplied widget configuration;
   // provider/network side effects are outside these navigation regressions.
   await page.route('**/*', route => ['GET', 'HEAD'].includes(route.request().method()) && new URL(route.request().url()).origin === base.origin ? route.continue() : route.abort());
@@ -32,7 +36,7 @@ async function openHomeRoom(page, width, key) {
   await page.locator('.tpr-elevator__car--current:not(.tpr-elevator__car--shade) ' + (width <= 720 ? '.tpr-elevator__mobile-cta' : '.tpr-elevator__desktop-copy [data-elevator-explore]')).click();
   await page.waitForFunction(mobile => document.querySelector('#rooms').classList.contains(mobile ? 'is-mobile-expanded' : 'is-explore-ready'), width <= 720);
   if (width > 720) {
-    await page.locator('.tpr-elevator__explore-track > img').evaluate(image => image.decode());
+    await decodeStableImage(page.locator('.tpr-elevator__explore-track > img'));
     await page.waitForFunction(() => Number(document.querySelector('.tpr-elevator__explore-progress').getAttribute('aria-valuenow')) >= 38);
   }
   return page.locator(width <= 720 ? '.tpr-elevator__car--current:not(.tpr-elevator__car--shade) .tpr-elevator__mobile-card' : '.tpr-elevator__explore-card');

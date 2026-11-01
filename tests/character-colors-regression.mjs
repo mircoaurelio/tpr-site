@@ -23,7 +23,7 @@ async function pageAt(route, width = 1512, { hydration = 'normal', motion = fals
     const r = request.request();
     if (!['GET', 'HEAD'].includes(r.method())) return request.abort();
     // Only delay/fail the hydration fetch; external <img> requests stay real.
-    if (/\/assets\/little-man\/[^/]+\.svg$/.test(new URL(r.url()).pathname) && ['fetch', 'xhr'].includes(r.resourceType())) {
+    if (/\/assets\/(?:little-man|figma-updated\/characters)\/[^/]+\.svg$/.test(new URL(r.url()).pathname) && ['fetch', 'xhr'].includes(r.resourceType())) {
       if (hydration === 'abort') return request.abort('failed');
       if (hydration === 'delay') { pending.push(request); return; }
     }
@@ -73,25 +73,32 @@ async function raster(page, selector, label, expected) {
       const img = new Image(); img.src = 'data:image/png;base64,' + png; await img.decode();
       const canvas = document.createElement('canvas'); canvas.width = img.width; canvas.height = img.height; const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0);
       const { data } = ctx.getImageData(0, 0, img.width, img.height), rgb = hex => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
-      const want = rgb(expected), back = rgb(background), histogram = new Map(); let wanted = 0, black = 0, foreground = 0;
+      const want = rgb(expected), back = rgb(background), histogram = new Map(); let wanted = 0, blended = 0, black = 0, foreground = 0;
+      const delta = want.map((v, k) => v - back[k]);
+      const magnitude = delta.reduce((sum, v) => sum + v * v, 0);
       for (let i = 0; i < data.length; i += 4) {
         const c = [data[i], data[i + 1], data[i + 2]];
         if (Math.max(...c.map((v, k) => Math.abs(v - back[k]))) <= 8) continue;
         foreground++;
         if (Math.max(...c.map((v, k) => Math.abs(v - want[k]))) <= 8) wanted++;
+        // Original outlined Menu icons have many antialiased edge pixels. Every
+        // such pixel must still lie on the source-color/background blend line.
+        const alpha = c.reduce((sum, v, k) => sum + (v - back[k]) * delta[k], 0) / magnitude;
+        if (alpha >= 0 && alpha <= 1.01 && Math.max(...c.map((v, k) => Math.abs(v - (back[k] + alpha * delta[k])))) <= 3) blended++;
         if (c.every(v => v < 25)) black++;
         const hex = '#' + c.map(v => v.toString(16).padStart(2, '0')).join(''); histogram.set(hex, (histogram.get(hex) || 0) + 1);
       }
-      return { width: img.width, height: img.height, foreground, wanted, black, wantedRatio: wanted / foreground, blackRatio: black / foreground, dominant: [...histogram].sort((a, b) => b[1] - a[1]).slice(0, 5) };
+      return { width: img.width, height: img.height, foreground, wanted, black, wantedRatio: wanted / foreground, blendedRatio: blended / foreground, blackRatio: black / foreground, dominant: [...histogram].sort((a, b) => b[1] - a[1]).slice(0, 5) };
     }, { png: buffer.toString('base64'), expected, background });
     const result = { label, expected, ...details, ...pixels }; measurements.push(result); return result;
   } finally { await host.evaluate(e => e.remove()); }
 }
 function wrongColor(result) {
-  return result.foreground < 100 || result.wantedRatio < .65 || result.blackRatio > .01 || result.dominant[0]?.[0] !== result.expected;
+  const correctForeground = result.label.startsWith('menu-') ? result.blendedRatio >= .99 : result.wantedRatio >= .65;
+  return result.foreground < 100 || !correctForeground || result.blackRatio > .01 || result.dominant[0]?.[0] !== result.expected;
 }
 function assertColors(values) {
-  const failures = values.filter(wrongColor).map(({ label, expected, dominant, foreground, wantedRatio, blackRatio }) => ({ label, expected, dominant: dominant[0], foreground, wantedRatio, blackRatio }));
+  const failures = values.filter(wrongColor).map(({ label, expected, dominant, foreground, wantedRatio, blendedRatio, blackRatio }) => ({ label, expected, dominant: dominant[0], foreground, wantedRatio, blendedRatio, blackRatio }));
   assert.deepEqual(failures, [], 'actual character foreground must retain its source color, including before/without SVG hydration');
 }
 
@@ -137,7 +144,7 @@ test('standalone Room masks, white intro/menu and About discovery figures keep s
   try {
     for (const key of Object.keys(colors)) values.push(await raster(page, `.preview-home-about .people-figure[data-room-link="${key}"] .little-man`, `intro-${key}`, '#ffffff'));
     await page.locator('[data-menu-open]').click();
-    for (const key of Object.keys(colors)) values.push(await raster(page, `.preview-menu-room[href*="/rooms/${key}/"] img`, `menu-${key}`, '#ffffff'));
+    for (const key of Object.keys(colors)) values.push(await raster(page, `.preview-menu-room[href*="/rooms/${key}/"] :is(img, svg.tpr-character)`, `menu-${key}`, '#ffffff'));
   } finally { await page.close(); }
   const about = (await pageAt('about/')).page;
   try {

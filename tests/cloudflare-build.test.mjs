@@ -26,6 +26,11 @@ const sharedFiles = [
   'updated-preview.css', 'figma-refinements.css', 'pdf-assets.css', 'page-layout.css',
   'shared-elevator.css', 'updated-elevator.css', 'home-layout.css', 'shared-little-man.css',
   'updated-preview.js', 'shared-elevator.js', 'updated-elevator.js', 'zigzag-controls.js',
+  'updated-carousels.css', 'updated-carousels.js', 'updated-motion.css', 'updated-motion.js',
+  'updated-refinements.css', 'updated-refinements.js', 'updated-inquiries.css', 'updated-inquiries.js',
+  'updated-characters.css', 'updated-characters.js', 'updated-parallax.css', 'updated-parallax.js',
+  'updated-menu.css',
+  'updated-card-motion.css', 'updated-card-motion.js',
 ];
 const references = html => [...html.matchAll(/\b(?:href|src)\s*=\s*(["'])(.*?)\1/g)].map(match => match[2]);
 
@@ -49,7 +54,7 @@ async function fixture(t) {
   });
   const inputs = [
     'scripts/build_cloudflare.mjs', 'routes.json', 'assets', 'coming-soon',
-    'design/updated-content.json', 'site.webmanifest', ...sharedFiles,
+    'design/updated-content.json', 'design/room-card-faces.json', 'site.webmanifest', ...sharedFiles,
     ...canonicalRoutes.map(route => `${route.slice(1)}index.html`),
   ];
   for (const input of inputs) {
@@ -104,6 +109,17 @@ test('Cloudflare build packages the complete public site from the real project',
       JSON.parse(await readFile(path.join(build.output, 'design/updated-content.json'), 'utf8')),
       JSON.parse(await readFile(path.join(repository, 'design/updated-content.json'), 'utf8')),
     );
+    const roomManifest = JSON.parse(await readFile(path.join(build.output, 'design/room-card-faces.json'), 'utf8'));
+    assert.deepEqual(roomManifest, JSON.parse(await readFile(path.join(repository, 'design/room-card-faces.json'), 'utf8')));
+    assert.deepEqual(new Set(Object.keys(roomManifest.rooms)), new Set(['coworking', 'reformer', 'wellness', 'bar', 'media']), 'publish all five definitive Room sets together');
+    const publicRoomAssets = new Set();
+    const visit = value => {
+      if (typeof value === 'string' && value.startsWith('assets/')) publicRoomAssets.add(value);
+      else if (Array.isArray(value)) value.forEach(visit);
+      else if (value && typeof value === 'object') Object.values(value).forEach(visit);
+    };
+    visit(roomManifest);
+    for (const filename of publicRoomAssets) assert.ok((await stat(path.join(build.output, filename))).size > 0, `missing runtime Room asset: ${filename}`);
     for (const filename of await filesUnder(build.output)) {
       if (!/\.(html|css)$/.test(filename)) continue;
       const text = await readFile(path.join(build.output, filename), 'utf8');
@@ -120,6 +136,7 @@ test('Cloudflare build packages the complete public site from the real project',
     }
     for (const key of ['coworking', 'reformer', 'wellness', 'bar', 'media']) {
       assert.ok((await stat(path.join(build.output, `assets/little-man/${key}.svg`))).isFile());
+      assert.ok((await stat(path.join(build.output, `assets/figma-updated/characters/${key}.svg`))).isFile());
     }
     assert.match(await readFile(path.join(build.output, 'coming-soon.css'), 'utf8'), /url\(['"]?\/assets\//);
     assert.ok((await stat(path.join(build.output, 'coming-soon.js'))).isFile());
@@ -146,7 +163,7 @@ test('Cloudflare build packages the complete public site from the real project',
     const allowedRouteFiles = new Set([...canonicalRoutes, ...Object.keys(expectedAliases)].map(route => `${route.slice(1)}index.html`));
     for (const filename of await filesUnder(build.output)) {
       const allowed = allowedRootFiles.has(filename) || allowedRouteFiles.has(filename)
-        || filename === 'design/updated-content.json'
+        || filename === 'design/updated-content.json' || filename === 'design/room-card-faces.json'
         || (filename.startsWith('assets/') && !filename.split('/').some(part => part.startsWith('.') || part === '_inspect') && /\.(?:svg|otf|ttf|woff2?|png|webp|jpe?g|ico)$/i.test(filename));
       assert.ok(allowed, `Unexpected public file: ${filename}`);
       assert.ok((await stat(path.join(build.output, filename))).size <= 25 * 1024 * 1024, filename);
