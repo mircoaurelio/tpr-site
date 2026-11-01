@@ -28,4 +28,6 @@ The fixed-small-viewport fixture verifies the geometry defect and its correction
 
 ## Publication
 
-Source and local checks are ready for the existing Cloudflare production Worker. The preceding active version is `d6b394ce-f2cf-48ea-aad7-72366547cb56`; retain it for rollback. Record the new version and public verification after release.
+Published from source commit `38b5034` to the existing Cloudflare production Worker on 1 November 2026. Active version: `9ea698b3-fed5-4509-91bd-4290038c85b0`. The preceding version `d6b394ce-f2cf-48ea-aad7-72366547cb56` is retained for rollback. Wrangler uploaded only the changed `updated-elevator.css`; the newsletter Worker and its bindings remain in place.
+
+The four fixed-small-viewport regression tests passed again against https://thepeoplesroom.it/. The 30-file production smoke check passed, including root Home, all 11 canonical pages, runtime files and metadata; root screenshots at 320/393/1512px remain free from overflow and local resource failures. The www stylesheet also matches the deployment artifact byte for byte. Public motion evidence is under `.qa/mobile-room-viewport/published/`.

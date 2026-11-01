@@ -35,4 +35,4 @@
 - [x] Set the updated Home mobile sticky height to `100dvh`, with `100vh` fallback. Do not alter shared legacy styles/controller.
 - [x] Run the four viewport tests on Chromium/WebKit, the source mobile-hero checks, original Room effect checks, and mobile card navigation checks. Review screenshots during motion. All 29 checks passed.
 - [x] Request independent review of the scoped change and test model. No blocking findings; independent scroll-triggered forward/reverse and mid-lift shrink checks passed. Added the new regression file to `test:ui` as requested by review.
-- [ ] Commit, publish to the existing production Worker, verify public files and the targeted mobile checks; retain deployment version for rollback.
+- [x] Commit, publish to the existing production Worker, verify public files and the targeted mobile checks; retain deployment version for rollback. Public 4/4 viewport tests and 30-file smoke check passed; active version is recorded in the review.
