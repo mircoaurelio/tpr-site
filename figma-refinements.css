@@ -1021,3 +1021,34 @@
       24 / 24px / 0 repeat;
   }
 }
+
+/* Standalone Room cards use the original single chevron in its irregular
+   circle, also used by the source About cards. Keep the 52 × 54 painted canvas
+   around a nominal 48px control; the existing label/photo layout stays intact. */
+body.updated-preview .preview-room-card-label > .preview-room-card-arrow {
+  position: relative;
+  display: block;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+}
+body.updated-preview .preview-room-card-arrow::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 108.3333333%;
+  height: 112.5%;
+  transform: translate(-50%, -50%);
+  background: currentColor;
+  mask: url("assets/route-arrow-zigzag.png") center /
+    contain no-repeat;
+  pointer-events: none;
+}
+@media (max-width: 900px) {
+  body.updated-preview .preview-room-card-label > .preview-room-card-arrow {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+}

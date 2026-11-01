@@ -36,6 +36,7 @@ async function fixture(engine, reducedMotion = 'no-preference', route = 'homepag
   const context = await browsers.get(engine).newContext({ viewport: { width: 1512, height: 952 }, reducedMotion, ...options });
   await context.route('**/*', route => ['GET', 'HEAD'].includes(route.request().method()) && new URL(route.request().url()).origin === origin ? route.continue() : route.abort());
   const page = await context.newPage(); page.setDefaultTimeout(6000);
+  page.setDefaultNavigationTimeout(20000);
   await page.goto(origin + '/' + route, { waitUntil: 'networkidle' });
   await page.evaluate(() => document.fonts.ready);
   return { context, page };
@@ -192,28 +193,39 @@ for (const engine of ['chromium', 'webkit']) {
       const rig='.tpr-elevator__character--current .tpr-character';
       await page.mouse.move(-20,-20);await waitForRest(page,rig);
       await page.locator('.tpr-elevator__character--current').hover();
-      await page.waitForFunction(()=>new DOMMatrixReadOnly(getComputedStyle(document.querySelector('.tpr-elevator__character--current .tpr-character__upper')).transform).b<-.13);
-      await page.evaluate(()=>{
+      const samples=await page.evaluate(()=>new Promise(resolve=>{
         const button=document.querySelector('[data-elevator-room="reformer"]');
         button.addEventListener('click',()=>{
           const actor=document.querySelector('.tpr-elevator__character--current'),rig=actor.querySelector('.tpr-character');
           window.__outgoingRig=rig;
           const snapshot=()=>({
+            time:performance.now(),
             lifting:document.querySelector('#rooms').classList.contains('is-lifting'),opacity:Number(getComputedStyle(actor).opacity),
             matrices:[...rig.querySelectorAll('.tpr-character__body,.tpr-character__upper,.tpr-character__emblem,.tpr-character__detail')].map(part=>{
               const m=new DOMMatrixReadOnly(getComputedStyle(part).transform);return ['a','b','c','d','e','f'].map(key=>m[key]);
             }),animations:rig.getAnimations({subtree:true}).map(animation=>({state:animation.playState,time:animation.currentTime})),
           });
-          let before=snapshot();const frames=[];
-          window.__liftPoseCapture=new Promise(resolve=>{
-            const sample=()=>{const frame=snapshot();if(!frame.lifting)before=frame;else frames.push(frame);if(frames.length===5)resolve({before,frames});else requestAnimationFrame(sample)};
-            requestAnimationFrame(sample);
-          });
+          let before=snapshot();const clicked=before,frames=[];
+          const sample=()=>{const frame=snapshot();if(!frame.lifting)before=frame;else frames.push(frame);if(frames.length===5)resolve({clicked,before,frames});else requestAnimationFrame(sample)};
+          requestAnimationFrame(sample);
         },{once:true,capture:true});
-      });
-      await page.locator('[data-elevator-room=reformer]').click();
-      const samples=await page.evaluate(()=>window.__liftPoseCapture);
-      assert.ok(Math.abs(samples.before.matrices[1][1])>.1,'selection samples an actual upper-body peak');
+        // Observe the real running gesture and activate the native button in
+        // this same frame. A protocol round trip plus pointer/actionability
+        // work must not move the intended selection beyond the measured peak.
+        const selectAtPeak=()=>{
+          const part=document.querySelector('.tpr-elevator__character--current .tpr-character__upper');
+          if(new DOMMatrixReadOnly(getComputedStyle(part).transform).b<-.13)button.click();
+          else requestAnimationFrame(selectAtPeak);
+        };
+        requestAnimationFrame(selectAtPeak);
+      }));
+      // The in-page native click deliberately avoids automation latency. Move
+      // the real pointer away before the replacement rig enters, as a locator
+      // click on the navigation button did in the original fixture.
+      await page.mouse.move(-20,-20);
+      // Selection and the native two-frame lift arming are different moments:
+      // the gesture may progress before the visible lift freezes its last pose.
+      assert.ok(Math.abs(samples.clicked.matrices[1][1])>.1,'selection samples an actual upper-body peak');
       assert.ok(samples.frames[0].opacity>.95,'compare while the outgoing actor is still plainly visible');
       for(const frame of samples.frames){
         assert.equal(frame.matrices.length,samples.before.matrices.length);

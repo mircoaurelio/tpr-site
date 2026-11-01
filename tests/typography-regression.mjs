@@ -32,7 +32,7 @@ async function pageAt(route, width = 1512) {
   page.on('response', response => { if (/\.(?:otf|ttf|woff2?)(?:\?|$)/i.test(response.url()) && !response.ok()) resources.fontFailures.push({ url: response.url(), status: response.status() }); });
   await page.route('**/*', request => ['GET', 'HEAD'].includes(request.request().method()) ? request.continue() : request.abort());
   await page.goto(new URL(route, base).href, { waitUntil: 'networkidle' });
-  await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.images].map(image => image.decode().catch(() => {}))); });
+  await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.images].map(image => { image.loading = 'eager'; return image.decode().catch(() => {}); })); });
   assert.deepEqual(resources.errors, [], 'page initialization must complete before typography inspection');
   assert.deepEqual(resources.fontFailures, [], 'font files must load at the selected public mount');
   return page;

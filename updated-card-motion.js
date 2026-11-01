@@ -9,6 +9,7 @@
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
   const states = new WeakMap();
   const scenes = new Set();
+  const nativeBacks = new Set();
   const heldPointers = new Map();
   // The shared controller consumes its JSON marker before rebuilding the host.
   // Its initialized public marker remains available to integration modules.
@@ -19,11 +20,55 @@
     .then(response => response.ok ? response.json() : null).catch(() => null) : Promise.resolve(null);
   let prepareFrame = 0;
   let desktopVersion = 0;
+  let paintFrame = 0;
+
+  function syncPaint(state) {
+    // Some WebKit renderers paint a reversed face despite backface-visibility.
+    // Gate actual paint at the rotor's real angle, never at the requested state:
+    // that state changes before the physical front has finished its first half.
+    const matrix = new DOMMatrixReadOnly(getComputedStyle(state.rotor).transform);
+    const face = matrix.m11 >= 0 ? "front" : "back";
+    if (state.card.dataset.paintedFace !== face) state.card.dataset.paintedFace = face;
+  }
+
+  function syncNativePaint(card) {
+    const back = card.querySelector(".tpr-elevator__card-back");
+    if (!back) return false;
+    const matrix = new DOMMatrixReadOnly(getComputedStyle(back).transform);
+    const paint = matrix.m11 >= 0 ? "visible" : "hidden";
+    if (card.dataset.nativeBackPaint !== paint) card.dataset.nativeBackPaint = paint;
+    return back.getAnimations().some(animation => {
+      const time = Number(animation.currentTime);
+      const end = Number(animation.effect?.getComputedTiming().endTime);
+      return animation.playState === "running" || animation.pending || (time > 0 && time < end);
+    });
+  }
+
+  function paintTurns() {
+    paintFrame = 0;
+    let turning = false;
+    for (const state of scenes) {
+      if (!state.card.isConnected) continue;
+      syncPaint(state);
+      const animation = state.animation;
+      const time = Number(animation?.currentTime);
+      if (animation && (animation.playState === "running" || animation.pending || (time > 0 && time < 680))) turning = true;
+    }
+    for (const card of nativeBacks) {
+      if (!card.isConnected || states.has(card)) { nativeBacks.delete(card); continue; }
+      if (syncNativePaint(card)) turning = true;
+    }
+    if (turning) paintFrame = requestAnimationFrame(paintTurns);
+  }
+
+  function queuePaint() {
+    if (!paintFrame) paintFrame = requestAnimationFrame(paintTurns);
+  }
 
   function setAnimation(state) {
     state.animation?.cancel();
     state.animation = null;
-    if (reducedMotion.matches) return;
+    if (reducedMotion.matches) { syncPaint(state); return; }
     const width = parseFloat(getComputedStyle(state.card).width);
     // A shallow retreat keeps the complete surface inside the existing scroll
     // window, instead of clipping perspective-expanded corners or changing
@@ -39,11 +84,15 @@
     animation.pause();
     animation.currentTime = state.flipped ? 680 : 0;
     state.animation = animation;
+    syncPaint(state);
   }
 
   function syncState(card) {
     const state = states.get(card);
-    if (!state) return;
+    if (!state) {
+      if (card.matches(".tpr-elevator__explore-card")) { nativeBacks.add(card); syncNativePaint(card); queuePaint(); }
+      return;
+    }
     const flipped = card.classList.contains("is-flipped");
     if (flipped === state.flipped) return;
     state.flipped = flipped;
@@ -52,6 +101,8 @@
       state.animation.playbackRate = flipped ? 1 : -1;
       state.animation.play();
     }
+    syncPaint(state);
+    queuePaint();
   }
 
   function makeScene(card, front, back) {
@@ -65,6 +116,8 @@
     rotor.append(front, back);
     card.append(rotor);
     card.classList.add("tpr-card-scene");
+    nativeBacks.delete(card);
+    card.removeAttribute("data-native-back-paint");
     const state = { card, rotor, flipped: card.classList.contains("is-flipped"), animation: null };
     states.set(card, state);
     scenes.add(state);
@@ -144,6 +197,12 @@
   }
 
   function scan(scope) {
+    const nativeCards = [];
+    if (scope.nodeType === Node.ELEMENT_NODE && scope.matches(".tpr-elevator__explore-card")) nativeCards.push(scope);
+    nativeCards.push(...(scope.querySelectorAll?.(".tpr-elevator__explore-card") || []));
+    nativeCards.forEach(card => {
+      if (!states.has(card)) { nativeBacks.add(card); syncNativePaint(card); queuePaint(); }
+    });
     const cards = [];
     if (scope.nodeType === Node.ELEMENT_NODE && scope.matches(".preview-room-card,.tpr-elevator__mobile-card")) cards.push(scope);
     cards.push(...(scope.querySelectorAll?.(".preview-room-card,.tpr-elevator__mobile-card") || []));
@@ -185,6 +244,7 @@
       }
     }
     for (const state of scenes) if (!state.card.isConnected) { state.animation?.cancel(); scenes.delete(state); }
+    for (const card of nativeBacks) if (!card.isConnected || states.has(card)) nativeBacks.delete(card);
   });
   scan(document);
   observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["class", "src", "data-active-room"] });

@@ -1,6 +1,7 @@
 """Exercise the actual preview generator with a Windows-style text locale."""
 import contextlib
 import io
+from html.parser import HTMLParser
 from pathlib import Path
 import runpy
 import shutil
@@ -48,6 +49,19 @@ class PreviewGeneratorEncodingTest(unittest.TestCase):
                 source = page.read_bytes().decode("utf-8")
                 self.assertIn('charset="utf-8"', source, page)
                 self.assertIn("</html>", source, page)
+                # The crawlable GitHub preview must not compete with production.
+                class RobotsParser(HTMLParser):
+                    directives = []
+
+                    def handle_starttag(self, tag, attributes):
+                        attributes = dict(attributes)
+                        if tag == "meta" and attributes.get("name") == "robots":
+                            self.directives.append(attributes.get("content", ""))
+
+                parser = RobotsParser()
+                parser.directives = []
+                parser.feed(source)
+                self.assertEqual(parser.directives, ["noindex,follow"], page)
             self.assertIn("TPR è energia", (root / "about" / "index.html").read_bytes().decode("utf-8"))
             self.assertIn("Il nostro obiettivo quotidiano è ispirare", (root / "about" / "index.html").read_bytes().decode("utf-8"))
 

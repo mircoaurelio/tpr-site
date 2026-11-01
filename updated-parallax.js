@@ -27,6 +27,7 @@
   const started = new WeakSet();
   let frame = 0;
   let scrolled = false;
+  let proximityObserver;
 
   function deactivate(entry) {
     entry.source.classList.remove("is-photo-parallax-active");
@@ -119,7 +120,18 @@
   }
 
   function preparePhotos() {
-    if (!reducedMotion.matches) specs.forEach(prepare);
+    if (reducedMotion.matches) return;
+    prepare(specs[0]);
+    // The event source remains the exact loading/reduced-motion fallback.
+    // Avoid eagerly decoding it and its raw photo while the hero is loading.
+    const spec = specs[1], source = document.querySelector(spec.selector);
+    if (!source || started.has(source)) return;
+    if (!proximityObserver) proximityObserver = new IntersectionObserver(entries => {
+      if (reducedMotion.matches || !entries.some(entry => entry.isIntersecting)) return;
+      proximityObserver.disconnect();
+      prepare(spec);
+    }, { rootMargin: '250px 0px' });
+    proximityObserver.observe(source);
   }
   addEventListener("scroll", () => {
     if (!reducedMotion.matches) scrolled = true;

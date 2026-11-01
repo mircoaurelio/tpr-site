@@ -80,7 +80,7 @@
   const configuredCardMarkup = (room, [cardTitle, cardCopy, ctaLabels], index, mobile = false, renderId) => {
     const backId = `elevator-card-${renderId}-${index}`;
     const front = mobile
-      ? `<span class="tpr-elevator__mobile-card-front" aria-hidden="true"><span class="tpr-elevator__mobile-card-photo"><span class="tpr-elevator__mobile-card-photo-window"><img src="${asset(room.cardPhotos?.[index] || room.cardPhoto)}" alt="" decoding="async" /></span></span><span class="tpr-elevator__mobile-card-meta"><strong>${escapeCopy(cardTitle)}</strong>${cardSoonMarkup(room, cardTitle)}<span class="tpr-elevator__card-arrow"><img src="${cardArrowSrc}" alt="" width="52" height="54" /></span></span></span>`
+      ? `<span class="tpr-elevator__mobile-card-front" aria-hidden="true"><span class="tpr-elevator__mobile-card-photo"><span class="tpr-elevator__mobile-card-photo-window"><img src="${asset(room.cardPhotos?.[index] || room.cardPhoto)}" alt="" decoding="async" loading="lazy" /></span></span><span class="tpr-elevator__mobile-card-meta"><strong>${escapeCopy(cardTitle)}</strong>${cardSoonMarkup(room, cardTitle)}<span class="tpr-elevator__card-arrow"><img src="${cardArrowSrc}" alt="" width="52" height="54" /></span></span></span>`
       : `<span class="tpr-elevator__card-front" aria-hidden="true"><strong>${escapeCopy(cardTitle)}</strong>${cardSoonMarkup(room, cardTitle)}<span class="tpr-elevator__card-arrow" aria-hidden="true"><img src="${cardArrowSrc}" alt="" width="52" height="54" /></span></span>`;
     return `<div class="tpr-elevator__${mobile ? 'mobile' : 'explore'}-card" data-card-index="${index}">
       <button class="tpr-elevator__card-toggle" type="button" data-elevator-card-open aria-expanded="false" aria-controls="${backId}" aria-label="Apri la card ${escapeCopy(cardTitle)}">${front}</button>
@@ -166,7 +166,7 @@
           <div class="tpr-elevator__desktop-copy">${desktopCopyMarkup(rooms[active], { live: false })}</div>
         </div>
         <div class="tpr-elevator__photo-plane" aria-hidden="true">
-          <img class="tpr-elevator__art tpr-elevator__art--current" src="${asset(rooms[active].art)}" width="3024" height="1904" alt="" fetchpriority="high">
+          <img class="tpr-elevator__art tpr-elevator__art--current" src="${asset(rooms[active].art)}" width="3024" height="1904" alt="" fetchpriority="${configuration && !initialJump ? 'low' : 'high'}">
           <img class="tpr-elevator__art tpr-elevator__art--incoming" width="3024" height="1904" alt="">
         </div>
         <div class="tpr-elevator__character-plane" aria-hidden="true">
@@ -230,20 +230,69 @@
     return 80;
   }
   const preloadedImages = new Map();
-  rooms.forEach((room) => {
-    [room.art, room.cardPhoto, room.character, room.routeArt, room.photoMask, ...(room.cardPhotos || [])].filter(Boolean).forEach((file) => {
-      const image = new Image();
-      // CSS masks use CORS mode. Match it before src so the decoded preload
-      // also supplies their first paint instead of starting another request.
+  let exploreLoadVersion = 0;
+  function preloadImage(room, file, priority = 'low') {
+    if (!file) return null;
+    let image = preloadedImages.get(file);
+    if (!image) {
+      image = new Image();
+      // Match the CSS mask request mode so its decoded preload supplies the
+      // very first gradient paint, even on a cold Room selection.
       if (file === room.photoMask) image.crossOrigin = 'anonymous';
       image.decoding = 'async';
       image.loading = 'eager';
-      image.fetchPriority = room.key === rooms[active].key ? 'high' : 'low';
+      image.fetchPriority = priority;
       image.src = asset(file);
       preloadedImages.set(file, image);
       if (image.decode) image.decode().catch(() => {});
-    });
+    } else if (priority === 'high') image.fetchPriority = priority;
+    return image;
+  }
+  rooms.forEach((room) => {
+    const files = configuration ? [room.art, room.character, room.photoMask]
+      : [room.art, room.cardPhoto, room.character, room.routeArt, room.photoMask, ...(room.cardPhotos || [])];
+    files.filter(Boolean).forEach(file => preloadImage(room, file, !configuration && room === rooms[active] ? 'high' : 'low'));
   });
+  function warmRoomAssets(room = rooms[active]) {
+    [room.art, room.character].forEach(file => preloadImage(room, file, 'high'));
+    [room.routeArt, room.cardPhoto, ...(room.cardPhotos || [])].forEach(file => preloadImage(room, file));
+  }
+  function cancelExploreLoad() {
+    exploreLoadVersion += 1;
+    host.querySelectorAll('[data-elevator-explore][aria-busy]').forEach(cta => cta.removeAttribute('aria-busy'));
+  }
+  async function prepareExploreAssets(opener, mobile = false) {
+    if (!configuration) return true;
+    if (opener.hasAttribute('aria-busy')) {
+      cancelExploreLoad();
+      return false;
+    }
+    cancelExploreLoad();
+    const room = rooms[active], version = exploreLoadVersion;
+    const files = mobile ? room.cardPhotos || [room.cardPhoto] : [room.routeArt];
+    opener.setAttribute('aria-busy', 'true');
+    const images = files.map(file => preloadImage(room, file, 'high'));
+    if (mobile) currentCar.querySelectorAll('.tpr-elevator__mobile-card-photo-window img').forEach(image => {
+      image.loading = 'eager';
+      image.fetchPriority = 'high';
+      images.push(image);
+    });
+    try { await Promise.all(images.map(image => image.decode())); }
+    catch { return false; }
+    finally { if (version === exploreLoadVersion) opener.removeAttribute('aria-busy'); }
+    const rect = host.getBoundingClientRect();
+    return version === exploreLoadVersion && room === rooms[active] && mobile === isMobileView() && rect.bottom > 0 && rect.top < innerHeight;
+  }
+  if (configuration) {
+    if (initialJump) warmRoomAssets();
+    new IntersectionObserver((entries, observer) => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      warmRoomAssets();
+      observer.disconnect();
+    }, { rootMargin: '200px 0px' }).observe(host);
+    host.addEventListener('pointerover', () => warmRoomAssets(), { once: true, passive: true });
+    host.addEventListener('focusin', () => warmRoomAssets(), { once: true });
+  }
 
   const CHARACTER_COLOR = {
     coworking: '#2c64e8',
@@ -507,6 +556,7 @@
   }
 
   function render(index) {
+    cancelExploreLoad();
     const room = rooms[index];
     active = index;
     updateChrome(index);
@@ -515,6 +565,8 @@
 
   function select(index, direction = 0, animate = true) {
     if (index < 0 || index >= rooms.length || index === active) return;
+    cancelExploreLoad();
+    if (configuration) warmRoomAssets(rooms[index]);
     setMobileExpanded(false, { instant: true });
     cancelPendingLift();
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -646,8 +698,9 @@
     return 1 - ((1 - t) ** 3);
   }
 
-  function openExplore(opener) {
+  async function openExplore(opener) {
     if (exploring) return;
+    if (configuration && !await prepareExploreAssets(opener)) return;
     clearTimeout(exploreStartTimer);
     cancelAnimationFrame(exploreOpenRaf);
     exploring = true;
@@ -786,6 +839,7 @@
   }
 
   function skipRooms() {
+    cancelExploreLoad();
     navigationVersion += 1;
     clearTimeout(hashJumpTimer);
     clearTimeout(exploreHandoffTimer);
@@ -815,10 +869,11 @@
   }
   host.querySelector('[data-elevator-skip]')?.addEventListener('click', skipRooms);
 
-  ctas.forEach((cta) => cta.addEventListener('click', () => {
+  ctas.forEach((cta) => cta.addEventListener('click', async () => {
     if (exploreHandoffLocked) return;
     if (isMobileView()) {
-      setMobileExpanded(!host.classList.contains('is-mobile-expanded'));
+      if (host.classList.contains('is-mobile-expanded')) setMobileExpanded(false);
+      else if (!configuration || await prepareExploreAssets(cta, true)) setMobileExpanded(true);
       return;
     }
     if (exploring) {
@@ -880,6 +935,7 @@
   });
   document.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape') return;
+    cancelExploreLoad();
     if (configuration) {
       const openCards = isMobileView()
         ? currentCar.querySelectorAll('.tpr-elevator__mobile-card.is-flipped')

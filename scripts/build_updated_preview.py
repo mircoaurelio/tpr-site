@@ -46,8 +46,8 @@ def media(root,role,cls,alt='',fallback=''):
 def body_wordmark(root):
  return '<span class="preview-body-wordmark">'+img(root,'figma-updated/composites/home-about-wordmark-original.svg',"The People’s Room™",'preview-body-wordmark-source')+'<span class="preview-body-trademark" aria-hidden="true">'+img(root,'brand/Logotype_blue.svg','')+'</span></span>'
 def head(root,title,home=False):
- feedback='20261101-room-motion-3'
- styles=[('updated-preview.css',feedback),('figma-refinements.css','20261031-clean'),('pdf-assets.css','20261031-clean'),('page-layout.css','20261031-review')]
+ feedback='20261101-seo-figma-4'
+ styles=[('updated-preview.css',feedback),('figma-refinements.css',feedback),('pdf-assets.css','20261031-clean'),('page-layout.css','20261031-review')]
  if home:styles.extend([('shared-elevator.css','20261031-clean'),('updated-elevator.css',feedback),('home-layout.css','20261031-review')])
  styles.extend((name,feedback) for name in ['updated-carousels.css','updated-motion.css','updated-refinements.css','updated-inquiries.css','updated-characters.css','updated-menu.css','updated-card-motion.css'])
  if home:styles.append(('updated-parallax.css',feedback))
@@ -59,7 +59,7 @@ def head(root,title,home=False):
  scripts.append(('zigzag-controls.js','20261031-clean'))
  css=''.join(f'<link rel="stylesheet" href="{root}{name}?v={version}">' for name,version in styles)
  js=''.join(f'<script src="{root}{name}?v={version}" defer></script>' for name,version in scripts)
- return f'''<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#2c64e8"><title>{E(title)} — The People's Room</title><meta name="description" content="The People's Room: coworking, movimento, cultura e benessere a Milano."><link rel="icon" href="{root}assets/tpr-character.svg" type="image/svg+xml"><link rel="preload" href="{root}assets/fonts/pp-rader/PPRader-Bold.otf" as="font" type="font/otf" crossorigin>{css}{js}</head>'''
+ return f'''<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#2c64e8"><meta name="robots" content="noindex,follow"><title>{E(title)} — The People's Room</title><meta name="description" content="The People's Room: coworking, movimento, cultura e benessere a Milano."><link rel="icon" href="{root}assets/tpr-character.svg" type="image/svg+xml"><link rel="preload" href="{root}assets/fonts/pp-rader/PPRader-Bold.otf" as="font" type="font/otf" crossorigin>{css}{js}</head>'''
 def header(root,cta=False):
  return f'''<a class="skip-link" href="#main">Vai al contenuto</a><header class="preview-header"><a class="preview-brand" href="{root}homepage-tpr/" aria-label="The People's Room — Home">{img(root,'tpr-logo.svg',"The People's Room",extra='width="131" height="64"')}</a><div class="preview-header-actions">{link(root,'prenota/','Prenota il Pilates <span class="preview-chevron" aria-hidden="true"></span>','preview-button preview-button--outline') if cta else ''}<button class="preview-menu-button" type="button" data-menu-open aria-label="Apri il menu" aria-controls="siteMenu" aria-expanded="false">{img(root,'figma-updated/shapes/header-hamburger.svg','','preview-menu-glyph','aria-hidden="true"')}</button></div></header>'''
 def menu(root):
@@ -186,7 +186,7 @@ def room_explorer(root,standalone=None):
    soon=label in ('longevity','studio audio')
    detail=d.get('cardDetails',{}).get(label)
    card_id=f'room-{key}-card-{card_index}'
-   front=media(root,'rooms.'+key+'.cards.'+label.lower().replace(' ','-').replace('à','a'),'preview-room-card-photo',label)+f'<div class="preview-room-card-label"><h3 id="{card_id}-title">{E(label)}</h3>{"<small>coming soon</small>" if soon else "<span aria-hidden=\"true\">↗</span>"}</div>'
+   front=media(root,'rooms.'+key+'.cards.'+label.lower().replace(' ','-').replace('à','a'),'preview-room-card-photo',label)+f'<div class="preview-room-card-label"><h3 id="{card_id}-title">{E(label)}</h3>{"<small>coming soon</small>" if soon else "<span class=\"preview-room-card-arrow\" aria-hidden=\"true\"></span>"}</div>'
    back=''
    # Studio audio has only a coming-soon front in the source, not a Card Back.
    if detail and detail.get('ctaLabels'):
@@ -234,5 +234,5 @@ for key,label in ROOMS:
  write(f'rooms/{key}/index.html',label,lambda root,key=key:room_explorer(root,key))
 for p,anchor in [('membership/aziende-startup/index.html','aziende'),('membership/privati-freelancer/index.html','offerte')]:
  target='../../vivi-tpr/#'+anchor
- (ROOT/p).write_text(f'<!doctype html><html lang="it"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0;url={target}"><title>Vivi TPR</title><script>location.replace({json.dumps(target)});</script><a href="{target}">Scopri le offerte TPR</a></html>\n',encoding='utf-8')
+ (ROOT/p).write_text(f'<!doctype html><html lang="it"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,follow"><meta http-equiv="refresh" content="0;url={target}"><title>Vivi TPR</title><script>location.replace({json.dumps(target)});</script><a href="{target}">Scopri le offerte TPR</a></html>\n',encoding='utf-8')
 print('Built updated homepage, About, contacts, events, Vivi TPR and Pilates pages with shared native components.')

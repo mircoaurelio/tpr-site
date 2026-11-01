@@ -30,7 +30,8 @@ async function pageAt(route, width = 1512, { hydration = 'normal', motion = fals
     return request.continue();
   });
   await page.goto(new URL(route, base).href, { waitUntil: hydration === 'delay' ? 'domcontentloaded' : 'networkidle' });
-  await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.images].map(i => i.decode().catch(() => {}))); });
+  // Pixel fixtures deliberately load dormant photos; scheduling has its own regressions.
+  await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.images].map(i => { i.loading = 'eager'; return i.decode().catch(() => {}); })); });
   return { page, async release() { await Promise.all(pending.splice(0).map(r => r.continue().catch(() => {}))); } };
 }
 async function selectRoom(page, key) {
@@ -67,7 +68,7 @@ async function raster(page, selector, label, expected) {
   }, background);
   const host = page.locator('[data-color-isolation]');
   try {
-    await host.evaluate(async e => { await Promise.all([...e.querySelectorAll('img')].map(i => i.decode().catch(() => {}))); });
+    await host.evaluate(async e => { await Promise.all([...e.querySelectorAll('img')].map(i => { i.loading = 'eager'; return i.decode().catch(() => {}); })); });
     const buffer = await host.screenshot({ path: path.join(output, `${label}.png`), animations: 'disabled' });
     const pixels = await page.evaluate(async ({ png, expected, background }) => {
       const img = new Image(); img.src = 'data:image/png;base64,' + png; await img.decode();

@@ -41,8 +41,8 @@ for(const width of [1512,393,320])test(`${engine} ${width}px: fixed source alpha
   await page.locator(role.source).evaluate(img=>img.decode());await page.locator(role.capture).scrollIntoViewIfNeeded();await page.waitForTimeout(100);
   const before=await page.locator(role.capture).screenshot({path:path.join(out,`${role.key}-${width}-zero-before.png`)});
   await enhance(page);
-  if(await access(path.join(root,'updated-parallax.js')).then(()=>true,()=>false))await page.waitForFunction(()=>document.querySelectorAll('[data-photo-parallax]').length===2);
-  assert.equal(await page.locator('[data-photo-parallax]').count(),2,'both proven source-photo windows must be enhanced');
+  if(await access(path.join(root,'updated-parallax.js')).then(()=>true,()=>false))await page.waitForFunction(key=>!!document.querySelector(`[data-photo-parallax="${key}"]`),role.key);
+  assert.equal(await page.locator(`[data-photo-parallax="${role.key}"]`).count(),1,'the visible proven source-photo window must be enhanced');
   const plane=page.locator(`[data-photo-parallax="${role.key}"]`);await plane.waitFor({state:'attached'});
   const zero=await geometry(page,role);
   assert.match(zero.photoSrc,new RegExp(role.photo.replaceAll('.','\\.')));assert.match(zero.mask,new RegExp(role.mask.replaceAll('.','\\.')));

@@ -42,7 +42,7 @@ async function normalFlip(page,card,open,close,key){
  assert.ok(moving.photo.box.width<start.photo.box.width*.95,'the photo itself must turn with the label/paper rather than stay flat behind it');
  assert.ok(Math.abs(moving.rotor.matrix[1])>.05,'the shared rotor must visibly rotate around its vertical axis');
  near(moving.front.matrix[0],1,'front remains attached to rotor');near(moving.back.matrix[0],-1,'back remains exactly180 degrees behind front');
- assert.equal(moving.front.opacity,'1');assert.equal(moving.back.opacity,'1');assert.equal(moving.front.backface,'hidden');assert.equal(moving.back.backface,'hidden');
+ assert.equal(moving.front.opacity,'1');assert.equal(moving.back.opacity,'0');assert.equal(moving.front.backface,'hidden');assert.equal(moving.back.backface,'hidden');
  assert.ok(parseFloat(moving.perspective)>0);near(moving.box.width,start.box.width,'card hit frame width is unchanged',.1);near(moving.box.height,start.box.height,'card hit frame height is unchanged',.1);
  await card.screenshot({path:path.join(out,`${key}-during.png`)});
  if(key==='home-desktop')await page.locator('.tpr-elevator__frame').screenshot({path:path.join(out,'home-desktop-whole-scene-during.png')});

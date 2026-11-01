@@ -38,6 +38,30 @@ body.updated-preview .preview-room-card.tpr-card-scene::after { content: none; d
 .updated-preview .tpr-card-scene .tpr-card-face.tpr-card-back-face { display: flex; transform: rotateY(180deg); }
 .updated-preview .tpr-card-scene .tpr-elevator__mobile-card-front { opacity: 1; }
 
+/* Keep the hidden surface out of actual paint even in WebKit renderers that
+   ignore backface culling. Opacity preserves the native controller's immediate
+   focus transfer; visibility/display would make its close control unfocusable. */
+.updated-preview .tpr-card-scene[data-painted-face="front"] .tpr-card-back-face,
+.updated-preview .tpr-card-scene[data-painted-face="back"] .tpr-card-front-face {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Missing manifest/front art retains the original complete panorama and native
+   500ms back turn. Gate its actual angle too: delayed native opacity alone can
+   expose reversed text in WebKit during either half of opening/closing. */
+.updated-preview .tpr-elevator__explore-card:not(.tpr-card-scene) .tpr-elevator__card-back {
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 500ms ease-out;
+}
+.updated-preview .tpr-elevator__explore-card:not(.tpr-card-scene)[data-native-back-paint="visible"] .tpr-elevator__card-back {
+  opacity: 1;
+}
+.updated-preview .tpr-elevator__explore-card:not(.tpr-card-scene)[data-native-back-paint="visible"] .tpr-elevator__card-back[aria-hidden="false"] {
+  pointer-events: auto;
+}
+
 /* Standalone native photo/title/arrow are one full surface. Move the original
    paper mask and frame onto each face, so neither is a stationary overlay. */
 .updated-preview .preview-room-card.tpr-card-scene {

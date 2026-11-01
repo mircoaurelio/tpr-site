@@ -25,7 +25,7 @@ async function pageAt(engine, width, route) {
   page.on('pageerror', error => errors.push(error.message));
   await page.route('**/*', request => ['GET', 'HEAD'].includes(request.request().method()) && new URL(request.request().url()).origin === base.origin ? request.continue() : request.abort());
   await page.goto(new URL(`${route}/`, base).href, { waitUntil: 'networkidle' });
-  await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.images].map(image => image.decode().catch(() => {}))); });
+  await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.images].map(image => { image.loading = 'eager'; return image.decode().catch(() => {}); })); });
   const track = page.locator(route === 'eventi' ? '.preview-event-carousel' : '.preview-offer-carousel');
   await track.evaluate(element => element.scrollIntoView({ block: 'center', behavior: 'instant' }));
   return { context, page, track, errors };

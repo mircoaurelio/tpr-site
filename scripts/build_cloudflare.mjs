@@ -1,6 +1,8 @@
 import { readFile, writeFile, mkdir, copyFile, readdir, stat, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { configureSeo, canonicalNavigation } from './seo_metadata.mjs';
+import { configureImageLoading } from './asset_loading.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const output = path.resolve(root, 'dist-cloudflare');
@@ -22,6 +24,7 @@ const routeFile = route => {
   return `${route.slice(1)}index.html`;
 };
 const routes = JSON.parse(await readFile(path.join(root, 'routes.json'), 'utf8'));
+const content = JSON.parse(await readFile(path.join(root, 'design/updated-content.json'), 'utf8'));
 if (!routes.pages.some(page => page.path === routes.canonical_home)) throw new Error('Canonical Home is missing from routes.json');
 const files = new Map();
 const dependencies = new Set();
@@ -57,8 +60,7 @@ for (const page of routes.pages) {
   const filename = routeFile(page.path);
   if (files.has(filename)) throw new Error(`Duplicate public route: ${page.path}`);
   let html = configureNewsletter(await readFile(path.join(root, filename), 'utf8'));
-  const canonical = page.path === routes.canonical_home ? '/' : page.path;
-  html = html.replace('</head>', `<link rel="canonical" href="${origin}${canonical}">\n</head>`);
+  html = configureImageLoading(canonicalNavigation(configureSeo(html, page.path, content), page.path), page.path);
   discoverSharedFiles(html, page.path);
   files.set(filename, html);
 }
@@ -73,12 +75,26 @@ for (const page of routes.pages) {
   if (page.path.startsWith('/rooms/')) aliases[page.path.replace('/rooms/', '/')] = page.path;
 }
 for (const variant of routes.variants || []) aliases[variant.path] = routes.canonical_home;
+const redirects = new Map();
+redirects.set('/index.html', '/');
+const canonicalDestination = target => target.replace(/^\/homepage-tpr\/(?=[?#]|$)/, '/');
+const addRedirectVariants = (route, target) => {
+  for (const pathname of [route, route.replace(/\/$/, ''), `${route}index.html`]) redirects.set(pathname, target);
+};
+addRedirectVariants(routes.canonical_home, '/');
+for (const page of routes.pages) {
+  if (page.path === routes.canonical_home) continue;
+  redirects.set(page.path.replace(/\/$/, ''), page.path);
+  redirects.set(`${page.path}index.html`, page.path);
+}
 for (const [route, target] of Object.entries(aliases)) {
   const filename = routeFile(route);
   if (files.has(filename) || !target.startsWith('/') || target.startsWith('//')) throw new Error(`Invalid public alias: ${route}`);
   const destination = new URL(target, origin);
   if (!files.has(routeFile(destination.pathname))) throw new Error(`Missing alias destination: ${target}`);
-  files.set(filename, `<!doctype html>\n<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,follow"><link rel="canonical" href="${origin}${destination.pathname}"><meta http-equiv="refresh" content="0;url=${escapeHtml(target)}"><title>The People's Room</title><script>location.replace(${JSON.stringify(target)});</script></head><body><a href="${escapeHtml(target)}">Continua verso The People's Room</a></body></html>\n`);
+  const finalTarget = canonicalDestination(target);
+  addRedirectVariants(route, finalTarget);
+  files.set(filename, `<!doctype html>\n<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,follow"><link rel="canonical" href="${origin}${new URL(finalTarget, origin).pathname}"><meta http-equiv="refresh" content="0;url=${escapeHtml(finalTarget)}"><title>The People's Room</title><script>location.replace(${JSON.stringify(finalTarget)});</script></head><body><a href="${escapeHtml(finalTarget)}">Continua verso The People's Room</a></body></html>\n`);
 }
 
 // Follow CSS imports as well as the scripts/styles referenced by the generated pages.
@@ -108,6 +124,7 @@ manifest.icons = manifest.icons.map(icon => ({ ...icon, src: icon.src.replace(/^
 files.set('site.webmanifest', `${JSON.stringify(manifest, null, 2)}\n`);
 files.set('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.pages.map(page => `  <url><loc>${origin}${page.path === routes.canonical_home ? '/' : page.path}</loc></url>`).join('\n')}\n</urlset>\n`);
 files.set('robots.txt', `User-agent: *\nAllow: /\nDisallow: /api/\n\nSitemap: ${origin}/sitemap.xml\n`);
+files.set('_redirects', `${[...redirects].map(([source, target]) => `${source} ${target} 301`).join('\n')}\n`);
 files.set('_headers', '/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n');
 
 // Public images/fonts are the only recursively copied inputs. Hidden folders, inspection

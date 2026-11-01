@@ -36,7 +36,7 @@ async function measurePaint(page, selector, label) {
   });
   const host = page.locator('[data-nav-paint-probe]');
   try {
-    await host.evaluate(async element => { await Promise.all([...element.querySelectorAll('img')].map(image => image.decode())); });
+    await host.evaluate(async element => { await Promise.all([...element.querySelectorAll('img')].map(image => { image.loading = 'eager'; return image.decode(); })); });
     const screenshot = await host.screenshot({ path: path.join(output, `${label}.png`), animations: 'disabled' });
     const ink = await page.evaluate(async png => {
       const image = new Image(); image.src = 'data:image/png;base64,' + png; await image.decode();

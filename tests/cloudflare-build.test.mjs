@@ -6,6 +6,7 @@ import path from 'node:path';
 import { promisify } from 'node:util';
 import { fileURLToPath } from 'node:url';
 import { test } from 'node:test';
+import { chromium } from 'playwright';
 
 const execute = promisify(execFile);
 const repository = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -15,12 +16,12 @@ const canonicalRoutes = [
   '/rooms/coworking/', '/rooms/reformer/', '/rooms/wellness/', '/rooms/bar/', '/rooms/media/',
 ];
 const expectedAliases = {
-  '/gallery/': '/eventi/#gallery', '/app/': '/homepage-tpr/#community',
+  '/gallery/': '/eventi/#gallery', '/app/': '/#community',
   '/membership/aziende-startup/': '/vivi-tpr/#aziende',
   '/membership/privati-freelancer/': '/vivi-tpr/#offerte',
   '/coworking/': '/rooms/coworking/', '/reformer/': '/rooms/reformer/',
   '/wellness/': '/rooms/wellness/', '/bar/': '/rooms/bar/', '/media/': '/rooms/media/',
-  '/homepage/': '/homepage-tpr/',
+  '/homepage/': '/',
 };
 const sharedFiles = [
   'updated-preview.css', 'figma-refinements.css', 'pdf-assets.css', 'page-layout.css',
@@ -53,7 +54,7 @@ async function fixture(t) {
     await rm(root, { recursive: true, force: true });
   });
   const inputs = [
-    'scripts/build_cloudflare.mjs', 'routes.json', 'assets', 'coming-soon',
+    'scripts/build_cloudflare.mjs', 'scripts/seo_metadata.mjs', 'scripts/asset_loading.mjs', 'routes.json', 'assets', 'coming-soon',
     'design/updated-content.json', 'design/room-card-faces.json', 'site.webmanifest', ...sharedFiles,
     ...canonicalRoutes.map(route => `${route.slice(1)}index.html`),
   ];
@@ -86,6 +87,117 @@ test('Cloudflare build packages the complete public site from the real project',
   const build = await fixture(t);
   await build.build();
 
+  // Catches a generic template head being copied to every production page.
+  await t.test('built pages expose unique, relevant search and sharing metadata', async () => {
+    const topics = {
+      '/homepage-tpr/': /coworking.*Milano/i, '/about/': /spazio.*Milano/i,
+      '/contatti/': /contatti.*Milano/i, '/eventi/': /eventi.*Milano/i,
+      '/vivi-tpr/': /offerte.*Milano/i, '/prenota/': /prenota.*Reformer Pilates.*Milano/i,
+      '/rooms/coworking/': /coworking.*sale riunioni.*Milano/i,
+      '/rooms/reformer/': /Reformer Pilates.*Milano/i,
+      '/rooms/wellness/': /benessere.*Milano/i, '/rooms/bar/': /bar.*Milano/i,
+      '/rooms/media/': /podcast.*set fotografico.*Milano/i,
+    };
+    const browser = await chromium.launch({ headless: true });
+    const context = await browser.newContext({ javaScriptEnabled: false });
+    await context.route('**/*', route => route.abort());
+    const page = await context.newPage();
+    const descriptions = new Set();
+    try {
+      for (const route of canonicalRoutes) {
+        await page.setContent(await readFile(path.join(build.output, route.slice(1), 'index.html'), 'utf8'));
+        const metadata = await page.evaluate(() => ({
+          title: document.title,
+          descriptions: [...document.querySelectorAll('meta[name="description"]')].map(el => el.content),
+          canonical: [...document.querySelectorAll('link[rel="canonical"]')].map(el => el.href),
+          og: Object.fromEntries([...document.querySelectorAll('meta[property^="og:"]')].map(el => [el.getAttribute('property'), el.content])),
+          robots: document.querySelector('meta[name="robots"]')?.content || '',
+        }));
+        assert.match(metadata.title, topics[route], route);
+        assert.equal(metadata.descriptions.length, 1, route);
+        assert.ok(!descriptions.has(metadata.descriptions[0]), `duplicate description: ${route}`);
+        descriptions.add(metadata.descriptions[0]);
+        assert.doesNotMatch(metadata.robots, /noindex/i, route);
+        assert.deepEqual(metadata.canonical, [`${origin}${route === '/homepage-tpr/' ? '/' : route}`]);
+        assert.equal(metadata.og['og:title'], metadata.title);
+        assert.equal(metadata.og['og:description'], metadata.descriptions[0]);
+        assert.equal(metadata.og['og:url'], metadata.canonical[0]);
+        assert.equal(metadata.og['og:site_name'], "The People's Room");
+        const socialImage = new URL(metadata.og['og:image']);
+        assert.equal(socialImage.origin, origin);
+        assert.ok((await stat(path.join(build.output, socialImage.pathname))).isFile());
+      }
+    } finally { await browser.close(); }
+  });
+
+  // Catches absent JSON-LD and the common mistake of using the legal office as the visiting address.
+  await t.test('structured data describes the site and the visible public location without invented claims', async () => {
+    const browser = await chromium.launch({ headless: true });
+    const page = await browser.newPage({ javaScriptEnabled: false });
+    await page.route('**/*', route => route.abort());
+    try {
+      await page.setContent(await readFile(path.join(build.output, 'index.html'), 'utf8'));
+      const homeSchema = await page.locator('script[type="application/ld+json"]').allTextContents();
+      const website = homeSchema.map(text => JSON.parse(text)).find(item => item['@type'] === 'WebSite');
+      assert.ok(website, 'Home must declare the site identity');
+      assert.equal(website.url, `${origin}/`);
+      assert.equal(website.name, "The People's Room");
+      await page.setContent(await readFile(path.join(build.output, 'contatti/index.html'), 'utf8'));
+      const schemas = await page.locator('script[type="application/ld+json"]').allTextContents();
+      const location = schemas.map(text => JSON.parse(text)).find(item => item['@type'] === 'LocalBusiness');
+      assert.ok(location, 'Contacts must describe the public business location');
+      assert.equal(location.address.streetAddress, 'Via Cola Montano, 36');
+      assert.equal(location.address.addressLocality, 'Milano');
+      assert.equal(location.address.postalCode, '20159');
+      assert.equal(location.address.addressCountry, 'IT');
+      assert.equal(location.openingHoursSpecification.opens, '07:00');
+      assert.equal(location.openingHoursSpecification.closes, '22:00');
+      assert.deepEqual(location.openingHoursSpecification.dayOfWeek, ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']);
+      assert.ok((await page.locator('main').innerText()).includes(location.address.streetAddress));
+      assert.doesNotMatch(JSON.stringify(location), /Olgiati|aggregateRating|review|priceRange|telephone|geo/);
+    } finally { await browser.close(); }
+  });
+
+  // Exercises Cloudflare's own asset router, rather than implementing a test-only redirect parser.
+  await t.test('static asset redirects permanently consolidate aliases and known URL variants', async () => {
+    const entry = path.join(build.root, 'asset-test-worker.mjs');
+    const config = path.join(build.root, 'asset-test-wrangler.json');
+    await writeFile(entry, 'export default { fetch() { return new Response("Unknown route", { status: 404 }); } };');
+    await writeFile(config, JSON.stringify({
+      name: 'tpr-seo-assets-test', main: entry, compatibility_date: '2026-09-28',
+      assets: { directory: build.output, binding: 'ASSETS', run_worker_first: ['/api/*'] },
+    }));
+    const { unstable_dev } = await import('wrangler');
+    const runtime = await unstable_dev(entry, {
+      config, local: true, port: 0, inspectorPort: 0, logLevel: 'none',
+      experimental: { disableExperimentalWarning: true, disableDevRegistry: true, watch: false },
+    });
+    try {
+      const cases = { '/index.html': '/' };
+      const legacyDestinations = {
+        ...expectedAliases, '/app/': '/#community', '/homepage/': '/', '/homepage-tpr/': '/',
+      };
+      for (const [route, target] of Object.entries(legacyDestinations)) {
+        for (const variant of [route, route.slice(0, -1), `${route}index.html`]) cases[variant] = target;
+      }
+      for (const route of canonicalRoutes.filter(route => route !== '/homepage-tpr/')) {
+        cases[route.slice(0, -1)] = route;
+        cases[`${route}index.html`] = route;
+      }
+      for (const [pathname, destination] of Object.entries(cases)) {
+        const response = await runtime.fetch(`${origin}${pathname}?utm_source=seo-check`, { redirect: 'manual' });
+        assert.equal(response.status, 301, pathname);
+        const target = new URL(response.headers.get('location'), origin);
+        const wanted = new URL(destination, origin);
+        assert.equal(target.pathname, wanted.pathname, pathname);
+        assert.equal(target.hash, wanted.hash, pathname);
+        assert.equal(target.search, '?utm_source=seo-check', pathname);
+      }
+      assert.equal((await runtime.fetch(`${origin}/about/`, { redirect: 'manual' })).status, 200);
+      assert.equal((await runtime.fetch(`${origin}/not-a-tpr-route/`, { redirect: 'manual' })).status, 404);
+    } finally { await runtime.stop(); }
+  });
+
   await t.test('serves all eleven canonical pages and the current Home at the domain root', async () => {
     const home = await readFile(path.join(build.output, 'index.html'), 'utf8');
     assert.match(home, /preview-page--home/);
@@ -96,7 +208,11 @@ test('Cloudflare build packages the complete public site from the real project',
     }
     // Document-relative skip links stay on their current copy of Home; other URLs retain their destinations.
     const source = await readFile(path.join(repository, 'homepage-tpr/index.html'), 'utf8');
-    const sourceUrls = references(source).filter(value => !value.startsWith('#')).map(value => new URL(value, `${origin}/homepage-tpr/`).href);
+    const sourceUrls = references(source).filter(value => !value.startsWith('#')).map(value => {
+      const url = new URL(value, `${origin}/homepage-tpr/`);
+      if (url.origin === origin && url.pathname === '/homepage-tpr/') url.pathname = '/';
+      return url.href;
+    });
     const rootUrls = references(home).filter(value => !value.startsWith('#') && value !== `${origin}/`).map(value => new URL(value, `${origin}/`).href);
     assert.deepEqual(rootUrls, sourceUrls);
   });
@@ -159,7 +275,7 @@ test('Cloudflare build packages the complete public site from the real project',
     assert.equal(manifest.scope, '/');
     assert.equal(manifest.start_url, '/');
     assert.equal(manifest.icons[0].src, '/assets/tpr-logo.svg');
-    const allowedRootFiles = new Set(['index.html', '_headers', 'robots.txt', 'sitemap.xml', 'site.webmanifest', 'coming-soon.css', 'coming-soon.js', ...sharedFiles]);
+    const allowedRootFiles = new Set(['index.html', '_headers', '_redirects', 'robots.txt', 'sitemap.xml', 'site.webmanifest', 'coming-soon.css', 'coming-soon.js', ...sharedFiles]);
     const allowedRouteFiles = new Set([...canonicalRoutes, ...Object.keys(expectedAliases)].map(route => `${route.slice(1)}index.html`));
     for (const filename of await filesUnder(build.output)) {
       const allowed = allowedRootFiles.has(filename) || allowedRouteFiles.has(filename)

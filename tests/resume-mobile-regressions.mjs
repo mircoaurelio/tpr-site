@@ -47,7 +47,7 @@ async function pageAt(width, route = '/homepage-tpr/', reducedMotion = 'reduce')
   await page.goto(new URL(route, base).href, { waitUntil: 'networkidle' });
   await page.evaluate(async () => {
     await document.fonts.ready;
-    await Promise.all([...document.images].map(image => image.decode().catch(() => {})));
+    await Promise.all([...document.images].map(image => { image.loading = 'eager'; return image.decode().catch(() => {}); }));
   });
   assert.deepEqual(failures, [], 'page scripts and assets must load before interaction checks');
   return { context, page };
