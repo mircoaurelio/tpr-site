@@ -49,4 +49,6 @@ Files: new `updated-header.css/js`, generator head imports, packaging allowlist,
 - [x] Verify current Home and Coworking metadata/visible copy on both production domains. Search lookup currently returns a two-week-old Coming-soon Home; use official Google recrawl guidance and report its limits accurately.
 - [x] Inspect known legacy landing redirects and apply permanent launch consolidation if needed, with the relevant Worker tests.
 - [x] Run affected navigation/carousel/header/viewport/menu and backend/build checks; obtain independent review and resolve material findings.
-- [ ] Build with enabled newsletter and existing privacy URL; deploy with keep-vars. Compare published files and real read-only user paths, save desktop/mobile screenshots, commit and push.
+- [x] Build with enabled newsletter and existing privacy URL; deploy with keep-vars. Compare published files and real read-only user paths, save desktop/mobile screenshots, commit and push.
+
+Release completed: Cloudflare version `f2e89a06-4ee1-4b51-a380-1c74d47c9811`, source commit `570b0c7`. Live checks passed for47 matching files,54 permanent asset redirects,12 navigation/header regressions and8 carousel/form-opening cases. Evidence and remaining search-index limits are recorded in `design/COWORKING-CAROUSELS-HEADER-2026-11-02.md`. No real message, subscription or booking was submitted.
