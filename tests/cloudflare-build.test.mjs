@@ -284,7 +284,9 @@ test('Cloudflare build packages the complete public site from the real project',
     const manifest = JSON.parse(await readFile(path.join(build.output, 'site.webmanifest'), 'utf8'));
     assert.equal(manifest.scope, '/');
     assert.equal(manifest.start_url, '/');
-    assert.equal(manifest.icons[0].src, '/assets/tpr-logo.svg');
+    assert.equal(manifest.icons[0].src, '/assets/favicon.png');
+    assert.equal(manifest.icons[0].sizes, '192x192');
+    assert.equal(manifest.icons[0].type, 'image/png');
     const allowedRootFiles = new Set(['index.html', '_headers', '_redirects', 'robots.txt', 'sitemap.xml', 'site.webmanifest', 'coming-soon.css', 'coming-soon.js', ...sharedFiles]);
     const allowedRouteFiles = new Set([...canonicalRoutes, ...Object.keys(expectedAliases)].map(route => `${route.slice(1)}index.html`));
     for (const filename of await filesUnder(build.output)) {

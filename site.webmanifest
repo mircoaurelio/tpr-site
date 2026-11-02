@@ -10,9 +10,9 @@
   "theme_color": "#2c64e8",
   "icons": [
     {
-      "src": "/tpr-site/assets/tpr-logo.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/tpr-site/assets/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
       "purpose": "any"
     }
   ]

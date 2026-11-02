@@ -44,4 +44,14 @@ Il [test Google della pagina Contatti](https://search.google.com/test/rich-resul
 
 Aggiornamento pubblicato su entrambi i domini nella release Cloudflare `7819d4b2-27ee-4029-af40-879c74d3342d`. Verificati 47 file pubblici corrispondenti all’artefatto e 18 ulteriori casi desktop/mobile in Chromium e WebKit sul dominio pubblico. I controlli comprendono titoli, canonical, robots, schema e testi delle pagine modificate; nessun invio reale di form. Prove e schermate conservate nella cartella privata `.qa/seo-brand-20261102/`.
 
+## Correzione favicon e trattino
+
+Successivo aggiornamento del 2 novembre: pubblicata la release `d2272a9b-6506-4aed-8ad8-58e88d0d5688` su entrambi i domini.
+
+- Descrizione della Home e metadati di condivisione con «TPR - The People's Room». Anche i titoli dell'anteprima e le etichette di navigazione del generatore usano il trattino semplice.
+- La favicon precedentemente collegata era un SVG verticale con viewBox 310×535. Tutte le pagine ora indicano il PNG quadrato `/assets/favicon.png`, 192×192 pixel, con margini trasparenti e proporzioni originali dell'omino. I tracciati forniti non sono stati ridisegnati o deformati. Il logo usato nello schema Organization rimane quello originale.
+- Manifest allineato alla stessa icona. Sorgente vettoriale quadrato e comando riproducibile `npm run build:favicon` inclusi nel progetto.
+- Verificati 8 test SEO/favicon, 9 test di build, generatore, audit SEO e 22 risposte pubbliche: tutte le 11 pagine sui due domini, PNG con MIME corretto e identico al file locale, manifest aggiornato. Revisione indipendente senza rilievi.
+- Google ha accettato una nuova richiesta di scansione della Home dopo questa pubblicazione, confermando l'aggiunta alla coda prioritaria. L'aggiornamento dell'icona e dello snippet nei risultati dipende dalla successiva elaborazione di Google, come indicato nelle [linee guida ufficiali per le favicon](https://developers.google.com/search/docs/appearance/favicon-in-search). Prova conservata in `.qa/favicon-20261102-reindex.jpg`.
+
 Le modifiche aiutano a descrivere il brand e il contesto locale; non garantiscono una posizione specifica per una sigla generica come TPR. La comparsa dei nuovi titoli richiede che il motore rilegga il sito. Riferimenti ufficiali: [nomi dei siti](https://developers.google.com/search/docs/appearance/site-names), [Organization](https://developers.google.com/search/docs/appearance/structured-data/organization), [LocalBusiness](https://developers.google.com/search/docs/appearance/structured-data/local-business), [nuova scansione](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl).

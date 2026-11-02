@@ -7,7 +7,7 @@ const image = `${origin}/assets/figma-updated/photos/home-hero-room.jpeg`;
 const pages = {
   '/homepage-tpr/': {
     title: `TPR Milano | ${brand}: coworking e Pilates`,
-    description: "TPR — The People's Room, a Milano: coworking, Reformer Pilates, benessere, bar ed eventi. Scopri gli spazi e le offerte per vivere TPR.",
+    description: "TPR - The People's Room, a Milano: coworking, Reformer Pilates, benessere, bar ed eventi. Scopri gli spazi e le offerte per vivere TPR.",
   },
   '/about/': {
     title: `Uno spazio per lavoro e benessere a Milano | ${brand}`,

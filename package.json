@@ -19,7 +19,8 @@
     "test:image-loading": "node --test --test-concurrency=1 tests/asset-loading.test.mjs tests/image-loading-regression.mjs",
     "test:header-scroll": "node --test tests/header-scroll-regression.mjs",
     "test:coworking-offers": "node --test tests/coworking-offers-regression.mjs",
-    "test:seo": "node --test tests/seo-brand.test.mjs"
+    "test:seo": "node --test tests/seo-brand.test.mjs tests/favicon-regression.test.mjs",
+    "build:favicon": "node scripts/build_favicon.mjs"
   },
   "devDependencies": {
     "miniflare": "5.20260926.0-alpha",

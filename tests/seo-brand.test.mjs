@@ -13,6 +13,8 @@ test('Home identifies TPR Milano and its full brand in unique, matching search/s
  assert.match(html,/<title>TPR Milano \| The People's Room: coworking e Pilates<\/title>/);
  assert.match(html,/<meta property="og:title" content="TPR Milano \| The People's Room: coworking e Pilates">/);
  assert.match(html,/<meta name="description" content="TPR .*The People's Room.*Milano.*Reformer Pilates/);
+ assert.match(html,/<meta name="description" content="TPR - The People's Room/);
+ assert.doesNotMatch(html,/—/,'public search/share metadata uses the requested hyphen');
  assert.match(html,/<link rel="canonical" href="https:\/\/thepeoplesroom.it\/">/);
  assert.doesNotMatch(html,/noindex|Coming soon/i);
 });
