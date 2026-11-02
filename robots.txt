@@ -1,4 +1,2 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://mircoaurelio.github.io/tpr-site/sitemap.xml

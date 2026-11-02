@@ -8,7 +8,11 @@
     if (file.includes('elevator-icon')) url.searchParams.set('v', '20260820-on-glyphs');
     return url.href;
   };
-  const bookingUrl = (roomKey) => `${new URL('contatti/', base).href}?room=${encodeURIComponent(roomKey)}`;
+  const bookingUrl = (roomKey) => configuration && roomKey === 'coworking'
+    ? new URL('vivi-tpr/#offerte', base).href
+    : configuration && roomKey === 'reformer'
+      ? new URL('prenota/', base).href
+      : `${new URL('contatti/', base).href}?room=${encodeURIComponent(roomKey)}`;
   const rooms = [
     {
       key: 'coworking', label: 'Coworking', art: 'homepage-room-coworking-no-text-2x.webp', cardPhoto: 'room-coworking.jpg', routeArt: 'routes/coworking-2x.webp', character: 'character-coworking.png', box: [5.85, 30.83, 8.10, 15.97], icon: 'elevator-icon-coworking.svg', off: 'elevator-icon-coworking-off.svg',
@@ -36,41 +40,91 @@
       cards: [['Podcast', 'Approfondisci il podcast nella Media Room.'], ['Studio', 'Approfondisci lo studio nella Media Room.'], ['Set fotografico', 'Approfondisci il set fotografico nella Media Room.']],
     },
   ];
+  // Updated Home supplies content/assets; legacy routes retain these defaults.
+  const configuration = host.querySelector('[data-elevator-config]');
+  if (configuration) {
+    const overrides = JSON.parse(configuration.textContent);
+    rooms.forEach((room) => Object.assign(room, overrides[room.key] || {}));
+  }
   const copyParagraphs = [
     "The People's Room è uno spazio ibrido e autentico che nutre corpo, mente e spirito, offrendo un rifugio reale in un mondo sempre più digitale.",
     "Attraverso design non convenzionale, pratiche di benessere fisico, esperienze culturali e connessioni autentiche, stimoliamo la creatività, il pensiero critico e il senso di appartenenza.",
     "Il nostro obiettivo quotidiano è ispirare le persone a esprimere sé stesse, riscoprire il valore dell'umanità e vivere in modo più presente, creativo e vitale.",
   ];
-  const roomCopyHtml = copyParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join('');
-  const roomTitle = (room) => `${room.label} <span>Room</span>`;
+  const escapeCopy = (text) => String(text).replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
+  const paragraphsFor = (room) => room.paragraphs || copyParagraphs;
+  const roomCopyHtml = (room) => paragraphsFor(room).map((paragraph) => `<p>${escapeCopy(paragraph)}</p>`).join('');
+  const roomName = (room) => room.title || `${room.label} Room`;
+  const desktopParagraphs = (room) => configuration
+    ? `<div class="tpr-elevator__updated-text" tabindex="0" role="region" aria-label="Descrizione della stanza">${roomCopyHtml(room)}</div>`
+    : roomCopyHtml(room);
+  const roomTitle = (room) => room.title ? escapeCopy(room.title) : `${room.label} <span>Room</span>`;
   const cardArrowSrc = new URL('assets/route-arrow-zigzag.png?v=20260819-arrow-2', base).href;
+  const cardCtaMarkup = (labels, room) => {
+    if (!Array.isArray(labels)) return '<span class="tpr-elevator__card-cta">Diventa Membro</span>';
+    if (!labels.length) return '';
+    if (configuration) {
+      return `<span class="tpr-elevator__card-cta">${labels.map((label) => {
+        const route = room.key === 'reformer' ? 'prenota/'
+          : label === 'Eventi e Gallery' ? 'eventi/'
+            : label === 'Organizza un evento' ? 'eventi/#organizza'
+              : room.key === 'coworking' ? 'vivi-tpr/#offerte' : 'vivi-tpr/';
+        return `<a href="${new URL(route, base).href}">${escapeCopy(label)}</a>`;
+      }).join('')}</span>`;
+    }
+    return `<span class="tpr-elevator__card-cta">${labels.map((label) => `<span>${escapeCopy(label)}</span>`).join('')}</span>`;
+  };
+  const cardSoonMarkup = (room, title) => configuration && room.comingSoonCards?.includes(title)
+    ? '<small class="tpr-elevator__card-soon">coming soon</small>' : '';
   const LIFT_MS = 1250;
   const MOBILE_EXPAND_MS = 640;
   const LAST_FLOOR_HOLD = 1;
+  let cardRenderId = 0;
+  const configuredCardMarkup = (room, [cardTitle, cardCopy, ctaLabels], index, mobile = false, renderId) => {
+    const backId = `elevator-card-${renderId}-${index}`;
+    const front = mobile
+      ? `<span class="tpr-elevator__mobile-card-front" aria-hidden="true"><span class="tpr-elevator__mobile-card-photo"><span class="tpr-elevator__mobile-card-photo-window"><img src="${asset(room.cardPhotos?.[index] || room.cardPhoto)}" alt="" decoding="async" loading="lazy" /></span></span><span class="tpr-elevator__mobile-card-meta"><strong>${escapeCopy(cardTitle)}</strong>${cardSoonMarkup(room, cardTitle)}<span class="tpr-elevator__card-arrow"><img src="${cardArrowSrc}" alt="" width="52" height="54" /></span></span></span>`
+      : `<span class="tpr-elevator__card-front" aria-hidden="true"><strong>${escapeCopy(cardTitle)}</strong>${cardSoonMarkup(room, cardTitle)}<span class="tpr-elevator__card-arrow" aria-hidden="true"><img src="${cardArrowSrc}" alt="" width="52" height="54" /></span></span>`;
+    return `<div class="tpr-elevator__${mobile ? 'mobile' : 'explore'}-card" data-card-index="${index}">
+      <button class="tpr-elevator__card-toggle" type="button" data-elevator-card-open aria-expanded="false" aria-controls="${backId}" aria-label="Apri la card ${escapeCopy(cardTitle)}">${front}</button>
+      <span class="tpr-elevator__${mobile ? 'mobile-card' : 'card'}-back" id="${backId}" aria-hidden="true" inert>
+        <strong>${escapeCopy(cardTitle)}</strong>
+        <button class="tpr-elevator__card-close" type="button" data-elevator-card-close aria-label="Chiudi i dettagli di ${escapeCopy(cardTitle)}"></button>
+        <span class="tpr-elevator__card-description">${escapeCopy(cardCopy)}</span>
+        ${cardCtaMarkup(ctaLabels, room)}
+      </span>
+    </div>`;
+  };
   const desktopCopyMarkup = (room, { live = true } = {}) => `
           <h2>${roomTitle(room)}</h2>
-          ${roomCopyHtml}
+          ${desktopParagraphs(room)}
           <div class="tpr-elevator__desktop-actions">
-            <button class="tpr-elevator__cta" type="button"${live ? ` data-elevator-explore aria-label="Esplora ${room.label} Room"` : ' tabindex="-1" aria-hidden="true"'}><span class="tpr-elevator__cta-label">Esplora Stanza</span><span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
-            <a class="tpr-elevator__book"${live ? ' data-elevator-book' : ''} href="${bookingUrl(room.key)}" ${room.bookable ? '' : 'hidden'}>Prenota${live ? `<span class="sr-only"> ${room.label} Room</span>` : ''}</a>
+            <button class="tpr-elevator__cta" type="button"${live ? ` data-elevator-explore aria-label="Esplora ${escapeCopy(roomName(room))}"` : ' tabindex="-1" aria-hidden="true"'}><span class="tpr-elevator__cta-label">Esplora Stanza</span><span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
+            <a class="tpr-elevator__book"${live ? ' data-elevator-book' : ''} href="${bookingUrl(room.key)}" ${room.bookable ? '' : 'hidden'}>Prenota${live ? `<span class="sr-only"> ${escapeCopy(roomName(room))}</span>` : ''}</a>
           </div>`;
-  const mobileDropMarkup = (room) => room.cards.map(([cardTitle, cardCopy], index) => `
-            <button class="tpr-elevator__mobile-card" type="button" data-card-index="${index}" aria-expanded="false" aria-label="Apri la card ${cardTitle}">
+  const mobileDropMarkup = (room) => {
+    if (configuration) {
+      const renderId = ++cardRenderId;
+      return room.cards.map((card, index) => configuredCardMarkup(room, card, index, true, renderId)).join('');
+    }
+    return room.cards.map(([cardTitle, cardCopy, ctaLabels], index) => `
+            <button class="tpr-elevator__mobile-card" type="button" data-card-index="${index}" aria-expanded="false" aria-label="Apri la card ${escapeCopy(cardTitle)}">
               <span class="tpr-elevator__mobile-card-front" aria-hidden="true">
                 <span class="tpr-elevator__mobile-card-photo"><span class="tpr-elevator__mobile-card-photo-window"><img src="${asset(room.cardPhoto)}" alt="" decoding="async" /></span></span>
-                <span class="tpr-elevator__mobile-card-meta"><strong>${cardTitle}</strong><span class="tpr-elevator__card-arrow"><img src="${cardArrowSrc}" alt="" width="52" height="54" /></span></span>
+                <span class="tpr-elevator__mobile-card-meta"><strong>${escapeCopy(cardTitle)}</strong>${cardSoonMarkup(room, cardTitle)}<span class="tpr-elevator__card-arrow"><img src="${cardArrowSrc}" alt="" width="52" height="54" /></span></span>
               </span>
-              <span class="sr-only">Apri la card ${cardTitle}</span>
+              <span class="sr-only">Apri la card ${escapeCopy(cardTitle)}</span>
               <span class="tpr-elevator__mobile-card-back" aria-hidden="true">
-                <strong>Cosa si fa?</strong>
+                <strong>${configuration ? escapeCopy(cardTitle) : 'Cosa si fa?'}</strong>
                 <span class="tpr-elevator__card-close" aria-hidden="true"></span>
-                <span>${cardCopy}</span>
-                <span class="tpr-elevator__card-cta">Diventa Membro</span>
+                <span${configuration ? ' class="tpr-elevator__card-description"' : ''}>${escapeCopy(cardCopy)}</span>
+                ${cardCtaMarkup(ctaLabels)}
               </span>
             </button>`).join('');
+  };
   const mobileCopyMarkup = (room, { live = true } = {}) => `
           <h2 class="tpr-elevator__title"${live ? ' id="elevatorTitle"' : ''}>${roomTitle(room)}</h2>
-          <div class="tpr-elevator__mobile-copy-text"><div class="tpr-elevator__mobile-copy-text-inner">${copyParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join('')}</div></div>
+          <div class="tpr-elevator__mobile-copy-text"><div class="tpr-elevator__mobile-copy-text-inner">${roomCopyHtml(room)}</div></div>
           <div class="tpr-elevator__mobile-actions">
             <button class="tpr-elevator__mobile-cta" type="button"${live ? ' data-elevator-explore aria-expanded="false"' : ' tabindex="-1" aria-hidden="true"'}><span class="tpr-elevator__cta-label">Esplora Stanza</span><span class="tpr-elevator__cta-arrow" aria-hidden="true"></span></button>
             <a class="tpr-elevator__mobile-book"${live ? ' data-elevator-book' : ''} href="${bookingUrl(room.key)}" ${room.bookable ? '' : 'hidden'}><span>Prenota</span></a>
@@ -82,6 +136,9 @@
   let initialJump = isRoomKey(hashRoom);
   let active = initialIndex;
   let timer = 0;
+  let liftFrame = 0;
+  let liftStartFrame = 0;
+  let navigationVersion = 0;
   let hashJumpTimer = 0;
   let hashJumpIndex = null;
   let ticking = false;
@@ -112,7 +169,7 @@
           <div class="tpr-elevator__desktop-copy">${desktopCopyMarkup(rooms[active], { live: false })}</div>
         </div>
         <div class="tpr-elevator__photo-plane" aria-hidden="true">
-          <img class="tpr-elevator__art tpr-elevator__art--current" src="${asset(rooms[active].art)}" width="3024" height="1904" alt="" fetchpriority="high">
+          <img class="tpr-elevator__art tpr-elevator__art--current" src="${asset(rooms[active].art)}" width="3024" height="1904" alt="" fetchpriority="${configuration && !initialJump ? 'low' : 'high'}">
           <img class="tpr-elevator__art tpr-elevator__art--incoming" width="3024" height="1904" alt="">
         </div>
         <div class="tpr-elevator__character-plane" aria-hidden="true">
@@ -120,7 +177,7 @@
           <div class="tpr-elevator__character tpr-elevator__character--incoming"></div>
         </div>
         <nav class="tpr-elevator__nav" aria-label="Ascensore delle stanze">
-          ${rooms.map((room, index) => `<button class="tpr-elevator__button" type="button" data-elevator-room="${room.key}" aria-label="Vai a ${room.label} Room" aria-pressed="${index === active}"><img class="icon-off" src="${asset(room.off)}" alt=""><img class="icon-on" src="${asset(room.icon)}" alt=""></button>`).join('')}
+          ${rooms.map((room, index) => `<button class="tpr-elevator__button" type="button" data-elevator-room="${room.key}" aria-label="Vai a ${escapeCopy(roomName(room))}" aria-pressed="${index === active}"><img class="icon-off" src="${asset(room.off)}" alt=""><img class="icon-on" src="${asset(room.icon)}" alt=""></button>`).join('')}
         </nav>
         <div class="tpr-elevator__progress" aria-hidden="true"><span></span></div>
         <div class="tpr-elevator__explore" aria-hidden="true">
@@ -131,7 +188,8 @@
           </div>
           <div class="tpr-elevator__explore-progress" role="scrollbar" tabindex="0" aria-label="Scorri orizzontalmente la stanza" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
         </div>
-        <p class="sr-only" aria-live="polite" id="elevatorStatus">${rooms[active].label} Room selezionata.</p>
+        ${configuration ? `<button class="tpr-elevator__skip" type="button" data-elevator-skip aria-label="Salta le stanze" title="Salta le stanze"><img src="${asset('figma-updated/shapes/room-next-circle-painted.svg')}" alt="" aria-hidden="true" width="51.8465576171875" height="53.600830078125"></button>` : ''}
+        <p class="sr-only" aria-live="polite" id="elevatorStatus">${escapeCopy(roomName(rooms[active]))} selezionata.</p>
       </div>
     </div>`;
 
@@ -167,6 +225,7 @@
   let exploreOpenRaf = 0;
   let exploreOpening = false;
   let exploreHandoffLocked = false;
+  let exploreHandoffTimer = 0;
 
   function pageInset() {
     const header = document.querySelector('.site-header');
@@ -174,17 +233,69 @@
     return 80;
   }
   const preloadedImages = new Map();
-  rooms.forEach((room) => {
-    [room.art, room.cardPhoto, room.character, room.routeArt].forEach((file) => {
-      const image = new Image();
+  let exploreLoadVersion = 0;
+  function preloadImage(room, file, priority = 'low') {
+    if (!file) return null;
+    let image = preloadedImages.get(file);
+    if (!image) {
+      image = new Image();
+      // Match the CSS mask request mode so its decoded preload supplies the
+      // very first gradient paint, even on a cold Room selection.
+      if (file === room.photoMask) image.crossOrigin = 'anonymous';
       image.decoding = 'async';
       image.loading = 'eager';
-      image.fetchPriority = room.key === rooms[active].key ? 'high' : 'low';
+      image.fetchPriority = priority;
       image.src = asset(file);
       preloadedImages.set(file, image);
       if (image.decode) image.decode().catch(() => {});
-    });
+    } else if (priority === 'high') image.fetchPriority = priority;
+    return image;
+  }
+  rooms.forEach((room) => {
+    const files = configuration ? [room.art, room.character, room.photoMask]
+      : [room.art, room.cardPhoto, room.character, room.routeArt, room.photoMask, ...(room.cardPhotos || [])];
+    files.filter(Boolean).forEach(file => preloadImage(room, file, !configuration && room === rooms[active] ? 'high' : 'low'));
   });
+  function warmRoomAssets(room = rooms[active]) {
+    [room.art, room.character].forEach(file => preloadImage(room, file, 'high'));
+    [room.routeArt, room.cardPhoto, ...(room.cardPhotos || [])].forEach(file => preloadImage(room, file));
+  }
+  function cancelExploreLoad() {
+    exploreLoadVersion += 1;
+    host.querySelectorAll('[data-elevator-explore][aria-busy]').forEach(cta => cta.removeAttribute('aria-busy'));
+  }
+  async function prepareExploreAssets(opener, mobile = false) {
+    if (!configuration) return true;
+    if (opener.hasAttribute('aria-busy')) {
+      cancelExploreLoad();
+      return false;
+    }
+    cancelExploreLoad();
+    const room = rooms[active], version = exploreLoadVersion;
+    const files = mobile ? room.cardPhotos || [room.cardPhoto] : [room.routeArt];
+    opener.setAttribute('aria-busy', 'true');
+    const images = files.map(file => preloadImage(room, file, 'high'));
+    if (mobile) currentCar.querySelectorAll('.tpr-elevator__mobile-card-photo-window img').forEach(image => {
+      image.loading = 'eager';
+      image.fetchPriority = 'high';
+      images.push(image);
+    });
+    try { await Promise.all(images.map(image => image.decode())); }
+    catch { return false; }
+    finally { if (version === exploreLoadVersion) opener.removeAttribute('aria-busy'); }
+    const rect = host.getBoundingClientRect();
+    return version === exploreLoadVersion && room === rooms[active] && mobile === isMobileView() && rect.bottom > 0 && rect.top < innerHeight;
+  }
+  if (configuration) {
+    if (initialJump) warmRoomAssets();
+    new IntersectionObserver((entries, observer) => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      warmRoomAssets();
+      observer.disconnect();
+    }, { rootMargin: '200px 0px' }).observe(host);
+    host.addEventListener('pointerover', () => warmRoomAssets(), { once: true, passive: true });
+    host.addEventListener('focusin', () => warmRoomAssets(), { once: true });
+  }
 
   const CHARACTER_COLOR = {
     coworking: '#2c64e8',
@@ -208,6 +319,15 @@
       element.innerHTML = svg;
       return;
     }
+    if (configuration && room.character.endsWith('.svg')) {
+      // External SVG images cannot inherit currentColor. Keep the exact source
+      // silhouette colored even while inline SVG hydration is slow or fails.
+      const fallback = document.createElement('span');
+      fallback.className = 'tpr-elevator__character-fallback';
+      fallback.style.setProperty('--character-mask', `url("${asset(room.character)}")`);
+      element.replaceChildren(fallback);
+      return;
+    }
     element.innerHTML = `<img src="${asset(room.character)}" alt="">`;
   }
 
@@ -224,7 +344,10 @@
 
   setCharacter(currentCharacter, rooms[active]);
   const hydrateLittleMen = () => {
-    setCharacter(currentCharacter, rooms[active]);
+    // Selection advances active before the lift settles. Late SVG hydration
+    // must retain the outgoing actor's settled Room during that transition.
+    const visibleRoom = rooms.find(room => room.key === host.dataset.activeRoom) || rooms[active];
+    setCharacter(currentCharacter, visibleRoom);
     playEntrance(currentCharacter);
   };
   if (window.tprLittleMen?.ready) window.tprLittleMen.ready.then(hydrateLittleMen);
@@ -241,14 +364,20 @@
     const shade = car === currentCar ? currentShade : incomingShade;
     if (shade) shade.dataset.room = room.key;
     car.querySelectorAll('h2').forEach((title) => { title.innerHTML = roomTitle(room); });
+    if (configuration) {
+      const text = car.querySelector('.tpr-elevator__mobile-copy-text-inner');
+      if (text) text.innerHTML = roomCopyHtml(room);
+      const copy = car.querySelector('.tpr-elevator__updated-text');
+      if (copy) copy.innerHTML = roomCopyHtml(room);
+    }
     car.querySelectorAll('.tpr-elevator__book, .tpr-elevator__mobile-book').forEach((link) => {
       link.href = bookingUrl(room.key);
       link.hidden = !room.bookable;
       const sr = link.querySelector('.sr-only');
-      if (sr) sr.textContent = ` ${room.label} Room`;
+      if (sr) sr.textContent = ` ${roomName(room)}`;
     });
     car.querySelectorAll('[data-elevator-explore]').forEach((cta) => {
-      cta.setAttribute('aria-label', `Esplora ${room.label} Room`);
+      cta.setAttribute('aria-label', `Esplora ${roomName(room)}`);
     });
     const drop = car.querySelector('.tpr-elevator__mobile-drop');
     if (drop) {
@@ -267,6 +396,7 @@
 
   function resetMobileCards(scope = currentCar) {
     scope?.querySelectorAll('.tpr-elevator__mobile-card.is-flipped').forEach((card) => {
+      if (configuration) { setConfiguredCardExpanded(card, false); return; }
       const cardTitle = rooms[active].cards[Number(card.dataset.cardIndex)]?.[0] || 'stanza';
       card.classList.remove('is-flipped');
       card.setAttribute('aria-expanded', 'false');
@@ -276,11 +406,24 @@
   }
 
   function setMobileCardExpanded(card, expanded) {
+    if (configuration) { setConfiguredCardExpanded(card, expanded); return; }
     const cardTitle = rooms[active].cards[Number(card.dataset.cardIndex)]?.[0] || 'stanza';
     card.classList.toggle('is-flipped', expanded);
     card.setAttribute('aria-expanded', String(expanded));
     card.setAttribute('aria-label', expanded ? `Chiudi i dettagli di ${cardTitle}` : `Apri la card ${cardTitle}`);
     card.querySelector('.tpr-elevator__mobile-card-back')?.setAttribute('aria-hidden', String(!expanded));
+  }
+
+  function setConfiguredCardExpanded(card, expanded, { focus = false } = {}) {
+    const open = card.querySelector('[data-elevator-card-open]');
+    const back = card.querySelector('.tpr-elevator__card-back, .tpr-elevator__mobile-card-back');
+    card.classList.toggle('is-flipped', expanded);
+    open.setAttribute('aria-expanded', String(expanded));
+    open.setAttribute('aria-hidden', String(expanded));
+    open.inert = expanded;
+    back.setAttribute('aria-hidden', String(!expanded));
+    back.inert = !expanded;
+    if (focus) (expanded ? back.querySelector('[data-elevator-card-close]') : open).focus({ preventScroll: true });
   }
 
   function clearMobileCopyFit(scope = currentCar) {
@@ -300,12 +443,15 @@
     const paragraphs = [...(inner?.querySelectorAll('p') || copy?.querySelectorAll('.tpr-elevator__mobile-copy-text p') || [])];
     if (!copy || !paragraphs.length) return;
     clearMobileCopyFit(scope);
+    if (configuration) paragraphs.forEach((paragraph) => {
+      if (parseFloat(getComputedStyle(paragraph).fontSize) < 14) paragraph.style.fontSize = '14px';
+    });
     const box = inner || copy;
     const fits = () => copy.scrollHeight <= copy.clientHeight && box.scrollHeight <= box.clientHeight;
     if (copy.clientHeight < 8 || fits()) return;
     const computed = parseFloat(getComputedStyle(paragraphs[0]).fontSize) || 16;
-    let low = 10;
-    let high = computed;
+    let low = configuration ? 14 : 10;
+    let high = Math.max(low, computed);
     for (let i = 0; i < 14; i += 1) {
       const mid = (low + high) / 2;
       paragraphs.forEach((paragraph) => { paragraph.style.fontSize = `${mid}px`; });
@@ -365,17 +511,32 @@
     host.querySelectorAll('[data-elevator-explore]').forEach((cta) => {
       const label = cta.querySelector('.tpr-elevator__cta-label');
       if (label) label.textContent = exploringMode ? 'Tutte le Stanze' : 'Esplora Stanza';
-      cta.setAttribute('aria-label', exploringMode ? 'Torna a tutte le stanze' : `Esplora ${room.label} Room`);
+      cta.setAttribute('aria-label', exploringMode ? 'Torna a tutte le stanze' : `Esplora ${roomName(room)}`);
     });
   }
 
   function updateChrome(index) {
     const room = rooms[index];
-    status.textContent = `${room.label} Room selezionata.`;
+    status.textContent = `${roomName(room)} selezionata.`;
     buttons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.elevatorRoom === room.key)));
   }
 
+  function cancelPendingLift() {
+    clearTimeout(timer);
+    cancelAnimationFrame(liftFrame);
+    cancelAnimationFrame(liftStartFrame);
+  }
+
+  function syncPhotoRoom(room, car) {
+    if (!configuration) return;
+    host.dataset.photoRoom = room.key;
+    // Read the destination car's existing palette; settled Room state continues
+    // to own the surrounding background, navigation and 1250ms lift.
+    host.style.setProperty('--photo-room-bg', getComputedStyle(car).getPropertyValue('--room-bg').trim());
+  }
+
   function settle(room) {
+    cancelPendingLift();
     host.classList.add('is-arming');
     setMobileExpanded(false, { instant: true });
     if (host.classList.contains('is-explore-handoff')) {
@@ -384,6 +545,7 @@
     art.src = asset(room.art);
     setCharacter(currentCharacter, room);
     paintCopy(currentCar, room);
+    syncPhotoRoom(room, currentCar);
     host.dataset.activeRoom = room.key;
     host.classList.remove('is-lifting', 'is-reversing', 'is-explore-handoff');
     incomingArt.removeAttribute('src');
@@ -397,6 +559,7 @@
   }
 
   function render(index) {
+    cancelExploreLoad();
     const room = rooms[index];
     active = index;
     updateChrome(index);
@@ -405,8 +568,10 @@
 
   function select(index, direction = 0, animate = true) {
     if (index < 0 || index >= rooms.length || index === active) return;
+    cancelExploreLoad();
+    if (configuration) warmRoomAssets(rooms[index]);
     setMobileExpanded(false, { instant: true });
-    clearTimeout(timer);
+    cancelPendingLift();
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!animate || reduced) { render(index); return; }
     if (host.classList.contains('is-lifting')) settle(rooms[active]);
@@ -418,13 +583,16 @@
     incomingArt.src = asset(room.art);
     setCharacter(incomingCharacter, room);
     paintCopy(incomingCar, room);
+    syncPhotoRoom(room, incomingCar);
     active = index;
     updateChrome(index);
     host.classList.add('is-arming');
     host.classList.toggle('is-reversing', direction < 0);
     incomingCar.offsetHeight;
     host.classList.remove('is-arming');
-    requestAnimationFrame(() => requestAnimationFrame(() => host.classList.add('is-lifting')));
+    liftFrame = requestAnimationFrame(() => {
+      liftStartFrame = requestAnimationFrame(() => host.classList.add('is-lifting'));
+    });
     timer = setTimeout(() => settle(room), LIFT_MS + 50);
   }
 
@@ -438,15 +606,20 @@
   }, { passive: false });
 
   function renderExploreCards(room) {
-    exploreCards.innerHTML = room.cards.map(([cardTitle, cardCopy], index) => `
-      <button class="tpr-elevator__explore-card" type="button" data-card-index="${index}" aria-expanded="false" aria-label="Apri la card ${cardTitle}">
-        <span class="tpr-elevator__card-front" aria-hidden="true"><strong>${cardTitle}</strong><span class="tpr-elevator__card-arrow" aria-hidden="true"><img src="${new URL('assets/route-arrow-zigzag.png?v=20260819-arrow-2', base).href}" alt="" width="52" height="54" /></span></span>
-        <span class="sr-only">Apri la card ${cardTitle}</span>
+    if (configuration) {
+      const renderId = ++cardRenderId;
+      exploreCards.innerHTML = room.cards.map((card, index) => configuredCardMarkup(room, card, index, false, renderId)).join('');
+      return;
+    }
+    exploreCards.innerHTML = room.cards.map(([cardTitle, cardCopy, ctaLabels], index) => `
+      <button class="tpr-elevator__explore-card" type="button" data-card-index="${index}" aria-expanded="false" aria-label="Apri la card ${escapeCopy(cardTitle)}">
+        <span class="tpr-elevator__card-front" aria-hidden="true"><strong>${escapeCopy(cardTitle)}</strong>${cardSoonMarkup(room, cardTitle)}<span class="tpr-elevator__card-arrow" aria-hidden="true"><img src="${new URL('assets/route-arrow-zigzag.png?v=20260819-arrow-2', base).href}" alt="" width="52" height="54" /></span></span>
+        <span class="sr-only">Apri la card ${escapeCopy(cardTitle)}</span>
         <span class="tpr-elevator__card-back" aria-hidden="true">
-          <strong>Cosa si fa?</strong>
+          <strong>${configuration ? escapeCopy(cardTitle) : 'Cosa si fa?'}</strong>
           <span class="tpr-elevator__card-close" aria-hidden="true"></span>
-          <span>${cardCopy}</span>
-          <span class="tpr-elevator__card-cta">Diventa Membro</span>
+          <span${configuration ? ' class="tpr-elevator__card-description"' : ''}>${escapeCopy(cardCopy)}</span>
+          ${cardCtaMarkup(ctaLabels)}
         </span>
       </button>`).join('');
 
@@ -528,8 +701,9 @@
     return 1 - ((1 - t) ** 3);
   }
 
-  function openExplore(opener) {
+  async function openExplore(opener) {
     if (exploring) return;
+    if (configuration && !await prepareExploreAssets(opener)) return;
     clearTimeout(exploreStartTimer);
     cancelAnimationFrame(exploreOpenRaf);
     exploring = true;
@@ -545,7 +719,7 @@
     host.classList.add('is-exploring', 'is-explore-opening');
     document.body.classList.add('elevator-exploring');
     syncExploreCtas();
-    status.textContent = `${rooms[active].label} Room: esplorazione aperta nella homepage.`;
+    status.textContent = `${roomName(rooms[active])}: esplorazione aperta nella homepage.`;
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     lockExploreLayout();
     setExploreProgress(0);
@@ -608,7 +782,9 @@
     exploreOrigin = 0;
     host.classList.add('is-explore-exit');
     host.style.removeProperty('height');
+    const navigation = navigationVersion;
     requestAnimationFrame(() => {
+      if (navigation !== navigationVersion) return;
       if (scrollBack) scrollToFloor(active, 'auto');
       if (restoreFocus && opener instanceof HTMLElement) opener.focus({ preventScroll: true });
       requestAnimationFrame(() => host.classList.remove('is-explore-exit'));
@@ -661,14 +837,46 @@
     }
     host.classList.add('is-explore-handoff');
     select(next, 1);
-    status.textContent = `${rooms[next].label} Room selezionata.`;
-    setTimeout(() => finishExploreHandoff(next), LIFT_MS + 80);
+    status.textContent = `${roomName(rooms[next])} selezionata.`;
+    exploreHandoffTimer = setTimeout(() => finishExploreHandoff(next), LIFT_MS + 80);
   }
 
-  ctas.forEach((cta) => cta.addEventListener('click', () => {
+  function skipRooms() {
+    cancelExploreLoad();
+    navigationVersion += 1;
+    clearTimeout(hashJumpTimer);
+    clearTimeout(exploreHandoffTimer);
+    initialJump = false;
+    hashJumpIndex = null;
+    exploreHandoffLocked = false;
+    host.querySelectorAll('.tpr-elevator__explore-card.is-flipped, .tpr-elevator__mobile-card.is-flipped').forEach(card => {
+      setConfiguredCardExpanded(card, false);
+    });
+    teardownExploreOverlay();
+    exploreOrigin = 0;
+    host.style.removeProperty('height');
+    settle(rooms[active]);
+    host.classList.remove('is-explore-exit');
+    clearRoomHash();
+    const nextSection = host.nextElementSibling;
+    const target = nextSection?.querySelector('h1, h2, [tabindex], a, button') || nextSection;
+    if (target instanceof HTMLElement) {
+      if (!target.hasAttribute('tabindex')) {
+        target.tabIndex = -1;
+        target.addEventListener('blur', () => target.removeAttribute('tabindex'), { once: true });
+      }
+      target.focus({ preventScroll: true });
+    }
+    scrollTo({ top: host.getBoundingClientRect().top + scrollY + host.offsetHeight, behavior: 'instant' });
+    updateFromScroll();
+  }
+  host.querySelector('[data-elevator-skip]')?.addEventListener('click', skipRooms);
+
+  ctas.forEach((cta) => cta.addEventListener('click', async () => {
     if (exploreHandoffLocked) return;
     if (isMobileView()) {
-      setMobileExpanded(!host.classList.contains('is-mobile-expanded'));
+      if (host.classList.contains('is-mobile-expanded')) setMobileExpanded(false);
+      else if (!configuration || await prepareExploreAssets(cta, true)) setMobileExpanded(true);
       return;
     }
     if (exploring) {
@@ -679,6 +887,20 @@
   }));
 
   host.addEventListener('click', (event) => {
+    if (configuration) {
+      const control = event.target.closest('[data-elevator-card-open], [data-elevator-card-close]');
+      const card = control?.closest('.tpr-elevator__mobile-card, .tpr-elevator__explore-card');
+      if (!card) return;
+      const mobile = card.classList.contains('tpr-elevator__mobile-card');
+      if (mobile && (!isMobileView() || !currentCar.contains(card))) return;
+      const expanded = control.hasAttribute('data-elevator-card-open');
+      if (mobile && expanded) currentCar.querySelectorAll('.tpr-elevator__mobile-card.is-flipped').forEach((openCard) => {
+        if (openCard !== card) setConfiguredCardExpanded(openCard, false);
+      });
+      setConfiguredCardExpanded(card, expanded, { focus: true });
+      if (mobile && expanded) card.scrollIntoView({ inline: 'center', block: 'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      return;
+    }
     const card = event.target.closest('.tpr-elevator__mobile-card');
     if (!card || !isMobileView() || !currentCar.contains(card)) return;
     const expanded = !card.classList.contains('is-flipped');
@@ -716,6 +938,18 @@
   });
   document.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape') return;
+    cancelExploreLoad();
+    if (configuration) {
+      const openCards = isMobileView()
+        ? currentCar.querySelectorAll('.tpr-elevator__mobile-card.is-flipped')
+        : exploreCards.querySelectorAll('.tpr-elevator__explore-card.is-flipped');
+      if (openCards.length) {
+        const focusedCard = [...openCards].find(card => card.contains(document.activeElement)) || openCards[openCards.length - 1];
+        setConfiguredCardExpanded(focusedCard, false, { focus: true });
+        event.preventDefault();
+        return;
+      }
+    }
     if (host.classList.contains('is-mobile-expanded')) closeMobileDrop();
     else if (exploring) closeExplore();
   });
@@ -834,6 +1068,7 @@
   scheduleMobileCopyFit();
   requestAnimationFrame(updateFromScroll);
   if (initialJump) {
+    const initialNavigation = navigationVersion;
     let jumpStarted = false;
     let jumpReleased = false;
     const releaseInitialJump = () => {
@@ -844,11 +1079,12 @@
       updateFromScroll();
     };
     const performInitialJump = () => {
-      if (jumpStarted) return;
+      if (initialNavigation !== navigationVersion || jumpStarted) return;
       jumpStarted = true;
       hashJumpIndex = initialIndex;
       render(initialIndex);
       requestAnimationFrame(() => {
+        if (initialNavigation !== navigationVersion) return;
         scrollToFloor(initialIndex, 'auto');
         clearRoomHash();
         requestAnimationFrame(releaseInitialJump);

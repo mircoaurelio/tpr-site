@@ -1,0 +1,348 @@
+/* Original static graphics and photographs extracted from the supplied PDFs. */
+.updated-preview main {
+  isolation: isolate;
+}
+.preview-page-art {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.updated-preview .preview-decoration {
+  position: absolute;
+  display: block;
+  max-width: none;
+  left: calc(var(--decor-x) / 1512 * 100%);
+  top: calc(var(--decor-y) / 1512 * min(100vw, 1512px));
+  width: calc(var(--decor-w) / 1512 * 100%);
+  height: auto;
+}
+.preview-page-section {
+  z-index: 1;
+}
+.preview-page-section::before {
+  display: none;
+}
+.preview-membership {
+  position: relative;
+  isolation: isolate;
+}
+.preview-membership::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: url("assets/figma-updated/composites/home-membership-decoratives.svg")
+    top center/100% auto no-repeat;
+  pointer-events: none;
+}
+.preview-hero-composite {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+.preview-home-event-photo.preview-events--pdf {
+  position: relative;
+  overflow: visible;
+  mask: none;
+}
+.updated-preview .preview-event-composite {
+  position: absolute;
+  left: -80px;
+  top: 0;
+  max-width: none;
+  width: calc(100% + 160px);
+  height: auto;
+  object-fit: contain;
+}
+.preview-home-events {
+  overflow: hidden;
+}
+.preview-newsletter::before {
+  background: url("assets/figma-updated/composites/home-newsletter-pink-eye.svg")
+    top center/100% auto no-repeat;
+  mask: none;
+}
+.preview-room-character {
+  background: var(--room-accent);
+  mask: var(--room-character) center/contain no-repeat;
+}
+.preview-room-character > img {
+  visibility: hidden;
+}
+.updated-preview .preview-room-nav button {
+  background: transparent;
+}
+.updated-preview .preview-room-nav img {
+  filter: none;
+  mix-blend-mode: normal;
+}
+.preview-room-nav button[aria-pressed="true"] .preview-room-icon--off,
+.preview-room-nav button[aria-pressed="false"] .preview-room-icon--on {
+  display: none;
+}
+.preview-chevron {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  width: 6.692px;
+  height: 14px;
+}
+.preview-chevron::before {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  background: currentColor;
+  mask: url("assets/figma-updated/shapes/control-arrow.svg") center/contain
+    no-repeat;
+}
+.preview-partner-logos > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.preview-partner-logos > span > img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+[data-asset-role] > img {
+  image-rendering: auto;
+}
+@media (max-width: 900px) {
+  .preview-hero-composite {
+    object-fit: cover;
+    object-position: center;
+  }
+  .updated-preview .preview-event-composite {
+    left: -24px;
+    width: calc(100% + 48px);
+    height: 100%;
+    object-fit: cover;
+  }
+  .preview-home-event-photo.preview-events--pdf {
+    height: 320px;
+  }
+  .preview-membership::before {
+    background-size: auto 100%;
+    background-position: center;
+  }
+  .preview-newsletter::before {
+    background-size: auto 100%;
+    background-position: center;
+  }
+  .preview-partner-logos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 32px;
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    margin-inline: auto;
+  }
+  .preview-partner-logos > span:nth-child(n) {
+    width: 100%;
+    height: 60px;
+    min-width: 0;
+  }
+  .preview-partner-logos > span > img {
+    max-width: 100%;
+    max-height: 60px;
+    width: auto;
+    height: auto;
+  }
+  :is(
+      .preview-offer-media,
+      .preview-company-media,
+      .preview-feature-media,
+      .preview-event-media,
+      .preview-map-image
+    )
+    > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .preview-feature-media {
+    overflow: hidden;
+  }
+  .preview-company-media {
+    overflow: hidden;
+  }
+}
+.preview-discover-content > h2 .preview-inline-wordmark {
+  margin-top: 8px;
+}
+.preview-discover-content.is-detail {
+  top: 110px;
+  gap: 24px;
+}
+.preview-discover-character {
+  height: 120px;
+  width: auto;
+  align-self: center;
+  filter: brightness(0) invert(1);
+}
+.preview-discover-content.is-detail p {
+  font-size: 24px;
+}
+.preview-discover-content .preview-button {
+  text-decoration: none;
+}
+@media (max-width: 900px) {
+  .preview-discover-content.is-detail {
+    gap: 20px;
+  }
+  .preview-discover-character {
+    height: 100px;
+  }
+  .preview-discover-content.is-detail p {
+    font-size: 18px;
+  }
+  .preview-discover-content > h2 .preview-inline-wordmark {
+    margin-top: 6px;
+  }
+}
+.preview-body-wordmark {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 351.63306/204;
+}
+.updated-preview .preview-body-wordmark-source {
+  width: 100%;
+  height: auto;
+  max-width: none;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    70.7% 100%,
+    70.7% 85.6%,
+    60.1% 85.6%,
+    60.1% 100%,
+    0 100%
+  );
+}
+.preview-body-trademark {
+  position: absolute;
+  left: 60.385%;
+  top: 86.096%;
+  width: 9.948%;
+  aspect-ratio: 121.350098/64.410004;
+  overflow: hidden;
+}
+.updated-preview .preview-body-trademark > img {
+  position: absolute;
+  max-width: none;
+  width: 890%;
+  height: auto;
+  left: -790%;
+  top: -742.758%;
+  filter: brightness(0) invert(1);
+}
+.preview-inline-wordmark img {
+  width: 156.57px;
+  left: 0.4px;
+  top: -69.355px;
+}
+@media (max-width: 900px) {
+  .preview-inline-wordmark {
+    width: 107px;
+    height: 39px;
+  }
+  .preview-inline-wordmark img {
+    width: 102px;
+    left: 0.26px;
+    top: -45.182px;
+  }
+}
+.preview-event-carousel {
+  scroll-snap-type: none;
+}
+.preview-discover-paragraph {
+  display: block;
+}
+.preview-discover-paragraph + .preview-discover-paragraph {
+  margin-top: 8px;
+}
+@media (min-width: 901px) {
+  .preview-discover-content.is-detail[data-selected-key="reformer"] {
+    top: 0;
+    height: 730px;
+    display: block;
+  }
+  .preview-discover-content[data-selected-key="reformer"]
+    .preview-discover-character {
+    position: absolute;
+    left: 140px;
+    top: 157px;
+    width: 140px;
+    height: 180px;
+    filter: none;
+  }
+  .preview-discover-content[data-selected-key="reformer"]
+    .preview-discover-copy {
+    position: absolute;
+    left: 0;
+    top: 354.4px;
+    width: 420px;
+  }
+  .preview-discover-content[data-selected-key="reformer"] .preview-button {
+    position: absolute;
+    left: 77.154236px;
+    top: 531px;
+    width: 265.691528px;
+    height: 32px;
+    padding: 8px 0;
+  }
+}
+@media (max-width: 900px) {
+  .preview-hero--pdf .preview-hero-composite {
+    mask: url("assets/figma-updated/composites/home-hero-eye-mask.svg")
+      center/100% 100% no-repeat;
+    object-fit: cover;
+    object-position: center;
+  }
+  .preview-page--home .preview-header {
+    background: var(--royal);
+  }
+}
+
+/* Original toolbar artwork includes paint beyond its nominal 48px box. */
+.updated-preview .preview-menu-button { padding: 0; }
+.preview-menu-glyph { width: 100%; height: 100%; }
+.updated-preview .preview-room-nav .preview-room-icon--painted {
+  position: absolute;
+  width: 107.9346974691%;
+  height: 111.7925008138%;
+  left: -3.5410563151%;
+  top: -5.7703653971%;
+  max-width: none;
+}
+.preview-room-next {
+  position: absolute;
+  right: 80px;
+  bottom: 80px;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+.preview-room-next img {
+  position: absolute;
+  width: 51.846558px;
+  height: 53.60083px;
+  max-width: none;
+  left: -1.686768px;
+  top: -2.709473px;
+}
+.preview-room-explorer:has(.is-exploring) .preview-room-next { visibility: hidden; }
+@media (max-width: 900px) {
+  .preview-room-next { right: 24px; bottom: 84px; }
+}

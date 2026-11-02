@@ -1,0 +1,710 @@
+{
+  "schema_version": 2,
+  "source_file": "FpPfXalg4PRyqtnvwt2DUL",
+  "source_section": "616:2194",
+  "updated_on": "2026-11-01",
+  "status": "room-source-assets-recovered-with-other-reference-limits-retained",
+  "registries": {
+    "photo_provenance": "design/asset-files.json",
+    "source_geometry": "design/figma-slots.json",
+    "page_vectors": "design/page-decorations.json",
+    "room_card_faces": "design/room-card-faces.json"
+  },
+  "source_integrity": {
+    "photos": "30 unique embedded JPEG streams across the original supplied PDFs and recovered Room exports; source bytes and SHA-256 verified. Some are retained ingredients rather than active page images.",
+    "vectors": "Original extracted SVG path data is retained; native HTML/CSS supplies text, controls, layout and forms.",
+    "composites": "Static photo/eye clip groups isolated from original PDF operators before rendering; WebP decode verified identical RGBA to the PNG exports.",
+    "screenshots": "Full-screen PDF/browser renders are review evidence only, not implementation assets.",
+    "room_exports": "Original PDF image bytes and source vector painting operators isolated for backgrounds, full alpha card fronts and per-photo clip masks. No traced masks or fabricated photographs."
+  },
+  "approved_brand_assets": [
+    {
+      "path": "assets/tpr-logo.svg",
+      "use": "Approved TM full logo in header/menu; retained."
+    },
+    {
+      "path": "assets/brand/Logotype_blue.svg",
+      "source_drive_file": "1sFqhGB-_NoxD_3HBqBbu-KfO-u2VsftO",
+      "use": "Approved original TM wordmark in footer, Vivi headings and body trademark crop; original paths unchanged."
+    },
+    {
+      "path": "assets/figma-updated/composites/home-about-wordmark-original.svg",
+      "use": "Original PDF body wordmark paths. CSS clips its registered-mark area and positions the approved TM source without rewriting either SVG."
+    }
+  ],
+  "integrated_assets": {
+    "photo_directory": "assets/figma-updated/photos/",
+    "unique_photo_count": 30,
+    "photo_roles": [
+      "about.events",
+      "about.offers",
+      "contact.map",
+      "events.ceramic-workshop",
+      "events.shamans-ritual",
+      "events.the-dinner",
+      "events.the-peoples-week-talk",
+      "offers.all-inclusive",
+      "offers.company",
+      "offers.day-pass",
+      "offers.flex-8",
+      "offers.ufficio-virtuale",
+      "rooms.bar.cards.accessibilita",
+      "rooms.bar.cards.servizi",
+      "rooms.bar.cards.storage",
+      "rooms.bar.picture",
+      "rooms.bar.primary-photo",
+      "rooms.coworking.cards.eventi",
+      "rooms.coworking.cards.postazioni",
+      "rooms.coworking.cards.sale-riunioni",
+      "rooms.coworking.picture",
+      "rooms.coworking.primary-photo",
+      "rooms.media.cards.podcast",
+      "rooms.media.cards.set-fotografico",
+      "rooms.media.picture",
+      "rooms.media.primary-photo",
+      "rooms.reformer.cards.attrezzature",
+      "rooms.reformer.cards.classi",
+      "rooms.reformer.cards.studio",
+      "rooms.reformer.picture",
+      "rooms.reformer.primary-photo",
+      "rooms.wellness.cards.contrast-therapy",
+      "rooms.wellness.cards.gym",
+      "rooms.wellness.picture",
+      "rooms.wellness.primary-photo"
+    ],
+    "composites": [
+      "assets/figma-updated/composites/home-hero-photo-eye-2x.webp",
+      "assets/figma-updated/composites/home-events-photo-eye-2x.webp",
+      "assets/figma-updated/composites/home-coworking-photo-eye-2x.webp"
+    ],
+    "partner_logos": [
+      "assets/figma-updated/partners/partner-1.svg",
+      "assets/figma-updated/partners/partner-2-revo.svg",
+      "assets/figma-updated/partners/partner-3.svg",
+      "assets/figma-updated/partners/partner-4.svg"
+    ],
+    "decorative_artwork": [
+      "assets/figma-updated/composites/home-membership-decoratives.svg",
+      "assets/figma-updated/composites/home-newsletter-pink-eye.svg"
+    ],
+    "shape_directory": "assets/figma-updated/shapes/",
+    "shape_scope": "Original paper card/frame masks, form/control outlines, navigation artwork, page ornaments and selected About illustration.",
+    "mobile_hero": "Original raw hero JPEG with the original eye mask; photo keeps its proportions and header corners remain blue.",
+    "source_illustration_roles": [
+      "rooms.wellness.cards.longevity",
+      "rooms.media.cards.studio-audio"
+    ]
+  },
+  "desktop_validation": {
+    "viewport_width": 1512,
+    "source_chrome_removed_px": 30,
+    "scope": "Main six page heights match their supplied desktop PDF canvases after removing the mock macOS menu bar; this is geometry evidence, not a complete pixel-fidelity claim.",
+    "pages": [
+      {
+        "route": "/homepage-tpr/",
+        "height_css_px": 8523,
+        "scroll_width_css_px": 1512,
+        "script_errors": [],
+        "failed_local_images": []
+      },
+      {
+        "route": "/about/",
+        "height_css_px": 4444,
+        "scroll_width_css_px": 1512,
+        "script_errors": [],
+        "failed_local_images": []
+      },
+      {
+        "route": "/contatti/",
+        "height_css_px": 1670,
+        "scroll_width_css_px": 1512,
+        "script_errors": [],
+        "failed_local_images": []
+      },
+      {
+        "route": "/eventi/",
+        "height_css_px": 2806,
+        "scroll_width_css_px": 1512,
+        "script_errors": [],
+        "failed_local_images": []
+      },
+      {
+        "route": "/vivi-tpr/",
+        "height_css_px": 4036,
+        "scroll_width_css_px": 1512,
+        "script_errors": [],
+        "failed_local_images": []
+      },
+      {
+        "route": "/prenota/",
+        "height_css_px": 1750,
+        "scroll_width_css_px": 1512,
+        "script_errors": [],
+        "failed_local_images": []
+      }
+    ],
+    "evidence": "/workspace/tpr-redesign-audit/pdf-comparison/results.json"
+  },
+  "mobile_validation": {
+    "status": "responsive-adaptation-updated-source-frames-unprovided",
+    "fixes": [
+      "Hero photo proportions, original eye-mask transparency and blue header corners.",
+      "Wordmark spacing, clipped card/media bounds, partner logo wrapping and narrow form layout."
+    ],
+    "latest_main_six_393px_check": "No document-wide horizontal overflow, script errors or failed local images in the current comparison capture. Further mobile paper-frame refinements and final screenshot QA are tracked separately.",
+    "limitation": "Updated mobile source frames are needed to verify exact mobile layout."
+  },
+  "remaining": {
+    "photo_role_count": 0,
+    "photo_role_breakdown": {
+      "standalone_picture_roles_not_rendered_by_current_template": 0,
+      "card_photos_rendered_as_empty_media": 0
+    },
+    "photo_roles": [],
+    "left_photo_eye_stage_count": 0,
+    "left_photo_eye_stages": [],
+    "stage_source_note": "Full original Room PDFs recovered. Native copy/CTA, source character and Card Front layers are separated from the source backdrop; exact photo transforms and clip masks are retained.",
+    "source_illustration_count": 0,
+    "source_illustrations": [],
+    "updated_mobile_frames": "Not supplied; current mobile layout is a responsive adaptation.",
+    "prototype_reference": "14 card-back states and source typography verified against live Figma; revised physical card turn is implemented, but exact approved prototype duration/easing remains unverified.",
+    "booking_provider": "Configured Mindbody Schedules widget 4581434fffc on /prenota/; actual bookings are not submitted during tests.",
+    "day_pass_checkout": "No payment/checkout destination supplied; current offer actions open an enquiry."
+  },
+  "recovered_photo_roles": [
+    {
+      "role": "rooms.coworking.picture",
+      "route": "/rooms/coworking/",
+      "status": "available",
+      "rendered_in_current_template": false,
+      "source_layers": {
+        "coworking": {
+          "id": "809:3286",
+          "name": "image 74",
+          "asset_variable": "imgImage74"
+        }
+      },
+      "path": "assets/figma-updated/photos/room-coworking-image74-backing-source.jpeg",
+      "source_pdf": {
+        "file": "Coworking.pdf",
+        "sha256": "255db819bb37f14251719c976f8d6359b523e8ae3b39250b96bed3f92de64db7",
+        "node": "809:3282",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    },
+    {
+      "role": "rooms.coworking.cards.postazioni",
+      "route": "/rooms/coworking/",
+      "status": "available",
+      "rendered_in_current_template": true,
+      "source_layers": {
+        "coworking": {
+          "id": "1085:2343",
+          "name": "Prova1-10 1",
+          "asset_variable": "imgProva1101"
+        }
+      },
+      "path": "assets/figma-updated/photos/room-coworking-postazioni-window-2x.webp",
+      "source_pdf": {
+        "file": "Coworking.pdf",
+        "sha256": "255db819bb37f14251719c976f8d6359b523e8ae3b39250b96bed3f92de64db7",
+        "node": "809:3282",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    },
+    {
+      "role": "rooms.coworking.cards.sale-riunioni",
+      "route": "/rooms/coworking/",
+      "status": "available",
+      "rendered_in_current_template": true,
+      "source_layers": {
+        "coworking": {
+          "id": "1085:2344",
+          "name": "Prova1-2 1",
+          "asset_variable": "imgProva121"
+        }
+      },
+      "path": "assets/figma-updated/photos/room-coworking-sale-riunioni-window-2x.webp",
+      "source_pdf": {
+        "file": "Coworking.pdf",
+        "sha256": "255db819bb37f14251719c976f8d6359b523e8ae3b39250b96bed3f92de64db7",
+        "node": "809:3282",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    },
+    {
+      "role": "rooms.reformer.picture",
+      "route": "/rooms/reformer/",
+      "status": "available",
+      "rendered_in_current_template": false,
+      "source_layers": {
+        "move": {
+          "id": "643:1827",
+          "name": "image 74",
+          "asset_variable": "imgImage74"
+        }
+      },
+      "path": "assets/figma-updated/photos/room-reformer-image74-backing-source.jpeg",
+      "source_pdf": {
+        "file": "Move.pdf",
+        "sha256": "b2bdee03460757aeb75ba9d22392706967d7d2c911d3570ef202922abefa8e1c",
+        "node": "643:1823",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    },
+    {
+      "role": "rooms.reformer.cards.studio",
+      "route": "/rooms/reformer/",
+      "status": "available",
+      "rendered_in_current_template": true,
+      "source_layers": {
+        "move": {
+          "id": "1085:2354",
+          "name": "Prova1-5 1",
+          "asset_variable": "imgProva151"
+        }
+      },
+      "path": "assets/figma-updated/photos/room-reformer-studio-window-2x.webp",
+      "source_pdf": {
+        "file": "Move.pdf",
+        "sha256": "b2bdee03460757aeb75ba9d22392706967d7d2c911d3570ef202922abefa8e1c",
+        "node": "643:1823",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    },
+    {
+      "role": "rooms.reformer.cards.classi",
+      "route": "/rooms/reformer/",
+      "status": "available",
+      "rendered_in_current_template": true,
+      "source_layers": {
+        "move": {
+          "id": "1074:2832",
+          "name": "Pilates_Fuel_21_10_2026-29 1",
+          "asset_variable": "imgPilatesFuel21102026291"
+        }
+      },
+      "path": "assets/figma-updated/photos/room-reformer-classi-window-2x.webp",
+      "source_pdf": {
+        "file": "Move.pdf",
+        "sha256": "b2bdee03460757aeb75ba9d22392706967d7d2c911d3570ef202922abefa8e1c",
+        "node": "643:1823",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    },
+    {
+      "role": "rooms.reformer.cards.attrezzature",
+      "route": "/rooms/reformer/",
+      "status": "available",
+      "rendered_in_current_template": true,
+      "source_layers": {
+        "move": {
+          "id": "1085:2353",
+          "name": "Prova1-11 1",
+          "asset_variable": "imgProva1111"
+        }
+      },
+      "path": "assets/figma-updated/photos/room-reformer-attrezzature-window-2x.webp",
+      "source_pdf": {
+        "file": "Move.pdf",
+        "sha256": "b2bdee03460757aeb75ba9d22392706967d7d2c911d3570ef202922abefa8e1c",
+        "node": "643:1823",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    },
+    {
+      "role": "rooms.wellness.picture",
+      "route": "/rooms/wellness/",
+      "status": "available",
+      "rendered_in_current_template": false,
+      "source_layers": {
+        "recharge": {
+          "id": "643:1968",
+          "name": "image 74",
+          "asset_variable": "imgImage74"
+        }
+      },
+      "path": "assets/figma-updated/photos/room-wellness-image74-backing-source.jpeg",
+      "source_pdf": {
+        "file": "Recharge.pdf",
+        "sha256": "69426c7d2aea99d327ec7e7c398520fcc4bdc4b957e48bc83e94d5088f704946",
+        "node": "643:1964",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    },
+    {
+      "role": "rooms.wellness.cards.gym",
+      "route": "/rooms/wellness/",
+      "status": "available",
+      "rendered_in_current_template": true,
+      "source_layers": {
+        "recharge": {
+          "id": "1085:2357",
+          "name": "Prova1-9 1",
+          "asset_variable": "imgProva191"
+        }
+      },
+      "path": "assets/figma-updated/photos/room-wellness-gym-window-2x.webp",
+      "source_pdf": {
+        "file": "Recharge.pdf",
+        "sha256": "69426c7d2aea99d327ec7e7c398520fcc4bdc4b957e48bc83e94d5088f704946",
+        "node": "643:1964",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    },
+    {
+      "role": "rooms.wellness.cards.contrast-therapy",
+      "route": "/rooms/wellness/",
+      "status": "available",
+      "rendered_in_current_template": true,
+      "source_layers": {
+        "recharge": {
+          "id": "1085:2356",
+          "name": "Prova1-13 1",
+          "asset_variable": "imgProva1131"
+        }
+      },
+      "path": "assets/figma-updated/photos/room-wellness-contrast-therapy-window-2x.webp",
+      "source_pdf": {
+        "file": "Recharge.pdf",
+        "sha256": "69426c7d2aea99d327ec7e7c398520fcc4bdc4b957e48bc83e94d5088f704946",
+        "node": "643:1964",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    },
+    {
+      "role": "rooms.bar.picture",
+      "route": "/rooms/bar/",
+      "status": "available",
+      "rendered_in_current_template": false,
+      "source_layers": {
+        "fuel": {
+          "id": "643:1899",
+          "name": "image 74",
+          "asset_variable": "imgImage74"
+        }
+      },
+      "path": "assets/figma-updated/photos/room-bar-image74-backing-source.jpeg",
+      "source_pdf": {
+        "file": "Fuel.pdf",
+        "sha256": "3554590e6fbc3bb100b9e8088602520dedfe9738a6e7bfdffaf9f62273f7942a",
+        "node": "643:1895",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    },
+    {
+      "role": "rooms.bar.cards.servizi",
+      "route": "/rooms/bar/",
+      "status": "available",
+      "rendered_in_current_template": true,
+      "source_layers": {
+        "fuel": {
+          "id": "1074:2893",
+          "name": "DSC03630 1",
+          "asset_variable": "imgDsc036301"
+        }
+      },
+      "path": "assets/figma-updated/photos/room-bar-servizi-window-2x.webp",
+      "source_pdf": {
+        "file": "Fuel.pdf",
+        "sha256": "3554590e6fbc3bb100b9e8088602520dedfe9738a6e7bfdffaf9f62273f7942a",
+        "node": "643:1895",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    },
+    {
+      "role": "rooms.bar.cards.accessibilita",
+      "route": "/rooms/bar/",
+      "status": "available",
+      "rendered_in_current_template": true,
+      "source_layers": {
+        "fuel": {
+          "id": "1086:2208",
+          "name": "Prova1-3 1",
+          "asset_variable": "imgProva131"
+        }
+      },
+      "path": "assets/figma-updated/photos/room-bar-accessibilita-window-2x.webp",
+      "source_pdf": {
+        "file": "Fuel.pdf",
+        "sha256": "3554590e6fbc3bb100b9e8088602520dedfe9738a6e7bfdffaf9f62273f7942a",
+        "node": "643:1895",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    },
+    {
+      "role": "rooms.bar.cards.storage",
+      "route": "/rooms/bar/",
+      "status": "available",
+      "rendered_in_current_template": true,
+      "source_layers": {
+        "fuel": {
+          "id": "1086:2206",
+          "name": "Prova1-15 1",
+          "asset_variable": "imgProva1151"
+        }
+      },
+      "path": "assets/figma-updated/photos/room-bar-storage-window-2x.webp",
+      "source_pdf": {
+        "file": "Fuel.pdf",
+        "sha256": "3554590e6fbc3bb100b9e8088602520dedfe9738a6e7bfdffaf9f62273f7942a",
+        "node": "643:1895",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    },
+    {
+      "role": "rooms.media.picture",
+      "route": "/rooms/media/",
+      "status": "available",
+      "rendered_in_current_template": false,
+      "source_layers": {
+        "media": {
+          "id": "643:2037",
+          "name": "image 74",
+          "asset_variable": "imgImage74"
+        }
+      },
+      "path": "assets/figma-updated/photos/room-media-image74-backing-source.jpeg",
+      "source_pdf": {
+        "file": "Media.pdf",
+        "sha256": "20a648554172fcf3e4565664103ee4ea9cc5ca05769c75e5a981d90e67656a7f",
+        "node": "643:2033",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    },
+    {
+      "role": "rooms.media.cards.podcast",
+      "route": "/rooms/media/",
+      "status": "available",
+      "rendered_in_current_template": true,
+      "source_layers": {
+        "media": {
+          "id": "1086:2219",
+          "name": "Prova1-7 1",
+          "asset_variable": "imgProva171"
+        }
+      },
+      "path": "assets/figma-updated/photos/room-media-podcast-window-2x.webp",
+      "source_pdf": {
+        "file": "Media.pdf",
+        "sha256": "20a648554172fcf3e4565664103ee4ea9cc5ca05769c75e5a981d90e67656a7f",
+        "node": "643:2033",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    },
+    {
+      "role": "rooms.media.cards.set-fotografico",
+      "route": "/rooms/media/",
+      "status": "available",
+      "rendered_in_current_template": true,
+      "source_layers": {
+        "media": {
+          "id": "1086:2220",
+          "name": "Prova1-21 1",
+          "asset_variable": "imgProva1211"
+        }
+      },
+      "path": "assets/figma-updated/photos/room-media-set-fotografico-window-2x.webp",
+      "source_pdf": {
+        "file": "Media.pdf",
+        "sha256": "20a648554172fcf3e4565664103ee4ea9cc5ca05769c75e5a981d90e67656a7f",
+        "node": "643:2033",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    }
+  ],
+  "recovered_source_illustrations": [
+    {
+      "role": "rooms.wellness.cards.longevity",
+      "status": "available",
+      "source_layers": {
+        "recharge": {
+          "id": "1074:2889",
+          "name": null,
+          "asset_variable": "imgFrame1618873434"
+        }
+      },
+      "current_state": "Native coming-soon label; source illustration not substituted with a photo.",
+      "path": "assets/figma-updated/photos/room-wellness-longevity-window-2x.webp",
+      "source_pdf": {
+        "file": "Recharge.pdf",
+        "sha256": "69426c7d2aea99d327ec7e7c398520fcc4bdc4b957e48bc83e94d5088f704946",
+        "node": "643:1964",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    },
+    {
+      "role": "rooms.media.cards.studio-audio",
+      "status": "available",
+      "source_layers": {
+        "media": {
+          "id": "1074:2890",
+          "name": null,
+          "asset_variable": "imgFrame1618873434"
+        }
+      },
+      "current_state": "Native coming-soon label; source illustration not substituted with a photo.",
+      "path": "assets/figma-updated/photos/room-media-studio-audio-window-2x.webp",
+      "source_pdf": {
+        "file": "Media.pdf",
+        "sha256": "20a648554172fcf3e4565664103ee4ea9cc5ca05769c75e5a981d90e67656a7f",
+        "node": "643:2033",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    }
+  ],
+  "recovered_left_photo_eye_stages": [
+    {
+      "room": "Move",
+      "route": "/rooms/reformer/",
+      "figma_node": "643:1823",
+      "status": "available",
+      "current_fallback": "assets/homepage-room-reformer-no-text-2x.webp",
+      "available_right_stage_vectors": "assets/figma-updated/composites/room-move-retained-stage-vectors-only.svg",
+      "path": "assets/figma-updated/composites/room-reformer-artwork-2x.webp",
+      "source_pdf": {
+        "file": "Move.pdf",
+        "sha256": "b2bdee03460757aeb75ba9d22392706967d7d2c911d3570ef202922abefa8e1c",
+        "node": "643:1823",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    },
+    {
+      "room": "Recharge",
+      "route": "/rooms/wellness/",
+      "figma_node": "643:1964",
+      "status": "available",
+      "current_fallback": "assets/homepage-room-wellness-no-text-2x.webp",
+      "available_right_stage_vectors": "assets/figma-updated/composites/room-recharge-retained-stage-vectors-only.svg",
+      "path": "assets/figma-updated/composites/room-wellness-artwork-2x.webp",
+      "source_pdf": {
+        "file": "Recharge.pdf",
+        "sha256": "69426c7d2aea99d327ec7e7c398520fcc4bdc4b957e48bc83e94d5088f704946",
+        "node": "643:1964",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    },
+    {
+      "room": "Fuel",
+      "route": "/rooms/bar/",
+      "figma_node": "643:1895",
+      "status": "available",
+      "current_fallback": "assets/homepage-room-bar-no-text-2x.webp",
+      "available_right_stage_vectors": "assets/figma-updated/composites/room-fuel-retained-stage-vectors-only.svg",
+      "path": "assets/figma-updated/composites/room-bar-artwork-2x.webp",
+      "source_pdf": {
+        "file": "Fuel.pdf",
+        "sha256": "3554590e6fbc3bb100b9e8088602520dedfe9738a6e7bfdffaf9f62273f7942a",
+        "node": "643:1895",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    },
+    {
+      "room": "Media",
+      "route": "/rooms/media/",
+      "figma_node": "643:2033",
+      "status": "available",
+      "current_fallback": "assets/homepage-room-media-no-text-2x.webp",
+      "available_right_stage_vectors": "assets/figma-updated/composites/room-media-retained-stage-vectors-only.svg",
+      "path": "assets/figma-updated/composites/room-media-artwork-2x.webp",
+      "source_pdf": {
+        "file": "Media.pdf",
+        "sha256": "20a648554172fcf3e4565664103ee4ea9cc5ca05769c75e5a981d90e67656a7f",
+        "node": "643:2033",
+        "page": 1,
+        "canvas": [
+          3432,
+          952
+        ]
+      }
+    }
+  ]
+}

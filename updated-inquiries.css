@@ -1,0 +1,66 @@
+/* Popup_AI 1068:2675: 660×568 paper, 48px padding/gap and original controls. */
+html.is-inquiry-open,
+html.is-inquiry-open body.updated-preview { overflow: hidden; }
+dialog.preview-inquiry-dialog {
+  width: min(676px, calc(100vw - 16px));
+  max-width: none;
+  max-height: calc(100dvh - 24px);
+  margin: auto;
+  padding: 56px 8px 8px;
+  border: 0;
+  background: transparent;
+  color: var(--royal);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+dialog.preview-inquiry-dialog::backdrop { background: rgb(19 41 96 / .6); }
+.updated-preview .preview-inquiry-close {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 2px solid var(--royal);
+  border-radius: 50%;
+  background: white;
+  color: var(--royal);
+  font: 400 32px/1 Arial, sans-serif;
+}
+.updated-preview .preview-inquiry-card {
+  width: 100%;
+  height: 568px;
+  min-height: 568px;
+  padding: 48px;
+  gap: 48px;
+  margin: 0;
+}
+.updated-preview .preview-inquiry-card.has-status { height: auto; }
+.updated-preview .preview-inquiry-heading { display: flex; flex-direction: column; gap: 24px; }
+.updated-preview .preview-inquiry-heading-row { display: flex; gap: 24px; align-items: start; }
+.updated-preview .preview-inquiry-title {
+  flex: 1;
+  min-width: 0;
+  font: 600 40px/1 "TPR Rader Reference", "TPR Rader", Arial, sans-serif;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+.updated-preview .preview-inquiry-heading-row > img { flex: none; width: 64px; height: 80px; }
+.updated-preview .preview-inquiry-subtitle { font: 400 24px/1 var(--preview-body); }
+.updated-preview .preview-inquiry-card .preview-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.updated-preview .preview-inquiry-card .preview-fields :is(input,select,textarea) { font-size: 16px; }
+.updated-preview .preview-inquiry-card .preview-fields :is(input,select) { height: 48px; }
+.updated-preview .preview-inquiry-card .preview-fields textarea { height: 96px; }
+.updated-preview .preview-inquiry-card .preview-submit { min-height: 32px; font-size: 16px; }
+@media (max-width: 700px) {
+  .updated-preview .preview-inquiry-card { height: auto; min-height: 0; padding: 24px; gap: 32px; }
+  .updated-preview .preview-inquiry-heading-row { gap: 16px; }
+  .updated-preview .preview-inquiry-title { font-size: 32px; }
+  .updated-preview .preview-inquiry-heading-row > img { width: 48px; height: 60px; }
+  .updated-preview .preview-inquiry-subtitle { font-size: 20px; }
+  .updated-preview .preview-inquiry-card .preview-fields { grid-template-columns: 1fr; gap: 16px; }
+  .updated-preview .preview-inquiry-card .preview-submit { min-height: 44px; }
+}

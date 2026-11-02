@@ -1,0 +1,2247 @@
+{
+  "source_file": "FpPfXalg4PRyqtnvwt2DUL",
+  "source_section": "616:2194",
+  "basis": "Cached high-fidelity Figma source geometry and supplied Figma PDF exports from2026-10-30; local desktop browser geometry checked at1512×952.",
+  "confidence_notes": [
+    "All dimensions are CSS pixels at1512 desktop. x/y are relative to nearest Picture wrapper unless another coordinate space is named.",
+    "Raw image filenames have NOT been verified against inaccessible uploaded ZIP. candidate_file_stems come only from original Figma layer names; file extensions unknown.",
+    "Original asset variable names Group*, Vector*, image74 do not identify a brand or image content. No brand identities invented.",
+    "Figma strokes are rendered inside declared frames; card/picture geometry here treats8px white strokes as inside paint, not CSS layout borders.",
+    "The30px macOS menu bar at top of cached Design screens is chrome; page-local coordinates omit it.",
+    "Composed raster asset slots require exact exported artwork when raw source/crop cannot reproduce the vector mask."
+  ],
+  "roles": {
+    "home.hero": {
+      "kind": "composed-raster",
+      "geometry_css_px": {
+        "wrapper": {
+          "width": 1512,
+          "height": 952
+        },
+        "image": {
+          "width": 2384,
+          "height": 3301,
+          "x": -507,
+          "y": -2574.0176
+        },
+        "transform": [
+          "rotate(-180deg)",
+          "scaleX(-1)"
+        ],
+        "note": "Wrapper source computes top -270.38%, bottom23.63%; intrinsic export is2384×3301. Preserve composed artwork and its transform."
+      },
+      "sources": {
+        "home": {
+          "page": "home",
+          "layer_id": "616:1710",
+          "original_layer_name": "Maschera immagine",
+          "asset_variable": "imgMascheraImmagine",
+          "layer_classes": "-translate-x-1/2 absolute bottom-[23.63%] flex items-center justify-center left-[calc(50%-71px)] top-[-270.38%] w-[2384px]",
+          "candidate_file_stems": [
+            "Maschera immagine"
+          ]
+        }
+      }
+    },
+    "home.events": {
+      "kind": "composed-raster",
+      "geometry_css_px": {
+        "wrapper": {
+          "width": 1352,
+          "height": 600,
+          "overflow": "source parent Eventi section clips"
+        },
+        "image": {
+          "width": 2267,
+          "height": 3185,
+          "x": -400,
+          "y": 0.24
+        },
+        "note": "Exact cached asset is Vector raster inside Maschera immagine. Node616:1779 is CTA text, not an image. Source class bottom[-430.87%] yields3184.98 height due rounded percentages."
+      },
+      "sources": {
+        "home": {
+          "page": "home",
+          "layer_id": "616:1781",
+          "original_layer_name": "Vector",
+          "asset_variable": "imgVector9",
+          "layer_classes": "-translate-x-1/2 absolute bottom-[-430.87%] left-[calc(50%+57.5px)] top-[0.04%] w-[2267px]",
+          "wrapper_layer_id": "616:1780",
+          "wrapper_classes": "h-[600px] relative shrink-0 w-full",
+          "candidate_file_stems": [
+            "Vector"
+          ]
+        }
+      }
+    },
+    "offers.day-pass": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 480,
+          "height": "intrinsic"
+        },
+        "picture": {
+          "width": 560,
+          "height": 320,
+          "x_relative_to_card": -40,
+          "y_relative_to_card": 0,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 630,
+          "height": 420,
+          "x": -54,
+          "y": 0,
+          "rotation_deg": 0
+        },
+        "image_x_relative_to_visible_card": -94,
+        "note": "x/y relative to560×320 Picture; do not resize raw photo with generic cover on480px wrapper."
+      },
+      "sources": {
+        "home": {
+          "page": "home",
+          "layer_id": "1086:2244",
+          "original_layer_name": "Prova1-20 1",
+          "asset_variable": "imgProva1201",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[420px] left-[calc(50%-19px)] top-[calc(50%+50px)] w-[630px]",
+          "wrapper_layer_id": "1086:2243",
+          "wrapper_classes": "h-[320px] overflow-clip relative shrink-0 w-[560px]",
+          "card_layer_id": "1086:2242",
+          "card_classes": "bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] items-center overflow-clip pb-[24px] px-[24px] relative rounded-[12px] shrink-0 w-[480px]",
+          "candidate_file_stems": [
+            "Prova1-20",
+            "Prova1-20 1"
+          ],
+          "pdf_image_xref": 80
+        },
+        "vivi": {
+          "page": "vivi",
+          "layer_id": "1086:2306",
+          "original_layer_name": "Prova1-20 1",
+          "asset_variable": "imgProva1201",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[420px] left-[calc(50%-19px)] top-[calc(50%+50px)] w-[630px]",
+          "wrapper_layer_id": "1086:2305",
+          "wrapper_classes": "h-[320px] overflow-clip relative shrink-0 w-[560px]",
+          "card_layer_id": "1086:2304",
+          "card_classes": "bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] items-center overflow-clip pb-[24px] px-[24px] relative rounded-[12px] shrink-0 w-[480px]",
+          "candidate_file_stems": [
+            "Prova1-20",
+            "Prova1-20 1"
+          ],
+          "pdf_image_xref": 76
+        }
+      }
+    },
+    "offers.all-inclusive": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 480,
+          "height": "intrinsic"
+        },
+        "picture": {
+          "width": 560,
+          "height": 320,
+          "x_relative_to_card": -40,
+          "y_relative_to_card": 0,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 523,
+          "height": 348,
+          "x": 0,
+          "y": 0,
+          "rotation_deg": 0
+        },
+        "image_x_relative_to_visible_card": -40,
+        "note": "x/y relative to560×320 Picture; do not resize raw photo with generic cover on480px wrapper."
+      },
+      "sources": {
+        "home": {
+          "page": "home",
+          "layer_id": "1086:2260",
+          "original_layer_name": "Prova1-16 1",
+          "asset_variable": "imgProva1161",
+          "layer_classes": "absolute h-[348px] left-0 top-0 w-[523px]",
+          "wrapper_layer_id": "1086:2259",
+          "wrapper_classes": "h-[320px] overflow-clip relative shrink-0 w-[560px]",
+          "card_layer_id": "1086:2258",
+          "card_classes": "bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] items-center overflow-clip pb-[24px] px-[24px] relative rounded-[12px] shrink-0 w-[480px]",
+          "candidate_file_stems": [
+            "Prova1-16",
+            "Prova1-16 1"
+          ],
+          "pdf_image_xref": 34
+        },
+        "vivi": {
+          "page": "vivi",
+          "layer_id": "1086:2322",
+          "original_layer_name": "Prova1-16 1",
+          "asset_variable": "imgProva1161",
+          "layer_classes": "absolute h-[348px] left-0 top-0 w-[523px]",
+          "wrapper_layer_id": "1086:2321",
+          "wrapper_classes": "h-[320px] overflow-clip relative shrink-0 w-[560px]",
+          "card_layer_id": "1086:2320",
+          "card_classes": "bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] items-center overflow-clip pb-[24px] px-[24px] relative rounded-[12px] shrink-0 w-[480px]",
+          "candidate_file_stems": [
+            "Prova1-16",
+            "Prova1-16 1"
+          ],
+          "pdf_image_xref": 34
+        }
+      }
+    },
+    "offers.flex-8": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 480,
+          "height": "intrinsic"
+        },
+        "picture": {
+          "width": 560,
+          "height": 320,
+          "x_relative_to_card": -40,
+          "y_relative_to_card": 0,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 1925,
+          "height": 1283,
+          "x": -568,
+          "y": -423,
+          "rotation_deg": 0
+        },
+        "image_x_relative_to_visible_card": -608,
+        "note": "x/y relative to560×320 Picture; do not resize raw photo with generic cover on480px wrapper."
+      },
+      "sources": {
+        "home": {
+          "page": "home",
+          "layer_id": "1086:2278",
+          "original_layer_name": "Prova1-19 1",
+          "asset_variable": "imgProva1191",
+          "layer_classes": "absolute h-[1283px] left-[-568px] top-[-423px] w-[1925px]",
+          "wrapper_layer_id": "1086:2277",
+          "wrapper_classes": "h-[320px] overflow-clip relative shrink-0 w-[560px]",
+          "card_layer_id": "1086:2276",
+          "card_classes": "bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] items-center overflow-clip pb-[24px] px-[24px] relative rounded-[12px] shrink-0 w-[480px]",
+          "candidate_file_stems": [
+            "Prova1-19",
+            "Prova1-19 1"
+          ],
+          "pdf_image_xref": 64
+        },
+        "vivi": {
+          "page": "vivi",
+          "layer_id": "1086:2340",
+          "original_layer_name": "Prova1-19 1",
+          "asset_variable": "imgProva1191",
+          "layer_classes": "absolute h-[1283px] left-[-568px] top-[-423px] w-[1925px]",
+          "wrapper_layer_id": "1086:2339",
+          "wrapper_classes": "h-[320px] overflow-clip relative shrink-0 w-[560px]",
+          "card_layer_id": "1086:2338",
+          "card_classes": "bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] items-center overflow-clip pb-[24px] px-[24px] relative rounded-[12px] shrink-0 w-[480px]",
+          "candidate_file_stems": [
+            "Prova1-19",
+            "Prova1-19 1"
+          ],
+          "pdf_image_xref": 60
+        }
+      }
+    },
+    "offers.ufficio-virtuale": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 480,
+          "height": 756
+        },
+        "picture": {
+          "width": 560,
+          "height": 320,
+          "x_relative_to_card": -40,
+          "y_relative_to_card": 0,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 842,
+          "height": 561,
+          "x": -123,
+          "y": -25,
+          "rotation_deg": 0
+        },
+        "image_x_relative_to_visible_card": -163,
+        "note": "x/y relative to560×320 Picture; do not resize raw photo with generic cover on480px wrapper."
+      },
+      "sources": {
+        "home": {
+          "page": "home",
+          "layer_id": "1086:2295",
+          "original_layer_name": "Prova1-18 1",
+          "asset_variable": "imgProva1181",
+          "layer_classes": "-translate-x-1/2 absolute h-[561px] left-[calc(50%+18px)] top-[-25px] w-[842px]",
+          "wrapper_layer_id": "1086:2294",
+          "wrapper_classes": "h-[320px] overflow-clip relative shrink-0 w-[560px]",
+          "card_layer_id": "1086:2292",
+          "card_classes": "flex flex-row items-center self-stretch",
+          "candidate_file_stems": [
+            "Prova1-18",
+            "Prova1-18 1"
+          ],
+          "pdf_image_xref": 18
+        },
+        "vivi": {
+          "page": "vivi",
+          "layer_id": "1086:2357",
+          "original_layer_name": "Prova1-18 1",
+          "asset_variable": "imgProva1181",
+          "layer_classes": "-translate-x-1/2 absolute h-[561px] left-[calc(50%+18px)] top-[-25px] w-[842px]",
+          "wrapper_layer_id": "1086:2356",
+          "wrapper_classes": "h-[320px] overflow-clip relative shrink-0 w-[560px]",
+          "card_layer_id": "1086:2354",
+          "card_classes": "bg-white border-8 border-solid border-white content-stretch flex flex-col h-full items-center justify-between overflow-clip pb-[24px] px-[24px] relative rounded-[12px] shrink-0 w-[480px]",
+          "candidate_file_stems": [
+            "Prova1-18",
+            "Prova1-18 1"
+          ],
+          "pdf_image_xref": 18
+        }
+      }
+    },
+    "offers.company": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 1352,
+          "height": 920,
+          "height_evidence": "intrinsic native reproduction of source content; no fixed936 source height"
+        },
+        "picture": {
+          "width": 652,
+          "height": 920,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 1404,
+          "height": 936,
+          "x": -385,
+          "y": 0
+        },
+        "note": "Source Picture is h-full/flex1;936 is absolutely positioned image height, not card min-height."
+      },
+      "sources": {
+        "home": {
+          "page": "home",
+          "layer_id": "1086:2237",
+          "original_layer_name": "Prova1-17_1 1",
+          "asset_variable": "imgProva11711",
+          "layer_classes": "-translate-x-1/2 absolute h-[936px] left-[calc(50%-9px)] top-0 w-[1404px]",
+          "card_layer_id": "683:1871",
+          "card_classes": "bg-white border-8 border-solid border-white content-stretch flex gap-[48px] items-center justify-center overflow-clip relative rounded-[12px] shrink-0 w-[1352px]",
+          "candidate_file_stems": [
+            "Prova1-17_1",
+            "Prova1-17_1 1"
+          ],
+          "pdf_image_xref": 50
+        },
+        "vivi": {
+          "page": "vivi",
+          "layer_id": "1086:2368",
+          "original_layer_name": "Prova1-17_1 1",
+          "asset_variable": "imgProva11711",
+          "layer_classes": "-translate-x-1/2 absolute h-[936px] left-[calc(50%-9px)] top-0 w-[1404px]",
+          "card_layer_id": "1086:2366",
+          "card_classes": "bg-white border-8 border-solid border-white content-stretch flex gap-[48px] items-center justify-center overflow-clip relative rounded-[12px] shrink-0 w-[1352px]",
+          "candidate_file_stems": [
+            "Prova1-17_1",
+            "Prova1-17_1 1"
+          ],
+          "pdf_image_xref": 8
+        }
+      }
+    },
+    "partners.1": {
+      "kind": "partner-logo",
+      "geometry_css_px": {
+        "wrapper": {
+          "width": 104.347,
+          "height": 120,
+          "x_at_1512": 163.7575,
+          "y_relative_to_logo_row": 0.0
+        },
+        "image": {
+          "width": 104.347,
+          "height": 120,
+          "x": 0,
+          "y": 0,
+          "object_fit": "contain"
+        },
+        "logo_row": {
+          "width": 1184.4850000000001,
+          "height": 120,
+          "gap": 90
+        },
+        "note": "Preserve SVG root width/height and viewBox. Identity only where supplied by original source layer name."
+      },
+      "sources": {
+        "home": {
+          "page": "home",
+          "layer_id": "663:1818",
+          "original_layer_name": null,
+          "asset_variable": "imgGroup161",
+          "layer_classes": "h-[120px] relative shrink-0 w-[104.347px]"
+        }
+      }
+    },
+    "partners.2": {
+      "kind": "partner-logo",
+      "geometry_css_px": {
+        "wrapper": {
+          "width": 296.488,
+          "height": 75,
+          "x_at_1512": 358.1045,
+          "y_relative_to_logo_row": 22.5
+        },
+        "image": {
+          "width": 296.488,
+          "height": 75,
+          "x": 0,
+          "y": 0,
+          "object_fit": "contain"
+        },
+        "logo_row": {
+          "width": 1184.4850000000001,
+          "height": 120,
+          "gap": 90
+        },
+        "note": "Preserve SVG root width/height and viewBox. Identity only where supplied by original source layer name."
+      },
+      "sources": {
+        "home": {
+          "page": "home",
+          "layer_id": "663:1871",
+          "original_layer_name": "RevoMarchioW",
+          "asset_variable": "imgRevoMarchioW",
+          "layer_classes": "h-[75px] relative shrink-0 w-[296.488px]",
+          "candidate_file_stems": [
+            "RevoMarchioW"
+          ]
+        }
+      }
+    },
+    "partners.3": {
+      "kind": "partner-logo",
+      "geometry_css_px": {
+        "wrapper": {
+          "width": 89.364,
+          "height": 90.001,
+          "x_at_1512": 744.5925,
+          "y_relative_to_logo_row": 14.999499999999998
+        },
+        "image": {
+          "width": 89.364,
+          "height": 90.001,
+          "x": 0,
+          "y": 0,
+          "object_fit": "contain"
+        },
+        "logo_row": {
+          "width": 1184.4850000000001,
+          "height": 120,
+          "gap": 90
+        },
+        "note": "Preserve SVG root width/height and viewBox. Identity only where supplied by original source layer name."
+      },
+      "sources": {
+        "home": {
+          "page": "home",
+          "layer_id": "663:1858",
+          "original_layer_name": "Group",
+          "asset_variable": "imgGroup1",
+          "layer_classes": "h-[90.001px] relative shrink-0 w-[89.364px]",
+          "candidate_file_stems": [
+            "Group"
+          ]
+        }
+      }
+    },
+    "partners.4": {
+      "kind": "partner-logo",
+      "geometry_css_px": {
+        "wrapper": {
+          "width": 424.286,
+          "height": 90,
+          "x_at_1512": 923.9565,
+          "y_relative_to_logo_row": 15.0
+        },
+        "image": {
+          "width": 424.286,
+          "height": 90,
+          "x": 0,
+          "y": 0,
+          "object_fit": "contain"
+        },
+        "logo_row": {
+          "width": 1184.4850000000001,
+          "height": 120,
+          "gap": 90
+        },
+        "note": "Preserve SVG root width/height and viewBox. Identity only where supplied by original source layer name."
+      },
+      "sources": {
+        "home": {
+          "page": "home",
+          "layer_id": "663:1822",
+          "original_layer_name": null,
+          "asset_variable": "imgGroup160",
+          "layer_classes": "h-[90px] relative shrink-0 w-[424.286px]"
+        }
+      }
+    },
+    "about.offers": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 434
+        },
+        "picture": {
+          "width": 560,
+          "height": 338,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 630,
+          "height": 420,
+          "x": -54,
+          "y": 0
+        }
+      },
+      "sources": {
+        "about": {
+          "page": "about",
+          "layer_id": "1086:2391",
+          "original_layer_name": "Prova1-20 1",
+          "asset_variable": "imgProva1201",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[420px] left-[calc(50%-19px)] top-[calc(50%+41px)] w-[630px]",
+          "wrapper_layer_id": "616:2445",
+          "wrapper_classes": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+          "card_layer_id": "616:2444",
+          "card_classes": "bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center overflow-clip pb-[24px] px-[24px] relative rounded-[12px] shrink-0 w-[560px]",
+          "candidate_file_stems": [
+            "Prova1-20",
+            "Prova1-20 1"
+          ]
+        }
+      }
+    },
+    "about.events": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 434
+        },
+        "picture": {
+          "width": 560,
+          "height": 338,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 560,
+          "height": 701,
+          "x": 0,
+          "y": -181
+        }
+      },
+      "sources": {
+        "about": {
+          "page": "about",
+          "layer_id": "1075:2268",
+          "original_layer_name": "DSC04323 1",
+          "asset_variable": "imgDsc043231",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[701px] left-1/2 top-[calc(50%+0.5px)] w-[560px]",
+          "wrapper_layer_id": "616:2453",
+          "wrapper_classes": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+          "card_layer_id": "616:2452",
+          "card_classes": "bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center overflow-clip pb-[24px] px-[24px] relative rounded-[12px] shrink-0 w-[560px]",
+          "candidate_file_stems": [
+            "DSC04323",
+            "DSC04323 1"
+          ]
+        }
+      }
+    },
+    "contact.map": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 612,
+          "height": 568
+        },
+        "picture": {
+          "width": 612,
+          "height": 472,
+          "x_relative_to_card": 0,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 618,
+          "height": 824,
+          "x": -3,
+          "y": -216.5
+        },
+        "overlay": {
+          "color": "#2c64e8",
+          "opacity": 0.2
+        },
+        "note": "Card width612 follows1352-660(form)-80(gap); fixed Picture612 spans full card; photo layer name image74 is ambiguous and needs visual verification."
+      },
+      "sources": {
+        "about": {
+          "page": "about",
+          "layer_id": "649:2460",
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[824px] left-1/2 top-[calc(50%-40.5px)] w-[618px]",
+          "wrapper_layer_id": "649:2459",
+          "wrapper_classes": "flex-[1_0_0] min-h-px overflow-clip relative w-[612px]",
+          "card_layer_id": "649:2458",
+          "card_classes": "bg-white border-8 border-solid border-white content-stretch flex flex-[1_0_0] flex-col gap-[24px] items-center min-w-px overflow-clip pb-[24px] px-[24px] relative rounded-[12px] self-stretch",
+          "candidate_file_stems": [
+            "image 74"
+          ]
+        },
+        "contacts": {
+          "page": "contacts",
+          "layer_id": "649:2504",
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[824px] left-1/2 top-[calc(50%-40.5px)] w-[618px]",
+          "wrapper_layer_id": "649:2503",
+          "wrapper_classes": "flex-[1_0_0] min-h-px overflow-clip relative w-[612px]",
+          "card_layer_id": "649:2502",
+          "card_classes": "bg-white border-8 border-solid border-white content-stretch flex flex-[1_0_0] flex-col gap-[24px] items-center min-w-px overflow-clip pb-[24px] px-[24px] relative rounded-[12px] self-stretch",
+          "candidate_file_stems": [
+            "image 74"
+          ]
+        }
+      }
+    },
+    "events.shamans-ritual": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 440
+        },
+        "picture": {
+          "width": 560,
+          "height": 320,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 787,
+          "height": 525,
+          "x": -114,
+          "y": -140,
+          "rotation_deg": 0
+        }
+      },
+      "sources": {
+        "events": {
+          "page": "events",
+          "layer_id": "1075:2207",
+          "original_layer_name": "Sciamana_20_10_2026-7 1",
+          "asset_variable": "imgSciamana2010202671",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[525px] left-[calc(50%-0.5px)] top-[calc(50%-37.5px)] w-[787px]",
+          "wrapper_layer_id": "1075:2212",
+          "wrapper_classes": "h-[320px] overflow-clip relative shrink-0 w-[560px]",
+          "card_layer_id": "1075:2211",
+          "card_classes": "bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] items-center overflow-clip pb-[24px] px-[24px] relative rounded-[12px] shrink-0 w-[560px]",
+          "candidate_file_stems": [
+            "Sciamana_20_10_2026-7",
+            "Sciamana_20_10_2026-7 1"
+          ],
+          "pdf_image_xref": 50
+        }
+      }
+    },
+    "events.the-dinner": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 440
+        },
+        "picture": {
+          "width": 560,
+          "height": 320,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 560,
+          "height": 701,
+          "x": 0,
+          "y": -190,
+          "rotation_deg": 0
+        }
+      },
+      "sources": {
+        "events": {
+          "page": "events",
+          "layer_id": "1075:2209",
+          "original_layer_name": "DSC04323 1",
+          "asset_variable": "imgDsc043231",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[701px] left-1/2 top-[calc(50%+0.5px)] w-[560px]",
+          "wrapper_layer_id": "1075:2223",
+          "wrapper_classes": "h-[320px] overflow-clip relative shrink-0 w-[560px]",
+          "card_layer_id": "1075:2222",
+          "card_classes": "bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] items-center overflow-clip pb-[24px] px-[24px] relative rounded-[12px] shrink-0 w-[560px]",
+          "candidate_file_stems": [
+            "DSC04323",
+            "DSC04323 1"
+          ],
+          "pdf_image_xref": 30
+        }
+      }
+    },
+    "events.ceramic-workshop": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 440
+        },
+        "picture": {
+          "width": 560,
+          "height": 320,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 738.785,
+          "height": 1108.042,
+          "rotation_deg": 0.81,
+          "center_x": 289.18,
+          "center_y": 220.18
+        },
+        "rotated_bbox": {
+          "width": 754.357,
+          "height": 1118.363,
+          "x": -87.9985,
+          "y": -339.0015
+        }
+      },
+      "sources": {
+        "events": {
+          "page": "events",
+          "layer_id": "1075:2208",
+          "original_layer_name": "Ceramica_21_10_2026-7 1",
+          "asset_variable": "imgCeramica2110202671",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute flex h-[1118.363px] items-center justify-center left-[calc(50%+9.18px)] top-[calc(50%+60.18px)] w-[754.357px]",
+          "wrapper_layer_id": "1075:2234",
+          "wrapper_classes": "h-[320px] overflow-clip relative shrink-0 w-[560px]",
+          "card_layer_id": "1075:2233",
+          "card_classes": "bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] items-center overflow-clip pb-[24px] px-[24px] relative rounded-[12px] shrink-0 w-[560px]",
+          "candidate_file_stems": [
+            "Ceramica_21_10_2026-7",
+            "Ceramica_21_10_2026-7 1"
+          ],
+          "pdf_image_xref": 40
+        }
+      }
+    },
+    "events.the-peoples-week-talk": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 440
+        },
+        "picture": {
+          "width": 560,
+          "height": 320,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 561,
+          "height": 374,
+          "x": 0,
+          "y": -27,
+          "rotation_deg": 0
+        }
+      },
+      "sources": {
+        "events": {
+          "page": "events",
+          "layer_id": "1075:2206",
+          "original_layer_name": "DSC04478 1",
+          "asset_variable": "imgDsc044781",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[374px] left-[calc(50%+0.5px)] top-1/2 w-[561px]",
+          "wrapper_layer_id": "1075:2245",
+          "wrapper_classes": "h-[320px] overflow-clip relative shrink-0 w-[560px]",
+          "card_layer_id": "1075:2244",
+          "card_classes": "bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] items-center overflow-clip pb-[24px] px-[24px] relative rounded-[12px] shrink-0 w-[560px]",
+          "candidate_file_stems": [
+            "DSC04478",
+            "DSC04478 1"
+          ],
+          "pdf_image_xref": 20
+        }
+      }
+    },
+    "rooms.coworking.artwork": {
+      "kind": "composed-artwork",
+      "geometry_css_px": {
+        "stage": {
+          "width": 3432,
+          "height": 952
+        },
+        "image": {
+          "width": 2196,
+          "height": 3262,
+          "x": 1580,
+          "y": -608
+        },
+        "note": "Source Vector1 SVG is backdrop artwork in full3432px horizontal room; current legacy no-text artwork needs exact visual verification."
+      },
+      "sources": {
+        "coworking": {
+          "page": "coworking",
+          "layer_id": "809:3284",
+          "original_layer_name": "Vector",
+          "asset_variable": "imgVector1",
+          "layer_classes": "absolute h-[3262px] right-[-344px] top-[-608px] w-[2196px]",
+          "candidate_file_stems": [
+            "Vector"
+          ]
+        }
+      }
+    },
+    "rooms.coworking.picture": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "stage": {
+          "width": 3432,
+          "height": 952
+        },
+        "picture": {
+          "width": 560,
+          "height": 434,
+          "x": 1512,
+          "y": 259,
+          "border_radius": 24,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 636,
+          "height": 848,
+          "x": -38,
+          "y": -207
+        },
+        "note": "Source generic image74; no raw uploaded filename can be inferred reliably."
+      },
+      "sources": {
+        "coworking": {
+          "page": "coworking",
+          "layer_id": "809:3286",
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+          "wrapper_layer_id": "809:3285",
+          "wrapper_classes": "absolute h-[434px] overflow-clip right-[1360px] rounded-[24px] top-[259px] w-[560px]",
+          "candidate_file_stems": [
+            "image 74"
+          ]
+        }
+      }
+    },
+    "rooms.coworking.cards.postazioni": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 434,
+          "stage_x": 1512,
+          "stage_y": 259
+        },
+        "picture": {
+          "width": 560,
+          "height": 338,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 1053.075,
+          "height": 702.136,
+          "x": null,
+          "y": null,
+          "rotation_deg": 1.13,
+          "center_x": 280.49,
+          "center_y": 169.41
+        },
+        "rotated_bbox": {
+          "width": 1066.758,
+          "height": 722.829,
+          "x": -252.889,
+          "y": -192.00449999999998
+        }
+      },
+      "sources": {
+        "coworking": {
+          "page": "coworking",
+          "layer_id": "1085:2343",
+          "original_layer_name": "Prova1-10 1",
+          "asset_variable": "imgProva1101",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute flex h-[722.829px] items-center justify-center left-[calc(50%+0.49px)] top-[calc(50%+0.41px)] w-[1066.758px]",
+          "wrapper_layer_id": "809:3304",
+          "wrapper_classes": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+          "card_layer_id": "809:3303",
+          "card_classes": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[1512px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+          "candidate_file_stems": [
+            "Prova1-10",
+            "Prova1-10 1"
+          ],
+          "transform_path": [
+            {
+              "className": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[1512px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+              "data-node-id": "809:3303",
+              "data-name": "Card Front"
+            },
+            {
+              "className": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+              "data-node-id": "809:3304",
+              "data-name": "Picture"
+            },
+            {
+              "className": "-translate-x-1/2 -translate-y-1/2 absolute flex h-[722.829px] items-center justify-center left-[calc(50%+0.49px)] top-[calc(50%+0.41px)] w-[1066.758px]",
+              "data-node-id": "1085:2343"
+            }
+          ]
+        }
+      },
+      "used_routes": [
+        "/rooms/coworking/",
+        "/homepage-tpr/ (interactive detailed room view)"
+      ],
+      "source_caveat": "Cached homepage instance uses generic image74 card photos, while these separate updated detail room frames provide named new photos. Do not claim both sources identical."
+    },
+    "rooms.coworking.cards.sale-riunioni": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 434,
+          "stage_x": 2152,
+          "stage_y": 259
+        },
+        "picture": {
+          "width": 560,
+          "height": 338,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 635,
+          "height": 423,
+          "x": -37,
+          "y": -42,
+          "rotation_deg": 0
+        }
+      },
+      "sources": {
+        "coworking": {
+          "page": "coworking",
+          "layer_id": "1085:2344",
+          "original_layer_name": "Prova1-2 1",
+          "asset_variable": "imgProva121",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[423px] left-[calc(50%+0.5px)] top-[calc(50%+0.5px)] w-[635px]",
+          "wrapper_layer_id": "809:3296",
+          "wrapper_classes": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+          "card_layer_id": "809:3295",
+          "card_classes": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[2152px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+          "candidate_file_stems": [
+            "Prova1-2",
+            "Prova1-2 1"
+          ],
+          "transform_path": [
+            {
+              "className": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[2152px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+              "data-node-id": "809:3295",
+              "data-name": "Card Front"
+            },
+            {
+              "className": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+              "data-node-id": "809:3296",
+              "data-name": "Picture"
+            },
+            {
+              "className": "-translate-x-1/2 -translate-y-1/2 absolute h-[423px] left-[calc(50%+0.5px)] top-[calc(50%+0.5px)] w-[635px]",
+              "data-node-id": "1085:2344",
+              "data-name": "Prova1-2 1"
+            }
+          ]
+        }
+      },
+      "used_routes": [
+        "/rooms/coworking/",
+        "/homepage-tpr/ (interactive detailed room view)"
+      ],
+      "source_caveat": "Cached homepage instance uses generic image74 card photos, while these separate updated detail room frames provide named new photos. Do not claim both sources identical."
+    },
+    "rooms.coworking.cards.eventi": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 434,
+          "stage_x": 2792,
+          "stage_y": 259
+        },
+        "picture": {
+          "width": 560,
+          "height": 338,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 560,
+          "height": 701,
+          "x": 0,
+          "y": -190,
+          "rotation_deg": 0
+        }
+      },
+      "sources": {
+        "coworking": {
+          "page": "coworking",
+          "layer_id": "1085:2347",
+          "original_layer_name": "DSC04323 1",
+          "asset_variable": "imgDsc043231",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[701px] left-1/2 top-[calc(50%-8.5px)] w-[560px]",
+          "wrapper_layer_id": "809:3288",
+          "wrapper_classes": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+          "card_layer_id": "809:3287",
+          "card_classes": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[2792px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+          "candidate_file_stems": [
+            "DSC04323",
+            "DSC04323 1"
+          ],
+          "transform_path": [
+            {
+              "className": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[2792px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+              "data-node-id": "809:3287",
+              "data-name": "Card Front"
+            },
+            {
+              "className": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+              "data-node-id": "809:3288",
+              "data-name": "Picture"
+            },
+            {
+              "className": "-translate-x-1/2 -translate-y-1/2 absolute h-[701px] left-1/2 top-[calc(50%-8.5px)] w-[560px]",
+              "data-node-id": "1085:2347",
+              "data-name": "DSC04323 1"
+            }
+          ]
+        }
+      },
+      "used_routes": [
+        "/rooms/coworking/",
+        "/homepage-tpr/ (interactive detailed room view)"
+      ],
+      "source_caveat": "Cached homepage instance uses generic image74 card photos, while these separate updated detail room frames provide named new photos. Do not claim both sources identical."
+    },
+    "rooms.reformer.artwork": {
+      "kind": "composed-artwork",
+      "geometry_css_px": {
+        "stage": {
+          "width": 3432,
+          "height": 952
+        },
+        "image": {
+          "width": 2196,
+          "height": 3262,
+          "x": 1580,
+          "y": -608
+        },
+        "note": "Source Vector1 SVG is backdrop artwork in full3432px horizontal room; current legacy no-text artwork needs exact visual verification."
+      },
+      "sources": {
+        "move": {
+          "page": "move",
+          "layer_id": "643:1825",
+          "original_layer_name": "Vector",
+          "asset_variable": "imgVector1",
+          "layer_classes": "absolute h-[3262px] right-[-344px] top-[-608px] w-[2196px]",
+          "candidate_file_stems": [
+            "Vector"
+          ]
+        }
+      }
+    },
+    "rooms.reformer.picture": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "stage": {
+          "width": 3432,
+          "height": 952
+        },
+        "picture": {
+          "width": 560,
+          "height": 434,
+          "x": 1512,
+          "y": 259,
+          "border_radius": 24,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 636,
+          "height": 848,
+          "x": -38,
+          "y": -207
+        },
+        "note": "Source generic image74; no raw uploaded filename can be inferred reliably."
+      },
+      "sources": {
+        "move": {
+          "page": "move",
+          "layer_id": "643:1827",
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+          "wrapper_layer_id": "643:1826",
+          "wrapper_classes": "absolute h-[434px] overflow-clip right-[1360px] rounded-[24px] top-[259px] w-[560px]",
+          "candidate_file_stems": [
+            "image 74"
+          ]
+        }
+      }
+    },
+    "rooms.reformer.cards.studio": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 434,
+          "stage_x": 1512,
+          "stage_y": 259
+        },
+        "picture": {
+          "width": 560,
+          "height": 338,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 601,
+          "height": 401,
+          "x": -28,
+          "y": -50,
+          "rotation_deg": 0
+        }
+      },
+      "sources": {
+        "move": {
+          "page": "move",
+          "layer_id": "1085:2354",
+          "original_layer_name": "Prova1-5 1",
+          "asset_variable": "imgProva151",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[401px] left-[calc(50%-7.5px)] top-[calc(50%-18.5px)] w-[601px]",
+          "wrapper_layer_id": "643:1829",
+          "wrapper_classes": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+          "card_layer_id": "643:1828",
+          "card_classes": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[1512px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+          "candidate_file_stems": [
+            "Prova1-5",
+            "Prova1-5 1"
+          ],
+          "transform_path": [
+            {
+              "className": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[1512px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+              "data-node-id": "643:1828",
+              "data-name": "Card Front"
+            },
+            {
+              "className": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+              "data-node-id": "643:1829",
+              "data-name": "Picture"
+            },
+            {
+              "className": "-translate-x-1/2 -translate-y-1/2 absolute h-[401px] left-[calc(50%-7.5px)] top-[calc(50%-18.5px)] w-[601px]",
+              "data-node-id": "1085:2354",
+              "data-name": "Prova1-5 1"
+            }
+          ]
+        }
+      },
+      "used_routes": [
+        "/rooms/reformer/",
+        "/homepage-tpr/ (interactive detailed room view)"
+      ],
+      "source_caveat": "Cached homepage instance uses generic image74 card photos, while these separate updated detail room frames provide named new photos. Do not claim both sources identical."
+    },
+    "rooms.reformer.cards.classi": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 434,
+          "stage_x": 2152,
+          "stage_y": 259
+        },
+        "picture": {
+          "width": 560,
+          "height": 338,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 658,
+          "height": 438,
+          "x": -49,
+          "y": -50,
+          "rotation_deg": 0
+        }
+      },
+      "sources": {
+        "move": {
+          "page": "move",
+          "layer_id": "1074:2832",
+          "original_layer_name": "Pilates_Fuel_21_10_2026-29 1",
+          "asset_variable": "imgPilatesFuel21102026291",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[438px] left-1/2 top-1/2 w-[658px]",
+          "wrapper_layer_id": "643:1845",
+          "wrapper_classes": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+          "card_layer_id": "643:1844",
+          "card_classes": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[2152px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+          "candidate_file_stems": [
+            "Pilates_Fuel_21_10_2026-29",
+            "Pilates_Fuel_21_10_2026-29 1"
+          ],
+          "transform_path": [
+            {
+              "className": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[2152px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+              "data-node-id": "643:1844",
+              "data-name": "Card Front"
+            },
+            {
+              "className": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+              "data-node-id": "643:1845",
+              "data-name": "Picture"
+            },
+            {
+              "className": "-translate-x-1/2 -translate-y-1/2 absolute h-[438px] left-1/2 top-1/2 w-[658px]",
+              "data-node-id": "1074:2832",
+              "data-name": "Pilates_Fuel_21_10_2026-29 1"
+            }
+          ],
+          "backing_layers": [
+            {
+              "asset_variable": "imgImage74",
+              "layer_id": "643:1846",
+              "image": {
+                "width": 636,
+                "height": 848,
+                "x": -38,
+                "y": -255
+              }
+            }
+          ]
+        }
+      },
+      "used_routes": [
+        "/rooms/reformer/",
+        "/homepage-tpr/ (interactive detailed room view)"
+      ],
+      "source_caveat": "Cached homepage instance uses generic image74 card photos, while these separate updated detail room frames provide named new photos. Do not claim both sources identical."
+    },
+    "rooms.reformer.cards.attrezzature": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 434,
+          "stage_x": 2792,
+          "stage_y": 259
+        },
+        "picture": {
+          "width": 560,
+          "height": 338,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 774,
+          "height": 516,
+          "x": -107,
+          "y": -89,
+          "rotation_deg": 0
+        }
+      },
+      "sources": {
+        "move": {
+          "page": "move",
+          "layer_id": "1085:2353",
+          "original_layer_name": "Prova1-11 1",
+          "asset_variable": "imgProva1111",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[516px] left-1/2 top-1/2 w-[774px]",
+          "wrapper_layer_id": "643:1837",
+          "wrapper_classes": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+          "card_layer_id": "643:1836",
+          "card_classes": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[2792px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+          "candidate_file_stems": [
+            "Prova1-11",
+            "Prova1-11 1"
+          ],
+          "transform_path": [
+            {
+              "className": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[2792px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+              "data-node-id": "643:1836",
+              "data-name": "Card Front"
+            },
+            {
+              "className": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+              "data-node-id": "643:1837",
+              "data-name": "Picture"
+            },
+            {
+              "className": "-translate-x-1/2 -translate-y-1/2 absolute h-[516px] left-1/2 top-1/2 w-[774px]",
+              "data-node-id": "1085:2353",
+              "data-name": "Prova1-11 1"
+            }
+          ]
+        }
+      },
+      "used_routes": [
+        "/rooms/reformer/",
+        "/homepage-tpr/ (interactive detailed room view)"
+      ],
+      "source_caveat": "Cached homepage instance uses generic image74 card photos, while these separate updated detail room frames provide named new photos. Do not claim both sources identical."
+    },
+    "rooms.wellness.artwork": {
+      "kind": "composed-artwork",
+      "geometry_css_px": {
+        "stage": {
+          "width": 3432,
+          "height": 952
+        },
+        "image": {
+          "width": 2196,
+          "height": 3262,
+          "x": 1580,
+          "y": -608
+        },
+        "note": "Source Vector1 SVG is backdrop artwork in full3432px horizontal room; current legacy no-text artwork needs exact visual verification."
+      },
+      "sources": {
+        "recharge": {
+          "page": "recharge",
+          "layer_id": "643:1966",
+          "original_layer_name": "Vector",
+          "asset_variable": "imgVector1",
+          "layer_classes": "absolute h-[3262px] right-[-344px] top-[-608px] w-[2196px]",
+          "candidate_file_stems": [
+            "Vector"
+          ]
+        }
+      }
+    },
+    "rooms.wellness.picture": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "stage": {
+          "width": 3432,
+          "height": 952
+        },
+        "picture": {
+          "width": 560,
+          "height": 434,
+          "x": 1512,
+          "y": 259,
+          "border_radius": 24,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 636,
+          "height": 848,
+          "x": -38,
+          "y": -207
+        },
+        "note": "Source generic image74; no raw uploaded filename can be inferred reliably."
+      },
+      "sources": {
+        "recharge": {
+          "page": "recharge",
+          "layer_id": "643:1968",
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+          "wrapper_layer_id": "643:1967",
+          "wrapper_classes": "absolute h-[434px] overflow-clip right-[1360px] rounded-[24px] top-[259px] w-[560px]",
+          "candidate_file_stems": [
+            "image 74"
+          ]
+        }
+      }
+    },
+    "rooms.wellness.cards.gym": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 434,
+          "stage_x": 1512,
+          "stage_y": 259
+        },
+        "picture": {
+          "width": 560,
+          "height": 338,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 560,
+          "height": 374,
+          "x": 0,
+          "y": -18,
+          "rotation_deg": 0
+        }
+      },
+      "sources": {
+        "recharge": {
+          "page": "recharge",
+          "layer_id": "1085:2357",
+          "original_layer_name": "Prova1-9 1",
+          "asset_variable": "imgProva191",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[374px] left-1/2 top-1/2 w-[560px]",
+          "wrapper_layer_id": "643:1986",
+          "wrapper_classes": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+          "card_layer_id": "643:1985",
+          "card_classes": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[1512px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+          "candidate_file_stems": [
+            "Prova1-9",
+            "Prova1-9 1"
+          ],
+          "transform_path": [
+            {
+              "className": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[1512px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+              "data-node-id": "643:1985",
+              "data-name": "Card Front"
+            },
+            {
+              "className": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+              "data-node-id": "643:1986",
+              "data-name": "Picture"
+            },
+            {
+              "className": "-translate-x-1/2 -translate-y-1/2 absolute h-[374px] left-1/2 top-1/2 w-[560px]",
+              "data-node-id": "1085:2357",
+              "data-name": "Prova1-9 1"
+            }
+          ],
+          "backing_layers": [
+            {
+              "asset_variable": "imgImage74",
+              "layer_id": "643:1987",
+              "image": {
+                "width": 636,
+                "height": 848,
+                "x": -38,
+                "y": -255
+              }
+            }
+          ]
+        }
+      },
+      "used_routes": [
+        "/rooms/wellness/",
+        "/homepage-tpr/ (interactive detailed room view)"
+      ],
+      "source_caveat": "Cached homepage instance uses generic image74 card photos, while these separate updated detail room frames provide named new photos. Do not claim both sources identical."
+    },
+    "rooms.wellness.cards.contrast-therapy": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 434,
+          "stage_x": 2152,
+          "stage_y": 259
+        },
+        "picture": {
+          "width": 560,
+          "height": 338,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 560,
+          "height": 374,
+          "x": 0,
+          "y": -18,
+          "rotation_deg": 0
+        }
+      },
+      "sources": {
+        "recharge": {
+          "page": "recharge",
+          "layer_id": "1085:2356",
+          "original_layer_name": "Prova1-13 1",
+          "asset_variable": "imgProva1131",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[374px] left-1/2 top-1/2 w-[560px]",
+          "wrapper_layer_id": "643:1970",
+          "wrapper_classes": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+          "card_layer_id": "643:1969",
+          "card_classes": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[2152px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+          "candidate_file_stems": [
+            "Prova1-13",
+            "Prova1-13 1"
+          ],
+          "transform_path": [
+            {
+              "className": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[2152px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+              "data-node-id": "643:1969",
+              "data-name": "Card Front"
+            },
+            {
+              "className": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+              "data-node-id": "643:1970",
+              "data-name": "Picture"
+            },
+            {
+              "className": "-translate-x-1/2 -translate-y-1/2 absolute h-[374px] left-1/2 top-1/2 w-[560px]",
+              "data-node-id": "1085:2356",
+              "data-name": "Prova1-13 1"
+            }
+          ],
+          "backing_layers": [
+            {
+              "asset_variable": "imgImage74",
+              "layer_id": "643:1971",
+              "image": {
+                "width": 636,
+                "height": 848,
+                "x": -38,
+                "y": -255
+              }
+            }
+          ]
+        }
+      },
+      "used_routes": [
+        "/rooms/wellness/",
+        "/homepage-tpr/ (interactive detailed room view)"
+      ],
+      "source_caveat": "Cached homepage instance uses generic image74 card photos, while these separate updated detail room frames provide named new photos. Do not claim both sources identical."
+    },
+    "rooms.wellness.cards.longevity": {
+      "kind": "coming-soon-icon",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 434,
+          "stage_x": 2792,
+          "stage_y": 259
+        },
+        "picture": {
+          "width": 560,
+          "height": 338,
+          "overflow": "clip",
+          "background": "#3f9941 at15%"
+        },
+        "image": {
+          "width": 160,
+          "height": 160,
+          "x": 200,
+          "y": 89,
+          "rotation_deg": 0
+        }
+      },
+      "sources": {
+        "recharge": {
+          "page": "recharge",
+          "layer_id": "1074:2889",
+          "original_layer_name": null,
+          "asset_variable": "imgFrame1618873434",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute left-1/2 size-[160px] top-1/2",
+          "wrapper_layer_id": "1074:2851",
+          "wrapper_classes": "bg-[rgba(63,153,65,0.15)] flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+          "card_layer_id": "1074:2850",
+          "card_classes": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[2792px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+          "transform_path": [
+            {
+              "className": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[2792px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+              "data-node-id": "1074:2850",
+              "data-name": "Card Front"
+            },
+            {
+              "className": "bg-[rgba(63,153,65,0.15)] flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+              "data-node-id": "1074:2851",
+              "data-name": "Picture"
+            },
+            {
+              "className": "-translate-x-1/2 -translate-y-1/2 absolute left-1/2 size-[160px] top-1/2",
+              "data-node-id": "1074:2889"
+            }
+          ]
+        }
+      },
+      "used_routes": [
+        "/rooms/wellness/",
+        "/homepage-tpr/ (interactive detailed room view)"
+      ],
+      "source_caveat": "Cached homepage instance uses generic image74 card photos, while these separate updated detail room frames provide named new photos. Do not claim both sources identical."
+    },
+    "rooms.bar.artwork": {
+      "kind": "composed-artwork",
+      "geometry_css_px": {
+        "stage": {
+          "width": 3432,
+          "height": 952
+        },
+        "image": {
+          "width": 2196,
+          "height": 3262,
+          "x": 1580,
+          "y": -608
+        },
+        "note": "Source Vector1 SVG is backdrop artwork in full3432px horizontal room; current legacy no-text artwork needs exact visual verification."
+      },
+      "sources": {
+        "fuel": {
+          "page": "fuel",
+          "layer_id": "643:1897",
+          "original_layer_name": "Vector",
+          "asset_variable": "imgVector1",
+          "layer_classes": "absolute h-[3262px] right-[-344px] top-[-608px] w-[2196px]",
+          "candidate_file_stems": [
+            "Vector"
+          ]
+        }
+      }
+    },
+    "rooms.bar.picture": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "stage": {
+          "width": 3432,
+          "height": 952
+        },
+        "picture": {
+          "width": 560,
+          "height": 434,
+          "x": 1512,
+          "y": 259,
+          "border_radius": 24,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 636,
+          "height": 848,
+          "x": -38,
+          "y": -207
+        },
+        "note": "Source generic image74; no raw uploaded filename can be inferred reliably."
+      },
+      "sources": {
+        "fuel": {
+          "page": "fuel",
+          "layer_id": "643:1899",
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+          "wrapper_layer_id": "643:1898",
+          "wrapper_classes": "absolute h-[434px] overflow-clip right-[1360px] rounded-[24px] top-[259px] w-[560px]",
+          "candidate_file_stems": [
+            "image 74"
+          ]
+        }
+      }
+    },
+    "rooms.bar.cards.servizi": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 434,
+          "stage_x": 1512,
+          "stage_y": 259
+        },
+        "picture": {
+          "width": 560,
+          "height": 338,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 1106.332,
+          "height": 1659.295,
+          "x": null,
+          "y": null,
+          "rotation_deg": -19.73,
+          "center_x": 347.8,
+          "center_y": 168.697
+        },
+        "rotated_bbox": {
+          "width": 1601.604,
+          "height": 1935.394,
+          "x": -453.002,
+          "y": -799
+        }
+      },
+      "sources": {
+        "fuel": {
+          "page": "fuel",
+          "layer_id": "1074:2893",
+          "original_layer_name": "DSC03630 1",
+          "asset_variable": "imgDsc036301",
+          "layer_classes": "-translate-x-1/2 absolute flex h-[1935.394px] items-center justify-center left-[calc(50%+67.8px)] top-[-799px] w-[1601.604px]",
+          "wrapper_layer_id": "643:1917",
+          "wrapper_classes": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+          "card_layer_id": "643:1916",
+          "card_classes": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[1512px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+          "candidate_file_stems": [
+            "DSC03630",
+            "DSC03630 1"
+          ],
+          "transform_path": [
+            {
+              "className": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[1512px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+              "data-node-id": "643:1916",
+              "data-name": "Card Front"
+            },
+            {
+              "className": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+              "data-node-id": "643:1917",
+              "data-name": "Picture"
+            },
+            {
+              "className": "-translate-x-1/2 absolute flex h-[1935.394px] items-center justify-center left-[calc(50%+67.8px)] top-[-799px] w-[1601.604px]",
+              "data-node-id": "1074:2893"
+            }
+          ],
+          "backing_layers": [
+            {
+              "asset_variable": "imgImage74",
+              "layer_id": "643:1918",
+              "image": {
+                "width": 636,
+                "height": 848,
+                "x": -38,
+                "y": -255
+              }
+            }
+          ]
+        }
+      },
+      "used_routes": [
+        "/rooms/bar/",
+        "/homepage-tpr/ (interactive detailed room view)"
+      ],
+      "source_caveat": "Cached homepage instance uses generic image74 card photos, while these separate updated detail room frames provide named new photos. Do not claim both sources identical."
+    },
+    "rooms.bar.cards.accessibilita": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 434,
+          "stage_x": 2152,
+          "stage_y": 259
+        },
+        "picture": {
+          "width": 560,
+          "height": 338,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 1456,
+          "height": 970,
+          "x": -514,
+          "y": -381,
+          "rotation_deg": 0
+        }
+      },
+      "sources": {
+        "fuel": {
+          "page": "fuel",
+          "layer_id": "1086:2208",
+          "original_layer_name": "Prova1-3 1",
+          "asset_variable": "imgProva131",
+          "layer_classes": "-translate-x-1/2 absolute h-[970px] left-[calc(50%-66px)] top-[-381px] w-[1456px]",
+          "wrapper_layer_id": "643:1901",
+          "wrapper_classes": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+          "card_layer_id": "643:1900",
+          "card_classes": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[2152px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+          "candidate_file_stems": [
+            "Prova1-3",
+            "Prova1-3 1"
+          ],
+          "transform_path": [
+            {
+              "className": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[2152px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+              "data-node-id": "643:1900",
+              "data-name": "Card Front"
+            },
+            {
+              "className": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+              "data-node-id": "643:1901",
+              "data-name": "Picture"
+            },
+            {
+              "className": "-translate-x-1/2 absolute h-[970px] left-[calc(50%-66px)] top-[-381px] w-[1456px]",
+              "data-node-id": "1086:2208",
+              "data-name": "Prova1-3 1"
+            }
+          ]
+        }
+      },
+      "used_routes": [
+        "/rooms/bar/",
+        "/homepage-tpr/ (interactive detailed room view)"
+      ],
+      "source_caveat": "Cached homepage instance uses generic image74 card photos, while these separate updated detail room frames provide named new photos. Do not claim both sources identical."
+    },
+    "rooms.bar.cards.storage": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 434,
+          "stage_x": 2792,
+          "stage_y": 259
+        },
+        "picture": {
+          "width": 560,
+          "height": 338,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 1041,
+          "height": 694,
+          "x": -169,
+          "y": -132,
+          "rotation_deg": 0
+        }
+      },
+      "sources": {
+        "fuel": {
+          "page": "fuel",
+          "layer_id": "1086:2206",
+          "original_layer_name": "Prova1-15 1",
+          "asset_variable": "imgProva1151",
+          "layer_classes": "-translate-x-1/2 absolute h-[694px] left-[calc(50%+71.5px)] top-[-132px] w-[1041px]",
+          "wrapper_layer_id": "643:1909",
+          "wrapper_classes": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+          "card_layer_id": "643:1908",
+          "card_classes": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[2792px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+          "candidate_file_stems": [
+            "Prova1-15",
+            "Prova1-15 1"
+          ],
+          "transform_path": [
+            {
+              "className": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[2792px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+              "data-node-id": "643:1908",
+              "data-name": "Card Front"
+            },
+            {
+              "className": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+              "data-node-id": "643:1909",
+              "data-name": "Picture"
+            },
+            {
+              "className": "-translate-x-1/2 absolute h-[694px] left-[calc(50%+71.5px)] top-[-132px] w-[1041px]",
+              "data-node-id": "1086:2206",
+              "data-name": "Prova1-15 1"
+            }
+          ],
+          "backing_layers": [
+            {
+              "asset_variable": "imgImage74",
+              "layer_id": "643:1910",
+              "image": {
+                "width": 636,
+                "height": 848,
+                "x": -38,
+                "y": -255
+              }
+            }
+          ]
+        }
+      },
+      "used_routes": [
+        "/rooms/bar/",
+        "/homepage-tpr/ (interactive detailed room view)"
+      ],
+      "source_caveat": "Cached homepage instance uses generic image74 card photos, while these separate updated detail room frames provide named new photos. Do not claim both sources identical."
+    },
+    "rooms.media.artwork": {
+      "kind": "composed-artwork",
+      "geometry_css_px": {
+        "stage": {
+          "width": 3432,
+          "height": 952
+        },
+        "image": {
+          "width": 2196,
+          "height": 3262,
+          "x": 1580,
+          "y": -608
+        },
+        "note": "Source Vector1 SVG is backdrop artwork in full3432px horizontal room; current legacy no-text artwork needs exact visual verification."
+      },
+      "sources": {
+        "media": {
+          "page": "media",
+          "layer_id": "643:2035",
+          "original_layer_name": "Vector",
+          "asset_variable": "imgVector1",
+          "layer_classes": "absolute h-[3262px] right-[-344px] top-[-608px] w-[2196px]",
+          "candidate_file_stems": [
+            "Vector"
+          ]
+        }
+      }
+    },
+    "rooms.media.picture": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "stage": {
+          "width": 3432,
+          "height": 952
+        },
+        "picture": {
+          "width": 560,
+          "height": 434,
+          "x": 1512,
+          "y": 259,
+          "border_radius": 24,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 636,
+          "height": 848,
+          "x": -38,
+          "y": -207
+        },
+        "note": "Source generic image74; no raw uploaded filename can be inferred reliably."
+      },
+      "sources": {
+        "media": {
+          "page": "media",
+          "layer_id": "643:2037",
+          "original_layer_name": "image 74",
+          "asset_variable": "imgImage74",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+          "wrapper_layer_id": "643:2036",
+          "wrapper_classes": "absolute h-[434px] overflow-clip right-[1360px] rounded-[24px] top-[259px] w-[560px]",
+          "candidate_file_stems": [
+            "image 74"
+          ]
+        }
+      }
+    },
+    "rooms.media.cards.podcast": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 434,
+          "stage_x": 1512,
+          "stage_y": 259
+        },
+        "picture": {
+          "width": 560,
+          "height": 338,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 764,
+          "height": 509,
+          "x": -102,
+          "y": -63,
+          "rotation_deg": 0
+        }
+      },
+      "sources": {
+        "media": {
+          "page": "media",
+          "layer_id": "1086:2219",
+          "original_layer_name": "Prova1-7 1",
+          "asset_variable": "imgProva171",
+          "layer_classes": "-translate-x-1/2 absolute h-[509px] left-1/2 top-[-63px] w-[764px]",
+          "wrapper_layer_id": "643:2055",
+          "wrapper_classes": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+          "card_layer_id": "643:2054",
+          "card_classes": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[1512px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+          "candidate_file_stems": [
+            "Prova1-7",
+            "Prova1-7 1"
+          ],
+          "transform_path": [
+            {
+              "className": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[1512px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+              "data-node-id": "643:2054",
+              "data-name": "Card Front"
+            },
+            {
+              "className": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+              "data-node-id": "643:2055",
+              "data-name": "Picture"
+            },
+            {
+              "className": "-translate-x-1/2 absolute h-[509px] left-1/2 top-[-63px] w-[764px]",
+              "data-node-id": "1086:2219",
+              "data-name": "Prova1-7 1"
+            }
+          ]
+        }
+      },
+      "used_routes": [
+        "/rooms/media/",
+        "/homepage-tpr/ (interactive detailed room view)"
+      ],
+      "source_caveat": "Cached homepage instance uses generic image74 card photos, while these separate updated detail room frames provide named new photos. Do not claim both sources identical."
+    },
+    "rooms.media.cards.set-fotografico": {
+      "kind": "photo",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 434,
+          "stage_x": 2152,
+          "stage_y": 259
+        },
+        "picture": {
+          "width": 560,
+          "height": 338,
+          "overflow": "clip"
+        },
+        "image": {
+          "width": 801,
+          "height": 535,
+          "x": -121,
+          "y": -63,
+          "rotation_deg": 0
+        }
+      },
+      "sources": {
+        "media": {
+          "page": "media",
+          "layer_id": "1086:2220",
+          "original_layer_name": "Prova1-21 1",
+          "asset_variable": "imgProva1211",
+          "layer_classes": "-translate-x-1/2 absolute h-[535px] left-[calc(50%-0.5px)] top-[-63px] w-[801px]",
+          "wrapper_layer_id": "643:2039",
+          "wrapper_classes": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+          "card_layer_id": "643:2038",
+          "card_classes": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[2152px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+          "candidate_file_stems": [
+            "Prova1-21",
+            "Prova1-21 1"
+          ],
+          "transform_path": [
+            {
+              "className": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[2152px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+              "data-node-id": "643:2038",
+              "data-name": "Card Front"
+            },
+            {
+              "className": "flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+              "data-node-id": "643:2039",
+              "data-name": "Picture"
+            },
+            {
+              "className": "-translate-x-1/2 absolute h-[535px] left-[calc(50%-0.5px)] top-[-63px] w-[801px]",
+              "data-node-id": "1086:2220",
+              "data-name": "Prova1-21 1"
+            }
+          ]
+        }
+      },
+      "used_routes": [
+        "/rooms/media/",
+        "/homepage-tpr/ (interactive detailed room view)"
+      ],
+      "source_caveat": "Cached homepage instance uses generic image74 card photos, while these separate updated detail room frames provide named new photos. Do not claim both sources identical."
+    },
+    "rooms.media.cards.studio-audio": {
+      "kind": "coming-soon-icon",
+      "geometry_css_px": {
+        "card": {
+          "width": 560,
+          "height": 434,
+          "stage_x": 2792,
+          "stage_y": 259
+        },
+        "picture": {
+          "width": 560,
+          "height": 338,
+          "overflow": "clip",
+          "background": "#2c64e8 at15%"
+        },
+        "image": {
+          "width": 160,
+          "height": 160,
+          "x": 200,
+          "y": 89,
+          "rotation_deg": 0
+        }
+      },
+      "sources": {
+        "media": {
+          "page": "media",
+          "layer_id": "1074:2890",
+          "original_layer_name": null,
+          "asset_variable": "imgFrame1618873434",
+          "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute left-1/2 size-[160px] top-1/2",
+          "wrapper_layer_id": "643:2047",
+          "wrapper_classes": "bg-[rgba(44,100,232,0.15)] flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+          "card_layer_id": "643:2046",
+          "card_classes": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[2792px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+          "transform_path": [
+            {
+              "className": "absolute bg-white border-8 border-solid border-white content-stretch flex flex-col gap-[24px] h-[434px] items-center left-[2792px] overflow-clip pb-[24px] px-[24px] rounded-[12px] top-[259px] w-[560px]",
+              "data-node-id": "643:2046",
+              "data-name": "Card Front"
+            },
+            {
+              "className": "bg-[rgba(44,100,232,0.15)] flex-[1_0_0] min-h-px overflow-clip relative w-[560px]",
+              "data-node-id": "643:2047",
+              "data-name": "Picture"
+            },
+            {
+              "className": "-translate-x-1/2 -translate-y-1/2 absolute left-1/2 size-[160px] top-1/2",
+              "data-node-id": "1074:2890"
+            }
+          ]
+        }
+      },
+      "used_routes": [
+        "/rooms/media/",
+        "/homepage-tpr/ (interactive detailed room view)"
+      ],
+      "source_caveat": "Cached homepage instance uses generic image74 card photos, while these separate updated detail room frames provide named new photos. Do not claim both sources identical."
+    }
+  },
+  "cached_homepage_generic_image74_layers": {
+    "I616:1769;260:2343": {
+      "original_layer_name": "image 74",
+      "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+      "asset_variable": "imgImage74"
+    },
+    "I616:1769;260:2346": {
+      "original_layer_name": "image 74",
+      "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+      "asset_variable": "imgImage74"
+    },
+    "I616:1769;260:2354": {
+      "original_layer_name": "image 74",
+      "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+      "asset_variable": "imgImage74"
+    },
+    "I616:1769;260:2362": {
+      "original_layer_name": "image 74",
+      "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+      "asset_variable": "imgImage74"
+    },
+    "I616:1769;260:2383": {
+      "original_layer_name": "image 74",
+      "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+      "asset_variable": "imgImage74"
+    },
+    "I616:1769;260:2386": {
+      "original_layer_name": "image 74",
+      "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+      "asset_variable": "imgImage74"
+    },
+    "I616:1769;260:2394": {
+      "original_layer_name": "image 74",
+      "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+      "asset_variable": "imgImage74"
+    },
+    "I616:1769;260:2402": {
+      "original_layer_name": "image 74",
+      "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+      "asset_variable": "imgImage74"
+    },
+    "I616:1769;260:2423": {
+      "original_layer_name": "image 74",
+      "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+      "asset_variable": "imgImage74"
+    },
+    "I616:1769;260:2426": {
+      "original_layer_name": "image 74",
+      "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+      "asset_variable": "imgImage74"
+    },
+    "I616:1769;260:2434": {
+      "original_layer_name": "image 74",
+      "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+      "asset_variable": "imgImage74"
+    },
+    "I616:1769;260:2442": {
+      "original_layer_name": "image 74",
+      "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+      "asset_variable": "imgImage74"
+    },
+    "I616:1769;260:2463": {
+      "original_layer_name": "image 74",
+      "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+      "asset_variable": "imgImage74"
+    },
+    "I616:1769;260:2466": {
+      "original_layer_name": "image 74",
+      "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+      "asset_variable": "imgImage74"
+    },
+    "I616:1769;260:2474": {
+      "original_layer_name": "image 74",
+      "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+      "asset_variable": "imgImage74"
+    },
+    "I616:1769;260:2482": {
+      "original_layer_name": "image 74",
+      "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+      "asset_variable": "imgImage74"
+    },
+    "I616:1769;260:2503": {
+      "original_layer_name": "image 74",
+      "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+      "asset_variable": "imgImage74"
+    },
+    "I616:1769;260:2506": {
+      "original_layer_name": "image 74",
+      "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+      "asset_variable": "imgImage74"
+    },
+    "I616:1769;260:2514": {
+      "original_layer_name": "image 74",
+      "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+      "asset_variable": "imgImage74"
+    },
+    "I616:1769;260:2522": {
+      "original_layer_name": "image 74",
+      "layer_classes": "-translate-x-1/2 -translate-y-1/2 absolute h-[848px] left-1/2 top-1/2 w-[636px]",
+      "asset_variable": "imgImage74"
+    }
+  },
+  "pdf_reference_validation": {
+    "home": {
+      "pdf_width": 1512,
+      "pdf_height": 8553,
+      "macos_chrome_height": 30,
+      "expected_native_page_height": 8523,
+      "measured_refined_native_page_height": 8523
+    },
+    "vivi": {
+      "pdf_width": 1512,
+      "pdf_height": 4066,
+      "macos_chrome_height": 30,
+      "expected_native_page_height": 4036,
+      "measured_refined_native_page_height": 4036
+    },
+    "events": {
+      "pdf_width": 1512,
+      "pdf_height": 2836,
+      "macos_chrome_height": 30,
+      "expected_native_page_height": 2806,
+      "measured_refined_native_page_height": 2806
+    }
+  }
+}

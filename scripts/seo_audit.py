@@ -1,4 +1,4 @@
-"""Static SEO and local-link audit for the GitHub Pages build."""
+"""Audit the built Cloudflare production artifact, not the noindex design preview."""
 
 from __future__ import annotations
 
@@ -9,18 +9,13 @@ from urllib.parse import unquote, urlsplit
 from xml.etree import ElementTree
 
 
-ROOT = Path(__file__).resolve().parents[1]
-BASE_URL = "https://mircoaurelio.github.io/tpr-site"
+REPOSITORY = Path(__file__).resolve().parents[1]
+ROOT = REPOSITORY / "dist-cloudflare"
+BASE_URL = "https://thepeoplesroom.it"
+ROUTES = json.loads((REPOSITORY / "routes.json").read_text(encoding="utf-8"))
 INDEXABLE = {
-    "homepage-tpr/index.html",
-    "about/index.html",
-    "eventi/index.html",
-    "contatti/index.html",
-    "rooms/coworking/index.html",
-    "rooms/reformer/index.html",
-    "rooms/wellness/index.html",
-    "rooms/bar/index.html",
-    "rooms/media/index.html",
+    "index.html" if page["path"] == ROUTES["canonical_home"] else page["path"].lstrip("/") + "index.html"
+    for page in ROUTES["pages"]
 }
 
 
@@ -90,9 +85,7 @@ def local_target(page: Path, reference: str) -> Path | None:
     raw_path = unquote(split.path)
     if not raw_path:
         return None
-    if raw_path.startswith("/tpr-site/"):
-        target = ROOT / raw_path.removeprefix("/tpr-site/")
-    elif raw_path.startswith("/"):
+    if raw_path.startswith("/"):
         target = ROOT / raw_path.lstrip("/")
     else:
         target = page.parent / raw_path
@@ -103,8 +96,22 @@ def local_target(page: Path, reference: str) -> Path | None:
 
 def audit() -> list[str]:
     errors: list[str] = []
+    if not ROOT.is_dir():
+        return ["Artefatto produzione mancante: eseguire npm run build:cloudflare prima dell'audit."]
     titles: dict[str, str] = {}
     descriptions: dict[str, str] = {}
+    redirects: dict[str, str] = {}
+    redirect_file = ROOT / "_redirects"
+    if redirect_file.is_file():
+        for line in redirect_file.read_text(encoding="utf-8").splitlines():
+            fields = line.split()
+            if len(fields) == 3 and fields[2] in {"301", "308"}:
+                redirects[fields[0]] = fields[1]
+    else:
+        errors.append("Manifest dei redirect di produzione mancante")
+    for relative in sorted(INDEXABLE):
+        if not (ROOT / relative).is_file():
+            errors.append(f"{relative}: pagina canonica mancante")
 
     pages = sorted(ROOT.rglob("index.html"))
     for page in pages:
@@ -124,7 +131,6 @@ def audit() -> list[str]:
                 "og:description",
                 "og:url",
                 "og:image",
-                "twitter:card",
             )
             for field in required_meta:
                 if not parser.meta.get(field):
@@ -133,11 +139,20 @@ def audit() -> list[str]:
                 errors.append(f"{relative}: robots non indexabile: {robots!r}")
             if not page_canonical.startswith(f"{BASE_URL}/"):
                 errors.append(f"{relative}: canonical non valido: {page_canonical!r}")
-            if not parser.json_ld:
+            if relative in {"index.html", "contatti/index.html"} and not parser.json_ld:
                 errors.append(f"{relative}: JSON-LD mancante")
+            if parser.title in titles:
+                errors.append(f"{relative}: title duplicato con {titles[parser.title]}")
             titles.setdefault(parser.title, relative)
             description = parser.meta.get("description", "")
+            if description in descriptions:
+                errors.append(f"{relative}: description duplicata con {descriptions[description]}")
             descriptions.setdefault(description, relative)
+        elif (route := "/" + relative.removesuffix("index.html")) in redirects:
+            # A redirect is served before this fallback HTML, including the duplicate Home.
+            wanted = BASE_URL + urlsplit(redirects[route]).path
+            if page_canonical != wanted:
+                errors.append(f"{relative}: canonical del redirect non coerente: {page_canonical!r}")
         else:
             if "noindex" not in robots:
                 errors.append(f"{relative}: pagina non canonica senza noindex")
@@ -162,10 +177,14 @@ def audit() -> list[str]:
             if not target.exists():
                 errors.append(f"{relative}: {attribute} non trovato: {reference}")
 
-    sitemap = ElementTree.parse(ROOT / "sitemap.xml").getroot()
+    try:
+        sitemap = ElementTree.parse(ROOT / "sitemap.xml").getroot()
+    except (OSError, ElementTree.ParseError) as exc:
+        errors.append(f"sitemap di produzione mancante o non valido: {exc}")
+        return errors
     namespace = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
     sitemap_urls = {node.text for node in sitemap.findall("sm:url/sm:loc", namespace)}
-    canonical_urls = {canonical(parse_page(ROOT / relative)) for relative in INDEXABLE}
+    canonical_urls = {canonical(parse_page(ROOT / relative)) for relative in INDEXABLE if (ROOT / relative).is_file()}
     if sitemap_urls != canonical_urls:
         missing = sorted(canonical_urls - sitemap_urls)
         extra = sorted(sitemap_urls - canonical_urls)

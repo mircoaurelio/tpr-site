@@ -1,0 +1,2232 @@
+[
+  {
+    "route": "homepage-tpr",
+    "width": 320,
+    "errors": [],
+    "scrollWidth": 320,
+    "buttons": [
+      {
+        "text": "Prenota il Pilates ›",
+        "width": 110.890625,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 111 36",
+        "pathLength": 5964,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "About TPR",
+        "width": 119.828125,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 120 36",
+        "pathLength": 6726,
+        "fill": "rgb(255, 123, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Esplora Stanza ›",
+        "width": 163.71875,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 164 36",
+        "pathLength": 8862,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Prenota",
+        "width": 96.390625,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 96 36",
+        "pathLength": 5228,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Eventi e Gallery",
+        "width": 147.84375,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 148 36",
+        "pathLength": 8071,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Organizza un evento",
+        "width": 179.984375,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 180 36",
+        "pathLength": 9359,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Acquista",
+        "width": 232,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 232 36",
+        "pathLength": 12261,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 232,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 232 36",
+        "pathLength": 11965,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 232,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 232 36",
+        "pathLength": 11967,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 232,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 232 36",
+        "pathLength": 11966,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Prenota la tua lezione",
+        "width": 192.40625,
+        "height": 34,
+        "contours": 1,
+        "viewBox": "0 0 192 34",
+        "pathLength": 10205,
+        "fill": "rgb(63, 153, 65)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Invia ›",
+        "width": 224,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 224 36",
+        "pathLength": 11862,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Indirizzo email\n\nResta aggiornato",
+        "width": 272,
+        "height": 48,
+        "contours": 1,
+        "viewBox": "0 0 272 48",
+        "pathLength": 14690,
+        "fill": "rgb(255, 255, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Resta aggiornato",
+        "width": 110.640625,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 111 32",
+        "pathLength": 6028,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "about",
+    "width": 320,
+    "errors": [],
+    "scrollWidth": 320,
+    "buttons": [
+      {
+        "text": "Community",
+        "width": 128,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 128 54",
+        "pathLength": 7740,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Move",
+        "width": 128,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 128 54",
+        "pathLength": 7741,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Recharge",
+        "width": 128,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 128 54",
+        "pathLength": 7741,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Media",
+        "width": 128,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 128 54",
+        "pathLength": 7741,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Fuel",
+        "width": 128,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 128 54",
+        "pathLength": 7741,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Coworking",
+        "width": 128,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 128 54",
+        "pathLength": 7740,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Invia ›",
+        "width": 224.640625,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 225 36",
+        "pathLength": 11865,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "contatti",
+    "width": 320,
+    "errors": [],
+    "scrollWidth": 320,
+    "buttons": [
+      {
+        "text": "Invia ›",
+        "width": 224.640625,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 225 36",
+        "pathLength": 11864,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "eventi",
+    "width": 320,
+    "errors": [],
+    "scrollWidth": 320,
+    "buttons": [
+      {
+        "text": "Invia ›",
+        "width": 224,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 224 36",
+        "pathLength": 11865,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "vivi-tpr",
+    "width": 320,
+    "errors": [],
+    "scrollWidth": 320,
+    "buttons": [
+      {
+        "text": "Acquista",
+        "width": 232,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 232 36",
+        "pathLength": 12257,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 232,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 232 36",
+        "pathLength": 11966,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 232,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 232 36",
+        "pathLength": 11966,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 232,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 232 36",
+        "pathLength": 11966,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Invia ›",
+        "width": 224,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 224 36",
+        "pathLength": 11862,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Indirizzo email\n\nResta aggiornato",
+        "width": 272,
+        "height": 48,
+        "contours": 1,
+        "viewBox": "0 0 272 48",
+        "pathLength": 14690,
+        "fill": "rgb(255, 255, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Resta aggiornato",
+        "width": 110.640625,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 111 32",
+        "pathLength": 6027,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "prenota",
+    "width": 320,
+    "errors": [],
+    "scrollWidth": 320,
+    "buttons": [],
+    "headingOverflow": []
+  },
+  {
+    "route": "rooms/coworking",
+    "width": 320,
+    "errors": [],
+    "scrollWidth": 320,
+    "buttons": [
+      {
+        "text": "Esplora Stanza ›",
+        "width": 163.71875,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 164 36",
+        "pathLength": 8861,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Prenota",
+        "width": 96.390625,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 96 36",
+        "pathLength": 5229,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "homepage-tpr",
+    "width": 393,
+    "errors": [],
+    "scrollWidth": 393,
+    "buttons": [
+      {
+        "text": "Prenota il Pilates ›",
+        "width": 159.859375,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 160 36",
+        "pathLength": 8410,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "About TPR",
+        "width": 119.828125,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 120 36",
+        "pathLength": 6726,
+        "fill": "rgb(255, 123, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Esplora Stanza ›",
+        "width": 163.71875,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 164 36",
+        "pathLength": 8862,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Prenota",
+        "width": 96.390625,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 96 36",
+        "pathLength": 5228,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Eventi e Gallery",
+        "width": 147.84375,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 148 36",
+        "pathLength": 8071,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Organizza un evento",
+        "width": 179.984375,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 180 36",
+        "pathLength": 9359,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Acquista",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15578,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15283,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15285,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15284,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Prenota la tua lezione",
+        "width": 192.40625,
+        "height": 34,
+        "contours": 1,
+        "viewBox": "0 0 192 34",
+        "pathLength": 10205,
+        "fill": "rgb(63, 153, 65)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Invia ›",
+        "width": 297,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 297 36",
+        "pathLength": 15420,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Indirizzo email\n\nResta aggiornato",
+        "width": 345,
+        "height": 48,
+        "contours": 1,
+        "viewBox": "0 0 345 48",
+        "pathLength": 18322,
+        "fill": "rgb(255, 255, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Resta aggiornato",
+        "width": 126.875,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 127 32",
+        "pathLength": 6818,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "about",
+    "width": 393,
+    "errors": [],
+    "scrollWidth": 393,
+    "buttons": [
+      {
+        "text": "Community",
+        "width": 164.5,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 165 54",
+        "pathLength": 9559,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Move",
+        "width": 164.5,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 165 54",
+        "pathLength": 9560,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Recharge",
+        "width": 164.5,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 165 54",
+        "pathLength": 9561,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Media",
+        "width": 164.5,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 165 54",
+        "pathLength": 9560,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Fuel",
+        "width": 164.5,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 165 54",
+        "pathLength": 9560,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Coworking",
+        "width": 164.5,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 165 54",
+        "pathLength": 9559,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Invia ›",
+        "width": 297,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 297 36",
+        "pathLength": 15422,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "contatti",
+    "width": 393,
+    "errors": [],
+    "scrollWidth": 393,
+    "buttons": [
+      {
+        "text": "Invia ›",
+        "width": 297,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 297 36",
+        "pathLength": 15421,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "eventi",
+    "width": 393,
+    "errors": [],
+    "scrollWidth": 393,
+    "buttons": [
+      {
+        "text": "Invia ›",
+        "width": 297,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 297 36",
+        "pathLength": 15421,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "vivi-tpr",
+    "width": 393,
+    "errors": [],
+    "scrollWidth": 393,
+    "buttons": [
+      {
+        "text": "Acquista",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15576,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15284,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15284,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15283,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Invia ›",
+        "width": 297,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 297 36",
+        "pathLength": 15419,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Indirizzo email\n\nResta aggiornato",
+        "width": 345,
+        "height": 48,
+        "contours": 1,
+        "viewBox": "0 0 345 48",
+        "pathLength": 18323,
+        "fill": "rgb(255, 255, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Resta aggiornato",
+        "width": 126.875,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 127 32",
+        "pathLength": 6817,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "prenota",
+    "width": 393,
+    "errors": [],
+    "scrollWidth": 393,
+    "buttons": [],
+    "headingOverflow": []
+  },
+  {
+    "route": "rooms/coworking",
+    "width": 393,
+    "errors": [],
+    "scrollWidth": 393,
+    "buttons": [
+      {
+        "text": "Esplora Stanza ›",
+        "width": 163.71875,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 164 36",
+        "pathLength": 8861,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Prenota",
+        "width": 96.390625,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 96 36",
+        "pathLength": 5229,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "homepage-tpr",
+    "width": 430,
+    "errors": [],
+    "scrollWidth": 430,
+    "buttons": [
+      {
+        "text": "Prenota il Pilates ›",
+        "width": 159.859375,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 160 36",
+        "pathLength": 8410,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "About TPR",
+        "width": 119.828125,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 120 36",
+        "pathLength": 6726,
+        "fill": "rgb(255, 123, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Esplora Stanza ›",
+        "width": 163.71875,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 164 36",
+        "pathLength": 8862,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Prenota",
+        "width": 96.390625,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 96 36",
+        "pathLength": 5228,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Eventi e Gallery",
+        "width": 147.84375,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 148 36",
+        "pathLength": 8071,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Organizza un evento",
+        "width": 179.984375,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 180 36",
+        "pathLength": 9359,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Acquista",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15578,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15283,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15285,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15284,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Prenota la tua lezione",
+        "width": 192.40625,
+        "height": 34,
+        "contours": 1,
+        "viewBox": "0 0 192 34",
+        "pathLength": 10205,
+        "fill": "rgb(63, 153, 65)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Invia ›",
+        "width": 334,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 334 36",
+        "pathLength": 17237,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Indirizzo email\n\nResta aggiornato",
+        "width": 382,
+        "height": 48,
+        "contours": 1,
+        "viewBox": "0 0 382 48",
+        "pathLength": 20139,
+        "fill": "rgb(255, 255, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Resta aggiornato",
+        "width": 126.875,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 127 32",
+        "pathLength": 6818,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "about",
+    "width": 430,
+    "errors": [],
+    "scrollWidth": 430,
+    "buttons": [
+      {
+        "text": "Community",
+        "width": 183,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 183 54",
+        "pathLength": 10428,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Move",
+        "width": 183,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 183 54",
+        "pathLength": 10429,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Recharge",
+        "width": 183,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 183 54",
+        "pathLength": 10430,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Media",
+        "width": 183,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 183 54",
+        "pathLength": 10428,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Fuel",
+        "width": 183,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 183 54",
+        "pathLength": 10428,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Coworking",
+        "width": 183,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 183 54",
+        "pathLength": 10428,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Invia ›",
+        "width": 334,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 334 36",
+        "pathLength": 17239,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "contatti",
+    "width": 430,
+    "errors": [],
+    "scrollWidth": 430,
+    "buttons": [
+      {
+        "text": "Invia ›",
+        "width": 334,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 334 36",
+        "pathLength": 17238,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "eventi",
+    "width": 430,
+    "errors": [],
+    "scrollWidth": 430,
+    "buttons": [
+      {
+        "text": "Invia ›",
+        "width": 334,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 334 36",
+        "pathLength": 17238,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "vivi-tpr",
+    "width": 430,
+    "errors": [],
+    "scrollWidth": 430,
+    "buttons": [
+      {
+        "text": "Acquista",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15576,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15284,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15284,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15283,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Invia ›",
+        "width": 334,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 334 36",
+        "pathLength": 17236,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Indirizzo email\n\nResta aggiornato",
+        "width": 382,
+        "height": 48,
+        "contours": 1,
+        "viewBox": "0 0 382 48",
+        "pathLength": 20140,
+        "fill": "rgb(255, 255, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Resta aggiornato",
+        "width": 126.875,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 127 32",
+        "pathLength": 6817,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "prenota",
+    "width": 430,
+    "errors": [],
+    "scrollWidth": 430,
+    "buttons": [],
+    "headingOverflow": []
+  },
+  {
+    "route": "rooms/coworking",
+    "width": 430,
+    "errors": [],
+    "scrollWidth": 430,
+    "buttons": [
+      {
+        "text": "Esplora Stanza ›",
+        "width": 163.71875,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 164 36",
+        "pathLength": 8861,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Prenota",
+        "width": 96.390625,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 96 36",
+        "pathLength": 5229,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "homepage-tpr",
+    "width": 768,
+    "errors": [],
+    "scrollWidth": 768,
+    "buttons": [
+      {
+        "text": "Prenota il Pilates ›",
+        "width": 159.859375,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 160 36",
+        "pathLength": 8410,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "About TPR",
+        "width": 119.828125,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 120 36",
+        "pathLength": 6726,
+        "fill": "rgb(255, 123, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Esplora Stanza ›",
+        "width": 163.71875,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 164 36",
+        "pathLength": 8862,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Prenota",
+        "width": 96.390625,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 96 36",
+        "pathLength": 5228,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Eventi e Gallery",
+        "width": 147.84375,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 148 36",
+        "pathLength": 8071,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Organizza un evento",
+        "width": 179.984375,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 180 36",
+        "pathLength": 9359,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Acquista",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15578,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15283,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15285,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15284,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Prenota la tua lezione",
+        "width": 192.40625,
+        "height": 34,
+        "contours": 1,
+        "viewBox": "0 0 192 34",
+        "pathLength": 10205,
+        "fill": "rgb(63, 153, 65)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Invia ›",
+        "width": 672,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 672 36",
+        "pathLength": 33982,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Indirizzo email\n\nResta aggiornato",
+        "width": 696,
+        "height": 48,
+        "contours": 1,
+        "viewBox": "0 0 696 48",
+        "pathLength": 35625,
+        "fill": "rgb(255, 255, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Resta aggiornato",
+        "width": 126.875,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 127 32",
+        "pathLength": 6818,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "about",
+    "width": 768,
+    "errors": [],
+    "scrollWidth": 768,
+    "buttons": [
+      {
+        "text": "Community",
+        "width": 352,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 352 54",
+        "pathLength": 18802,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Move",
+        "width": 352,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 352 54",
+        "pathLength": 18803,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Recharge",
+        "width": 352,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 352 54",
+        "pathLength": 18804,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Media",
+        "width": 352,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 352 54",
+        "pathLength": 18802,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Fuel",
+        "width": 352,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 352 54",
+        "pathLength": 18802,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Coworking",
+        "width": 352,
+        "height": 54,
+        "contours": 1,
+        "viewBox": "0 0 352 54",
+        "pathLength": 18802,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Invia ›",
+        "width": 672,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 672 36",
+        "pathLength": 33985,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "contatti",
+    "width": 768,
+    "errors": [],
+    "scrollWidth": 768,
+    "buttons": [
+      {
+        "text": "Invia ›",
+        "width": 672,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 672 36",
+        "pathLength": 33983,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "eventi",
+    "width": 768,
+    "errors": [],
+    "scrollWidth": 768,
+    "buttons": [
+      {
+        "text": "Invia ›",
+        "width": 672,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 672 36",
+        "pathLength": 33983,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "vivi-tpr",
+    "width": 768,
+    "errors": [],
+    "scrollWidth": 768,
+    "buttons": [
+      {
+        "text": "Acquista",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15576,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15284,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15284,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 300,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 300 36",
+        "pathLength": 15283,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Invia ›",
+        "width": 672,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 672 36",
+        "pathLength": 33983,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Indirizzo email\n\nResta aggiornato",
+        "width": 720,
+        "height": 48,
+        "contours": 1,
+        "viewBox": "0 0 720 48",
+        "pathLength": 36810,
+        "fill": "rgb(255, 255, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Resta aggiornato",
+        "width": 126.875,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 127 32",
+        "pathLength": 6817,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "prenota",
+    "width": 768,
+    "errors": [],
+    "scrollWidth": 768,
+    "buttons": [],
+    "headingOverflow": []
+  },
+  {
+    "route": "rooms/coworking",
+    "width": 768,
+    "errors": [],
+    "scrollWidth": 768,
+    "buttons": [
+      {
+        "text": "Esplora Stanza ›",
+        "width": 163.71875,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 164 36",
+        "pathLength": 8861,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Prenota",
+        "width": 96.390625,
+        "height": 36,
+        "contours": 1,
+        "viewBox": "0 0 96 36",
+        "pathLength": 5229,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "homepage-tpr",
+    "width": 1512,
+    "errors": [],
+    "scrollWidth": 1512,
+    "buttons": [
+      {
+        "text": "Prenota il Pilates ›",
+        "width": 279.6875,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 280 32",
+        "pathLength": 14185,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "About TPR",
+        "width": 210.09375,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 210 32",
+        "pathLength": 10999,
+        "fill": "rgb(255, 123, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Esplora Stanza ›",
+        "width": 214.546875,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 215 32",
+        "pathLength": 11237,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Prenota",
+        "width": 139.875,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 140 32",
+        "pathLength": 7232,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Eventi e Gallery",
+        "width": 242.671875,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 243 32",
+        "pathLength": 12659,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Organizza un evento",
+        "width": 279.5,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 280 32",
+        "pathLength": 14184,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Acquista",
+        "width": 432,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 432 32",
+        "pathLength": 21982,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 432,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 432 32",
+        "pathLength": 21688,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 432,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 432 32",
+        "pathLength": 21689,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 432,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 432 32",
+        "pathLength": 21689,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Prenota la tua lezione",
+        "width": 293.03125,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 293 32",
+        "pathLength": 15108,
+        "fill": "rgb(63, 153, 65)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Invia ›",
+        "width": 604,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 604 32",
+        "pathLength": 30437,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Indirizzo email\n\nResta aggiornato",
+        "width": 696,
+        "height": 48,
+        "contours": 1,
+        "viewBox": "0 0 696 48",
+        "pathLength": 35625,
+        "fill": "rgb(255, 255, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Resta aggiornato",
+        "width": 259.828125,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 260 32",
+        "pathLength": 13379,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "about",
+    "width": 1512,
+    "errors": [],
+    "scrollWidth": 1512,
+    "buttons": [
+      {
+        "text": "Community",
+        "width": 360,
+        "height": 72,
+        "contours": 1,
+        "viewBox": "0 0 360 72",
+        "pathLength": 20033,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Move",
+        "width": 360,
+        "height": 72,
+        "contours": 1,
+        "viewBox": "0 0 360 72",
+        "pathLength": 20034,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Recharge",
+        "width": 360,
+        "height": 72,
+        "contours": 1,
+        "viewBox": "0 0 360 72",
+        "pathLength": 20034,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Media",
+        "width": 360,
+        "height": 72,
+        "contours": 1,
+        "viewBox": "0 0 360 72",
+        "pathLength": 20033,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Fuel",
+        "width": 360,
+        "height": 72,
+        "contours": 1,
+        "viewBox": "0 0 360 72",
+        "pathLength": 20033,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "TPR Coworking",
+        "width": 360,
+        "height": 72,
+        "contours": 1,
+        "viewBox": "0 0 360 72",
+        "pathLength": 20033,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(255, 255, 255)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Invia ›",
+        "width": 564,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 564 32",
+        "pathLength": 28462,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "contatti",
+    "width": 1512,
+    "errors": [],
+    "scrollWidth": 1512,
+    "buttons": [
+      {
+        "text": "Invia ›",
+        "width": 564,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 564 32",
+        "pathLength": 28461,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "eventi",
+    "width": 1512,
+    "errors": [],
+    "scrollWidth": 1512,
+    "buttons": [
+      {
+        "text": "Invia ›",
+        "width": 1256,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 1256 32",
+        "pathLength": 63667,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "vivi-tpr",
+    "width": 1512,
+    "errors": [],
+    "scrollWidth": 1512,
+    "buttons": [
+      {
+        "text": "Acquista",
+        "width": 432,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 432 32",
+        "pathLength": 21982,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 432,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 432 32",
+        "pathLength": 21689,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 432,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 432 32",
+        "pathLength": 21689,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Richiedi informazioni",
+        "width": 432,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 432 32",
+        "pathLength": 21689,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      },
+      {
+        "text": "Invia ›",
+        "width": 604,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 604 32",
+        "pathLength": 30435,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Indirizzo email\n\nResta aggiornato",
+        "width": 696,
+        "height": 48,
+        "contours": 1,
+        "viewBox": "0 0 696 48",
+        "pathLength": 35625,
+        "fill": "rgb(255, 255, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Resta aggiornato",
+        "width": 259.828125,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 260 32",
+        "pathLength": 13378,
+        "fill": "rgb(152, 202, 255)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  },
+  {
+    "route": "prenota",
+    "width": 1512,
+    "errors": [],
+    "scrollWidth": 1512,
+    "buttons": [],
+    "headingOverflow": []
+  },
+  {
+    "route": "rooms/coworking",
+    "width": 1512,
+    "errors": [],
+    "scrollWidth": 1512,
+    "buttons": [
+      {
+        "text": "Esplora Stanza ›",
+        "width": 214.546875,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 215 32",
+        "pathLength": 11238,
+        "fill": "rgb(44, 100, 232)",
+        "stroke": "none",
+        "strokeWidth": "0px",
+        "overflow": false
+      },
+      {
+        "text": "Prenota",
+        "width": 139.875,
+        "height": 32,
+        "contours": 1,
+        "viewBox": "0 0 140 32",
+        "pathLength": 7232,
+        "fill": "rgba(0, 0, 0, 0)",
+        "stroke": "rgb(44, 100, 232)",
+        "strokeWidth": "2.4px",
+        "overflow": false
+      }
+    ],
+    "headingOverflow": []
+  }
+]

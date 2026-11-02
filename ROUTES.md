@@ -1,44 +1,23 @@
-# Alberatura TPR
+# TPR preview routes
 
-## Homepage
+Source: Figma `FpPfXalg4PRyqtnvwt2DUL`, Website page `1:2`, **Versione Aggiornata** section `616:2194`.
 
-- `/` → redirect alla homepage del prototipo.
-- `/homepage-tpr/` → `Homepage_TPR`, nodo Figma `260:1717`, starting point del prototipo.
-- `/homepage/` → variante `Homepage`, nodo Figma `260:1540`.
+| Route | Updated frame | Name |
+| --- | --- | --- |
+| `/homepage-tpr/` | `616:1707` | Home |
+| `/about/` | `616:2407` | About |
+| `/contatti/` | `616:2569` | Contacts |
+| `/eventi/` | `616:2675` | Events & Gallery |
+| `/vivi-tpr/` | `685:1973` | Vivi TPR |
+| `/prenota/` | `1065:3382` | Pilates booking |
+| `/rooms/coworking/` | `809:3282` | TPR Coworking |
+| `/rooms/reformer/` | `643:1823` | TPR Move |
+| `/rooms/wellness/` | `643:1964` | TPR Recharge |
+| `/rooms/bar/` | `643:1895` | TPR Fuel |
+| `/rooms/media/` | `643:2033` | TPR Media |
 
-Entrambe le homepage condividono il menu full-screen e l’ascensore delle cinque stanze.
+`/` redirects to `/homepage-tpr/`. The original short room URLs remain aliases. Membership aliases now lead to `/vivi-tpr/#offerte` or `/vivi-tpr/#aziende`. Gallery leads to `/eventi/#gallery`. The old App alias leads to the community section because the updated design has no App section.
 
-## Pagine principali
+The 30px mock macOS menu bar shown in the desktop Figma frames is excluded from the website. Room frames are 3432px wide horizontal tracks; their first viewport is 1512×952. The updated mobile frame set is incomplete, so smaller screens adapt the desktop content.
 
-- `/about/` → `About_TPR`, nodo `268:2154`.
-- `/eventi/` → `Eventi_TPR`, nodo `268:2824`.
-- `/contatti/` → `Contatti_TPR`, nodo `269:3179`.
-- `/gallery/` → redirect a `/eventi/#gallery`: non esiste un frame Gallery autonomo.
-- `/app/` → redirect alla sezione App: non esiste un frame App autonomo.
-
-## Room
-
-- `/rooms/coworking/` → nodo `260:3549`.
-- `/rooms/reformer/` → nodo `260:3661`.
-- `/rooms/bar/` → nodo `260:3773`.
-- `/rooms/wellness/` → nodo `260:3951`.
-- `/rooms/media/` → nodo `260:4060`.
-
-I vecchi URL `/{room}/` restano disponibili come redirect. `Coworking-1`, `Coworking-2` e `Coworking-3` sono stati del meccanismo orizzontale, non route.
-
-## Membership
-
-- `/membership/aziende-startup/`
-- `/membership/privati-freelancer/`
-
-Il Figma indica le due destinazioni ma non contiene frame definitivi; le route dichiarano quindi esplicitamente lo stato placeholder.
-
-## Motion condiviso
-
-- menu full-screen con apertura ease-out da 500 ms, focus trap, Escape e focus restore;
-- ascensore Room sticky: lo scroll nativo seleziona i cinque piani, le icone permettono il jump diretto;
-- dettaglio Room: lo scroll verticale controlla lo stage orizzontale e le tre card;
-- hero video loop/player, hover degli omini, parallax Eventi, marquee Partner e rise-up App;
-- tutte le animazioni rispettano `prefers-reduced-motion`.
-
-Nota tecnica: le interazioni Smart Animate tra frame non sono esposte dal connettore MCP; durata e comportamento del menu derivano dalle proprietà visibili nel file Figma.
+The updated preview has a fullscreen menu with focus containment, Escape and focus restoration, five selectable rooms, room detail carousels, keyboard carousel controls, an About room selector, and reduced-motion support. Exact prototype transitions and card back states still need design verification. `/homepage/` retains its older design and interactions.

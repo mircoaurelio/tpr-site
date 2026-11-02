@@ -1,0 +1,107 @@
+/* Home source canvas: the artwork reaches the viewport edges, while copy
+   remains aligned with the original 1512px content grid. */
+.preview-page--home .hero {
+  width: 100vw;
+  max-width: none;
+  margin-left: calc((100% - 100vw) / 2);
+}
+.preview-page--home .preview-hero-composite {
+  object-fit: cover;
+  object-position: center;
+}
+@media (min-width: 901px) {
+  .preview-page--home .hero-copy {
+    right: max(80px, calc((100vw - 1512px) / 2 + 80px)) !important;
+  }
+}
+/* Wide canvases fill the viewport; content retains its source grid. */
+@media (min-width: 1513px) {
+  /* Limit the content grid, rather than the colored page canvas. */
+  .updated-preview.preview-page--home main {
+    max-width: none;
+  }
+  .preview-page--home .preview-shell {
+    --home-content-inset: calc((100vw - 1512px) / 2 + 80px);
+    padding-inline: var(--home-content-inset);
+  }
+  .preview-page--home .preview-event-composite {
+    left: calc(-1 * var(--home-content-inset));
+    width: 100vw;
+  }
+  .preview-page--home .preview-home-event-photo {
+    /* The original 720px photo extends through 120px of section padding. */
+    height: calc(100vw * 720 / 1512 - 120px);
+  }
+  .preview-page--home .people-nav::before {
+    left: calc((1512px - 100vw) / 2);
+    width: 100vw;
+  }
+  .preview-page--home .preview-membership::before {
+    /* Keep the full-width source artwork clear of the partner heading. */
+    background-position: center bottom;
+  }
+  .preview-page--home .preview-header {
+    width: 100%;
+    max-width: none;
+  }
+}
+/* The narrower artwork leaves insufficient blue space for the white CTA.
+   Booking remains available in the menu, as in the mobile source header. */
+@media (min-width: 901px) and (max-width: 1511px) {
+  .preview-page--home .preview-header .preview-button {
+    display: none;
+  }
+}
+/* Website Mobile / Article 560:2843, inspected at 393px: hero ends at 326,
+   the 36px title starts at 262 with a 28px right inset, and intro padding is 24.
+   Reuse the supplied photo/eye together; no second stretched desktop mask. */
+@media (max-width: 900px) {
+  .preview-page--home .hero {
+    height: calc(100vw * 326 / 393);
+  }
+  .preview-page--home .preview-hero-composite {
+    mask: none;
+    object-fit: cover;
+    object-position: center;
+  }
+  .preview-page--home .hero-copy {
+    top: calc(100vw * 262 / 393) !important;
+    right: max(24px, calc(100vw * 28 / 393)) !important;
+    bottom: auto !important;
+  }
+  .preview-page--home .hero-copy h1 {
+    font-family: "TPR Rader Figma", Arial, sans-serif !important;
+    font-size: calc(100vw * 36 / 393) !important;
+    font-weight: 600 !important;
+    line-height: .9 !important;
+  }
+  .preview-page--home .preview-header {
+    top: 24px;
+    height: 77.333333px;
+    padding: 12px 24px;
+    background: transparent;
+  }
+  .preview-page--home .preview-brand,
+  .preview-page--home .preview-brand img {
+    width: 109.47px;
+    height: 53.333333px;
+  }
+  .preview-page--home .preview-header .preview-button {
+    display: none;
+  }
+  .preview-page--home .preview-home-about {
+    padding-top: 24px;
+  }
+}
+/* Fixed source logo sizes may wrap inside smaller content grids rather than
+   widening the document exposed by the sticky Room's full-width breakout. */
+@media (min-width: 901px) and (max-width: 1344px) {
+  .preview-page--home .preview-partner-logos {
+    flex-wrap: wrap;
+    height: auto;
+    gap: 40px 48px;
+  }
+  .preview-page--home .preview-partner-logos > span {
+    max-width: 100%;
+  }
+}

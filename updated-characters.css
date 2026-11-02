@@ -1,0 +1,27 @@
+/* Supplied upper-body, torso/legs and emblem paths; no traced replacements. */
+.updated-preview .little-man .person,
+.updated-preview .little-man .object { animation: none !important; }
+.updated-preview .tpr-character {
+  display: block;
+  overflow: visible;
+  flex: none;
+}
+.updated-preview .tpr-character :is(.tpr-character__body, .tpr-character__upper, .tpr-character__emblem, .tpr-character__detail) {
+  transform-box: fill-box;
+  animation: none;
+}
+.updated-preview .tpr-character__emblem {
+  transform-origin: 50% 100%;
+}
+.updated-preview .tpr-character .tpr-character__detail {
+  transform-origin: 50% 70%;
+}
+.updated-preview .preview-menu-room .tpr-character { width: 100%; height: 100%; color: white; }
+.updated-preview .preview-room-character.has-separated-character { mask: none; -webkit-mask: none; background: transparent; }
+.updated-preview .preview-room-character .tpr-character { width: 100%; height: 100%; color: var(--room-accent); }
+/* The transparent incoming actor must not cover the active hover target. */
+.updated-preview .tpr-elevator__character--incoming,
+.updated-preview .is-lifting .tpr-elevator__character--current { pointer-events: none; }
+@media (prefers-reduced-motion: reduce) {
+  .updated-preview .tpr-character :is(.tpr-character__body, .tpr-character__upper, .tpr-character__emblem, .tpr-character__detail) { animation: none !important; }
+}

@@ -1,0 +1,1922 @@
+[
+  {
+    "route": "homepage-tpr",
+    "viewport": 320,
+    "errors": [],
+    "failures": [],
+    "width": 320,
+    "height": 7895,
+    "papers": [
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 272,
+        "h": 645,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 272,
+        "h": 699,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 272,
+        "h": 664,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 272,
+        "h": 564,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-company-card preview-paper",
+        "w": 272,
+        "h": 1420,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": [
+      {
+        "class": "preview-offer-carousel",
+        "x": 0,
+        "w": 320,
+        "h": 703,
+        "left": 0,
+        "max": 888,
+        "firstX": 24
+      }
+    ]
+  },
+  {
+    "route": "about",
+    "viewport": 320,
+    "errors": [],
+    "failures": [],
+    "width": 320,
+    "height": 5791,
+    "papers": [
+      {
+        "class": "preview-manifesto-card has-zigzag",
+        "w": 272,
+        "h": 580,
+        "source": false,
+        "mask": "none",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 41986,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-manifesto-card has-zigzag",
+        "w": 272,
+        "h": 729,
+        "source": false,
+        "mask": "none",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 49613,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-feature-card preview-paper",
+        "w": 272,
+        "h": 340,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-feature-card preview-paper",
+        "w": 272,
+        "h": 340,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-contact-card preview-paper ",
+        "w": 273,
+        "h": 636,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-map-card preview-paper",
+        "w": 273,
+        "h": 414,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": []
+  },
+  {
+    "route": "contatti",
+    "viewport": 320,
+    "errors": [],
+    "failures": [],
+    "width": 320,
+    "height": 2150,
+    "papers": [
+      {
+        "class": "preview-contact-card preview-paper ",
+        "w": 273,
+        "h": 636,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-map-card preview-paper",
+        "w": 273,
+        "h": 414,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": []
+  },
+  {
+    "route": "eventi",
+    "viewport": 320,
+    "errors": [],
+    "failures": [],
+    "width": 320,
+    "height": 3030,
+    "papers": [
+      {
+        "class": "preview-event-card preview-paper",
+        "w": 320,
+        "h": 353,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-event-card preview-paper",
+        "w": 320,
+        "h": 353,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-event-card preview-paper",
+        "w": 320,
+        "h": 353,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-event-card preview-paper",
+        "w": 320,
+        "h": 353,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-contact-card preview-paper preview-contact-card--event",
+        "w": 272,
+        "h": 740,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": [
+      {
+        "class": "preview-event-carousel",
+        "x": 0,
+        "w": 320,
+        "h": 353,
+        "left": 0,
+        "max": 1080,
+        "firstX": 24
+      }
+    ]
+  },
+  {
+    "route": "vivi-tpr",
+    "viewport": 320,
+    "errors": [],
+    "failures": [],
+    "width": 320,
+    "height": 4330,
+    "papers": [
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 272,
+        "h": 645,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 272,
+        "h": 699,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 272,
+        "h": 664,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 272,
+        "h": 564,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-company-card preview-paper",
+        "w": 272,
+        "h": 1420,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": [
+      {
+        "class": "preview-offer-carousel",
+        "x": 0,
+        "w": 320,
+        "h": 703,
+        "left": 0,
+        "max": 888,
+        "firstX": 24
+      }
+    ]
+  },
+  {
+    "route": "prenota",
+    "viewport": 320,
+    "errors": [],
+    "failures": [],
+    "width": 320,
+    "height": 1721,
+    "papers": [
+      {
+        "class": "preview-booking-panel preview-paper",
+        "w": 272,
+        "h": 500,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": []
+  },
+  {
+    "route": "homepage-tpr",
+    "viewport": 393,
+    "errors": [],
+    "failures": [],
+    "width": 393,
+    "height": 7410,
+    "papers": [
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 645,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 664,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 645,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 488,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-company-card preview-paper",
+        "w": 345,
+        "h": 1200,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": [
+      {
+        "class": "preview-offer-carousel",
+        "x": 0,
+        "w": 393,
+        "h": 668,
+        "left": 0,
+        "max": 1087,
+        "firstX": 24
+      }
+    ]
+  },
+  {
+    "route": "about",
+    "viewport": 393,
+    "errors": [],
+    "failures": [],
+    "width": 393,
+    "height": 5240,
+    "papers": [
+      {
+        "class": "preview-manifesto-card has-zigzag",
+        "w": 345,
+        "h": 464,
+        "source": false,
+        "mask": "none",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 39772,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-manifesto-card has-zigzag",
+        "w": 345,
+        "h": 612,
+        "source": false,
+        "mask": "none",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 47399,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-feature-card preview-paper",
+        "w": 345,
+        "h": 340,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-feature-card preview-paper",
+        "w": 345,
+        "h": 340,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-contact-card preview-paper ",
+        "w": 345,
+        "h": 490,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-map-card preview-paper",
+        "w": 345,
+        "h": 400,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": []
+  },
+  {
+    "route": "contatti",
+    "viewport": 393,
+    "errors": [],
+    "failures": [],
+    "width": 393,
+    "height": 1945,
+    "papers": [
+      {
+        "class": "preview-contact-card preview-paper ",
+        "w": 345,
+        "h": 490,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-map-card preview-paper",
+        "w": 345,
+        "h": 400,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": []
+  },
+  {
+    "route": "eventi",
+    "viewport": 393,
+    "errors": [],
+    "failures": [],
+    "width": 393,
+    "height": 2645,
+    "papers": [
+      {
+        "class": "preview-event-card preview-paper",
+        "w": 320,
+        "h": 353,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-event-card preview-paper",
+        "w": 320,
+        "h": 353,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-event-card preview-paper",
+        "w": 320,
+        "h": 353,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-event-card preview-paper",
+        "w": 320,
+        "h": 353,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-contact-card preview-paper preview-contact-card--event",
+        "w": 345,
+        "h": 568,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": [
+      {
+        "class": "preview-event-carousel",
+        "x": 0,
+        "w": 393,
+        "h": 353,
+        "left": 0,
+        "max": 1007,
+        "firstX": 24
+      }
+    ]
+  },
+  {
+    "route": "vivi-tpr",
+    "viewport": 393,
+    "errors": [],
+    "failures": [],
+    "width": 393,
+    "height": 3978,
+    "papers": [
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 645,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 664,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 645,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 488,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-company-card preview-paper",
+        "w": 345,
+        "h": 1200,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": [
+      {
+        "class": "preview-offer-carousel",
+        "x": 0,
+        "w": 393,
+        "h": 668,
+        "left": 0,
+        "max": 1087,
+        "firstX": 24
+      }
+    ]
+  },
+  {
+    "route": "prenota",
+    "viewport": 393,
+    "errors": [],
+    "failures": [],
+    "width": 393,
+    "height": 1683,
+    "papers": [
+      {
+        "class": "preview-booking-panel preview-paper",
+        "w": 345,
+        "h": 500,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": []
+  },
+  {
+    "route": "homepage-tpr",
+    "viewport": 430,
+    "errors": [],
+    "failures": [],
+    "width": 430,
+    "height": 7251,
+    "papers": [
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 645,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 664,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 645,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 488,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-company-card preview-paper",
+        "w": 382,
+        "h": 1146,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": [
+      {
+        "class": "preview-offer-carousel",
+        "x": 0,
+        "w": 430,
+        "h": 668,
+        "left": 0,
+        "max": 1050,
+        "firstX": 24
+      }
+    ]
+  },
+  {
+    "route": "about",
+    "viewport": 430,
+    "errors": [],
+    "failures": [],
+    "width": 430,
+    "height": 5056,
+    "papers": [
+      {
+        "class": "preview-manifesto-card has-zigzag",
+        "w": 382,
+        "h": 444,
+        "source": false,
+        "mask": "none",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 40675,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-manifesto-card has-zigzag",
+        "w": 382,
+        "h": 593,
+        "source": false,
+        "mask": "none",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 48302,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-feature-card preview-paper",
+        "w": 382,
+        "h": 340,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-feature-card preview-paper",
+        "w": 382,
+        "h": 340,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-contact-card preview-paper ",
+        "w": 382,
+        "h": 442,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-map-card preview-paper",
+        "w": 382,
+        "h": 400,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": []
+  },
+  {
+    "route": "contatti",
+    "viewport": 430,
+    "errors": [],
+    "failures": [],
+    "width": 430,
+    "height": 1869,
+    "papers": [
+      {
+        "class": "preview-contact-card preview-paper ",
+        "w": 382,
+        "h": 442,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-map-card preview-paper",
+        "w": 382,
+        "h": 400,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": []
+  },
+  {
+    "route": "eventi",
+    "viewport": 430,
+    "errors": [],
+    "failures": [],
+    "width": 430,
+    "height": 2571,
+    "papers": [
+      {
+        "class": "preview-event-card preview-paper",
+        "w": 320,
+        "h": 353,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-event-card preview-paper",
+        "w": 320,
+        "h": 353,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-event-card preview-paper",
+        "w": 320,
+        "h": 353,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-event-card preview-paper",
+        "w": 320,
+        "h": 353,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-contact-card preview-paper preview-contact-card--event",
+        "w": 382,
+        "h": 522,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": [
+      {
+        "class": "preview-event-carousel",
+        "x": 0,
+        "w": 430,
+        "h": 353,
+        "left": 0,
+        "max": 970,
+        "firstX": 24
+      }
+    ]
+  },
+  {
+    "route": "vivi-tpr",
+    "viewport": 430,
+    "errors": [],
+    "failures": [],
+    "width": 430,
+    "height": 3940,
+    "papers": [
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 645,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 664,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 645,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 488,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-company-card preview-paper",
+        "w": 382,
+        "h": 1146,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": [
+      {
+        "class": "preview-offer-carousel",
+        "x": 0,
+        "w": 430,
+        "h": 668,
+        "left": 0,
+        "max": 1050,
+        "firstX": 24
+      }
+    ]
+  },
+  {
+    "route": "prenota",
+    "viewport": 430,
+    "errors": [],
+    "failures": [],
+    "width": 430,
+    "height": 1683,
+    "papers": [
+      {
+        "class": "preview-booking-panel preview-paper",
+        "w": 382,
+        "h": 500,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": []
+  },
+  {
+    "route": "homepage-tpr",
+    "viewport": 768,
+    "errors": [],
+    "failures": [],
+    "width": 768,
+    "height": 6665,
+    "papers": [
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 645,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 664,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 645,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 488,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-company-card preview-paper",
+        "w": 720,
+        "h": 988,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": [
+      {
+        "class": "preview-offer-carousel",
+        "x": 0,
+        "w": 768,
+        "h": 668,
+        "left": 0,
+        "max": 712,
+        "firstX": 24
+      }
+    ]
+  },
+  {
+    "route": "about",
+    "viewport": 768,
+    "errors": [],
+    "failures": [],
+    "width": 768,
+    "height": 4607,
+    "papers": [
+      {
+        "class": "preview-manifesto-card has-zigzag",
+        "w": 720,
+        "h": 347,
+        "source": false,
+        "mask": "none",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 52974,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-manifesto-card has-zigzag",
+        "w": 720,
+        "h": 418,
+        "source": false,
+        "mask": "none",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 56584,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-feature-card preview-paper",
+        "w": 720,
+        "h": 340,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-feature-card preview-paper",
+        "w": 720,
+        "h": 340,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-contact-card preview-paper ",
+        "w": 720,
+        "h": 442,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-map-card preview-paper",
+        "w": 720,
+        "h": 400,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": []
+  },
+  {
+    "route": "contatti",
+    "viewport": 768,
+    "errors": [],
+    "failures": [],
+    "width": 768,
+    "height": 1813,
+    "papers": [
+      {
+        "class": "preview-contact-card preview-paper ",
+        "w": 720,
+        "h": 442,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-map-card preview-paper",
+        "w": 720,
+        "h": 400,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": []
+  },
+  {
+    "route": "eventi",
+    "viewport": 768,
+    "errors": [],
+    "failures": [],
+    "width": 768,
+    "height": 2318,
+    "papers": [
+      {
+        "class": "preview-event-card preview-paper",
+        "w": 320,
+        "h": 353,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-event-card preview-paper",
+        "w": 320,
+        "h": 353,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-event-card preview-paper",
+        "w": 320,
+        "h": 353,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-event-card preview-paper",
+        "w": 320,
+        "h": 353,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-contact-card preview-paper preview-contact-card--event",
+        "w": 720,
+        "h": 466,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": [
+      {
+        "class": "preview-event-carousel",
+        "x": 0,
+        "w": 768,
+        "h": 353,
+        "left": 0,
+        "max": 632,
+        "firstX": 24
+      }
+    ]
+  },
+  {
+    "route": "vivi-tpr",
+    "viewport": 768,
+    "errors": [],
+    "failures": [],
+    "width": 768,
+    "height": 3366,
+    "papers": [
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 645,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 664,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 645,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-offer-card preview-paper",
+        "w": 340,
+        "h": 488,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      },
+      {
+        "class": "preview-company-card preview-paper",
+        "w": 720,
+        "h": 988,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": [
+      {
+        "class": "preview-offer-carousel",
+        "x": 0,
+        "w": 768,
+        "h": 668,
+        "left": 0,
+        "max": 712,
+        "firstX": 24
+      }
+    ]
+  },
+  {
+    "route": "prenota",
+    "viewport": 768,
+    "errors": [],
+    "failures": [],
+    "width": 768,
+    "height": 1523,
+    "papers": [
+      {
+        "class": "preview-booking-panel preview-paper",
+        "w": 720,
+        "h": 500,
+        "source": false,
+        "mask": "url(\"http://127.0.0.1:4176/assets/wavy-frame.svg\")",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 0,
+        "outline": "none",
+        "border": "8px"
+      }
+    ],
+    "carousels": []
+  },
+  {
+    "route": "homepage-tpr",
+    "viewport": 1512,
+    "errors": [],
+    "failures": [],
+    "width": 1512,
+    "height": 8523,
+    "papers": [
+      {
+        "class": "preview-offer-card preview-paper has-source-paper",
+        "w": 480,
+        "h": 756,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/offer-card-mask-480x756.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/offer-card-frame-480x756.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-offer-card preview-paper has-source-paper",
+        "w": 480,
+        "h": 756,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/offer-card-mask-480x756.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/offer-card-frame-480x756.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-offer-card preview-paper has-source-paper",
+        "w": 480,
+        "h": 756,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/offer-card-mask-480x756.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/offer-card-frame-480x756.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-offer-card preview-paper has-source-paper",
+        "w": 480,
+        "h": 756,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/offer-card-mask-480x756.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/offer-card-frame-480x756.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-company-card preview-paper has-source-paper",
+        "w": 1352,
+        "h": 920,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/company-card-mask-1352x920.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/company-card-frame-1352x920.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      }
+    ],
+    "carousels": [
+      {
+        "class": "preview-offer-carousel",
+        "x": 0,
+        "w": 1512,
+        "h": 770,
+        "left": 0,
+        "max": 808,
+        "firstX": 80
+      }
+    ]
+  },
+  {
+    "route": "about",
+    "viewport": 1512,
+    "errors": [],
+    "failures": [],
+    "width": 1512,
+    "height": 4444,
+    "papers": [
+      {
+        "class": "preview-manifesto-card has-zigzag has-source-paper",
+        "w": 636,
+        "h": 624,
+        "source": true,
+        "mask": "none",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 62896,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-manifesto-card has-zigzag has-source-paper",
+        "w": 636,
+        "h": 624,
+        "source": true,
+        "mask": "none",
+        "clip": "border-box",
+        "frame": "none",
+        "contour": 62897,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-feature-card preview-paper has-source-paper",
+        "w": 560,
+        "h": 434,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/about-card-mask-560x434.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/about-card-frame-560x434.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-feature-card preview-paper has-source-paper",
+        "w": 560,
+        "h": 434,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/about-card-mask-560x434.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/about-card-frame-560x434.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-contact-card preview-paper has-source-paper",
+        "w": 660,
+        "h": 568,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/contact-card-mask-660x568.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/contact-card-frame-660x568.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-map-card preview-paper has-source-paper",
+        "w": 612,
+        "h": 568,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/map-card-mask-612x568.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/map-card-frame-612x568.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      }
+    ],
+    "carousels": []
+  },
+  {
+    "route": "contatti",
+    "viewport": 1512,
+    "errors": [],
+    "failures": [],
+    "width": 1512,
+    "height": 1670,
+    "papers": [
+      {
+        "class": "preview-contact-card preview-paper has-source-paper",
+        "w": 660,
+        "h": 568,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/contact-card-mask-660x568.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/contact-card-frame-660x568.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-map-card preview-paper has-source-paper",
+        "w": 612,
+        "h": 568,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/map-card-mask-612x568.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/map-card-frame-612x568.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      }
+    ],
+    "carousels": []
+  },
+  {
+    "route": "eventi",
+    "viewport": 1512,
+    "errors": [],
+    "failures": [],
+    "width": 1512,
+    "height": 2806,
+    "papers": [
+      {
+        "class": "preview-event-card preview-paper has-source-paper",
+        "w": 560,
+        "h": 440,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/event-card-mask-560x440.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/event-card-frame-560x440.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-event-card preview-paper has-source-paper",
+        "w": 560,
+        "h": 440,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/event-card-mask-560x440.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/event-card-frame-560x440.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-event-card preview-paper has-source-paper",
+        "w": 560,
+        "h": 440,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/event-card-mask-560x440.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/event-card-frame-560x440.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-event-card preview-paper has-source-paper",
+        "w": 560,
+        "h": 440,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/event-card-mask-560x440.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/event-card-frame-560x440.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-contact-card preview-paper preview-contact-card--event has-source-paper",
+        "w": 1352,
+        "h": 496,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/event-form-mask-1352x496.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/event-form-frame-1352x496.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      }
+    ],
+    "carousels": [
+      {
+        "class": "preview-event-carousel",
+        "x": 0,
+        "w": 1512,
+        "h": 454,
+        "left": 564,
+        "max": 1128,
+        "firstX": -484
+      }
+    ]
+  },
+  {
+    "route": "vivi-tpr",
+    "viewport": 1512,
+    "errors": [],
+    "failures": [],
+    "width": 1512,
+    "height": 4036,
+    "papers": [
+      {
+        "class": "preview-offer-card preview-paper has-source-paper",
+        "w": 480,
+        "h": 756,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/offer-card-mask-480x756.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/offer-card-frame-480x756.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-offer-card preview-paper has-source-paper",
+        "w": 480,
+        "h": 756,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/offer-card-mask-480x756.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/offer-card-frame-480x756.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-offer-card preview-paper has-source-paper",
+        "w": 480,
+        "h": 756,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/offer-card-mask-480x756.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/offer-card-frame-480x756.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-offer-card preview-paper has-source-paper",
+        "w": 480,
+        "h": 756,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/offer-card-mask-480x756.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/offer-card-frame-480x756.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      },
+      {
+        "class": "preview-company-card preview-paper has-source-paper",
+        "w": 1352,
+        "h": 920,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/company-card-mask-1352x920.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/company-card-frame-1352x920.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      }
+    ],
+    "carousels": [
+      {
+        "class": "preview-offer-carousel",
+        "x": 0,
+        "w": 1512,
+        "h": 770,
+        "left": 808,
+        "max": 808,
+        "firstX": -728
+      }
+    ]
+  },
+  {
+    "route": "prenota",
+    "viewport": 1512,
+    "errors": [],
+    "failures": [],
+    "width": 1512,
+    "height": 1750,
+    "papers": [
+      {
+        "class": "preview-booking-panel preview-paper has-source-paper",
+        "w": 1352,
+        "h": 568,
+        "source": true,
+        "mask": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/booking-panel-mask-1352x568.svg\")",
+        "clip": "no-clip",
+        "frame": "url(\"http://127.0.0.1:4176/assets/figma-updated/shapes/booking-panel-frame-1352x568.svg\")",
+        "contour": 0,
+        "outline": "none",
+        "border": "0px"
+      }
+    ],
+    "carousels": []
+  }
+]

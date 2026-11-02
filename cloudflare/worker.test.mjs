@@ -75,6 +75,40 @@ test('static assets are served by the asset binding and the previous path redire
   const response = await fetchRequest(new Request(`${origin}/coming-soon.css`), env);
   assert.equal(await response.text(), '/coming-soon.css');
   const redirect = await fetchRequest(new Request(`${origin}/coming-soon/?utm_source=test`), env);
-  assert.equal(redirect.status, 302);
+  assert.equal(redirect.status, 301);
   assert.equal(redirect.headers.get('Location'), `${origin}/?utm_source=test`);
+});
+
+const inquiryRequest = (headers = {}) => new Request(`${origin}/api/inquiry`, {
+  method: 'POST', headers: { Origin: origin, 'Content-Type': 'application/json', 'CF-Connecting-IP': '192.0.2.1', ...headers },
+  body: JSON.stringify({ kind: 'contact', user_type: 'Freelancer', name: 'Ada Example', email: 'ada@example.com', phone: '+39 02 1234567', message: 'Informazioni', website: '' }),
+});
+
+test('Cloudflare inquiry hashes the client in a separate namespace and sends only after limiting', async () => {
+  let checked = false;
+  const expected = Buffer.from(await crypto.subtle.digest('SHA-256', new TextEncoder().encode('tpr-inquiry:192.0.2.1'))).toString('hex');
+  const env = environment(async ({ key }) => {
+    assert.equal(key, expected);
+    checked = true;
+    return { success: true };
+  });
+  const response = await fetchRequest(inquiryRequest(), env, { fetchImpl: async (url, options) => {
+    assert.equal(checked, true);
+    if (url === 'https://api.brevo.com/v3/senders') return Response.json({ senders: [{ active: true, email: 'hello@thepeoplesroom.it' }] });
+    assert.equal(url, 'https://api.brevo.com/v3/smtp/email');
+    assert.deepEqual(JSON.parse(options.body).to, [{ email: 'hello@thepeoplesroom.it' }]);
+    return Response.json({ messageId: '<test-only>' }, { status: 201 });
+  } });
+  assert.equal(response.status, 200);
+  assert.deepEqual(await response.json(), { success: true });
+});
+
+test('Cloudflare inquiry rejects missing/failing/denied platform limits before provider access', async () => {
+  let calls = 0;
+  for (const [env, expected, headers] of [[{ ...environment(), NEWSLETTER_RATE_LIMITER: undefined }, 503, {}], [environment(async () => { throw new Error('private'); }), 503, {}], [environment(async () => ({ success: false })), 429, {}], [environment(), 503, { 'CF-Connecting-IP': '' }]]) {
+    const response = await fetchRequest(inquiryRequest(headers), env, { fetchImpl: async () => { calls++; } });
+    assert.equal(response.status, expected);
+    assert.deepEqual(await response.json(), { success: false });
+  }
+  assert.equal(calls, 0);
 });

@@ -1,0 +1,559 @@
+/* Home-only compatibility. Font faces, tokens and reset-sensitive declarations
+   retain their original sources. shared-elevator.css/controller own all layers,
+   masks, panorama geometry, responsive breakpoints and animation timing. */
+@import url("shared-little-man.css?v=20260820-little-men-3");
+
+.updated-preview .tpr-elevator__character-fallback {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: currentColor;
+  mask: var(--character-mask) center / contain no-repeat;
+}
+
+/* Nominal Figma tap frames stay48px; normalize the two original SVG canvases
+   by their painted bounds so changing the active Room never changes icon size. */
+.updated-preview .tpr-elevator__button {
+  width: 48px;
+  height: 48px;
+}
+.updated-preview .tpr-elevator__button img {
+  inset: auto;
+  left: -1.699707px;
+  top: -2.769775px;
+  width: 51.808655px;
+  height: 53.660400px;
+  max-width: none;
+}
+.updated-preview .tpr-elevator__button img[src*="/elevator-icon-"] {
+  left: -5.25px;
+  top: -6.75px;
+  width: 62px;
+  height: 62px;
+}
+@media (min-width: 721px) {
+  .updated-preview .tpr-elevator__button {
+    bottom: clamp(16px, 8.403361svh, 80px);
+  }
+  .updated-preview .tpr-elevator__button:nth-child(1) { left: calc(50% - 160px); }
+  .updated-preview .tpr-elevator__button:nth-child(2) { left: calc(50% - 80px); }
+  .updated-preview .tpr-elevator__button:nth-child(3) { left: 50%; }
+  .updated-preview .tpr-elevator__button:nth-child(4) { left: calc(50% + 80px); }
+  .updated-preview .tpr-elevator__button:nth-child(5) { left: calc(50% + 160px); }
+}
+
+@font-face {
+  font-family: "Alte Haas Grotesk";
+  src: url("assets/fonts/alte-haas-grotesk/AlteHaasGroteskRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alte Haas Grotesk";
+  src: url("assets/fonts/alte-haas-grotesk/AlteHaasGroteskBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Rader";
+  src: url("assets/fonts/pp-rader/PPRader-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Rader";
+  src: url("assets/fonts/pp-rader/PPRader-Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 600 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Rader";
+  src: url("assets/fonts/pp-rader/PPRader-Thin.otf") format("opentype");
+  font-style: normal;
+  font-weight: 100 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Rader";
+  src: url("assets/fonts/pp-rader/PPRader-Italic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Rader";
+  src: url("assets/fonts/pp-rader/PPRader-BoldItalic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 600 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Rader";
+  src: url("assets/fonts/pp-rader/PPRader-ThinItalic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 100 300;
+  font-display: swap;
+}
+
+.updated-preview .tpr-elevator {
+  --tpr-royal: #2c64e8;
+  --tpr-pink: #ff7bff;
+  --tpr-white: #fff;
+  --tpr-page-bg: var(--tpr-royal);
+  --tpr-display: "PP Rader", "Alte Haas Grotesk", Arial, sans-serif;
+  --tpr-body: "Alte Haas Grotesk", Arial, sans-serif;
+  --cta-jagged: polygon(0.130rem 0.900rem, 0.055rem 0.779rem, 0.161rem 0.683rem, 0.124rem 0.546rem, 0.249rem 0.482rem, 0.262rem 0.347rem, 0.382rem 0.302rem, 0.449rem 0.199rem, 0.564rem 0.165rem, 0.668rem 0.108rem, 0.784rem 0.091rem, 0.900rem 0.075rem, 7.31% 0.075rem, 9.82% 0.116rem, 12.33% 0.055rem, 14.84% 0.126rem, 17.36% 0.040rem, 19.87% 0.127rem, 22.38% 0.035rem, 24.89% 0.116rem, 27.40% 0.043rem, 29.91% 0.094rem, 32.42% 0.060rem, 34.93% 0.068rem, 37.44% 0.079rem, 39.96% 0.047rem, 42.47% 0.094rem, 44.98% 0.036rem, 47.49% 0.098rem, 50.00% 0.038rem, 52.51% 0.092rem, 55.02% 0.052rem, 57.53% 0.080rem, 60.04% 0.070rem, 62.56% 0.071rem, 65.07% 0.084rem, 67.58% 0.070rem, 70.09% 0.089rem, 72.60% 0.081rem, 75.11% 0.082rem, 77.62% 0.102rem, 80.13% 0.066rem, 82.64% 0.127rem, 85.16% 0.050rem, 87.67% 0.130rem, 90.18% 0.039rem, 92.69% 0.130rem, calc(100% - 0.900rem) 0.084rem, calc(100% - 0.790rem) 0.136rem, calc(100% - 0.666rem) 0.105rem, calc(100% - 0.580rem) 0.200rem, calc(100% - 0.450rem) 0.199rem, calc(100% - 0.393rem) 0.315rem, calc(100% - 0.274rem) 0.357rem, calc(100% - 0.237rem) 0.474rem, calc(100% - 0.154rem) 0.559rem, calc(100% - 0.128rem) 0.673rem, calc(100% - 0.095rem) 0.784rem, calc(100% - 0.084rem) 0.900rem, calc(100% - 0.107rem) 11.94%, calc(100% - 0.080rem) 17.38%, calc(100% - 0.123rem) 22.81%, calc(100% - 0.060rem) 28.25%, calc(100% - 0.130rem) 33.69%, calc(100% - 0.041rem) 39.12%, calc(100% - 0.130rem) 44.56%, calc(100% - 0.030rem) 50.00%, calc(100% - 0.130rem) 55.44%, calc(100% - 0.030rem) 60.88%, calc(100% - 0.130rem) 66.31%, calc(100% - 0.041rem) 71.75%, calc(100% - 0.108rem) 77.19%, calc(100% - 0.057rem) 82.62%, calc(100% - 0.083rem) 88.06%, calc(100% - 0.084rem) calc(100% - 0.900rem), calc(100% - 0.118rem) calc(100% - 0.788rem), calc(100% - 0.134rem) calc(100% - 0.675rem), calc(100% - 0.170rem) calc(100% - 0.567rem), calc(100% - 0.238rem) calc(100% - 0.474rem), calc(100% - 0.289rem) calc(100% - 0.371rem), calc(100% - 0.385rem) calc(100% - 0.305rem), calc(100% - 0.465rem) calc(100% - 0.223rem), calc(100% - 0.569rem) calc(100% - 0.175rem), calc(100% - 0.676rem) calc(100% - 0.136rem), calc(100% - 0.785rem) calc(100% - 0.097rem), calc(100% - 0.900rem) calc(100% - 0.112rem), 92.69% calc(100% - 0.108rem), 90.18% calc(100% - 0.081rem), 87.67% calc(100% - 0.099rem), 85.16% calc(100% - 0.100rem), 82.64% calc(100% - 0.082rem), 80.13% calc(100% - 0.124rem), 77.62% calc(100% - 0.061rem), 75.11% calc(100% - 0.130rem), 72.60% calc(100% - 0.045rem), 70.09% calc(100% - 0.130rem), 67.58% calc(100% - 0.040rem), 65.07% calc(100% - 0.130rem), 62.56% calc(100% - 0.045rem), 60.04% calc(100% - 0.128rem), 57.53% calc(100% - 0.057rem), 55.02% calc(100% - 0.106rem), 52.51% calc(100% - 0.069rem), 50.00% calc(100% - 0.088rem), 47.49% calc(100% - 0.073rem), 44.98% calc(100% - 0.080rem), 42.47% calc(100% - 0.067rem), 39.96% calc(100% - 0.084rem), 37.44% calc(100% - 0.050rem), 34.93% calc(100% - 0.097rem), 32.42% calc(100% - 0.031rem), 29.91% calc(100% - 0.112rem), 27.40% calc(100% - 0.015rem), 24.89% calc(100% - 0.122rem), 22.38% calc(100% - 0.011rem), 19.87% calc(100% - 0.121rem), 17.36% calc(100% - 0.020rem), 14.84% calc(100% - 0.110rem), 12.33% calc(100% - 0.042rem), 9.82% calc(100% - 0.093rem), 7.31% calc(100% - 0.067rem), 0.900rem calc(100% - 0.129rem), 0.781rem calc(100% - 0.071rem), 0.680rem calc(100% - 0.150rem), 0.560rem calc(100% - 0.155rem), 0.472rem calc(100% - 0.234rem), 0.373rem calc(100% - 0.292rem), 0.298rem calc(100% - 0.379rem), 0.227rem calc(100% - 0.467rem), 0.180rem calc(100% - 0.571rem), 0.126rem calc(100% - 0.673rem), 0.127rem calc(100% - 0.789rem), 0.081rem calc(100% - 0.900rem), 0.036rem 88.06%, 0.125rem 82.62%, 0.041rem 77.19%, 0.122rem 71.75%, 0.059rem 66.31%, 0.109rem 60.88%, 0.084rem 55.44%, 0.090rem 50.00%, 0.109rem 44.56%, 0.073rem 39.12%, 0.126rem 33.69%, 0.065rem 28.25%, 0.130rem 22.81%, 0.067rem 17.38%, 0.122rem 11.94%);
+  --cta-jagged-inner: polygon(0.275rem 0.900rem, 0.198rem 0.799rem, 0.300rem 0.724rem, 0.256rem 0.606rem, 0.371rem 0.560rem, 0.371rem 0.442rem, 0.477rem 0.411rem, 0.528rem 0.321rem, 0.624rem 0.297rem, 0.708rem 0.247rem, 0.804rem 0.234rem, 0.900rem 0.220rem, 7.31% 0.220rem, 9.82% 0.261rem, 12.33% 0.200rem, 14.84% 0.271rem, 17.36% 0.185rem, 19.87% 0.272rem, 22.38% 0.180rem, 24.89% 0.261rem, 27.40% 0.188rem, 29.91% 0.239rem, 32.42% 0.205rem, 34.93% 0.213rem, 37.44% 0.224rem, 39.96% 0.192rem, 42.47% 0.239rem, 44.98% 0.181rem, 47.49% 0.243rem, 50.00% 0.183rem, 52.51% 0.237rem, 55.02% 0.197rem, 57.53% 0.225rem, 60.04% 0.215rem, 62.56% 0.216rem, 65.07% 0.229rem, 67.58% 0.215rem, 70.09% 0.234rem, 72.60% 0.226rem, 75.11% 0.227rem, 77.62% 0.247rem, 80.13% 0.211rem, 82.64% 0.272rem, 85.16% 0.195rem, 87.67% 0.275rem, 90.18% 0.184rem, 92.69% 0.275rem, calc(100% - 0.900rem) 0.229rem, calc(100% - 0.811rem) 0.279rem, calc(100% - 0.707rem) 0.244rem, calc(100% - 0.640rem) 0.331rem, calc(100% - 0.528rem) 0.321rem, calc(100% - 0.488rem) 0.425rem, calc(100% - 0.383rem) 0.452rem, calc(100% - 0.359rem) 0.552rem, calc(100% - 0.286rem) 0.619rem, calc(100% - 0.268rem) 0.714rem, calc(100% - 0.238rem) 0.805rem, calc(100% - 0.229rem) 0.900rem, calc(100% - 0.252rem) 11.94%, calc(100% - 0.225rem) 17.38%, calc(100% - 0.268rem) 22.81%, calc(100% - 0.205rem) 28.25%, calc(100% - 0.275rem) 33.69%, calc(100% - 0.186rem) 39.12%, calc(100% - 0.275rem) 44.56%, calc(100% - 0.175rem) 50.00%, calc(100% - 0.275rem) 55.44%, calc(100% - 0.175rem) 60.88%, calc(100% - 0.275rem) 66.31%, calc(100% - 0.186rem) 71.75%, calc(100% - 0.253rem) 77.19%, calc(100% - 0.202rem) 82.62%, calc(100% - 0.228rem) 88.06%, calc(100% - 0.229rem) calc(100% - 0.900rem), calc(100% - 0.262rem) calc(100% - 0.808rem), calc(100% - 0.274rem) calc(100% - 0.716rem), calc(100% - 0.302rem) calc(100% - 0.627rem), calc(100% - 0.360rem) calc(100% - 0.553rem), calc(100% - 0.399rem) calc(100% - 0.466rem), calc(100% - 0.480rem) calc(100% - 0.415rem), calc(100% - 0.543rem) calc(100% - 0.345rem), calc(100% - 0.629rem) calc(100% - 0.307rem), calc(100% - 0.717rem) calc(100% - 0.275rem), calc(100% - 0.805rem) calc(100% - 0.240rem), calc(100% - 0.900rem) calc(100% - 0.257rem), 92.69% calc(100% - 0.253rem), 90.18% calc(100% - 0.226rem), 87.67% calc(100% - 0.244rem), 85.16% calc(100% - 0.245rem), 82.64% calc(100% - 0.227rem), 80.13% calc(100% - 0.269rem), 77.62% calc(100% - 0.206rem), 75.11% calc(100% - 0.275rem), 72.60% calc(100% - 0.190rem), 70.09% calc(100% - 0.275rem), 67.58% calc(100% - 0.185rem), 65.07% calc(100% - 0.275rem), 62.56% calc(100% - 0.190rem), 60.04% calc(100% - 0.273rem), 57.53% calc(100% - 0.202rem), 55.02% calc(100% - 0.251rem), 52.51% calc(100% - 0.214rem), 50.00% calc(100% - 0.233rem), 47.49% calc(100% - 0.218rem), 44.98% calc(100% - 0.225rem), 42.47% calc(100% - 0.212rem), 39.96% calc(100% - 0.229rem), 37.44% calc(100% - 0.195rem), 34.93% calc(100% - 0.242rem), 32.42% calc(100% - 0.176rem), 29.91% calc(100% - 0.257rem), 27.40% calc(100% - 0.160rem), 24.89% calc(100% - 0.267rem), 22.38% calc(100% - 0.156rem), 19.87% calc(100% - 0.266rem), 17.36% calc(100% - 0.165rem), 14.84% calc(100% - 0.255rem), 12.33% calc(100% - 0.187rem), 9.82% calc(100% - 0.238rem), 7.31% calc(100% - 0.212rem), 0.900rem calc(100% - 0.274rem), 0.801rem calc(100% - 0.214rem), 0.721rem calc(100% - 0.289rem), 0.620rem calc(100% - 0.287rem), 0.550rem calc(100% - 0.356rem), 0.468rem calc(100% - 0.401rem), 0.408rem calc(100% - 0.474rem), 0.349rem calc(100% - 0.546rem), 0.311rem calc(100% - 0.631rem), 0.265rem calc(100% - 0.714rem), 0.271rem calc(100% - 0.809rem), 0.226rem calc(100% - 0.900rem), 0.181rem 88.06%, 0.270rem 82.62%, 0.186rem 77.19%, 0.267rem 71.75%, 0.204rem 66.31%, 0.254rem 60.88%, 0.229rem 55.44%, 0.235rem 50.00%, 0.254rem 44.56%, 0.218rem 39.12%, 0.271rem 33.69%, 0.210rem 28.25%, 0.275rem 22.81%, 0.212rem 17.38%, 0.267rem 11.94%);
+  font: 400 16px/normal var(--tpr-body);
+}
+
+.updated-preview .tpr-elevator {
+  max-width: 100%;
+  color: var(--room-ink);
+}
+
+.updated-preview .tpr-elevator__sticky {
+  max-width: 100%;
+}
+
+.updated-preview .tpr-elevator__frame {
+  max-width: 100%;
+}
+
+/* The updated exports already contain their exact original photo clips.
+   Applying the old eye mask again would crop them a second time. The mobile
+   fade has its own source alpha mask, following the destination immediately. */
+.updated-preview #rooms[data-source-room-photos] .tpr-elevator__photo-plane {
+  -webkit-mask: none;
+  mask: none;
+}
+.updated-preview #rooms[data-source-room-photos][data-photo-room="coworking"] { --source-photo-mask: url("assets/figma-updated/composites/room-coworking-photo-mask-union-2x.webp"); }
+.updated-preview #rooms[data-source-room-photos][data-photo-room="reformer"] { --source-photo-mask: url("assets/figma-updated/composites/room-reformer-photo-mask-union-2x.webp"); }
+.updated-preview #rooms[data-source-room-photos][data-photo-room="wellness"] { --source-photo-mask: url("assets/figma-updated/composites/room-wellness-photo-mask-union-2x.webp"); }
+.updated-preview #rooms[data-source-room-photos][data-photo-room="bar"] { --source-photo-mask: url("assets/figma-updated/composites/room-bar-photo-mask-union-2x.webp"); }
+.updated-preview #rooms[data-source-room-photos][data-photo-room="media"] { --source-photo-mask: url("assets/figma-updated/composites/room-media-photo-mask-union-2x.webp"); }
+
+.updated-preview .tpr-elevator__car {
+  color: var(--room-ink);
+}
+
+.updated-preview .tpr-elevator__character {
+  color: #2c64e8;
+}
+
+.updated-preview .tpr-elevator__character[data-room="reformer"] {
+  color: #ffc100;
+}
+
+.updated-preview .tpr-elevator__character[data-room="wellness"] {
+  color: #3f9941;
+}
+
+.updated-preview .tpr-elevator__character[data-room="bar"] {
+  color: #ffc100;
+}
+
+.updated-preview .tpr-elevator__character[data-room="media"] {
+  color: #2c64e8;
+}
+
+.updated-preview .tpr-elevator__desktop-copy {
+  color: var(--room-ink);
+}
+
+.updated-preview .tpr-elevator__desktop-copy h2 {
+  margin: 0 0 clamp(0.6rem, 2vh, 1.5rem);
+  font: 600 clamp(2.2rem, min(5.29vw, 9vh), 5rem)/1 var(--tpr-display, "PP Rader", "Alte Haas Grotesk", Arial, sans-serif);
+  letter-spacing: 0;
+}
+
+.updated-preview .tpr-elevator__desktop-copy h2 span {
+  font-size: .645em;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.updated-preview .tpr-elevator__desktop-copy p {
+  max-width: 100%;
+  margin: 0 0 8px;
+  font: 400 clamp(0.9rem, min(1.59vw, 2.4vh), 1.5rem)/1 var(--tpr-body, "Alte Haas Grotesk", Arial, sans-serif);
+  letter-spacing: 0;
+}
+
+.updated-preview .tpr-elevator__desktop-copy p:last-of-type {
+  margin-bottom: 0;
+}
+
+.updated-preview .tpr-elevator__desktop-actions {
+  max-width: 100%;
+  margin-top: clamp(0.6rem, 2.5vh, 2rem);
+}
+
+.updated-preview .tpr-elevator__cta {
+  max-width: 100%;
+  color: var(--room-bg);
+  font: 700 1rem/1 var(--tpr-body, "Alte Haas Grotesk", Arial, sans-serif);
+}
+
+.updated-preview .tpr-elevator__book {
+  max-width: 100%;
+  color: var(--room-accent);
+  font: 700 1rem/1 var(--tpr-body, "Alte Haas Grotesk", Arial, sans-serif);
+}
+
+.updated-preview .tpr-elevator.is-exploring .tpr-elevator__cta {
+  color: var(--room-accent);
+}
+
+.updated-preview .tpr-elevator.is-exploring .tpr-elevator__book {
+  color: var(--room-bg);
+}
+
+.updated-preview .tpr-elevator__explore {
+  color: var(--explore-ink);
+}
+
+.updated-preview .tpr-elevator.is-exploring .tpr-elevator__desktop-actions {
+  margin-top: 2rem;
+}
+
+.updated-preview .tpr-elevator__explore-track {
+  max-width: none;
+}
+
+.updated-preview .tpr-elevator__explore-track img {
+  max-width: none;
+}
+
+.updated-preview .tpr-elevator__card-front {
+  color: var(--card-accent);
+  font: 700 clamp(.85rem, 1.55vw, 1.85rem)/1 var(--tpr-display, "PP Rader", "Alte Haas Grotesk", Arial, sans-serif);
+  letter-spacing: -.04em;
+}
+
+.updated-preview .tpr-elevator__card-arrow {
+  color: inherit;
+}
+
+.updated-preview .tpr-elevator__explore-card {
+  color: transparent;
+}
+
+/* Keep the original card frames while giving the flip and destination
+   separate native controls. Back links never activate the front toggle. */
+.updated-preview .tpr-elevator__card-toggle {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+  appearance: none;
+}
+
+.updated-preview [data-elevator-card-close] {
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  appearance: none;
+}
+
+.updated-preview .tpr-elevator__card-cta {
+  padding-inline: 0;
+}
+
+.updated-preview .tpr-elevator__card-cta > a {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding-inline: 1rem;
+  color: inherit;
+  font: inherit;
+  text-align: center;
+  text-decoration: none;
+}
+
+.updated-preview .tpr-elevator__card-toggle:focus-visible,
+.updated-preview [data-elevator-card-close]:focus-visible,
+.updated-preview .tpr-elevator__card-cta > a:focus-visible {
+  outline: 2px solid var(--card-accent);
+  outline-offset: -4px;
+}
+
+.updated-preview .tpr-elevator__card-back {
+  color: var(--card-accent);
+}
+
+.updated-preview .tpr-elevator__card-back strong {
+  max-width: calc(100% - 3rem);
+  font-size: clamp(1.35rem, 2.55vw, 3rem);
+  font-weight: 900;
+  line-height: .9;
+  letter-spacing: -.045em;
+}
+
+.updated-preview .tpr-elevator__card-back > span:not(.tpr-elevator__card-close):not(.tpr-elevator__card-cta) {
+  color: var(--card-accent);
+  font-size: clamp(.72rem, 1.05vw, 1.1rem);
+  line-height: 1.25;
+}
+
+.updated-preview .tpr-elevator__card-cta {
+  color: var(--card-accent);
+  font-size: clamp(.68rem, .95vw, 1.1rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+@media (max-width: 720px) {
+.updated-preview .tpr-elevator__photo-plane,
+.updated-preview .tpr-elevator__art {
+  max-width: none;
+}
+
+/* The photo remains fixed as the cars lift; its lower fade follows the selected
+   destination immediately without changing the settled Room background. */
+.updated-preview .tpr-elevator[data-photo-room] .tpr-elevator__photo-plane::after {
+  background: linear-gradient(to bottom, transparent 72%, var(--photo-room-bg, var(--room-bg)) 100%);
+}
+.updated-preview #rooms[data-source-room-photos] .tpr-elevator__photo-plane::after {
+  -webkit-mask: var(--source-photo-mask) top left / 100% 100% no-repeat;
+  mask: var(--source-photo-mask) top left / 100% 100% no-repeat;
+  mask-mode: alpha;
+}
+
+.updated-preview .tpr-elevator__title {
+  margin: 0 0 .7rem;
+  font: 600 clamp(1.85rem, min(9.4vw, 12cqh), 3.4rem)/1 var(--tpr-display, "PP Rader", "Alte Haas Grotesk", Arial, sans-serif);
+  letter-spacing: 0;
+}
+
+.updated-preview .tpr-elevator__title span {
+  font-size: .645em;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.updated-preview .tpr-elevator__mobile-copy-text {
+  max-width: 34rem;
+}
+
+.updated-preview .tpr-elevator__mobile-copy-text p {
+  margin: 0 0 .45em;
+  font-size: clamp(.72rem, 2.2svh, 1.05rem);
+  font-size: clamp(.72rem, 5.6cqh, 1.05rem);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+
+.updated-preview .tpr-elevator__mobile-copy-text p:last-child {
+  margin-bottom: 0;
+}
+
+.updated-preview .tpr-elevator__mobile-cta {
+  max-width: 100%;
+  color: var(--room-bg);
+  font-weight: 800;
+}
+
+.updated-preview .tpr-elevator__mobile-actions {
+  margin-top: 1.1rem;
+}
+
+.updated-preview .tpr-elevator__mobile-book {
+  max-width: 100%;
+  color: var(--room-accent);
+  font-weight: 800;
+}
+
+.updated-preview .tpr-elevator.is-mobile-expanded .tpr-elevator__car--current .tpr-elevator__title {
+  margin-bottom: .45rem;
+}
+
+.updated-preview .tpr-elevator.is-mobile-expanded .tpr-elevator__car--current .tpr-elevator__mobile-actions {
+  margin-top: .7rem;
+}
+
+.updated-preview .tpr-elevator__mobile-drop {
+  margin: 0 -1.25rem;
+}
+
+.updated-preview .tpr-elevator.is-mobile-expanded .tpr-elevator__car--current .tpr-elevator__mobile-drop {
+  margin: .7rem -1.25rem 0;
+}
+
+.updated-preview .tpr-elevator__mobile-card {
+  color: var(--card-accent);
+}
+
+.updated-preview .tpr-elevator__mobile-card-photo {
+  margin: .25rem auto .1rem;
+}
+
+.updated-preview .tpr-elevator__mobile-card-meta {
+  color: var(--card-accent);
+}
+
+.updated-preview .tpr-elevator__mobile-card-meta strong {
+  font: 700 clamp(1.05rem, 4.4vw, 1.45rem)/1 var(--tpr-display, "PP Rader", "Alte Haas Grotesk", Arial, sans-serif);
+  letter-spacing: -.04em;
+}
+
+.updated-preview .tpr-elevator__mobile-card .tpr-elevator__card-arrow {
+  color: inherit;
+}
+
+.updated-preview .tpr-elevator__mobile-card-back {
+  color: var(--card-accent);
+}
+
+.updated-preview .tpr-elevator__mobile-card-back strong {
+  max-width: calc(100% - 2.6rem);
+  font-size: clamp(1.2rem, 5.2vw, 1.7rem);
+  font-weight: 900;
+  line-height: .9;
+  letter-spacing: -.045em;
+}
+
+.updated-preview .tpr-elevator__mobile-card-back > span:not(.tpr-elevator__card-close):not(.tpr-elevator__card-cta) {
+  color: var(--card-accent);
+  font-size: .92rem;
+  line-height: 1.15;
+}
+
+.updated-preview .tpr-elevator__mobile-card-back .tpr-elevator__card-cta {
+  font-size: .78rem;
+}
+
+.updated-preview .tpr-elevator.is-mobile-expanded .tpr-elevator__car--current .tpr-elevator__mobile-cta {
+  color: var(--room-accent);
+}
+
+.updated-preview .tpr-elevator__mobile-cta .tpr-elevator__cta-arrow {
+  margin: 0;
+}
+
+.updated-preview .tpr-elevator__mobile-cta .tpr-elevator__cta-arrow::before {
+  margin-top: -.18em;
+}
+
+.updated-preview .tpr-elevator.is-mobile-expanded .tpr-elevator__car--current .tpr-elevator__cta-arrow::before {
+  margin-top: .18em;
+}
+
+.updated-preview .tpr-elevator__explore-track img {
+  max-width: none;
+}
+}
+
+@media (max-width: 720px) and (max-height: 780px) {
+.updated-preview .tpr-elevator__title {
+  font-size: clamp(1.7rem, min(8.4vw, 11cqh), 2.7rem);
+  margin-bottom: .45rem;
+}
+
+.updated-preview .tpr-elevator__mobile-actions {
+  margin-top: .75rem;
+}
+
+.updated-preview .tpr-elevator.is-mobile-expanded .tpr-elevator__car--current .tpr-elevator__title {
+  font-size: clamp(1.7rem, 8.4vw, 2.55rem);
+  margin-bottom: .3rem;
+}
+
+.updated-preview .tpr-elevator.is-mobile-expanded .tpr-elevator__car--current .tpr-elevator__mobile-actions {
+  margin-top: .45rem;
+}
+}
+
+/* The legacy panorama measures the viewport, while the preview centers a1512px
+   main. Only this section breaks out; sibling sections keep their dimensions. */
+.updated-preview.preview-page--home main { overflow: visible; }
+.updated-preview.preview-page--home .tpr-elevator {
+  width: 100vw;
+  max-width: none;
+  margin-left: calc((100% - 100vw) / 2);
+}
+
+/* Only updated Home copy receives this wrapper. Long room-specific text remains
+   reachable within the original copy geometry; title and actions keep their slots. */
+.updated-preview .tpr-elevator__desktop-copy > .tpr-elevator__updated-text {
+  min-height: 0;
+  overflow: auto;
+  flex: 0 1 auto;
+  pointer-events: auto;
+}
+.updated-preview .tpr-elevator__updated-text > p {
+  flex: none;
+  overflow: visible;
+}
+/* During panorama exploration the text moves with the original wide image.
+   Let wheel input reach document scroll rather than a fractional text overflow. */
+.updated-preview .tpr-elevator.is-exploring .tpr-elevator__updated-text {
+  flex: none;
+  overflow: visible;
+}
+
+/* Safari keeps svh at the toolbar's expanded height while the visible viewport
+   grows during scrolling. The moving Room must cover that whole visible area. */
+@media (max-width: 720px) {
+  .updated-preview .tpr-elevator__sticky {
+    height: 100vh;
+    height: 100dvh;
+  }
+}
+.updated-preview .tpr-elevator__desktop-copy > h2,
+.updated-preview .tpr-elevator__desktop-copy > .tpr-elevator__desktop-actions {
+  flex: none;
+}
+
+/* Source-backed updated desktop copy. The Figma metrics alias comes from
+   figma-refinements.css; smaller layouts retain the original type/clamps. */
+@media (min-width: 901px) and (min-height: 781px) {
+  .updated-preview .tpr-elevator:not(.is-exploring) .tpr-elevator__desktop-copy {
+    top: 27.7310924%;
+  }
+  .updated-preview .tpr-elevator__desktop-copy h2 {
+    font: 700 80px/80px "TPR Rader Figma", Arial, sans-serif;
+    margin-bottom: 40px;
+  }
+  .updated-preview .tpr-elevator__desktop-copy p {
+    font: 400 24px/24px "TPR Haas", Arial, sans-serif;
+    margin-bottom: 8px;
+  }
+  .updated-preview .tpr-elevator__desktop-copy p:last-of-type { margin-bottom: 0; }
+  .updated-preview .tpr-elevator__desktop-actions { margin-top: 32px; }
+}
+
+/* Updated text may exceed the legacy mobile slot at the configured 14px floor.
+   Preserve its grid/opacity/transform transitions and card expansion geometry. */
+@media (max-width: 720px) {
+  .updated-preview .tpr-elevator:not(.is-mobile-expanded) .tpr-elevator__mobile-copy-text-inner {
+    overflow: auto;
+    pointer-events: auto;
+  }
+}

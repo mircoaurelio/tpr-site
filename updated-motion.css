@@ -1,0 +1,90 @@
+/* Original star/eye artwork and cursor sizing, isolated from legacy menus. */
+@media (pointer: fine) {
+  html.has-tpr-cursor,
+  html.has-tpr-cursor * { cursor: none !important; }
+}
+.tpr-cursor,
+.tpr-cursor[popover],
+.tpr-cursor:popover-open {
+  position: fixed;
+  z-index: 2147483646;
+  inset: auto;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  background: transparent;
+  border: 0;
+  pointer-events: none !important;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+}
+.tpr-cursor::backdrop { display: none; pointer-events: none; }
+.tpr-cursor.is-visible { opacity: 1; }
+.tpr-cursor__spark,
+.tpr-cursor__eye {
+  display: block;
+  width: 2.75rem;
+  height: auto;
+  max-width: none;
+  pointer-events: none;
+}
+/* Outrank the page-wide image reset, which otherwise exposes both artworks. */
+.tpr-cursor .tpr-cursor__eye { display: none; width: 3.35rem; }
+.tpr-cursor.is-action .tpr-cursor__spark { display: none; }
+.tpr-cursor.is-action .tpr-cursor__eye { display: block; }
+.updated-preview :is(textarea, [contenteditable="true"], [contenteditable=""], input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="color"]):not([type="range"]):not([type="hidden"])) { cursor: text; }
+
+/* Home source616:1707:48px tap frame, original painted circle/double chevron.
+   Keep the SVG's native bleed and the desktop Room navigator's baseline. */
+.updated-preview .tpr-elevator__skip {
+  position: absolute;
+  z-index: 10;
+  right: clamp(24px, 5.291005vw, 80px);
+  bottom: clamp(16px, 8.403361svh, 80px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.updated-preview .tpr-elevator__skip img {
+  position: absolute;
+  left: -1.686768px;
+  top: -2.709473px;
+  width: 51.8465576171875px;
+  height: 53.600830078125px;
+  max-width: none;
+  pointer-events: none;
+}
+.updated-preview .tpr-elevator__skip:focus-visible {
+  outline: 3px solid #2c64e8;
+  outline-offset: 4px;
+  box-shadow: 0 0 0 4px white;
+}
+@media (max-width: 720px) {
+  /* Safari can scroll an overflow:hidden canvas toward the focused Explore
+     control after a viewport resize. Clip the canvas without making it a
+     scroll container; the inner card strip retains its native scrolling. */
+  .updated-preview #rooms .tpr-elevator__frame { overflow: clip; }
+  .updated-preview #rooms .tpr-elevator__skip {
+    right: 12px;
+    bottom: max(4px, env(safe-area-inset-bottom));
+  }
+  .updated-preview #rooms .tpr-elevator__nav {
+    height: 3rem;
+    /* Clear the source SVG bleed above the separate bottom-right tap frame. */
+    bottom: calc(3.5rem + env(safe-area-inset-bottom));
+  }
+  .updated-preview #rooms .tpr-elevator__mobile-copy { bottom: calc(7rem + env(safe-area-inset-bottom)); }
+}

@@ -10,3 +10,6 @@ node_modules/
 .wrangler/
 .dev.vars
 .dev.vars.*
+
+__pycache__/
+.qa/

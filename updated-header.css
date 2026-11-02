@@ -1,0 +1,23 @@
+/* Original header artwork and dimensions; the floating state has brand contrast. */
+body.updated-preview .preview-header[data-header-floating] {
+  position: fixed;
+  z-index: 180;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: none;
+  background: var(--royal);
+  transform: translateY(0);
+  transition: none;
+}
+body.updated-preview .preview-header[data-header-floating][data-header-animated] {
+  transition: transform 220ms ease;
+}
+body.updated-preview .preview-header[data-header-floating][data-header-hidden]:not(:focus-within) {
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  body.updated-preview .preview-header[data-header-floating][data-header-animated] { transition: none; }
+}

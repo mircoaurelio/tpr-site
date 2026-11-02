@@ -1,0 +1,79 @@
+{
+  "source": "2_AGGIORNATO/Menu/Menu_TPR.pdf",
+  "source_sha256": "b7e3cb3d641308d8999f48877dc3051e0579700f2767926c6f41b085a37e6be4",
+  "source_canvas": [
+    1512,
+    982
+  ],
+  "content_canvas": [
+    1512,
+    952
+  ],
+  "omitted_mock_browser_chrome": 30,
+  "method": "Original PDF vector commands, colors, transforms and compound-path winding preserved.",
+  "room_order": [
+    "coworking",
+    "wellness",
+    "media",
+    "reformer",
+    "bar"
+  ],
+  "assets": {
+    "background.svg": {
+      "source_form": "/X1",
+      "source_blocks": [
+        0,
+        1
+      ],
+      "viewBox": "0 0 1512 952",
+      "sha256": "ece33d6663f4859fc552e650fb110d60af5ed38af3fabc55d99b4faa85402dc6"
+    },
+    "coworking.svg": {
+      "source_form": "/X1",
+      "source_blocks": [
+        4,
+        5
+      ],
+      "viewBox": "570 394.600586 58 58",
+      "sha256": "977c460fa1e0511636055e3e613bede91f551cfd2924d2038ca7c62f2583a210"
+    },
+    "wellness.svg": {
+      "source_form": "/X1",
+      "source_blocks": [
+        6,
+        7
+      ],
+      "viewBox": "650 394.600586 58 58",
+      "sha256": "8fa09f5996fa2653ec5acb1ff0ffd69347e6d2aaf69dc3b504e9c4531d613b68"
+    },
+    "media.svg": {
+      "source_form": "/X1",
+      "source_blocks": [
+        8,
+        9
+      ],
+      "viewBox": "730 394.600586 58 58",
+      "sha256": "8387d65f1fecd4412a60fc8e566aef2307db56127c785133ba00b55ac77d5ba9"
+    },
+    "reformer.svg": {
+      "source_form": "/X1",
+      "source_blocks": [
+        10,
+        11
+      ],
+      "viewBox": "810 394.600586 58 58",
+      "sha256": "69b1bace56522f66bf4b37e97cb92b154185152981bfc0f35f1fc66d290d0d97"
+    },
+    "bar.svg": {
+      "source_form": "/X1",
+      "source_blocks": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "viewBox": "890 394.600586 58 58",
+      "sha256": "16d7019da7f74350df7153fbc68172f9456f8205b1e0187f8d0a9d77489285fa"
+    }
+  }
+}
