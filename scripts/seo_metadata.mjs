@@ -1,19 +1,21 @@
 // Production metadata belongs to the release artifact; the public design preview is noindex.
 const origin = 'https://thepeoplesroom.it';
 const brand = "The People's Room";
+const organizationId = `${origin}/#organization`;
+const logo = `${origin}/assets/brand/Logotype_blue.svg`;
 const image = `${origin}/assets/figma-updated/photos/home-hero-room.jpeg`;
 const pages = {
   '/homepage-tpr/': {
-    title: `Coworking e Reformer Pilates a Milano | ${brand}`,
-    description: 'Lavoro, movimento, cultura e benessere nello stesso spazio a Milano. Scopri coworking, Reformer Pilates, bar, studio contenuti, eventi e offerte TPR.',
+    title: `TPR Milano | ${brand}: coworking e Pilates`,
+    description: "TPR — The People's Room, a Milano: coworking, Reformer Pilates, benessere, bar ed eventi. Scopri gli spazi e le offerte per vivere TPR.",
   },
   '/about/': {
     title: `Uno spazio per lavoro e benessere a Milano | ${brand}`,
-    description: "Scopri The People's Room: uno spazio a Milano dove coworking, movimento, cultura e benessere convivono. La nostra visione, le stanze e la community.",
+    description: "Scopri The People's Room (TPR): uno spazio a Milano dove coworking, movimento, cultura e benessere convivono. La nostra visione, le stanze e la community.",
   },
   '/contatti/': {
     title: `Contatti e indirizzo a Milano | ${brand}`,
-    description: "Vieni a The People's Room in Via Cola Montano 36, Milano. Scopri indirizzo e orari e contattaci per informazioni sugli spazi, le offerte e gli eventi.",
+    description: "Vieni a The People's Room (TPR) in Via Cola Montano 36, Milano. Scopri indirizzo e orari e contattaci per informazioni sugli spazi, le offerte e gli eventi.",
   },
   '/eventi/': {
     title: `Eventi e spazi per eventi a Milano | ${brand}`,
@@ -50,7 +52,15 @@ const pages = {
 };
 
 const escapeHtml = value => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
-const jsonLd = value => `<script type="application/ld+json">${JSON.stringify(value).replaceAll('<', '\\u003c')}</script>`;
+const jsonLd = (value, slot) => `<script type="application/ld+json" data-tpr-schema="${slot}">${JSON.stringify(value).replaceAll('<', '\\u003c')}</script>`;
+
+function organizationSchema(content) {
+  return {
+    '@context': 'https://schema.org', '@type': 'Organization', '@id': organizationId,
+    name: brand, alternateName: 'TPR', url: `${origin}/`, logo,
+    description: content.home.intro[0],
+  };
+}
 
 function locationSchema(content) {
   const { address, city, days, hours } = content.visit;
@@ -59,8 +69,7 @@ function locationSchema(content) {
   // Fail visibly if the editorial location record changes beyond this known schedule.
   if (!place || !times || days !== 'Lun - Ven') throw new Error('Review the public location schema after changing visit address or hours.');
   return {
-    '@context': 'https://schema.org', '@type': 'LocalBusiness', '@id': `${origin}/#location`,
-    name: brand, url: `${origin}/contatti/`, image,
+    ...organizationSchema(content), '@type': 'LocalBusiness', image,
     address: {
       '@type': 'PostalAddress', streetAddress: address,
       addressLocality: place[2], postalCode: place[1], addressRegion: place[3], addressCountry: 'IT',
@@ -81,7 +90,8 @@ export function configureSeo(html, route, content) {
   html = html.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '')
     .replace(/<meta\b[^>]*\bname\s*=\s*(["'])(?:description|robots)\1[^>]*>/gi, '')
     .replace(/<link\b[^>]*\brel\s*=\s*(["'])canonical\1[^>]*>/gi, '')
-    .replace(/<meta\b[^>]*\bproperty\s*=\s*(["'])og:[^"']+\1[^>]*>/gi, '');
+    .replace(/<meta\b[^>]*\bproperty\s*=\s*(["'])og:[^"']+\1[^>]*>/gi, '')
+    .replace(/<script\b[^>]*\bdata-tpr-schema=(["'])(?:website|organization|location)\1[^>]*>[\s\S]*?<\/script>/gi, '');
   const fields = {
     'og:type': 'website', 'og:locale': 'it_IT', 'og:site_name': brand,
     'og:title': metadata.title, 'og:description': metadata.description, 'og:url': url,
@@ -89,8 +99,11 @@ export function configureSeo(html, route, content) {
   };
   let head = `<title>${escapeHtml(metadata.title)}</title>\n<meta name="description" content="${escapeHtml(metadata.description)}">\n<meta name="robots" content="index,follow">\n<link rel="canonical" href="${url}">\n`;
   head += Object.entries(fields).map(([property, value]) => `<meta property="${property}" content="${escapeHtml(value)}">`).join('\n');
-  if (route === '/homepage-tpr/') head += `\n${jsonLd({ '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${origin}/#website`, name: brand, alternateName: 'TPR', url: `${origin}/` })}`;
-  if (route === '/contatti/') head += `\n${jsonLd(locationSchema(content))}`;
+  if (route === '/homepage-tpr/') {
+    head += `\n${jsonLd({ '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${origin}/#website`, name: brand, alternateName: 'TPR', url: `${origin}/`, inLanguage: 'it-IT', publisher: { '@id': organizationId } }, 'website')}`;
+    head += `\n${jsonLd(organizationSchema(content), 'organization')}`;
+  }
+  if (route === '/contatti/') head += `\n${jsonLd(locationSchema(content), 'location')}`;
   return html.replace('</head>', `${head}\n</head>`);
 }
 

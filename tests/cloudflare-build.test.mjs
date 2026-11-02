@@ -91,7 +91,7 @@ test('Cloudflare build packages the complete public site from the real project',
   // Catches a generic template head being copied to every production page.
   await t.test('built pages expose unique, relevant search and sharing metadata', async () => {
     const topics = {
-      '/homepage-tpr/': /coworking.*Milano/i, '/about/': /spazio.*Milano/i,
+      '/homepage-tpr/': /TPR Milano.*The People's Room.*coworking.*Pilates/i, '/about/': /spazio.*Milano/i,
       '/contatti/': /contatti.*Milano/i, '/eventi/': /eventi.*Milano/i,
       '/vivi-tpr/': /offerte.*Milano/i, '/prenota/': /prenota.*Reformer Pilates.*Milano/i,
       '/rooms/coworking/': /coworking.*sale riunioni.*Milano/i,
@@ -143,10 +143,19 @@ test('Cloudflare build packages the complete public site from the real project',
       assert.ok(website, 'Home must declare the site identity');
       assert.equal(website.url, `${origin}/`);
       assert.equal(website.name, "The People's Room");
+      assert.equal(website.alternateName, 'TPR');
+      const organization = homeSchema.map(text => JSON.parse(text)).find(item => item['@type'] === 'Organization');
+      assert.ok(organization, 'Home must connect the brand and abbreviation');
+      assert.equal(website.publisher['@id'], organization['@id']);
+      assert.equal(organization.alternateName, 'TPR');
+      assert.equal(organization.url, `${origin}/`);
+      assert.ok((await stat(path.join(build.output, new URL(organization.logo).pathname))).isFile());
       await page.setContent(await readFile(path.join(build.output, 'contatti/index.html'), 'utf8'));
       const schemas = await page.locator('script[type="application/ld+json"]').allTextContents();
       const location = schemas.map(text => JSON.parse(text)).find(item => item['@type'] === 'LocalBusiness');
       assert.ok(location, 'Contacts must describe the public business location');
+      assert.equal(location['@id'], organization['@id']);
+      assert.equal(location.alternateName, 'TPR');
       assert.equal(location.address.streetAddress, 'Via Cola Montano, 36');
       assert.equal(location.address.addressLocality, 'Milano');
       assert.equal(location.address.postalCode, '20159');
