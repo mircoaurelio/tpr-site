@@ -32,6 +32,7 @@ const sharedFiles = [
   'updated-characters.css', 'updated-characters.js', 'updated-parallax.css', 'updated-parallax.js',
   'updated-menu.css',
   'updated-card-motion.css', 'updated-card-motion.js',
+  'updated-header.css', 'updated-header.js',
 ];
 const references = html => [...html.matchAll(/\b(?:href|src)\s*=\s*(["'])(.*?)\1/g)].map(match => match[2]);
 

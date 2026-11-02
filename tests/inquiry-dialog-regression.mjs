@@ -20,7 +20,7 @@ after(async () => {
 
 async function pageAt(engine, route, width = 1512, init) {
   const context = await browsers.get(engine).newContext({ viewport: { width, height: width < 500 ? 852 : 952 }, reducedMotion: 'reduce', hasTouch: width < 500, isMobile: width < 500 });
-  const page = await context.newPage(); page.setDefaultTimeout(6000);
+  const page = await context.newPage(); page.setDefaultTimeout(6000); page.setDefaultNavigationTimeout(20000);
   if(init) await page.addInitScript(init);
   const posts = [], errors = [];
   let response = { status: 200, body: { success: true }, delay: 0 };

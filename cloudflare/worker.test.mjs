@@ -75,7 +75,7 @@ test('static assets are served by the asset binding and the previous path redire
   const response = await fetchRequest(new Request(`${origin}/coming-soon.css`), env);
   assert.equal(await response.text(), '/coming-soon.css');
   const redirect = await fetchRequest(new Request(`${origin}/coming-soon/?utm_source=test`), env);
-  assert.equal(redirect.status, 302);
+  assert.equal(redirect.status, 301);
   assert.equal(redirect.headers.get('Location'), `${origin}/?utm_source=test`);
 });
 

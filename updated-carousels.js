@@ -1,32 +1,28 @@
-/* Desktop controls for offers and events; touch and keyboard stay native. */
+/* Source carousel positioning and mouse drag; touch and keyboard stay native. */
 (() => {
   'use strict';
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   document.querySelectorAll('[data-accessible-carousel]').forEach(wrapper => {
     if (wrapper.dataset.carouselEnhanced) return;
     const track = wrapper.querySelector('[data-carousel]');
-    const controls = wrapper.querySelector('.preview-carousel__controls');
-    const previous = wrapper.querySelector('[data-carousel-prev]');
-    const next = wrapper.querySelector('[data-carousel-next]');
-    if (!track || !controls || !previous || !next) return;
+    if (!track) return;
     wrapper.dataset.carouselEnhanced = 'true';
 
     const maximum = () => Math.max(0, track.scrollWidth - track.clientWidth);
-    const update = () => {
-      const end = maximum();
-      controls.hidden = end < 2;
-      previous.disabled = track.scrollLeft <= 1;
-      next.disabled = track.scrollLeft >= end - 1;
+    let used = false, placementFrame = 0;
+    const placeInitially = () => {
+      placementFrame = 0;
+      if (used) return;
+      const source = matchMedia('(min-width: 901px)').matches ? track.dataset.initialScroll : 'start';
+      const left = source === 'end' ? maximum() : source === 'center' ? maximum() / 2 : 0;
+      track.scrollTo({ left, behavior: 'instant' });
     };
-    const move = direction => {
-      const distance = (track.firstElementChild?.getBoundingClientRect().width || 320) + (parseFloat(getComputedStyle(track).gap) || 0);
-      track.scrollTo({ left: Math.max(0, Math.min(maximum(), track.scrollLeft + direction * distance)), behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+    const queuePlacement = () => {
+      if (!used && !placementFrame) placementFrame = requestAnimationFrame(placeInitially);
     };
-    previous.addEventListener('click', () => move(-1));
-    next.addEventListener('click', () => move(1));
-    track.addEventListener('scroll', update, { passive: true });
-    new ResizeObserver(update).observe(track);
-    update();
+    for (const event of ['pointerdown', 'wheel', 'keydown']) track.addEventListener(event, () => { used = true; }, { once: true, passive: true });
+    new ResizeObserver(queuePlacement).observe(track);
+    document.fonts?.ready.then(queuePlacement);
+    queuePlacement();
 
     let drag = null;
     let suppressClick = false;
@@ -59,7 +55,6 @@
         setTimeout(() => { suppressClick = false; }, 0);
         if (track.hasPointerCapture(ended.id)) track.releasePointerCapture(ended.id);
       }
-      update();
     };
     // A press may leave the track before it crosses the drag threshold and
     // captures the pointer. Always clear it when released outside as well.

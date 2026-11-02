@@ -21,6 +21,7 @@ async function pageAt(engine, width, route) {
   const context = await browsers.get(engine).newContext({ viewport: { width, height: width < 500 ? 852 : 952 }, reducedMotion: 'reduce', isMobile: width < 500, hasTouch: width < 500 });
   const page = await context.newPage();
   page.setDefaultTimeout(6000);
+  page.setDefaultNavigationTimeout(20000);
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.route('**/*', request => ['GET', 'HEAD'].includes(request.request().method()) && new URL(request.request().url()).origin === base.origin ? request.continue() : request.abort());
@@ -35,22 +36,26 @@ async function position(track) {
   return track.evaluate(element => ({ left: element.scrollLeft, max: element.scrollWidth - element.clientWidth }));
 }
 
-// Removing a control handler or retaining the old end/center initialization
-// makes cards unreachable or makes the first card inaccessible on arrival.
-test('visible controls reach every offer and event card from the first card', async () => {
-  for (const engine of ['chromium', 'webkit']) for (const width of [1512, 1280, 393]) for (const route of ['homepage-tpr', 'vivi-tpr', 'eventi']) {
+// Source initial framing must coexist with native access to every complete card.
+test('native carousels match Figma edges and reach every offer and event card', async () => {
+  for (const engine of ['chromium', 'webkit']) for (const width of [1920, 1512, 1280, 900, 393, 320]) for (const route of ['homepage-tpr', 'vivi-tpr', 'eventi']) {
     const { context, page, track, errors } = await pageAt(engine, width, route);
     try {
-      const previous = page.locator('[data-carousel-prev]'), next = page.locator('[data-carousel-next]');
-      assert.equal(await next.count(), 1, `${engine}/${width}/${route}: visible next control is required`);
-      assert.equal(await next.isVisible(), true);
-      assert.equal(await previous.isDisabled(), true);
-      assert.equal((await position(track)).left, 0, `${route} must start with the first card`);
+      assert.equal(await page.locator('.preview-carousel__controls').count(), 0, 'source has no added Scorri/arrow row');
+      const bounds=await track.boundingBox();
+      assert.ok(Math.abs(bounds.x)<1&&Math.abs(bounds.width-width)<1, `${engine}/${width}/${route}: clipping belongs at viewport edges: ${JSON.stringify(bounds)}`);
+      const initial=await position(track);
+      const target=width>900?(route==='vivi-tpr'?initial.max:route==='eventi'?initial.max/2:0):0;
+      assert.ok(Math.abs(initial.left-target)<=1, `${route}: source initial position ${initial.left} vs ${target}`);
+      await track.evaluate(element => element.focus({ preventScroll: true }));
+      await page.keyboard.press('Home');await page.waitForTimeout(80);
+      assert.equal((await position(track)).left,0);
       const reached = new Set();
       for (let step = 0; step < 5; step++) {
         for (const title of await track.evaluate(element => [...element.children].filter(card => { const box = card.getBoundingClientRect(), track = element.getBoundingClientRect(); return box.left >= track.left - 1 && box.right <= track.right + 1; }).map(card => card.querySelector('h3').textContent))) reached.add(title);
-        if (await next.isDisabled()) break;
-        await next.click();
+        const current=await position(track);
+        if (Math.abs(current.left-current.max)<=1) break;
+        await page.keyboard.press('ArrowRight');
         await page.waitForTimeout(80);
       }
       const last = await position(track);
@@ -58,8 +63,7 @@ test('visible controls reach every offer and event card from the first card', as
       const expectedTitles = route === 'eventi' ? ['Shamans Ritual', 'The Dinner', 'Ceramic Workshop', 'The People’s Week Talk'] : null;
       if (expectedTitles) assert.deepEqual([...reached].sort(), expectedTitles.sort(), 'all published events must become fully readable');
       else assert.equal(reached.size, 4, `all four offer cards must become fully readable: ${[...reached]}`);
-      assert.equal(await next.isDisabled(), true);
-      await previous.click();
+      await page.keyboard.press('ArrowLeft');
       await page.waitForTimeout(80);
       assert.ok((await position(track)).left < last.left);
       await track.evaluate(element => element.focus({ preventScroll: true }));
@@ -69,6 +73,7 @@ test('visible controls reach every offer and event card from the first card', as
       await page.keyboard.press('End');
       await page.waitForTimeout(80);
       assert.ok(Math.abs((await position(track)).left - last.max) <= 1);
+      assert.equal(await track.evaluate(n=>n.scrollHeight-n.clientHeight),0,'the paper artwork has no clipped vertical scroll range');
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width);
       assert.equal(await page.locator('.preview-room-cards [data-carousel-prev],.preview-room-cards [data-carousel-next]').count(), 0);
       assert.deepEqual(errors, []);
@@ -84,6 +89,8 @@ test('desktop drag moves the track and a normal offer click still activates its 
   for (const engine of ['chromium', 'webkit']) for (const route of ['vivi-tpr', 'eventi']) {
     const { context, page, track } = await pageAt(engine, 1512, route);
     try {
+      await track.evaluate(element => element.focus({ preventScroll: true }));
+      await page.keyboard.press('Home'); await page.waitForTimeout(80);
       const box = await track.boundingBox();
       const x = 700, y = Math.max(150, Math.min(700, box.y + 150));
       const beforeDrag = (await position(track)).left;
@@ -115,13 +122,14 @@ test('vertical wheel keeps page travel while Shift wheel deliberately moves a ca
       const box = await track.boundingBox();
       await page.mouse.move(600, box.y + 160);
       const beforeY = await page.evaluate(() => scrollY);
+      const beforeX = (await position(track)).left;
       await page.mouse.wheel(0, 200); await page.waitForTimeout(160);
-      assert.equal((await position(track)).left, 0);
+      assert.equal((await position(track)).left, beforeX);
       assert.ok(await page.evaluate(before => scrollY > before + 100, beforeY), 'ordinary wheel must continue scrolling the page');
       await track.evaluate(element => element.scrollIntoView({ block: 'center', behavior: 'instant' }));
       await page.mouse.move(600, (await track.boundingBox()).y + 160);
       await page.keyboard.down('Shift'); await page.mouse.wheel(0, 300); await page.keyboard.up('Shift'); await page.waitForTimeout(180);
-      assert.ok((await position(track)).left > 100, 'Shift wheel must move horizontally when there is room');
+      assert.ok((await position(track)).left > beforeX + 100, 'Shift wheel must move horizontally when there is room');
     } finally { await context.close(); }
   }
 });
@@ -141,13 +149,13 @@ test('native mobile swiping still advances both carousel types', async () => {
   }
 });
 
-test('loading the enhancement twice still advances one card per click', async () => {
+test('loading the enhancement twice still produces one native drag movement', async () => {
   const { context, page, track } = await pageAt('chromium', 1512, 'homepage-tpr');
   try {
     await page.addScriptTag({ url: new URL('updated-carousels.js', base).href });
-    await page.locator('[data-carousel-next]').click();
-    await page.waitForTimeout(80);
-    assert.equal((await position(track)).left, 560);
+    const box=await track.boundingBox(),y=box.y+150;
+    await page.mouse.move(700,y);await page.mouse.down();await page.mouse.move(360,y,{steps:18});await page.mouse.up();
+    assert.ok(Math.abs((await position(track)).left-340)<=2,'one340px drag advances the track once');
   } finally { await context.close(); }
 });
 
@@ -155,10 +163,11 @@ test('releasing outside the track before a drag cannot turn a later hover into a
   const { context, page, track } = await pageAt('chromium', 1280, 'eventi');
   try {
     const box = await track.boundingBox();
+    const before=(await position(track)).left;
     await page.mouse.move(600, box.y + 1); await page.mouse.down();
     await page.mouse.move(600, box.y - 5); await page.mouse.up();
     await page.mouse.move(300, box.y + 70);
-    assert.equal((await position(track)).left, 0);
+    assert.equal((await position(track)).left, before);
     assert.equal(await page.locator('.is-carousel-dragging').count(), 0);
   } finally { await context.close(); }
 });

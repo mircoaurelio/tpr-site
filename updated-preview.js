@@ -110,33 +110,6 @@
 
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
   document.querySelectorAll("[data-carousel]").forEach((carousel) => {
-    const initial = carousel.dataset.initialScroll;
-    if (initial) {
-      let used = false;
-      for (const event of ["pointerdown", "wheel", "keydown"])
-        carousel.addEventListener(
-          event,
-          () => {
-            used = true;
-          },
-          { once: true, passive: true },
-        );
-      Promise.all([
-        document.fonts?.ready,
-        ...[...carousel.querySelectorAll("img")].map((image) =>
-          image.decode().catch(() => {}),
-        ),
-      ]).then(() =>
-        requestAnimationFrame(() =>
-          requestAnimationFrame(() => {
-            if (used || !matchMedia("(min-width: 901px)").matches) return;
-            carousel.style.scrollSnapType = "none";
-            const maximum = carousel.scrollWidth - carousel.clientWidth;
-            carousel.scrollLeft = initial === "end" ? maximum : maximum / 2;
-          }),
-        ),
-      );
-    }
     carousel.addEventListener("keydown", (event) => {
       if (
         event.target !== carousel ||

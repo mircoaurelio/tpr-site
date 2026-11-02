@@ -7,7 +7,7 @@ const base = new URL(process.env.TPR_BASE_URL || 'http://127.0.0.1:4175/');
 base.pathname = base.pathname.replace(/\/$/, '') + '/'; base.search = ''; base.hash = '';
 const browsers = new Map();
 const roomLinks = {
-  coworking: [[['Scopri come accedere', 'vivi-tpr/']], [['Scopri come accedere', 'vivi-tpr/']], [['Eventi e Gallery', 'eventi/'], ['Organizza un evento', 'eventi/#organizza']]],
+  coworking: [[['Scopri come accedere', 'vivi-tpr/#offerte']], [['Scopri come accedere', 'vivi-tpr/#offerte']], [['Eventi e Gallery', 'eventi/'], ['Organizza un evento', 'eventi/#organizza']]],
   reformer: [[['Prenota la tua lezione', 'prenota/']], [['Prenota la tua lezione', 'prenota/']], [['Prenota la tua lezione', 'prenota/']]],
   wellness: [[['Scopri come accedere', 'vivi-tpr/']], [['Scopri come accedere', 'vivi-tpr/']], [['Scopri come accedere', 'vivi-tpr/']]],
   bar: [[['Scopri come accedere', 'vivi-tpr/']], [['Scopri come accedere', 'vivi-tpr/']], [['Scopri come accedere', 'vivi-tpr/']]],

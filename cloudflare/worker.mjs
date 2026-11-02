@@ -34,7 +34,7 @@ export async function fetchRequest(request, env, { fetchImpl = fetch } = {}) {
   if (url.pathname.startsWith('/api/')) return new Response('Not found', { status: 404 });
   if (url.pathname === '/coming-soon' || url.pathname === '/coming-soon/') {
     url.pathname = '/';
-    return Response.redirect(url.toString(), 302);
+    return Response.redirect(url.toString(), 301);
   }
   return env.ASSETS.fetch(request);
 }

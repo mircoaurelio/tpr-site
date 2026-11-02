@@ -46,15 +46,15 @@ def media(root,role,cls,alt='',fallback=''):
 def body_wordmark(root):
  return '<span class="preview-body-wordmark">'+img(root,'figma-updated/composites/home-about-wordmark-original.svg',"The People’s Room™",'preview-body-wordmark-source')+'<span class="preview-body-trademark" aria-hidden="true">'+img(root,'brand/Logotype_blue.svg','')+'</span></span>'
 def head(root,title,home=False):
- feedback='20261101-skip-source-5'
+ feedback='20261102-carousel-header-1'
  styles=[('updated-preview.css',feedback),('figma-refinements.css',feedback),('pdf-assets.css','20261031-clean'),('page-layout.css','20261031-review')]
  if home:styles.extend([('shared-elevator.css','20261031-clean'),('updated-elevator.css',feedback),('home-layout.css','20261031-review')])
- styles.extend((name,feedback) for name in ['updated-carousels.css','updated-motion.css','updated-refinements.css','updated-inquiries.css','updated-characters.css','updated-menu.css','updated-card-motion.css'])
+ styles.extend((name,feedback) for name in ['updated-carousels.css','updated-motion.css','updated-refinements.css','updated-inquiries.css','updated-characters.css','updated-menu.css','updated-card-motion.css','updated-header.css'])
  if home:styles.append(('updated-parallax.css',feedback))
  scripts=[('updated-preview.js',feedback),('updated-inquiries.js',feedback),('updated-carousels.js',feedback),('updated-characters.js',feedback)]
  # Install the source-character contract before the Home elevator initializes.
  if home:scripts.extend([('shared-elevator.js',feedback),('updated-elevator.js',feedback)])
- scripts.extend((name,feedback) for name in ['updated-motion.js','updated-refinements.js','updated-card-motion.js'])
+ scripts.extend((name,feedback) for name in ['updated-motion.js','updated-refinements.js','updated-card-motion.js','updated-header.js'])
  if home:scripts.append(('updated-parallax.js',feedback))
  scripts.append(('zigzag-controls.js','20261031-clean'))
  css=''.join(f'<link rel="stylesheet" href="{root}{name}?v={version}">' for name,version in styles)
@@ -85,9 +85,9 @@ def newsletter(root,vivi=False):
  n=DATA['newsletter'];return f'''<section class="preview-newsletter preview-shell" id="community" data-figma-node="677:1739"><div class="preview-two-columns"><h2 class="preview-section-title">{n['title']}</h2><div class="preview-lead">{paras([DATA['vivi']['communityIntro'],n['description']] if vivi else [n['description']])}</div></div><form class="preview-newsletter-form" data-newsletter-form data-endpoint="https://thepeoplesroom.it/api/newsletter"><div class="preview-email-row"><label class="sr-only" for="newsletter-email">Indirizzo email</label><input id="newsletter-email" name="email" type="email" placeholder="Inserisci il tuo indirizzo email" autocomplete="email" required><button type="submit" disabled>Resta aggiornato</button></div><label class="preview-consent"><input name="consent" type="checkbox" required><span>{E(n['consent'])} <a href="{PRIVACY}" target="_blank" rel="noopener">Privacy Policy</a>.</span></label><label class="preview-trap" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label><p class="preview-form-status" role="status" aria-live="polite"></p></form></section>'''
 def carousel(kind,cards):
  label='Offerte TPR' if kind=='offer' else 'Eventi passati'
- noun='offerte' if kind=='offer' else 'eventi'
  track_id=f'{kind}-carousel'
- return f'''<div class="preview-carousel" data-accessible-carousel><div id="{track_id}" class="preview-{kind}-carousel" tabindex="0" role="region" aria-label="{label}, scorri per esplorare" data-carousel>{''.join(cards)}</div><div class="preview-carousel__controls" role="group" aria-label="Controlli {noun}" hidden><span class="preview-carousel__hint">Scorri per esplorare</span><button class="preview-carousel__button" type="button" data-carousel-prev aria-controls="{track_id}" aria-label="{'Offerte precedenti' if kind=='offer' else 'Eventi precedenti'}"><span aria-hidden="true">‹</span></button><button class="preview-carousel__button" type="button" data-carousel-next aria-controls="{track_id}" aria-label="{'Offerte successive' if kind=='offer' else 'Eventi successivi'}"><span aria-hidden="true">›</span></button></div></div>'''
+ initial='center' if kind=='event' else 'end' if PAGE=='vivi' else 'start'
+ return f'''<div class="preview-carousel" data-accessible-carousel><div id="{track_id}" class="preview-{kind}-carousel" tabindex="0" role="region" aria-label="{label}, scorri per esplorare" data-carousel data-initial-scroll="{initial}">{''.join(cards)}</div></div>'''
 
 def offer_cards(root):
  cards=[]
@@ -191,12 +191,12 @@ def room_explorer(root,standalone=None):
    # Studio audio has only a coming-soon front in the source, not a Card Back.
    if detail and detail.get('ctaLabels'):
     front=f'<div class="preview-room-card-front" aria-hidden="false">{front}<button class="preview-room-card-open" type="button" data-room-card-open aria-labelledby="{card_id}-title" aria-controls="{card_id}-back" aria-expanded="false"></button></div>'
-    default_route='prenota/' if key=='reformer' else 'vivi-tpr/'
+    default_route='prenota/' if key=='reformer' else 'vivi-tpr/#offerte' if key=='coworking' else 'vivi-tpr/'
     cta_routes={'Eventi e Gallery':'eventi/','Organizza un evento':'eventi/#organizza'}
     ctas=''.join(link(root,cta_routes.get(cta,default_route),E(cta)) for cta in detail['ctaLabels'])
     back=f'<div class="preview-room-card-back" id="{card_id}-back" data-figma-node="{detail["sourceNode"]}" aria-hidden="true" inert><div class="preview-room-card-back-top"><h3>{E(label)}</h3><button class="preview-room-card-close" type="button" data-room-card-close aria-label="Chiudi {E(label)}">Chiudi</button></div><p>{E(detail["description"])}</p><div class="preview-room-card-ctas">{ctas}</div></div>'
    cards.append(f'<article class="preview-room-card preview-paper">{front}{back}</article>')
-  book=f'<a class="preview-button preview-button--room-outline" href="{root}{"prenota/" if key=="reformer" else "vivi-tpr/"}">{"Prenota" if key=="reformer" else "Scopri come accedere"}</a>' if key in ('coworking','reformer') and standalone else ''
+  book=f'<a class="preview-button preview-button--room-outline" href="{root}{"prenota/" if key=="reformer" else "vivi-tpr/#offerte"}">{"Prenota" if key=="reformer" else "Scopri come accedere"}</a>' if key in ('coworking','reformer') and standalone else ''
   art=asset_image(root,f'rooms.{key}.artwork','', f'class="preview-room-art preview-room-art--source" data-asset-role="rooms.{key}.artwork" aria-hidden="true"')
   art=art or (asset_image(root,'home.coworking-window','', 'class="preview-room-art preview-room-art--pdf" aria-hidden="true"') if key=='coworking' else '')
   art=art or img(root,f'homepage-room-{key}-no-text-2x.webp','', 'preview-room-art', 'aria-hidden="true" data-pending-figma-image="'+d['sourceNode']+'"')
